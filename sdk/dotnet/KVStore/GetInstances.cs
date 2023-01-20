@@ -20,29 +20,28 @@ namespace Pulumi.AliCloud.KVStore
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.KVStore.GetInstances.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.KVStore.GetInstances.InvokeAsync(new AliCloud.KVStore.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "testname",
-        ///         }));
-        ///         this.FirstInstanceName = @default.Apply(@default =&gt; @default.Instances?[0]?.Name);
-        ///     }
+        ///         NameRegex = "testname",
+        ///     });
         /// 
-        ///     [Output("firstInstanceName")]
-        ///     public Output&lt;string&gt; FirstInstanceName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceName"] = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Name)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
@@ -53,33 +52,32 @@ namespace Pulumi.AliCloud.KVStore
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.KVStore.GetInstances.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.KVStore.GetInstances.InvokeAsync(new AliCloud.KVStore.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "testname",
-        ///         }));
-        ///         this.FirstInstanceName = @default.Apply(@default =&gt; @default.Instances?[0]?.Name);
-        ///     }
+        ///         NameRegex = "testname",
+        ///     });
         /// 
-        ///     [Output("firstInstanceName")]
-        ///     public Output&lt;string&gt; FirstInstanceName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceName"] = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Name)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
@@ -213,9 +211,10 @@ namespace Pulumi.AliCloud.KVStore
         public GetInstancesArgs()
         {
         }
+        public static new GetInstancesArgs Empty => new GetInstancesArgs();
     }
 
-    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
@@ -349,6 +348,7 @@ namespace Pulumi.AliCloud.KVStore
         public GetInstancesInvokeArgs()
         {
         }
+        public static new GetInstancesInvokeArgs Empty => new GetInstancesInvokeArgs();
     }
 
 
@@ -372,11 +372,13 @@ namespace Pulumi.AliCloud.KVStore
         /// A list of KVStore Instance IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// (Optional) Type of the applied ApsaraDB for instance.
+        /// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        /// </summary>
         public readonly string? InstanceClass;
         /// <summary>
         /// (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
-        /// * `instance_class`- (Optional) Type of the applied ApsaraDB for instance.
-        /// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>

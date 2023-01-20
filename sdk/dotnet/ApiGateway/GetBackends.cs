@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.ApiGateway
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.ApiGateway.GetBackends.InvokeAsync());
-        ///         this.ApiGatewayBackendId1 = ids.Apply(ids =&gt; ids.Backends?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.ApiGateway.GetBackends.Invoke();
         /// 
-        ///     [Output("apiGatewayBackendId1")]
-        ///     public Output&lt;string&gt; ApiGatewayBackendId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["apiGatewayBackendId1"] = ids.Apply(getBackendsResult =&gt; getBackendsResult.Backends[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackendsResult> InvokeAsync(GetBackendsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendsResult>("alicloud:apigateway/getBackends:getBackends", args ?? new GetBackendsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackendsResult>("alicloud:apigateway/getBackends:getBackends", args ?? new GetBackendsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.ApiGateway
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.ApiGateway.GetBackends.InvokeAsync());
-        ///         this.ApiGatewayBackendId1 = ids.Apply(ids =&gt; ids.Backends?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.ApiGateway.GetBackends.Invoke();
         /// 
-        ///     [Output("apiGatewayBackendId1")]
-        ///     public Output&lt;string&gt; ApiGatewayBackendId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["apiGatewayBackendId1"] = ids.Apply(getBackendsResult =&gt; getBackendsResult.Backends[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackendsResult> Invoke(GetBackendsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackendsResult>("alicloud:apigateway/getBackends:getBackends", args ?? new GetBackendsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackendsResult>("alicloud:apigateway/getBackends:getBackends", args ?? new GetBackendsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBackendsArgs : Pulumi.InvokeArgs
+    public sealed class GetBackendsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -111,9 +109,10 @@ namespace Pulumi.AliCloud.ApiGateway
         public GetBackendsArgs()
         {
         }
+        public static new GetBackendsArgs Empty => new GetBackendsArgs();
     }
 
-    public sealed class GetBackendsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBackendsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -145,6 +144,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public GetBackendsInvokeArgs()
         {
         }
+        public static new GetBackendsInvokeArgs Empty => new GetBackendsInvokeArgs();
     }
 
 

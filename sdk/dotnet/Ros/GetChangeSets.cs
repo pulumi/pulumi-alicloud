@@ -23,34 +23,33 @@ namespace Pulumi.AliCloud.Ros
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ros.GetChangeSets.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ros.GetChangeSets.InvokeAsync(new AliCloud.Ros.GetChangeSetsArgs
+        ///         StackId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             StackId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstRosChangeSetId = example.Apply(example =&gt; example.Sets?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstRosChangeSetId")]
-        ///     public Output&lt;string&gt; FirstRosChangeSetId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRosChangeSetId"] = example.Apply(getChangeSetsResult =&gt; getChangeSetsResult.Sets[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetChangeSetsResult> InvokeAsync(GetChangeSetsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChangeSetsResult>("alicloud:ros/getChangeSets:getChangeSets", args ?? new GetChangeSetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetChangeSetsResult>("alicloud:ros/getChangeSets:getChangeSets", args ?? new GetChangeSetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ros Change Sets of the current Alibaba Cloud user.
@@ -64,38 +63,37 @@ namespace Pulumi.AliCloud.Ros
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ros.GetChangeSets.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ros.GetChangeSets.InvokeAsync(new AliCloud.Ros.GetChangeSetsArgs
+        ///         StackId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             StackId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstRosChangeSetId = example.Apply(example =&gt; example.Sets?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstRosChangeSetId")]
-        ///     public Output&lt;string&gt; FirstRosChangeSetId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRosChangeSetId"] = example.Apply(getChangeSetsResult =&gt; getChangeSetsResult.Sets[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetChangeSetsResult> Invoke(GetChangeSetsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChangeSetsResult>("alicloud:ros/getChangeSets:getChangeSets", args ?? new GetChangeSetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetChangeSetsResult>("alicloud:ros/getChangeSets:getChangeSets", args ?? new GetChangeSetsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetChangeSetsArgs : Pulumi.InvokeArgs
+    public sealed class GetChangeSetsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -145,9 +143,10 @@ namespace Pulumi.AliCloud.Ros
         public GetChangeSetsArgs()
         {
         }
+        public static new GetChangeSetsArgs Empty => new GetChangeSetsArgs();
     }
 
-    public sealed class GetChangeSetsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetChangeSetsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -197,6 +196,7 @@ namespace Pulumi.AliCloud.Ros
         public GetChangeSetsInvokeArgs()
         {
         }
+        public static new GetChangeSetsInvokeArgs Empty => new GetChangeSetsInvokeArgs();
     }
 
 

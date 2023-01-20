@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         /// </summary>
         public readonly string ChargeType;
         /// <summary>
+        /// PolarDB cluster connection string.
+        /// </summary>
+        public readonly string ConnectionString;
+        /// <summary>
         /// The create_time of the db_nodes.
         /// </summary>
         public readonly string CreateTime;
@@ -74,6 +78,10 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         /// </summary>
         public readonly string NetworkType;
         /// <summary>
+        /// PolarDB cluster connection port.
+        /// </summary>
+        public readonly string Port;
+        /// <summary>
         /// The region_id of the db_nodes.
         /// </summary>
         public readonly string RegionId;
@@ -97,6 +105,8 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         [OutputConstructor]
         private GetClustersClusterResult(
             string chargeType,
+
+            string connectionString,
 
             string createTime,
 
@@ -126,6 +136,8 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
 
             string networkType,
 
+            string port,
+
             string regionId,
 
             string status,
@@ -137,6 +149,7 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
             string zoneId)
         {
             ChargeType = chargeType;
+            ConnectionString = connectionString;
             CreateTime = createTime;
             DbNodeClass = dbNodeClass;
             DbNodeNumber = dbNodeNumber;
@@ -151,6 +164,7 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
             Id = id;
             LockMode = lockMode;
             NetworkType = networkType;
+            Port = port;
             RegionId = regionId;
             Status = status;
             StorageUsed = storageUsed;

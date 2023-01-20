@@ -44,7 +44,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef(creation),
 //			}, nil)
 //			if err != nil {
@@ -60,7 +60,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -150,6 +150,17 @@ func NewRdsAccount(ctx *pulumi.Context,
 		args = &RdsAccountArgs{}
 	}
 
+	if args.AccountPassword != nil {
+		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringPtrInput)
+	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accountPassword",
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource RdsAccount
 	err := ctx.RegisterResource("alicloud:rds/rdsAccount:RdsAccount", name, args, &resource, opts...)
 	if err != nil {

@@ -208,6 +208,21 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Available in 1.196.0+) The connection port of the instance.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) The connection port of the instance.
+     * 
+     */
+    public Optional<Output<String>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      * 
      */
@@ -342,6 +357,7 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         this.paymentDuration = $.paymentDuration;
         this.paymentDurationUnit = $.paymentDurationUnit;
         this.paymentType = $.paymentType;
+        this.port = $.port;
         this.securityIpLists = $.securityIpLists;
         this.segNodeNum = $.segNodeNum;
         this.segStorageType = $.segStorageType;
@@ -628,6 +644,27 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
          */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param port (Available in 1.196.0+) The connection port of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<String> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port (Available in 1.196.0+) The connection port of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(String port) {
+            return port(Output.of(port));
         }
 
         /**

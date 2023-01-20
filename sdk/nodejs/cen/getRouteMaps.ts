@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -24,15 +25,12 @@ import * as utilities from "../utilities";
  *     transmitDirection: "RegionIn",
  *     status: "Active",
  * });
- * export const firstCenRouteMapId = _this.then(_this => _this.maps?[0]?.routeMapId);
+ * export const firstCenRouteMapId = _this.then(_this => _this.maps?.[0]?.routeMapId);
  * ```
  */
 export function getRouteMaps(args: GetRouteMapsArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteMapsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getRouteMaps:getRouteMaps", {
         "cenId": args.cenId,
         "cenRegionId": args.cenRegionId,
@@ -110,9 +108,30 @@ export interface GetRouteMapsResult {
      */
     readonly transmitDirection?: string;
 }
-
+/**
+ * This data source provides CEN Route Maps available to the user.
+ *
+ * > **NOTE:** Available in v1.87.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const this = alicloud.cen.getRouteMaps({
+ *     cenId: "cen-ihdlgo87ai********",
+ *     ids: ["cen-ihdlgo87ai:cenrmap-bnh97kb3mn********"],
+ *     descriptionRegex: "datasource_test",
+ *     cenRegionId: "cn-hangzhou",
+ *     transmitDirection: "RegionIn",
+ *     status: "Active",
+ * });
+ * export const firstCenRouteMapId = _this.then(_this => _this.maps?.[0]?.routeMapId);
+ * ```
+ */
 export function getRouteMapsOutput(args: GetRouteMapsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteMapsResult> {
-    return pulumi.output(args).apply(a => getRouteMaps(a, opts))
+    return pulumi.output(args).apply((a: any) => getRouteMaps(a, opts))
 }
 
 /**

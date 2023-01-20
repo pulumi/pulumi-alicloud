@@ -535,7 +535,7 @@ class ServiceMesh(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterIds")
-    def cluster_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def cluster_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         The array of the cluster ids.
         """
@@ -599,7 +599,7 @@ class ServiceMesh(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceMeshName")
-    def service_mesh_name(self) -> pulumi.Output[Optional[str]]:
+    def service_mesh_name(self) -> pulumi.Output[str]:
         """
         The name of the resource.
         """

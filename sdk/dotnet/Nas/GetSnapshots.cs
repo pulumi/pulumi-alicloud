@@ -23,33 +23,31 @@ namespace Pulumi.AliCloud.Nas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Nas.GetSnapshots.InvokeAsync());
-        ///         this.NasSnapshotId1 = ids.Apply(ids =&gt; ids.Snapshots?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Nas.GetSnapshots.InvokeAsync(new AliCloud.Nas.GetSnapshotsArgs
-        ///         {
-        ///             NameRegex = "^my-Snapshot",
-        ///         }));
-        ///         this.NasSnapshotId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Snapshots?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Nas.GetSnapshots.Invoke();
         /// 
-        ///     [Output("nasSnapshotId1")]
-        ///     public Output&lt;string&gt; NasSnapshotId1 { get; set; }
-        ///     [Output("nasSnapshotId2")]
-        ///     public Output&lt;string&gt; NasSnapshotId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Nas.GetSnapshots.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Snapshot",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nasSnapshotId1"] = ids.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["nasSnapshotId2"] = nameRegex.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnapshotsResult> InvokeAsync(GetSnapshotsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:nas/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:nas/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Nas Snapshots of the current Alibaba Cloud user.
@@ -63,37 +61,35 @@ namespace Pulumi.AliCloud.Nas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Nas.GetSnapshots.InvokeAsync());
-        ///         this.NasSnapshotId1 = ids.Apply(ids =&gt; ids.Snapshots?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Nas.GetSnapshots.InvokeAsync(new AliCloud.Nas.GetSnapshotsArgs
-        ///         {
-        ///             NameRegex = "^my-Snapshot",
-        ///         }));
-        ///         this.NasSnapshotId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Snapshots?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Nas.GetSnapshots.Invoke();
         /// 
-        ///     [Output("nasSnapshotId1")]
-        ///     public Output&lt;string&gt; NasSnapshotId1 { get; set; }
-        ///     [Output("nasSnapshotId2")]
-        ///     public Output&lt;string&gt; NasSnapshotId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Nas.GetSnapshots.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Snapshot",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nasSnapshotId1"] = ids.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["nasSnapshotId2"] = nameRegex.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSnapshotsResult> Invoke(GetSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:nas/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:nas/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSnapshotsArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the file system.
@@ -137,9 +133,10 @@ namespace Pulumi.AliCloud.Nas
         public GetSnapshotsArgs()
         {
         }
+        public static new GetSnapshotsArgs Empty => new GetSnapshotsArgs();
     }
 
-    public sealed class GetSnapshotsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the file system.
@@ -183,6 +180,7 @@ namespace Pulumi.AliCloud.Nas
         public GetSnapshotsInvokeArgs()
         {
         }
+        public static new GetSnapshotsInvokeArgs Empty => new GetSnapshotsInvokeArgs();
     }
 
 

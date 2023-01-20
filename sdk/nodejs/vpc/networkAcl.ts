@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -47,7 +48,7 @@ export class NetworkAcl extends pulumi.CustomResource {
     }
 
     /**
-     * The description of egress entries.
+     * The description of the network acl instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -69,9 +70,11 @@ export class NetworkAcl extends pulumi.CustomResource {
      */
     public readonly networkAclName!: pulumi.Output<string>;
     /**
-     * The associated resources.
+     * The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`."
+     *
+     * @deprecated Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
      */
-    public readonly resources!: pulumi.Output<outputs.vpc.NetworkAclResource[] | undefined>;
+    public readonly resources!: pulumi.Output<outputs.vpc.NetworkAclResource[]>;
     /**
      * (Available in 1.122.0+) The status of the network acl.
      */
@@ -126,7 +129,7 @@ export class NetworkAcl extends pulumi.CustomResource {
  */
 export interface NetworkAclState {
     /**
-     * The description of egress entries.
+     * The description of the network acl instance.
      */
     description?: pulumi.Input<string>;
     /**
@@ -148,7 +151,9 @@ export interface NetworkAclState {
      */
     networkAclName?: pulumi.Input<string>;
     /**
-     * The associated resources.
+     * The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`."
+     *
+     * @deprecated Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
     /**
@@ -166,7 +171,7 @@ export interface NetworkAclState {
  */
 export interface NetworkAclArgs {
     /**
-     * The description of egress entries.
+     * The description of the network acl instance.
      */
     description?: pulumi.Input<string>;
     /**
@@ -188,7 +193,9 @@ export interface NetworkAclArgs {
      */
     networkAclName?: pulumi.Input<string>;
     /**
-     * The associated resources.
+     * The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`."
+     *
+     * @deprecated Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
     /**

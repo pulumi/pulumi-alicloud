@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Cms.GetSlsGroups.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Cms.GetSlsGroups.InvokeAsync(new AliCloud.Cms.GetSlsGroupsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.CmsSlsGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Cms.GetSlsGroups.InvokeAsync(new AliCloud.Cms.GetSlsGroupsArgs
-        ///         {
-        ///             NameRegex = "^my-SlsGroup",
-        ///         }));
-        ///         this.CmsSlsGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cmsSlsGroupId1")]
-        ///     public Output&lt;string&gt; CmsSlsGroupId1 { get; set; }
-        ///     [Output("cmsSlsGroupId2")]
-        ///     public Output&lt;string&gt; CmsSlsGroupId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Cms.GetSlsGroups.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-SlsGroup",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cmsSlsGroupId1"] = ids.Apply(getSlsGroupsResult =&gt; getSlsGroupsResult.Groups[0]?.Id),
+        ///         ["cmsSlsGroupId2"] = nameRegex.Apply(getSlsGroupsResult =&gt; getSlsGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSlsGroupsResult> InvokeAsync(GetSlsGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSlsGroupsResult>("alicloud:cms/getSlsGroups:getSlsGroups", args ?? new GetSlsGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSlsGroupsResult>("alicloud:cms/getSlsGroups:getSlsGroups", args ?? new GetSlsGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Cms.GetSlsGroups.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Cms.GetSlsGroups.InvokeAsync(new AliCloud.Cms.GetSlsGroupsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.CmsSlsGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Cms.GetSlsGroups.InvokeAsync(new AliCloud.Cms.GetSlsGroupsArgs
-        ///         {
-        ///             NameRegex = "^my-SlsGroup",
-        ///         }));
-        ///         this.CmsSlsGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cmsSlsGroupId1")]
-        ///     public Output&lt;string&gt; CmsSlsGroupId1 { get; set; }
-        ///     [Output("cmsSlsGroupId2")]
-        ///     public Output&lt;string&gt; CmsSlsGroupId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Cms.GetSlsGroups.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-SlsGroup",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cmsSlsGroupId1"] = ids.Apply(getSlsGroupsResult =&gt; getSlsGroupsResult.Groups[0]?.Id),
+        ///         ["cmsSlsGroupId2"] = nameRegex.Apply(getSlsGroupsResult =&gt; getSlsGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSlsGroupsResult> Invoke(GetSlsGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSlsGroupsResult>("alicloud:cms/getSlsGroups:getSlsGroups", args ?? new GetSlsGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSlsGroupsResult>("alicloud:cms/getSlsGroups:getSlsGroups", args ?? new GetSlsGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSlsGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetSlsGroupsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -143,9 +139,10 @@ namespace Pulumi.AliCloud.Cms
         public GetSlsGroupsArgs()
         {
         }
+        public static new GetSlsGroupsArgs Empty => new GetSlsGroupsArgs();
     }
 
-    public sealed class GetSlsGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSlsGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -183,6 +180,7 @@ namespace Pulumi.AliCloud.Cms
         public GetSlsGroupsInvokeArgs()
         {
         }
+        public static new GetSlsGroupsInvokeArgs Empty => new GetSlsGroupsInvokeArgs();
     }
 
 

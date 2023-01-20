@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string AccessRegionId;
         /// <summary>
-        /// -(Required, ForceNew) The ID of the CEN instance.
+        /// The ID of the CEN instance.
         /// </summary>
         public readonly string CenId;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// -(Optional, ForceNew) The domain name or IP address of the cloud service.
+        /// The domain name or IP address of the cloud service.
         /// </summary>
         public readonly string Host;
         /// <summary>

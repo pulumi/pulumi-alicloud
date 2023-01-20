@@ -46,7 +46,7 @@ type ServiceMesh struct {
 	// The network configuration of the Service grid. See the following `Block network`.
 	Network ServiceMeshNetworkOutput `pulumi:"network"`
 	// The name of the resource.
-	ServiceMeshName pulumi.StringPtrOutput `pulumi:"serviceMeshName"`
+	ServiceMeshName pulumi.StringOutput `pulumi:"serviceMeshName"`
 	// The status of the resource. Valid values: `running` or `initial`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
@@ -313,8 +313,8 @@ func (o ServiceMeshOutput) Network() ServiceMeshNetworkOutput {
 }
 
 // The name of the resource.
-func (o ServiceMeshOutput) ServiceMeshName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceMesh) pulumi.StringPtrOutput { return v.ServiceMeshName }).(pulumi.StringPtrOutput)
+func (o ServiceMeshOutput) ServiceMeshName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.ServiceMeshName }).(pulumi.StringOutput)
 }
 
 // The status of the resource. Valid values: `running` or `initial`.

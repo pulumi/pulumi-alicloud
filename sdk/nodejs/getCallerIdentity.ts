@@ -15,17 +15,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const current = pulumi.output(alicloud.getCallerIdentity());
- *
- * export const currentUserArn = current.id;
+ * const current = alicloud.getCallerIdentity({});
+ * export const currentUserArn = current.then(current => current.id);
  * ```
  */
 export function getCallerIdentity(opts?: pulumi.InvokeOptions): Promise<GetCallerIdentityResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getCallerIdentity:getCallerIdentity", {
     }, opts);
 }

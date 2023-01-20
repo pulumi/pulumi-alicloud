@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Dfs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Dfs.AccessGroup("example", new()
     ///     {
-    ///         var example = new AliCloud.Dfs.AccessGroup("example", new AliCloud.Dfs.AccessGroupArgs
-    ///         {
-    ///             AccessGroupName = "example_value",
-    ///             NetworkType = "VPC",
-    ///         });
-    ///     }
+    ///         AccessGroupName = "example_value",
+    ///         NetworkType = "VPC",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Dfs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dfs/accessGroup:AccessGroup")]
-    public partial class AccessGroup : Pulumi.CustomResource
+    public partial class AccessGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
@@ -111,7 +109,7 @@ namespace Pulumi.AliCloud.Dfs
         }
     }
 
-    public sealed class AccessGroupArgs : Pulumi.ResourceArgs
+    public sealed class AccessGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
@@ -134,9 +132,10 @@ namespace Pulumi.AliCloud.Dfs
         public AccessGroupArgs()
         {
         }
+        public static new AccessGroupArgs Empty => new AccessGroupArgs();
     }
 
-    public sealed class AccessGroupState : Pulumi.ResourceArgs
+    public sealed class AccessGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Name of Access Group.The length of `access_group_name` does not exceed 100 bytes.
@@ -159,5 +158,6 @@ namespace Pulumi.AliCloud.Dfs
         public AccessGroupState()
         {
         }
+        public static new AccessGroupState Empty => new AccessGroupState();
     }
 }

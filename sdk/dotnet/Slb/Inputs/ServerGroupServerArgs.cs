@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb.Inputs
 {
 
-    public sealed class ServerGroupServerArgs : Pulumi.ResourceArgs
+    public sealed class ServerGroupServerArgs : global::Pulumi.ResourceArgs
     {
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
@@ -32,5 +32,6 @@ namespace Pulumi.AliCloud.Slb.Inputs
         public ServerGroupServerArgs()
         {
         }
+        public static new ServerGroupServerArgs Empty => new ServerGroupServerArgs();
     }
 }

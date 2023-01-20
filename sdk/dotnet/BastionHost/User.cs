@@ -21,35 +21,34 @@ namespace Pulumi.AliCloud.BastionHost
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var local = new AliCloud.BastionHost.User("local", new()
     ///     {
-    ///         var local = new AliCloud.BastionHost.User("local", new AliCloud.BastionHost.UserArgs
-    ///         {
-    ///             InstanceId = "example_value",
-    ///             Mobile = "13312345678",
-    ///             MobileCountryCode = "CN",
-    ///             Password = "YourPassword-123",
-    ///             Source = "Local",
-    ///             UserName = "my-local-user",
-    ///         });
-    ///         var ram = new AliCloud.BastionHost.User("ram", new AliCloud.BastionHost.UserArgs
-    ///         {
-    ///             InstanceId = "example_value",
-    ///             Mobile = "13312345678",
-    ///             MobileCountryCode = "CN",
-    ///             Password = "YourPassword-123",
-    ///             Source = "Ram",
-    ///             SourceUserId = "1234567890",
-    ///             UserName = "my-ram-user",
-    ///         });
-    ///     }
+    ///         InstanceId = "example_value",
+    ///         Mobile = "13312345678",
+    ///         MobileCountryCode = "CN",
+    ///         Password = "YourPassword-123",
+    ///         Source = "Local",
+    ///         UserName = "my-local-user",
+    ///     });
     /// 
-    /// }
+    ///     var ram = new AliCloud.BastionHost.User("ram", new()
+    ///     {
+    ///         InstanceId = "example_value",
+    ///         Mobile = "13312345678",
+    ///         MobileCountryCode = "CN",
+    ///         Password = "YourPassword-123",
+    ///         Source = "Ram",
+    ///         SourceUserId = "1234567890",
+    ///         UserName = "my-ram-user",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +60,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
@@ -179,6 +178,10 @@ namespace Pulumi.AliCloud.BastionHost
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -200,7 +203,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
@@ -257,11 +260,21 @@ namespace Pulumi.AliCloud.BastionHost
         [Input("mobileCountryCode")]
         public Input<string>? MobileCountryCode { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Specify the New of the User That Created the Source. Valid Values: 
@@ -292,9 +305,10 @@ namespace Pulumi.AliCloud.BastionHost
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
@@ -351,11 +365,21 @@ namespace Pulumi.AliCloud.BastionHost
         [Input("mobileCountryCode")]
         public Input<string>? MobileCountryCode { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User (That Is, Source Value for Local, this Parameter Is Required.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Specify the New of the User That Created the Source. Valid Values: 
@@ -392,5 +416,6 @@ namespace Pulumi.AliCloud.BastionHost
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

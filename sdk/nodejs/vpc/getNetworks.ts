@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,22 +15,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const vpcsDs = pulumi.output(alicloud.vpc.getNetworks({
+ * const vpcsDs = alicloud.vpc.getNetworks({
  *     cidrBlock: "172.16.0.0/12",
  *     nameRegex: "^foo",
  *     status: "Available",
- * }));
- *
- * export const firstVpcId = vpcsDs.vpcs[0].id;
+ * });
+ * export const firstVpcId = vpcsDs.then(vpcsDs => vpcsDs.vpcs?.[0]?.id);
  * ```
  */
 export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworksResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getNetworks:getNetworks", {
         "cidrBlock": args.cidrBlock,
         "dhcpOptionsSetId": args.dhcpOptionsSetId,
@@ -67,7 +64,7 @@ export interface GetNetworksArgs {
      */
     dryRun?: boolean;
     /**
-     * -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `routeTableId`.
+     * Default to `true`. Set it to true can output the `routeTableId`.
      */
     enableDetails?: boolean;
     /**
@@ -163,9 +160,25 @@ export interface GetNetworksResult {
     readonly vpcs: outputs.vpc.GetNetworksVpc[];
     readonly vswitchId?: string;
 }
-
+/**
+ * This data source provides VPCs available to the user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const vpcsDs = alicloud.vpc.getNetworks({
+ *     cidrBlock: "172.16.0.0/12",
+ *     nameRegex: "^foo",
+ *     status: "Available",
+ * });
+ * export const firstVpcId = vpcsDs.then(vpcsDs => vpcsDs.vpcs?.[0]?.id);
+ * ```
+ */
 export function getNetworksOutput(args?: GetNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworksResult> {
-    return pulumi.output(args).apply(a => getNetworks(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetworks(a, opts))
 }
 
 /**
@@ -185,7 +198,7 @@ export interface GetNetworksOutputArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `routeTableId`.
+     * Default to `true`. Set it to true can output the `routeTableId`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**

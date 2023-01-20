@@ -5,20 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./alertContact";
-export * from "./alertContactGroup";
-export * from "./dispatchRule";
-export * from "./getAlertContactGroups";
-export * from "./getAlertContacts";
-export * from "./getDispatchRules";
-export * from "./getPrometheusAlertRules";
-export * from "./prometheusAlertRule";
+export { AlertContactArgs, AlertContactState } from "./alertContact";
+export type AlertContact = import("./alertContact").AlertContact;
+export const AlertContact: typeof import("./alertContact").AlertContact = null as any;
+utilities.lazyLoad(exports, ["AlertContact"], () => require("./alertContact"));
 
-// Import resources to register:
-import { AlertContact } from "./alertContact";
-import { AlertContactGroup } from "./alertContactGroup";
-import { DispatchRule } from "./dispatchRule";
-import { PrometheusAlertRule } from "./prometheusAlertRule";
+export { AlertContactGroupArgs, AlertContactGroupState } from "./alertContactGroup";
+export type AlertContactGroup = import("./alertContactGroup").AlertContactGroup;
+export const AlertContactGroup: typeof import("./alertContactGroup").AlertContactGroup = null as any;
+utilities.lazyLoad(exports, ["AlertContactGroup"], () => require("./alertContactGroup"));
+
+export { DispatchRuleArgs, DispatchRuleState } from "./dispatchRule";
+export type DispatchRule = import("./dispatchRule").DispatchRule;
+export const DispatchRule: typeof import("./dispatchRule").DispatchRule = null as any;
+utilities.lazyLoad(exports, ["DispatchRule"], () => require("./dispatchRule"));
+
+export { GetAlertContactGroupsArgs, GetAlertContactGroupsResult, GetAlertContactGroupsOutputArgs } from "./getAlertContactGroups";
+export const getAlertContactGroups: typeof import("./getAlertContactGroups").getAlertContactGroups = null as any;
+export const getAlertContactGroupsOutput: typeof import("./getAlertContactGroups").getAlertContactGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getAlertContactGroups","getAlertContactGroupsOutput"], () => require("./getAlertContactGroups"));
+
+export { GetAlertContactsArgs, GetAlertContactsResult, GetAlertContactsOutputArgs } from "./getAlertContacts";
+export const getAlertContacts: typeof import("./getAlertContacts").getAlertContacts = null as any;
+export const getAlertContactsOutput: typeof import("./getAlertContacts").getAlertContactsOutput = null as any;
+utilities.lazyLoad(exports, ["getAlertContacts","getAlertContactsOutput"], () => require("./getAlertContacts"));
+
+export { GetDispatchRulesArgs, GetDispatchRulesResult, GetDispatchRulesOutputArgs } from "./getDispatchRules";
+export const getDispatchRules: typeof import("./getDispatchRules").getDispatchRules = null as any;
+export const getDispatchRulesOutput: typeof import("./getDispatchRules").getDispatchRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getDispatchRules","getDispatchRulesOutput"], () => require("./getDispatchRules"));
+
+export { GetPrometheusAlertRulesArgs, GetPrometheusAlertRulesResult, GetPrometheusAlertRulesOutputArgs } from "./getPrometheusAlertRules";
+export const getPrometheusAlertRules: typeof import("./getPrometheusAlertRules").getPrometheusAlertRules = null as any;
+export const getPrometheusAlertRulesOutput: typeof import("./getPrometheusAlertRules").getPrometheusAlertRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getPrometheusAlertRules","getPrometheusAlertRulesOutput"], () => require("./getPrometheusAlertRules"));
+
+export { PrometheusAlertRuleArgs, PrometheusAlertRuleState } from "./prometheusAlertRule";
+export type PrometheusAlertRule = import("./prometheusAlertRule").PrometheusAlertRule;
+export const PrometheusAlertRule: typeof import("./prometheusAlertRule").PrometheusAlertRule = null as any;
+utilities.lazyLoad(exports, ["PrometheusAlertRule"], () => require("./prometheusAlertRule"));
+
 
 const _module = {
     version: utilities.getVersion(),

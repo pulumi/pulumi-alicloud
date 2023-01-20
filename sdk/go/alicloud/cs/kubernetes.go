@@ -13,11 +13,11 @@ import (
 
 // ## Import
 //
-// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`
+// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:cs/kubernetes:Kubernetes alicloud_cs_kubernetes.main cluster-id
+//	$ pulumi import alicloud:cs/kubernetes:Kubernetes main cluster-id
 //
 // ```
 type Kubernetes struct {
@@ -68,6 +68,8 @@ type Kubernetes struct {
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
+	//
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec pulumi.StringPtrOutput `pulumi:"loadBalancerSpec"`
@@ -101,7 +103,7 @@ type Kubernetes struct {
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringOutput `pulumi:"natGatewayId"`
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrOutput `pulumi:"nodeCidrMask"`
@@ -128,7 +130,7 @@ type Kubernetes struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput      `pulumi:"resourceGroupId"`
 	RetainResources pulumi.StringArrayOutput `pulumi:"retainResources"`
-	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
 	Runtime KubernetesRuntimePtrOutput `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
@@ -200,10 +202,10 @@ type Kubernetes struct {
 	//
 	// Deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it
 	WorkerDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"workerDiskSnapshotPolicyId"`
-	// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
+	// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required, default is `PostPaid`.
 	//
 	// Deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it
-	WorkerInstanceChargeType pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
+	WorkerInstanceChargeType pulumi.StringOutput `pulumi:"workerInstanceChargeType"`
 	// (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	//
 	// Deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it
@@ -245,6 +247,13 @@ func NewKubernetes(ctx *pulumi.Context,
 	if args.MasterVswitchIds == nil {
 		return nil, errors.New("invalid value for required argument 'MasterVswitchIds'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Kubernetes
 	err := ctx.RegisterResource("alicloud:cs/kubernetes:Kubernetes", name, args, &resource, opts...)
 	if err != nil {
@@ -312,6 +321,8 @@ type kubernetesState struct {
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
+	//
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
@@ -345,7 +356,7 @@ type kubernetesState struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId *string `pulumi:"natGatewayId"`
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
@@ -372,7 +383,7 @@ type kubernetesState struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	RetainResources []string `pulumi:"retainResources"`
-	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
 	Runtime *KubernetesRuntime `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -444,7 +455,7 @@ type kubernetesState struct {
 	//
 	// Deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it
 	WorkerDiskSnapshotPolicyId *string `pulumi:"workerDiskSnapshotPolicyId"`
-	// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
+	// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required, default is `PostPaid`.
 	//
 	// Deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
@@ -522,6 +533,8 @@ type KubernetesState struct {
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
 	// The path of kube config, like `~/.kube/config`.
+	//
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrInput
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec pulumi.StringPtrInput
@@ -555,7 +568,7 @@ type KubernetesState struct {
 	NamePrefix pulumi.StringPtrInput
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringPtrInput
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
 	NewNatGateway pulumi.BoolPtrInput
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrInput
@@ -582,7 +595,7 @@ type KubernetesState struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetainResources pulumi.StringArrayInput
-	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
 	Runtime KubernetesRuntimePtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
@@ -654,7 +667,7 @@ type KubernetesState struct {
 	//
 	// Deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it
 	WorkerDiskSnapshotPolicyId pulumi.StringPtrInput
-	// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
+	// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required, default is `PostPaid`.
 	//
 	// Deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it
 	WorkerInstanceChargeType pulumi.StringPtrInput
@@ -732,6 +745,8 @@ type kubernetesArgs struct {
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
+	//
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
@@ -761,7 +776,7 @@ type kubernetesArgs struct {
 	Name *string `pulumi:"name"`
 	// Deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.
 	NamePrefix *string `pulumi:"namePrefix"`
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
@@ -788,7 +803,7 @@ type kubernetesArgs struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	RetainResources []string `pulumi:"retainResources"`
-	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
 	Runtime *KubernetesRuntime `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -850,7 +865,7 @@ type kubernetesArgs struct {
 	//
 	// Deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it
 	WorkerDiskSnapshotPolicyId *string `pulumi:"workerDiskSnapshotPolicyId"`
-	// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
+	// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required, default is `PostPaid`.
 	//
 	// Deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
@@ -919,6 +934,8 @@ type KubernetesArgs struct {
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
 	// The path of kube config, like `~/.kube/config`.
+	//
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrInput
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec pulumi.StringPtrInput
@@ -948,7 +965,7 @@ type KubernetesArgs struct {
 	Name pulumi.StringPtrInput
 	// Deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.
 	NamePrefix pulumi.StringPtrInput
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
 	NewNatGateway pulumi.BoolPtrInput
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrInput
@@ -975,7 +992,7 @@ type KubernetesArgs struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetainResources pulumi.StringArrayInput
-	// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
 	Runtime KubernetesRuntimePtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
@@ -1037,7 +1054,7 @@ type KubernetesArgs struct {
 	//
 	// Deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it
 	WorkerDiskSnapshotPolicyId pulumi.StringPtrInput
-	// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
+	// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required, default is `PostPaid`.
 	//
 	// Deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it
 	WorkerInstanceChargeType pulumi.StringPtrInput
@@ -1255,6 +1272,8 @@ func (o KubernetesOutput) KmsEncryptionContext() pulumi.MapOutput {
 }
 
 // The path of kube config, like `~/.kube/config`.
+//
+// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 func (o KubernetesOutput) KubeConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.KubeConfig }).(pulumi.StringPtrOutput)
 }
@@ -1339,7 +1358,7 @@ func (o KubernetesOutput) NatGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringOutput { return v.NatGatewayId }).(pulumi.StringOutput)
 }
 
-// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
 func (o KubernetesOutput) NewNatGateway() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.BoolPtrOutput { return v.NewNatGateway }).(pulumi.BoolPtrOutput)
 }
@@ -1405,7 +1424,7 @@ func (o KubernetesOutput) RetainResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
 }
 
-// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
 func (o KubernetesOutput) Runtime() KubernetesRuntimePtrOutput {
 	return o.ApplyT(func(v *Kubernetes) KubernetesRuntimePtrOutput { return v.Runtime }).(KubernetesRuntimePtrOutput)
 }
@@ -1549,11 +1568,11 @@ func (o KubernetesOutput) WorkerDiskSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.WorkerDiskSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
+// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required, default is `PostPaid`.
 //
 // Deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it
-func (o KubernetesOutput) WorkerInstanceChargeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.WorkerInstanceChargeType }).(pulumi.StringPtrOutput)
+func (o KubernetesOutput) WorkerInstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Kubernetes) pulumi.StringOutput { return v.WorkerInstanceChargeType }).(pulumi.StringOutput)
 }
 
 // (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.

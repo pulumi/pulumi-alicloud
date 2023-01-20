@@ -13,51 +13,52 @@ namespace Pulumi.AliCloud.Slb
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraformtestslbconfig";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "terraformtestslbconfig";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
-    ///         {
-    ///             Specification = "slb.s2.small",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             Tags = 
-    ///             {
-    ///                 { "tag_a", 1 },
-    ///                 { "tag_b", 2 },
-    ///                 { "tag_c", 3 },
-    ///                 { "tag_d", 4 },
-    ///                 { "tag_e", 5 },
-    ///                 { "tag_f", 6 },
-    ///                 { "tag_g", 7 },
-    ///                 { "tag_h", 8 },
-    ///                 { "tag_i", 9 },
-    ///                 { "tag_j", 10 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new()
+    ///     {
+    ///         Specification = "slb.s2.small",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Tags = 
+    ///         {
+    ///             { "tag_a", 1 },
+    ///             { "tag_b", 2 },
+    ///             { "tag_c", 3 },
+    ///             { "tag_d", 4 },
+    ///             { "tag_e", 5 },
+    ///             { "tag_f", 6 },
+    ///             { "tag_g", 7 },
+    ///             { "tag_h", 8 },
+    ///             { "tag_i", 9 },
+    ///             { "tag_j", 10 },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -70,7 +71,7 @@ namespace Pulumi.AliCloud.Slb
     /// </summary>
     [Obsolete(@"This resource has been deprecated in favour of the ApplicationLoadBalancer resource")]
     [AliCloudResourceType("alicloud:slb/loadBalancer:LoadBalancer")]
-    public partial class LoadBalancer : Pulumi.CustomResource
+    public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
@@ -225,7 +226,7 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
-    public sealed class LoadBalancerArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
@@ -345,9 +346,10 @@ namespace Pulumi.AliCloud.Slb
         public LoadBalancerArgs()
         {
         }
+        public static new LoadBalancerArgs Empty => new LoadBalancerArgs();
     }
 
-    public sealed class LoadBalancerState : Pulumi.ResourceArgs
+    public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
@@ -467,5 +469,6 @@ namespace Pulumi.AliCloud.Slb
         public LoadBalancerState()
         {
         }
+        public static new LoadBalancerState Empty => new LoadBalancerState();
     }
 }

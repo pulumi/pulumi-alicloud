@@ -37,6 +37,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_ = defaultMscSubContract.ID().ApplyT(func(id string) (alicloud.GetMscSubContactVerificationMessageResult, error) {
+//				return alicloud.GetMscSubContactVerificationMessageOutput(ctx, alicloud.GetMscSubContactVerificationMessageOutputArgs{
+//					ContactId: id,
+//					Type:      1,
+//				}, nil), nil
+//			}).(alicloud.GetMscSubContactVerificationMessageResultOutput)
 //			return nil
 //		})
 //	}
@@ -56,8 +62,6 @@ type GetMscSubContactVerificationMessageArgs struct {
 	// The ID of the Contact.
 	ContactId string `pulumi:"contactId"`
 	// How a user receives verification messages. Valid values : `1`, `2`.
-	// * `1`: Send a verification message through the user's mobile.
-	// * `2`: Send a verification message through the user's mail.
 	Type int `pulumi:"type"`
 }
 
@@ -89,8 +93,6 @@ type GetMscSubContactVerificationMessageOutputArgs struct {
 	// The ID of the Contact.
 	ContactId pulumi.StringInput `pulumi:"contactId"`
 	// How a user receives verification messages. Valid values : `1`, `2`.
-	// * `1`: Send a verification message through the user's mobile.
-	// * `2`: Send a verification message through the user's mail.
 	Type pulumi.IntInput `pulumi:"type"`
 }
 

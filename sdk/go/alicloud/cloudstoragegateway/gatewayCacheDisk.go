@@ -50,7 +50,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
 //				VpcId:       vpc.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(exampleStocks.Stocks[0].ZoneId),
+//				ZoneId:      *pulumi.String(exampleStocks.Stocks[0].ZoneId),
 //				VswitchName: pulumi.String("example_value"),
 //			})
 //			if err != nil {

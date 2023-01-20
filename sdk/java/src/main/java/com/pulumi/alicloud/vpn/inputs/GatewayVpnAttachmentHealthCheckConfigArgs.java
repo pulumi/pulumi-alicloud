@@ -33,14 +33,14 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
     }
 
     /**
-     * Whether to enable BGP.
+     * Specifies whether to enable health checks.
      * 
      */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
     /**
-     * @return Whether to enable BGP.
+     * @return Specifies whether to enable health checks.
      * 
      */
     public Optional<Output<Boolean>> enable() {
@@ -158,7 +158,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param enable Whether to enable BGP.
+         * @param enable Specifies whether to enable health checks.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param enable Whether to enable BGP.
+         * @param enable Specifies whether to enable health checks.
          * 
          * @return builder
          * 

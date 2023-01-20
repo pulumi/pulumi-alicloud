@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     [AliCloudResourceType("alicloud:ram/alias:Alias")]
-    public partial class Alias : Pulumi.CustomResource
+    public partial class Alias : global::Pulumi.CustomResource
     {
         [Output("accountAlias")]
         public Output<string> AccountAlias { get; private set; } = null!;
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class AliasArgs : Pulumi.ResourceArgs
+    public sealed class AliasArgs : global::Pulumi.ResourceArgs
     {
         [Input("accountAlias", required: true)]
         public Input<string> AccountAlias { get; set; } = null!;
@@ -67,9 +67,10 @@ namespace Pulumi.AliCloud.Ram
         public AliasArgs()
         {
         }
+        public static new AliasArgs Empty => new AliasArgs();
     }
 
-    public sealed class AliasState : Pulumi.ResourceArgs
+    public sealed class AliasState : global::Pulumi.ResourceArgs
     {
         [Input("accountAlias")]
         public Input<string>? AccountAlias { get; set; }
@@ -77,5 +78,6 @@ namespace Pulumi.AliCloud.Ram
         public AliasState()
         {
         }
+        public static new AliasState Empty => new AliasState();
     }
 }

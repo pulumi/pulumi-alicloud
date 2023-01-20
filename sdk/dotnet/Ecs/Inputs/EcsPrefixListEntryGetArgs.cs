@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class EcsPrefixListEntryGetArgs : Pulumi.ResourceArgs
+    public sealed class EcsPrefixListEntryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public EcsPrefixListEntryGetArgs()
         {
         }
+        public static new EcsPrefixListEntryGetArgs Empty => new EcsPrefixListEntryGetArgs();
     }
 }

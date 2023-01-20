@@ -21,38 +21,38 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var examplePhysicalConnections = Output.Create(AliCloud.ExpressConnect.GetPhysicalConnections.InvokeAsync());
-    ///         var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new AliCloud.ExpressConnect.VirtualBorderRouterArgs
-    ///         {
-    ///             LocalGatewayIp = "10.0.0.1",
-    ///             PeerGatewayIp = "10.0.0.2",
-    ///             PeeringSubnetMask = "255.255.255.252",
-    ///             PhysicalConnectionId = examplePhysicalConnections.Apply(examplePhysicalConnections =&gt; examplePhysicalConnections.Connections?[0]?.Id),
-    ///             VirtualBorderRouterName = @var.Name,
-    ///             VlanId = 120,
-    ///             MinRxInterval = 1000,
-    ///             MinTxInterval = 1000,
-    ///             DetectMultiplier = 10,
-    ///         });
-    ///         var @default = new AliCloud.Vpc.BgpGroup("default", new AliCloud.Vpc.BgpGroupArgs
-    ///         {
-    ///             AuthKey = "YourPassword+12345678",
-    ///             BgpGroupName = "example_value",
-    ///             Description = "example_value",
-    ///             LocalAsn = 64512,
-    ///             PeerAsn = 1111,
-    ///             RouterId = exampleVirtualBorderRouter.Id,
-    ///         });
-    ///     }
+    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke();
     /// 
-    /// }
+    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new()
+    ///     {
+    ///         LocalGatewayIp = "10.0.0.1",
+    ///         PeerGatewayIp = "10.0.0.2",
+    ///         PeeringSubnetMask = "255.255.255.252",
+    ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         VirtualBorderRouterName = @var.Name,
+    ///         VlanId = 120,
+    ///         MinRxInterval = 1000,
+    ///         MinTxInterval = 1000,
+    ///         DetectMultiplier = 10,
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Vpc.BgpGroup("default", new()
+    ///     {
+    ///         AuthKey = "YourPassword+12345678",
+    ///         BgpGroupName = "example_value",
+    ///         Description = "example_value",
+    ///         LocalAsn = 64512,
+    ///         PeerAsn = 1111,
+    ///         RouterId = exampleVirtualBorderRouter.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/bgpGroup:BgpGroup")]
-    public partial class BgpGroup : Pulumi.CustomResource
+    public partial class BgpGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The authentication key of the BGP group.
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class BgpGroupArgs : Pulumi.ResourceArgs
+    public sealed class BgpGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authentication key of the BGP group.
@@ -205,9 +205,10 @@ namespace Pulumi.AliCloud.Vpc
         public BgpGroupArgs()
         {
         }
+        public static new BgpGroupArgs Empty => new BgpGroupArgs();
     }
 
-    public sealed class BgpGroupState : Pulumi.ResourceArgs
+    public sealed class BgpGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authentication key of the BGP group.
@@ -260,5 +261,6 @@ namespace Pulumi.AliCloud.Vpc
         public BgpGroupState()
         {
         }
+        public static new BgpGroupState Empty => new BgpGroupState();
     }
 }

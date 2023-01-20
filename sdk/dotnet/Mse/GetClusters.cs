@@ -21,33 +21,32 @@ namespace Pulumi.AliCloud.Mse
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Mse.GetClusters.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Mse.GetClusters.InvokeAsync(new AliCloud.Mse.GetClustersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "mse-cn-0d9xxxx",
-        ///             },
-        ///             Status = "INIT_SUCCESS",
-        ///         }));
-        ///         this.ClusterId = example.Apply(example =&gt; example.Clusters?[0]?.Id);
-        ///     }
+        ///             "mse-cn-0d9xxxx",
+        ///         },
+        ///         Status = "INIT_SUCCESS",
+        ///     });
         /// 
-        ///     [Output("clusterId")]
-        ///     public Output&lt;string&gt; ClusterId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["clusterId"] = example.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
@@ -59,37 +58,36 @@ namespace Pulumi.AliCloud.Mse
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Mse.GetClusters.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Mse.GetClusters.InvokeAsync(new AliCloud.Mse.GetClustersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "mse-cn-0d9xxxx",
-        ///             },
-        ///             Status = "INIT_SUCCESS",
-        ///         }));
-        ///         this.ClusterId = example.Apply(example =&gt; example.Clusters?[0]?.Id);
-        ///     }
+        ///             "mse-cn-0d9xxxx",
+        ///         },
+        ///         Status = "INIT_SUCCESS",
+        ///     });
         /// 
-        ///     [Output("clusterId")]
-        ///     public Output&lt;string&gt; ClusterId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["clusterId"] = example.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClustersArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The alias name of MSE Cluster.
@@ -133,9 +131,10 @@ namespace Pulumi.AliCloud.Mse
         public GetClustersArgs()
         {
         }
+        public static new GetClustersArgs Empty => new GetClustersArgs();
     }
 
-    public sealed class GetClustersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The alias name of MSE Cluster.
@@ -179,6 +178,7 @@ namespace Pulumi.AliCloud.Mse
         public GetClustersInvokeArgs()
         {
         }
+        public static new GetClustersInvokeArgs Empty => new GetClustersInvokeArgs();
     }
 
 

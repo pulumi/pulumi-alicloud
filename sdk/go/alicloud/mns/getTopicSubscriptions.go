@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
-//
 // ## Example Usage
 //
 // ```go
@@ -67,7 +65,8 @@ type GetTopicSubscriptionsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of subscriptions. Each element contains the following attributes:
 	Subscriptions []GetTopicSubscriptionsSubscription `pulumi:"subscriptions"`
-	TopicName     string                              `pulumi:"topicName"`
+	// The topic which The subscription belongs to was named with the name.
+	TopicName string `pulumi:"topicName"`
 }
 
 func GetTopicSubscriptionsOutput(ctx *pulumi.Context, args GetTopicSubscriptionsOutputArgs, opts ...pulumi.InvokeOption) GetTopicSubscriptionsResultOutput {
@@ -134,6 +133,7 @@ func (o GetTopicSubscriptionsResultOutput) Subscriptions() GetTopicSubscriptions
 	return o.ApplyT(func(v GetTopicSubscriptionsResult) []GetTopicSubscriptionsSubscription { return v.Subscriptions }).(GetTopicSubscriptionsSubscriptionArrayOutput)
 }
 
+// The topic which The subscription belongs to was named with the name.
 func (o GetTopicSubscriptionsResultOutput) TopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicSubscriptionsResult) string { return v.TopicName }).(pulumi.StringOutput)
 }

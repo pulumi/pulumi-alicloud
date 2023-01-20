@@ -47,9 +47,9 @@ import (
 //				NameRegex:  _default.Name,
 //				OutputFile: pulumi.String("instances.txt"),
 //			}, nil)
-//			ctx.Export("firstInstanceId", instancesDs.ApplyT(func(instancesDs rocketmq.GetInstancesResult) (string, error) {
-//				return instancesDs.Instances[0].InstanceId, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("firstInstanceId", instancesDs.ApplyT(func(instancesDs rocketmq.GetInstancesResult) (*string, error) {
+//				return &instancesDs.Instances[0].InstanceId, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

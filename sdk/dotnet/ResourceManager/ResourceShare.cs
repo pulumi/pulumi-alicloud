@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.ResourceManager.ResourceShare("example", new()
     ///     {
-    ///         var example = new AliCloud.ResourceManager.ResourceShare("example", new AliCloud.ResourceManager.ResourceShareArgs
-    ///         {
-    ///             ResourceShareName = "example_value",
-    ///         });
-    ///     }
+    ///         ResourceShareName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/resourceShare:ResourceShare")]
-    public partial class ResourceShare : Pulumi.CustomResource
+    public partial class ResourceShare : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of resource share.
@@ -110,7 +108,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class ResourceShareArgs : Pulumi.ResourceArgs
+    public sealed class ResourceShareArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of resource share.
@@ -121,9 +119,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public ResourceShareArgs()
         {
         }
+        public static new ResourceShareArgs Empty => new ResourceShareArgs();
     }
 
-    public sealed class ResourceShareState : Pulumi.ResourceArgs
+    public sealed class ResourceShareState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of resource share.
@@ -146,5 +145,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public ResourceShareState()
         {
         }
+        public static new ResourceShareState Empty => new ResourceShareState();
     }
 }

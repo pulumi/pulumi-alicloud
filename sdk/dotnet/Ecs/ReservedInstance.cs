@@ -17,27 +17,25 @@ namespace Pulumi.AliCloud.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ecs.ReservedInstance("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ecs.ReservedInstance("default", new AliCloud.Ecs.ReservedInstanceArgs
-    ///         {
-    ///             InstanceType = "ecs.g6.large",
-    ///             InstanceAmount = 1,
-    ///             PeriodUnit = "Year",
-    ///             OfferingType = "All Upfront",
-    ///             Description = "ReservedInstance",
-    ///             ZoneId = "cn-hangzhou-h",
-    ///             Scope = "Zone",
-    ///             Period = 1,
-    ///         });
-    ///     }
+    ///         InstanceType = "ecs.g6.large",
+    ///         InstanceAmount = 1,
+    ///         PeriodUnit = "Year",
+    ///         OfferingType = "All Upfront",
+    ///         Description = "ReservedInstance",
+    ///         ZoneId = "cn-hangzhou-h",
+    ///         Scope = "Zone",
+    ///         Period = 1,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,13 +47,37 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/reservedInstance:ReservedInstance")]
-    public partial class ReservedInstance : Pulumi.CustomResource
+    public partial class ReservedInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+        /// Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
+        /// </summary>
+        [Output("allocationStatus")]
+        public Output<string> AllocationStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        /// </summary>
+        [Output("autoRenewPeriod")]
+        public Output<int> AutoRenewPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the reserved instance was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the reserved instance expires.
+        /// </summary>
+        [Output("expiredTime")]
+        public Output<string> ExpiredTime { get; private set; } = null!;
 
         /// <summary>
         /// Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
@@ -70,22 +92,36 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+        /// Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+        /// Payment type of the RI. Default value: `All Upfront`. Valid values:
+        /// - `No Upfront`: No upfront payment.
+        /// - `Partial Upfront`: A portion of upfront payment.
+        /// - `All Upfront`: Full upfront payment.
         /// </summary>
         [Output("offeringType")]
-        public Output<string?> OfferingType { get; private set; } = null!;
+        public Output<string> OfferingType { get; private set; } = null!;
 
+        /// <summary>
+        /// Details about the lock status of the reserved instance.
+        /// </summary>
+        [Output("operationLocks")]
+        public Output<ImmutableArray<Outputs.ReservedInstanceOperationLock>> OperationLocks { get; private set; } = null!;
+
+        /// <summary>
+        /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+        /// - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+        /// - When `period_unit` is `Month`, Valid values: `1`.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Term unit. Optional value: Year.
+        /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
@@ -97,6 +133,18 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Platform { get; private set; } = null!;
 
         /// <summary>
+        /// Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+        /// </summary>
+        [Output("renewalStatus")]
+        public Output<string> RenewalStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+        /// </summary>
+        [Output("reservedInstanceName")]
+        public Output<string> ReservedInstanceName { get; private set; } = null!;
+
+        /// <summary>
         /// Resource group ID.
         /// </summary>
         [Output("resourceGroupId")]
@@ -106,7 +154,25 @@ namespace Pulumi.AliCloud.Ecs
         /// Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
         /// </summary>
         [Output("scope")]
-        public Output<string?> Scope { get; private set; } = null!;
+        public Output<string> Scope { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the reserved instance took effect.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the reserved instance.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
@@ -158,10 +224,16 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class ReservedInstanceArgs : Pulumi.ResourceArgs
+    public sealed class ReservedInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+        /// The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
+        /// Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -179,22 +251,30 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
-        /// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+        /// Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+        /// Payment type of the RI. Default value: `All Upfront`. Valid values:
+        /// - `No Upfront`: No upfront payment.
+        /// - `Partial Upfront`: A portion of upfront payment.
+        /// - `All Upfront`: Full upfront payment.
         /// </summary>
         [Input("offeringType")]
         public Input<string>? OfferingType { get; set; }
 
+        /// <summary>
+        /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+        /// - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+        /// - When `period_unit` is `Month`, Valid values: `1`.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Term unit. Optional value: Year.
+        /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -204,6 +284,18 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
+
+        /// <summary>
+        /// Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+        /// </summary>
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
+        /// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+        /// </summary>
+        [Input("reservedInstanceName")]
+        public Input<string>? ReservedInstanceName { get; set; }
 
         /// <summary>
         /// Resource group ID.
@@ -217,6 +309,18 @@ namespace Pulumi.AliCloud.Ecs
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
         /// </summary>
@@ -226,15 +330,40 @@ namespace Pulumi.AliCloud.Ecs
         public ReservedInstanceArgs()
         {
         }
+        public static new ReservedInstanceArgs Empty => new ReservedInstanceArgs();
     }
 
-    public sealed class ReservedInstanceState : Pulumi.ResourceArgs
+    public sealed class ReservedInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+        /// Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
+        /// </summary>
+        [Input("allocationStatus")]
+        public Input<string>? AllocationStatus { get; set; }
+
+        /// <summary>
+        /// The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
+        /// The time when the reserved instance was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The time when the reserved instance expires.
+        /// </summary>
+        [Input("expiredTime")]
+        public Input<string>? ExpiredTime { get; set; }
 
         /// <summary>
         /// Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
@@ -249,22 +378,42 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+        /// Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+        /// Payment type of the RI. Default value: `All Upfront`. Valid values:
+        /// - `No Upfront`: No upfront payment.
+        /// - `Partial Upfront`: A portion of upfront payment.
+        /// - `All Upfront`: Full upfront payment.
         /// </summary>
         [Input("offeringType")]
         public Input<string>? OfferingType { get; set; }
 
+        [Input("operationLocks")]
+        private InputList<Inputs.ReservedInstanceOperationLockGetArgs>? _operationLocks;
+
+        /// <summary>
+        /// Details about the lock status of the reserved instance.
+        /// </summary>
+        public InputList<Inputs.ReservedInstanceOperationLockGetArgs> OperationLocks
+        {
+            get => _operationLocks ?? (_operationLocks = new InputList<Inputs.ReservedInstanceOperationLockGetArgs>());
+            set => _operationLocks = value;
+        }
+
+        /// <summary>
+        /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+        /// - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+        /// - When `period_unit` is `Month`, Valid values: `1`.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Term unit. Optional value: Year.
+        /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -274,6 +423,18 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
+
+        /// <summary>
+        /// Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+        /// </summary>
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
+        /// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+        /// </summary>
+        [Input("reservedInstanceName")]
+        public Input<string>? ReservedInstanceName { get; set; }
 
         /// <summary>
         /// Resource group ID.
@@ -288,6 +449,30 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Scope { get; set; }
 
         /// <summary>
+        /// The time when the reserved instance took effect.
+        /// </summary>
+        [Input("startTime")]
+        public Input<string>? StartTime { get; set; }
+
+        /// <summary>
+        /// The status of the reserved instance.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
         /// ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
         /// </summary>
         [Input("zoneId")]
@@ -296,5 +481,6 @@ namespace Pulumi.AliCloud.Ecs
         public ReservedInstanceState()
         {
         }
+        public static new ReservedInstanceState Empty => new ReservedInstanceState();
     }
 }

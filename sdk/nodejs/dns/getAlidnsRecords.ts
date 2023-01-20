@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,22 +17,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const recordsDs = pulumi.output(alicloud.dns.getAlidnsRecords({
+ * const recordsDs = alicloud.dns.getAlidnsRecords({
  *     domainName: "xiaozhu.top",
  *     ids: ["1978593525779****"],
  *     outputFile: "records.txt",
  *     type: "A",
- * }));
- *
- * export const firstRecordId = recordsDs.records[0].recordId;
+ * });
+ * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
  * ```
  */
 export function getAlidnsRecords(args: GetAlidnsRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsRecordsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getAlidnsRecords:getAlidnsRecords", {
         "direction": args.direction,
         "domainName": args.domainName,
@@ -169,9 +166,28 @@ export interface GetAlidnsRecordsResult {
     readonly valueKeyWord?: string;
     readonly valueRegex?: string;
 }
-
+/**
+ * This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:**  Available in 1.86.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const recordsDs = alicloud.dns.getAlidnsRecords({
+ *     domainName: "xiaozhu.top",
+ *     ids: ["1978593525779****"],
+ *     outputFile: "records.txt",
+ *     type: "A",
+ * });
+ * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
+ * ```
+ */
 export function getAlidnsRecordsOutput(args: GetAlidnsRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsRecordsResult> {
-    return pulumi.output(args).apply(a => getAlidnsRecords(a, opts))
+    return pulumi.output(args).apply((a: any) => getAlidnsRecords(a, opts))
 }
 
 /**

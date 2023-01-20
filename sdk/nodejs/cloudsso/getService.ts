@@ -21,17 +21,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.cloudsso.getService({
+ * const open = alicloud.cloudsso.getService({
  *     enable: "On",
- * }));
+ * });
  * ```
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudsso/getService:getService", {
         "enable": args.enable,
     }, opts);
@@ -61,9 +58,30 @@ export interface GetServiceResult {
      */
     readonly status: string;
 }
-
+/**
+ * Using this data source can open Cloud Sso Service automatically.
+ *
+ * For information about Cloud SSO and how to use it, see [What is Cloud SSO](https://www.alibabacloud.com/help/en/doc-detail/262819.html).
+ *
+ * > **NOTE:** Available in v1.148.0+.
+ *
+ * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.cloudsso.getService({
+ *     enable: "On",
+ * });
+ * ```
+ */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply(a => getService(a, opts))
+    return pulumi.output(args).apply((a: any) => getService(a, opts))
 }
 
 /**

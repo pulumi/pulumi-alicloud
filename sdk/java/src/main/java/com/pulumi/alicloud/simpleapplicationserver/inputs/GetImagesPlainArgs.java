@@ -24,9 +24,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The type of the image. Valid values: `app`, `custom`, `system`.
-     * * `system`: operating system (OS) image.
-     * * `app`: application image.
-     * * `custom`: custom image.
      * 
      */
     @Import(name="imageType")
@@ -34,9 +31,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The type of the image. Valid values: `app`, `custom`, `system`.
-     * * `system`: operating system (OS) image.
-     * * `app`: application image.
-     * * `custom`: custom image.
      * 
      */
     public Optional<String> imageType() {
@@ -111,9 +105,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param imageType The type of the image. Valid values: `app`, `custom`, `system`.
-         * * `system`: operating system (OS) image.
-         * * `app`: application image.
-         * * `custom`: custom image.
          * 
          * @return builder
          * 

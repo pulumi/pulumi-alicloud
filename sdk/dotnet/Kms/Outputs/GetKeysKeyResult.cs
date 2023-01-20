@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Kms.Outputs
         /// The Alibaba Cloud Resource Name (ARN) of the key.
         /// </summary>
         public readonly string Arn;
+        /// <summary>
+        /// (Available in 1.123.1+) Specifies whether to enable automatic key rotation.
+        /// </summary>
         public readonly string AutomaticRotation;
         /// <summary>
         /// Creation date of key.
@@ -24,17 +27,6 @@ namespace Pulumi.AliCloud.Kms.Outputs
         public readonly string CreationDate;
         /// <summary>
         /// The owner of the key.
-        /// * `automatic_rotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
-        /// * `key_id` -(Available in 1.123.1+)  ID of the key.
-        /// * `key_spec` -(Available in 1.123.1+)  The type of the CMK.
-        /// * `key_usage` -(Available in 1.123.1+)  The usage of CMK.
-        /// * `last_rotation_date` -(Available in 1.123.1+)  The date and time the last rotation was performed.
-        /// * `material_expire_time` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
-        /// * `next_rotation_date` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
-        /// * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
-        /// * `protection_level` -(Available in 1.123.1+)  The protection level of the CMK.
-        /// * `rotation_interval` -(Available in 1.123.1+)  The period of automatic key rotation.
-        /// * `primary_key_version` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
         /// </summary>
         public readonly string Creator;
         /// <summary>
@@ -49,15 +41,45 @@ namespace Pulumi.AliCloud.Kms.Outputs
         /// ID of the key.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Available in 1.123.1+)  ID of the key.
+        /// </summary>
         public readonly string KeyId;
+        /// <summary>
+        /// (Available in 1.123.1+)  The type of the CMK.
+        /// </summary>
         public readonly string KeySpec;
+        /// <summary>
+        /// (Available in 1.123.1+)  The usage of CMK.
+        /// </summary>
         public readonly string KeyUsage;
+        /// <summary>
+        /// (Available in 1.123.1+)  The date and time the last rotation was performed.
+        /// </summary>
         public readonly string LastRotationDate;
+        /// <summary>
+        /// (Available in 1.123.1+)  The time and date the key material for the CMK expires.
+        /// </summary>
         public readonly string MaterialExpireTime;
+        /// <summary>
+        /// (Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+        /// </summary>
         public readonly string NextRotationDate;
+        /// <summary>
+        /// (Available in 1.123.1+)  The source of the key material for the CMK.
+        /// </summary>
         public readonly string Origin;
+        /// <summary>
+        /// (Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
+        /// </summary>
         public readonly string PrimaryKeyVersion;
+        /// <summary>
+        /// (Available in 1.123.1+)  The protection level of the CMK.
+        /// </summary>
         public readonly string ProtectionLevel;
+        /// <summary>
+        /// (Available in 1.123.1+)  The period of automatic key rotation.
+        /// </summary>
         public readonly string RotationInterval;
         /// <summary>
         /// Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.

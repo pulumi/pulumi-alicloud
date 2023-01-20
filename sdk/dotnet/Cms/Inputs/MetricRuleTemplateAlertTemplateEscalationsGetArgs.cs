@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class MetricRuleTemplateAlertTemplateEscalationsGetArgs : Pulumi.ResourceArgs
+    public sealed class MetricRuleTemplateAlertTemplateEscalationsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The condition for triggering critical-level alerts. See the following `Block critical`.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public MetricRuleTemplateAlertTemplateEscalationsGetArgs()
         {
         }
+        public static new MetricRuleTemplateAlertTemplateEscalationsGetArgs Empty => new MetricRuleTemplateAlertTemplateEscalationsGetArgs();
     }
 }

@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.DirectMail
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.DirectMail.GetTags.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.DirectMail.GetTags.InvokeAsync(new AliCloud.DirectMail.GetTagsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.DirectMailTagId1 = ids.Apply(ids =&gt; ids.Tags?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.DirectMail.GetTags.InvokeAsync(new AliCloud.DirectMail.GetTagsArgs
-        ///         {
-        ///             NameRegex = "^my-Tag",
-        ///         }));
-        ///         this.DirectMailTagId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Tags?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("directMailTagId1")]
-        ///     public Output&lt;string&gt; DirectMailTagId1 { get; set; }
-        ///     [Output("directMailTagId2")]
-        ///     public Output&lt;string&gt; DirectMailTagId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.DirectMail.GetTags.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Tag",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["directMailTagId1"] = ids.Apply(getTagsResult =&gt; getTagsResult.Tags[0]?.Id),
+        ///         ["directMailTagId2"] = nameRegex.Apply(getTagsResult =&gt; getTagsResult.Tags[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagsResult> InvokeAsync(GetTagsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagsResult>("alicloud:directmail/getTags:getTags", args ?? new GetTagsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagsResult>("alicloud:directmail/getTags:getTags", args ?? new GetTagsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.DirectMail
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.DirectMail.GetTags.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.DirectMail.GetTags.InvokeAsync(new AliCloud.DirectMail.GetTagsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.DirectMailTagId1 = ids.Apply(ids =&gt; ids.Tags?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.DirectMail.GetTags.InvokeAsync(new AliCloud.DirectMail.GetTagsArgs
-        ///         {
-        ///             NameRegex = "^my-Tag",
-        ///         }));
-        ///         this.DirectMailTagId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Tags?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("directMailTagId1")]
-        ///     public Output&lt;string&gt; DirectMailTagId1 { get; set; }
-        ///     [Output("directMailTagId2")]
-        ///     public Output&lt;string&gt; DirectMailTagId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.DirectMail.GetTags.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Tag",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["directMailTagId1"] = ids.Apply(getTagsResult =&gt; getTagsResult.Tags[0]?.Id),
+        ///         ["directMailTagId2"] = nameRegex.Apply(getTagsResult =&gt; getTagsResult.Tags[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTagsResult> Invoke(GetTagsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTagsResult>("alicloud:directmail/getTags:getTags", args ?? new GetTagsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagsResult>("alicloud:directmail/getTags:getTags", args ?? new GetTagsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTagsArgs : Pulumi.InvokeArgs
+    public sealed class GetTagsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -131,9 +127,10 @@ namespace Pulumi.AliCloud.DirectMail
         public GetTagsArgs()
         {
         }
+        public static new GetTagsArgs Empty => new GetTagsArgs();
     }
 
-    public sealed class GetTagsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTagsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -159,6 +156,7 @@ namespace Pulumi.AliCloud.DirectMail
         public GetTagsInvokeArgs()
         {
         }
+        public static new GetTagsInvokeArgs Empty => new GetTagsInvokeArgs();
     }
 
 

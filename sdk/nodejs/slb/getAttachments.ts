@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,19 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const sampleDs = alicloud_slb_load_balancer_sample_slb.id.apply(id => alicloud.slb.getAttachments({
- *     loadBalancerId: id,
- * }));
- *
- * export const firstSlbAttachmentInstanceId = sampleDs.slbAttachments[0].instanceId;
+ * const sampleDs = alicloud.slb.getAttachments({
+ *     loadBalancerId: alicloud_slb_load_balancer.sample_slb.id,
+ * });
+ * export const firstSlbAttachmentInstanceId = sampleDs.then(sampleDs => sampleDs.slbAttachments?.[0]?.instanceId);
  * ```
  */
 export function getAttachments(args: GetAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachmentsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getAttachments:getAttachments", {
         "instanceIds": args.instanceIds,
         "loadBalancerId": args.loadBalancerId,
@@ -65,9 +62,23 @@ export interface GetAttachmentsResult {
      */
     readonly slbAttachments: outputs.slb.GetAttachmentsSlbAttachment[];
 }
-
+/**
+ * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const sampleDs = alicloud.slb.getAttachments({
+ *     loadBalancerId: alicloud_slb_load_balancer.sample_slb.id,
+ * });
+ * export const firstSlbAttachmentInstanceId = sampleDs.then(sampleDs => sampleDs.slbAttachments?.[0]?.instanceId);
+ * ```
+ */
 export function getAttachmentsOutput(args: GetAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachmentsResult> {
-    return pulumi.output(args).apply(a => getAttachments(a, opts))
+    return pulumi.output(args).apply((a: any) => getAttachments(a, opts))
 }
 
 /**

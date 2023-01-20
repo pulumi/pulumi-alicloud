@@ -16,6 +16,8 @@ import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
 import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksPlainArgs;
 import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
 import com.pulumi.alicloud.polardb.inputs.GetNodeClassesPlainArgs;
+import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
+import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsPlainArgs;
 import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
 import com.pulumi.alicloud.polardb.inputs.GetZonesPlainArgs;
 import com.pulumi.alicloud.polardb.outputs.GetAccountsResult;
@@ -24,6 +26,7 @@ import com.pulumi.alicloud.polardb.outputs.GetDatabasesResult;
 import com.pulumi.alicloud.polardb.outputs.GetEndpointsResult;
 import com.pulumi.alicloud.polardb.outputs.GetGlobalDatabaseNetworksResult;
 import com.pulumi.alicloud.polardb.outputs.GetNodeClassesResult;
+import com.pulumi.alicloud.polardb.outputs.GetParameterGroupsResult;
 import com.pulumi.alicloud.polardb.outputs.GetZonesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -46,8 +49,8 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -93,8 +96,8 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -140,8 +143,8 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -187,8 +190,8 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -234,7 +237,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -276,7 +279,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -318,7 +321,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -360,7 +363,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -402,7 +405,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -444,7 +447,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -486,7 +489,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetDatabasesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -533,7 +536,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetDatabasesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -580,7 +583,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetDatabasesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -627,7 +630,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetDatabasesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -674,7 +677,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -721,7 +724,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -768,7 +771,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -815,7 +818,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetClustersArgs;
      * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -1142,8 +1145,6 @@ public final class PolardbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
      * import java.util.List;
@@ -1159,18 +1160,14 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;PolarDB&#34;)
-     *             .build());
-     * 
-     *         final var resourcesNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
      *             .payType(&#34;PostPaid&#34;)
      *             .dbType(&#34;MySQL&#34;)
      *             .dbVersion(&#34;5.6&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;polardbNodeClasses&#34;, resourcesNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbNodeClasses&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbAvailableZoneId&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()));
      *     }
      * }
      * ```
@@ -1191,8 +1188,6 @@ public final class PolardbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
      * import java.util.List;
@@ -1208,18 +1203,14 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;PolarDB&#34;)
-     *             .build());
-     * 
-     *         final var resourcesNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
      *             .payType(&#34;PostPaid&#34;)
      *             .dbType(&#34;MySQL&#34;)
      *             .dbVersion(&#34;5.6&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;polardbNodeClasses&#34;, resourcesNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbNodeClasses&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbAvailableZoneId&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()));
      *     }
      * }
      * ```
@@ -1240,8 +1231,6 @@ public final class PolardbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
      * import java.util.List;
@@ -1257,18 +1246,14 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;PolarDB&#34;)
-     *             .build());
-     * 
-     *         final var resourcesNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
      *             .payType(&#34;PostPaid&#34;)
      *             .dbType(&#34;MySQL&#34;)
      *             .dbVersion(&#34;5.6&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;polardbNodeClasses&#34;, resourcesNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbNodeClasses&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbAvailableZoneId&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()));
      *     }
      * }
      * ```
@@ -1289,8 +1274,6 @@ public final class PolardbFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
      * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
      * import java.util.List;
@@ -1306,18 +1289,14 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;PolarDB&#34;)
-     *             .build());
-     * 
-     *         final var resourcesNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
      *             .payType(&#34;PostPaid&#34;)
      *             .dbType(&#34;MySQL&#34;)
      *             .dbVersion(&#34;5.6&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;polardbNodeClasses&#34;, resourcesNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbNodeClasses&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
+     *         ctx.export(&#34;polardbAvailableZoneId&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()));
      *     }
      * }
      * ```
@@ -1325,6 +1304,288 @@ public final class PolardbFunctions {
      */
     public static CompletableFuture<GetNodeClassesResult> getNodeClassesPlain(GetNodeClassesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:polardb/getNodeClasses:getNodeClasses", TypeShape.of(GetNodeClassesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbParameterGroupId1&#34;, ids.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .nameRegex(&#34;example_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbParameterGroupId2&#34;, nameRegex.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetParameterGroupsResult> getParameterGroups() {
+        return getParameterGroups(GetParameterGroupsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbParameterGroupId1&#34;, ids.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .nameRegex(&#34;example_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbParameterGroupId2&#34;, nameRegex.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetParameterGroupsResult> getParameterGroupsPlain() {
+        return getParameterGroupsPlain(GetParameterGroupsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbParameterGroupId1&#34;, ids.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .nameRegex(&#34;example_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbParameterGroupId2&#34;, nameRegex.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetParameterGroupsResult> getParameterGroups(GetParameterGroupsArgs args) {
+        return getParameterGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbParameterGroupId1&#34;, ids.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .nameRegex(&#34;example_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbParameterGroupId2&#34;, nameRegex.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetParameterGroupsResult> getParameterGroupsPlain(GetParameterGroupsPlainArgs args) {
+        return getParameterGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbParameterGroupId1&#34;, ids.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .nameRegex(&#34;example_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbParameterGroupId2&#34;, nameRegex.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetParameterGroupsResult> getParameterGroups(GetParameterGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getParameterGroups:getParameterGroups", TypeShape.of(GetParameterGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbParameterGroupId1&#34;, ids.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
+     *             .nameRegex(&#34;example_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;polardbParameterGroupId2&#34;, nameRegex.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetParameterGroupsResult> getParameterGroupsPlain(GetParameterGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:polardb/getParameterGroups:getParameterGroups", TypeShape.of(GetParameterGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides availability zones for PolarDB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -1339,7 +1600,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1376,7 +1637,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1413,7 +1674,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1450,7 +1711,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1487,7 +1748,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1524,7 +1785,7 @@ public final class PolardbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.polardb.PolardbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

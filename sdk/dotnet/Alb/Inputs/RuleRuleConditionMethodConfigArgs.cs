@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class RuleRuleConditionMethodConfigArgs : Pulumi.ResourceArgs
+    public sealed class RuleRuleConditionMethodConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("values")]
         private InputList<string>? _values;
 
         /// <summary>
-        /// The query string.
+        /// The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         /// </summary>
         public InputList<string> Values
         {
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public RuleRuleConditionMethodConfigArgs()
         {
         }
+        public static new RuleRuleConditionMethodConfigArgs Empty => new RuleRuleConditionMethodConfigArgs();
     }
 }

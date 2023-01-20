@@ -15,7 +15,7 @@ public final class PrefixListEntry {
      * @return The CIDR address block of the prefix list.
      * 
      */
-    private String cidr;
+    private @Nullable String cidr;
     /**
      * @return The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      * 
@@ -27,8 +27,8 @@ public final class PrefixListEntry {
      * @return The CIDR address block of the prefix list.
      * 
      */
-    public String cidr() {
-        return this.cidr;
+    public Optional<String> cidr() {
+        return Optional.ofNullable(this.cidr);
     }
     /**
      * @return The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
@@ -47,7 +47,7 @@ public final class PrefixListEntry {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String cidr;
+        private @Nullable String cidr;
         private @Nullable String description;
         public Builder() {}
         public Builder(PrefixListEntry defaults) {
@@ -57,8 +57,8 @@ public final class PrefixListEntry {
         }
 
         @CustomType.Setter
-        public Builder cidr(String cidr) {
-            this.cidr = Objects.requireNonNull(cidr);
+        public Builder cidr(@Nullable String cidr) {
+            this.cidr = cidr;
             return this;
         }
         @CustomType.Setter

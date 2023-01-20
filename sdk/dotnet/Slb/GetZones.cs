@@ -21,27 +21,25 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var zonesIds = AliCloud.Slb.GetZones.Invoke(new()
         ///     {
-        ///         var zonesIds = Output.Create(AliCloud.Slb.GetZones.InvokeAsync(new AliCloud.Slb.GetZonesArgs
-        ///         {
-        ///             AvailableSlbAddressIpVersion = "ipv4",
-        ///             AvailableSlbAddressType = "vpc",
-        ///         }));
-        ///     }
+        ///         AvailableSlbAddressIpVersion = "ipv4",
+        ///         AvailableSlbAddressType = "vpc",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:slb/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:slb/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides availability zones for SLB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -53,31 +51,29 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var zonesIds = AliCloud.Slb.GetZones.Invoke(new()
         ///     {
-        ///         var zonesIds = Output.Create(AliCloud.Slb.GetZones.InvokeAsync(new AliCloud.Slb.GetZonesArgs
-        ///         {
-        ///             AvailableSlbAddressIpVersion = "ipv4",
-        ///             AvailableSlbAddressType = "vpc",
-        ///         }));
-        ///     }
+        ///         AvailableSlbAddressIpVersion = "ipv4",
+        ///         AvailableSlbAddressType = "vpc",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:slb/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:slb/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
@@ -118,9 +114,10 @@ namespace Pulumi.AliCloud.Slb
         public GetZonesArgs()
         {
         }
+        public static new GetZonesArgs Empty => new GetZonesArgs();
     }
 
-    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
@@ -161,6 +158,7 @@ namespace Pulumi.AliCloud.Slb
         public GetZonesInvokeArgs()
         {
         }
+        public static new GetZonesInvokeArgs Empty => new GetZonesInvokeArgs();
     }
 
 

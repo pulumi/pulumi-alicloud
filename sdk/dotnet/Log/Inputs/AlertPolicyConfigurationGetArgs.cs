@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class AlertPolicyConfigurationGetArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action Policy Id.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public AlertPolicyConfigurationGetArgs()
         {
         }
+        public static new AlertPolicyConfigurationGetArgs Empty => new AlertPolicyConfigurationGetArgs();
     }
 }

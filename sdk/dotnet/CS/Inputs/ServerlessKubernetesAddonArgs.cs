@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class ServerlessKubernetesAddonArgs : Pulumi.ResourceArgs
+    public sealed class ServerlessKubernetesAddonArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ACK add-on configurations.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public ServerlessKubernetesAddonArgs()
         {
         }
+        public static new ServerlessKubernetesAddonArgs Empty => new ServerlessKubernetesAddonArgs();
     }
 }

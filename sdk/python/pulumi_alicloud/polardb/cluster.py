@@ -45,6 +45,7 @@ class ClusterArgs:
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -58,8 +59,8 @@ class ClusterArgs:
         :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
-        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-               > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+               > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
@@ -83,7 +84,8 @@ class ClusterArgs:
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+               Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -91,6 +93,7 @@ class ClusterArgs:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
                > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
                > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
@@ -150,6 +153,8 @@ class ClusterArgs:
             pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -245,8 +250,8 @@ class ClusterArgs:
     @pulumi.getter(name="creationCategory")
     def creation_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-        > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
         """
         return pulumi.get(self, "creation_category")
 
@@ -455,7 +460,8 @@ class ClusterArgs:
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+        Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         """
         return pulumi.get(self, "security_ips")
 
@@ -515,6 +521,18 @@ class ClusterArgs:
         pulumi.set(self, "tde_status", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -565,6 +583,7 @@ class _ClusterState:
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -573,6 +592,7 @@ class _ClusterState:
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -582,9 +602,9 @@ class _ClusterState:
         :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
-        :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
-        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-               > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string.
+        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+               > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
@@ -608,11 +628,13 @@ class _ClusterState:
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) PolarDB cluster connection port.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+               Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -620,6 +642,7 @@ class _ClusterState:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
                > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
                > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
@@ -668,6 +691,8 @@ class _ClusterState:
             pulumi.set(__self__, "pay_type", pay_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
@@ -684,6 +709,8 @@ class _ClusterState:
             pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -742,7 +769,7 @@ class _ClusterState:
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
+        (Available in 1.81.0+) PolarDB cluster connection string.
         """
         return pulumi.get(self, "connection_string")
 
@@ -754,8 +781,8 @@ class _ClusterState:
     @pulumi.getter(name="creationCategory")
     def creation_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-        > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
         """
         return pulumi.get(self, "creation_category")
 
@@ -961,6 +988,18 @@ class _ClusterState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.196.0+) PolarDB cluster connection port.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1001,7 +1040,8 @@ class _ClusterState:
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+        Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         """
         return pulumi.get(self, "security_ips")
 
@@ -1059,6 +1099,18 @@ class _ClusterState:
     @tde_status.setter
     def tde_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tde_status", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -1120,6 +1172,7 @@ class Cluster(pulumi.CustomResource):
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1190,8 +1243,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
-        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-               > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+               > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
@@ -1219,7 +1272,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+               Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -1227,6 +1281,7 @@ class Cluster(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
                > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
                > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
@@ -1341,6 +1396,7 @@ class Cluster(pulumi.CustomResource):
                  sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1387,9 +1443,11 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["sub_category"] = sub_category
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tde_status"] = tde_status
+            __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["connection_string"] = None
+            __props__.__dict__["port"] = None
         super(Cluster, __self__).__init__(
             'alicloud:polardb/cluster:Cluster',
             resource_name,
@@ -1422,6 +1480,7 @@ class Cluster(pulumi.CustomResource):
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
             pay_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            port: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1430,6 +1489,7 @@ class Cluster(pulumi.CustomResource):
             sub_category: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
@@ -1444,9 +1504,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
-        :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
-        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-               > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string.
+        :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+               > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
@@ -1470,11 +1530,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) PolarDB cluster connection port.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+               Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -1482,6 +1544,7 @@ class Cluster(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
                > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
                > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
@@ -1512,6 +1575,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["pay_type"] = pay_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["port"] = port
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
@@ -1520,6 +1584,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["sub_category"] = sub_category
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tde_status"] = tde_status
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
@@ -1561,7 +1626,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[str]:
         """
-        (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
+        (Available in 1.81.0+) PolarDB cluster connection string.
         """
         return pulumi.get(self, "connection_string")
 
@@ -1569,8 +1634,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="creationCategory")
     def creation_category(self) -> pulumi.Output[str]:
         """
-        The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-        > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
         """
         return pulumi.get(self, "creation_category")
 
@@ -1636,7 +1701,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of cluster.
         """
@@ -1708,6 +1773,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "period")
 
     @property
+    @pulumi.getter
+    def port(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.196.0+) PolarDB cluster connection port.
+        """
+        return pulumi.get(self, "port")
+
+    @property
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1736,7 +1809,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+        Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         """
         return pulumi.get(self, "security_ips")
 
@@ -1776,8 +1850,16 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "tde_status")
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[str]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> pulumi.Output[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.

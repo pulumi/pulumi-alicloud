@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Ens
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ens.KeyPair("example", new()
     ///     {
-    ///         var example = new AliCloud.Ens.KeyPair("example", new AliCloud.Ens.KeyPairArgs
-    ///         {
-    ///             KeyPairName = "example_value",
-    ///             Version = "example_value",
-    ///         });
-    ///     }
+    ///         KeyPairName = "example_value",
+    ///         Version = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Ens
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ens/keyPair:KeyPair")]
-    public partial class KeyPair : Pulumi.CustomResource
+    public partial class KeyPair : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the key pair.
@@ -105,7 +103,7 @@ namespace Pulumi.AliCloud.Ens
         }
     }
 
-    public sealed class KeyPairArgs : Pulumi.ResourceArgs
+    public sealed class KeyPairArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the key pair.
@@ -122,9 +120,10 @@ namespace Pulumi.AliCloud.Ens
         public KeyPairArgs()
         {
         }
+        public static new KeyPairArgs Empty => new KeyPairArgs();
     }
 
-    public sealed class KeyPairState : Pulumi.ResourceArgs
+    public sealed class KeyPairState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the key pair.
@@ -141,5 +140,6 @@ namespace Pulumi.AliCloud.Ens
         public KeyPairState()
         {
         }
+        public static new KeyPairState Empty => new KeyPairState();
     }
 }

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HybridMonitorSlsTaskSlsProcessConfig {
     /**
-     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
      * 
      */
     private @Nullable List<HybridMonitorSlsTaskSlsProcessConfigExpress> expresses;
@@ -38,7 +38,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfig {
 
     private HybridMonitorSlsTaskSlsProcessConfig() {}
     /**
-     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
      * 
      */
     public List<HybridMonitorSlsTaskSlsProcessConfigExpress> expresses() {

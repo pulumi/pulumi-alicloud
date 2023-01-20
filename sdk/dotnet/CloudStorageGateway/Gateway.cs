@@ -21,49 +21,51 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
     ///     {
-    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = "tf_test_foo",
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = vpc.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = "tf-testAccCsgName",
-    ///         });
-    ///         var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new AliCloud.CloudStorageGateway.StorageBundleArgs
-    ///         {
-    ///             StorageBundleName = "example_value",
-    ///         });
-    ///         var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new AliCloud.CloudStorageGateway.GatewayArgs
-    ///         {
-    ///             Description = "tf-acctestDesalone",
-    ///             GatewayClass = "Standard",
-    ///             Type = "File",
-    ///             PaymentType = "PayAsYouGo",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             ReleaseAfterExpiration = false,
-    ///             PublicNetworkBandwidth = 40,
-    ///             StorageBundleId = example.Id,
-    ///             Location = "Cloud",
-    ///             GatewayName = "tf-acctestGatewayName",
-    ///         });
-    ///     }
+    ///         VpcName = "tf_test_foo",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
     /// 
-    /// }
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = "tf-testAccCsgName",
+    ///     });
+    /// 
+    ///     var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new()
+    ///     {
+    ///         StorageBundleName = "example_value",
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new()
+    ///     {
+    ///         Description = "tf-acctestDesalone",
+    ///         GatewayClass = "Standard",
+    ///         Type = "File",
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ReleaseAfterExpiration = false,
+    ///         PublicNetworkBandwidth = 40,
+    ///         StorageBundleId = example.Id,
+    ///         Location = "Cloud",
+    ///         GatewayName = "tf-acctestGatewayName",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -75,7 +77,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudstoragegateway/gateway:Gateway")]
-    public partial class Gateway : Pulumi.CustomResource
+    public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// the description of gateway.
@@ -199,7 +201,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         }
     }
 
-    public sealed class GatewayArgs : Pulumi.ResourceArgs
+    public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// the description of gateway.
@@ -276,9 +278,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GatewayArgs()
         {
         }
+        public static new GatewayArgs Empty => new GatewayArgs();
     }
 
-    public sealed class GatewayState : Pulumi.ResourceArgs
+    public sealed class GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// the description of gateway.
@@ -361,5 +364,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GatewayState()
         {
         }
+        public static new GatewayState Empty => new GatewayState();
     }
 }

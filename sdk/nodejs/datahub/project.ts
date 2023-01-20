@@ -17,9 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.datahub.Project("example", {
- *     comment: "created by terraform",
- * });
+ * const example = new alicloud.datahub.Project("example", {comment: "created by terraform"});
  * ```
  *
  * ## Import

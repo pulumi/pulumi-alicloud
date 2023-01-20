@@ -13,13 +13,22 @@ namespace Pulumi.AliCloud.Cfg.Outputs
     [OutputType]
     public sealed class GetRulesRuleResult
     {
+        /// <summary>
+        /// The ID of the Alicloud account.
+        /// </summary>
         public readonly string AccountId;
         public readonly string CompliancePackId;
         /// <summary>
         /// The information about the compliance evaluations based on the rule.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleComplianceResult> Compliances;
+        /// <summary>
+        /// The ARN of the Config Rule.
+        /// </summary>
         public readonly string ConfigRuleArn;
+        /// <summary>
+        /// The ID of the Config Rule.
+        /// </summary>
         public readonly string ConfigRuleId;
         /// <summary>
         /// Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
@@ -29,6 +38,9 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// (Available in 1.124.1+) A list of trigger types of config rule.
         /// </summary>
         public readonly string ConfigRuleTriggerTypes;
+        /// <summary>
+        /// The description of the Config Rule.
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// Event source of the Config Rule.
@@ -40,22 +52,19 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         public readonly string ExcludeResourceIdsScope;
         /// <summary>
         /// The ID of the Config Rule.
-        /// * `account_id`- The ID of the Alicloud account.
-        /// * `config_rule_arn`- The ARN of the Config Rule.
-        /// * `config_rule_id`- The ID of the Config Rule.
-        /// * `config_rule_state`- The state of the Config Rule.
-        /// * `description`- The description of the Config Rule.
-        /// * `input_parameters`- The input parameters of the Config Rule.
-        /// * `modified_timestamp`- the timestamp of the Config Rule modified.
-        /// * `risk_level`- The risk level of the Config Rule.
-        /// * `rule_name`- The name of the Config Rule.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The input parameters of the Config Rule.
+        /// </summary>
         public readonly ImmutableDictionary<string, object> InputParameters;
         /// <summary>
         /// (Available in 1.124.1+) The frequency of maximum execution.
         /// </summary>
         public readonly string MaximumExecutionFrequency;
+        /// <summary>
+        /// the timestamp of the Config Rule modified.
+        /// </summary>
         public readonly string ModifiedTimestamp;
         /// <summary>
         /// (Available in 1.124.1+) The scope of region ids.
@@ -85,13 +94,17 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// Rule trigger mechanism.
         /// </summary>
         public readonly string SourceDetailMessageType;
+        /// <summary>
+        /// The identifier of the managed rule or the arn of the custom function.
+        /// </summary>
         public readonly string SourceIdentifier;
         /// <summary>
-        /// Rule execution cycle. 
-        /// * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
-        /// * `source_owner`- The source owner of the Config Rule.
+        /// Rule execution cycle.
         /// </summary>
         public readonly string SourceMaximumExecutionFrequency;
+        /// <summary>
+        /// The source owner of the Config Rule.
+        /// </summary>
         public readonly string SourceOwner;
         /// <summary>
         /// The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.

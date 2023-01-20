@@ -17,17 +17,21 @@ class DashboardArgs:
                  char_list: pulumi.Input[str],
                  dashboard_name: pulumi.Input[str],
                  project_name: pulumi.Input[str],
+                 attribute: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
         :param pulumi.Input[str] char_list: Configuration of charts in the dashboard.
         :param pulumi.Input[str] dashboard_name: The name of the Log Dashboard.
         :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
+        :param pulumi.Input[str] attribute: Dashboard attribute.
         :param pulumi.Input[str] display_name: Dashboard alias.
         """
         pulumi.set(__self__, "char_list", char_list)
         pulumi.set(__self__, "dashboard_name", dashboard_name)
         pulumi.set(__self__, "project_name", project_name)
+        if attribute is not None:
+            pulumi.set(__self__, "attribute", attribute)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
 
@@ -68,6 +72,18 @@ class DashboardArgs:
         pulumi.set(self, "project_name", value)
 
     @property
+    @pulumi.getter
+    def attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Dashboard attribute.
+        """
+        return pulumi.get(self, "attribute")
+
+    @attribute.setter
+    def attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "attribute", value)
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -83,17 +99,21 @@ class DashboardArgs:
 @pulumi.input_type
 class _DashboardState:
     def __init__(__self__, *,
+                 attribute: Optional[pulumi.Input[str]] = None,
                  char_list: Optional[pulumi.Input[str]] = None,
                  dashboard_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
+        :param pulumi.Input[str] attribute: Dashboard attribute.
         :param pulumi.Input[str] char_list: Configuration of charts in the dashboard.
         :param pulumi.Input[str] dashboard_name: The name of the Log Dashboard.
         :param pulumi.Input[str] display_name: Dashboard alias.
         :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
         """
+        if attribute is not None:
+            pulumi.set(__self__, "attribute", attribute)
         if char_list is not None:
             pulumi.set(__self__, "char_list", char_list)
         if dashboard_name is not None:
@@ -102,6 +122,18 @@ class _DashboardState:
             pulumi.set(__self__, "display_name", display_name)
         if project_name is not None:
             pulumi.set(__self__, "project_name", project_name)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Dashboard attribute.
+        """
+        return pulumi.get(self, "attribute")
+
+    @attribute.setter
+    def attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "attribute", value)
 
     @property
     @pulumi.getter(name="charList")
@@ -157,6 +189,7 @@ class Dashboard(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 attribute: Optional[pulumi.Input[str]] = None,
                  char_list: Optional[pulumi.Input[str]] = None,
                  dashboard_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -182,6 +215,7 @@ class Dashboard(pulumi.CustomResource):
             retention_period=3000,
             shard_count=1)
         example = alicloud.log.Dashboard("example",
+            attribute="{\\"type\\":\\"grid\\"}",
             char_list=\"\"\"  [
             {
               "action": {},
@@ -225,6 +259,7 @@ class Dashboard(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] attribute: Dashboard attribute.
         :param pulumi.Input[str] char_list: Configuration of charts in the dashboard.
         :param pulumi.Input[str] dashboard_name: The name of the Log Dashboard.
         :param pulumi.Input[str] display_name: Dashboard alias.
@@ -256,6 +291,7 @@ class Dashboard(pulumi.CustomResource):
             retention_period=3000,
             shard_count=1)
         example = alicloud.log.Dashboard("example",
+            attribute="{\\"type\\":\\"grid\\"}",
             char_list=\"\"\"  [
             {
               "action": {},
@@ -312,6 +348,7 @@ class Dashboard(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 attribute: Optional[pulumi.Input[str]] = None,
                  char_list: Optional[pulumi.Input[str]] = None,
                  dashboard_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -325,6 +362,7 @@ class Dashboard(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DashboardArgs.__new__(DashboardArgs)
 
+            __props__.__dict__["attribute"] = attribute
             if char_list is None and not opts.urn:
                 raise TypeError("Missing required property 'char_list'")
             __props__.__dict__["char_list"] = char_list
@@ -345,6 +383,7 @@ class Dashboard(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            attribute: Optional[pulumi.Input[str]] = None,
             char_list: Optional[pulumi.Input[str]] = None,
             dashboard_name: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -356,6 +395,7 @@ class Dashboard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] attribute: Dashboard attribute.
         :param pulumi.Input[str] char_list: Configuration of charts in the dashboard.
         :param pulumi.Input[str] dashboard_name: The name of the Log Dashboard.
         :param pulumi.Input[str] display_name: Dashboard alias.
@@ -365,11 +405,20 @@ class Dashboard(pulumi.CustomResource):
 
         __props__ = _DashboardState.__new__(_DashboardState)
 
+        __props__.__dict__["attribute"] = attribute
         __props__.__dict__["char_list"] = char_list
         __props__.__dict__["dashboard_name"] = dashboard_name
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["project_name"] = project_name
         return Dashboard(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> pulumi.Output[str]:
+        """
+        Dashboard attribute.
+        """
+        return pulumi.get(self, "attribute")
 
     @property
     @pulumi.getter(name="charList")

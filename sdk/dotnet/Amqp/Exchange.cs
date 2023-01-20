@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.Amqp
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleVirtualHost = new AliCloud.Amqp.VirtualHost("exampleVirtualHost", new()
     ///     {
-    ///         var exampleVirtualHost = new AliCloud.Amqp.VirtualHost("exampleVirtualHost", new AliCloud.Amqp.VirtualHostArgs
-    ///         {
-    ///             InstanceId = "amqp-abc12345",
-    ///             VirtualHostName = "my-VirtualHost",
-    ///         });
-    ///         var exampleExchange = new AliCloud.Amqp.Exchange("exampleExchange", new AliCloud.Amqp.ExchangeArgs
-    ///         {
-    ///             AutoDeleteState = false,
-    ///             ExchangeName = "my-Exchange",
-    ///             ExchangeType = "DIRECT",
-    ///             InstanceId = exampleVirtualHost.InstanceId,
-    ///             Internal = false,
-    ///             VirtualHostName = exampleVirtualHost.VirtualHostName,
-    ///         });
-    ///     }
+    ///         InstanceId = "amqp-abc12345",
+    ///         VirtualHostName = "my-VirtualHost",
+    ///     });
     /// 
-    /// }
+    ///     var exampleExchange = new AliCloud.Amqp.Exchange("exampleExchange", new()
+    ///     {
+    ///         AutoDeleteState = false,
+    ///         ExchangeName = "my-Exchange",
+    ///         ExchangeType = "DIRECT",
+    ///         InstanceId = exampleVirtualHost.InstanceId,
+    ///         Internal = false,
+    ///         VirtualHostName = exampleVirtualHost.VirtualHostName,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.Amqp
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:amqp/exchange:Exchange")]
-    public partial class Exchange : Pulumi.CustomResource
+    public partial class Exchange : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
@@ -155,7 +154,7 @@ namespace Pulumi.AliCloud.Amqp
         }
     }
 
-    public sealed class ExchangeArgs : Pulumi.ResourceArgs
+    public sealed class ExchangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
@@ -213,9 +212,10 @@ namespace Pulumi.AliCloud.Amqp
         public ExchangeArgs()
         {
         }
+        public static new ExchangeArgs Empty => new ExchangeArgs();
     }
 
-    public sealed class ExchangeState : Pulumi.ResourceArgs
+    public sealed class ExchangeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
@@ -273,5 +273,6 @@ namespace Pulumi.AliCloud.Amqp
         public ExchangeState()
         {
         }
+        public static new ExchangeState Empty => new ExchangeState();
     }
 }

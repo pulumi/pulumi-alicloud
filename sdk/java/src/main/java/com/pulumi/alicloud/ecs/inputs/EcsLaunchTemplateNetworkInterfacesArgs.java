@@ -16,14 +16,14 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
     public static final EcsLaunchTemplateNetworkInterfacesArgs Empty = new EcsLaunchTemplateNetworkInterfacesArgs();
 
     /**
-     * The description of the data disk.
+     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the data disk.
+     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +31,14 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
     }
 
     /**
-     * The name of the data disk.
+     * It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the data disk.
+     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
      * 
      */
     public Optional<Output<String>> name() {
@@ -61,14 +61,14 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
     }
 
     /**
-     * The security group ID must be one in the same VPC.
+     * The security group ID.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The security group ID must be one in the same VPC.
+     * @return The security group ID.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -76,14 +76,14 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
     }
 
     /**
-     * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * @return When creating a VPC-Connected instance, you must specify its VSwitch ID.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -119,7 +119,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param description The description of the data disk.
+         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param description The description of the data disk.
+         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The name of the data disk.
+         * @param name It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The name of the data disk.
+         * @param name It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param securityGroupId The security group ID must be one in the same VPC.
+         * @param securityGroupId The security group ID.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param securityGroupId The security group ID must be one in the same VPC.
+         * @param securityGroupId The security group ID.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param vswitchId The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+         * @param vswitchId When creating a VPC-Connected instance, you must specify its VSwitch ID.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param vswitchId The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+         * @param vswitchId When creating a VPC-Connected instance, you must specify its VSwitch ID.
          * 
          * @return builder
          * 

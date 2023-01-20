@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,16 +17,13 @@ import * as utilities from "../utilities";
  *     descriptionRegex: "am-\\w+",
  *     status: "Running",
  * });
- * export const firstAdbClusterId = adbClustersDs.then(adbClustersDs => adbClustersDs.clusters?[0]?.id);
+ * export const firstAdbClusterId = adbClustersDs.then(adbClustersDs => adbClustersDs.clusters?.[0]?.id);
  * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:adb/getClusters:getClusters", {
         "description": args.description,
         "descriptionRegex": args.descriptionRegex,
@@ -110,9 +108,22 @@ export interface GetClustersResult {
     readonly tags?: {[key: string]: any};
     readonly totalCount: number;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const adbClustersDs = alicloud.adb.getClusters({
+ *     descriptionRegex: "am-\\w+",
+ *     status: "Running",
+ * });
+ * export const firstAdbClusterId = adbClustersDs.then(adbClustersDs => adbClustersDs.clusters?.[0]?.id);
+ * ```
+ */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
-    return pulumi.output(args).apply(a => getClusters(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusters(a, opts))
 }
 
 /**

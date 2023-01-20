@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetEcsDisks.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetEcsDisks.InvokeAsync(new AliCloud.Ecs.GetEcsDisksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "d-artgdsvdvxxxx",
-        ///             },
-        ///             NameRegex = "tf-test",
-        ///         }));
-        ///         this.FirstEcsDiskId = example.Apply(example =&gt; example.Disks?[0]?.Id);
-        ///     }
+        ///             "d-artgdsvdvxxxx",
+        ///         },
+        ///         NameRegex = "tf-test",
+        ///     });
         /// 
-        ///     [Output("firstEcsDiskId")]
-        ///     public Output&lt;string&gt; FirstEcsDiskId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsDiskId"] = example.Apply(getEcsDisksResult =&gt; getEcsDisksResult.Disks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsDisksResult> InvokeAsync(GetEcsDisksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsDisksResult>("alicloud:ecs/getEcsDisks:getEcsDisks", args ?? new GetEcsDisksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsDisksResult>("alicloud:ecs/getEcsDisks:getEcsDisks", args ?? new GetEcsDisksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Disks of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetEcsDisks.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetEcsDisks.InvokeAsync(new AliCloud.Ecs.GetEcsDisksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "d-artgdsvdvxxxx",
-        ///             },
-        ///             NameRegex = "tf-test",
-        ///         }));
-        ///         this.FirstEcsDiskId = example.Apply(example =&gt; example.Disks?[0]?.Id);
-        ///     }
+        ///             "d-artgdsvdvxxxx",
+        ///         },
+        ///         NameRegex = "tf-test",
+        ///     });
         /// 
-        ///     [Output("firstEcsDiskId")]
-        ///     public Output&lt;string&gt; FirstEcsDiskId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsDiskId"] = example.Apply(getEcsDisksResult =&gt; getEcsDisksResult.Disks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsDisksResult> Invoke(GetEcsDisksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsDisksResult>("alicloud:ecs/getEcsDisks:getEcsDisks", args ?? new GetEcsDisksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsDisksResult>("alicloud:ecs/getEcsDisks:getEcsDisks", args ?? new GetEcsDisksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsDisksArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsDisksArgs : global::Pulumi.InvokeArgs
     {
         [Input("additionalAttributes")]
         private List<string>? _additionalAttributes;
@@ -151,8 +149,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-        /// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-        /// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
         /// </summary>
         [Input("dryRun")]
         public bool? DryRun { get; set; }
@@ -285,9 +281,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsDisksArgs()
         {
         }
+        public static new GetEcsDisksArgs Empty => new GetEcsDisksArgs();
     }
 
-    public sealed class GetEcsDisksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsDisksInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("additionalAttributes")]
         private InputList<string>? _additionalAttributes;
@@ -345,8 +342,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-        /// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-        /// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -479,6 +474,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsDisksInvokeArgs()
         {
         }
+        public static new GetEcsDisksInvokeArgs Empty => new GetEcsDisksInvokeArgs();
     }
 
 

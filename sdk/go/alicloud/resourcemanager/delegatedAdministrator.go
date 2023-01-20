@@ -40,7 +40,7 @@ import (
 //				return err
 //			}
 //			_, err = resourcemanager.NewDelegatedAdministrator(ctx, "defaultDelegatedAdministrator", &resourcemanager.DelegatedAdministratorArgs{
-//				AccountId:        pulumi.String(defaultAccounts.Accounts[0].AccountId),
+//				AccountId:        *pulumi.String(defaultAccounts.Accounts[0].AccountId),
 //				ServicePrincipal: pulumi.String("cloudfw.aliyuncs.com"),
 //			})
 //			if err != nil {

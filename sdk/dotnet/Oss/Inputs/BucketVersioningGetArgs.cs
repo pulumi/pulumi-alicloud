@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketVersioningGetArgs : Pulumi.ResourceArgs
+    public sealed class BucketVersioningGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketVersioningGetArgs()
         {
         }
+        public static new BucketVersioningGetArgs Empty => new BucketVersioningGetArgs();
     }
 }

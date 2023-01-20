@@ -21,7 +21,6 @@ public final class GetBandwidthPackagesResult {
     private String id;
     /**
      * @return A list of specific CEN Bandwidth Package IDs.
-     * * `names` (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
      * 
      */
     private List<String> ids;
@@ -32,6 +31,10 @@ public final class GetBandwidthPackagesResult {
      */
     private @Nullable String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     /**
@@ -55,7 +58,6 @@ public final class GetBandwidthPackagesResult {
     }
     /**
      * @return A list of specific CEN Bandwidth Package IDs.
-     * * `names` (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
      * 
      */
     public List<String> ids() {
@@ -74,6 +76,10 @@ public final class GetBandwidthPackagesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

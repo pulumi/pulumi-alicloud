@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Eds.GetSnapshots.InvokeAsync());
-        ///         this.EcdSnapshotId1 = ids.Apply(ids =&gt; ids.Snapshots?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Eds.GetSnapshots.Invoke();
         /// 
-        ///     [Output("ecdSnapshotId1")]
-        ///     public Output&lt;string&gt; EcdSnapshotId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdSnapshotId1"] = ids.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnapshotsResult> InvokeAsync(GetSnapshotsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:eds/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:eds/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Eds.GetSnapshots.InvokeAsync());
-        ///         this.EcdSnapshotId1 = ids.Apply(ids =&gt; ids.Snapshots?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Eds.GetSnapshots.Invoke();
         /// 
-        ///     [Output("ecdSnapshotId1")]
-        ///     public Output&lt;string&gt; EcdSnapshotId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdSnapshotId1"] = ids.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSnapshotsResult> Invoke(GetSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:eds/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:eds/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSnapshotsArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the cloud desktop to which the snapshot belongs.
@@ -117,9 +115,10 @@ namespace Pulumi.AliCloud.Eds
         public GetSnapshotsArgs()
         {
         }
+        public static new GetSnapshotsArgs Empty => new GetSnapshotsArgs();
     }
 
-    public sealed class GetSnapshotsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the cloud desktop to which the snapshot belongs.
@@ -157,6 +156,7 @@ namespace Pulumi.AliCloud.Eds
         public GetSnapshotsInvokeArgs()
         {
         }
+        public static new GetSnapshotsInvokeArgs Empty => new GetSnapshotsInvokeArgs();
     }
 
 

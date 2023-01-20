@@ -21,48 +21,49 @@ namespace Pulumi.AliCloud.Ga
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new()
     ///     {
-    ///         var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new AliCloud.Ga.AcceleratorArgs
-    ///         {
-    ///             Duration = 1,
-    ///             AutoUseCoupon = true,
-    ///             Spec = "1",
-    ///         });
-    ///         var exampleBandwidthPackage = new AliCloud.Ga.BandwidthPackage("exampleBandwidthPackage", new AliCloud.Ga.BandwidthPackageArgs
-    ///         {
-    ///             Bandwidth = 20,
-    ///             Type = "Basic",
-    ///             BandwidthType = "Basic",
-    ///             Duration = "1",
-    ///             AutoPay = true,
-    ///             Ratio = 30,
-    ///         });
-    ///         var exampleBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new AliCloud.Ga.BandwidthPackageAttachmentArgs
-    ///         {
-    ///             AcceleratorId = exampleAccelerator.Id,
-    ///             BandwidthPackageId = exampleBandwidthPackage.Id,
-    ///         });
-    ///         var exampleIpSet = new AliCloud.Ga.IpSet("exampleIpSet", new AliCloud.Ga.IpSetArgs
-    ///         {
-    ///             AccelerateRegionId = "cn-hangzhou",
-    ///             Bandwidth = 5,
-    ///             AcceleratorId = exampleAccelerator.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleBandwidthPackageAttachment,
-    ///             },
-    ///         });
-    ///     }
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "1",
+    ///     });
     /// 
-    /// }
+    ///     var exampleBandwidthPackage = new AliCloud.Ga.BandwidthPackage("exampleBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 20,
+    ///         Type = "Basic",
+    ///         BandwidthType = "Basic",
+    ///         Duration = "1",
+    ///         AutoPay = true,
+    ///         Ratio = 30,
+    ///     });
+    /// 
+    ///     var exampleBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new()
+    ///     {
+    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         BandwidthPackageId = exampleBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var exampleIpSet = new AliCloud.Ga.IpSet("exampleIpSet", new()
+    ///     {
+    ///         AccelerateRegionId = "cn-hangzhou",
+    ///         Bandwidth = 5,
+    ///         AcceleratorId = exampleAccelerator.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             exampleBandwidthPackageAttachment,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -74,7 +75,7 @@ namespace Pulumi.AliCloud.Ga
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/ipSet:IpSet")]
-    public partial class IpSet : Pulumi.CustomResource
+    public partial class IpSet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of an acceleration region.
@@ -156,7 +157,7 @@ namespace Pulumi.AliCloud.Ga
         }
     }
 
-    public sealed class IpSetArgs : Pulumi.ResourceArgs
+    public sealed class IpSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of an acceleration region.
@@ -185,9 +186,10 @@ namespace Pulumi.AliCloud.Ga
         public IpSetArgs()
         {
         }
+        public static new IpSetArgs Empty => new IpSetArgs();
     }
 
-    public sealed class IpSetState : Pulumi.ResourceArgs
+    public sealed class IpSetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of an acceleration region.
@@ -234,5 +236,6 @@ namespace Pulumi.AliCloud.Ga
         public IpSetState()
         {
         }
+        public static new IpSetState Empty => new IpSetState();
     }
 }

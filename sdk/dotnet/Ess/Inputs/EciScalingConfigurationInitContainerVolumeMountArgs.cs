@@ -10,17 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class EciScalingConfigurationInitContainerVolumeMountArgs : Pulumi.ResourceArgs
+    public sealed class EciScalingConfigurationInitContainerVolumeMountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The directory of the mounted volume. Data under this directory will be overwritten by the
+        /// data in the volume.
         /// data in the volume.
         /// </summary>
         [Input("mountPath")]
         public Input<string>? MountPath { get; set; }
 
         /// <summary>
-        /// The name of the mounted volume.
+        /// The name of the volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -34,5 +35,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public EciScalingConfigurationInitContainerVolumeMountArgs()
         {
         }
+        public static new EciScalingConfigurationInitContainerVolumeMountArgs Empty => new EciScalingConfigurationInitContainerVolumeMountArgs();
     }
 }

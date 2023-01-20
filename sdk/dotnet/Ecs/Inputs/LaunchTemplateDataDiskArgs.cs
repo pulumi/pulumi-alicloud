@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class LaunchTemplateDataDiskArgs : Pulumi.ResourceArgs
+    public sealed class LaunchTemplateDataDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The category of the disk:
@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// -(Optional, Bool) Encrypted the data in this disk.
+        /// Encrypted the data in this disk.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -70,5 +70,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public LaunchTemplateDataDiskArgs()
         {
         }
+        public static new LaunchTemplateDataDiskArgs Empty => new LaunchTemplateDataDiskArgs();
     }
 }

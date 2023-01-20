@@ -102,15 +102,15 @@ class GetMountTargetsResult:
     def mount_target_domain(self) -> Optional[str]:
         """
         MountTargetDomain of the MountTarget.
-        * `type`- Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
-        * `network_type`- (Available 1.95.0+) NetworkType of The MountTarget.
-        * `status`- (Available 1.95.0+) The status of the mount target.
         """
         return pulumi.get(self, "mount_target_domain")
 
     @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[str]:
+        """
+        (Available 1.95.0+) NetworkType of The MountTarget.
+        """
         return pulumi.get(self, "network_type")
 
     @property
@@ -121,6 +121,9 @@ class GetMountTargetsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        (Available 1.95.0+) The status of the mount target.
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -134,6 +137,9 @@ class GetMountTargetsResult:
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+        """
         return pulumi.get(self, "type")
 
     @property

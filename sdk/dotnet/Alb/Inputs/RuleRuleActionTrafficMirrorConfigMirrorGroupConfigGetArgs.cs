@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("serverGroupTuples")]
         private InputList<Inputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleGetArgs>? _serverGroupTuples;
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public RuleRuleActionTrafficMirrorConfigMirrorGroupConfigGetArgs()
         {
         }
+        public static new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigGetArgs Empty => new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigGetArgs();
     }
 }

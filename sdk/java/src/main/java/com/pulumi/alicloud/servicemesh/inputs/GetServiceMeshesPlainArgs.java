@@ -61,14 +61,14 @@ public final class GetServiceMeshesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `running` or `initial`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `running` or `initial`.
      * 
      */
     public Optional<String> status() {
@@ -146,7 +146,7 @@ public final class GetServiceMeshesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `running` or `initial`.
          * 
          * @return builder
          * 

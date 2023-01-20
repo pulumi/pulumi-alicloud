@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ds = pulumi.output(alicloud.ess.getLifecycleHooks({
+ * const ds = alicloud.ess.getLifecycleHooks({
  *     nameRegex: "lifecyclehook_name",
  *     scalingGroupId: "scaling_group_id",
- * }));
- *
- * export const firstLifecycleHook = ds.hooks[0].id;
+ * });
+ * export const firstLifecycleHook = ds.then(ds => ds.hooks?.[0]?.id);
  * ```
  */
 export function getLifecycleHooks(args?: GetLifecycleHooksArgs, opts?: pulumi.InvokeOptions): Promise<GetLifecycleHooksResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ess/getLifecycleHooks:getLifecycleHooks", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -85,9 +82,26 @@ export interface GetLifecycleHooksResult {
      */
     readonly scalingGroupId?: string;
 }
-
+/**
+ * This data source provides available lifecycle hook resources.
+ *
+ * > **NOTE:** Available in 1.72.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ds = alicloud.ess.getLifecycleHooks({
+ *     nameRegex: "lifecyclehook_name",
+ *     scalingGroupId: "scaling_group_id",
+ * });
+ * export const firstLifecycleHook = ds.then(ds => ds.hooks?.[0]?.id);
+ * ```
+ */
 export function getLifecycleHooksOutput(args?: GetLifecycleHooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLifecycleHooksResult> {
-    return pulumi.output(args).apply(a => getLifecycleHooks(a, opts))
+    return pulumi.output(args).apply((a: any) => getLifecycleHooks(a, opts))
 }
 
 /**

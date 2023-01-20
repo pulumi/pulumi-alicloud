@@ -28,6 +28,8 @@ import com.pulumi.alicloud.hbr.inputs.GetRestoreJobsArgs;
 import com.pulumi.alicloud.hbr.inputs.GetRestoreJobsPlainArgs;
 import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
 import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansPlainArgs;
+import com.pulumi.alicloud.hbr.inputs.GetServiceArgs;
+import com.pulumi.alicloud.hbr.inputs.GetServicePlainArgs;
 import com.pulumi.alicloud.hbr.inputs.GetSnapshotsArgs;
 import com.pulumi.alicloud.hbr.inputs.GetSnapshotsPlainArgs;
 import com.pulumi.alicloud.hbr.inputs.GetVaultsArgs;
@@ -44,6 +46,7 @@ import com.pulumi.alicloud.hbr.outputs.GetOtsSnapshotsResult;
 import com.pulumi.alicloud.hbr.outputs.GetReplicationVaultRegionsResult;
 import com.pulumi.alicloud.hbr.outputs.GetRestoreJobsResult;
 import com.pulumi.alicloud.hbr.outputs.GetServerBackupPlansResult;
+import com.pulumi.alicloud.hbr.outputs.GetServiceResult;
 import com.pulumi.alicloud.hbr.outputs.GetSnapshotsResult;
 import com.pulumi.alicloud.hbr.outputs.GetVaultsResult;
 import com.pulumi.core.Output;
@@ -416,7 +419,7 @@ public final class HbrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
      * import java.util.List;
@@ -466,7 +469,7 @@ public final class HbrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
      * import java.util.List;
@@ -516,7 +519,7 @@ public final class HbrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
      * import java.util.List;
@@ -566,7 +569,7 @@ public final class HbrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
      * import java.util.List;
@@ -616,7 +619,7 @@ public final class HbrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
      * import java.util.List;
@@ -666,7 +669,7 @@ public final class HbrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
      * import java.util.List;
@@ -2822,7 +2825,7 @@ public final class HbrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
      * import java.util.List;
@@ -2874,7 +2877,7 @@ public final class HbrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
      * import java.util.List;
@@ -2926,7 +2929,7 @@ public final class HbrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
      * import java.util.List;
@@ -2978,7 +2981,7 @@ public final class HbrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
      * import java.util.List;
@@ -3030,7 +3033,7 @@ public final class HbrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
      * import java.util.List;
@@ -3082,7 +3085,7 @@ public final class HbrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
      * import java.util.List;
@@ -3120,6 +3123,264 @@ public final class HbrFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", TypeShape.of(GetServerBackupPlansResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Using this data source can open HBR service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = HbrFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetServiceResult> getService() {
+        return getService(GetServiceArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Using this data source can open HBR service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = HbrFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetServiceResult> getServicePlain() {
+        return getServicePlain(GetServicePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Using this data source can open HBR service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = HbrFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args) {
+        return getService(args, InvokeOptions.Empty);
+    }
+    /**
+     * Using this data source can open HBR service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = HbrFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
+        return getServicePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Using this data source can open HBR service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = HbrFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:hbr/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open HBR service automatically. If the service has been opened, it will return opened.
+     * 
+     * For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var open = HbrFunctions.getService(GetServiceArgs.builder()
+     *             .enable(&#34;On&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:hbr/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.133.0+.
@@ -3137,7 +3398,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3213,7 +3474,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3289,7 +3550,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3365,7 +3626,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

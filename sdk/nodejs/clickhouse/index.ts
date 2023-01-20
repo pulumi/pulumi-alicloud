@@ -5,18 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./account";
-export * from "./backupPolicy";
-export * from "./dbCluster";
-export * from "./getAccounts";
-export * from "./getBackupPolicies";
-export * from "./getDbClusters";
-export * from "./getRegions";
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
 
-// Import resources to register:
-import { Account } from "./account";
-import { BackupPolicy } from "./backupPolicy";
-import { DbCluster } from "./dbCluster";
+export { BackupPolicyArgs, BackupPolicyState } from "./backupPolicy";
+export type BackupPolicy = import("./backupPolicy").BackupPolicy;
+export const BackupPolicy: typeof import("./backupPolicy").BackupPolicy = null as any;
+utilities.lazyLoad(exports, ["BackupPolicy"], () => require("./backupPolicy"));
+
+export { DbClusterArgs, DbClusterState } from "./dbCluster";
+export type DbCluster = import("./dbCluster").DbCluster;
+export const DbCluster: typeof import("./dbCluster").DbCluster = null as any;
+utilities.lazyLoad(exports, ["DbCluster"], () => require("./dbCluster"));
+
+export { GetAccountsArgs, GetAccountsResult, GetAccountsOutputArgs } from "./getAccounts";
+export const getAccounts: typeof import("./getAccounts").getAccounts = null as any;
+export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getAccounts","getAccountsOutput"], () => require("./getAccounts"));
+
+export { GetBackupPoliciesArgs, GetBackupPoliciesResult, GetBackupPoliciesOutputArgs } from "./getBackupPolicies";
+export const getBackupPolicies: typeof import("./getBackupPolicies").getBackupPolicies = null as any;
+export const getBackupPoliciesOutput: typeof import("./getBackupPolicies").getBackupPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getBackupPolicies","getBackupPoliciesOutput"], () => require("./getBackupPolicies"));
+
+export { GetDbClustersArgs, GetDbClustersResult, GetDbClustersOutputArgs } from "./getDbClusters";
+export const getDbClusters: typeof import("./getDbClusters").getDbClusters = null as any;
+export const getDbClustersOutput: typeof import("./getDbClusters").getDbClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getDbClusters","getDbClustersOutput"], () => require("./getDbClusters"));
+
+export { GetRegionsArgs, GetRegionsResult, GetRegionsOutputArgs } from "./getRegions";
+export const getRegions: typeof import("./getRegions").getRegions = null as any;
+export const getRegionsOutput: typeof import("./getRegions").getRegionsOutput = null as any;
+utilities.lazyLoad(exports, ["getRegions","getRegionsOutput"], () => require("./getRegions"));
+
 
 const _module = {
     version: utilities.getVersion(),

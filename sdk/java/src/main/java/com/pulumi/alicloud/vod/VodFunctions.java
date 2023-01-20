@@ -32,7 +32,7 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.DomainArgs;
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -62,7 +62,10 @@ public final class VodFunctions {
      * 
      *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
-     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *             ))
      *             .build());
      * 
      *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
@@ -92,7 +95,7 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.DomainArgs;
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -122,7 +125,10 @@ public final class VodFunctions {
      * 
      *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
-     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *             ))
      *             .build());
      * 
      *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
@@ -152,7 +158,7 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.DomainArgs;
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -182,7 +188,10 @@ public final class VodFunctions {
      * 
      *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
-     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *             ))
      *             .build());
      * 
      *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
@@ -212,7 +221,7 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.DomainArgs;
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -242,7 +251,10 @@ public final class VodFunctions {
      * 
      *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
-     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *             ))
      *             .build());
      * 
      *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
@@ -272,7 +284,7 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.DomainArgs;
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -302,7 +314,10 @@ public final class VodFunctions {
      * 
      *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
-     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *             ))
      *             .build());
      * 
      *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
@@ -332,7 +347,7 @@ public final class VodFunctions {
      * import com.pulumi.alicloud.vod.DomainArgs;
      * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
      * import com.pulumi.alicloud.vod.VodFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.vod.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -362,7 +377,10 @@ public final class VodFunctions {
      * 
      *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
-     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
+     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *             ))
      *             .build());
      * 
      *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));

@@ -59,6 +59,7 @@ class ManagedKubernetesArgs:
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rrsa_metadata: Optional[pulumi.Input['ManagedKubernetesRrsaMetadataArgs']] = None,
                  runtime: Optional[pulumi.Input['ManagedKubernetesRuntimeArgs']] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -103,12 +104,12 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[str] cpu_policy: (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
-        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] enable_ssh: (Optional) Enable login to the node through SSH. Default to `false`.
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
         :param pulumi.Input[bool] exclude_autoscaler_nodes: (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         :param pulumi.Input[str] image_id: (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
-        :param pulumi.Input[bool] install_cloud_monitor: (Optional) Install cloud monitor agent on ECS. Default to `true`.
+        :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. Default to `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] key_name: (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[str] kms_encrypted_password: (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -124,12 +125,13 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[str] os_type: (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
         :param pulumi.Input[str] password: (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[str] platform: (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
-        :param pulumi.Input[str] pod_cidr: - [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+        :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input['ManagedKubernetesRuntimeArgs'] runtime: (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        :param pulumi.Input['ManagedKubernetesRrsaMetadataArgs'] rrsa_metadata: (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        :param pulumi.Input['ManagedKubernetesRuntimeArgs'] runtime: (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -141,7 +143,7 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[str] user_data: (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[bool] worker_auto_renew: (Optional) Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[int] worker_auto_renew_period: (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] worker_data_disk_category: The data disk category of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[int] worker_data_disk_size: The data disk size of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesWorkerDataDiskArgs']]] worker_data_disks: (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
@@ -149,7 +151,7 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[str] worker_disk_performance_level: (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] worker_disk_size: (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         :param pulumi.Input[str] worker_disk_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
-        :param pulumi.Input[str] worker_instance_charge_type: (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        :param pulumi.Input[str] worker_instance_charge_type: (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         :param pulumi.Input[int] worker_number: (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         :param pulumi.Input[int] worker_period: (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
@@ -229,6 +231,9 @@ class ManagedKubernetesArgs:
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if kube_config is not None:
+            warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
+            pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+        if kube_config is not None:
             pulumi.set(__self__, "kube_config", kube_config)
         if load_balancer_spec is not None:
             pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
@@ -282,6 +287,8 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retain_resources is not None:
             pulumi.set(__self__, "retain_resources", retain_resources)
+        if rrsa_metadata is not None:
+            pulumi.set(__self__, "rrsa_metadata", rrsa_metadata)
         if runtime is not None:
             warnings.warn("""Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.""", DeprecationWarning)
             pulumi.log.warn("""runtime is deprecated: Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.""")
@@ -570,7 +577,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         """
         return pulumi.get(self, "enable_rrsa")
 
@@ -630,7 +637,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="installCloudMonitor")
     def install_cloud_monitor(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) Install cloud monitor agent on ECS. Default to `true`.
+        Install cloud monitor agent on ECS. Default to `true`.
         """
         return pulumi.get(self, "install_cloud_monitor")
 
@@ -831,7 +838,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="podCidr")
     def pod_cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        - [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        [Flannel Specific] The CIDR block for the pod network when using Flannel.
         """
         return pulumi.get(self, "pod_cidr")
 
@@ -843,7 +850,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="podVswitchIds")
     def pod_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+        [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         """
         return pulumi.get(self, "pod_vswitch_ids")
 
@@ -897,10 +904,22 @@ class ManagedKubernetesArgs:
         pulumi.set(self, "retain_resources", value)
 
     @property
+    @pulumi.getter(name="rrsaMetadata")
+    def rrsa_metadata(self) -> Optional[pulumi.Input['ManagedKubernetesRrsaMetadataArgs']]:
+        """
+        (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        """
+        return pulumi.get(self, "rrsa_metadata")
+
+    @rrsa_metadata.setter
+    def rrsa_metadata(self, value: Optional[pulumi.Input['ManagedKubernetesRrsaMetadataArgs']]):
+        pulumi.set(self, "rrsa_metadata", value)
+
+    @property
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input['ManagedKubernetesRuntimeArgs']]:
         """
-        (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         """
         return pulumi.get(self, "runtime")
 
@@ -1044,7 +1063,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="workerAutoRenewPeriod")
     def worker_auto_renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
         return pulumi.get(self, "worker_auto_renew_period")
 
@@ -1140,7 +1159,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="workerInstanceChargeType")
     def worker_instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         """
         return pulumi.get(self, "worker_instance_charge_type")
 
@@ -1245,6 +1264,7 @@ class _ManagedKubernetesState:
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rrsa_metadata: Optional[pulumi.Input['ManagedKubernetesRrsaMetadataArgs']] = None,
                  runtime: Optional[pulumi.Input['ManagedKubernetesRuntimeArgs']] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -1297,12 +1317,12 @@ class _ManagedKubernetesState:
         :param pulumi.Input[str] cpu_policy: (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
-        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] enable_ssh: (Optional) Enable login to the node through SSH. Default to `false`.
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
         :param pulumi.Input[bool] exclude_autoscaler_nodes: (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         :param pulumi.Input[str] image_id: (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
-        :param pulumi.Input[bool] install_cloud_monitor: (Optional) Install cloud monitor agent on ECS. Default to `true`.
+        :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. Default to `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] key_name: (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[str] kms_encrypted_password: (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -1319,12 +1339,13 @@ class _ManagedKubernetesState:
         :param pulumi.Input[str] os_type: (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
         :param pulumi.Input[str] password: (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[str] platform: (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
-        :param pulumi.Input[str] pod_cidr: - [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+        :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input['ManagedKubernetesRuntimeArgs'] runtime: (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        :param pulumi.Input['ManagedKubernetesRrsaMetadataArgs'] rrsa_metadata: (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        :param pulumi.Input['ManagedKubernetesRuntimeArgs'] runtime: (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -1340,7 +1361,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[bool] worker_auto_renew: (Optional) Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[int] worker_auto_renew_period: (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] worker_data_disk_category: The data disk category of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[int] worker_data_disk_size: The data disk size of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesWorkerDataDiskArgs']]] worker_data_disks: (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
@@ -1348,7 +1369,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[str] worker_disk_performance_level: (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] worker_disk_size: (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         :param pulumi.Input[str] worker_disk_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
-        :param pulumi.Input[str] worker_instance_charge_type: (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        :param pulumi.Input[str] worker_instance_charge_type: (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesWorkerNodeArgs']]] worker_nodes: (Deprecated from version 1.177.0) List of cluster worker nodes.
         :param pulumi.Input[int] worker_number: (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
@@ -1434,6 +1455,9 @@ class _ManagedKubernetesState:
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if kube_config is not None:
+            warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
+            pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+        if kube_config is not None:
             pulumi.set(__self__, "kube_config", kube_config)
         if load_balancer_spec is not None:
             pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
@@ -1489,6 +1513,8 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retain_resources is not None:
             pulumi.set(__self__, "retain_resources", retain_resources)
+        if rrsa_metadata is not None:
+            pulumi.set(__self__, "rrsa_metadata", rrsa_metadata)
         if runtime is not None:
             warnings.warn("""Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.""", DeprecationWarning)
             pulumi.log.warn("""runtime is deprecated: Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.""")
@@ -1809,7 +1835,7 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         """
         return pulumi.get(self, "enable_rrsa")
 
@@ -1869,7 +1895,7 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="installCloudMonitor")
     def install_cloud_monitor(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional) Install cloud monitor agent on ECS. Default to `true`.
+        Install cloud monitor agent on ECS. Default to `true`.
         """
         return pulumi.get(self, "install_cloud_monitor")
 
@@ -2082,7 +2108,7 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="podCidr")
     def pod_cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        - [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        [Flannel Specific] The CIDR block for the pod network when using Flannel.
         """
         return pulumi.get(self, "pod_cidr")
 
@@ -2094,7 +2120,7 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="podVswitchIds")
     def pod_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+        [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         """
         return pulumi.get(self, "pod_vswitch_ids")
 
@@ -2148,10 +2174,22 @@ class _ManagedKubernetesState:
         pulumi.set(self, "retain_resources", value)
 
     @property
+    @pulumi.getter(name="rrsaMetadata")
+    def rrsa_metadata(self) -> Optional[pulumi.Input['ManagedKubernetesRrsaMetadataArgs']]:
+        """
+        (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        """
+        return pulumi.get(self, "rrsa_metadata")
+
+    @rrsa_metadata.setter
+    def rrsa_metadata(self, value: Optional[pulumi.Input['ManagedKubernetesRrsaMetadataArgs']]):
+        pulumi.set(self, "rrsa_metadata", value)
+
+    @property
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input['ManagedKubernetesRuntimeArgs']]:
         """
-        (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         """
         return pulumi.get(self, "runtime")
 
@@ -2343,7 +2381,7 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="workerAutoRenewPeriod")
     def worker_auto_renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
         return pulumi.get(self, "worker_auto_renew_period")
 
@@ -2439,7 +2477,7 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="workerInstanceChargeType")
     def worker_instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         """
         return pulumi.get(self, "worker_instance_charge_type")
 
@@ -2579,6 +2617,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rrsa_metadata: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesRrsaMetadataArgs']]] = None,
                  runtime: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -2609,10 +2648,10 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         ## Import
 
-        Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+        Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
 
         ```sh
-         $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster_id
+         $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes main cluster_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -2633,12 +2672,12 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] cpu_policy: (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
-        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] enable_ssh: (Optional) Enable login to the node through SSH. Default to `false`.
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
         :param pulumi.Input[bool] exclude_autoscaler_nodes: (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         :param pulumi.Input[str] image_id: (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
-        :param pulumi.Input[bool] install_cloud_monitor: (Optional) Install cloud monitor agent on ECS. Default to `true`.
+        :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. Default to `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] key_name: (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[str] kms_encrypted_password: (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -2654,12 +2693,13 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] os_type: (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
         :param pulumi.Input[str] password: (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[str] platform: (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
-        :param pulumi.Input[str] pod_cidr: - [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+        :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']] runtime: (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        :param pulumi.Input[pulumi.InputType['ManagedKubernetesRrsaMetadataArgs']] rrsa_metadata: (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        :param pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']] runtime: (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -2671,7 +2711,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[bool] worker_auto_renew: (Optional) Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[int] worker_auto_renew_period: (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] worker_data_disk_category: The data disk category of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[int] worker_data_disk_size: The data disk size of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerDataDiskArgs']]]] worker_data_disks: (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
@@ -2679,7 +2719,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] worker_disk_performance_level: (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] worker_disk_size: (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         :param pulumi.Input[str] worker_disk_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
-        :param pulumi.Input[str] worker_instance_charge_type: (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        :param pulumi.Input[str] worker_instance_charge_type: (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         :param pulumi.Input[int] worker_number: (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         :param pulumi.Input[int] worker_period: (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
@@ -2695,10 +2735,10 @@ class ManagedKubernetes(pulumi.CustomResource):
         """
         ## Import
 
-        Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+        Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
 
         ```sh
-         $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster_id
+         $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes main cluster_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -2758,6 +2798,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rrsa_metadata: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesRrsaMetadataArgs']]] = None,
                  runtime: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -2841,6 +2882,9 @@ class ManagedKubernetes(pulumi.CustomResource):
                 warnings.warn("""Field 'kms_encryption_context' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encryption_context' to replace it""", DeprecationWarning)
                 pulumi.log.warn("""kms_encryption_context is deprecated: Field 'kms_encryption_context' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'kms_encryption_context' to replace it""")
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            if kube_config is not None and not opts.urn:
+                warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
+                pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
             __props__.__dict__["kube_config"] = kube_config
             __props__.__dict__["load_balancer_spec"] = load_balancer_spec
             __props__.__dict__["maintenance_window"] = maintenance_window
@@ -2863,7 +2907,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             if password is not None and not opts.urn:
                 warnings.warn("""Field 'password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'password' to replace it""", DeprecationWarning)
                 pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'password' to replace it""")
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             if platform is not None and not opts.urn:
                 warnings.warn("""Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'platform' to replace it.""", DeprecationWarning)
                 pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'platform' to replace it.""")
@@ -2877,6 +2921,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["retain_resources"] = retain_resources
+            __props__.__dict__["rrsa_metadata"] = rrsa_metadata
             if runtime is not None and not opts.urn:
                 warnings.warn("""Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.""", DeprecationWarning)
                 pulumi.log.warn("""runtime is deprecated: Field 'runtime' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'runtime_name' and 'runtime_version' to replace it.""")
@@ -2965,6 +3010,8 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = None
             __props__.__dict__["worker_nodes"] = None
             __props__.__dict__["worker_ram_role_name"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ManagedKubernetes, __self__).__init__(
             'alicloud:cs/managedKubernetes:ManagedKubernetes',
             resource_name,
@@ -3020,6 +3067,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            rrsa_metadata: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesRrsaMetadataArgs']]] = None,
             runtime: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             service_account_issuer: Optional[pulumi.Input[str]] = None,
@@ -3077,12 +3125,12 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] cpu_policy: (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
-        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] enable_ssh: (Optional) Enable login to the node through SSH. Default to `false`.
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
         :param pulumi.Input[bool] exclude_autoscaler_nodes: (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         :param pulumi.Input[str] image_id: (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
-        :param pulumi.Input[bool] install_cloud_monitor: (Optional) Install cloud monitor agent on ECS. Default to `true`.
+        :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. Default to `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] key_name: (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[str] kms_encrypted_password: (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -3099,12 +3147,13 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] os_type: (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
         :param pulumi.Input[str] password: (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         :param pulumi.Input[str] platform: (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
-        :param pulumi.Input[str] pod_cidr: - [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+        :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']] runtime: (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        :param pulumi.Input[pulumi.InputType['ManagedKubernetesRrsaMetadataArgs']] rrsa_metadata: (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        :param pulumi.Input[pulumi.InputType['ManagedKubernetesRuntimeArgs']] runtime: (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -3120,7 +3169,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[bool] worker_auto_renew: (Optional) Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[int] worker_auto_renew_period: (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] worker_data_disk_category: The data disk category of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[int] worker_data_disk_size: The data disk size of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerDataDiskArgs']]]] worker_data_disks: (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
@@ -3128,7 +3177,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] worker_disk_performance_level: (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] worker_disk_size: (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         :param pulumi.Input[str] worker_disk_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
-        :param pulumi.Input[str] worker_instance_charge_type: (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        :param pulumi.Input[str] worker_instance_charge_type: (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerNodeArgs']]]] worker_nodes: (Deprecated from version 1.177.0) List of cluster worker nodes.
         :param pulumi.Input[int] worker_number: (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
@@ -3186,6 +3235,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["rds_instances"] = rds_instances
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retain_resources"] = retain_resources
+        __props__.__dict__["rrsa_metadata"] = rrsa_metadata
         __props__.__dict__["runtime"] = runtime
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["service_account_issuer"] = service_account_issuer
@@ -3354,7 +3404,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         """
         return pulumi.get(self, "enable_rrsa")
 
@@ -3394,7 +3444,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="installCloudMonitor")
     def install_cloud_monitor(self) -> pulumi.Output[Optional[bool]]:
         """
-        (Optional) Install cloud monitor agent on ECS. Default to `true`.
+        Install cloud monitor agent on ECS. Default to `true`.
         """
         return pulumi.get(self, "install_cloud_monitor")
 
@@ -3535,7 +3585,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="podCidr")
     def pod_cidr(self) -> pulumi.Output[Optional[str]]:
         """
-        - [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        [Flannel Specific] The CIDR block for the pod network when using Flannel.
         """
         return pulumi.get(self, "pod_cidr")
 
@@ -3543,7 +3593,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="podVswitchIds")
     def pod_vswitch_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+        [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         """
         return pulumi.get(self, "pod_vswitch_ids")
 
@@ -3577,10 +3627,18 @@ class ManagedKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "retain_resources")
 
     @property
+    @pulumi.getter(name="rrsaMetadata")
+    def rrsa_metadata(self) -> pulumi.Output['outputs.ManagedKubernetesRrsaMetadata']:
+        """
+        (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        """
+        return pulumi.get(self, "rrsa_metadata")
+
+    @property
     @pulumi.getter
     def runtime(self) -> pulumi.Output[Optional['outputs.ManagedKubernetesRuntime']]:
         """
-        (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         """
         return pulumi.get(self, "runtime")
 
@@ -3708,7 +3766,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerAutoRenewPeriod")
     def worker_auto_renew_period(self) -> pulumi.Output[int]:
         """
-        (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
         return pulumi.get(self, "worker_auto_renew_period")
 
@@ -3770,9 +3828,9 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerInstanceChargeType")
-    def worker_instance_charge_type(self) -> pulumi.Output[Optional[str]]:
+    def worker_instance_charge_type(self) -> pulumi.Output[str]:
         """
-        (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         """
         return pulumi.get(self, "worker_instance_charge_type")
 

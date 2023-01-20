@@ -13,24 +13,20 @@ namespace Pulumi.AliCloud.Dns
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Add a new Domain group.
-    ///         var @group = new AliCloud.Dns.Group("group", new AliCloud.Dns.GroupArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     // Add a new Domain group.
+    ///     var @group = new AliCloud.Dns.Group("group");
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/group:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the domain group.
@@ -82,7 +78,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the domain group.
@@ -93,9 +89,10 @@ namespace Pulumi.AliCloud.Dns
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 
-    public sealed class GroupState : Pulumi.ResourceArgs
+    public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the domain group.
@@ -106,5 +103,6 @@ namespace Pulumi.AliCloud.Dns
         public GroupState()
         {
         }
+        public static new GroupState Empty => new GroupState();
     }
 }

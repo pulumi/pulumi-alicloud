@@ -672,6 +672,109 @@ func (o RdsCloneDbInstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) RdsClon
 	}).(RdsCloneDbInstancePgHbaConfOutput)
 }
 
+type RdsDbProxyReadOnlyInstanceWeight struct {
+	// The Id of instance that can run database.
+	InstanceId string `pulumi:"instanceId"`
+	Weight     string `pulumi:"weight"`
+}
+
+// RdsDbProxyReadOnlyInstanceWeightInput is an input type that accepts RdsDbProxyReadOnlyInstanceWeightArgs and RdsDbProxyReadOnlyInstanceWeightOutput values.
+// You can construct a concrete instance of `RdsDbProxyReadOnlyInstanceWeightInput` via:
+//
+//	RdsDbProxyReadOnlyInstanceWeightArgs{...}
+type RdsDbProxyReadOnlyInstanceWeightInput interface {
+	pulumi.Input
+
+	ToRdsDbProxyReadOnlyInstanceWeightOutput() RdsDbProxyReadOnlyInstanceWeightOutput
+	ToRdsDbProxyReadOnlyInstanceWeightOutputWithContext(context.Context) RdsDbProxyReadOnlyInstanceWeightOutput
+}
+
+type RdsDbProxyReadOnlyInstanceWeightArgs struct {
+	// The Id of instance that can run database.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	Weight     pulumi.StringInput `pulumi:"weight"`
+}
+
+func (RdsDbProxyReadOnlyInstanceWeightArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsDbProxyReadOnlyInstanceWeight)(nil)).Elem()
+}
+
+func (i RdsDbProxyReadOnlyInstanceWeightArgs) ToRdsDbProxyReadOnlyInstanceWeightOutput() RdsDbProxyReadOnlyInstanceWeightOutput {
+	return i.ToRdsDbProxyReadOnlyInstanceWeightOutputWithContext(context.Background())
+}
+
+func (i RdsDbProxyReadOnlyInstanceWeightArgs) ToRdsDbProxyReadOnlyInstanceWeightOutputWithContext(ctx context.Context) RdsDbProxyReadOnlyInstanceWeightOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsDbProxyReadOnlyInstanceWeightOutput)
+}
+
+// RdsDbProxyReadOnlyInstanceWeightArrayInput is an input type that accepts RdsDbProxyReadOnlyInstanceWeightArray and RdsDbProxyReadOnlyInstanceWeightArrayOutput values.
+// You can construct a concrete instance of `RdsDbProxyReadOnlyInstanceWeightArrayInput` via:
+//
+//	RdsDbProxyReadOnlyInstanceWeightArray{ RdsDbProxyReadOnlyInstanceWeightArgs{...} }
+type RdsDbProxyReadOnlyInstanceWeightArrayInput interface {
+	pulumi.Input
+
+	ToRdsDbProxyReadOnlyInstanceWeightArrayOutput() RdsDbProxyReadOnlyInstanceWeightArrayOutput
+	ToRdsDbProxyReadOnlyInstanceWeightArrayOutputWithContext(context.Context) RdsDbProxyReadOnlyInstanceWeightArrayOutput
+}
+
+type RdsDbProxyReadOnlyInstanceWeightArray []RdsDbProxyReadOnlyInstanceWeightInput
+
+func (RdsDbProxyReadOnlyInstanceWeightArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RdsDbProxyReadOnlyInstanceWeight)(nil)).Elem()
+}
+
+func (i RdsDbProxyReadOnlyInstanceWeightArray) ToRdsDbProxyReadOnlyInstanceWeightArrayOutput() RdsDbProxyReadOnlyInstanceWeightArrayOutput {
+	return i.ToRdsDbProxyReadOnlyInstanceWeightArrayOutputWithContext(context.Background())
+}
+
+func (i RdsDbProxyReadOnlyInstanceWeightArray) ToRdsDbProxyReadOnlyInstanceWeightArrayOutputWithContext(ctx context.Context) RdsDbProxyReadOnlyInstanceWeightArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsDbProxyReadOnlyInstanceWeightArrayOutput)
+}
+
+type RdsDbProxyReadOnlyInstanceWeightOutput struct{ *pulumi.OutputState }
+
+func (RdsDbProxyReadOnlyInstanceWeightOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsDbProxyReadOnlyInstanceWeight)(nil)).Elem()
+}
+
+func (o RdsDbProxyReadOnlyInstanceWeightOutput) ToRdsDbProxyReadOnlyInstanceWeightOutput() RdsDbProxyReadOnlyInstanceWeightOutput {
+	return o
+}
+
+func (o RdsDbProxyReadOnlyInstanceWeightOutput) ToRdsDbProxyReadOnlyInstanceWeightOutputWithContext(ctx context.Context) RdsDbProxyReadOnlyInstanceWeightOutput {
+	return o
+}
+
+// The Id of instance that can run database.
+func (o RdsDbProxyReadOnlyInstanceWeightOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsDbProxyReadOnlyInstanceWeight) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o RdsDbProxyReadOnlyInstanceWeightOutput) Weight() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsDbProxyReadOnlyInstanceWeight) string { return v.Weight }).(pulumi.StringOutput)
+}
+
+type RdsDbProxyReadOnlyInstanceWeightArrayOutput struct{ *pulumi.OutputState }
+
+func (RdsDbProxyReadOnlyInstanceWeightArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RdsDbProxyReadOnlyInstanceWeight)(nil)).Elem()
+}
+
+func (o RdsDbProxyReadOnlyInstanceWeightArrayOutput) ToRdsDbProxyReadOnlyInstanceWeightArrayOutput() RdsDbProxyReadOnlyInstanceWeightArrayOutput {
+	return o
+}
+
+func (o RdsDbProxyReadOnlyInstanceWeightArrayOutput) ToRdsDbProxyReadOnlyInstanceWeightArrayOutputWithContext(ctx context.Context) RdsDbProxyReadOnlyInstanceWeightArrayOutput {
+	return o
+}
+
+func (o RdsDbProxyReadOnlyInstanceWeightArrayOutput) Index(i pulumi.IntInput) RdsDbProxyReadOnlyInstanceWeightOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsDbProxyReadOnlyInstanceWeight {
+		return vs[0].([]RdsDbProxyReadOnlyInstanceWeight)[vs[1].(int)]
+	}).(RdsDbProxyReadOnlyInstanceWeightOutput)
+}
+
 type RdsParameterGroupParamDetail struct {
 	// The name of a parameter.
 	ParamName string `pulumi:"paramName"`
@@ -1411,6 +1514,591 @@ func (o GetAccountsAccountDatabasePrivilegeArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccountDatabasePrivilege {
 		return vs[0].([]GetAccountsAccountDatabasePrivilege)[vs[1].(int)]
 	}).(GetAccountsAccountDatabasePrivilegeOutput)
+}
+
+type GetCrossRegionBackupsBackup struct {
+	// The time when the cross-region data backup file was generated.
+	BackupEndTime string `pulumi:"backupEndTime"`
+	// The method that is used to generate the cross-region data backup file. Valid values:
+	// `L` - logical backup.
+	// `P` - physical backup.
+	BackupMethod string `pulumi:"backupMethod"`
+	// The level at which the cross-region data backup file is generated.
+	// `0` - instance-level backup.
+	// `1` - database-level backup.
+	BackupSetScale string `pulumi:"backupSetScale"`
+	// TThe status of the cross-region data backup. Valid values:
+	// `0` - The cross-region data backup is successful.
+	// `1` - The cross-region data backup failed.
+	BackupSetStatus int `pulumi:"backupSetStatus"`
+	// The time when the cross-region data backup started.
+	BackupStartTime string `pulumi:"backupStartTime"`
+	// The type of the cross-region data backup. Valid values:F: full data backup
+	// `F` - full data backup.
+	// `I` - incremental data backup.
+	BackupType string `pulumi:"backupType"`
+	// The RDS edition of the instance. Valid values:
+	// `Basic` - Basic Edition.
+	// `HighAvailability` - High-availability Edition.
+	// `Finance` - Enterprise Edition. This edition is supported only by the China site (aliyun.com).
+	Category string `pulumi:"category"`
+	// The point in time that is indicated by the data in the cross-region data backup file.
+	ConsistentTime string `pulumi:"consistentTime"`
+	// The external URL from which you can download the cross-region data backup file.
+	CrossBackupDownloadLink string `pulumi:"crossBackupDownloadLink"`
+	// The ID of the cross-region data backup file.
+	CrossBackupId string `pulumi:"crossBackupId"`
+	// The ID of the destination region where the cross-region data backup file of the instance is stored.
+	CrossBackupRegion string `pulumi:"crossBackupRegion"`
+	// The name of the compressed package that contains the cross-region data backup file.
+	CrossBackupSetFile string `pulumi:"crossBackupSetFile"`
+	// The location where the cross-region data backup file is stored.
+	CrossBackupSetLocation string `pulumi:"crossBackupSetLocation"`
+	// The size of the cross-region data backup file. Unit: bytes.
+	CrossBackupSetSize int `pulumi:"crossBackupSetSize"`
+	// The storage type.
+	DbInstanceStorageType string `pulumi:"dbInstanceStorageType"`
+	// The engine of the database.
+	Engine string `pulumi:"engine"`
+	// The version of the database engine.
+	EngineVersion string `pulumi:"engineVersion"`
+	// The ID of the cross-region data backup file.
+	Id string `pulumi:"id"`
+	// The ID of the instance. This parameter is used to determine whether the instance that generates the cross-region data backup file is a primary or secondary instance.
+	InstanceId int `pulumi:"instanceId"`
+	// The start time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	RecoveryBeginTime string `pulumi:"recoveryBeginTime"`
+	// The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	RecoveryEndTime string `pulumi:"recoveryEndTime"`
+	// An array that consists of the regions to which the cross-region data backup file can be restored.
+	RestoreRegions []string `pulumi:"restoreRegions"`
+}
+
+// GetCrossRegionBackupsBackupInput is an input type that accepts GetCrossRegionBackupsBackupArgs and GetCrossRegionBackupsBackupOutput values.
+// You can construct a concrete instance of `GetCrossRegionBackupsBackupInput` via:
+//
+//	GetCrossRegionBackupsBackupArgs{...}
+type GetCrossRegionBackupsBackupInput interface {
+	pulumi.Input
+
+	ToGetCrossRegionBackupsBackupOutput() GetCrossRegionBackupsBackupOutput
+	ToGetCrossRegionBackupsBackupOutputWithContext(context.Context) GetCrossRegionBackupsBackupOutput
+}
+
+type GetCrossRegionBackupsBackupArgs struct {
+	// The time when the cross-region data backup file was generated.
+	BackupEndTime pulumi.StringInput `pulumi:"backupEndTime"`
+	// The method that is used to generate the cross-region data backup file. Valid values:
+	// `L` - logical backup.
+	// `P` - physical backup.
+	BackupMethod pulumi.StringInput `pulumi:"backupMethod"`
+	// The level at which the cross-region data backup file is generated.
+	// `0` - instance-level backup.
+	// `1` - database-level backup.
+	BackupSetScale pulumi.StringInput `pulumi:"backupSetScale"`
+	// TThe status of the cross-region data backup. Valid values:
+	// `0` - The cross-region data backup is successful.
+	// `1` - The cross-region data backup failed.
+	BackupSetStatus pulumi.IntInput `pulumi:"backupSetStatus"`
+	// The time when the cross-region data backup started.
+	BackupStartTime pulumi.StringInput `pulumi:"backupStartTime"`
+	// The type of the cross-region data backup. Valid values:F: full data backup
+	// `F` - full data backup.
+	// `I` - incremental data backup.
+	BackupType pulumi.StringInput `pulumi:"backupType"`
+	// The RDS edition of the instance. Valid values:
+	// `Basic` - Basic Edition.
+	// `HighAvailability` - High-availability Edition.
+	// `Finance` - Enterprise Edition. This edition is supported only by the China site (aliyun.com).
+	Category pulumi.StringInput `pulumi:"category"`
+	// The point in time that is indicated by the data in the cross-region data backup file.
+	ConsistentTime pulumi.StringInput `pulumi:"consistentTime"`
+	// The external URL from which you can download the cross-region data backup file.
+	CrossBackupDownloadLink pulumi.StringInput `pulumi:"crossBackupDownloadLink"`
+	// The ID of the cross-region data backup file.
+	CrossBackupId pulumi.StringInput `pulumi:"crossBackupId"`
+	// The ID of the destination region where the cross-region data backup file of the instance is stored.
+	CrossBackupRegion pulumi.StringInput `pulumi:"crossBackupRegion"`
+	// The name of the compressed package that contains the cross-region data backup file.
+	CrossBackupSetFile pulumi.StringInput `pulumi:"crossBackupSetFile"`
+	// The location where the cross-region data backup file is stored.
+	CrossBackupSetLocation pulumi.StringInput `pulumi:"crossBackupSetLocation"`
+	// The size of the cross-region data backup file. Unit: bytes.
+	CrossBackupSetSize pulumi.IntInput `pulumi:"crossBackupSetSize"`
+	// The storage type.
+	DbInstanceStorageType pulumi.StringInput `pulumi:"dbInstanceStorageType"`
+	// The engine of the database.
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// The version of the database engine.
+	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
+	// The ID of the cross-region data backup file.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the instance. This parameter is used to determine whether the instance that generates the cross-region data backup file is a primary or secondary instance.
+	InstanceId pulumi.IntInput `pulumi:"instanceId"`
+	// The start time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	RecoveryBeginTime pulumi.StringInput `pulumi:"recoveryBeginTime"`
+	// The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	RecoveryEndTime pulumi.StringInput `pulumi:"recoveryEndTime"`
+	// An array that consists of the regions to which the cross-region data backup file can be restored.
+	RestoreRegions pulumi.StringArrayInput `pulumi:"restoreRegions"`
+}
+
+func (GetCrossRegionBackupsBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCrossRegionBackupsBackup)(nil)).Elem()
+}
+
+func (i GetCrossRegionBackupsBackupArgs) ToGetCrossRegionBackupsBackupOutput() GetCrossRegionBackupsBackupOutput {
+	return i.ToGetCrossRegionBackupsBackupOutputWithContext(context.Background())
+}
+
+func (i GetCrossRegionBackupsBackupArgs) ToGetCrossRegionBackupsBackupOutputWithContext(ctx context.Context) GetCrossRegionBackupsBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCrossRegionBackupsBackupOutput)
+}
+
+// GetCrossRegionBackupsBackupArrayInput is an input type that accepts GetCrossRegionBackupsBackupArray and GetCrossRegionBackupsBackupArrayOutput values.
+// You can construct a concrete instance of `GetCrossRegionBackupsBackupArrayInput` via:
+//
+//	GetCrossRegionBackupsBackupArray{ GetCrossRegionBackupsBackupArgs{...} }
+type GetCrossRegionBackupsBackupArrayInput interface {
+	pulumi.Input
+
+	ToGetCrossRegionBackupsBackupArrayOutput() GetCrossRegionBackupsBackupArrayOutput
+	ToGetCrossRegionBackupsBackupArrayOutputWithContext(context.Context) GetCrossRegionBackupsBackupArrayOutput
+}
+
+type GetCrossRegionBackupsBackupArray []GetCrossRegionBackupsBackupInput
+
+func (GetCrossRegionBackupsBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCrossRegionBackupsBackup)(nil)).Elem()
+}
+
+func (i GetCrossRegionBackupsBackupArray) ToGetCrossRegionBackupsBackupArrayOutput() GetCrossRegionBackupsBackupArrayOutput {
+	return i.ToGetCrossRegionBackupsBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetCrossRegionBackupsBackupArray) ToGetCrossRegionBackupsBackupArrayOutputWithContext(ctx context.Context) GetCrossRegionBackupsBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCrossRegionBackupsBackupArrayOutput)
+}
+
+type GetCrossRegionBackupsBackupOutput struct{ *pulumi.OutputState }
+
+func (GetCrossRegionBackupsBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCrossRegionBackupsBackup)(nil)).Elem()
+}
+
+func (o GetCrossRegionBackupsBackupOutput) ToGetCrossRegionBackupsBackupOutput() GetCrossRegionBackupsBackupOutput {
+	return o
+}
+
+func (o GetCrossRegionBackupsBackupOutput) ToGetCrossRegionBackupsBackupOutputWithContext(ctx context.Context) GetCrossRegionBackupsBackupOutput {
+	return o
+}
+
+// The time when the cross-region data backup file was generated.
+func (o GetCrossRegionBackupsBackupOutput) BackupEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.BackupEndTime }).(pulumi.StringOutput)
+}
+
+// The method that is used to generate the cross-region data backup file. Valid values:
+// `L` - logical backup.
+// `P` - physical backup.
+func (o GetCrossRegionBackupsBackupOutput) BackupMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.BackupMethod }).(pulumi.StringOutput)
+}
+
+// The level at which the cross-region data backup file is generated.
+// `0` - instance-level backup.
+// `1` - database-level backup.
+func (o GetCrossRegionBackupsBackupOutput) BackupSetScale() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.BackupSetScale }).(pulumi.StringOutput)
+}
+
+// TThe status of the cross-region data backup. Valid values:
+// `0` - The cross-region data backup is successful.
+// `1` - The cross-region data backup failed.
+func (o GetCrossRegionBackupsBackupOutput) BackupSetStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) int { return v.BackupSetStatus }).(pulumi.IntOutput)
+}
+
+// The time when the cross-region data backup started.
+func (o GetCrossRegionBackupsBackupOutput) BackupStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.BackupStartTime }).(pulumi.StringOutput)
+}
+
+// The type of the cross-region data backup. Valid values:F: full data backup
+// `F` - full data backup.
+// `I` - incremental data backup.
+func (o GetCrossRegionBackupsBackupOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The RDS edition of the instance. Valid values:
+// `Basic` - Basic Edition.
+// `HighAvailability` - High-availability Edition.
+// `Finance` - Enterprise Edition. This edition is supported only by the China site (aliyun.com).
+func (o GetCrossRegionBackupsBackupOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The point in time that is indicated by the data in the cross-region data backup file.
+func (o GetCrossRegionBackupsBackupOutput) ConsistentTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.ConsistentTime }).(pulumi.StringOutput)
+}
+
+// The external URL from which you can download the cross-region data backup file.
+func (o GetCrossRegionBackupsBackupOutput) CrossBackupDownloadLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.CrossBackupDownloadLink }).(pulumi.StringOutput)
+}
+
+// The ID of the cross-region data backup file.
+func (o GetCrossRegionBackupsBackupOutput) CrossBackupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.CrossBackupId }).(pulumi.StringOutput)
+}
+
+// The ID of the destination region where the cross-region data backup file of the instance is stored.
+func (o GetCrossRegionBackupsBackupOutput) CrossBackupRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.CrossBackupRegion }).(pulumi.StringOutput)
+}
+
+// The name of the compressed package that contains the cross-region data backup file.
+func (o GetCrossRegionBackupsBackupOutput) CrossBackupSetFile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.CrossBackupSetFile }).(pulumi.StringOutput)
+}
+
+// The location where the cross-region data backup file is stored.
+func (o GetCrossRegionBackupsBackupOutput) CrossBackupSetLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.CrossBackupSetLocation }).(pulumi.StringOutput)
+}
+
+// The size of the cross-region data backup file. Unit: bytes.
+func (o GetCrossRegionBackupsBackupOutput) CrossBackupSetSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) int { return v.CrossBackupSetSize }).(pulumi.IntOutput)
+}
+
+// The storage type.
+func (o GetCrossRegionBackupsBackupOutput) DbInstanceStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.DbInstanceStorageType }).(pulumi.StringOutput)
+}
+
+// The engine of the database.
+func (o GetCrossRegionBackupsBackupOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// The version of the database engine.
+func (o GetCrossRegionBackupsBackupOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// The ID of the cross-region data backup file.
+func (o GetCrossRegionBackupsBackupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the instance. This parameter is used to determine whether the instance that generates the cross-region data backup file is a primary or secondary instance.
+func (o GetCrossRegionBackupsBackupOutput) InstanceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) int { return v.InstanceId }).(pulumi.IntOutput)
+}
+
+// The start time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o GetCrossRegionBackupsBackupOutput) RecoveryBeginTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.RecoveryBeginTime }).(pulumi.StringOutput)
+}
+
+// The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o GetCrossRegionBackupsBackupOutput) RecoveryEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) string { return v.RecoveryEndTime }).(pulumi.StringOutput)
+}
+
+// An array that consists of the regions to which the cross-region data backup file can be restored.
+func (o GetCrossRegionBackupsBackupOutput) RestoreRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCrossRegionBackupsBackup) []string { return v.RestoreRegions }).(pulumi.StringArrayOutput)
+}
+
+type GetCrossRegionBackupsBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCrossRegionBackupsBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCrossRegionBackupsBackup)(nil)).Elem()
+}
+
+func (o GetCrossRegionBackupsBackupArrayOutput) ToGetCrossRegionBackupsBackupArrayOutput() GetCrossRegionBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetCrossRegionBackupsBackupArrayOutput) ToGetCrossRegionBackupsBackupArrayOutputWithContext(ctx context.Context) GetCrossRegionBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetCrossRegionBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetCrossRegionBackupsBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCrossRegionBackupsBackup {
+		return vs[0].([]GetCrossRegionBackupsBackup)[vs[1].(int)]
+	}).(GetCrossRegionBackupsBackupOutput)
+}
+
+type GetCrossRegionsRegion struct {
+	// ID of the region.
+	Id string `pulumi:"id"`
+}
+
+// GetCrossRegionsRegionInput is an input type that accepts GetCrossRegionsRegionArgs and GetCrossRegionsRegionOutput values.
+// You can construct a concrete instance of `GetCrossRegionsRegionInput` via:
+//
+//	GetCrossRegionsRegionArgs{...}
+type GetCrossRegionsRegionInput interface {
+	pulumi.Input
+
+	ToGetCrossRegionsRegionOutput() GetCrossRegionsRegionOutput
+	ToGetCrossRegionsRegionOutputWithContext(context.Context) GetCrossRegionsRegionOutput
+}
+
+type GetCrossRegionsRegionArgs struct {
+	// ID of the region.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCrossRegionsRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCrossRegionsRegion)(nil)).Elem()
+}
+
+func (i GetCrossRegionsRegionArgs) ToGetCrossRegionsRegionOutput() GetCrossRegionsRegionOutput {
+	return i.ToGetCrossRegionsRegionOutputWithContext(context.Background())
+}
+
+func (i GetCrossRegionsRegionArgs) ToGetCrossRegionsRegionOutputWithContext(ctx context.Context) GetCrossRegionsRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCrossRegionsRegionOutput)
+}
+
+// GetCrossRegionsRegionArrayInput is an input type that accepts GetCrossRegionsRegionArray and GetCrossRegionsRegionArrayOutput values.
+// You can construct a concrete instance of `GetCrossRegionsRegionArrayInput` via:
+//
+//	GetCrossRegionsRegionArray{ GetCrossRegionsRegionArgs{...} }
+type GetCrossRegionsRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetCrossRegionsRegionArrayOutput() GetCrossRegionsRegionArrayOutput
+	ToGetCrossRegionsRegionArrayOutputWithContext(context.Context) GetCrossRegionsRegionArrayOutput
+}
+
+type GetCrossRegionsRegionArray []GetCrossRegionsRegionInput
+
+func (GetCrossRegionsRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCrossRegionsRegion)(nil)).Elem()
+}
+
+func (i GetCrossRegionsRegionArray) ToGetCrossRegionsRegionArrayOutput() GetCrossRegionsRegionArrayOutput {
+	return i.ToGetCrossRegionsRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetCrossRegionsRegionArray) ToGetCrossRegionsRegionArrayOutputWithContext(ctx context.Context) GetCrossRegionsRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCrossRegionsRegionArrayOutput)
+}
+
+type GetCrossRegionsRegionOutput struct{ *pulumi.OutputState }
+
+func (GetCrossRegionsRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCrossRegionsRegion)(nil)).Elem()
+}
+
+func (o GetCrossRegionsRegionOutput) ToGetCrossRegionsRegionOutput() GetCrossRegionsRegionOutput {
+	return o
+}
+
+func (o GetCrossRegionsRegionOutput) ToGetCrossRegionsRegionOutputWithContext(ctx context.Context) GetCrossRegionsRegionOutput {
+	return o
+}
+
+// ID of the region.
+func (o GetCrossRegionsRegionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCrossRegionsRegion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCrossRegionsRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCrossRegionsRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCrossRegionsRegion)(nil)).Elem()
+}
+
+func (o GetCrossRegionsRegionArrayOutput) ToGetCrossRegionsRegionArrayOutput() GetCrossRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetCrossRegionsRegionArrayOutput) ToGetCrossRegionsRegionArrayOutputWithContext(ctx context.Context) GetCrossRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetCrossRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetCrossRegionsRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCrossRegionsRegion {
+		return vs[0].([]GetCrossRegionsRegion)[vs[1].(int)]
+	}).(GetCrossRegionsRegionOutput)
+}
+
+type GetInstanceClassInfosInfo struct {
+	// The code of the instance type.
+	ClassCode *string `pulumi:"classCode"`
+	// The instance family of the instance.
+	ClassGroup *string `pulumi:"classGroup"`
+	// The number of cores that are supported by the instance type. Unit: cores.
+	Cpu *string `pulumi:"cpu"`
+	// The architecture of the instance type.
+	InstructionSetArch *string `pulumi:"instructionSetArch"`
+	// The maximum number of connections that are supported by the instance type. Unit: connections.
+	MaxConnections *string `pulumi:"maxConnections"`
+	// The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
+	MaxIombps *string `pulumi:"maxIombps"`
+	// The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
+	MaxIops *string `pulumi:"maxIops"`
+	// The memory capacity that is supported by the instance type. Unit: GB.
+	MemoryClass *string `pulumi:"memoryClass"`
+	// The fee that you must pay for the instance type. Unit: cent (USD).
+	ReferencePrice *string `pulumi:"referencePrice"`
+}
+
+// GetInstanceClassInfosInfoInput is an input type that accepts GetInstanceClassInfosInfoArgs and GetInstanceClassInfosInfoOutput values.
+// You can construct a concrete instance of `GetInstanceClassInfosInfoInput` via:
+//
+//	GetInstanceClassInfosInfoArgs{...}
+type GetInstanceClassInfosInfoInput interface {
+	pulumi.Input
+
+	ToGetInstanceClassInfosInfoOutput() GetInstanceClassInfosInfoOutput
+	ToGetInstanceClassInfosInfoOutputWithContext(context.Context) GetInstanceClassInfosInfoOutput
+}
+
+type GetInstanceClassInfosInfoArgs struct {
+	// The code of the instance type.
+	ClassCode pulumi.StringPtrInput `pulumi:"classCode"`
+	// The instance family of the instance.
+	ClassGroup pulumi.StringPtrInput `pulumi:"classGroup"`
+	// The number of cores that are supported by the instance type. Unit: cores.
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// The architecture of the instance type.
+	InstructionSetArch pulumi.StringPtrInput `pulumi:"instructionSetArch"`
+	// The maximum number of connections that are supported by the instance type. Unit: connections.
+	MaxConnections pulumi.StringPtrInput `pulumi:"maxConnections"`
+	// The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
+	MaxIombps pulumi.StringPtrInput `pulumi:"maxIombps"`
+	// The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
+	MaxIops pulumi.StringPtrInput `pulumi:"maxIops"`
+	// The memory capacity that is supported by the instance type. Unit: GB.
+	MemoryClass pulumi.StringPtrInput `pulumi:"memoryClass"`
+	// The fee that you must pay for the instance type. Unit: cent (USD).
+	ReferencePrice pulumi.StringPtrInput `pulumi:"referencePrice"`
+}
+
+func (GetInstanceClassInfosInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceClassInfosInfo)(nil)).Elem()
+}
+
+func (i GetInstanceClassInfosInfoArgs) ToGetInstanceClassInfosInfoOutput() GetInstanceClassInfosInfoOutput {
+	return i.ToGetInstanceClassInfosInfoOutputWithContext(context.Background())
+}
+
+func (i GetInstanceClassInfosInfoArgs) ToGetInstanceClassInfosInfoOutputWithContext(ctx context.Context) GetInstanceClassInfosInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClassInfosInfoOutput)
+}
+
+// GetInstanceClassInfosInfoArrayInput is an input type that accepts GetInstanceClassInfosInfoArray and GetInstanceClassInfosInfoArrayOutput values.
+// You can construct a concrete instance of `GetInstanceClassInfosInfoArrayInput` via:
+//
+//	GetInstanceClassInfosInfoArray{ GetInstanceClassInfosInfoArgs{...} }
+type GetInstanceClassInfosInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceClassInfosInfoArrayOutput() GetInstanceClassInfosInfoArrayOutput
+	ToGetInstanceClassInfosInfoArrayOutputWithContext(context.Context) GetInstanceClassInfosInfoArrayOutput
+}
+
+type GetInstanceClassInfosInfoArray []GetInstanceClassInfosInfoInput
+
+func (GetInstanceClassInfosInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceClassInfosInfo)(nil)).Elem()
+}
+
+func (i GetInstanceClassInfosInfoArray) ToGetInstanceClassInfosInfoArrayOutput() GetInstanceClassInfosInfoArrayOutput {
+	return i.ToGetInstanceClassInfosInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceClassInfosInfoArray) ToGetInstanceClassInfosInfoArrayOutputWithContext(ctx context.Context) GetInstanceClassInfosInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClassInfosInfoArrayOutput)
+}
+
+type GetInstanceClassInfosInfoOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceClassInfosInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceClassInfosInfo)(nil)).Elem()
+}
+
+func (o GetInstanceClassInfosInfoOutput) ToGetInstanceClassInfosInfoOutput() GetInstanceClassInfosInfoOutput {
+	return o
+}
+
+func (o GetInstanceClassInfosInfoOutput) ToGetInstanceClassInfosInfoOutputWithContext(ctx context.Context) GetInstanceClassInfosInfoOutput {
+	return o
+}
+
+// The code of the instance type.
+func (o GetInstanceClassInfosInfoOutput) ClassCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassInfosInfo) *string { return v.ClassCode }).(pulumi.StringPtrOutput)
+}
+
+// The instance family of the instance.
+func (o GetInstanceClassInfosInfoOutput) ClassGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassInfosInfo) *string { return v.ClassGroup }).(pulumi.StringPtrOutput)
+}
+
+// The number of cores that are supported by the instance type. Unit: cores.
+func (o GetInstanceClassInfosInfoOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassInfosInfo) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// The architecture of the instance type.
+func (o GetInstanceClassInfosInfoOutput) InstructionSetArch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassInfosInfo) *string { return v.InstructionSetArch }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of connections that are supported by the instance type. Unit: connections.
+func (o GetInstanceClassInfosInfoOutput) MaxConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassInfosInfo) *string { return v.MaxConnections }).(pulumi.StringPtrOutput)
+}
+
+// The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
+func (o GetInstanceClassInfosInfoOutput) MaxIombps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassInfosInfo) *string { return v.MaxIombps }).(pulumi.StringPtrOutput)
+}
+
+// The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
+func (o GetInstanceClassInfosInfoOutput) MaxIops() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassInfosInfo) *string { return v.MaxIops }).(pulumi.StringPtrOutput)
+}
+
+// The memory capacity that is supported by the instance type. Unit: GB.
+func (o GetInstanceClassInfosInfoOutput) MemoryClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassInfosInfo) *string { return v.MemoryClass }).(pulumi.StringPtrOutput)
+}
+
+// The fee that you must pay for the instance type. Unit: cent (USD).
+func (o GetInstanceClassInfosInfoOutput) ReferencePrice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceClassInfosInfo) *string { return v.ReferencePrice }).(pulumi.StringPtrOutput)
+}
+
+type GetInstanceClassInfosInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceClassInfosInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceClassInfosInfo)(nil)).Elem()
+}
+
+func (o GetInstanceClassInfosInfoArrayOutput) ToGetInstanceClassInfosInfoArrayOutput() GetInstanceClassInfosInfoArrayOutput {
+	return o
+}
+
+func (o GetInstanceClassInfosInfoArrayOutput) ToGetInstanceClassInfosInfoArrayOutputWithContext(ctx context.Context) GetInstanceClassInfosInfoArrayOutput {
+	return o
+}
+
+func (o GetInstanceClassInfosInfoArrayOutput) Index(i pulumi.IntInput) GetInstanceClassInfosInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceClassInfosInfo {
+		return vs[0].([]GetInstanceClassInfosInfo)[vs[1].(int)]
+	}).(GetInstanceClassInfosInfoOutput)
 }
 
 type GetInstanceClassesInstanceClass struct {
@@ -3565,6 +4253,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstanceParameterArrayInput)(nil)).Elem(), RdsCloneDbInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstancePgHbaConfInput)(nil)).Elem(), RdsCloneDbInstancePgHbaConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstancePgHbaConfArrayInput)(nil)).Elem(), RdsCloneDbInstancePgHbaConfArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsDbProxyReadOnlyInstanceWeightInput)(nil)).Elem(), RdsDbProxyReadOnlyInstanceWeightArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsDbProxyReadOnlyInstanceWeightArrayInput)(nil)).Elem(), RdsDbProxyReadOnlyInstanceWeightArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsParameterGroupParamDetailInput)(nil)).Elem(), RdsParameterGroupParamDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsParameterGroupParamDetailArrayInput)(nil)).Elem(), RdsParameterGroupParamDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsUpgradeDbInstanceParameterInput)(nil)).Elem(), RdsUpgradeDbInstanceParameterArgs{})
@@ -3577,6 +4267,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountDatabasePrivilegeInput)(nil)).Elem(), GetAccountsAccountDatabasePrivilegeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountDatabasePrivilegeArrayInput)(nil)).Elem(), GetAccountsAccountDatabasePrivilegeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCrossRegionBackupsBackupInput)(nil)).Elem(), GetCrossRegionBackupsBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCrossRegionBackupsBackupArrayInput)(nil)).Elem(), GetCrossRegionBackupsBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCrossRegionsRegionInput)(nil)).Elem(), GetCrossRegionsRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCrossRegionsRegionArrayInput)(nil)).Elem(), GetCrossRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClassInfosInfoInput)(nil)).Elem(), GetInstanceClassInfosInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClassInfosInfoArrayInput)(nil)).Elem(), GetInstanceClassInfosInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClassesInstanceClassInput)(nil)).Elem(), GetInstanceClassesInstanceClassArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClassesInstanceClassArrayInput)(nil)).Elem(), GetInstanceClassesInstanceClassArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClassesInstanceClassStorageRangeInput)(nil)).Elem(), GetInstanceClassesInstanceClassStorageRangeArgs{})
@@ -3610,6 +4306,8 @@ func init() {
 	pulumi.RegisterOutputType(RdsCloneDbInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(RdsCloneDbInstancePgHbaConfOutput{})
 	pulumi.RegisterOutputType(RdsCloneDbInstancePgHbaConfArrayOutput{})
+	pulumi.RegisterOutputType(RdsDbProxyReadOnlyInstanceWeightOutput{})
+	pulumi.RegisterOutputType(RdsDbProxyReadOnlyInstanceWeightArrayOutput{})
 	pulumi.RegisterOutputType(RdsParameterGroupParamDetailOutput{})
 	pulumi.RegisterOutputType(RdsParameterGroupParamDetailArrayOutput{})
 	pulumi.RegisterOutputType(RdsUpgradeDbInstanceParameterOutput{})
@@ -3622,6 +4320,12 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountDatabasePrivilegeOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountDatabasePrivilegeArrayOutput{})
+	pulumi.RegisterOutputType(GetCrossRegionBackupsBackupOutput{})
+	pulumi.RegisterOutputType(GetCrossRegionBackupsBackupArrayOutput{})
+	pulumi.RegisterOutputType(GetCrossRegionsRegionOutput{})
+	pulumi.RegisterOutputType(GetCrossRegionsRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceClassInfosInfoOutput{})
+	pulumi.RegisterOutputType(GetInstanceClassInfosInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassStorageRangeOutput{})

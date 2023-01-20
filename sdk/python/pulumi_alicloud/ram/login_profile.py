@@ -265,11 +265,13 @@ class LoginProfile(pulumi.CustomResource):
             __props__.__dict__["mfa_bind_required"] = mfa_bind_required
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["password_reset_required"] = password_reset_required
             if user_name is None and not opts.urn:
                 raise TypeError("Missing required property 'user_name'")
             __props__.__dict__["user_name"] = user_name
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(LoginProfile, __self__).__init__(
             'alicloud:ram/loginProfile:LoginProfile',
             resource_name,

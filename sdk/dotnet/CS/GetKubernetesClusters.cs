@@ -23,31 +23,30 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var k8sClusters = AliCloud.CS.GetKubernetesClusters.Invoke(new()
         ///     {
-        ///         var k8sClusters = Output.Create(AliCloud.CS.GetKubernetesClusters.InvokeAsync(new AliCloud.CS.GetKubernetesClustersArgs
-        ///         {
-        ///             KubeConfigFilePrefix = "~/.kube/k8s",
-        ///             NameRegex = "my-first-k8s",
-        ///             OutputFile = "my-first-k8s-json",
-        ///         }));
-        ///         this.Output = k8sClusters.Apply(k8sClusters =&gt; k8sClusters.Clusters);
-        ///     }
+        ///         KubeConfigFilePrefix = "~/.kube/k8s",
+        ///         NameRegex = "my-first-k8s",
+        ///         OutputFile = "my-first-k8s-json",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = k8sClusters.Apply(getKubernetesClustersResult =&gt; getKubernetesClustersResult.Clusters),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesClustersResult> InvokeAsync(GetKubernetesClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClustersResult>("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args ?? new GetKubernetesClustersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClustersResult>("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args ?? new GetKubernetesClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
@@ -61,35 +60,34 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var k8sClusters = AliCloud.CS.GetKubernetesClusters.Invoke(new()
         ///     {
-        ///         var k8sClusters = Output.Create(AliCloud.CS.GetKubernetesClusters.InvokeAsync(new AliCloud.CS.GetKubernetesClustersArgs
-        ///         {
-        ///             KubeConfigFilePrefix = "~/.kube/k8s",
-        ///             NameRegex = "my-first-k8s",
-        ///             OutputFile = "my-first-k8s-json",
-        ///         }));
-        ///         this.Output = k8sClusters.Apply(k8sClusters =&gt; k8sClusters.Clusters);
-        ///     }
+        ///         KubeConfigFilePrefix = "~/.kube/k8s",
+        ///         NameRegex = "my-first-k8s",
+        ///         OutputFile = "my-first-k8s-json",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = k8sClusters.Apply(getKubernetesClustersResult =&gt; getKubernetesClustersResult.Clusters),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubernetesClustersResult> Invoke(GetKubernetesClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKubernetesClustersResult>("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args ?? new GetKubernetesClustersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesClustersResult>("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args ?? new GetKubernetesClustersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetKubernetesClustersArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesClustersArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -107,7 +105,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
         /// </summary>
         [Input("kubeConfigFilePrefix")]
         public string? KubeConfigFilePrefix { get; set; }
@@ -124,9 +122,10 @@ namespace Pulumi.AliCloud.CS
         public GetKubernetesClustersArgs()
         {
         }
+        public static new GetKubernetesClustersArgs Empty => new GetKubernetesClustersArgs();
     }
 
-    public sealed class GetKubernetesClustersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -144,7 +143,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
         /// </summary>
         [Input("kubeConfigFilePrefix")]
         public Input<string>? KubeConfigFilePrefix { get; set; }
@@ -161,6 +160,7 @@ namespace Pulumi.AliCloud.CS
         public GetKubernetesClustersInvokeArgs()
         {
         }
+        public static new GetKubernetesClustersInvokeArgs Empty => new GetKubernetesClustersInvokeArgs();
     }
 
 

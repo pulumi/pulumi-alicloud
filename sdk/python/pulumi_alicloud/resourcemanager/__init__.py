@@ -10,6 +10,7 @@ from .control_policy import *
 from .control_policy_attachment import *
 from .delegated_administrator import *
 from .folder import *
+from .get_account_deletion_check_task import *
 from .get_accounts import *
 from .get_control_policies import *
 from .get_control_policy_attachments import *

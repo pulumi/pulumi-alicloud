@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// The destination IP address.
         /// </summary>
         public readonly string Dip;
+        /// <summary>
+        /// Specifies whether to enable health checks.
+        /// </summary>
         public readonly bool Enable;
         /// <summary>
         /// The interval between two consecutive health checks. Unit: seconds.

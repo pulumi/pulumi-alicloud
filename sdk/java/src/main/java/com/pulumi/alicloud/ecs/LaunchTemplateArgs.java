@@ -400,14 +400,14 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+     * Sets the maximum hourly instance price. Supports up to three decimal places.
      * 
      */
     @Import(name="spotPriceLimit")
     private @Nullable Output<Double> spotPriceLimit;
 
     /**
-     * @return -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+     * @return Sets the maximum hourly instance price. Supports up to three decimal places.
      * 
      */
     public Optional<Output<Double>> spotPriceLimit() {
@@ -1243,7 +1243,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param spotPriceLimit -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+         * @param spotPriceLimit Sets the maximum hourly instance price. Supports up to three decimal places.
          * 
          * @return builder
          * 
@@ -1254,7 +1254,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param spotPriceLimit -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+         * @param spotPriceLimit Sets the maximum hourly instance price. Supports up to three decimal places.
          * 
          * @return builder
          * 

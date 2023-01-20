@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = hbr.NewEcsBackupClient(ctx, "example", &hbr.EcsBackupClientArgs{
-//				InstanceId:       pulumi.String(_default.Instances[0].Id),
+//				InstanceId:       *pulumi.String(_default.Instances[0].Id),
 //				UseHttps:         pulumi.Bool(false),
 //				DataNetworkType:  pulumi.String("PUBLIC"),
 //				MaxCpuCore:       pulumi.String("2"),

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ServiceMesh.Inputs
 {
 
-    public sealed class ServiceMeshMeshConfigArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMeshMeshConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration of the access logging.
@@ -93,5 +93,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public ServiceMeshMeshConfigArgs()
         {
         }
+        public static new ServiceMeshMeshConfigArgs Empty => new ServiceMeshMeshConfigArgs();
     }
 }

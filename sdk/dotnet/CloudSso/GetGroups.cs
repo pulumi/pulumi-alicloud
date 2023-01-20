@@ -25,42 +25,40 @@ namespace Pulumi.AliCloud.CloudSso
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CloudSso.GetGroups.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CloudSso.GetGroups.InvokeAsync(new AliCloud.CloudSso.GetGroupsArgs
+        ///         DirectoryId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             DirectoryId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CloudSsoGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.CloudSso.GetGroups.InvokeAsync(new AliCloud.CloudSso.GetGroupsArgs
-        ///         {
-        ///             DirectoryId = "example_value",
-        ///             NameRegex = "^my-Group",
-        ///         }));
-        ///         this.CloudSsoGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cloudSsoGroupId1")]
-        ///     public Output&lt;string&gt; CloudSsoGroupId1 { get; set; }
-        ///     [Output("cloudSsoGroupId2")]
-        ///     public Output&lt;string&gt; CloudSsoGroupId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CloudSso.GetGroups.Invoke(new()
+        ///     {
+        ///         DirectoryId = "example_value",
+        ///         NameRegex = "^my-Group",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudSsoGroupId1"] = ids.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.Id),
+        ///         ["cloudSsoGroupId2"] = nameRegex.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:cloudsso/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:cloudsso/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
@@ -76,46 +74,44 @@ namespace Pulumi.AliCloud.CloudSso
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CloudSso.GetGroups.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CloudSso.GetGroups.InvokeAsync(new AliCloud.CloudSso.GetGroupsArgs
+        ///         DirectoryId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             DirectoryId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CloudSsoGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.CloudSso.GetGroups.InvokeAsync(new AliCloud.CloudSso.GetGroupsArgs
-        ///         {
-        ///             DirectoryId = "example_value",
-        ///             NameRegex = "^my-Group",
-        ///         }));
-        ///         this.CloudSsoGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cloudSsoGroupId1")]
-        ///     public Output&lt;string&gt; CloudSsoGroupId1 { get; set; }
-        ///     [Output("cloudSsoGroupId2")]
-        ///     public Output&lt;string&gt; CloudSsoGroupId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CloudSso.GetGroups.Invoke(new()
+        ///     {
+        ///         DirectoryId = "example_value",
+        ///         NameRegex = "^my-Group",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudSsoGroupId1"] = ids.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.Id),
+        ///         ["cloudSsoGroupId2"] = nameRegex.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:cloudsso/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:cloudsso/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Directory.
@@ -153,9 +149,10 @@ namespace Pulumi.AliCloud.CloudSso
         public GetGroupsArgs()
         {
         }
+        public static new GetGroupsArgs Empty => new GetGroupsArgs();
     }
 
-    public sealed class GetGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Directory.
@@ -193,6 +190,7 @@ namespace Pulumi.AliCloud.CloudSso
         public GetGroupsInvokeArgs()
         {
         }
+        public static new GetGroupsInvokeArgs Empty => new GetGroupsInvokeArgs();
     }
 
 

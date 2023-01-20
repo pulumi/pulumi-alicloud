@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/backupPolicy:BackupPolicy")]
-    public partial class BackupPolicy : Pulumi.CustomResource
+    public partial class BackupPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Cluster backup retention days, Fixed for 7 days, not modified.
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
     }
 
-    public sealed class BackupPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackupPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
@@ -130,9 +130,10 @@ namespace Pulumi.AliCloud.PolarDB
         public BackupPolicyArgs()
         {
         }
+        public static new BackupPolicyArgs Empty => new BackupPolicyArgs();
     }
 
-    public sealed class BackupPolicyState : Pulumi.ResourceArgs
+    public sealed class BackupPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cluster backup retention days, Fixed for 7 days, not modified.
@@ -173,5 +174,6 @@ namespace Pulumi.AliCloud.PolarDB
         public BackupPolicyState()
         {
         }
+        public static new BackupPolicyState Empty => new BackupPolicyState();
     }
 }

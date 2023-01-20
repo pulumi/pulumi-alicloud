@@ -49,7 +49,7 @@ func GetHandshakes(ctx *pulumi.Context, args *GetHandshakesArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getHandshakes.
 type GetHandshakesArgs struct {
-	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Resource Manager Handshake IDs.
 	Ids        []string `pulumi:"ids"`
@@ -87,7 +87,7 @@ func GetHandshakesOutput(ctx *pulumi.Context, args GetHandshakesOutputArgs, opts
 
 // A collection of arguments for invoking getHandshakes.
 type GetHandshakesOutputArgs struct {
-	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Resource Manager Handshake IDs.
 	Ids        pulumi.StringArrayInput `pulumi:"ids"`

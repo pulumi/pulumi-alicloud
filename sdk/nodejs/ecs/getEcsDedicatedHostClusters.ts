@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,32 +22,29 @@ import * as utilities from "../utilities";
  * const ids = alicloud.ecs.getEcsDedicatedHostClusters({
  *     ids: ["example_id"],
  * });
- * export const ecsDedicatedHostClusterId1 = ids.then(ids => ids.clusters?[0]?.id);
+ * export const ecsDedicatedHostClusterId1 = ids.then(ids => ids.clusters?.[0]?.id);
  * const nameRegex = alicloud.ecs.getEcsDedicatedHostClusters({
  *     nameRegex: "^my-DedicatedHostCluster",
  * });
- * export const ecsDedicatedHostClusterId2 = nameRegex.then(nameRegex => nameRegex.clusters?[0]?.id);
+ * export const ecsDedicatedHostClusterId2 = nameRegex.then(nameRegex => nameRegex.clusters?.[0]?.id);
  * const zoneId = alicloud.ecs.getEcsDedicatedHostClusters({
  *     zoneId: "example_value",
  * });
- * export const ecsDedicatedHostClusterId3 = zoneId.then(zoneId => zoneId.clusters?[0]?.id);
+ * export const ecsDedicatedHostClusterId3 = zoneId.then(zoneId => zoneId.clusters?.[0]?.id);
  * const clusterName = alicloud.ecs.getEcsDedicatedHostClusters({
  *     dedicatedHostClusterName: "example_value",
  * });
- * export const ecsDedicatedHostClusterId4 = clusterName.then(clusterName => clusterName.clusters?[0]?.id);
+ * export const ecsDedicatedHostClusterId4 = clusterName.then(clusterName => clusterName.clusters?.[0]?.id);
  * const clusterIds = alicloud.ecs.getEcsDedicatedHostClusters({
  *     dedicatedHostClusterIds: ["example_id"],
  * });
- * export const ecsDedicatedHostClusterId5 = clusterIds.then(clusterIds => clusterIds.clusters?[0]?.id);
+ * export const ecsDedicatedHostClusterId5 = clusterIds.then(clusterIds => clusterIds.clusters?.[0]?.id);
  * ```
  */
 export function getEcsDedicatedHostClusters(args?: GetEcsDedicatedHostClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDedicatedHostClustersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", {
         "dedicatedHostClusterIds": args.dedicatedHostClusterIds,
         "dedicatedHostClusterName": args.dedicatedHostClusterName,
@@ -107,9 +105,43 @@ export interface GetEcsDedicatedHostClustersResult {
     readonly tags?: {[key: string]: any};
     readonly zoneId?: string;
 }
-
+/**
+ * This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.146.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ecs.getEcsDedicatedHostClusters({
+ *     ids: ["example_id"],
+ * });
+ * export const ecsDedicatedHostClusterId1 = ids.then(ids => ids.clusters?.[0]?.id);
+ * const nameRegex = alicloud.ecs.getEcsDedicatedHostClusters({
+ *     nameRegex: "^my-DedicatedHostCluster",
+ * });
+ * export const ecsDedicatedHostClusterId2 = nameRegex.then(nameRegex => nameRegex.clusters?.[0]?.id);
+ * const zoneId = alicloud.ecs.getEcsDedicatedHostClusters({
+ *     zoneId: "example_value",
+ * });
+ * export const ecsDedicatedHostClusterId3 = zoneId.then(zoneId => zoneId.clusters?.[0]?.id);
+ * const clusterName = alicloud.ecs.getEcsDedicatedHostClusters({
+ *     dedicatedHostClusterName: "example_value",
+ * });
+ * export const ecsDedicatedHostClusterId4 = clusterName.then(clusterName => clusterName.clusters?.[0]?.id);
+ * const clusterIds = alicloud.ecs.getEcsDedicatedHostClusters({
+ *     dedicatedHostClusterIds: ["example_id"],
+ * });
+ * export const ecsDedicatedHostClusterId5 = clusterIds.then(clusterIds => clusterIds.clusters?.[0]?.id);
+ * ```
+ */
 export function getEcsDedicatedHostClustersOutput(args?: GetEcsDedicatedHostClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDedicatedHostClustersResult> {
-    return pulumi.output(args).apply(a => getEcsDedicatedHostClusters(a, opts))
+    return pulumi.output(args).apply((a: any) => getEcsDedicatedHostClusters(a, opts))
 }
 
 /**

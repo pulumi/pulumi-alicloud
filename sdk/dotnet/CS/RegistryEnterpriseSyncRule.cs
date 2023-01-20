@@ -23,27 +23,25 @@ namespace Pulumi.AliCloud.CS
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CS.RegistryEnterpriseSyncRule("default", new()
     ///     {
-    ///         var @default = new AliCloud.CS.RegistryEnterpriseSyncRule("default", new AliCloud.CS.RegistryEnterpriseSyncRuleArgs
-    ///         {
-    ///             InstanceId = "my-source-instance-id",
-    ///             NamespaceName = "my-source-namespace",
-    ///             RepoName = "my-source-repo",
-    ///             TagFilter = ".*",
-    ///             TargetInstanceId = "my-target-instance-id",
-    ///             TargetNamespaceName = "my-target-namespace",
-    ///             TargetRegionId = "cn-hangzhou",
-    ///             TargetRepoName = "my-target-repo",
-    ///         });
-    ///     }
+    ///         InstanceId = "my-source-instance-id",
+    ///         NamespaceName = "my-source-namespace",
+    ///         RepoName = "my-source-repo",
+    ///         TagFilter = ".*",
+    ///         TargetInstanceId = "my-target-instance-id",
+    ///         TargetNamespaceName = "my-target-namespace",
+    ///         TargetRegionId = "cn-hangzhou",
+    ///         TargetRepoName = "my-target-repo",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.AliCloud.CS
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule")]
-    public partial class RegistryEnterpriseSyncRule : Pulumi.CustomResource
+    public partial class RegistryEnterpriseSyncRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID of Container Registry Enterprise Edition source instance.
@@ -173,7 +171,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class RegistryEnterpriseSyncRuleArgs : Pulumi.ResourceArgs
+    public sealed class RegistryEnterpriseSyncRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of Container Registry Enterprise Edition source instance.
@@ -232,9 +230,10 @@ namespace Pulumi.AliCloud.CS
         public RegistryEnterpriseSyncRuleArgs()
         {
         }
+        public static new RegistryEnterpriseSyncRuleArgs Empty => new RegistryEnterpriseSyncRuleArgs();
     }
 
-    public sealed class RegistryEnterpriseSyncRuleState : Pulumi.ResourceArgs
+    public sealed class RegistryEnterpriseSyncRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of Container Registry Enterprise Edition source instance.
@@ -311,5 +310,6 @@ namespace Pulumi.AliCloud.CS
         public RegistryEnterpriseSyncRuleState()
         {
         }
+        public static new RegistryEnterpriseSyncRuleState Empty => new RegistryEnterpriseSyncRuleState();
     }
 }

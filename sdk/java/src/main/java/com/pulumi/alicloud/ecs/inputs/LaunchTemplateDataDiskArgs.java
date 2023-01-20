@@ -73,14 +73,14 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * -(Optional, Bool) Encrypted the data in this disk.
+     * Encrypted the data in this disk.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
     /**
-     * @return -(Optional, Bool) Encrypted the data in this disk.
+     * @return Encrypted the data in this disk.
      * 
      */
     public Optional<Output<Boolean>> encrypted() {
@@ -254,7 +254,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param encrypted -(Optional, Bool) Encrypted the data in this disk.
+         * @param encrypted Encrypted the data in this disk.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param encrypted -(Optional, Bool) Encrypted the data in this disk.
+         * @param encrypted Encrypted the data in this disk.
          * 
          * @return builder
          * 

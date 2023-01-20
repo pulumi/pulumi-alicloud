@@ -112,16 +112,7 @@ export class GatewayBlockVolume extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<number>;
     /**
-     * The status of volume. Valid values: 
-     * - `0`: Normal condition.
-     * - `1`: Failed to create volume.
-     * - `2`: Failed to delete volume.
-     * - `3`: Failed to enable target.
-     * - `4`: Failed to disable target.
-     * - `5`: Database error.
-     * - `6`: Failed to enable cache.
-     * - `7`: Failed to disable cache.
-     * - `8`: System error.
+     * The status of volume. Valid values:
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -264,16 +255,7 @@ export interface GatewayBlockVolumeState {
      */
     size?: pulumi.Input<number>;
     /**
-     * The status of volume. Valid values: 
-     * - `0`: Normal condition.
-     * - `1`: Failed to create volume.
-     * - `2`: Failed to delete volume.
-     * - `3`: Failed to enable target.
-     * - `4`: Failed to disable target.
-     * - `5`: Database error.
-     * - `6`: Failed to enable cache.
-     * - `7`: Failed to disable cache.
-     * - `8`: System error.
+     * The status of volume. Valid values:
      */
     status?: pulumi.Input<string>;
 }

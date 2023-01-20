@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -33,16 +34,13 @@ import * as utilities from "../utilities";
  *         For: "TF",
  *     },
  * });
- * export const mongodbServerlessInstanceId1 = example.then(example => example.instances?[0]?.id);
+ * export const mongodbServerlessInstanceId1 = example.then(example => example.instances?.[0]?.id);
  * ```
  */
 export function getServerlessInstances(args?: GetServerlessInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerlessInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mongodb/getServerlessInstances:getServerlessInstances", {
         "dbInstanceClass": args.dbInstanceClass,
         "dbInstanceDescription": args.dbInstanceDescription,
@@ -132,9 +130,39 @@ export interface GetServerlessInstancesResult {
     readonly vswitchId?: string;
     readonly zoneId?: string;
 }
-
+/**
+ * This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.148.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.mongodb.getServerlessInstances({
+ *     ids: ["example_value"],
+ *     dbInstanceClass: "example_value",
+ *     dbInstanceDescription: "example_value",
+ *     networkType: "VPC",
+ *     resourceGroupId: "example_value",
+ *     status: "Running",
+ *     vpcId: "example_value",
+ *     vswitchId: "example_value",
+ *     zoneId: "example_value",
+ *     tags: {
+ *         Created: "MongodbServerlessInstance",
+ *         For: "TF",
+ *     },
+ * });
+ * export const mongodbServerlessInstanceId1 = example.then(example => example.instances?.[0]?.id);
+ * ```
+ */
 export function getServerlessInstancesOutput(args?: GetServerlessInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerlessInstancesResult> {
-    return pulumi.output(args).apply(a => getServerlessInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getServerlessInstances(a, opts))
 }
 
 /**

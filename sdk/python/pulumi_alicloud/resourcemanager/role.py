@@ -94,7 +94,6 @@ class _RoleState:
         """
         Input properties used for looking up and filtering Role resources.
         :param pulumi.Input[str] arn: The resource descriptor of the role.
-               * `create_date` (Removed form v1.114.0) - Role creation time.
         :param pulumi.Input[str] assume_role_policy_document: The content of the permissions strategy that plays a role.
         :param pulumi.Input[str] description: The description of the Resource Manager role.
         :param pulumi.Input[int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
@@ -122,7 +121,6 @@ class _RoleState:
     def arn(self) -> Optional[pulumi.Input[str]]:
         """
         The resource descriptor of the role.
-        * `create_date` (Removed form v1.114.0) - Role creation time.
         """
         return pulumi.get(self, "arn")
 
@@ -374,7 +372,6 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The resource descriptor of the role.
-               * `create_date` (Removed form v1.114.0) - Role creation time.
         :param pulumi.Input[str] assume_role_policy_document: The content of the permissions strategy that plays a role.
         :param pulumi.Input[str] description: The description of the Resource Manager role.
         :param pulumi.Input[int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
@@ -400,7 +397,6 @@ class Role(pulumi.CustomResource):
     def arn(self) -> pulumi.Output[str]:
         """
         The resource descriptor of the role.
-        * `create_date` (Removed form v1.114.0) - Role creation time.
         """
         return pulumi.get(self, "arn")
 

@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Dts
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Dts.GetSynchronizationJobs.InvokeAsync());
-        ///         this.DtsSynchronizationJobId1 = ids.Apply(ids =&gt; ids.Jobs?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Dts.GetSynchronizationJobs.Invoke();
         /// 
-        ///     [Output("dtsSynchronizationJobId1")]
-        ///     public Output&lt;string&gt; DtsSynchronizationJobId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dtsSynchronizationJobId1"] = ids.Apply(getSynchronizationJobsResult =&gt; getSynchronizationJobsResult.Jobs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSynchronizationJobsResult> InvokeAsync(GetSynchronizationJobsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSynchronizationJobsResult>("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args ?? new GetSynchronizationJobsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSynchronizationJobsResult>("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args ?? new GetSynchronizationJobsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Dts
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Dts.GetSynchronizationJobs.InvokeAsync());
-        ///         this.DtsSynchronizationJobId1 = ids.Apply(ids =&gt; ids.Jobs?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Dts.GetSynchronizationJobs.Invoke();
         /// 
-        ///     [Output("dtsSynchronizationJobId1")]
-        ///     public Output&lt;string&gt; DtsSynchronizationJobId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dtsSynchronizationJobId1"] = ids.Apply(getSynchronizationJobsResult =&gt; getSynchronizationJobsResult.Jobs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSynchronizationJobsResult> Invoke(GetSynchronizationJobsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSynchronizationJobsResult>("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args ?? new GetSynchronizationJobsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSynchronizationJobsResult>("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args ?? new GetSynchronizationJobsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSynchronizationJobsArgs : Pulumi.InvokeArgs
+    public sealed class GetSynchronizationJobsArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -114,9 +112,10 @@ namespace Pulumi.AliCloud.Dts
         public GetSynchronizationJobsArgs()
         {
         }
+        public static new GetSynchronizationJobsArgs Empty => new GetSynchronizationJobsArgs();
     }
 
-    public sealed class GetSynchronizationJobsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSynchronizationJobsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -151,6 +150,7 @@ namespace Pulumi.AliCloud.Dts
         public GetSynchronizationJobsInvokeArgs()
         {
         }
+        public static new GetSynchronizationJobsInvokeArgs Empty => new GetSynchronizationJobsInvokeArgs();
     }
 
 

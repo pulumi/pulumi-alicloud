@@ -23,44 +23,42 @@ namespace Pulumi.AliCloud.Amqp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Amqp.GetExchanges.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Amqp.GetExchanges.InvokeAsync(new AliCloud.Amqp.GetExchangesArgs
+        ///         InstanceId = "amqp-abc12345",
+        ///         VirtualHostName = "my-VirtualHost",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "amqp-abc12345",
-        ///             VirtualHostName = "my-VirtualHost",
-        ///             Ids = 
-        ///             {
-        ///                 "my-Exchange-1",
-        ///                 "my-Exchange-2",
-        ///             },
-        ///         }));
-        ///         this.AmqpExchangeId1 = ids.Apply(ids =&gt; ids.Exchanges?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Amqp.GetExchanges.InvokeAsync(new AliCloud.Amqp.GetExchangesArgs
-        ///         {
-        ///             InstanceId = "amqp-abc12345",
-        ///             VirtualHostName = "my-VirtualHost",
-        ///             NameRegex = "^my-Exchange",
-        ///         }));
-        ///         this.AmqpExchangeId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Exchanges?[0]?.Id);
-        ///     }
+        ///             "my-Exchange-1",
+        ///             "my-Exchange-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("amqpExchangeId1")]
-        ///     public Output&lt;string&gt; AmqpExchangeId1 { get; set; }
-        ///     [Output("amqpExchangeId2")]
-        ///     public Output&lt;string&gt; AmqpExchangeId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Amqp.GetExchanges.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-abc12345",
+        ///         VirtualHostName = "my-VirtualHost",
+        ///         NameRegex = "^my-Exchange",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["amqpExchangeId1"] = ids.Apply(getExchangesResult =&gt; getExchangesResult.Exchanges[0]?.Id),
+        ///         ["amqpExchangeId2"] = nameRegex.Apply(getExchangesResult =&gt; getExchangesResult.Exchanges[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetExchangesResult> InvokeAsync(GetExchangesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
@@ -74,48 +72,46 @@ namespace Pulumi.AliCloud.Amqp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Amqp.GetExchanges.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Amqp.GetExchanges.InvokeAsync(new AliCloud.Amqp.GetExchangesArgs
+        ///         InstanceId = "amqp-abc12345",
+        ///         VirtualHostName = "my-VirtualHost",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "amqp-abc12345",
-        ///             VirtualHostName = "my-VirtualHost",
-        ///             Ids = 
-        ///             {
-        ///                 "my-Exchange-1",
-        ///                 "my-Exchange-2",
-        ///             },
-        ///         }));
-        ///         this.AmqpExchangeId1 = ids.Apply(ids =&gt; ids.Exchanges?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Amqp.GetExchanges.InvokeAsync(new AliCloud.Amqp.GetExchangesArgs
-        ///         {
-        ///             InstanceId = "amqp-abc12345",
-        ///             VirtualHostName = "my-VirtualHost",
-        ///             NameRegex = "^my-Exchange",
-        ///         }));
-        ///         this.AmqpExchangeId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Exchanges?[0]?.Id);
-        ///     }
+        ///             "my-Exchange-1",
+        ///             "my-Exchange-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("amqpExchangeId1")]
-        ///     public Output&lt;string&gt; AmqpExchangeId1 { get; set; }
-        ///     [Output("amqpExchangeId2")]
-        ///     public Output&lt;string&gt; AmqpExchangeId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Amqp.GetExchanges.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-abc12345",
+        ///         VirtualHostName = "my-VirtualHost",
+        ///         NameRegex = "^my-Exchange",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["amqpExchangeId1"] = ids.Apply(getExchangesResult =&gt; getExchangesResult.Exchanges[0]?.Id),
+        ///         ["amqpExchangeId2"] = nameRegex.Apply(getExchangesResult =&gt; getExchangesResult.Exchanges[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetExchangesResult> Invoke(GetExchangesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetExchangesArgs : Pulumi.InvokeArgs
+    public sealed class GetExchangesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -153,9 +149,10 @@ namespace Pulumi.AliCloud.Amqp
         public GetExchangesArgs()
         {
         }
+        public static new GetExchangesArgs Empty => new GetExchangesArgs();
     }
 
-    public sealed class GetExchangesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetExchangesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -193,6 +190,7 @@ namespace Pulumi.AliCloud.Amqp
         public GetExchangesInvokeArgs()
         {
         }
+        public static new GetExchangesInvokeArgs Empty => new GetExchangesInvokeArgs();
     }
 
 

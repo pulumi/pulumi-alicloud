@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.DatabaseGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.DatabaseGateway.Gateway("example", new()
     ///     {
-    ///         var example = new AliCloud.DatabaseGateway.Gateway("example", new AliCloud.DatabaseGateway.GatewayArgs
-    ///         {
-    ///             GatewayName = "example_value",
-    ///         });
-    ///     }
+    ///         GatewayName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.DatabaseGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:databasegateway/gateway:Gateway")]
-    public partial class Gateway : Pulumi.CustomResource
+    public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of Gateway.
@@ -110,7 +108,7 @@ namespace Pulumi.AliCloud.DatabaseGateway
         }
     }
 
-    public sealed class GatewayArgs : Pulumi.ResourceArgs
+    public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of Gateway.
@@ -127,9 +125,10 @@ namespace Pulumi.AliCloud.DatabaseGateway
         public GatewayArgs()
         {
         }
+        public static new GatewayArgs Empty => new GatewayArgs();
     }
 
-    public sealed class GatewayState : Pulumi.ResourceArgs
+    public sealed class GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of Gateway.
@@ -152,5 +151,6 @@ namespace Pulumi.AliCloud.DatabaseGateway
         public GatewayState()
         {
         }
+        public static new GatewayState Empty => new GatewayState();
     }
 }

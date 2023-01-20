@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const ids = alicloud.hbr.getVaults({
  *     nameRegex: "^my-Vault",
  * });
- * export const hbrVaultId1 = ids.then(ids => ids.vaults?[0]?.id);
+ * export const hbrVaultId1 = ids.then(ids => ids.vaults?.[0]?.id);
  * ```
  */
 export function getVaults(args?: GetVaultsArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getVaults:getVaults", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -79,9 +77,27 @@ export interface GetVaultsResult {
     readonly vaultType?: string;
     readonly vaults: outputs.hbr.GetVaultsVault[];
 }
-
+/**
+ * This data source provides the Hbr Vaults of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.129.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.hbr.getVaults({
+ *     nameRegex: "^my-Vault",
+ * });
+ * export const hbrVaultId1 = ids.then(ids => ids.vaults?.[0]?.id);
+ * ```
+ */
 export function getVaultsOutput(args?: GetVaultsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVaultsResult> {
-    return pulumi.output(args).apply(a => getVaults(a, opts))
+    return pulumi.output(args).apply((a: any) => getVaults(a, opts))
 }
 
 /**

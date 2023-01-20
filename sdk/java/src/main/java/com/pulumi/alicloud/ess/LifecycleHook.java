@@ -28,14 +28,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ess/lifecycleHook:LifecycleHook")
 public class LifecycleHook extends com.pulumi.resources.CustomResource {
     /**
-     * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+     * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
      * 
      */
     @Export(name="defaultResult", type=String.class, parameters={})
     private Output</* @Nullable */ String> defaultResult;
 
     /**
-     * @return Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+     * @return Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
      * 
      */
     public Output<Optional<String>> defaultResult() {

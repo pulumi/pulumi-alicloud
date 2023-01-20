@@ -22,27 +22,25 @@ namespace Pulumi.AliCloud.Hbase
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var hbase = AliCloud.Hbase.GetInstances.Invoke(new()
         ///     {
-        ///         var hbase = Output.Create(AliCloud.Hbase.GetInstances.InvokeAsync(new AliCloud.Hbase.GetInstancesArgs
-        ///         {
-        ///             AvailabilityZone = "cn-shenzhen-b",
-        ///             NameRegex = "tf_testAccHBase",
-        ///         }));
-        ///     }
+        ///         AvailabilityZone = "cn-shenzhen-b",
+        ///         NameRegex = "tf_testAccHBase",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:hbase/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:hbase/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.hbase.getInstances` data source provides a collection of HBase instances available in Alicloud account.
@@ -55,31 +53,29 @@ namespace Pulumi.AliCloud.Hbase
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var hbase = AliCloud.Hbase.GetInstances.Invoke(new()
         ///     {
-        ///         var hbase = Output.Create(AliCloud.Hbase.GetInstances.InvokeAsync(new AliCloud.Hbase.GetInstancesArgs
-        ///         {
-        ///             AvailabilityZone = "cn-shenzhen-b",
-        ///             NameRegex = "tf_testAccHBase",
-        ///         }));
-        ///     }
+        ///         AvailabilityZone = "cn-shenzhen-b",
+        ///         NameRegex = "tf_testAccHBase",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:hbase/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:hbase/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Instance availability zone.
@@ -123,9 +119,10 @@ namespace Pulumi.AliCloud.Hbase
         public GetInstancesArgs()
         {
         }
+        public static new GetInstancesArgs Empty => new GetInstancesArgs();
     }
 
-    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Instance availability zone.
@@ -169,6 +166,7 @@ namespace Pulumi.AliCloud.Hbase
         public GetInstancesInvokeArgs()
         {
         }
+        public static new GetInstancesInvokeArgs Empty => new GetInstancesInvokeArgs();
     }
 
 

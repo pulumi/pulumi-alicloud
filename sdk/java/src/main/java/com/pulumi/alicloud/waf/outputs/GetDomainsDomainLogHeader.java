@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDomainsDomainLogHeader {
+    /**
+     * @return The key of label.
+     * 
+     */
     private String key;
+    /**
+     * @return The value of label.
+     * 
+     */
     private String value;
 
     private GetDomainsDomainLogHeader() {}
+    /**
+     * @return The key of label.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return The value of label.
+     * 
+     */
     public String value() {
         return this.value;
     }

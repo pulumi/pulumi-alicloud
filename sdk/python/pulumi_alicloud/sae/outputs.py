@@ -81,9 +81,9 @@ class ApplicationScalingRuleScalingRuleMetric(dict):
                  scale_down_rules: Optional['outputs.ApplicationScalingRuleScalingRuleMetricScaleDownRules'] = None,
                  scale_up_rules: Optional['outputs.ApplicationScalingRuleScalingRuleMetricScaleUpRules'] = None):
         """
-        :param int max_replicas: Maximum number of instances applied.
+        :param int max_replicas: Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         :param Sequence['ApplicationScalingRuleScalingRuleMetricMetricArgs'] metrics: Indicator rule configuration. See the following `Block metrics`.
-        :param int min_replicas: Minimum number of instances applied.
+        :param int min_replicas: Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         :param 'ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs' scale_down_rules: Apply shrink rules. See the following `Block scale_down_rules`.
         :param 'ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs' scale_up_rules: Apply expansion rules. See the following `Block scale_up_rules`.
         """
@@ -102,7 +102,7 @@ class ApplicationScalingRuleScalingRuleMetric(dict):
     @pulumi.getter(name="maxReplicas")
     def max_replicas(self) -> Optional[int]:
         """
-        Maximum number of instances applied.
+        Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         """
         return pulumi.get(self, "max_replicas")
 
@@ -118,7 +118,7 @@ class ApplicationScalingRuleScalingRuleMetric(dict):
     @pulumi.getter(name="minReplicas")
     def min_replicas(self) -> Optional[int]:
         """
-        Minimum number of instances applied.
+        Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         """
         return pulumi.get(self, "min_replicas")
 
@@ -425,8 +425,8 @@ class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
                  target_replicas: Optional[int] = None):
         """
         :param str at_time: Trigger point in time. When supporting format: minutes, for example: `08:00`.
-        :param int max_replicas: Maximum number of instances applied.
-        :param int min_replicas: Minimum number of instances applied.
+        :param int max_replicas: Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+        :param int min_replicas: Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         :param int target_replicas: This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
         """
         if at_time is not None:
@@ -450,7 +450,7 @@ class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
     @pulumi.getter(name="maxReplicas")
     def max_replicas(self) -> Optional[int]:
         """
-        Maximum number of instances applied.
+        Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         """
         return pulumi.get(self, "max_replicas")
 
@@ -458,7 +458,7 @@ class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
     @pulumi.getter(name="minReplicas")
     def min_replicas(self) -> Optional[int]:
         """
-        Minimum number of instances applied.
+        Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         """
         return pulumi.get(self, "min_replicas")
 
@@ -1599,6 +1599,7 @@ class GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult(dict):
 class GetApplicationsApplicationResult(dict):
     def __init__(__self__, *,
                  acr_assume_role_arn: str,
+                 acr_instance_id: str,
                  app_description: str,
                  app_name: str,
                  application_id: str,
@@ -1653,6 +1654,7 @@ class GetApplicationsApplicationResult(dict):
                  web_container: str):
         """
         :param str acr_assume_role_arn: The ARN of the RAM role required when pulling images across accounts.
+        :param str acr_instance_id: The ID of the ACR EE instance.
         :param str app_description: Application description information. No more than 1024 characters.
         :param str app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
         :param str application_id: The first ID of the resource.
@@ -1703,6 +1705,7 @@ class GetApplicationsApplicationResult(dict):
         :param str web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
         """
         pulumi.set(__self__, "acr_assume_role_arn", acr_assume_role_arn)
+        pulumi.set(__self__, "acr_instance_id", acr_instance_id)
         pulumi.set(__self__, "app_description", app_description)
         pulumi.set(__self__, "app_name", app_name)
         pulumi.set(__self__, "application_id", application_id)
@@ -1763,6 +1766,14 @@ class GetApplicationsApplicationResult(dict):
         The ARN of the RAM role required when pulling images across accounts.
         """
         return pulumi.get(self, "acr_assume_role_arn")
+
+    @property
+    @pulumi.getter(name="acrInstanceId")
+    def acr_instance_id(self) -> str:
+        """
+        The ID of the ACR EE instance.
+        """
+        return pulumi.get(self, "acr_instance_id")
 
     @property
     @pulumi.getter(name="appDescription")

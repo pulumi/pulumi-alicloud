@@ -53,14 +53,14 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
     }
 
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      * 
      */
     @Import(name="cpu")
     private @Nullable Output<Double> cpu;
 
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     public Optional<Output<Double>> cpu() {
@@ -128,14 +128,14 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
     }
 
     /**
-     * The amount of memory resources allocated to the container.
+     * The amount of memory resources allocated to the container group.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<Double> memory;
 
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     public Optional<Output<Double>> memory() {
@@ -143,14 +143,14 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
     }
 
     /**
-     * The name of the security context that the container group runs.
+     * The name of the volume.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     public Optional<Output<String>> name() {
@@ -316,7 +316,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container.
+         * @param cpu The amount of CPU resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container.
+         * @param cpu The amount of CPU resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container.
+         * @param memory The amount of memory resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container.
+         * @param memory The amount of memory resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the security context that the container group runs.
+         * @param name The name of the volume.
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class ContainerGroupInitContainerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the security context that the container group runs.
+         * @param name The name of the volume.
          * 
          * @return builder
          * 

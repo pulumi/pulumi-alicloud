@@ -13,6 +13,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -39,28 +40,70 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:hbr/otsBackupPlan:OtsBackupPlan")
 public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+     * Backup type. Valid values: `COMPLETE`.
      * 
      */
     @Export(name="backupType", type=String.class, parameters={})
     private Output<String> backupType;
 
     /**
-     * @return The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return Backup type. Valid values: `COMPLETE`.
      * 
      */
     public Output<String> backupType() {
         return this.backupType;
     }
     /**
-     * Whether to disable the backup task. Valid values: true, false.
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    @Export(name="crossAccountRoleName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> crossAccountRoleName;
+
+    /**
+     * @return The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    public Output<Optional<String>> crossAccountRoleName() {
+        return Codegen.optional(this.crossAccountRoleName);
+    }
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    @Export(name="crossAccountType", type=String.class, parameters={})
+    private Output<String> crossAccountType;
+
+    /**
+     * @return The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    public Output<String> crossAccountType() {
+        return this.crossAccountType;
+    }
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    @Export(name="crossAccountUserId", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> crossAccountUserId;
+
+    /**
+     * @return The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    public Output<Optional<Integer>> crossAccountUserId() {
+        return Codegen.optional(this.crossAccountUserId);
+    }
+    /**
+     * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      * 
      */
     @Export(name="disabled", type=Boolean.class, parameters={})
     private Output<Boolean> disabled;
 
     /**
-     * @return Whether to disable the backup task. Valid values: true, false.
+     * @return Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      * 
      */
     public Output<Boolean> disabled() {
@@ -109,14 +152,14 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.otsDetails);
     }
     /**
-     * Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+     * Backup retention days, the minimum is 1.
      * 
      */
     @Export(name="retention", type=String.class, parameters={})
     private Output<String> retention;
 
     /**
-     * @return Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return Backup retention days, the minimum is 1.
      * 
      */
     public Output<String> retention() {
@@ -137,7 +180,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rules);
     }
     /**
-     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * 
      * @deprecated
      * Field &#39;schedule&#39; has been deprecated from version 1.163.0. Use &#39;rules&#39; instead.
@@ -148,7 +191,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> schedule;
 
     /**
-     * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * 
      */
     public Output<Optional<String>> schedule() {

@@ -30,140 +30,137 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var msServerGroupZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableDiskCategory = "cloud_efficiency",
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-    ///         {
-    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
-    ///             EniAmount = 2,
-    ///         })));
-    ///         var image = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             NameRegex = "^ubuntu_18.*64",
-    ///             MostRecent = true,
-    ///             Owners = "system",
-    ///         }));
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testAccSlbMasterSlaveServerGroupVpc";
-    ///         var number = config.Get("number") ?? "1";
-    ///         var mainNetwork = new AliCloud.Vpc.Network("mainNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var mainSwitch = new AliCloud.Vpc.Switch("mainSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = mainNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var groupSecurityGroup = new AliCloud.Ecs.SecurityGroup("groupSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             VpcId = mainNetwork.Id,
-    ///         });
-    ///         var instanceInstance = new List&lt;AliCloud.Ecs.Instance&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; "2"; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             instanceInstance.Add(new AliCloud.Ecs.Instance($"instanceInstance-{range.Value}", new AliCloud.Ecs.InstanceArgs
-    ///             {
-    ///                 ImageId = image.Apply(image =&gt; image.Images?[0]?.Id),
-    ///                 InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
-    ///                 InstanceName = name,
-    ///                 SecurityGroups = 
-    ///                 {
-    ///                     groupSecurityGroup.Id,
-    ///                 },
-    ///                 InternetChargeType = "PayByTraffic",
-    ///                 InternetMaxBandwidthOut = 10,
-    ///                 AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///                 InstanceChargeType = "PostPaid",
-    ///                 SystemDiskCategory = "cloud_efficiency",
-    ///                 VswitchId = mainSwitch.Id,
-    ///             }));
-    ///         }
-    ///         var instanceApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("instanceApplicationLoadBalancer", new AliCloud.Slb.ApplicationLoadBalancerArgs
-    ///         {
-    ///             LoadBalancerName = name,
-    ///             VswitchId = mainSwitch.Id,
-    ///             LoadBalancerSpec = "slb.s2.small",
-    ///         });
-    ///         var defaultNetworkInterface = new List&lt;AliCloud.Vpc.NetworkInterface&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; number; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             defaultNetworkInterface.Add(new AliCloud.Vpc.NetworkInterface($"defaultNetworkInterface-{range.Value}", new AliCloud.Vpc.NetworkInterfaceArgs
-    ///             {
-    ///                 VswitchId = mainSwitch.Id,
-    ///                 SecurityGroups = 
-    ///                 {
-    ///                     groupSecurityGroup.Id,
-    ///                 },
-    ///             }));
-    ///         }
-    ///         var defaultNetworkInterfaceAttachment = new List&lt;AliCloud.Vpc.NetworkInterfaceAttachment&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; number; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             defaultNetworkInterfaceAttachment.Add(new AliCloud.Vpc.NetworkInterfaceAttachment($"defaultNetworkInterfaceAttachment-{range.Value}", new AliCloud.Vpc.NetworkInterfaceAttachmentArgs
-    ///             {
-    ///                 InstanceId = instanceInstance[0].Id,
-    ///                 NetworkInterfaceId = defaultNetworkInterface.Select(__item =&gt; __item.Id).ToList()[range.Index],
-    ///             }));
-    ///         }
-    ///         var groupMasterSlaveServerGroup = new AliCloud.Slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup", new AliCloud.Slb.MasterSlaveServerGroupArgs
-    ///         {
-    ///             LoadBalancerId = instanceApplicationLoadBalancer.Id,
-    ///             Servers = 
-    ///             {
-    ///                 new AliCloud.Slb.Inputs.MasterSlaveServerGroupServerArgs
-    ///                 {
-    ///                     ServerId = instanceInstance[0].Id,
-    ///                     Port = 100,
-    ///                     Weight = 100,
-    ///                     ServerType = "Master",
-    ///                 },
-    ///                 new AliCloud.Slb.Inputs.MasterSlaveServerGroupServerArgs
-    ///                 {
-    ///                     ServerId = instanceInstance[1].Id,
-    ///                     Port = 100,
-    ///                     Weight = 100,
-    ///                     ServerType = "Slave",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var tcp = new AliCloud.Slb.Listener("tcp", new AliCloud.Slb.ListenerArgs
-    ///         {
-    ///             LoadBalancerId = instanceApplicationLoadBalancer.Id,
-    ///             MasterSlaveServerGroupId = groupMasterSlaveServerGroup.Id,
-    ///             FrontendPort = 22,
-    ///             Protocol = "tcp",
-    ///             Bandwidth = 10,
-    ///             HealthCheckType = "tcp",
-    ///             PersistenceTimeout = 3600,
-    ///             HealthyThreshold = 8,
-    ///             UnhealthyThreshold = 8,
-    ///             HealthCheckTimeout = 8,
-    ///             HealthCheckInterval = 5,
-    ///             HealthCheckHttpCode = "http_2xx",
-    ///             HealthCheckConnectPort = 20,
-    ///             HealthCheckUri = "/console",
-    ///             EstablishedTimeout = 600,
-    ///         });
-    ///     }
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var msServerGroupInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = msServerGroupZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         EniAmount = 2,
+    ///     });
+    /// 
+    ///     var image = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var config = new Config();
+    ///     var slbMasterSlaveServerGroup = config.Get("slbMasterSlaveServerGroup") ?? "forSlbMasterSlaveServerGroup";
+    ///     var mainNetwork = new AliCloud.Vpc.Network("mainNetwork", new()
+    ///     {
+    ///         VpcName = slbMasterSlaveServerGroup,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var mainSwitch = new AliCloud.Vpc.Switch("mainSwitch", new()
+    ///     {
+    ///         VpcId = mainNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///         ZoneId = msServerGroupZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = slbMasterSlaveServerGroup,
+    ///     });
+    /// 
+    ///     var groupSecurityGroup = new AliCloud.Ecs.SecurityGroup("groupSecurityGroup", new()
+    ///     {
+    ///         VpcId = mainNetwork.Id,
+    ///     });
+    /// 
+    ///     var msServerGroupInstance = new List&lt;AliCloud.Ecs.Instance&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         msServerGroupInstance.Add(new AliCloud.Ecs.Instance($"msServerGroupInstance-{range.Value}", new()
+    ///         {
+    ///             ImageId = image.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///             InstanceType = msServerGroupInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///             InstanceName = slbMasterSlaveServerGroup,
+    ///             SecurityGroups = new[]
+    ///             {
+    ///                 groupSecurityGroup.Id,
+    ///             },
+    ///             InternetChargeType = "PayByTraffic",
+    ///             InternetMaxBandwidthOut = 10,
+    ///             AvailabilityZone = msServerGroupZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///             InstanceChargeType = "PostPaid",
+    ///             SystemDiskCategory = "cloud_efficiency",
+    ///             VswitchId = mainSwitch.Id,
+    ///         }));
+    ///     }
+    ///     var msServerGroupApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("msServerGroupApplicationLoadBalancer", new()
+    ///     {
+    ///         LoadBalancerName = slbMasterSlaveServerGroup,
+    ///         VswitchId = mainSwitch.Id,
+    ///         LoadBalancerSpec = "slb.s2.small",
+    ///     });
+    /// 
+    ///     var msServerGroupEcsNetworkInterface = new AliCloud.Ecs.EcsNetworkInterface("msServerGroupEcsNetworkInterface", new()
+    ///     {
+    ///         NetworkInterfaceName = slbMasterSlaveServerGroup,
+    ///         VswitchId = mainSwitch.Id,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             groupSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var msServerGroupEcsNetworkInterfaceAttachment = new AliCloud.Ecs.EcsNetworkInterfaceAttachment("msServerGroupEcsNetworkInterfaceAttachment", new()
+    ///     {
+    ///         InstanceId = msServerGroupInstance[0].Id,
+    ///         NetworkInterfaceId = msServerGroupEcsNetworkInterface.Id,
+    ///     });
+    /// 
+    ///     var groupMasterSlaveServerGroup = new AliCloud.Slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup", new()
+    ///     {
+    ///         LoadBalancerId = msServerGroupApplicationLoadBalancer.Id,
+    ///         Servers = new[]
+    ///         {
+    ///             new AliCloud.Slb.Inputs.MasterSlaveServerGroupServerArgs
+    ///             {
+    ///                 ServerId = msServerGroupInstance[0].Id,
+    ///                 Port = 100,
+    ///                 Weight = 100,
+    ///                 ServerType = "Master",
+    ///             },
+    ///             new AliCloud.Slb.Inputs.MasterSlaveServerGroupServerArgs
+    ///             {
+    ///                 ServerId = msServerGroupInstance[1].Id,
+    ///                 Port = 100,
+    ///                 Weight = 100,
+    ///                 ServerType = "Slave",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var tcp = new AliCloud.Slb.Listener("tcp", new()
+    ///     {
+    ///         LoadBalancerId = msServerGroupApplicationLoadBalancer.Id,
+    ///         MasterSlaveServerGroupId = groupMasterSlaveServerGroup.Id,
+    ///         FrontendPort = 22,
+    ///         Protocol = "tcp",
+    ///         Bandwidth = 10,
+    ///         HealthCheckType = "tcp",
+    ///         PersistenceTimeout = 3600,
+    ///         HealthyThreshold = 8,
+    ///         UnhealthyThreshold = 8,
+    ///         HealthCheckTimeout = 8,
+    ///         HealthCheckInterval = 5,
+    ///         HealthCheckHttpCode = "http_2xx",
+    ///         HealthCheckConnectPort = 20,
+    ///         HealthCheckUri = "/console",
+    ///         EstablishedTimeout = 600,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Block servers
     /// 
@@ -185,7 +182,7 @@ namespace Pulumi.AliCloud.Slb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup")]
-    public partial class MasterSlaveServerGroup : Pulumi.CustomResource
+    public partial class MasterSlaveServerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
@@ -255,7 +252,7 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
-    public sealed class MasterSlaveServerGroupArgs : Pulumi.ResourceArgs
+    public sealed class MasterSlaveServerGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
@@ -290,9 +287,10 @@ namespace Pulumi.AliCloud.Slb
         public MasterSlaveServerGroupArgs()
         {
         }
+        public static new MasterSlaveServerGroupArgs Empty => new MasterSlaveServerGroupArgs();
     }
 
-    public sealed class MasterSlaveServerGroupState : Pulumi.ResourceArgs
+    public sealed class MasterSlaveServerGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
@@ -327,5 +325,6 @@ namespace Pulumi.AliCloud.Slb
         public MasterSlaveServerGroupState()
         {
         }
+        public static new MasterSlaveServerGroupState Empty => new MasterSlaveServerGroupState();
     }
 }

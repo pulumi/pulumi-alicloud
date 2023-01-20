@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,24 +17,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const zonesDs = pulumi.output(alicloud.getZones({
+ * const zonesDs = alicloud.getZones({
  *     availableDiskCategory: "cloud_ssd",
  *     availableInstanceType: "ecs.n4.large",
- * }));
- * // Create an ECS instance with the first matched zone
- * const instance = new alicloud.ecs.Instance("instance", {
- *     availabilityZone: zonesDs.zones[0].id,
  * });
+ * // Create an ECS instance with the first matched zone
+ * const instance = new alicloud.ecs.Instance("instance", {availabilityZone: zonesDs.then(zonesDs => zonesDs.zones?.[0]?.id)});
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getZones:getZones", {
         "availableDiskCategory": args.availableDiskCategory,
         "availableInstanceType": args.availableInstanceType,
@@ -128,9 +123,27 @@ export interface GetZonesResult {
      */
     readonly zones: outputs.GetZonesZone[];
 }
-
+/**
+ * This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+ *
+ * > **NOTE:** If one zone is sold out, it will not be exported.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const zonesDs = alicloud.getZones({
+ *     availableDiskCategory: "cloud_ssd",
+ *     availableInstanceType: "ecs.n4.large",
+ * });
+ * // Create an ECS instance with the first matched zone
+ * const instance = new alicloud.ecs.Instance("instance", {availabilityZone: zonesDs.then(zonesDs => zonesDs.zones?.[0]?.id)});
+ * ```
+ */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(args).apply(a => getZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getZones(a, opts))
 }
 
 /**

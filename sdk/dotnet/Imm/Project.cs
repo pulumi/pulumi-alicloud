@@ -21,16 +21,15 @@ namespace Pulumi.AliCloud.Imm
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var role = new AliCloud.Ram.Role("role", new()
     ///     {
-    ///         var role = new AliCloud.Ram.Role("role", new AliCloud.Ram.RoleArgs
-    ///         {
-    ///             Document = @"  {
+    ///         Document = @"  {
     ///     ""Statement"": [
     ///       {
     ///         ""Action"": ""sts:AssumeRole"",
@@ -45,17 +44,17 @@ namespace Pulumi.AliCloud.Imm
     ///     ""Version"": ""1""
     ///   }
     /// ",
-    ///             Description = "this is a role test.",
-    ///             Force = true,
-    ///         });
-    ///         var example = new AliCloud.Imm.Project("example", new AliCloud.Imm.ProjectArgs
-    ///         {
-    ///             ProjectName = "example_name",
-    ///             ServiceRole = role.Name,
-    ///         });
-    ///     }
+    ///         Description = "this is a role test.",
+    ///         Force = true,
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.Imm.Project("example", new()
+    ///     {
+    ///         ProjectName = "example_name",
+    ///         ServiceRole = role.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -67,7 +66,7 @@ namespace Pulumi.AliCloud.Imm
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:imm/project:Project")]
-    public partial class Project : Pulumi.CustomResource
+    public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of Project.
@@ -125,7 +124,7 @@ namespace Pulumi.AliCloud.Imm
         }
     }
 
-    public sealed class ProjectArgs : Pulumi.ResourceArgs
+    public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of Project.
@@ -142,9 +141,10 @@ namespace Pulumi.AliCloud.Imm
         public ProjectArgs()
         {
         }
+        public static new ProjectArgs Empty => new ProjectArgs();
     }
 
-    public sealed class ProjectState : Pulumi.ResourceArgs
+    public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of Project.
@@ -161,5 +161,6 @@ namespace Pulumi.AliCloud.Imm
         public ProjectState()
         {
         }
+        public static new ProjectState Empty => new ProjectState();
     }
 }

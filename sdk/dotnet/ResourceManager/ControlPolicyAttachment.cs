@@ -21,24 +21,24 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Enable the control policy
+    ///     var exampleResourceDirectory = new AliCloud.ResourceManager.ResourceDirectory("exampleResourceDirectory", new()
     ///     {
-    ///         // Enable the control policy
-    ///         var exampleResourceDirectory = new AliCloud.ResourceManager.ResourceDirectory("exampleResourceDirectory", new AliCloud.ResourceManager.ResourceDirectoryArgs
-    ///         {
-    ///             Status = "Enabled",
-    ///         });
-    ///         var exampleControlPolicy = new AliCloud.ResourceManager.ControlPolicy("exampleControlPolicy", new AliCloud.ResourceManager.ControlPolicyArgs
-    ///         {
-    ///             ControlPolicyName = "tf-testAccName",
-    ///             Description = "tf-testAccRDControlPolicy",
-    ///             EffectScope = "RAM",
-    ///             PolicyDocument = @"  {
+    ///         Status = "Enabled",
+    ///     });
+    /// 
+    ///     var exampleControlPolicy = new AliCloud.ResourceManager.ControlPolicy("exampleControlPolicy", new()
+    ///     {
+    ///         ControlPolicyName = "tf-testAccName",
+    ///         Description = "tf-testAccRDControlPolicy",
+    ///         EffectScope = "RAM",
+    ///         PolicyDocument = @"  {
     ///     ""Version"": ""1"",
     ///     ""Statement"": [
     ///       {
@@ -54,25 +54,26 @@ namespace Pulumi.AliCloud.ResourceManager
     ///     ]
     ///   }
     /// ",
-    ///         });
-    ///         var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new AliCloud.ResourceManager.FolderArgs
-    ///         {
-    ///             FolderName = "tf-testAccName",
-    ///         });
-    ///         var exampleControlPolicyAttachment = new AliCloud.ResourceManager.ControlPolicyAttachment("exampleControlPolicyAttachment", new AliCloud.ResourceManager.ControlPolicyAttachmentArgs
-    ///         {
-    ///             PolicyId = exampleControlPolicy.Id,
-    ///             TargetId = exampleFolder.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 exampleResourceDirectory,
-    ///             },
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    ///     var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new()
+    ///     {
+    ///         FolderName = "tf-testAccName",
+    ///     });
+    /// 
+    ///     var exampleControlPolicyAttachment = new AliCloud.ResourceManager.ControlPolicyAttachment("exampleControlPolicyAttachment", new()
+    ///     {
+    ///         PolicyId = exampleControlPolicy.Id,
+    ///         TargetId = exampleFolder.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             exampleResourceDirectory,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -84,7 +85,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment")]
-    public partial class ControlPolicyAttachment : Pulumi.CustomResource
+    public partial class ControlPolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of control policy.
@@ -142,7 +143,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class ControlPolicyAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class ControlPolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of control policy.
@@ -159,9 +160,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public ControlPolicyAttachmentArgs()
         {
         }
+        public static new ControlPolicyAttachmentArgs Empty => new ControlPolicyAttachmentArgs();
     }
 
-    public sealed class ControlPolicyAttachmentState : Pulumi.ResourceArgs
+    public sealed class ControlPolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of control policy.
@@ -178,5 +180,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public ControlPolicyAttachmentState()
         {
         }
+        public static new ControlPolicyAttachmentState Empty => new ControlPolicyAttachmentState();
     }
 }

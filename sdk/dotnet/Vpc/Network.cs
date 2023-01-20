@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/network:Network")]
-    public partial class Network : Pulumi.CustomResource
+    public partial class Network : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        /// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of resource group which the VPC belongs.
+        /// The ID of resource group which the VPC belongs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RouterTableId { get; private set; } = null!;
 
         /// <summary>
-        /// The secondary CIDR blocks for the VPC.
+        /// Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         /// </summary>
         [Output("secondaryCidrBlocks")]
         public Output<ImmutableArray<string>> SecondaryCidrBlocks { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The user cidrs of the VPC.
+        /// The user cidr blocks of the VPC.
         /// </summary>
         [Output("userCidrs")]
         public Output<ImmutableArray<string>> UserCidrs { get; private set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class NetworkArgs : Pulumi.ResourceArgs
+    public sealed class NetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        /// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the VPC belongs.
+        /// The ID of resource group which the VPC belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -197,8 +197,9 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _secondaryCidrBlocks;
 
         /// <summary>
-        /// The secondary CIDR blocks for the VPC.
+        /// Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         /// </summary>
+        [Obsolete(@"Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.")]
         public InputList<string> SecondaryCidrBlocks
         {
             get => _secondaryCidrBlocks ?? (_secondaryCidrBlocks = new InputList<string>());
@@ -221,7 +222,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _userCidrs;
 
         /// <summary>
-        /// The user cidrs of the VPC.
+        /// The user cidr blocks of the VPC.
         /// </summary>
         public InputList<string> UserCidrs
         {
@@ -238,9 +239,10 @@ namespace Pulumi.AliCloud.Vpc
         public NetworkArgs()
         {
         }
+        public static new NetworkArgs Empty => new NetworkArgs();
     }
 
-    public sealed class NetworkState : Pulumi.ResourceArgs
+    public sealed class NetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
@@ -255,7 +257,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        /// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -279,7 +281,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the VPC belongs.
+        /// The ID of resource group which the VPC belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -306,8 +308,9 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _secondaryCidrBlocks;
 
         /// <summary>
-        /// The secondary CIDR blocks for the VPC.
+        /// Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         /// </summary>
+        [Obsolete(@"Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.")]
         public InputList<string> SecondaryCidrBlocks
         {
             get => _secondaryCidrBlocks ?? (_secondaryCidrBlocks = new InputList<string>());
@@ -336,7 +339,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _userCidrs;
 
         /// <summary>
-        /// The user cidrs of the VPC.
+        /// The user cidr blocks of the VPC.
         /// </summary>
         public InputList<string> UserCidrs
         {
@@ -353,5 +356,6 @@ namespace Pulumi.AliCloud.Vpc
         public NetworkState()
         {
         }
+        public static new NetworkState Empty => new NetworkState();
     }
 }

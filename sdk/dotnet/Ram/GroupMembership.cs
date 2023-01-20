@@ -15,47 +15,48 @@ namespace Pulumi.AliCloud.Ram
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a RAM Group membership.
+    ///     var @group = new AliCloud.Ram.Group("group", new()
     ///     {
-    ///         // Create a RAM Group membership.
-    ///         var @group = new AliCloud.Ram.Group("group", new AliCloud.Ram.GroupArgs
-    ///         {
-    ///             Comments = "this is a group comments.",
-    ///             Force = true,
-    ///         });
-    ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
-    ///         {
-    ///             DisplayName = "user_display_name",
-    ///             Mobile = "86-18688888888",
-    ///             Email = "hello.uuu@aaa.com",
-    ///             Comments = "yoyoyo",
-    ///             Force = true,
-    ///         });
-    ///         var user1 = new AliCloud.Ram.User("user1", new AliCloud.Ram.UserArgs
-    ///         {
-    ///             DisplayName = "user_display_name1",
-    ///             Mobile = "86-18688888889",
-    ///             Email = "hello.uuu@aaa.com",
-    ///             Comments = "yoyoyo",
-    ///             Force = true,
-    ///         });
-    ///         var membership = new AliCloud.Ram.GroupMembership("membership", new AliCloud.Ram.GroupMembershipArgs
-    ///         {
-    ///             GroupName = @group.Name,
-    ///             UserNames = 
-    ///             {
-    ///                 user.Name,
-    ///                 user1.Name,
-    ///             },
-    ///         });
-    ///     }
+    ///         Comments = "this is a group comments.",
+    ///         Force = true,
+    ///     });
     /// 
-    /// }
+    ///     var user = new AliCloud.Ram.User("user", new()
+    ///     {
+    ///         DisplayName = "user_display_name",
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var user1 = new AliCloud.Ram.User("user1", new()
+    ///     {
+    ///         DisplayName = "user_display_name1",
+    ///         Mobile = "86-18688888889",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var membership = new AliCloud.Ram.GroupMembership("membership", new()
+    ///     {
+    ///         GroupName = @group.Name,
+    ///         UserNames = new[]
+    ///         {
+    ///             user.Name,
+    ///             user1.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -67,7 +68,7 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/groupMembership:GroupMembership")]
-    public partial class GroupMembership : Pulumi.CustomResource
+    public partial class GroupMembership : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -125,7 +126,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class GroupMembershipArgs : Pulumi.ResourceArgs
+    public sealed class GroupMembershipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -148,9 +149,10 @@ namespace Pulumi.AliCloud.Ram
         public GroupMembershipArgs()
         {
         }
+        public static new GroupMembershipArgs Empty => new GroupMembershipArgs();
     }
 
-    public sealed class GroupMembershipState : Pulumi.ResourceArgs
+    public sealed class GroupMembershipState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -173,5 +175,6 @@ namespace Pulumi.AliCloud.Ram
         public GroupMembershipState()
         {
         }
+        public static new GroupMembershipState Empty => new GroupMembershipState();
     }
 }

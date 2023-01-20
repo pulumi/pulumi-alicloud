@@ -23,7 +23,7 @@ import (
 type LifecycleHook struct {
 	pulumi.CustomResourceState
 
-	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
 	DefaultResult pulumi.StringPtrOutput `pulumi:"defaultResult"`
 	// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
 	HeartbeatTimeout pulumi.IntPtrOutput `pulumi:"heartbeatTimeout"`
@@ -74,7 +74,7 @@ func GetLifecycleHook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LifecycleHook resources.
 type lifecycleHookState struct {
-	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
 	DefaultResult *string `pulumi:"defaultResult"`
 	// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
 	HeartbeatTimeout *int `pulumi:"heartbeatTimeout"`
@@ -91,7 +91,7 @@ type lifecycleHookState struct {
 }
 
 type LifecycleHookState struct {
-	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
 	DefaultResult pulumi.StringPtrInput
 	// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
 	HeartbeatTimeout pulumi.IntPtrInput
@@ -112,7 +112,7 @@ func (LifecycleHookState) ElementType() reflect.Type {
 }
 
 type lifecycleHookArgs struct {
-	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
 	DefaultResult *string `pulumi:"defaultResult"`
 	// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
 	HeartbeatTimeout *int `pulumi:"heartbeatTimeout"`
@@ -130,7 +130,7 @@ type lifecycleHookArgs struct {
 
 // The set of arguments for constructing a LifecycleHook resource.
 type LifecycleHookArgs struct {
-	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
 	DefaultResult pulumi.StringPtrInput
 	// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
 	HeartbeatTimeout pulumi.IntPtrInput
@@ -233,7 +233,7 @@ func (o LifecycleHookOutput) ToLifecycleHookOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
 func (o LifecycleHookOutput) DefaultResult() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LifecycleHook) pulumi.StringPtrOutput { return v.DefaultResult }).(pulumi.StringPtrOutput)
 }

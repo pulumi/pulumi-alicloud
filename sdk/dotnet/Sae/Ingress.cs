@@ -21,75 +21,79 @@ namespace Pulumi.AliCloud.Sae
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "example_value";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "example_value";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
-    ///         {
-    ///             Specification = "slb.s2.small",
-    ///             VswitchId = data.Alicloud_vswitches.Default.Ids[0],
-    ///         });
-    ///         var namespaceId = config.Get("namespaceId") ?? "cn-hangzhou:yourname";
-    ///         var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new AliCloud.Sae.NamespaceArgs
-    ///         {
-    ///             NamespaceId = namespaceId,
-    ///             NamespaceName = name,
-    ///             NamespaceDescription = name,
-    ///         });
-    ///         var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new AliCloud.Sae.ApplicationArgs
-    ///         {
-    ///             AppDescription = "your_app_description",
-    ///             AppName = "your_app_name",
-    ///             NamespaceId = "your_namespace_id",
-    ///             PackageUrl = "your_package_url",
-    ///             PackageType = "your_package_url",
-    ///             Jdk = "jdk_specifications",
-    ///             VswitchId = data.Alicloud_vswitches.Default.Ids[0],
-    ///             Replicas = "your_replicas",
-    ///             Cpu = "cpu_specifications",
-    ///             Memory = "memory_specifications",
-    ///         });
-    ///         var defaultIngress = new AliCloud.Sae.Ingress("defaultIngress", new AliCloud.Sae.IngressArgs
-    ///         {
-    ///             SlbId = defaultLoadBalancer.Id,
-    ///             NamespaceId = defaultNamespace.Id,
-    ///             ListenerPort = "your_listener_port",
-    ///             Rules = 
-    ///             {
-    ///                 new AliCloud.Sae.Inputs.IngressRuleArgs
-    ///                 {
-    ///                     AppId = defaultApplication.Id,
-    ///                     ContainerPort = "your_container_port",
-    ///                     Domain = "your_domain",
-    ///                     AppName = "your_name",
-    ///                     Path = "your_path",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new()
+    ///     {
+    ///         Specification = "slb.s2.small",
+    ///         VswitchId = data.Alicloud_vswitches.Default.Ids[0],
+    ///     });
+    /// 
+    ///     var namespaceId = config.Get("namespaceId") ?? "cn-hangzhou:yourname";
+    ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
+    ///     {
+    ///         NamespaceId = namespaceId,
+    ///         NamespaceName = name,
+    ///         NamespaceDescription = name,
+    ///     });
+    /// 
+    ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
+    ///     {
+    ///         AppDescription = "your_app_description",
+    ///         AppName = "your_app_name",
+    ///         NamespaceId = "your_namespace_id",
+    ///         PackageUrl = "your_package_url",
+    ///         PackageType = "your_package_url",
+    ///         Jdk = "jdk_specifications",
+    ///         VswitchId = data.Alicloud_vswitches.Default.Ids[0],
+    ///         Replicas = "your_replicas",
+    ///         Cpu = "cpu_specifications",
+    ///         Memory = "memory_specifications",
+    ///     });
+    /// 
+    ///     var defaultIngress = new AliCloud.Sae.Ingress("defaultIngress", new()
+    ///     {
+    ///         SlbId = defaultLoadBalancer.Id,
+    ///         NamespaceId = defaultNamespace.Id,
+    ///         ListenerPort = "your_listener_port",
+    ///         Rules = new[]
+    ///         {
+    ///             new AliCloud.Sae.Inputs.IngressRuleArgs
+    ///             {
+    ///                 AppId = defaultApplication.Id,
+    ///                 ContainerPort = "your_container_port",
+    ///                 Domain = "your_domain",
+    ///                 AppName = "your_name",
+    ///                 Path = "your_path",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -101,7 +105,7 @@ namespace Pulumi.AliCloud.Sae
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sae/ingress:Ingress")]
-    public partial class Ingress : Pulumi.CustomResource
+    public partial class Ingress : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Cert Id.
@@ -189,7 +193,7 @@ namespace Pulumi.AliCloud.Sae
         }
     }
 
-    public sealed class IngressArgs : Pulumi.ResourceArgs
+    public sealed class IngressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cert Id.
@@ -242,9 +246,10 @@ namespace Pulumi.AliCloud.Sae
         public IngressArgs()
         {
         }
+        public static new IngressArgs Empty => new IngressArgs();
     }
 
-    public sealed class IngressState : Pulumi.ResourceArgs
+    public sealed class IngressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cert Id.
@@ -297,5 +302,6 @@ namespace Pulumi.AliCloud.Sae
         public IngressState()
         {
         }
+        public static new IngressState Empty => new IngressState();
     }
 }

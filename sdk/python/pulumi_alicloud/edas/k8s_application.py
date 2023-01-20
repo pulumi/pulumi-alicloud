@@ -94,11 +94,23 @@ class K8sApplicationArgs:
         if image_url is not None:
             pulumi.set(__self__, "image_url", image_url)
         if internet_slb_id is not None:
+            warnings.warn("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+            pulumi.log.warn("""internet_slb_id is deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+        if internet_slb_id is not None:
             pulumi.set(__self__, "internet_slb_id", internet_slb_id)
+        if internet_slb_port is not None:
+            warnings.warn("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+            pulumi.log.warn("""internet_slb_port is deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
         if internet_slb_port is not None:
             pulumi.set(__self__, "internet_slb_port", internet_slb_port)
         if internet_slb_protocol is not None:
+            warnings.warn("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+            pulumi.log.warn("""internet_slb_protocol is deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+        if internet_slb_protocol is not None:
             pulumi.set(__self__, "internet_slb_protocol", internet_slb_protocol)
+        if internet_target_port is not None:
+            warnings.warn("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+            pulumi.log.warn("""internet_target_port is deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
         if internet_target_port is not None:
             pulumi.set(__self__, "internet_target_port", internet_target_port)
         if jdk is not None:
@@ -598,11 +610,23 @@ class _K8sApplicationState:
         if image_url is not None:
             pulumi.set(__self__, "image_url", image_url)
         if internet_slb_id is not None:
+            warnings.warn("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+            pulumi.log.warn("""internet_slb_id is deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+        if internet_slb_id is not None:
             pulumi.set(__self__, "internet_slb_id", internet_slb_id)
+        if internet_slb_port is not None:
+            warnings.warn("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+            pulumi.log.warn("""internet_slb_port is deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
         if internet_slb_port is not None:
             pulumi.set(__self__, "internet_slb_port", internet_slb_port)
         if internet_slb_protocol is not None:
+            warnings.warn("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+            pulumi.log.warn("""internet_slb_protocol is deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+        if internet_slb_protocol is not None:
             pulumi.set(__self__, "internet_slb_protocol", internet_slb_protocol)
+        if internet_target_port is not None:
+            warnings.warn("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+            pulumi.log.warn("""internet_target_port is deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
         if internet_target_port is not None:
             pulumi.set(__self__, "internet_target_port", internet_target_port)
         if jdk is not None:
@@ -1187,9 +1211,21 @@ class K8sApplication(pulumi.CustomResource):
             __props__.__dict__["edas_container_version"] = edas_container_version
             __props__.__dict__["envs"] = envs
             __props__.__dict__["image_url"] = image_url
+            if internet_slb_id is not None and not opts.urn:
+                warnings.warn("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+                pulumi.log.warn("""internet_slb_id is deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
             __props__.__dict__["internet_slb_id"] = internet_slb_id
+            if internet_slb_port is not None and not opts.urn:
+                warnings.warn("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+                pulumi.log.warn("""internet_slb_port is deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
             __props__.__dict__["internet_slb_port"] = internet_slb_port
+            if internet_slb_protocol is not None and not opts.urn:
+                warnings.warn("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+                pulumi.log.warn("""internet_slb_protocol is deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
             __props__.__dict__["internet_slb_protocol"] = internet_slb_protocol
+            if internet_target_port is not None and not opts.urn:
+                warnings.warn("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+                pulumi.log.warn("""internet_target_port is deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
             __props__.__dict__["internet_target_port"] = internet_target_port
             __props__.__dict__["jdk"] = jdk
             __props__.__dict__["limit_m_cpu"] = limit_m_cpu

@@ -49,6 +49,8 @@ type Function struct {
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
 	// The date this resource was last modified.
 	LastModified pulumi.StringOutput `pulumi:"lastModified"`
+	// The configuration for layers.
+	Layers pulumi.StringArrayOutput `pulumi:"layers"`
 	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
 	MemorySize pulumi.IntPtrOutput `pulumi:"memorySize"`
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
@@ -59,7 +61,7 @@ type Function struct {
 	OssBucket pulumi.StringPtrOutput `pulumi:"ossBucket"`
 	// The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
 	OssKey pulumi.StringPtrOutput `pulumi:"ossKey"`
-	// See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+	// See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// The Function Compute service name.
 	Service pulumi.StringOutput `pulumi:"service"`
@@ -131,6 +133,8 @@ type functionState struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// The date this resource was last modified.
 	LastModified *string `pulumi:"lastModified"`
+	// The configuration for layers.
+	Layers []string `pulumi:"layers"`
 	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
 	MemorySize *int `pulumi:"memorySize"`
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
@@ -141,7 +145,7 @@ type functionState struct {
 	OssBucket *string `pulumi:"ossBucket"`
 	// The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
 	OssKey *string `pulumi:"ossKey"`
-	// See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+	// See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
 	Runtime *string `pulumi:"runtime"`
 	// The Function Compute service name.
 	Service *string `pulumi:"service"`
@@ -176,6 +180,8 @@ type FunctionState struct {
 	InstanceType pulumi.StringPtrInput
 	// The date this resource was last modified.
 	LastModified pulumi.StringPtrInput
+	// The configuration for layers.
+	Layers pulumi.StringArrayInput
 	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
 	MemorySize pulumi.IntPtrInput
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
@@ -186,7 +192,7 @@ type FunctionState struct {
 	OssBucket pulumi.StringPtrInput
 	// The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
 	OssKey pulumi.StringPtrInput
-	// See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+	// See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
 	Runtime pulumi.StringPtrInput
 	// The Function Compute service name.
 	Service pulumi.StringPtrInput
@@ -221,6 +227,8 @@ type functionArgs struct {
 	InstanceConcurrency *int `pulumi:"instanceConcurrency"`
 	// The instance type of the function.
 	InstanceType *string `pulumi:"instanceType"`
+	// The configuration for layers.
+	Layers []string `pulumi:"layers"`
 	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
 	MemorySize *int `pulumi:"memorySize"`
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
@@ -231,7 +239,7 @@ type functionArgs struct {
 	OssBucket *string `pulumi:"ossBucket"`
 	// The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
 	OssKey *string `pulumi:"ossKey"`
-	// See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+	// See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
 	Runtime string `pulumi:"runtime"`
 	// The Function Compute service name.
 	Service string `pulumi:"service"`
@@ -263,6 +271,8 @@ type FunctionArgs struct {
 	InstanceConcurrency pulumi.IntPtrInput
 	// The instance type of the function.
 	InstanceType pulumi.StringPtrInput
+	// The configuration for layers.
+	Layers pulumi.StringArrayInput
 	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
 	MemorySize pulumi.IntPtrInput
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
@@ -273,7 +283,7 @@ type FunctionArgs struct {
 	OssBucket pulumi.StringPtrInput
 	// The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
 	OssKey pulumi.StringPtrInput
-	// See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+	// See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
 	Runtime pulumi.StringInput
 	// The Function Compute service name.
 	Service pulumi.StringInput
@@ -433,6 +443,11 @@ func (o FunctionOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.LastModified }).(pulumi.StringOutput)
 }
 
+// The configuration for layers.
+func (o FunctionOutput) Layers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringArrayOutput { return v.Layers }).(pulumi.StringArrayOutput)
+}
+
 // Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
 func (o FunctionOutput) MemorySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntPtrOutput { return v.MemorySize }).(pulumi.IntPtrOutput)
@@ -458,7 +473,7 @@ func (o FunctionOutput) OssKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.OssKey }).(pulumi.StringPtrOutput)
 }
 
-// See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+// See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
 func (o FunctionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,20 +22,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.vpc.getIpsecServers({
  *     ids: ["example_id"],
  * });
- * export const vpnIpsecServerId1 = ids.then(ids => ids.servers?[0]?.id);
+ * export const vpnIpsecServerId1 = ids.then(ids => ids.servers?.[0]?.id);
  * const nameRegex = alicloud.vpc.getIpsecServers({
  *     nameRegex: "^my-IpsecServer",
  * });
- * export const vpnIpsecServerId2 = nameRegex.then(nameRegex => nameRegex.servers?[0]?.id);
+ * export const vpnIpsecServerId2 = nameRegex.then(nameRegex => nameRegex.servers?.[0]?.id);
  * ```
  */
 export function getIpsecServers(args?: GetIpsecServersArgs, opts?: pulumi.InvokeOptions): Promise<GetIpsecServersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getIpsecServers:getIpsecServers", {
         "ids": args.ids,
         "ipsecServerName": args.ipsecServerName,
@@ -83,9 +81,31 @@ export interface GetIpsecServersResult {
     readonly servers: outputs.vpc.GetIpsecServersServer[];
     readonly vpnGatewayId?: string;
 }
-
+/**
+ * This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.161.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getIpsecServers({
+ *     ids: ["example_id"],
+ * });
+ * export const vpnIpsecServerId1 = ids.then(ids => ids.servers?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getIpsecServers({
+ *     nameRegex: "^my-IpsecServer",
+ * });
+ * export const vpnIpsecServerId2 = nameRegex.then(nameRegex => nameRegex.servers?.[0]?.id);
+ * ```
+ */
 export function getIpsecServersOutput(args?: GetIpsecServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpsecServersResult> {
-    return pulumi.output(args).apply(a => getIpsecServers(a, opts))
+    return pulumi.output(args).apply((a: any) => getIpsecServers(a, opts))
 }
 
 /**

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -28,7 +29,7 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?[0]?.id,
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
@@ -44,18 +45,18 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
  *     instanceName: name,
  *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 10,
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     instanceChargeType: "PostPaid",
  *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: defaultSwitch.id,
@@ -65,7 +66,7 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  *     vpcId: defaultNetwork.id,
  *     serverGroupName: name,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     healthCheckConfig: {
  *         healthCheckConnectPort: 46325,
  *         healthCheckEnabled: true,
@@ -164,6 +165,10 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly serverGroupName!: pulumi.Output<string | undefined>;
     /**
+     * The type of the server group. Valid values:
+     */
+    public readonly serverGroupType!: pulumi.Output<string>;
+    /**
      * The backend server.
      */
     public readonly servers!: pulumi.Output<outputs.alb.ServerGroupServer[] | undefined>;
@@ -175,6 +180,9 @@ export class ServerGroup extends pulumi.CustomResource {
      * The configuration of the sticky session.
      */
     public readonly stickySessionConfig!: pulumi.Output<outputs.alb.ServerGroupStickySessionConfig | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The ID of the VPC that you want to access.
@@ -200,6 +208,7 @@ export class ServerGroup extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["scheduler"] = state ? state.scheduler : undefined;
             resourceInputs["serverGroupName"] = state ? state.serverGroupName : undefined;
+            resourceInputs["serverGroupType"] = state ? state.serverGroupType : undefined;
             resourceInputs["servers"] = state ? state.servers : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["stickySessionConfig"] = state ? state.stickySessionConfig : undefined;
@@ -213,6 +222,7 @@ export class ServerGroup extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["scheduler"] = args ? args.scheduler : undefined;
             resourceInputs["serverGroupName"] = args ? args.serverGroupName : undefined;
+            resourceInputs["serverGroupType"] = args ? args.serverGroupType : undefined;
             resourceInputs["servers"] = args ? args.servers : undefined;
             resourceInputs["stickySessionConfig"] = args ? args.stickySessionConfig : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -253,6 +263,10 @@ export interface ServerGroupState {
      */
     serverGroupName?: pulumi.Input<string>;
     /**
+     * The type of the server group. Valid values:
+     */
+    serverGroupType?: pulumi.Input<string>;
+    /**
      * The backend server.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
@@ -264,6 +278,9 @@ export interface ServerGroupState {
      * The configuration of the sticky session.
      */
     stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the VPC that you want to access.
@@ -300,6 +317,10 @@ export interface ServerGroupArgs {
      */
     serverGroupName?: pulumi.Input<string>;
     /**
+     * The type of the server group. Valid values:
+     */
+    serverGroupType?: pulumi.Input<string>;
+    /**
      * The backend server.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
@@ -307,6 +328,9 @@ export interface ServerGroupArgs {
      * The configuration of the sticky session.
      */
     stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the VPC that you want to access.

@@ -21,24 +21,22 @@ namespace Pulumi.AliCloud.ApiGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name1 = config.Get("name1") ?? "tf-testAccBackend";
+    ///     var @default = new AliCloud.ApiGateway.Backend("default", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name1 = config.Get("name1") ?? "tf-testAccBackend";
-    ///         var @default = new AliCloud.ApiGateway.Backend("default", new AliCloud.ApiGateway.BackendArgs
-    ///         {
-    ///             BackendName = @var.Name,
-    ///             Description = @var.Name,
-    ///             BackendType = "HTTP",
-    ///         });
-    ///     }
+    ///         BackendName = @var.Name,
+    ///         Description = @var.Name,
+    ///         BackendType = "HTTP",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.ApiGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:apigateway/backend:Backend")]
-    public partial class Backend : Pulumi.CustomResource
+    public partial class Backend : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the Backend.
@@ -120,7 +118,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
     }
 
-    public sealed class BackendArgs : Pulumi.ResourceArgs
+    public sealed class BackendArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Backend.
@@ -149,9 +147,10 @@ namespace Pulumi.AliCloud.ApiGateway
         public BackendArgs()
         {
         }
+        public static new BackendArgs Empty => new BackendArgs();
     }
 
-    public sealed class BackendState : Pulumi.ResourceArgs
+    public sealed class BackendState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Backend.
@@ -180,5 +179,6 @@ namespace Pulumi.AliCloud.ApiGateway
         public BackendState()
         {
         }
+        public static new BackendState Empty => new BackendState();
     }
 }

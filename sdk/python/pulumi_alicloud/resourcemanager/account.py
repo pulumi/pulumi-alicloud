@@ -15,6 +15,7 @@ __all__ = ['AccountArgs', 'Account']
 class AccountArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
+                 abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  account_name_prefix: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  payer_account_id: Optional[pulumi.Input[str]] = None,
@@ -22,12 +23,17 @@ class AccountArgs:
         """
         The set of arguments for constructing a Account resource.
         :param pulumi.Input[str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion. 
+               If you want to delete the account, please use datasource `resourcemanager.get_account_deletion_check_task`
+               to get check ids and set them.
         :param pulumi.Input[str] account_name_prefix: The name prefix of account.
         :param pulumi.Input[str] folder_id: The ID of the parent folder.
         :param pulumi.Input[str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "display_name", display_name)
+        if abandon_able_check_ids is not None:
+            pulumi.set(__self__, "abandon_able_check_ids", abandon_able_check_ids)
         if account_name_prefix is not None:
             pulumi.set(__self__, "account_name_prefix", account_name_prefix)
         if folder_id is not None:
@@ -48,6 +54,20 @@ class AccountArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="abandonAbleCheckIds")
+    def abandon_able_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of the check items that you can choose to ignore for the member deletion. 
+        If you want to delete the account, please use datasource `resourcemanager.get_account_deletion_check_task`
+        to get check ids and set them.
+        """
+        return pulumi.get(self, "abandon_able_check_ids")
+
+    @abandon_able_check_ids.setter
+    def abandon_able_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "abandon_able_check_ids", value)
 
     @property
     @pulumi.getter(name="accountNamePrefix")
@@ -101,6 +121,7 @@ class AccountArgs:
 @pulumi.input_type
 class _AccountState:
     def __init__(__self__, *,
+                 abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  account_name_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -114,6 +135,9 @@ class _AccountState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion. 
+               If you want to delete the account, please use datasource `resourcemanager.get_account_deletion_check_task`
+               to get check ids and set them.
         :param pulumi.Input[str] account_name_prefix: The name prefix of account.
         :param pulumi.Input[str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         :param pulumi.Input[str] folder_id: The ID of the parent folder.
@@ -126,6 +150,8 @@ class _AccountState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: Member type. The value of `ResourceAccount` indicates the resource account.
         """
+        if abandon_able_check_ids is not None:
+            pulumi.set(__self__, "abandon_able_check_ids", abandon_able_check_ids)
         if account_name_prefix is not None:
             pulumi.set(__self__, "account_name_prefix", account_name_prefix)
         if display_name is not None:
@@ -148,6 +174,20 @@ class _AccountState:
             pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="abandonAbleCheckIds")
+    def abandon_able_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of the check items that you can choose to ignore for the member deletion. 
+        If you want to delete the account, please use datasource `resourcemanager.get_account_deletion_check_task`
+        to get check ids and set them.
+        """
+        return pulumi.get(self, "abandon_able_check_ids")
+
+    @abandon_able_check_ids.setter
+    def abandon_able_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "abandon_able_check_ids", value)
 
     @property
     @pulumi.getter(name="accountNamePrefix")
@@ -287,6 +327,7 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  account_name_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -298,6 +339,8 @@ class Account(pulumi.CustomResource):
         For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 
         > **NOTE:** Available in v1.83.0+.
+
+        > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
 
         ## Example Usage
 
@@ -311,6 +354,12 @@ class Account(pulumi.CustomResource):
             display_name="RDAccount",
             folder_id=f1.id)
         ```
+        ### Deleting `resourcemanager.Account` or removing it from your configuration
+
+        Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
+        but may not destroy the account. If there are some dependent resource in the account,
+        the deleting account will enter a silence period of 45 days. After the silence period ends,
+        the system automatically starts to delete the member. [See More Details](https://www.alibabacloud.com/help/en/resource-management/latest/delete-resource-account).
 
         ## Import
 
@@ -322,6 +371,9 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion. 
+               If you want to delete the account, please use datasource `resourcemanager.get_account_deletion_check_task`
+               to get check ids and set them.
         :param pulumi.Input[str] account_name_prefix: The name prefix of account.
         :param pulumi.Input[str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         :param pulumi.Input[str] folder_id: The ID of the parent folder.
@@ -340,6 +392,8 @@ class Account(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.83.0+.
 
+        > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
+
         ## Example Usage
 
         ```python
@@ -352,6 +406,12 @@ class Account(pulumi.CustomResource):
             display_name="RDAccount",
             folder_id=f1.id)
         ```
+        ### Deleting `resourcemanager.Account` or removing it from your configuration
+
+        Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
+        but may not destroy the account. If there are some dependent resource in the account,
+        the deleting account will enter a silence period of 45 days. After the silence period ends,
+        the system automatically starts to delete the member. [See More Details](https://www.alibabacloud.com/help/en/resource-management/latest/delete-resource-account).
 
         ## Import
 
@@ -376,6 +436,7 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  account_name_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
@@ -390,6 +451,7 @@ class Account(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountArgs.__new__(AccountArgs)
 
+            __props__.__dict__["abandon_able_check_ids"] = abandon_able_check_ids
             __props__.__dict__["account_name_prefix"] = account_name_prefix
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -413,6 +475,7 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             account_name_prefix: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
@@ -431,6 +494,9 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion. 
+               If you want to delete the account, please use datasource `resourcemanager.get_account_deletion_check_task`
+               to get check ids and set them.
         :param pulumi.Input[str] account_name_prefix: The name prefix of account.
         :param pulumi.Input[str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         :param pulumi.Input[str] folder_id: The ID of the parent folder.
@@ -447,6 +513,7 @@ class Account(pulumi.CustomResource):
 
         __props__ = _AccountState.__new__(_AccountState)
 
+        __props__.__dict__["abandon_able_check_ids"] = abandon_able_check_ids
         __props__.__dict__["account_name_prefix"] = account_name_prefix
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["folder_id"] = folder_id
@@ -459,6 +526,16 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
         return Account(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="abandonAbleCheckIds")
+    def abandon_able_check_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The IDs of the check items that you can choose to ignore for the member deletion. 
+        If you want to delete the account, please use datasource `resourcemanager.get_account_deletion_check_task`
+        to get check ids and set them.
+        """
+        return pulumi.get(self, "abandon_able_check_ids")
 
     @property
     @pulumi.getter(name="accountNamePrefix")

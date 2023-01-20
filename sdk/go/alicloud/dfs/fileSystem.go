@@ -44,8 +44,8 @@ import (
 //				return err
 //			}
 //			_, err = dfs.NewFileSystem(ctx, "defaultFileSystem", &dfs.FileSystemArgs{
-//				StorageType:    pulumi.String(defaultZones.Zones[0].Options[0].StorageType),
-//				ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
+//				StorageType:    *pulumi.String(defaultZones.Zones[0].Options[0].StorageType),
+//				ZoneId:         *pulumi.String(defaultZones.Zones[0].ZoneId),
 //				ProtocolType:   pulumi.String("HDFS"),
 //				Description:    pulumi.String(name),
 //				FileSystemName: pulumi.String(name),
@@ -113,6 +113,13 @@ func NewFileSystem(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	if args.ThroughputMode != nil {
+		args.ThroughputMode = pulumi.ToSecret(args.ThroughputMode).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"throughputMode",
+	})
+	opts = append(opts, secrets)
 	var resource FileSystem
 	err := ctx.RegisterResource("alicloud:dfs/fileSystem:FileSystem", name, args, &resource, opts...)
 	if err != nil {

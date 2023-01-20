@@ -6,12 +6,18 @@ package com.pulumi.alicloud.adb;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
 import com.pulumi.alicloud.adb.inputs.GetClustersPlainArgs;
+import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
+import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsPlainArgs;
 import com.pulumi.alicloud.adb.inputs.GetDBClustersArgs;
 import com.pulumi.alicloud.adb.inputs.GetDBClustersPlainArgs;
+import com.pulumi.alicloud.adb.inputs.GetResourceGroupsArgs;
+import com.pulumi.alicloud.adb.inputs.GetResourceGroupsPlainArgs;
 import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
 import com.pulumi.alicloud.adb.inputs.GetZonesPlainArgs;
 import com.pulumi.alicloud.adb.outputs.GetClustersResult;
+import com.pulumi.alicloud.adb.outputs.GetDBClusterLakeVersionsResult;
 import com.pulumi.alicloud.adb.outputs.GetDBClustersResult;
+import com.pulumi.alicloud.adb.outputs.GetResourceGroupsResult;
 import com.pulumi.alicloud.adb.outputs.GetZonesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -241,6 +247,258 @@ public final class AdbFunctions {
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:adb/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.190.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;adbDbClusterLakeVersionId1&#34;, ids.applyValue(getDBClusterLakeVersionsResult -&gt; getDBClusterLakeVersionsResult.versions()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDBClusterLakeVersionsResult> getDBClusterLakeVersions() {
+        return getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.190.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;adbDbClusterLakeVersionId1&#34;, ids.applyValue(getDBClusterLakeVersionsResult -&gt; getDBClusterLakeVersionsResult.versions()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDBClusterLakeVersionsResult> getDBClusterLakeVersionsPlain() {
+        return getDBClusterLakeVersionsPlain(GetDBClusterLakeVersionsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.190.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;adbDbClusterLakeVersionId1&#34;, ids.applyValue(getDBClusterLakeVersionsResult -&gt; getDBClusterLakeVersionsResult.versions()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDBClusterLakeVersionsResult> getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs args) {
+        return getDBClusterLakeVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.190.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;adbDbClusterLakeVersionId1&#34;, ids.applyValue(getDBClusterLakeVersionsResult -&gt; getDBClusterLakeVersionsResult.versions()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDBClusterLakeVersionsResult> getDBClusterLakeVersionsPlain(GetDBClusterLakeVersionsPlainArgs args) {
+        return getDBClusterLakeVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.190.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;adbDbClusterLakeVersionId1&#34;, ids.applyValue(getDBClusterLakeVersionsResult -&gt; getDBClusterLakeVersionsResult.versions()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDBClusterLakeVersionsResult> getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", TypeShape.of(GetDBClusterLakeVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.190.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;adbDbClusterLakeVersionId1&#34;, ids.applyValue(getDBClusterLakeVersionsResult -&gt; getDBClusterLakeVersionsResult.versions()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDBClusterLakeVersionsResult> getDBClusterLakeVersionsPlain(GetDBClusterLakeVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", TypeShape.of(GetDBClusterLakeVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
@@ -493,6 +751,170 @@ public final class AdbFunctions {
      */
     public static CompletableFuture<GetDBClustersResult> getDBClustersPlain(GetDBClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:adb/getDBClusters:getDBClusters", TypeShape.of(GetDBClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetResourceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AdbFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .dbClusterId(&#34;am-bp1a16357gty69185&#34;)
+     *             .groupName(&#34;TESTOPENAPI&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAdbResourceGroupExampleId&#34;, default_.groups()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetResourceGroupsResult> getResourceGroups(GetResourceGroupsArgs args) {
+        return getResourceGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetResourceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AdbFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .dbClusterId(&#34;am-bp1a16357gty69185&#34;)
+     *             .groupName(&#34;TESTOPENAPI&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAdbResourceGroupExampleId&#34;, default_.groups()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(GetResourceGroupsPlainArgs args) {
+        return getResourceGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetResourceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AdbFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .dbClusterId(&#34;am-bp1a16357gty69185&#34;)
+     *             .groupName(&#34;TESTOPENAPI&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAdbResourceGroupExampleId&#34;, default_.groups()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetResourceGroupsResult> getResourceGroups(GetResourceGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:adb/getResourceGroups:getResourceGroups", TypeShape.of(GetResourceGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.adb.AdbFunctions;
+     * import com.pulumi.alicloud.adb.inputs.GetResourceGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AdbFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .dbClusterId(&#34;am-bp1a16357gty69185&#34;)
+     *             .groupName(&#34;TESTOPENAPI&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAdbResourceGroupExampleId&#34;, default_.groups()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetResourceGroupsResult> getResourceGroupsPlain(GetResourceGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:adb/getResourceGroups:getResourceGroups", TypeShape.of(GetResourceGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides availability zones for ADB that can be accessed by an Alibaba Cloud account within the region configured in the provider.

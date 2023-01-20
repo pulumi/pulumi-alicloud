@@ -24,11 +24,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKubernetesAddonMetadata(args: GetKubernetesAddonMetadataArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesAddonMetadataResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", {
         "clusterId": args.clusterId,
         "name": args.name,
@@ -70,9 +67,27 @@ export interface GetKubernetesAddonMetadataResult {
     readonly name: string;
     readonly version: string;
 }
-
+/**
+ * This data source provides metadata of kubernetes cluster addons.
+ *
+ * > **NOTE:** Available in 1.166.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cs.getKubernetesAddonMetadata({
+ *     clusterId: _var.cluster_id,
+ *     name: "nginx-ingress-controller",
+ *     version: "v1.1.2-aliyun.2",
+ * });
+ * export const addonConfigSchema = data.alicloud_cs_kubernetes_addons["default"].config_schema;
+ * ```
+ */
 export function getKubernetesAddonMetadataOutput(args: GetKubernetesAddonMetadataOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesAddonMetadataResult> {
-    return pulumi.output(args).apply(a => getKubernetesAddonMetadata(a, opts))
+    return pulumi.output(args).apply((a: any) => getKubernetesAddonMetadata(a, opts))
 }
 
 /**

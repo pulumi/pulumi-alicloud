@@ -21,7 +21,7 @@ class PatchBaselineArgs:
         """
         The set of arguments for constructing a PatchBaseline resource.
         :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
-        :param pulumi.Input[str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        :param pulumi.Input[str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         :param pulumi.Input[str] patch_baseline_name: The name of the patch baseline.
         :param pulumi.Input[str] description: Patches baseline description information.
         """
@@ -47,7 +47,7 @@ class PatchBaselineArgs:
     @pulumi.getter(name="operationSystem")
     def operation_system(self) -> pulumi.Input[str]:
         """
-        Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         """
         return pulumi.get(self, "operation_system")
 
@@ -91,7 +91,7 @@ class _PatchBaselineState:
         Input properties used for looking up and filtering PatchBaseline resources.
         :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
         :param pulumi.Input[str] description: Patches baseline description information.
-        :param pulumi.Input[str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        :param pulumi.Input[str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         :param pulumi.Input[str] patch_baseline_name: The name of the patch baseline.
         """
         if approval_rules is not None:
@@ -131,7 +131,7 @@ class _PatchBaselineState:
     @pulumi.getter(name="operationSystem")
     def operation_system(self) -> Optional[pulumi.Input[str]]:
         """
-        Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         """
         return pulumi.get(self, "operation_system")
 
@@ -195,7 +195,7 @@ class PatchBaseline(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
         :param pulumi.Input[str] description: Patches baseline description information.
-        :param pulumi.Input[str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        :param pulumi.Input[str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         :param pulumi.Input[str] patch_baseline_name: The name of the patch baseline.
         """
         ...
@@ -294,7 +294,7 @@ class PatchBaseline(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
         :param pulumi.Input[str] description: Patches baseline description information.
-        :param pulumi.Input[str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        :param pulumi.Input[str] operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         :param pulumi.Input[str] patch_baseline_name: The name of the patch baseline.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -327,7 +327,7 @@ class PatchBaseline(pulumi.CustomResource):
     @pulumi.getter(name="operationSystem")
     def operation_system(self) -> pulumi.Output[str]:
         """
-        Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         """
         return pulumi.get(self, "operation_system")
 

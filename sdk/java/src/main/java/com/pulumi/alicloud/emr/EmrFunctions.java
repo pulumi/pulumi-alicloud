@@ -41,10 +41,10 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
@@ -53,7 +53,7 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.Cluster;
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -223,10 +223,10 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
@@ -235,7 +235,7 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.Cluster;
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -405,10 +405,10 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
@@ -417,7 +417,7 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.Cluster;
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -587,10 +587,10 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
@@ -599,7 +599,7 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.Cluster;
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -769,10 +769,10 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
@@ -781,7 +781,7 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.Cluster;
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -951,10 +951,10 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.emr.EmrFunctions;
      * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
@@ -963,7 +963,7 @@ public final class EmrFunctions {
      * import com.pulumi.alicloud.emr.Cluster;
      * import com.pulumi.alicloud.emr.ClusterArgs;
      * import com.pulumi.alicloud.emr.inputs.ClusterHostGroupArgs;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1309,7 +1309,7 @@ public final class EmrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1357,7 +1357,7 @@ public final class EmrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1405,7 +1405,7 @@ public final class EmrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1453,7 +1453,7 @@ public final class EmrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.emr.EmrFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

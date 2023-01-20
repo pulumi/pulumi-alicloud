@@ -30,7 +30,7 @@ class ConnectionBgpConfigArgs:
                  local_bgp_ip: Optional[pulumi.Input[str]] = None,
                  tunnel_cidr: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] enable: Whether to enable BGP.
+        :param pulumi.Input[bool] enable: Whether to enable Health Check.
         :param pulumi.Input[str] local_asn: The ASN on the Alibaba Cloud side.
         :param pulumi.Input[str] local_bgp_ip: The BGP IP address on the Alibaba Cloud side.
         :param pulumi.Input[str] tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
@@ -48,7 +48,7 @@ class ConnectionBgpConfigArgs:
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable BGP.
+        Whether to enable Health Check.
         """
         return pulumi.get(self, "enable")
 
@@ -103,7 +103,7 @@ class ConnectionHealthCheckConfigArgs:
                  sip: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] dip: The destination IP address.
-        :param pulumi.Input[bool] enable: Whether to enable BGP.
+        :param pulumi.Input[bool] enable: Whether to enable Health Check.
         :param pulumi.Input[int] interval: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[int] retry: The maximum number of health check retries.
         :param pulumi.Input[str] sip: The source IP address.
@@ -135,7 +135,7 @@ class ConnectionHealthCheckConfigArgs:
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable BGP.
+        Whether to enable Health Check.
         """
         return pulumi.get(self, "enable")
 
@@ -410,7 +410,7 @@ class GatewayVpnAttachmentBgpConfigArgs:
                  local_bgp_ip: Optional[pulumi.Input[str]] = None,
                  tunnel_cidr: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] enable: Whether to enable BGP.
+        :param pulumi.Input[bool] enable: Specifies whether to enable health checks.
         :param pulumi.Input[int] local_asn: The ASN on the Alibaba Cloud side.
         :param pulumi.Input[str] local_bgp_ip: The BGP IP address on the Alibaba Cloud side.
         :param pulumi.Input[str] tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
@@ -428,7 +428,7 @@ class GatewayVpnAttachmentBgpConfigArgs:
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable BGP.
+        Specifies whether to enable health checks.
         """
         return pulumi.get(self, "enable")
 
@@ -484,7 +484,7 @@ class GatewayVpnAttachmentHealthCheckConfigArgs:
                  sip: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] dip: The destination IP address that is used for health checks.
-        :param pulumi.Input[bool] enable: Whether to enable BGP.
+        :param pulumi.Input[bool] enable: Specifies whether to enable health checks.
         :param pulumi.Input[int] interval: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] policy: Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
         :param pulumi.Input[int] retry: The maximum number of health check retries.
@@ -519,7 +519,7 @@ class GatewayVpnAttachmentHealthCheckConfigArgs:
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable BGP.
+        Specifies whether to enable health checks.
         """
         return pulumi.get(self, "enable")
 

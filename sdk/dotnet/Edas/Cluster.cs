@@ -19,24 +19,22 @@ namespace Pulumi.AliCloud.Edas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Edas.Cluster("default", new()
     ///     {
-    ///         var @default = new AliCloud.Edas.Cluster("default", new AliCloud.Edas.ClusterArgs
-    ///         {
-    ///             ClusterName = @var.Cluster_name,
-    ///             ClusterType = @var.Cluster_type,
-    ///             NetworkMode = @var.Network_mode,
-    ///             LogicalRegionId = @var.Logical_region_id,
-    ///             VpcId = @var.Vpc_id,
-    ///         });
-    ///     }
+    ///         ClusterName = @var.Cluster_name,
+    ///         ClusterType = @var.Cluster_type,
+    ///         NetworkMode = @var.Network_mode,
+    ///         LogicalRegionId = @var.Logical_region_id,
+    ///         VpcId = @var.Vpc_id,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.Edas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:edas/cluster:Cluster")]
-    public partial class Cluster : Pulumi.CustomResource
+    public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the cluster that you want to create.
@@ -124,7 +122,7 @@ namespace Pulumi.AliCloud.Edas
         }
     }
 
-    public sealed class ClusterArgs : Pulumi.ResourceArgs
+    public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the cluster that you want to create.
@@ -159,9 +157,10 @@ namespace Pulumi.AliCloud.Edas
         public ClusterArgs()
         {
         }
+        public static new ClusterArgs Empty => new ClusterArgs();
     }
 
-    public sealed class ClusterState : Pulumi.ResourceArgs
+    public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the cluster that you want to create.
@@ -196,5 +195,6 @@ namespace Pulumi.AliCloud.Edas
         public ClusterState()
         {
         }
+        public static new ClusterState Empty => new ClusterState();
     }
 }

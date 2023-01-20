@@ -21,17 +21,16 @@ namespace Pulumi.AliCloud.Ros
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ros.Stack("example", new()
     ///     {
-    ///         var example = new AliCloud.Ros.Stack("example", new AliCloud.Ros.StackArgs
-    ///         {
-    ///             StackName = "tf-testaccstack",
-    ///             StackPolicyBody = @"    {
+    ///         StackName = "tf-testaccstack",
+    ///         StackPolicyBody = @"    {
     ///     	""Statement"": [{
     ///     		""Action"": ""Update:Delete"",
     ///     		""Resource"": ""*"",
@@ -41,15 +40,14 @@ namespace Pulumi.AliCloud.Ros
     ///     }
     ///     
     /// ",
-    ///             TemplateBody = @"    {
+    ///         TemplateBody = @"    {
     ///     	""ROSTemplateFormatVersion"": ""2015-09-01""
     ///     }
     ///     
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +59,7 @@ namespace Pulumi.AliCloud.Ros
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ros/stack:Stack")]
-    public partial class Stack : Pulumi.CustomResource
+    public partial class Stack : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies whether to delete the stack after it is created.
@@ -233,7 +231,7 @@ namespace Pulumi.AliCloud.Ros
         }
     }
 
-    public sealed class StackArgs : Pulumi.ResourceArgs
+    public sealed class StackArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to delete the stack after it is created.
@@ -382,9 +380,10 @@ namespace Pulumi.AliCloud.Ros
         public StackArgs()
         {
         }
+        public static new StackArgs Empty => new StackArgs();
     }
 
-    public sealed class StackState : Pulumi.ResourceArgs
+    public sealed class StackState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to delete the stack after it is created.
@@ -539,5 +538,6 @@ namespace Pulumi.AliCloud.Ros
         public StackState()
         {
         }
+        public static new StackState Empty => new StackState();
     }
 }

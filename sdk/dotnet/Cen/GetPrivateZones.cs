@@ -21,34 +21,33 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = AliCloud.Cen.GetPrivateZones.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(AliCloud.Cen.GetPrivateZones.InvokeAsync(new AliCloud.Cen.GetPrivateZonesArgs
+        ///         CenId = "cen-o40h17ll9w********",
+        ///         Ids = new[]
         ///         {
-        ///             CenId = "cen-o40h17ll9w********",
-        ///             Ids = 
-        ///             {
-        ///                 "cn-hangzhou",
-        ///             },
-        ///             Status = "Active",
-        ///         }));
-        ///         this.FirstCenPrivateZonesId = @this.Apply(@this =&gt; @this.Zones?[0]?.Id);
-        ///     }
+        ///             "cn-hangzhou",
+        ///         },
+        ///         Status = "Active",
+        ///     });
         /// 
-        ///     [Output("firstCenPrivateZonesId")]
-        ///     public Output&lt;string&gt; FirstCenPrivateZonesId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCenPrivateZonesId"] = @this.Apply(getPrivateZonesResult =&gt; getPrivateZonesResult).Apply(@this =&gt; @this.Apply(getPrivateZonesResult =&gt; getPrivateZonesResult.Zones[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrivateZonesResult> InvokeAsync(GetPrivateZonesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN Private Zones available to the user.
@@ -60,38 +59,37 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = AliCloud.Cen.GetPrivateZones.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(AliCloud.Cen.GetPrivateZones.InvokeAsync(new AliCloud.Cen.GetPrivateZonesArgs
+        ///         CenId = "cen-o40h17ll9w********",
+        ///         Ids = new[]
         ///         {
-        ///             CenId = "cen-o40h17ll9w********",
-        ///             Ids = 
-        ///             {
-        ///                 "cn-hangzhou",
-        ///             },
-        ///             Status = "Active",
-        ///         }));
-        ///         this.FirstCenPrivateZonesId = @this.Apply(@this =&gt; @this.Zones?[0]?.Id);
-        ///     }
+        ///             "cn-hangzhou",
+        ///         },
+        ///         Status = "Active",
+        ///     });
         /// 
-        ///     [Output("firstCenPrivateZonesId")]
-        ///     public Output&lt;string&gt; FirstCenPrivateZonesId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCenPrivateZonesId"] = @this.Apply(getPrivateZonesResult =&gt; getPrivateZonesResult).Apply(@this =&gt; @this.Apply(getPrivateZonesResult =&gt; getPrivateZonesResult.Zones[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrivateZonesResult> Invoke(GetPrivateZonesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPrivateZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetPrivateZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the CEN instance.
@@ -131,9 +129,10 @@ namespace Pulumi.AliCloud.Cen
         public GetPrivateZonesArgs()
         {
         }
+        public static new GetPrivateZonesArgs Empty => new GetPrivateZonesArgs();
     }
 
-    public sealed class GetPrivateZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPrivateZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the CEN instance.
@@ -173,6 +172,7 @@ namespace Pulumi.AliCloud.Cen
         public GetPrivateZonesInvokeArgs()
         {
         }
+        public static new GetPrivateZonesInvokeArgs Empty => new GetPrivateZonesInvokeArgs();
     }
 
 

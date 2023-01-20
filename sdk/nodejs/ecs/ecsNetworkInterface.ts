@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vswitchName: name,
  *     cidrBlock: "192.168.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *         Created: "TF",
  *         For: "Test",
  *     },
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?[0]),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
  * });
  * ```
  *
@@ -94,6 +94,14 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+     */
+    public readonly ipv6AddressCount!: pulumi.Output<number>;
+    /**
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     */
+    public readonly ipv6Addresses!: pulumi.Output<string[]>;
     /**
      * The MAC address of the ENI.
      */
@@ -183,6 +191,8 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EcsNetworkInterfaceState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipv6AddressCount"] = state ? state.ipv6AddressCount : undefined;
+            resourceInputs["ipv6Addresses"] = state ? state.ipv6Addresses : undefined;
             resourceInputs["mac"] = state ? state.mac : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaceName"] = state ? state.networkInterfaceName : undefined;
@@ -205,6 +215,8 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipv6AddressCount"] = args ? args.ipv6AddressCount : undefined;
+            resourceInputs["ipv6Addresses"] = args ? args.ipv6Addresses : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaceName"] = args ? args.networkInterfaceName : undefined;
             resourceInputs["primaryIpAddress"] = args ? args.primaryIpAddress : undefined;
@@ -235,6 +247,14 @@ export interface EcsNetworkInterfaceState {
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+     */
+    ipv6AddressCount?: pulumi.Input<number>;
+    /**
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     */
+    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The MAC address of the ENI.
      */
@@ -319,6 +339,14 @@ export interface EcsNetworkInterfaceArgs {
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+     */
+    ipv6AddressCount?: pulumi.Input<number>;
+    /**
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     */
+    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      *

@@ -13,49 +13,51 @@ namespace Pulumi.AliCloud.Rds
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "Rds";
+    ///     var name = config.Get("name") ?? "dbaccountmysql";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "Rds";
-    ///         var name = config.Get("name") ?? "dbaccountmysql";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
-    ///         {
-    ///             Engine = "MySQL",
-    ///             EngineVersion = "5.6",
-    ///             InstanceType = "rds.mysql.s1.small",
-    ///             InstanceStorage = 10,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             InstanceName = name,
-    ///         });
-    ///         var account = new AliCloud.Rds.Account("account", new AliCloud.Rds.AccountArgs
-    ///         {
-    ///             InstanceId = instance.Id,
-    ///             Password = "Test12345",
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var instance = new AliCloud.Rds.Instance("instance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
+    ///         InstanceType = "rds.mysql.s1.small",
+    ///         InstanceStorage = 10,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var account = new AliCloud.Rds.Account("account", new()
+    ///     {
+    ///         InstanceId = instance.Id,
+    ///         Password = "Test12345",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -67,7 +69,7 @@ namespace Pulumi.AliCloud.Rds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/account:Account")]
-    public partial class Account : Pulumi.CustomResource
+    public partial class Account : global::Pulumi.CustomResource
     {
         [Output("accountDescription")]
         public Output<string> AccountDescription { get; private set; } = null!;
@@ -154,6 +156,11 @@ namespace Pulumi.AliCloud.Rds
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountPassword",
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -175,7 +182,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
-    public sealed class AccountArgs : Pulumi.ResourceArgs
+    public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
@@ -184,7 +191,16 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? AccountName { get; set; }
 
         [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        private Input<string>? _accountPassword;
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
@@ -228,11 +244,22 @@ namespace Pulumi.AliCloud.Rds
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Obsolete(@"Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.")]
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Privilege type of account.
@@ -245,9 +272,10 @@ namespace Pulumi.AliCloud.Rds
         public AccountArgs()
         {
         }
+        public static new AccountArgs Empty => new AccountArgs();
     }
 
-    public sealed class AccountState : Pulumi.ResourceArgs
+    public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
@@ -256,7 +284,16 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? AccountName { get; set; }
 
         [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        private Input<string>? _accountPassword;
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
@@ -300,11 +337,22 @@ namespace Pulumi.AliCloud.Rds
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Obsolete(@"Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.")]
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -320,5 +368,6 @@ namespace Pulumi.AliCloud.Rds
         public AccountState()
         {
         }
+        public static new AccountState Empty => new AccountState();
     }
 }

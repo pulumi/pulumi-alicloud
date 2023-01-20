@@ -13,6 +13,8 @@ import (
 
 // Provides an ALIKAFKA instance resource.
 //
+// For information about ALIKAFKA instance and how to use it, see [What is ALIKAFKA instance](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-startinstance).
+//
 // > **NOTE:** Available in 1.59.0+
 //
 // > **NOTE:** Creation or modification may took about 10-40 minutes.
@@ -47,7 +49,7 @@ import (
 //			if param := cfg.Get("instanceName"); param != "" {
 //				instanceName = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -62,7 +64,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:     defaultNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +76,7 @@ import (
 //				return err
 //			}
 //			_, err = alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-//				TopicQuota:    pulumi.Int(50),
+//				PartitionNum:  pulumi.Int(50),
 //				DiskType:      pulumi.Int(1),
 //				DiskSize:      pulumi.Int(500),
 //				DeployType:    pulumi.Int(4),
@@ -125,8 +127,12 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrOutput `pulumi:"paidType"`
+	// The number of partitions.
+	PartitionNum pulumi.IntPtrOutput `pulumi:"partitionNum"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
+	// The zones among which you want to deploy the instance.
+	SelectedZones pulumi.StringArrayOutput `pulumi:"selectedZones"`
 	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
@@ -139,13 +145,16 @@ type Instance struct {
 	Status pulumi.IntOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+	// The max num of topic can be creation of the instance.
+	// It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+	//
+	// Deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
 	TopicQuota pulumi.IntOutput `pulumi:"topicQuota"`
-	// The ID of attaching VPC to instance.
+	// The VPC ID of the instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
-	// The Zone to launch the kafka instance.
+	// The zone ID of the instance.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -167,9 +176,6 @@ func NewInstance(ctx *pulumi.Context,
 	}
 	if args.IoMax == nil {
 		return nil, errors.New("invalid value for required argument 'IoMax'")
-	}
-	if args.TopicQuota == nil {
-		return nil, errors.New("invalid value for required argument 'TopicQuota'")
 	}
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
@@ -218,8 +224,12 @@ type instanceState struct {
 	Name *string `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType *string `pulumi:"paidType"`
+	// The number of partitions.
+	PartitionNum *int `pulumi:"partitionNum"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
+	// The zones among which you want to deploy the instance.
+	SelectedZones []string `pulumi:"selectedZones"`
 	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
@@ -232,13 +242,16 @@ type instanceState struct {
 	Status *int `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+	// The max num of topic can be creation of the instance.
+	// It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+	//
+	// Deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
 	TopicQuota *int `pulumi:"topicQuota"`
-	// The ID of attaching VPC to instance.
+	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
 	VswitchId *string `pulumi:"vswitchId"`
-	// The Zone to launch the kafka instance.
+	// The zone ID of the instance.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -265,8 +278,12 @@ type InstanceState struct {
 	Name pulumi.StringPtrInput
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrInput
+	// The number of partitions.
+	PartitionNum pulumi.IntPtrInput
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
+	// The zones among which you want to deploy the instance.
+	SelectedZones pulumi.StringArrayInput
 	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
@@ -279,13 +296,16 @@ type InstanceState struct {
 	Status pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+	// The max num of topic can be creation of the instance.
+	// It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+	//
+	// Deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
 	TopicQuota pulumi.IntPtrInput
-	// The ID of attaching VPC to instance.
+	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringPtrInput
-	// The Zone to launch the kafka instance.
+	// The zone ID of the instance.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -314,18 +334,29 @@ type instanceArgs struct {
 	Name *string `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType *string `pulumi:"paidType"`
+	// The number of partitions.
+	PartitionNum *int `pulumi:"partitionNum"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
+	// The zones among which you want to deploy the instance.
+	SelectedZones []string `pulumi:"selectedZones"`
 	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
-	TopicQuota int `pulumi:"topicQuota"`
+	// The max num of topic can be creation of the instance.
+	// It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+	//
+	// Deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+	TopicQuota *int `pulumi:"topicQuota"`
+	// The VPC ID of the instance.
+	VpcId *string `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
 	VswitchId string `pulumi:"vswitchId"`
+	// The zone ID of the instance.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -350,18 +381,29 @@ type InstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrInput
+	// The number of partitions.
+	PartitionNum pulumi.IntPtrInput
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
+	// The zones among which you want to deploy the instance.
+	SelectedZones pulumi.StringArrayInput
 	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
-	TopicQuota pulumi.IntInput
+	// The max num of topic can be creation of the instance.
+	// It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+	//
+	// Deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+	TopicQuota pulumi.IntPtrInput
+	// The VPC ID of the instance.
+	VpcId pulumi.StringPtrInput
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringInput
+	// The zone ID of the instance.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -503,9 +545,19 @@ func (o InstanceOutput) PaidType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PaidType }).(pulumi.StringPtrOutput)
 }
 
+// The number of partitions.
+func (o InstanceOutput) PartitionNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.PartitionNum }).(pulumi.IntPtrOutput)
+}
+
 // The ID of security group for this instance. If the security group is empty, system will create a default one.
 func (o InstanceOutput) SecurityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityGroup }).(pulumi.StringOutput)
+}
+
+// The zones among which you want to deploy the instance.
+func (o InstanceOutput) SelectedZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SelectedZones }).(pulumi.StringArrayOutput)
 }
 
 // The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
@@ -532,12 +584,15 @@ func (o InstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+// The max num of topic can be creation of the instance.
+// It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+//
+// Deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
 func (o InstanceOutput) TopicQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicQuota }).(pulumi.IntOutput)
 }
 
-// The ID of attaching VPC to instance.
+// The VPC ID of the instance.
 func (o InstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -547,7 +602,7 @@ func (o InstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The Zone to launch the kafka instance.
+// The zone ID of the instance.
 func (o InstanceOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

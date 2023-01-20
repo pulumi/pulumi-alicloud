@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.Adb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Adb.GetDBClusters.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Adb.GetDBClusters.InvokeAsync(new AliCloud.Adb.GetDBClustersArgs
-        ///         {
-        ///             DescriptionRegex = "example",
-        ///         }));
-        ///         this.FirstAdbDbClusterId = example.Apply(example =&gt; example.Clusters?[0]?.Id);
-        ///     }
+        ///         DescriptionRegex = "example",
+        ///     });
         /// 
-        ///     [Output("firstAdbDbClusterId")]
-        ///     public Output&lt;string&gt; FirstAdbDbClusterId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAdbDbClusterId"] = example.Apply(getDBClustersResult =&gt; getDBClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDBClustersResult> InvokeAsync(GetDBClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDBClustersResult>("alicloud:adb/getDBClusters:getDBClusters", args ?? new GetDBClustersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDBClustersResult>("alicloud:adb/getDBClusters:getDBClusters", args ?? new GetDBClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Adb DBClusters of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.Adb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Adb.GetDBClusters.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Adb.GetDBClusters.InvokeAsync(new AliCloud.Adb.GetDBClustersArgs
-        ///         {
-        ///             DescriptionRegex = "example",
-        ///         }));
-        ///         this.FirstAdbDbClusterId = example.Apply(example =&gt; example.Clusters?[0]?.Id);
-        ///     }
+        ///         DescriptionRegex = "example",
+        ///     });
         /// 
-        ///     [Output("firstAdbDbClusterId")]
-        ///     public Output&lt;string&gt; FirstAdbDbClusterId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAdbDbClusterId"] = example.Apply(getDBClustersResult =&gt; getDBClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDBClustersResult> Invoke(GetDBClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDBClustersResult>("alicloud:adb/getDBClusters:getDBClusters", args ?? new GetDBClustersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDBClustersResult>("alicloud:adb/getDBClusters:getDBClusters", args ?? new GetDBClustersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDBClustersArgs : Pulumi.InvokeArgs
+    public sealed class GetDBClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The description of DBCluster.
@@ -153,9 +151,10 @@ namespace Pulumi.AliCloud.Adb
         public GetDBClustersArgs()
         {
         }
+        public static new GetDBClustersArgs Empty => new GetDBClustersArgs();
     }
 
-    public sealed class GetDBClustersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDBClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The description of DBCluster.
@@ -223,6 +222,7 @@ namespace Pulumi.AliCloud.Adb
         public GetDBClustersInvokeArgs()
         {
         }
+        public static new GetDBClustersInvokeArgs Empty => new GetDBClustersInvokeArgs();
     }
 
 

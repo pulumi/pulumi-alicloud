@@ -21,35 +21,34 @@ namespace Pulumi.AliCloud.Ddos
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleDdosCooInstance = new AliCloud.Ddos.DdosCooInstance("exampleDdosCooInstance", new()
     ///     {
-    ///         var exampleDdosCooInstance = new AliCloud.Ddos.DdosCooInstance("exampleDdosCooInstance", new AliCloud.Ddos.DdosCooInstanceArgs
-    ///         {
-    ///             Bandwidth = "30",
-    ///             BaseBandwidth = "30",
-    ///             ServiceBandwidth = "100",
-    ///             PortCount = "50",
-    ///             DomainCount = "50",
-    ///         });
-    ///         var examplePort = new AliCloud.Ddos.Port("examplePort", new AliCloud.Ddos.PortArgs
-    ///         {
-    ///             InstanceId = exampleDdosCooInstance.Id,
-    ///             FrontendPort = "7001",
-    ///             FrontendProtocol = "tcp",
-    ///             RealServers = 
-    ///             {
-    ///                 "1.1.1.1",
-    ///                 "2.2.2.2",
-    ///             },
-    ///         });
-    ///     }
+    ///         Bandwidth = "30",
+    ///         BaseBandwidth = "30",
+    ///         ServiceBandwidth = "100",
+    ///         PortCount = "50",
+    ///         DomainCount = "50",
+    ///     });
     /// 
-    /// }
+    ///     var examplePort = new AliCloud.Ddos.Port("examplePort", new()
+    ///     {
+    ///         InstanceId = exampleDdosCooInstance.Id,
+    ///         FrontendPort = "7001",
+    ///         FrontendProtocol = "tcp",
+    ///         RealServers = new[]
+    ///         {
+    ///             "1.1.1.1",
+    ///             "2.2.2.2",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +60,7 @@ namespace Pulumi.AliCloud.Ddos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ddos/port:Port")]
-    public partial class Port : Pulumi.CustomResource
+    public partial class Port : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The port of the origin server. Valid values: [1~65535].
@@ -137,7 +136,7 @@ namespace Pulumi.AliCloud.Ddos
         }
     }
 
-    public sealed class PortArgs : Pulumi.ResourceArgs
+    public sealed class PortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The port of the origin server. Valid values: [1~65535].
@@ -178,9 +177,10 @@ namespace Pulumi.AliCloud.Ddos
         public PortArgs()
         {
         }
+        public static new PortArgs Empty => new PortArgs();
     }
 
-    public sealed class PortState : Pulumi.ResourceArgs
+    public sealed class PortState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The port of the origin server. Valid values: [1~65535].
@@ -221,5 +221,6 @@ namespace Pulumi.AliCloud.Ddos
         public PortState()
         {
         }
+        public static new PortState Empty => new PortState();
     }
 }

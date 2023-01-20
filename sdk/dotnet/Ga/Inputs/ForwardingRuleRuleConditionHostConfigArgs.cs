@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ga.Inputs
 {
 
-    public sealed class ForwardingRuleRuleConditionHostConfigArgs : Pulumi.ResourceArgs
+    public sealed class ForwardingRuleRuleConditionHostConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("values")]
         private InputList<string>? _values;
 
         /// <summary>
-        /// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        /// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&amp;), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
         /// </summary>
         public InputList<string> Values
         {
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public ForwardingRuleRuleConditionHostConfigArgs()
         {
         }
+        public static new ForwardingRuleRuleConditionHostConfigArgs Empty => new ForwardingRuleRuleConditionHostConfigArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CR
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cr/chain:Chain")]
-    public partial class Chain : Pulumi.CustomResource
+    public partial class Chain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The configuration of delivery chain. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.CR
         }
     }
 
-    public sealed class ChainArgs : Pulumi.ResourceArgs
+    public sealed class ChainArgs : global::Pulumi.ResourceArgs
     {
         [Input("chainConfigs")]
         private InputList<Inputs.ChainChainConfigArgs>? _chainConfigs;
@@ -160,9 +160,10 @@ namespace Pulumi.AliCloud.CR
         public ChainArgs()
         {
         }
+        public static new ChainArgs Empty => new ChainArgs();
     }
 
-    public sealed class ChainState : Pulumi.ResourceArgs
+    public sealed class ChainState : global::Pulumi.ResourceArgs
     {
         [Input("chainConfigs")]
         private InputList<Inputs.ChainChainConfigGetArgs>? _chainConfigs;
@@ -215,5 +216,6 @@ namespace Pulumi.AliCloud.CR
         public ChainState()
         {
         }
+        public static new ChainState Empty => new ChainState();
     }
 }

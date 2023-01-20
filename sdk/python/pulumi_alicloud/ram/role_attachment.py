@@ -124,7 +124,8 @@ class RoleAttachment(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",
@@ -159,7 +160,7 @@ class RoleAttachment(pulumi.CustomResource):
             ],
             "Version": "1"
           }
-          
+
         \"\"\",
             description="this is a test",
             force=True)
@@ -206,7 +207,8 @@ class RoleAttachment(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",
@@ -241,7 +243,7 @@ class RoleAttachment(pulumi.CustomResource):
             ],
             "Version": "1"
           }
-          
+
         \"\"\",
             description="this is a test",
             force=True)

@@ -21,31 +21,31 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ecs.EcsKeyPair("example", new()
     ///     {
-    ///         var example = new AliCloud.Ecs.EcsKeyPair("example", new AliCloud.Ecs.EcsKeyPairArgs
-    ///         {
-    ///             KeyPairName = "key_pair_name",
-    ///         });
-    ///         // Using name prefix to build key pair
-    ///         var prefix = new AliCloud.Ecs.EcsKeyPair("prefix", new AliCloud.Ecs.EcsKeyPairArgs
-    ///         {
-    ///             KeyNamePrefix = "terraform-test-key-pair-prefix",
-    ///         });
-    ///         // Import an existing public key to build a alicloud key pair
-    ///         var publickey = new AliCloud.Ecs.EcsKeyPair("publickey", new AliCloud.Ecs.EcsKeyPairArgs
-    ///         {
-    ///             KeyPairName = "my_public_key",
-    ///             PublicKey = "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
-    ///         });
-    ///     }
+    ///         KeyPairName = "key_pair_name",
+    ///     });
     /// 
-    /// }
+    ///     // Using name prefix to build key pair
+    ///     var prefix = new AliCloud.Ecs.EcsKeyPair("prefix", new()
+    ///     {
+    ///         KeyNamePrefix = "terraform-test-key-pair-prefix",
+    ///     });
+    /// 
+    ///     // Import an existing public key to build a alicloud key pair
+    ///     var publickey = new AliCloud.Ecs.EcsKeyPair("publickey", new()
+    ///     {
+    ///         KeyPairName = "my_public_key",
+    ///         PublicKey = "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,8 +57,11 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsKeyPair:EcsKeyPair")]
-    public partial class EcsKeyPair : Pulumi.CustomResource
+    public partial class EcsKeyPair : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The finger print of the key pair.
+        /// </summary>
         [Output("fingerPrint")]
         public Output<string> FingerPrint { get; private set; } = null!;
 
@@ -145,7 +148,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsKeyPairArgs : Pulumi.ResourceArgs
+    public sealed class EcsKeyPairArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key file.
@@ -195,10 +198,14 @@ namespace Pulumi.AliCloud.Ecs
         public EcsKeyPairArgs()
         {
         }
+        public static new EcsKeyPairArgs Empty => new EcsKeyPairArgs();
     }
 
-    public sealed class EcsKeyPairState : Pulumi.ResourceArgs
+    public sealed class EcsKeyPairState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The finger print of the key pair.
+        /// </summary>
         [Input("fingerPrint")]
         public Input<string>? FingerPrint { get; set; }
 
@@ -250,5 +257,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsKeyPairState()
         {
         }
+        public static new EcsKeyPairState Empty => new EcsKeyPairState();
     }
 }

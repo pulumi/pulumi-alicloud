@@ -15,27 +15,24 @@ namespace Pulumi.AliCloud.Pvtz
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var zone = new AliCloud.Pvtz.Zone("zone", new AliCloud.Pvtz.ZoneArgs
-    ///         {
-    ///         });
-    ///         var foo = new AliCloud.Pvtz.ZoneRecord("foo", new AliCloud.Pvtz.ZoneRecordArgs
-    ///         {
-    ///             ZoneId = zone.Id,
-    ///             Rr = "www",
-    ///             Type = "CNAME",
-    ///             Value = "bbb.test.com",
-    ///             Ttl = 60,
-    ///         });
-    ///     }
+    ///     var zone = new AliCloud.Pvtz.Zone("zone");
     /// 
-    /// }
+    ///     var foo = new AliCloud.Pvtz.ZoneRecord("foo", new()
+    ///     {
+    ///         ZoneId = zone.Id,
+    ///         Rr = "www",
+    ///         Type = "CNAME",
+    ///         Value = "bbb.test.com",
+    ///         Ttl = 60,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +44,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:pvtz/zoneRecord:ZoneRecord")]
-    public partial class ZoneRecord : Pulumi.CustomResource
+    public partial class ZoneRecord : global::Pulumi.CustomResource
     {
         /// <summary>
         /// User language.
@@ -164,7 +161,7 @@ namespace Pulumi.AliCloud.Pvtz
         }
     }
 
-    public sealed class ZoneRecordArgs : Pulumi.ResourceArgs
+    public sealed class ZoneRecordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User language.
@@ -234,9 +231,10 @@ namespace Pulumi.AliCloud.Pvtz
         public ZoneRecordArgs()
         {
         }
+        public static new ZoneRecordArgs Empty => new ZoneRecordArgs();
     }
 
-    public sealed class ZoneRecordState : Pulumi.ResourceArgs
+    public sealed class ZoneRecordState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User language.
@@ -312,5 +310,6 @@ namespace Pulumi.AliCloud.Pvtz
         public ZoneRecordState()
         {
         }
+        public static new ZoneRecordState Empty => new ZoneRecordState();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,20 +20,19 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.vpn.getGatewayVpnAttachments({});
- * export const vpnGatewayVpnAttachmentId1 = ids.then(ids => ids.attachments?[0]?.id);
+ * export const vpnGatewayVpnAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
  * const nameRegex = alicloud.vpn.getGatewayVpnAttachments({
  *     nameRegex: "^my-VpnAttachment",
  * });
- * export const vpnGatewayVpnAttachmentId2 = nameRegex.then(nameRegex => nameRegex.attachments?[0]?.id);
+ * export const vpnGatewayVpnAttachmentId2 = nameRegex.then(nameRegex => nameRegex.attachments?.[0]?.id);
+ * export const localId = data.alicloud_vpn_gateway_vpn_attachments.vpn_attachments.attachments[0].ike_config[0].local_id;
+ * export const internetIp = data.alicloud_vpn_gateway_vpn_attachments.vpn_attachments.attachments[0].internet_ip;
  * ```
  */
 export function getGatewayVpnAttachments(args?: GetGatewayVpnAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayVpnAttachmentsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -64,7 +64,9 @@ export interface GetGatewayVpnAttachmentsArgs {
      */
     status?: string;
     /**
-     * The ID of the VPN gateway.
+     * The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
+     *
+     * @deprecated The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
      */
     vpnGatewayId?: string;
 }
@@ -85,11 +87,36 @@ export interface GetGatewayVpnAttachmentsResult {
     readonly pageNumber?: number;
     readonly pageSize?: number;
     readonly status?: string;
+    /**
+     * @deprecated The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
+     */
     readonly vpnGatewayId?: string;
 }
-
+/**
+ * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.181.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpn.getGatewayVpnAttachments({});
+ * export const vpnGatewayVpnAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
+ * const nameRegex = alicloud.vpn.getGatewayVpnAttachments({
+ *     nameRegex: "^my-VpnAttachment",
+ * });
+ * export const vpnGatewayVpnAttachmentId2 = nameRegex.then(nameRegex => nameRegex.attachments?.[0]?.id);
+ * export const localId = data.alicloud_vpn_gateway_vpn_attachments.vpn_attachments.attachments[0].ike_config[0].local_id;
+ * export const internetIp = data.alicloud_vpn_gateway_vpn_attachments.vpn_attachments.attachments[0].internet_ip;
+ * ```
+ */
 export function getGatewayVpnAttachmentsOutput(args?: GetGatewayVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayVpnAttachmentsResult> {
-    return pulumi.output(args).apply(a => getGatewayVpnAttachments(a, opts))
+    return pulumi.output(args).apply((a: any) => getGatewayVpnAttachments(a, opts))
 }
 
 /**
@@ -112,7 +139,9 @@ export interface GetGatewayVpnAttachmentsOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID of the VPN gateway.
+     * The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
+     *
+     * @deprecated The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
      */
     vpnGatewayId?: pulumi.Input<string>;
 }

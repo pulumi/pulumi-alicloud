@@ -22,26 +22,24 @@ namespace Pulumi.AliCloud.Cassandra
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var cassandra = AliCloud.Cassandra.GetClusters.Invoke(new()
         ///     {
-        ///         var cassandra = Output.Create(AliCloud.Cassandra.GetClusters.InvokeAsync(new AliCloud.Cassandra.GetClustersArgs
-        ///         {
-        ///             NameRegex = "tf_testAccCassandra",
-        ///         }));
-        ///     }
+        ///         NameRegex = "tf_testAccCassandra",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:cassandra/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:cassandra/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
@@ -54,30 +52,28 @@ namespace Pulumi.AliCloud.Cassandra
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var cassandra = AliCloud.Cassandra.GetClusters.Invoke(new()
         ///     {
-        ///         var cassandra = Output.Create(AliCloud.Cassandra.GetClusters.InvokeAsync(new AliCloud.Cassandra.GetClustersArgs
-        ///         {
-        ///             NameRegex = "tf_testAccCassandra",
-        ///         }));
-        ///     }
+        ///         NameRegex = "tf_testAccCassandra",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:cassandra/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:cassandra/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClustersArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -115,9 +111,10 @@ namespace Pulumi.AliCloud.Cassandra
         public GetClustersArgs()
         {
         }
+        public static new GetClustersArgs Empty => new GetClustersArgs();
     }
 
-    public sealed class GetClustersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -155,6 +152,7 @@ namespace Pulumi.AliCloud.Cassandra
         public GetClustersInvokeArgs()
         {
         }
+        public static new GetClustersInvokeArgs Empty => new GetClustersInvokeArgs();
     }
 
 

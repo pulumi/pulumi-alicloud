@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -42,14 +43,14 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
  * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
  *     loadBalancerName: name,
  *     vswitchId: defaultSwitch.id,
  * });
  * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultApplicationLoadBalancer.id});
- * const defaultListener: alicloud.slb.Listener[];
+ * const defaultListener: alicloud.slb.Listener[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     defaultListener.push(new alicloud.slb.Listener(`defaultListener-${range.value}`, {
  *         loadBalancerId: [defaultApplicationLoadBalancer].map(__item => __item.id)[range.value],

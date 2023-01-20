@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class GroupMetricRuleEscalationsGetArgs : Pulumi.ResourceArgs
+    public sealed class GroupMetricRuleEscalationsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The critical level.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public GroupMetricRuleEscalationsGetArgs()
         {
         }
+        public static new GroupMetricRuleEscalationsGetArgs Empty => new GroupMetricRuleEscalationsGetArgs();
     }
 }

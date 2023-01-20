@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,20 +20,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.alb.getSecurityPolicies({});
- * export const albSecurityPolicyId1 = ids.then(ids => ids.policies?[0]?.id);
+ * export const albSecurityPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
  * const nameRegex = alicloud.alb.getSecurityPolicies({
  *     nameRegex: "^my-SecurityPolicy",
  * });
- * export const albSecurityPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?[0]?.id);
+ * export const albSecurityPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
  */
 export function getSecurityPolicies(args?: GetSecurityPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityPoliciesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:alb/getSecurityPolicies:getSecurityPolicies", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -96,9 +94,29 @@ export interface GetSecurityPoliciesResult {
     readonly status?: string;
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides the Alb Security Policies of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.130.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.alb.getSecurityPolicies({});
+ * export const albSecurityPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
+ * const nameRegex = alicloud.alb.getSecurityPolicies({
+ *     nameRegex: "^my-SecurityPolicy",
+ * });
+ * export const albSecurityPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
+ * ```
+ */
 export function getSecurityPoliciesOutput(args?: GetSecurityPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityPoliciesResult> {
-    return pulumi.output(args).apply(a => getSecurityPolicies(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecurityPolicies(a, opts))
 }
 
 /**

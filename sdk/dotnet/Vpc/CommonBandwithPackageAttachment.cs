@@ -15,31 +15,31 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new()
     ///     {
-    ///         var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new AliCloud.Vpc.CommonBandwithPackageArgs
-    ///         {
-    ///             Bandwidth = "2",
-    ///             Description = "test_common_bandwidth_package",
-    ///         });
-    ///         var fooEipAddress = new AliCloud.Ecs.EipAddress("fooEipAddress", new AliCloud.Ecs.EipAddressArgs
-    ///         {
-    ///             Bandwidth = "2",
-    ///             InternetChargeType = "PayByBandwidth",
-    ///         });
-    ///         var fooCommonBandwithPackageAttachment = new AliCloud.Vpc.CommonBandwithPackageAttachment("fooCommonBandwithPackageAttachment", new AliCloud.Vpc.CommonBandwithPackageAttachmentArgs
-    ///         {
-    ///             BandwidthPackageId = fooCommonBandwithPackage.Id,
-    ///             InstanceId = fooEipAddress.Id,
-    ///         });
-    ///     }
+    ///         Bandwidth = "2",
+    ///         Description = "test_common_bandwidth_package",
+    ///     });
     /// 
-    /// }
+    ///     var fooEipAddress = new AliCloud.Ecs.EipAddress("fooEipAddress", new()
+    ///     {
+    ///         Bandwidth = "2",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///     });
+    /// 
+    ///     var fooCommonBandwithPackageAttachment = new AliCloud.Vpc.CommonBandwithPackageAttachment("fooCommonBandwithPackageAttachment", new()
+    ///     {
+    ///         BandwidthPackageId = fooCommonBandwithPackage.Id,
+    ///         InstanceId = fooEipAddress.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,8 +51,14 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment")]
-    public partial class CommonBandwithPackageAttachment : Pulumi.CustomResource
+    public partial class CommonBandwithPackageAttachment : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        /// </summary>
+        [Output("bandwidthPackageBandwidth")]
+        public Output<string> BandwidthPackageBandwidth { get; private set; } = null!;
+
         /// <summary>
         /// The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         /// </summary>
@@ -109,8 +115,14 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class CommonBandwithPackageAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class CommonBandwithPackageAttachmentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        /// </summary>
+        [Input("bandwidthPackageBandwidth")]
+        public Input<string>? BandwidthPackageBandwidth { get; set; }
+
         /// <summary>
         /// The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         /// </summary>
@@ -126,10 +138,17 @@ namespace Pulumi.AliCloud.Vpc
         public CommonBandwithPackageAttachmentArgs()
         {
         }
+        public static new CommonBandwithPackageAttachmentArgs Empty => new CommonBandwithPackageAttachmentArgs();
     }
 
-    public sealed class CommonBandwithPackageAttachmentState : Pulumi.ResourceArgs
+    public sealed class CommonBandwithPackageAttachmentState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        /// </summary>
+        [Input("bandwidthPackageBandwidth")]
+        public Input<string>? BandwidthPackageBandwidth { get; set; }
+
         /// <summary>
         /// The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         /// </summary>
@@ -145,5 +164,6 @@ namespace Pulumi.AliCloud.Vpc
         public CommonBandwithPackageAttachmentState()
         {
         }
+        public static new CommonBandwithPackageAttachmentState Empty => new CommonBandwithPackageAttachmentState();
     }
 }

@@ -21,25 +21,23 @@ namespace Pulumi.AliCloud.CR
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_instance = new AliCloud.CR.RegistryEnterpriseInstance("my-instance", new()
     ///     {
-    ///         var my_instance = new AliCloud.CR.RegistryEnterpriseInstance("my-instance", new AliCloud.CR.RegistryEnterpriseInstanceArgs
-    ///         {
-    ///             InstanceName = "test",
-    ///             InstanceType = "Advanced",
-    ///             PaymentType = "Subscription",
-    ///             Period = 1,
-    ///             RenewPeriod = 1,
-    ///             RenewalStatus = "AutoRenewal",
-    ///         });
-    ///     }
+    ///         InstanceName = "test",
+    ///         InstanceType = "Advanced",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewPeriod = 1,
+    ///         RenewalStatus = "AutoRenewal",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +49,7 @@ namespace Pulumi.AliCloud.CR
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance")]
-    public partial class RegistryEnterpriseInstance : Pulumi.CustomResource
+    public partial class RegistryEnterpriseInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time of Container Registry Enterprise Edition instance creation.
@@ -154,6 +152,10 @@ namespace Pulumi.AliCloud.CR
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -175,7 +177,7 @@ namespace Pulumi.AliCloud.CR
         }
     }
 
-    public sealed class RegistryEnterpriseInstanceArgs : Pulumi.ResourceArgs
+    public sealed class RegistryEnterpriseInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of your customized oss bucket. Use this bucket as instance storage if set.
@@ -213,11 +215,21 @@ namespace Pulumi.AliCloud.CR
             set => _kmsEncryptionContext = value;
         }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
@@ -246,9 +258,10 @@ namespace Pulumi.AliCloud.CR
         public RegistryEnterpriseInstanceArgs()
         {
         }
+        public static new RegistryEnterpriseInstanceArgs Empty => new RegistryEnterpriseInstanceArgs();
     }
 
-    public sealed class RegistryEnterpriseInstanceState : Pulumi.ResourceArgs
+    public sealed class RegistryEnterpriseInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time of Container Registry Enterprise Edition instance creation.
@@ -298,11 +311,21 @@ namespace Pulumi.AliCloud.CR
             set => _kmsEncryptionContext = value;
         }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
@@ -337,5 +360,6 @@ namespace Pulumi.AliCloud.CR
         public RegistryEnterpriseInstanceState()
         {
         }
+        public static new RegistryEnterpriseInstanceState Empty => new RegistryEnterpriseInstanceState();
     }
 }

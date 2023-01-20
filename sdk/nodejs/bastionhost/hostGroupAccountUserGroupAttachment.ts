@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     osType: "Linux",
  *     source: "Local",
  * });
- * const defaultHostAccount: alicloud.bastionhost.HostAccount[];
+ * const defaultHostAccount: alicloud.bastionhost.HostAccount[] = [];
  * for (const range = {value: 0}; range.value < 3; range.value++) {
  *     defaultHostAccount.push(new alicloud.bastionhost.HostAccount(`defaultHostAccount-${range.value}`, {
  *         instanceId: defaultHost.instanceId,

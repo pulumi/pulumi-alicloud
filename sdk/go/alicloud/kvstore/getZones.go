@@ -33,7 +33,7 @@ import (
 //				return err
 //			}
 //			_, err = kvstore.NewInstance(ctx, "kvstore", &kvstore.InstanceArgs{
-//				AvailabilityZone: pulumi.String(zonesIds.Zones[0].Id),
+//				AvailabilityZone: *pulumi.String(zonesIds.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err

@@ -23,35 +23,34 @@ namespace Pulumi.AliCloud.Ga
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ga.GetAdditionalCertificates.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ga.GetAdditionalCertificates.InvokeAsync(new AliCloud.Ga.GetAdditionalCertificatesArgs
+        ///         AcceleratorId = "example_value",
+        ///         ListenerId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             AcceleratorId = "example_value",
-        ///             ListenerId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.GaAdditionalCertificateId1 = ids.Apply(ids =&gt; ids.Certificates?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("gaAdditionalCertificateId1")]
-        ///     public Output&lt;string&gt; GaAdditionalCertificateId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaAdditionalCertificateId1"] = ids.Apply(getAdditionalCertificatesResult =&gt; getAdditionalCertificatesResult.Certificates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAdditionalCertificatesResult> InvokeAsync(GetAdditionalCertificatesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAdditionalCertificatesResult>("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args ?? new GetAdditionalCertificatesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdditionalCertificatesResult>("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args ?? new GetAdditionalCertificatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
@@ -65,39 +64,38 @@ namespace Pulumi.AliCloud.Ga
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ga.GetAdditionalCertificates.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ga.GetAdditionalCertificates.InvokeAsync(new AliCloud.Ga.GetAdditionalCertificatesArgs
+        ///         AcceleratorId = "example_value",
+        ///         ListenerId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             AcceleratorId = "example_value",
-        ///             ListenerId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.GaAdditionalCertificateId1 = ids.Apply(ids =&gt; ids.Certificates?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("gaAdditionalCertificateId1")]
-        ///     public Output&lt;string&gt; GaAdditionalCertificateId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaAdditionalCertificateId1"] = ids.Apply(getAdditionalCertificatesResult =&gt; getAdditionalCertificatesResult.Certificates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAdditionalCertificatesResult> Invoke(GetAdditionalCertificatesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAdditionalCertificatesResult>("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args ?? new GetAdditionalCertificatesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAdditionalCertificatesResult>("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args ?? new GetAdditionalCertificatesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAdditionalCertificatesArgs : Pulumi.InvokeArgs
+    public sealed class GetAdditionalCertificatesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the GA instance.
@@ -129,9 +127,10 @@ namespace Pulumi.AliCloud.Ga
         public GetAdditionalCertificatesArgs()
         {
         }
+        public static new GetAdditionalCertificatesArgs Empty => new GetAdditionalCertificatesArgs();
     }
 
-    public sealed class GetAdditionalCertificatesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAdditionalCertificatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the GA instance.
@@ -163,6 +162,7 @@ namespace Pulumi.AliCloud.Ga
         public GetAdditionalCertificatesInvokeArgs()
         {
         }
+        public static new GetAdditionalCertificatesInvokeArgs Empty => new GetAdditionalCertificatesInvokeArgs();
     }
 
 

@@ -13,17 +13,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const current = pulumi.output(alicloud.getAccount());
- *
- * export const currentAccountId = current.id;
+ * const current = alicloud.getAccount({});
+ * export const currentAccountId = current.then(current => current.id);
  * ```
  */
 export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getAccount:getAccount", {
     }, opts);
 }

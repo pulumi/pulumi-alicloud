@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,23 +19,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const typesDs = pulumi.output(alicloud.ecs.getInstanceTypes({
+ * const typesDs = alicloud.ecs.getInstanceTypes({
  *     cpuCoreCount: 1,
  *     memorySize: 2,
- * }));
- * const instance = new alicloud.ecs.Instance("instance", {
- *     instanceType: typesDs.instanceTypes[0].id,
  * });
+ * const instance = new alicloud.ecs.Instance("instance", {instanceType: typesDs.then(typesDs => typesDs.instanceTypes?.[0]?.id)});
  * ```
  */
 export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getInstanceTypes:getInstanceTypes", {
         "availabilityZone": args.availabilityZone,
         "cpuCoreCount": args.cpuCoreCount,
@@ -47,6 +42,7 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
         "isOutdated": args.isOutdated,
         "kubernetesNodeRole": args.kubernetesNodeRole,
         "memorySize": args.memorySize,
+        "minimumEniIpv6AddressQuantity": args.minimumEniIpv6AddressQuantity,
         "networkType": args.networkType,
         "outputFile": args.outputFile,
         "sortedBy": args.sortedBy,
@@ -101,6 +97,10 @@ export interface GetInstanceTypesArgs {
      */
     memorySize?: number;
     /**
+     * The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+     */
+    minimumEniIpv6AddressQuantity?: number;
+    /**
      * Filter the results by network type. Valid values: `Classic` and `Vpc`.
      */
     networkType?: string;
@@ -153,15 +153,35 @@ export interface GetInstanceTypesResult {
      * Size of memory, measured in GB.
      */
     readonly memorySize?: number;
+    readonly minimumEniIpv6AddressQuantity?: number;
     readonly networkType?: string;
     readonly outputFile?: string;
     readonly sortedBy?: string;
     readonly spotStrategy?: string;
     readonly systemDiskCategory?: string;
 }
-
+/**
+ * This data source provides the ECS instance types of Alibaba Cloud.
+ *
+ * > **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
+ *
+ * > **NOTE:** If one instance type is sold out, it will not be exported.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const typesDs = alicloud.ecs.getInstanceTypes({
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * });
+ * const instance = new alicloud.ecs.Instance("instance", {instanceType: typesDs.then(typesDs => typesDs.instanceTypes?.[0]?.id)});
+ * ```
+ */
 export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
-    return pulumi.output(args).apply(a => getInstanceTypes(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceTypes(a, opts))
 }
 
 /**
@@ -209,6 +229,10 @@ export interface GetInstanceTypesOutputArgs {
      * Filter the results to a specific memory size in GB.
      */
     memorySize?: pulumi.Input<number>;
+    /**
+     * The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+     */
+    minimumEniIpv6AddressQuantity?: pulumi.Input<number>;
     /**
      * Filter the results by network type. Valid values: `Classic` and `Vpc`.
      */

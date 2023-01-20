@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/aclRule:AclRule")]
-    public partial class AclRule : Pulumi.CustomResource
+    public partial class AclRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the ACL.
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
-    public sealed class AclRuleArgs : Pulumi.ResourceArgs
+    public sealed class AclRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the ACL.
@@ -198,9 +198,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public AclRuleArgs()
         {
         }
+        public static new AclRuleArgs Empty => new AclRuleArgs();
     }
 
-    public sealed class AclRuleState : Pulumi.ResourceArgs
+    public sealed class AclRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the ACL.
@@ -265,5 +266,6 @@ namespace Pulumi.AliCloud.RocketMQ
         public AclRuleState()
         {
         }
+        public static new AclRuleState Empty => new AclRuleState();
     }
 }

@@ -21,212 +21,204 @@ namespace Pulumi.AliCloud.Log
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Log.Audit("example", new()
     ///     {
-    ///         var example = new AliCloud.Log.Audit("example", new AliCloud.Log.AuditArgs
+    ///         Aliuid = "12345678",
+    ///         DisplayName = "tf-audit-test",
+    ///         VariableMap = 
     ///         {
-    ///             Aliuid = "12345678",
-    ///             DisplayName = "tf-audit-test",
-    ///             VariableMap = 
-    ///             {
-    ///                 { "actiontrail_enabled", "true" },
-    ///                 { "actiontrail_ti_enabled", "false" },
-    ///                 { "actiontrail_ttl", "180" },
-    ///                 { "apigateway_enabled", "true" },
-    ///                 { "apigateway_ti_enabled", "false" },
-    ///                 { "apigateway_ttl", "180" },
-    ///                 { "appconnect_enabled", "false" },
-    ///                 { "appconnect_ttl", "180" },
-    ///                 { "bastion_enabled", "true" },
-    ///                 { "bastion_ti_enabled", "false" },
-    ///                 { "bastion_ttl", "180" },
-    ///                 { "cloudfirewall_enabled", "true" },
-    ///                 { "cloudfirewall_ti_enabled", "false" },
-    ///                 { "cloudfirewall_ttl", "180" },
-    ///                 { "cps_enabled", "true" },
-    ///                 { "cps_ti_enabled", "false" },
-    ///                 { "cps_ttl", "180" },
-    ///                 { "ddos_bgp_access_enabled", "false" },
-    ///                 { "ddos_bgp_access_ttl", "180" },
-    ///                 { "ddos_coo_access_enabled", "false" },
-    ///                 { "ddos_coo_access_ti_enabled", "false" },
-    ///                 { "ddos_coo_access_ttl", "180" },
-    ///                 { "ddos_dip_access_enabled", "false" },
-    ///                 { "ddos_dip_access_ti_enabled", "false" },
-    ///                 { "ddos_dip_access_ttl", "180" },
-    ///                 { "drds_audit_collection_policy", "" },
-    ///                 { "drds_audit_enabled", "true" },
-    ///                 { "drds_audit_ti_enabled", "false" },
-    ///                 { "drds_audit_ttl", "7" },
-    ///                 { "drds_sync_enabled", "true" },
-    ///                 { "drds_sync_ttl", "180" },
-    ///                 { "k8s_audit_collection_policy", "" },
-    ///                 { "k8s_audit_enabled", "true" },
-    ///                 { "k8s_audit_ttl", "180" },
-    ///                 { "k8s_event_collection_policy", "" },
-    ///                 { "k8s_event_enabled", "true" },
-    ///                 { "k8s_event_ttl", "180" },
-    ///                 { "k8s_ingress_collection_policy", "" },
-    ///                 { "k8s_ingress_enabled", "true" },
-    ///                 { "k8s_ingress_ttl", "180" },
-    ///                 { "nas_enabled", "true" },
-    ///                 { "nas_ti_enabled", "false" },
-    ///                 { "nas_ttl", "180" },
-    ///                 { "oss_access_enabled", "true" },
-    ///                 { "oss_access_ti_enabled", "false" },
-    ///                 { "oss_access_ttl", "7" },
-    ///                 { "oss_metering_enabled", "true" },
-    ///                 { "oss_metering_ttl", "180" },
-    ///                 { "oss_sync_enabled", "true" },
-    ///                 { "oss_sync_ttl", "180" },
-    ///                 { "polardb_audit_collection_policy", "" },
-    ///                 { "polardb_enabled", "true" },
-    ///                 { "polardb_perf_collection_policy", "" },
-    ///                 { "polardb_perf_enabled", "false" },
-    ///                 { "polardb_perf_ttl", "180" },
-    ///                 { "polardb_slow_collection_policy", "" },
-    ///                 { "polardb_slow_enabled", "false" },
-    ///                 { "polardb_slow_ttl", "180" },
-    ///                 { "polardb_ti_enabled", "false" },
-    ///                 { "polardb_ttl", "180" },
-    ///                 { "rds_audit_collection_policy", "" },
-    ///                 { "rds_enabled", "true" },
-    ///                 { "rds_perf_collection_policy", "" },
-    ///                 { "rds_perf_enabled", "false" },
-    ///                 { "rds_perf_ttl", "180" },
-    ///                 { "rds_slow_collection_policy", "" },
-    ///                 { "rds_slow_enabled", "false" },
-    ///                 { "rds_slow_ttl", "180" },
-    ///                 { "rds_ti_enabled", "false" },
-    ///                 { "rds_ttl", "180" },
-    ///                 { "sas_crack_enabled", "true" },
-    ///                 { "sas_dns_enabled", "true" },
-    ///                 { "sas_http_enabled", "true" },
-    ///                 { "sas_local_dns_enabled", "true" },
-    ///                 { "sas_login_enabled", "true" },
-    ///                 { "sas_network_enabled", "true" },
-    ///                 { "sas_process_enabled", "true" },
-    ///                 { "sas_security_alert_enabled", "true" },
-    ///                 { "sas_security_hc_enabled", "true" },
-    ///                 { "sas_security_vul_enabled", "true" },
-    ///                 { "sas_session_enabled", "true" },
-    ///                 { "sas_snapshot_account_enabled", "true" },
-    ///                 { "sas_snapshot_port_enabled", "true" },
-    ///                 { "sas_snapshot_process_enabled", "true" },
-    ///                 { "sas_ti_enabled", "false" },
-    ///                 { "sas_ttl", "180" },
-    ///                 { "slb_access_collection_policy", "" },
-    ///                 { "slb_access_enabled", "true" },
-    ///                 { "slb_access_ti_enabled", "false" },
-    ///                 { "slb_access_ttl", "7" },
-    ///                 { "slb_sync_enabled", "true" },
-    ///                 { "slb_sync_ttl", "180" },
-    ///                 { "vpc_flow_collection_policy", "" },
-    ///                 { "vpc_flow_enabled", "false" },
-    ///                 { "vpc_flow_ttl", "7" },
-    ///                 { "vpc_sync_enabled", "true" },
-    ///                 { "vpc_sync_ttl", "180" },
-    ///                 { "waf_enabled", "true" },
-    ///                 { "waf_ti_enabled", "false" },
-    ///                 { "waf_ttl", "180" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "actiontrail_enabled", "true" },
+    ///             { "actiontrail_ti_enabled", "false" },
+    ///             { "actiontrail_ttl", "180" },
+    ///             { "apigateway_enabled", "true" },
+    ///             { "apigateway_ti_enabled", "false" },
+    ///             { "apigateway_ttl", "180" },
+    ///             { "appconnect_enabled", "false" },
+    ///             { "appconnect_ttl", "180" },
+    ///             { "bastion_enabled", "true" },
+    ///             { "bastion_ti_enabled", "false" },
+    ///             { "bastion_ttl", "180" },
+    ///             { "cloudfirewall_enabled", "true" },
+    ///             { "cloudfirewall_ti_enabled", "false" },
+    ///             { "cloudfirewall_ttl", "180" },
+    ///             { "cps_enabled", "true" },
+    ///             { "cps_ti_enabled", "false" },
+    ///             { "cps_ttl", "180" },
+    ///             { "ddos_bgp_access_enabled", "false" },
+    ///             { "ddos_bgp_access_ttl", "180" },
+    ///             { "ddos_coo_access_enabled", "false" },
+    ///             { "ddos_coo_access_ti_enabled", "false" },
+    ///             { "ddos_coo_access_ttl", "180" },
+    ///             { "ddos_dip_access_enabled", "false" },
+    ///             { "ddos_dip_access_ti_enabled", "false" },
+    ///             { "ddos_dip_access_ttl", "180" },
+    ///             { "drds_audit_collection_policy", "" },
+    ///             { "drds_audit_enabled", "true" },
+    ///             { "drds_audit_ti_enabled", "false" },
+    ///             { "drds_audit_ttl", "7" },
+    ///             { "drds_sync_enabled", "true" },
+    ///             { "drds_sync_ttl", "180" },
+    ///             { "k8s_audit_collection_policy", "" },
+    ///             { "k8s_audit_enabled", "true" },
+    ///             { "k8s_audit_ttl", "180" },
+    ///             { "k8s_event_collection_policy", "" },
+    ///             { "k8s_event_enabled", "true" },
+    ///             { "k8s_event_ttl", "180" },
+    ///             { "k8s_ingress_collection_policy", "" },
+    ///             { "k8s_ingress_enabled", "true" },
+    ///             { "k8s_ingress_ttl", "180" },
+    ///             { "nas_enabled", "true" },
+    ///             { "nas_ti_enabled", "false" },
+    ///             { "nas_ttl", "180" },
+    ///             { "oss_access_enabled", "true" },
+    ///             { "oss_access_ti_enabled", "false" },
+    ///             { "oss_access_ttl", "7" },
+    ///             { "oss_metering_enabled", "true" },
+    ///             { "oss_metering_ttl", "180" },
+    ///             { "oss_sync_enabled", "true" },
+    ///             { "oss_sync_ttl", "180" },
+    ///             { "polardb_audit_collection_policy", "" },
+    ///             { "polardb_enabled", "true" },
+    ///             { "polardb_perf_collection_policy", "" },
+    ///             { "polardb_perf_enabled", "false" },
+    ///             { "polardb_perf_ttl", "180" },
+    ///             { "polardb_slow_collection_policy", "" },
+    ///             { "polardb_slow_enabled", "false" },
+    ///             { "polardb_slow_ttl", "180" },
+    ///             { "polardb_ti_enabled", "false" },
+    ///             { "polardb_ttl", "180" },
+    ///             { "rds_audit_collection_policy", "" },
+    ///             { "rds_enabled", "true" },
+    ///             { "rds_perf_collection_policy", "" },
+    ///             { "rds_perf_enabled", "false" },
+    ///             { "rds_perf_ttl", "180" },
+    ///             { "rds_slow_collection_policy", "" },
+    ///             { "rds_slow_enabled", "false" },
+    ///             { "rds_slow_ttl", "180" },
+    ///             { "rds_ti_enabled", "false" },
+    ///             { "rds_ttl", "180" },
+    ///             { "sas_crack_enabled", "true" },
+    ///             { "sas_dns_enabled", "true" },
+    ///             { "sas_http_enabled", "true" },
+    ///             { "sas_local_dns_enabled", "true" },
+    ///             { "sas_login_enabled", "true" },
+    ///             { "sas_network_enabled", "true" },
+    ///             { "sas_process_enabled", "true" },
+    ///             { "sas_security_alert_enabled", "true" },
+    ///             { "sas_security_hc_enabled", "true" },
+    ///             { "sas_security_vul_enabled", "true" },
+    ///             { "sas_session_enabled", "true" },
+    ///             { "sas_snapshot_account_enabled", "true" },
+    ///             { "sas_snapshot_port_enabled", "true" },
+    ///             { "sas_snapshot_process_enabled", "true" },
+    ///             { "sas_ti_enabled", "false" },
+    ///             { "sas_ttl", "180" },
+    ///             { "slb_access_collection_policy", "" },
+    ///             { "slb_access_enabled", "true" },
+    ///             { "slb_access_ti_enabled", "false" },
+    ///             { "slb_access_ttl", "7" },
+    ///             { "slb_sync_enabled", "true" },
+    ///             { "slb_sync_ttl", "180" },
+    ///             { "vpc_flow_collection_policy", "" },
+    ///             { "vpc_flow_enabled", "false" },
+    ///             { "vpc_flow_ttl", "7" },
+    ///             { "vpc_sync_enabled", "true" },
+    ///             { "vpc_sync_ttl", "180" },
+    ///             { "waf_enabled", "true" },
+    ///             { "waf_ti_enabled", "false" },
+    ///             { "waf_ttl", "180" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// Multiple accounts Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Log.Audit("example", new()
     ///     {
-    ///         var example = new AliCloud.Log.Audit("example", new AliCloud.Log.AuditArgs
+    ///         Aliuid = "12345678",
+    ///         DisplayName = "tf-audit-test",
+    ///         MultiAccounts = new[]
     ///         {
-    ///             Aliuid = "12345678",
-    ///             DisplayName = "tf-audit-test",
-    ///             MultiAccounts = 
-    ///             {
-    ///                 "123456789123",
-    ///                 "12345678912300123",
-    ///             },
-    ///             VariableMap = 
-    ///             {
-    ///                 { "actiontrail_enabled", "true" },
-    ///                 { "actiontrail_ttl", "180" },
-    ///                 { "oss_access_enabled", "true" },
-    ///                 { "oss_access_ttl", "180" },
-    ///             },
-    ///         });
-    ///     }
+    ///             "123456789123",
+    ///             "12345678912300123",
+    ///         },
+    ///         VariableMap = 
+    ///         {
+    ///             { "actiontrail_enabled", "true" },
+    ///             { "actiontrail_ttl", "180" },
+    ///             { "oss_access_enabled", "true" },
+    ///             { "oss_access_ttl", "180" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// Resource Directory Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Log.Audit("example", new()
     ///     {
-    ///         var example = new AliCloud.Log.Audit("example", new AliCloud.Log.AuditArgs
+    ///         Aliuid = "12345678",
+    ///         DisplayName = "tf-audit-test",
+    ///         ResourceDirectoryType = "all",
+    ///         VariableMap = 
     ///         {
-    ///             Aliuid = "12345678",
-    ///             DisplayName = "tf-audit-test",
-    ///             ResourceDirectoryType = "all",
-    ///             VariableMap = 
-    ///             {
-    ///                 { "actiontrail_enabled", "true" },
-    ///                 { "actiontrail_ttl", "180" },
-    ///                 { "oss_access_enabled", "true" },
-    ///                 { "oss_access_ttl", "180" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "actiontrail_enabled", "true" },
+    ///             { "actiontrail_ttl", "180" },
+    ///             { "oss_access_enabled", "true" },
+    ///             { "oss_access_ttl", "180" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Log.Audit("example", new()
     ///     {
-    ///         var example = new AliCloud.Log.Audit("example", new AliCloud.Log.AuditArgs
+    ///         Aliuid = "12345678",
+    ///         DisplayName = "tf-audit-test",
+    ///         MultiAccounts = new[]
     ///         {
-    ///             Aliuid = "12345678",
-    ///             DisplayName = "tf-audit-test",
-    ///             MultiAccounts = 
-    ///             {
-    ///                 "123456789123",
-    ///                 "12345678912300123",
-    ///             },
-    ///             ResourceDirectoryType = "custom",
-    ///             VariableMap = 
-    ///             {
-    ///                 { "actiontrail_enabled", "true" },
-    ///                 { "actiontrail_ttl", "180" },
-    ///                 { "oss_access_enabled", "true" },
-    ///                 { "oss_access_ttl", "180" },
-    ///             },
-    ///         });
-    ///     }
+    ///             "123456789123",
+    ///             "12345678912300123",
+    ///         },
+    ///         ResourceDirectoryType = "custom",
+    ///         VariableMap = 
+    ///         {
+    ///             { "actiontrail_enabled", "true" },
+    ///             { "actiontrail_ttl", "180" },
+    ///             { "oss_access_enabled", "true" },
+    ///             { "oss_access_ttl", "180" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -238,7 +230,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/audit:Audit")]
-    public partial class Audit : Pulumi.CustomResource
+    public partial class Audit : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Aliuid value of your account.
@@ -314,7 +306,7 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class AuditArgs : Pulumi.ResourceArgs
+    public sealed class AuditArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Aliuid value of your account.
@@ -361,9 +353,10 @@ namespace Pulumi.AliCloud.Log
         public AuditArgs()
         {
         }
+        public static new AuditArgs Empty => new AuditArgs();
     }
 
-    public sealed class AuditState : Pulumi.ResourceArgs
+    public sealed class AuditState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Aliuid value of your account.
@@ -410,5 +403,6 @@ namespace Pulumi.AliCloud.Log
         public AuditState()
         {
         }
+        public static new AuditState Empty => new AuditState();
     }
 }

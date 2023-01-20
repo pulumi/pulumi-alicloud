@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const domainsDs = pulumi.output(alicloud.dns.getAlidnsDomains({
+ * const domainsDs = alicloud.dns.getAlidnsDomains({
  *     domainNameRegex: "^hegu",
  *     outputFile: "domains.txt",
- * }));
- *
- * export const firstDomainId = domainsDs.domains[0].domainId;
+ * });
+ * export const firstDomainId = domainsDs.then(domainsDs => domainsDs.domains?.[0]?.domainId);
  * ```
  */
 export function getAlidnsDomains(args?: GetAlidnsDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsDomainsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getAlidnsDomains:getAlidnsDomains", {
         "aliDomain": args.aliDomain,
         "domainNameRegex": args.domainNameRegex,
@@ -160,9 +157,26 @@ export interface GetAlidnsDomainsResult {
      */
     readonly versionCode?: string;
 }
-
+/**
+ * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:**  Available in 1.95.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const domainsDs = alicloud.dns.getAlidnsDomains({
+ *     domainNameRegex: "^hegu",
+ *     outputFile: "domains.txt",
+ * });
+ * export const firstDomainId = domainsDs.then(domainsDs => domainsDs.domains?.[0]?.domainId);
+ * ```
+ */
 export function getAlidnsDomainsOutput(args?: GetAlidnsDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsDomainsResult> {
-    return pulumi.output(args).apply(a => getAlidnsDomains(a, opts))
+    return pulumi.output(args).apply((a: any) => getAlidnsDomains(a, opts))
 }
 
 /**

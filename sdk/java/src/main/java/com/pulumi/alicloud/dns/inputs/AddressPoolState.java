@@ -33,14 +33,14 @@ public final class AddressPoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The address that you want to add to the address pool.
+     * The address lists of the Address Pool. See the following `Block address`.
      * 
      */
     @Import(name="addresses")
     private @Nullable Output<List<AddressPoolAddressArgs>> addresses;
 
     /**
-     * @return The address that you want to add to the address pool.
+     * @return The address lists of the Address Pool. See the following `Block address`.
      * 
      */
     public Optional<Output<List<AddressPoolAddressArgs>>> addresses() {
@@ -142,7 +142,7 @@ public final class AddressPoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses The address that you want to add to the address pool.
+         * @param addresses The address lists of the Address Pool. See the following `Block address`.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class AddressPoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses The address that you want to add to the address pool.
+         * @param addresses The address lists of the Address Pool. See the following `Block address`.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class AddressPoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addresses The address that you want to add to the address pool.
+         * @param addresses The address lists of the Address Pool. See the following `Block address`.
          * 
          * @return builder
          * 

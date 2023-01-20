@@ -125,11 +125,6 @@ public final class StackInstanceState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-     * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-     * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-     * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-     * * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-     * * The create or update operation is not complete.
      * 
      */
     @Import(name="status")
@@ -137,11 +132,6 @@ public final class StackInstanceState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-     * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-     * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-     * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-     * * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-     * * The create or update operation is not complete.
      * 
      */
     public Optional<Output<String>> status() {
@@ -354,11 +344,6 @@ public final class StackInstanceState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param status The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-         * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-         * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-         * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-         * * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-         * * The create or update operation is not complete.
          * 
          * @return builder
          * 
@@ -370,11 +355,6 @@ public final class StackInstanceState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param status The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-         * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-         * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-         * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-         * * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-         * * The create or update operation is not complete.
          * 
          * @return builder
          * 

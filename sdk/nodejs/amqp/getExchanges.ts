@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -26,21 +27,18 @@ import * as utilities from "../utilities";
  *         "my-Exchange-2",
  *     ],
  * });
- * export const amqpExchangeId1 = ids.then(ids => ids.exchanges?[0]?.id);
+ * export const amqpExchangeId1 = ids.then(ids => ids.exchanges?.[0]?.id);
  * const nameRegex = alicloud.amqp.getExchanges({
  *     instanceId: "amqp-abc12345",
  *     virtualHostName: "my-VirtualHost",
  *     nameRegex: "^my-Exchange",
  * });
- * export const amqpExchangeId2 = nameRegex.then(nameRegex => nameRegex.exchanges?[0]?.id);
+ * export const amqpExchangeId2 = nameRegex.then(nameRegex => nameRegex.exchanges?.[0]?.id);
  * ```
  */
 export function getExchanges(args: GetExchangesArgs, opts?: pulumi.InvokeOptions): Promise<GetExchangesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:amqp/getExchanges:getExchanges", {
         "ids": args.ids,
         "instanceId": args.instanceId,
@@ -89,9 +87,38 @@ export interface GetExchangesResult {
     readonly outputFile?: string;
     readonly virtualHostName: string;
 }
-
+/**
+ * This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.128.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.amqp.getExchanges({
+ *     instanceId: "amqp-abc12345",
+ *     virtualHostName: "my-VirtualHost",
+ *     ids: [
+ *         "my-Exchange-1",
+ *         "my-Exchange-2",
+ *     ],
+ * });
+ * export const amqpExchangeId1 = ids.then(ids => ids.exchanges?.[0]?.id);
+ * const nameRegex = alicloud.amqp.getExchanges({
+ *     instanceId: "amqp-abc12345",
+ *     virtualHostName: "my-VirtualHost",
+ *     nameRegex: "^my-Exchange",
+ * });
+ * export const amqpExchangeId2 = nameRegex.then(nameRegex => nameRegex.exchanges?.[0]?.id);
+ * ```
+ */
 export function getExchangesOutput(args: GetExchangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExchangesResult> {
-    return pulumi.output(args).apply(a => getExchanges(a, opts))
+    return pulumi.output(args).apply((a: any) => getExchanges(a, opts))
 }
 
 /**

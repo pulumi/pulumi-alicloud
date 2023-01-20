@@ -23,21 +23,19 @@ namespace Pulumi.AliCloud.RocketMQ
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.RocketMQ.Instance("example", new()
     ///     {
-    ///         var example = new AliCloud.RocketMQ.Instance("example", new AliCloud.RocketMQ.InstanceArgs
-    ///         {
-    ///             InstanceName = "tf-example-ons-instance",
-    ///             Remark = "tf-example-ons-instance-remark",
-    ///         });
-    ///     }
+    ///         InstanceName = "tf-example-ons-instance",
+    ///         Remark = "tf-example-ons-instance-remark",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
@@ -145,7 +143,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
@@ -182,9 +180,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
@@ -245,5 +244,6 @@ namespace Pulumi.AliCloud.RocketMQ
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

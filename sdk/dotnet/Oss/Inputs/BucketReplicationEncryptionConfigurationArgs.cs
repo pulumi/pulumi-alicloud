@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketReplicationEncryptionConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class BucketReplicationEncryptionConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CMK ID used in SSE-KMS.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketReplicationEncryptionConfigurationArgs()
         {
         }
+        public static new BucketReplicationEncryptionConfigurationArgs Empty => new BucketReplicationEncryptionConfigurationArgs();
     }
 }

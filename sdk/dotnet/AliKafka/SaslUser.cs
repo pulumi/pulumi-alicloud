@@ -24,48 +24,50 @@ namespace Pulumi.AliCloud.AliKafka
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var username = config.Get("username") ?? "testusername";
+    ///     var password = config.Get("password") ?? "testpassword";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var username = config.Get("username") ?? "testusername";
-    ///         var password = config.Get("password") ?? "testpassword";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new AliCloud.AliKafka.InstanceArgs
-    ///         {
-    ///             TopicQuota = 50,
-    ///             DiskType = 1,
-    ///             DiskSize = 500,
-    ///             DeployType = 5,
-    ///             IoMax = 20,
-    ///             VswitchId = defaultSwitch.Id,
-    ///         });
-    ///         var defaultSaslUser = new AliCloud.AliKafka.SaslUser("defaultSaslUser", new AliCloud.AliKafka.SaslUserArgs
-    ///         {
-    ///             InstanceId = defaultInstance.Id,
-    ///             Username = username,
-    ///             Password = password,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
+    ///     {
+    ///         PartitionNum = 50,
+    ///         DiskType = 1,
+    ///         DiskSize = 500,
+    ///         DeployType = 5,
+    ///         IoMax = 20,
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var defaultSaslUser = new AliCloud.AliKafka.SaslUser("defaultSaslUser", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         Username = username,
+    ///         Password = password,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +79,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/saslUser:SaslUser")]
-    public partial class SaslUser : Pulumi.CustomResource
+    public partial class SaslUser : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID of the ALIKAFKA Instance that owns the groups.
@@ -138,6 +140,10 @@ namespace Pulumi.AliCloud.AliKafka
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -159,7 +165,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
     }
 
-    public sealed class SaslUserArgs : Pulumi.ResourceArgs
+    public sealed class SaslUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the ALIKAFKA Instance that owns the groups.
@@ -185,11 +191,21 @@ namespace Pulumi.AliCloud.AliKafka
             set => _kmsEncryptionContext = value;
         }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
@@ -206,9 +222,10 @@ namespace Pulumi.AliCloud.AliKafka
         public SaslUserArgs()
         {
         }
+        public static new SaslUserArgs Empty => new SaslUserArgs();
     }
 
-    public sealed class SaslUserState : Pulumi.ResourceArgs
+    public sealed class SaslUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the ALIKAFKA Instance that owns the groups.
@@ -234,11 +251,21 @@ namespace Pulumi.AliCloud.AliKafka
             set => _kmsEncryptionContext = value;
         }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
@@ -255,5 +282,6 @@ namespace Pulumi.AliCloud.AliKafka
         public SaslUserState()
         {
         }
+        public static new SaslUserState Empty => new SaslUserState();
     }
 }

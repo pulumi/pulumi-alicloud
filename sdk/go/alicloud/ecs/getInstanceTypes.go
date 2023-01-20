@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
-//				InstanceType: pulumi.String(typesDs.InstanceTypes[0].Id),
+//				InstanceType: *pulumi.String(typesDs.InstanceTypes[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -80,6 +80,8 @@ type GetInstanceTypesArgs struct {
 	KubernetesNodeRole *string `pulumi:"kubernetesNodeRole"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize *float64 `pulumi:"memorySize"`
+	// The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+	MinimumEniIpv6AddressQuantity *int `pulumi:"minimumEniIpv6AddressQuantity"`
 	// Filter the results by network type. Valid values: `Classic` and `Vpc`.
 	NetworkType *string `pulumi:"networkType"`
 	OutputFile  *string `pulumi:"outputFile"`
@@ -112,12 +114,13 @@ type GetInstanceTypesResult struct {
 	IsOutdated         *bool                          `pulumi:"isOutdated"`
 	KubernetesNodeRole *string                        `pulumi:"kubernetesNodeRole"`
 	// Size of memory, measured in GB.
-	MemorySize         *float64 `pulumi:"memorySize"`
-	NetworkType        *string  `pulumi:"networkType"`
-	OutputFile         *string  `pulumi:"outputFile"`
-	SortedBy           *string  `pulumi:"sortedBy"`
-	SpotStrategy       *string  `pulumi:"spotStrategy"`
-	SystemDiskCategory *string  `pulumi:"systemDiskCategory"`
+	MemorySize                    *float64 `pulumi:"memorySize"`
+	MinimumEniIpv6AddressQuantity *int     `pulumi:"minimumEniIpv6AddressQuantity"`
+	NetworkType                   *string  `pulumi:"networkType"`
+	OutputFile                    *string  `pulumi:"outputFile"`
+	SortedBy                      *string  `pulumi:"sortedBy"`
+	SpotStrategy                  *string  `pulumi:"spotStrategy"`
+	SystemDiskCategory            *string  `pulumi:"systemDiskCategory"`
 }
 
 func GetInstanceTypesOutput(ctx *pulumi.Context, args GetInstanceTypesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceTypesResultOutput {
@@ -156,6 +159,8 @@ type GetInstanceTypesOutputArgs struct {
 	KubernetesNodeRole pulumi.StringPtrInput `pulumi:"kubernetesNodeRole"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize pulumi.Float64PtrInput `pulumi:"memorySize"`
+	// The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+	MinimumEniIpv6AddressQuantity pulumi.IntPtrInput `pulumi:"minimumEniIpv6AddressQuantity"`
 	// Filter the results by network type. Valid values: `Classic` and `Vpc`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -246,6 +251,10 @@ func (o GetInstanceTypesResultOutput) KubernetesNodeRole() pulumi.StringPtrOutpu
 // Size of memory, measured in GB.
 func (o GetInstanceTypesResultOutput) MemorySize() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetInstanceTypesResult) *float64 { return v.MemorySize }).(pulumi.Float64PtrOutput)
+}
+
+func (o GetInstanceTypesResultOutput) MinimumEniIpv6AddressQuantity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *int { return v.MinimumEniIpv6AddressQuantity }).(pulumi.IntPtrOutput)
 }
 
 func (o GetInstanceTypesResultOutput) NetworkType() pulumi.StringPtrOutput {

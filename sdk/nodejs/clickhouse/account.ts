@@ -29,8 +29,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultRegions]).then(([defaultNetworks, defaultRegions]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultRegions.regions?[0]?.zoneIds?[0]?.zoneId,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultRegions.regions?.[0]?.zoneIds?.[0]?.zoneId,
  * }));
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
  *     dbClusterVersion: "20.3.10.75",
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     paymentType: "PayAsYouGo",
  *     dbNodeStorage: "500",
  *     storageType: "cloud_essd",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.vswitches?[0]?.id),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.vswitches?.[0]?.id),
  * });
  * const defaultAccount = new alicloud.clickhouse.Account("defaultAccount", {
  *     dbClusterId: defaultDbCluster.id,
@@ -114,8 +114,6 @@ export class Account extends pulumi.CustomResource {
     public readonly dbClusterId!: pulumi.Output<string>;
     /**
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-     * -`true`: grants DDL permissions to the database account.
-     * -`false`: does not grant DDL permissions to the database account.
      */
     public readonly ddlAuthority!: pulumi.Output<boolean>;
     /**
@@ -223,8 +221,6 @@ export interface AccountState {
     dbClusterId?: pulumi.Input<string>;
     /**
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-     * -`true`: grants DDL permissions to the database account.
-     * -`false`: does not grant DDL permissions to the database account.
      */
     ddlAuthority?: pulumi.Input<boolean>;
     /**
@@ -279,8 +275,6 @@ export interface AccountArgs {
     dbClusterId: pulumi.Input<string>;
     /**
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-     * -`true`: grants DDL permissions to the database account.
-     * -`false`: does not grant DDL permissions to the database account.
      */
     ddlAuthority?: pulumi.Input<boolean>;
     /**

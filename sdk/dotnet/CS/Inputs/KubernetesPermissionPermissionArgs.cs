@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class KubernetesPermissionPermissionArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesPermissionPermissionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the cluster that you want to manage.
@@ -51,5 +51,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public KubernetesPermissionPermissionArgs()
         {
         }
+        public static new KubernetesPermissionPermissionArgs Empty => new KubernetesPermissionPermissionArgs();
     }
 }

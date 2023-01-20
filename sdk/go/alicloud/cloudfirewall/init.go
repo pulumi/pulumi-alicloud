@@ -27,8 +27,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ControlPolicy{}
 	case "alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder":
 		r = &ControlPolicyOrder{}
+	case "alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall":
+		r = &FirewallVpcFirewall{}
+	case "alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen":
+		r = &FirewallVpcFirewallCen{}
+	case "alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy":
+		r = &FirewallVpcFirewallControlPolicy{}
 	case "alicloud:cloudfirewall/instance:Instance":
 		r = &Instance{}
+	case "alicloud:cloudfirewall/instanceMember:InstanceMember":
+		r = &InstanceMember{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -59,7 +67,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"cloudfirewall/firewallVpcFirewall",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/firewallVpcFirewallCen",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/firewallVpcFirewallControlPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"cloudfirewall/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/instanceMember",
 		&module{version},
 	)
 }

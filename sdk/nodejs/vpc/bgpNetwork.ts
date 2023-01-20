@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
- *     physicalConnectionId: defaultPhysicalConnections.then(defaultPhysicalConnections => defaultPhysicalConnections.connections?[0]?.id),
+ *     physicalConnectionId: defaultPhysicalConnections.then(defaultPhysicalConnections => defaultPhysicalConnections.connections?.[0]?.id),
  *     virtualBorderRouterName: _var.name,
  *     vlanId: 120,
  *     minRxInterval: 1000,

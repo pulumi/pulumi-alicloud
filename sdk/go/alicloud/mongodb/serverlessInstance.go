@@ -63,13 +63,13 @@ import (
 //				StorageEngine:         pulumi.String("WiredTiger"),
 //				CapacityUnit:          pulumi.Int(100),
 //				Engine:                pulumi.String("MongoDB"),
-//				ResourceGroupId:       pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId:       *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				EngineVersion:         pulumi.String("4.2"),
 //				Period:                pulumi.Int(1),
 //				PeriodPriceType:       pulumi.String("Month"),
-//				VpcId:                 pulumi.String(defaultNetworks.Ids[0]),
-//				ZoneId:                pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchId:             pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:                 *pulumi.String(defaultNetworks.Ids[0]),
+//				ZoneId:                *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchId:             *pulumi.String(defaultSwitches.Ids[0]),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("MongodbServerlessInstance"),
 //					"For":     pulumi.Any("TF"),
@@ -173,6 +173,13 @@ func NewServerlessInstance(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	if args.AccountPassword != nil {
+		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accountPassword",
+	})
+	opts = append(opts, secrets)
 	var resource ServerlessInstance
 	err := ctx.RegisterResource("alicloud:mongodb/serverlessInstance:ServerlessInstance", name, args, &resource, opts...)
 	if err != nil {

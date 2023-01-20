@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,16 +17,13 @@ import * as utilities from "../utilities";
  *     ids: ["cdc-49a2ad756057********"],
  *     nameRegex: "tftest",
  * });
- * export const firstConfigDeliveryChannelId = example.then(example => example.channels?[0]?.id);
+ * export const firstConfigDeliveryChannelId = example.then(example => example.channels?.[0]?.id);
  * ```
  */
 export function getDeliveryChannels(args?: GetDeliveryChannelsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeliveryChannelsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -80,9 +78,22 @@ export interface GetDeliveryChannelsResult {
      */
     readonly status?: number;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cfg.getDeliveryChannels({
+ *     ids: ["cdc-49a2ad756057********"],
+ *     nameRegex: "tftest",
+ * });
+ * export const firstConfigDeliveryChannelId = example.then(example => example.channels?.[0]?.id);
+ * ```
+ */
 export function getDeliveryChannelsOutput(args?: GetDeliveryChannelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeliveryChannelsResult> {
-    return pulumi.output(args).apply(a => getDeliveryChannels(a, opts))
+    return pulumi.output(args).apply((a: any) => getDeliveryChannels(a, opts))
 }
 
 /**

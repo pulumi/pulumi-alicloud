@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./appGroup";
-export * from "./getAppGroups";
+export { AppGroupArgs, AppGroupState } from "./appGroup";
+export type AppGroup = import("./appGroup").AppGroup;
+export const AppGroup: typeof import("./appGroup").AppGroup = null as any;
+utilities.lazyLoad(exports, ["AppGroup"], () => require("./appGroup"));
 
-// Import resources to register:
-import { AppGroup } from "./appGroup";
+export { GetAppGroupsArgs, GetAppGroupsResult, GetAppGroupsOutputArgs } from "./getAppGroups";
+export const getAppGroups: typeof import("./getAppGroups").getAppGroups = null as any;
+export const getAppGroupsOutput: typeof import("./getAppGroups").getAppGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getAppGroups","getAppGroupsOutput"], () => require("./getAppGroups"));
+
 
 const _module = {
     version: utilities.getVersion(),

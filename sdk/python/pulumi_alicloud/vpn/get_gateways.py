@@ -22,12 +22,16 @@ class GetGatewaysResult:
     """
     A collection of values returned by getGateways.
     """
-    def __init__(__self__, business_status=None, enable_ipsec=None, gateways=None, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None, vpc_id=None):
+    def __init__(__self__, business_status=None, enable_ipsec=None, gateways=None, id=None, ids=None, include_reservation_data=None, name_regex=None, names=None, output_file=None, status=None, vpc_id=None):
         if business_status and not isinstance(business_status, str):
             raise TypeError("Expected argument 'business_status' to be a str")
         pulumi.set(__self__, "business_status", business_status)
         if enable_ipsec and not isinstance(enable_ipsec, bool):
             raise TypeError("Expected argument 'enable_ipsec' to be a bool")
+        if enable_ipsec is not None:
+            warnings.warn("""Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""enable_ipsec is deprecated: Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.""")
+
         pulumi.set(__self__, "enable_ipsec", enable_ipsec)
         if gateways and not isinstance(gateways, list):
             raise TypeError("Expected argument 'gateways' to be a list")
@@ -38,6 +42,9 @@ class GetGatewaysResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if include_reservation_data and not isinstance(include_reservation_data, bool):
+            raise TypeError("Expected argument 'include_reservation_data' to be a bool")
+        pulumi.set(__self__, "include_reservation_data", include_reservation_data)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         pulumi.set(__self__, "name_regex", name_regex)
@@ -95,6 +102,11 @@ class GetGatewaysResult:
         return pulumi.get(self, "ids")
 
     @property
+    @pulumi.getter(name="includeReservationData")
+    def include_reservation_data(self) -> Optional[bool]:
+        return pulumi.get(self, "include_reservation_data")
+
+    @property
     @pulumi.getter(name="nameRegex")
     def name_regex(self) -> Optional[str]:
         return pulumi.get(self, "name_regex")
@@ -140,6 +152,7 @@ class AwaitableGetGatewaysResult(GetGatewaysResult):
             gateways=self.gateways,
             id=self.id,
             ids=self.ids,
+            include_reservation_data=self.include_reservation_data,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
@@ -150,6 +163,7 @@ class AwaitableGetGatewaysResult(GetGatewaysResult):
 def get_gateways(business_status: Optional[str] = None,
                  enable_ipsec: Optional[bool] = None,
                  ids: Optional[Sequence[str]] = None,
+                 include_reservation_data: Optional[bool] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
                  status: Optional[str] = None,
@@ -165,14 +179,14 @@ def get_gateways(business_status: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     vpn_gateways = alicloud.vpn.get_gateways(business_status="Normal",
-        enable_ipsec=True,
         ids=[
             "fake-vpn-id1",
             "fake-vpn-id2",
         ],
+        include_reservation_data=True,
         name_regex="testAcc*",
         output_file="/tmp/vpns",
-        status="active",
+        status="Active",
         vpc_id="fake-vpc-id")
     ```
 
@@ -180,6 +194,7 @@ def get_gateways(business_status: Optional[str] = None,
     :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
     :param bool enable_ipsec: Indicates whether the IPsec-VPN feature is enabled.
     :param Sequence[str] ids: IDs of the VPN.
+    :param bool include_reservation_data: Include ineffective ordering data.
     :param str name_regex: A regex string of VPN name.
     :param str output_file: Save the result to the file.
     :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
@@ -189,6 +204,7 @@ def get_gateways(business_status: Optional[str] = None,
     __args__['businessStatus'] = business_status
     __args__['enableIpsec'] = enable_ipsec
     __args__['ids'] = ids
+    __args__['includeReservationData'] = include_reservation_data
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
@@ -202,6 +218,7 @@ def get_gateways(business_status: Optional[str] = None,
         gateways=__ret__.gateways,
         id=__ret__.id,
         ids=__ret__.ids,
+        include_reservation_data=__ret__.include_reservation_data,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
@@ -213,6 +230,7 @@ def get_gateways(business_status: Optional[str] = None,
 def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] = None,
                         enable_ipsec: Optional[pulumi.Input[Optional[bool]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        include_reservation_data: Optional[pulumi.Input[Optional[bool]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
@@ -228,14 +246,14 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
     import pulumi_alicloud as alicloud
 
     vpn_gateways = alicloud.vpn.get_gateways(business_status="Normal",
-        enable_ipsec=True,
         ids=[
             "fake-vpn-id1",
             "fake-vpn-id2",
         ],
+        include_reservation_data=True,
         name_regex="testAcc*",
         output_file="/tmp/vpns",
-        status="active",
+        status="Active",
         vpc_id="fake-vpc-id")
     ```
 
@@ -243,6 +261,7 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
     :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
     :param bool enable_ipsec: Indicates whether the IPsec-VPN feature is enabled.
     :param Sequence[str] ids: IDs of the VPN.
+    :param bool include_reservation_data: Include ineffective ordering data.
     :param str name_regex: A regex string of VPN name.
     :param str output_file: Save the result to the file.
     :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".

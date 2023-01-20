@@ -15,20 +15,18 @@ namespace Pulumi.AliCloud.Pvtz
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new AliCloud.Pvtz.Zone("foo", new()
     ///     {
-    ///         var foo = new AliCloud.Pvtz.Zone("foo", new AliCloud.Pvtz.ZoneArgs
-    ///         {
-    ///             ZoneName = "foo.test.com",
-    ///         });
-    ///     }
+    ///         ZoneName = "foo.test.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:pvtz/zone:Zone")]
-    public partial class Zone : Pulumi.CustomResource
+    public partial class Zone : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the Private Zone is ptr.
@@ -155,7 +153,7 @@ namespace Pulumi.AliCloud.Pvtz
         }
     }
 
-    public sealed class ZoneArgs : Pulumi.ResourceArgs
+    public sealed class ZoneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The language. Valid values: "zh", "en", "jp".
@@ -223,9 +221,10 @@ namespace Pulumi.AliCloud.Pvtz
         public ZoneArgs()
         {
         }
+        public static new ZoneArgs Empty => new ZoneArgs();
     }
 
-    public sealed class ZoneState : Pulumi.ResourceArgs
+    public sealed class ZoneState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the Private Zone is ptr.
@@ -305,5 +304,6 @@ namespace Pulumi.AliCloud.Pvtz
         public ZoneState()
         {
         }
+        public static new ZoneState Empty => new ZoneState();
     }
 }

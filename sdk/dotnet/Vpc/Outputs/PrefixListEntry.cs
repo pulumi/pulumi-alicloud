@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// <summary>
         /// The CIDR address block of the prefix list.
         /// </summary>
-        public readonly string Cidr;
+        public readonly string? Cidr;
         /// <summary>
         /// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
         [OutputConstructor]
         private PrefixListEntry(
-            string cidr,
+            string? cidr,
 
             string? description)
         {

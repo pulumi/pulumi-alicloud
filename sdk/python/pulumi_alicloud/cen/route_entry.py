@@ -141,10 +141,9 @@ class RouteEntry(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         # Create a cen_route_entry resource and use it to publish a route entry pointing to an ECS.
-        hz = pulumi.providers.Alicloud("hz", region="cn-hangzhou")
+        hz = alicloud.Provider("hz", region="cn-hangzhou")
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
@@ -234,10 +233,9 @@ class RouteEntry(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         # Create a cen_route_entry resource and use it to publish a route entry pointing to an ECS.
-        hz = pulumi.providers.Alicloud("hz", region="cn-hangzhou")
+        hz = alicloud.Provider("hz", region="cn-hangzhou")
         config = pulumi.Config()
         name = config.get("name")
         if name is None:

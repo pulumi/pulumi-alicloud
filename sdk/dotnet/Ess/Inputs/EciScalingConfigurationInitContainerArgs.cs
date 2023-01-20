@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class EciScalingConfigurationInitContainerArgs : Pulumi.ResourceArgs
+    public sealed class EciScalingConfigurationInitContainerArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         }
 
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
@@ -47,6 +47,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
         /// <summary>
         /// The structure of environmentVars.
+        /// See Block_environment_var_in_init_container below for details.
         /// See Block_environment_var_in_container below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationInitContainerEnvironmentVarArgs> EnvironmentVars
@@ -74,13 +75,13 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public Input<string>? ImagePullPolicy { get; set; }
 
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
 
         /// <summary>
-        /// The name of the mounted volume.
+        /// The name of the volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -89,7 +90,8 @@ namespace Pulumi.AliCloud.Ess.Inputs
         private InputList<Inputs.EciScalingConfigurationInitContainerPortArgs>? _ports;
 
         /// <summary>
-        /// The structure of port. See Block_port_in_container below for details.
+        /// The structure of port. See Block_port_in_init_container below
+        /// for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationInitContainerPortArgs> Ports
         {
@@ -102,6 +104,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
         /// <summary>
         /// The structure of volumeMounts.
+        /// See Block_volume_mount_in_init_container below for details.
         /// See Block_volume_mount_in_container below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationInitContainerVolumeMountArgs> VolumeMounts
@@ -119,5 +122,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public EciScalingConfigurationInitContainerArgs()
         {
         }
+        public static new EciScalingConfigurationInitContainerArgs Empty => new EciScalingConfigurationInitContainerArgs();
     }
 }

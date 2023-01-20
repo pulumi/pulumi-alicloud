@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.Rds
     public static class GetRdsParameterGroups
     {
         public static Task<GetRdsParameterGroupsResult> InvokeAsync(GetRdsParameterGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsArgs(), options.WithDefaults());
 
         public static Output<GetRdsParameterGroupsResult> Invoke(GetRdsParameterGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRdsParameterGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetRdsParameterGroupsArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -41,9 +41,10 @@ namespace Pulumi.AliCloud.Rds
         public GetRdsParameterGroupsArgs()
         {
         }
+        public static new GetRdsParameterGroupsArgs Empty => new GetRdsParameterGroupsArgs();
     }
 
-    public sealed class GetRdsParameterGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRdsParameterGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -65,6 +66,7 @@ namespace Pulumi.AliCloud.Rds
         public GetRdsParameterGroupsInvokeArgs()
         {
         }
+        public static new GetRdsParameterGroupsInvokeArgs Empty => new GetRdsParameterGroupsInvokeArgs();
     }
 
 

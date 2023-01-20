@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Pvtz.Inputs
 {
 
-    public sealed class EndpointIpConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class EndpointIpConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Subnet mask.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Pvtz.Inputs
         public EndpointIpConfigGetArgs()
         {
         }
+        public static new EndpointIpConfigGetArgs Empty => new EndpointIpConfigGetArgs();
     }
 }

@@ -21,31 +21,29 @@ namespace Pulumi.AliCloud.Quotas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Quotas.QuotaAlarm("example", new()
     ///     {
-    ///         var example = new AliCloud.Quotas.QuotaAlarm("example", new AliCloud.Quotas.QuotaAlarmArgs
+    ///         ProductCode = "ecs",
+    ///         QuotaActionCode = "q_prepaid-instance-count-per-once-purchase",
+    ///         QuotaAlarmName = "tf-testAcc",
+    ///         QuotaDimensions = new[]
     ///         {
-    ///             ProductCode = "ecs",
-    ///             QuotaActionCode = "q_prepaid-instance-count-per-once-purchase",
-    ///             QuotaAlarmName = "tf-testAcc",
-    ///             QuotaDimensions = 
+    ///             new AliCloud.Quotas.Inputs.QuotaAlarmQuotaDimensionArgs
     ///             {
-    ///                 new AliCloud.Quotas.Inputs.QuotaAlarmQuotaDimensionArgs
-    ///                 {
-    ///                     Key = "regionId",
-    ///                     Value = "cn-hangzhou",
-    ///                 },
+    ///                 Key = "regionId",
+    ///                 Value = "cn-hangzhou",
     ///             },
-    ///             Threshold = 100,
-    ///         });
-    ///     }
+    ///         },
+    ///         Threshold = 100,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.AliCloud.Quotas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:quotas/quotaAlarm:QuotaAlarm")]
-    public partial class QuotaAlarm : Pulumi.CustomResource
+    public partial class QuotaAlarm : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Product Code.
@@ -145,7 +143,7 @@ namespace Pulumi.AliCloud.Quotas
         }
     }
 
-    public sealed class QuotaAlarmArgs : Pulumi.ResourceArgs
+    public sealed class QuotaAlarmArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Product Code.
@@ -198,9 +196,10 @@ namespace Pulumi.AliCloud.Quotas
         public QuotaAlarmArgs()
         {
         }
+        public static new QuotaAlarmArgs Empty => new QuotaAlarmArgs();
     }
 
-    public sealed class QuotaAlarmState : Pulumi.ResourceArgs
+    public sealed class QuotaAlarmState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Product Code.
@@ -253,5 +252,6 @@ namespace Pulumi.AliCloud.Quotas
         public QuotaAlarmState()
         {
         }
+        public static new QuotaAlarmState Empty => new QuotaAlarmState();
     }
 }

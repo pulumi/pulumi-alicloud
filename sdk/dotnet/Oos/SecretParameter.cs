@@ -25,14 +25,10 @@ namespace Pulumi.AliCloud.Oos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/secretParameter:SecretParameter")]
-    public partial class SecretParameter : Pulumi.CustomResource
+    public partial class SecretParameter : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-        /// * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-        /// * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-        /// * `MinLength`: The minimum length of the encryption parameter.
-        /// * `MaxLength`: The maximum length of the encryption parameter.
         /// </summary>
         [Output("constraints")]
         public Output<string?> Constraints { get; private set; } = null!;
@@ -102,6 +98,10 @@ namespace Pulumi.AliCloud.Oos
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -123,14 +123,10 @@ namespace Pulumi.AliCloud.Oos
         }
     }
 
-    public sealed class SecretParameterArgs : Pulumi.ResourceArgs
+    public sealed class SecretParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-        /// * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-        /// * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-        /// * `MinLength`: The minimum length of the encryption parameter.
-        /// * `MaxLength`: The maximum length of the encryption parameter.
         /// </summary>
         [Input("constraints")]
         public Input<string>? Constraints { get; set; }
@@ -177,25 +173,32 @@ namespace Pulumi.AliCloud.Oos
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("value", required: true)]
+        private Input<string>? _value;
+
         /// <summary>
         /// The value of the encryption parameter. The value must be `1` to `4096` characters in length.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public SecretParameterArgs()
         {
         }
+        public static new SecretParameterArgs Empty => new SecretParameterArgs();
     }
 
-    public sealed class SecretParameterState : Pulumi.ResourceArgs
+    public sealed class SecretParameterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-        /// * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-        /// * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-        /// * `MinLength`: The minimum length of the encryption parameter.
-        /// * `MaxLength`: The maximum length of the encryption parameter.
         /// </summary>
         [Input("constraints")]
         public Input<string>? Constraints { get; set; }
@@ -242,14 +245,25 @@ namespace Pulumi.AliCloud.Oos
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// The value of the encryption parameter. The value must be `1` to `4096` characters in length.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public SecretParameterState()
         {
         }
+        public static new SecretParameterState Empty => new SecretParameterState();
     }
 }

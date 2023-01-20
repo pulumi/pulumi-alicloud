@@ -153,7 +153,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -168,7 +168,10 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
      * 
      *     public static void stack(Context ctx) {
      *         final var taggedInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
+     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *             ))
      *             .build());
      * 
      *     }
@@ -188,7 +191,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -203,7 +206,10 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
      * 
      *     public static void stack(Context ctx) {
      *         final var taggedInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
+     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *             ))
      *             .build());
      * 
      *     }
@@ -392,7 +398,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
          * import com.pulumi.Pulumi;
          * import com.pulumi.core.Output;
          * import com.pulumi.alicloud.ecs.EcsFunctions;
-         * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+         * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
          * import java.util.List;
          * import java.util.ArrayList;
          * import java.util.Map;
@@ -407,7 +413,10 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
          * 
          *     public static void stack(Context ctx) {
          *         final var taggedInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
-         *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+         *             .tags(Map.ofEntries(
+         *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
+         *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+         *             ))
          *             .build());
          * 
          *     }

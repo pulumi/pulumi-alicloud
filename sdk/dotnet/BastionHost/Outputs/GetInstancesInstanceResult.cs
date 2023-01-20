@@ -45,23 +45,21 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
         /// <summary>
         /// A map of tags assigned to the bastionhost instance. It must be in the format:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instance = AliCloud.BastionHost.GetInstances.Invoke(new()
         ///     {
-        ///         var instance = Output.Create(AliCloud.BastionHost.GetInstances.InvokeAsync(new AliCloud.BastionHost.GetInstancesArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "tagKey1", "tagValue1" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;

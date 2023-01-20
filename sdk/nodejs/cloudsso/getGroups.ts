@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -27,20 +28,17 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const cloudSsoGroupId1 = ids.then(ids => ids.groups?[0]?.id);
+ * export const cloudSsoGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
  * const nameRegex = alicloud.cloudsso.getGroups({
  *     directoryId: "example_value",
  *     nameRegex: "^my-Group",
  * });
- * export const cloudSsoGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
+ * export const cloudSsoGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudsso/getGroups:getGroups", {
         "directoryId": args.directoryId,
         "ids": args.ids,
@@ -89,9 +87,38 @@ export interface GetGroupsResult {
     readonly outputFile?: string;
     readonly provisionType?: string;
 }
-
+/**
+ * This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.138.0+.
+ *
+ * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudsso.getGroups({
+ *     directoryId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const cloudSsoGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * const nameRegex = alicloud.cloudsso.getGroups({
+ *     directoryId: "example_value",
+ *     nameRegex: "^my-Group",
+ * });
+ * export const cloudSsoGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * ```
+ */
 export function getGroupsOutput(args: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
-    return pulumi.output(args).apply(a => getGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getGroups(a, opts))
 }
 
 /**

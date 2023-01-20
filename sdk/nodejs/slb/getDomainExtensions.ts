@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,19 +17,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const foo = pulumi.output(alicloud.slb.getDomainExtensions({
- *     frontendPort: Number.parseFloat("fake-port"),
+ * const foo = alicloud.slb.getDomainExtensions({
+ *     frontendPort: "fake-port",
  *     ids: ["fake-de-id"],
  *     loadBalancerId: "fake-lb-id",
- * }));
+ * });
  * ```
  */
 export function getDomainExtensions(args: GetDomainExtensionsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainExtensionsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getDomainExtensions:getDomainExtensions", {
         "frontendPort": args.frontendPort,
         "ids": args.ids,
@@ -73,9 +71,26 @@ export interface GetDomainExtensionsResult {
     readonly loadBalancerId: string;
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the domain extensions associated with a server load balancer listener.
+ *
+ * > **NOTE:** Available in 1.60.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.slb.getDomainExtensions({
+ *     frontendPort: "fake-port",
+ *     ids: ["fake-de-id"],
+ *     loadBalancerId: "fake-lb-id",
+ * });
+ * ```
+ */
 export function getDomainExtensionsOutput(args: GetDomainExtensionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainExtensionsResult> {
-    return pulumi.output(args).apply(a => getDomainExtensions(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomainExtensions(a, opts))
 }
 
 /**

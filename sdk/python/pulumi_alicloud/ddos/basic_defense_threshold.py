@@ -24,15 +24,11 @@ class BasicDefenseThresholdArgs:
         """
         The set of arguments for constructing a BasicDefenseThreshold resource.
         :param pulumi.Input[str] ddos_type: The type of the threshold to query. Valid values: `defense`,`blackhole`.
-               -`defense` - scrubbing threshold.
-               -`blackhole` - DDoS mitigation threshold.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] instance_type: The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
         :param pulumi.Input[int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
         :param pulumi.Input[str] internet_ip: The Internet IP address.
         :param pulumi.Input[bool] is_auto: Whether it is the system default threshold. Value:
-               - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-               - `false`: indicates no, that is, you manually set the cleaning threshold.
         :param pulumi.Input[int] pps: The current message number cleaning threshold. Unit: pps.
         """
         pulumi.set(__self__, "ddos_type", ddos_type)
@@ -52,8 +48,6 @@ class BasicDefenseThresholdArgs:
     def ddos_type(self) -> pulumi.Input[str]:
         """
         The type of the threshold to query. Valid values: `defense`,`blackhole`.
-        -`defense` - scrubbing threshold.
-        -`blackhole` - DDoS mitigation threshold.
         """
         return pulumi.get(self, "ddos_type")
 
@@ -114,8 +108,6 @@ class BasicDefenseThresholdArgs:
     def is_auto(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether it is the system default threshold. Value:
-        - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-        - `false`: indicates no, that is, you manually set the cleaning threshold.
         """
         return pulumi.get(self, "is_auto")
 
@@ -152,14 +144,10 @@ class _BasicDefenseThresholdState:
         Input properties used for looking up and filtering BasicDefenseThreshold resources.
         :param pulumi.Input[int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
         :param pulumi.Input[str] ddos_type: The type of the threshold to query. Valid values: `defense`,`blackhole`.
-               -`defense` - scrubbing threshold.
-               -`blackhole` - DDoS mitigation threshold.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] instance_type: The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
         :param pulumi.Input[str] internet_ip: The Internet IP address.
         :param pulumi.Input[bool] is_auto: Whether it is the system default threshold. Value:
-               - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-               - `false`: indicates no, that is, you manually set the cleaning threshold.
         :param pulumi.Input[int] max_bps: The maximum traffic scrubbing threshold. Unit: Mbit/s.
         :param pulumi.Input[int] max_pps: The maximum packet scrubbing threshold. Unit: pps.
         :param pulumi.Input[int] pps: The current message number cleaning threshold. Unit: pps.
@@ -200,8 +188,6 @@ class _BasicDefenseThresholdState:
     def ddos_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the threshold to query. Valid values: `defense`,`blackhole`.
-        -`defense` - scrubbing threshold.
-        -`blackhole` - DDoS mitigation threshold.
         """
         return pulumi.get(self, "ddos_type")
 
@@ -250,8 +236,6 @@ class _BasicDefenseThresholdState:
     def is_auto(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether it is the system default threshold. Value:
-        - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-        - `false`: indicates no, that is, you manually set the cleaning threshold.
         """
         return pulumi.get(self, "is_auto")
 
@@ -349,14 +333,10 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
         :param pulumi.Input[str] ddos_type: The type of the threshold to query. Valid values: `defense`,`blackhole`.
-               -`defense` - scrubbing threshold.
-               -`blackhole` - DDoS mitigation threshold.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] instance_type: The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
         :param pulumi.Input[str] internet_ip: The Internet IP address.
         :param pulumi.Input[bool] is_auto: Whether it is the system default threshold. Value:
-               - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-               - `false`: indicates no, that is, you manually set the cleaning threshold.
         :param pulumi.Input[int] pps: The current message number cleaning threshold. Unit: pps.
         """
         ...
@@ -475,14 +455,10 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
         :param pulumi.Input[str] ddos_type: The type of the threshold to query. Valid values: `defense`,`blackhole`.
-               -`defense` - scrubbing threshold.
-               -`blackhole` - DDoS mitigation threshold.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] instance_type: The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
         :param pulumi.Input[str] internet_ip: The Internet IP address.
         :param pulumi.Input[bool] is_auto: Whether it is the system default threshold. Value:
-               - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-               - `false`: indicates no, that is, you manually set the cleaning threshold.
         :param pulumi.Input[int] max_bps: The maximum traffic scrubbing threshold. Unit: Mbit/s.
         :param pulumi.Input[int] max_pps: The maximum packet scrubbing threshold. Unit: pps.
         :param pulumi.Input[int] pps: The current message number cleaning threshold. Unit: pps.
@@ -515,8 +491,6 @@ class BasicDefenseThreshold(pulumi.CustomResource):
     def ddos_type(self) -> pulumi.Output[str]:
         """
         The type of the threshold to query. Valid values: `defense`,`blackhole`.
-        -`defense` - scrubbing threshold.
-        -`blackhole` - DDoS mitigation threshold.
         """
         return pulumi.get(self, "ddos_type")
 
@@ -549,8 +523,6 @@ class BasicDefenseThreshold(pulumi.CustomResource):
     def is_auto(self) -> pulumi.Output[bool]:
         """
         Whether it is the system default threshold. Value:
-        - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-        - `false`: indicates no, that is, you manually set the cleaning threshold.
         """
         return pulumi.get(self, "is_auto")
 

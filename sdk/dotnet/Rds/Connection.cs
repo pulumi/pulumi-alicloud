@@ -18,49 +18,51 @@ namespace Pulumi.AliCloud.Rds
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "Rds";
+    ///     var name = config.Get("name") ?? "dbconnectionbasic";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "Rds";
-    ///         var name = config.Get("name") ?? "dbconnectionbasic";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
-    ///         {
-    ///             Engine = "MySQL",
-    ///             EngineVersion = "5.6",
-    ///             InstanceType = "rds.mysql.t1.small",
-    ///             InstanceStorage = 10,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             InstanceName = name,
-    ///         });
-    ///         var foo = new AliCloud.Rds.Connection("foo", new AliCloud.Rds.ConnectionArgs
-    ///         {
-    ///             InstanceId = instance.Id,
-    ///             ConnectionPrefix = "testabc",
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var instance = new AliCloud.Rds.Instance("instance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
+    ///         InstanceType = "rds.mysql.t1.small",
+    ///         InstanceStorage = 10,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var foo = new AliCloud.Rds.Connection("foo", new()
+    ///     {
+    ///         InstanceId = instance.Id,
+    ///         ConnectionPrefix = "testabc",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +74,7 @@ namespace Pulumi.AliCloud.Rds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/connection:Connection")]
-    public partial class Connection : Pulumi.CustomResource
+    public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
@@ -154,7 +156,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
-    public sealed class ConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
@@ -183,9 +185,10 @@ namespace Pulumi.AliCloud.Rds
         public ConnectionArgs()
         {
         }
+        public static new ConnectionArgs Empty => new ConnectionArgs();
     }
 
-    public sealed class ConnectionState : Pulumi.ResourceArgs
+    public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
@@ -226,5 +229,6 @@ namespace Pulumi.AliCloud.Rds
         public ConnectionState()
         {
         }
+        public static new ConnectionState Empty => new ConnectionState();
     }
 }

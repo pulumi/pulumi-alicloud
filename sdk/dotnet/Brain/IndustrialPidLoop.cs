@@ -19,25 +19,23 @@ namespace Pulumi.AliCloud.Brain
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Brain.IndustrialPidLoop("example", new()
     ///     {
-    ///         var example = new AliCloud.Brain.IndustrialPidLoop("example", new AliCloud.Brain.IndustrialPidLoopArgs
-    ///         {
-    ///             PidLoopConfiguration = "YourLoopConfiguration",
-    ///             PidLoopDcsType = "standard",
-    ///             PidLoopIsCrucial = true,
-    ///             PidLoopName = "tf-testAcc",
-    ///             PidLoopType = "0",
-    ///             PidProjectId = "856c6b8f-ca63-40a4-xxxx-xxxx",
-    ///         });
-    ///     }
+    ///         PidLoopConfiguration = "YourLoopConfiguration",
+    ///         PidLoopDcsType = "standard",
+    ///         PidLoopIsCrucial = true,
+    ///         PidLoopName = "tf-testAcc",
+    ///         PidLoopType = "0",
+    ///         PidProjectId = "856c6b8f-ca63-40a4-xxxx-xxxx",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.Brain
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:brain/industrialPidLoop:IndustrialPidLoop")]
-    public partial class IndustrialPidLoop : Pulumi.CustomResource
+    public partial class IndustrialPidLoop : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Pid Loop Configuration.
@@ -143,7 +141,7 @@ namespace Pulumi.AliCloud.Brain
         }
     }
 
-    public sealed class IndustrialPidLoopArgs : Pulumi.ResourceArgs
+    public sealed class IndustrialPidLoopArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Pid Loop Configuration.
@@ -190,9 +188,10 @@ namespace Pulumi.AliCloud.Brain
         public IndustrialPidLoopArgs()
         {
         }
+        public static new IndustrialPidLoopArgs Empty => new IndustrialPidLoopArgs();
     }
 
-    public sealed class IndustrialPidLoopState : Pulumi.ResourceArgs
+    public sealed class IndustrialPidLoopState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Pid Loop Configuration.
@@ -245,5 +244,6 @@ namespace Pulumi.AliCloud.Brain
         public IndustrialPidLoopState()
         {
         }
+        public static new IndustrialPidLoopState Empty => new IndustrialPidLoopState();
     }
 }

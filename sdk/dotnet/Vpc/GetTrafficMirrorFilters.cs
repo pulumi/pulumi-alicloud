@@ -23,53 +23,49 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetTrafficMirrorFilters.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpcTrafficMirrorFilterId1 = ids.Apply(ids =&gt; ids.Filters?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
-        ///         {
-        ///             NameRegex = "^my-TrafficMirrorFilter",
-        ///         }));
-        ///         this.VpcTrafficMirrorFilterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Filters?[0]?.Id);
-        ///         var filterName = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
-        ///         {
-        ///             TrafficMirrorFilterName = "example_traffic_mirror_filter_name",
-        ///         }));
-        ///         this.VpcTrafficMirrorFilterId3 = filterName.Apply(filterName =&gt; filterName.Filters?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
-        ///         {
-        ///             Status = "^my-TrafficMirrorFilter",
-        ///         }));
-        ///         this.VpcTrafficMirrorFilterId4 = status.Apply(status =&gt; status.Filters?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcTrafficMirrorFilterId1")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterId1 { get; set; }
-        ///     [Output("vpcTrafficMirrorFilterId2")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterId2 { get; set; }
-        ///     [Output("vpcTrafficMirrorFilterId3")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterId3 { get; set; }
-        ///     [Output("vpcTrafficMirrorFilterId4")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterId4 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetTrafficMirrorFilters.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-TrafficMirrorFilter",
+        ///     });
+        /// 
+        ///     var filterName = AliCloud.Vpc.GetTrafficMirrorFilters.Invoke(new()
+        ///     {
+        ///         TrafficMirrorFilterName = "example_traffic_mirror_filter_name",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetTrafficMirrorFilters.Invoke(new()
+        ///     {
+        ///         Status = "^my-TrafficMirrorFilter",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcTrafficMirrorFilterId1"] = ids.Apply(getTrafficMirrorFiltersResult =&gt; getTrafficMirrorFiltersResult.Filters[0]?.Id),
+        ///         ["vpcTrafficMirrorFilterId2"] = nameRegex.Apply(getTrafficMirrorFiltersResult =&gt; getTrafficMirrorFiltersResult.Filters[0]?.Id),
+        ///         ["vpcTrafficMirrorFilterId3"] = filterName.Apply(getTrafficMirrorFiltersResult =&gt; getTrafficMirrorFiltersResult.Filters[0]?.Id),
+        ///         ["vpcTrafficMirrorFilterId4"] = status.Apply(getTrafficMirrorFiltersResult =&gt; getTrafficMirrorFiltersResult.Filters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrafficMirrorFiltersResult> InvokeAsync(GetTrafficMirrorFiltersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorFiltersResult>("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", args ?? new GetTrafficMirrorFiltersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorFiltersResult>("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", args ?? new GetTrafficMirrorFiltersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
@@ -83,57 +79,53 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetTrafficMirrorFilters.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpcTrafficMirrorFilterId1 = ids.Apply(ids =&gt; ids.Filters?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
-        ///         {
-        ///             NameRegex = "^my-TrafficMirrorFilter",
-        ///         }));
-        ///         this.VpcTrafficMirrorFilterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Filters?[0]?.Id);
-        ///         var filterName = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
-        ///         {
-        ///             TrafficMirrorFilterName = "example_traffic_mirror_filter_name",
-        ///         }));
-        ///         this.VpcTrafficMirrorFilterId3 = filterName.Apply(filterName =&gt; filterName.Filters?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
-        ///         {
-        ///             Status = "^my-TrafficMirrorFilter",
-        ///         }));
-        ///         this.VpcTrafficMirrorFilterId4 = status.Apply(status =&gt; status.Filters?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcTrafficMirrorFilterId1")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterId1 { get; set; }
-        ///     [Output("vpcTrafficMirrorFilterId2")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterId2 { get; set; }
-        ///     [Output("vpcTrafficMirrorFilterId3")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterId3 { get; set; }
-        ///     [Output("vpcTrafficMirrorFilterId4")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterId4 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetTrafficMirrorFilters.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-TrafficMirrorFilter",
+        ///     });
+        /// 
+        ///     var filterName = AliCloud.Vpc.GetTrafficMirrorFilters.Invoke(new()
+        ///     {
+        ///         TrafficMirrorFilterName = "example_traffic_mirror_filter_name",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetTrafficMirrorFilters.Invoke(new()
+        ///     {
+        ///         Status = "^my-TrafficMirrorFilter",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcTrafficMirrorFilterId1"] = ids.Apply(getTrafficMirrorFiltersResult =&gt; getTrafficMirrorFiltersResult.Filters[0]?.Id),
+        ///         ["vpcTrafficMirrorFilterId2"] = nameRegex.Apply(getTrafficMirrorFiltersResult =&gt; getTrafficMirrorFiltersResult.Filters[0]?.Id),
+        ///         ["vpcTrafficMirrorFilterId3"] = filterName.Apply(getTrafficMirrorFiltersResult =&gt; getTrafficMirrorFiltersResult.Filters[0]?.Id),
+        ///         ["vpcTrafficMirrorFilterId4"] = status.Apply(getTrafficMirrorFiltersResult =&gt; getTrafficMirrorFiltersResult.Filters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTrafficMirrorFiltersResult> Invoke(GetTrafficMirrorFiltersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorFiltersResult>("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", args ?? new GetTrafficMirrorFiltersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorFiltersResult>("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", args ?? new GetTrafficMirrorFiltersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTrafficMirrorFiltersArgs : Pulumi.InvokeArgs
+    public sealed class GetTrafficMirrorFiltersArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -171,9 +163,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetTrafficMirrorFiltersArgs()
         {
         }
+        public static new GetTrafficMirrorFiltersArgs Empty => new GetTrafficMirrorFiltersArgs();
     }
 
-    public sealed class GetTrafficMirrorFiltersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTrafficMirrorFiltersInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -211,6 +204,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetTrafficMirrorFiltersInvokeArgs()
         {
         }
+        public static new GetTrafficMirrorFiltersInvokeArgs Empty => new GetTrafficMirrorFiltersInvokeArgs();
     }
 
 

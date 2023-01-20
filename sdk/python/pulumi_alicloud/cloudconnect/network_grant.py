@@ -145,10 +145,9 @@ class NetworkGrant(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
-        ccn_account = pulumi.providers.Alicloud("ccnAccount")
-        cen_account = pulumi.providers.Alicloud("cenAccount",
+        ccn_account = alicloud.Provider("ccnAccount")
+        cen_account = alicloud.Provider("cenAccount",
             region="cn-hangzhou",
             access_key="xxxxxx",
             secret_key="xxxxxx")
@@ -201,10 +200,9 @@ class NetworkGrant(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
-        ccn_account = pulumi.providers.Alicloud("ccnAccount")
-        cen_account = pulumi.providers.Alicloud("cenAccount",
+        ccn_account = alicloud.Provider("ccnAccount")
+        cen_account = alicloud.Provider("cenAccount",
             region="cn-hangzhou",
             access_key="xxxxxx",
             secret_key="xxxxxx")

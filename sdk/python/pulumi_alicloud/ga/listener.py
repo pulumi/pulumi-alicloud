@@ -21,9 +21,11 @@ class ListenerArgs:
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
                  client_affinity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
-                 proxy_protocol: Optional[pulumi.Input[bool]] = None):
+                 proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 security_policy_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Listener resource.
         :param pulumi.Input[str] accelerator_id: The accelerator id.
@@ -33,11 +35,13 @@ class ListenerArgs:
                `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
                `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
         :param pulumi.Input[str] description: The description of the listener.
+        :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
+        :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
         """
         pulumi.set(__self__, "accelerator_id", accelerator_id)
         pulumi.set(__self__, "port_ranges", port_ranges)
@@ -47,12 +51,16 @@ class ListenerArgs:
             pulumi.set(__self__, "client_affinity", client_affinity)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if listener_type is not None:
+            pulumi.set(__self__, "listener_type", listener_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
         if proxy_protocol is not None:
             pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+        if security_policy_id is not None:
+            pulumi.set(__self__, "security_policy_id", security_policy_id)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -117,6 +125,18 @@ class ListenerArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="listenerType")
+    def listener_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The routing type of the listener. Default Value: `Standard`. Valid values:
+        """
+        return pulumi.get(self, "listener_type")
+
+    @listener_type.setter
+    def listener_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "listener_type", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -154,6 +174,18 @@ class ListenerArgs:
     def proxy_protocol(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "proxy_protocol", value)
 
+    @property
+    @pulumi.getter(name="securityPolicyId")
+    def security_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+        """
+        return pulumi.get(self, "security_policy_id")
+
+    @security_policy_id.setter
+    def security_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy_id", value)
+
 
 @pulumi.input_type
 class _ListenerState:
@@ -162,10 +194,12 @@ class _ListenerState:
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
                  client_affinity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 security_policy_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
@@ -175,12 +209,14 @@ class _ListenerState:
                `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
                `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
         :param pulumi.Input[str] description: The description of the listener.
+        :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]] port_ranges: The portRanges of the listener.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
+        :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
         :param pulumi.Input[str] status: The status of the listener.
         """
         if accelerator_id is not None:
@@ -191,6 +227,8 @@ class _ListenerState:
             pulumi.set(__self__, "client_affinity", client_affinity)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if listener_type is not None:
+            pulumi.set(__self__, "listener_type", listener_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if port_ranges is not None:
@@ -199,6 +237,8 @@ class _ListenerState:
             pulumi.set(__self__, "protocol", protocol)
         if proxy_protocol is not None:
             pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+        if security_policy_id is not None:
+            pulumi.set(__self__, "security_policy_id", security_policy_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -253,6 +293,18 @@ class _ListenerState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="listenerType")
+    def listener_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The routing type of the listener. Default Value: `Standard`. Valid values:
+        """
+        return pulumi.get(self, "listener_type")
+
+    @listener_type.setter
+    def listener_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "listener_type", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -303,6 +355,18 @@ class _ListenerState:
         pulumi.set(self, "proxy_protocol", value)
 
     @property
+    @pulumi.getter(name="securityPolicyId")
+    def security_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+        """
+        return pulumi.get(self, "security_policy_id")
+
+    @security_policy_id.setter
+    def security_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -324,10 +388,12 @@ class Listener(pulumi.CustomResource):
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
                  client_affinity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 security_policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Listener resource.
@@ -383,12 +449,14 @@ class Listener(pulumi.CustomResource):
                `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
                `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
         :param pulumi.Input[str] description: The description of the listener.
+        :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]] port_ranges: The portRanges of the listener.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
+        :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
         """
         ...
     @overload
@@ -461,10 +529,12 @@ class Listener(pulumi.CustomResource):
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
                  client_affinity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 security_policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -480,12 +550,14 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["certificates"] = certificates
             __props__.__dict__["client_affinity"] = client_affinity
             __props__.__dict__["description"] = description
+            __props__.__dict__["listener_type"] = listener_type
             __props__.__dict__["name"] = name
             if port_ranges is None and not opts.urn:
                 raise TypeError("Missing required property 'port_ranges'")
             __props__.__dict__["port_ranges"] = port_ranges
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["proxy_protocol"] = proxy_protocol
+            __props__.__dict__["security_policy_id"] = security_policy_id
             __props__.__dict__["status"] = None
         super(Listener, __self__).__init__(
             'alicloud:ga/listener:Listener',
@@ -501,10 +573,12 @@ class Listener(pulumi.CustomResource):
             certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
             client_affinity: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            listener_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             proxy_protocol: Optional[pulumi.Input[bool]] = None,
+            security_policy_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
@@ -519,12 +593,14 @@ class Listener(pulumi.CustomResource):
                `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
                `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
         :param pulumi.Input[str] description: The description of the listener.
+        :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]] port_ranges: The portRanges of the listener.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
+        :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
         :param pulumi.Input[str] status: The status of the listener.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -535,10 +611,12 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["certificates"] = certificates
         __props__.__dict__["client_affinity"] = client_affinity
         __props__.__dict__["description"] = description
+        __props__.__dict__["listener_type"] = listener_type
         __props__.__dict__["name"] = name
         __props__.__dict__["port_ranges"] = port_ranges
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["proxy_protocol"] = proxy_protocol
+        __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["status"] = status
         return Listener(resource_name, opts=opts, __props__=__props__)
 
@@ -577,6 +655,14 @@ class Listener(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="listenerType")
+    def listener_type(self) -> pulumi.Output[str]:
+        """
+        The routing type of the listener. Default Value: `Standard`. Valid values:
+        """
+        return pulumi.get(self, "listener_type")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -609,6 +695,14 @@ class Listener(pulumi.CustomResource):
         `false`: keep client source IP function is not turned on.
         """
         return pulumi.get(self, "proxy_protocol")
+
+    @property
+    @pulumi.getter(name="securityPolicyId")
+    def security_policy_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+        """
+        return pulumi.get(self, "security_policy_id")
 
     @property
     @pulumi.getter

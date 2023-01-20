@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.FC
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fc/function:Function")]
-    public partial class Function : Pulumi.CustomResource
+    public partial class Function : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
@@ -100,6 +100,12 @@ namespace Pulumi.AliCloud.FC
         public Output<string> LastModified { get; private set; } = null!;
 
         /// <summary>
+        /// The configuration for layers.
+        /// </summary>
+        [Output("layers")]
+        public Output<ImmutableArray<string>> Layers { get; private set; } = null!;
+
+        /// <summary>
         /// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         /// </summary>
         [Output("memorySize")]
@@ -130,7 +136,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string?> OssKey { get; private set; } = null!;
 
         /// <summary>
-        /// See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+        /// See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
@@ -191,7 +197,7 @@ namespace Pulumi.AliCloud.FC
         }
     }
 
-    public sealed class FunctionArgs : Pulumi.ResourceArgs
+    public sealed class FunctionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
@@ -265,6 +271,18 @@ namespace Pulumi.AliCloud.FC
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
+        [Input("layers")]
+        private InputList<string>? _layers;
+
+        /// <summary>
+        /// The configuration for layers.
+        /// </summary>
+        public InputList<string> Layers
+        {
+            get => _layers ?? (_layers = new InputList<string>());
+            set => _layers = value;
+        }
+
         /// <summary>
         /// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         /// </summary>
@@ -296,7 +314,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? OssKey { get; set; }
 
         /// <summary>
-        /// See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+        /// See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
         /// </summary>
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
@@ -316,9 +334,10 @@ namespace Pulumi.AliCloud.FC
         public FunctionArgs()
         {
         }
+        public static new FunctionArgs Empty => new FunctionArgs();
     }
 
-    public sealed class FunctionState : Pulumi.ResourceArgs
+    public sealed class FunctionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
@@ -404,6 +423,18 @@ namespace Pulumi.AliCloud.FC
         [Input("lastModified")]
         public Input<string>? LastModified { get; set; }
 
+        [Input("layers")]
+        private InputList<string>? _layers;
+
+        /// <summary>
+        /// The configuration for layers.
+        /// </summary>
+        public InputList<string> Layers
+        {
+            get => _layers ?? (_layers = new InputList<string>());
+            set => _layers = value;
+        }
+
         /// <summary>
         /// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         /// </summary>
@@ -435,7 +466,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? OssKey { get; set; }
 
         /// <summary>
-        /// See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+        /// See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
@@ -455,5 +486,6 @@ namespace Pulumi.AliCloud.FC
         public FunctionState()
         {
         }
+        public static new FunctionState Empty => new FunctionState();
     }
 }

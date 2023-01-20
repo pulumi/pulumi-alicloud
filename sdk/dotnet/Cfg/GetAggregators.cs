@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Cfg
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cfg.GetAggregators.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetAggregators.InvokeAsync(new AliCloud.Cfg.GetAggregatorsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "ca-3ce2626622af0005****",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstConfigAggregatorId = example.Apply(example =&gt; example.Aggregators?[0]?.Id);
-        ///     }
+        ///             "ca-3ce2626622af0005****",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstConfigAggregatorId")]
-        ///     public Output&lt;string&gt; FirstConfigAggregatorId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigAggregatorId"] = example.Apply(getAggregatorsResult =&gt; getAggregatorsResult.Aggregators[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAggregatorsResult> InvokeAsync(GetAggregatorsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAggregatorsResult>("alicloud:cfg/getAggregators:getAggregators", args ?? new GetAggregatorsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAggregatorsResult>("alicloud:cfg/getAggregators:getAggregators", args ?? new GetAggregatorsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Config Aggregators of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Cfg
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cfg.GetAggregators.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetAggregators.InvokeAsync(new AliCloud.Cfg.GetAggregatorsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "ca-3ce2626622af0005****",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstConfigAggregatorId = example.Apply(example =&gt; example.Aggregators?[0]?.Id);
-        ///     }
+        ///             "ca-3ce2626622af0005****",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstConfigAggregatorId")]
-        ///     public Output&lt;string&gt; FirstConfigAggregatorId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigAggregatorId"] = example.Apply(getAggregatorsResult =&gt; getAggregatorsResult.Aggregators[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAggregatorsResult> Invoke(GetAggregatorsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAggregatorsResult>("alicloud:cfg/getAggregators:getAggregators", args ?? new GetAggregatorsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAggregatorsResult>("alicloud:cfg/getAggregators:getAggregators", args ?? new GetAggregatorsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAggregatorsArgs : Pulumi.InvokeArgs
+    public sealed class GetAggregatorsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -131,9 +129,10 @@ namespace Pulumi.AliCloud.Cfg
         public GetAggregatorsArgs()
         {
         }
+        public static new GetAggregatorsArgs Empty => new GetAggregatorsArgs();
     }
 
-    public sealed class GetAggregatorsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAggregatorsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -171,6 +170,7 @@ namespace Pulumi.AliCloud.Cfg
         public GetAggregatorsInvokeArgs()
         {
         }
+        public static new GetAggregatorsInvokeArgs Empty => new GetAggregatorsInvokeArgs();
     }
 
 

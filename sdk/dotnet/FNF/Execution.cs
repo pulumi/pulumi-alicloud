@@ -21,18 +21,17 @@ namespace Pulumi.AliCloud.FNF
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testacc-fnfflow";
+    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testacc-fnfflow";
-    ///         var defaultRole = new AliCloud.Ram.Role("defaultRole", new AliCloud.Ram.RoleArgs
-    ///         {
-    ///             Document = @"  {
+    ///         Document = @"  {
     ///     ""Statement"": [
     ///       {
     ///         ""Action"": ""sts:AssumeRole"",
@@ -47,29 +46,30 @@ namespace Pulumi.AliCloud.FNF
     ///     ""Version"": ""1""
     ///   }
     /// ",
-    ///         });
-    ///         var defaultFlow = new AliCloud.FNF.Flow("defaultFlow", new AliCloud.FNF.FlowArgs
-    ///         {
-    ///             Definition = @"  version: v1beta1
+    ///     });
+    /// 
+    ///     var defaultFlow = new AliCloud.FNF.Flow("defaultFlow", new()
+    ///     {
+    ///         Definition = @"  version: v1beta1
     ///   type: flow
     ///   steps:
     ///     - type: wait
     ///       name: custom_wait
     ///       duration: $.wait
     /// ",
-    ///             RoleArn = defaultRole.Arn,
-    ///             Description = "Test for terraform fnf_flow.",
-    ///             Type = "FDL",
-    ///         });
-    ///         var defaultExecution = new AliCloud.FNF.Execution("defaultExecution", new AliCloud.FNF.ExecutionArgs
-    ///         {
-    ///             ExecutionName = name,
-    ///             FlowName = defaultFlow.Name,
-    ///             Input = "{\"wait\": 600}",
-    ///         });
-    ///     }
+    ///         RoleArn = defaultRole.Arn,
+    ///         Description = "Test for terraform fnf_flow.",
+    ///         Type = "FDL",
+    ///     });
     /// 
-    /// }
+    ///     var defaultExecution = new AliCloud.FNF.Execution("defaultExecution", new()
+    ///     {
+    ///         ExecutionName = name,
+    ///         FlowName = defaultFlow.Name,
+    ///         Input = "{\"wait\": 600}",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.FNF
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fnf/execution:Execution")]
-    public partial class Execution : Pulumi.CustomResource
+    public partial class Execution : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the execution.
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.FNF
         }
     }
 
-    public sealed class ExecutionArgs : Pulumi.ResourceArgs
+    public sealed class ExecutionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the execution.
@@ -180,9 +180,10 @@ namespace Pulumi.AliCloud.FNF
         public ExecutionArgs()
         {
         }
+        public static new ExecutionArgs Empty => new ExecutionArgs();
     }
 
-    public sealed class ExecutionState : Pulumi.ResourceArgs
+    public sealed class ExecutionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the execution.
@@ -211,5 +212,6 @@ namespace Pulumi.AliCloud.FNF
         public ExecutionState()
         {
         }
+        public static new ExecutionState Empty => new ExecutionState();
     }
 }

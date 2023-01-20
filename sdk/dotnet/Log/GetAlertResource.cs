@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.Log
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var exampleUser = AliCloud.Log.GetAlertResource.Invoke(new()
         ///     {
-        ///         var exampleUser = Output.Create(AliCloud.Log.GetAlertResource.InvokeAsync(new AliCloud.Log.GetAlertResourceArgs
-        ///         {
-        ///             Lang = "cn",
-        ///             Type = "user",
-        ///         }));
-        ///         var exampleProject = Output.Create(AliCloud.Log.GetAlertResource.InvokeAsync(new AliCloud.Log.GetAlertResourceArgs
-        ///         {
-        ///             Project = "test-alert-tf",
-        ///             Type = "project",
-        ///         }));
-        ///     }
+        ///         Lang = "cn",
+        ///         Type = "user",
+        ///     });
         /// 
-        /// }
+        ///     var exampleProject = AliCloud.Log.GetAlertResource.Invoke(new()
+        ///     {
+        ///         Project = "test-alert-tf",
+        ///         Type = "project",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlertResourceResult> InvokeAsync(GetAlertResourceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlertResourceResult>("alicloud:log/getAlertResource:getAlertResource", args ?? new GetAlertResourceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlertResourceResult>("alicloud:log/getAlertResource:getAlertResource", args ?? new GetAlertResourceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Using this data source can init SLS Alert resources automatically.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.Log
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var exampleUser = AliCloud.Log.GetAlertResource.Invoke(new()
         ///     {
-        ///         var exampleUser = Output.Create(AliCloud.Log.GetAlertResource.InvokeAsync(new AliCloud.Log.GetAlertResourceArgs
-        ///         {
-        ///             Lang = "cn",
-        ///             Type = "user",
-        ///         }));
-        ///         var exampleProject = Output.Create(AliCloud.Log.GetAlertResource.InvokeAsync(new AliCloud.Log.GetAlertResourceArgs
-        ///         {
-        ///             Project = "test-alert-tf",
-        ///             Type = "project",
-        ///         }));
-        ///     }
+        ///         Lang = "cn",
+        ///         Type = "user",
+        ///     });
         /// 
-        /// }
+        ///     var exampleProject = AliCloud.Log.GetAlertResource.Invoke(new()
+        ///     {
+        ///         Project = "test-alert-tf",
+        ///         Type = "project",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAlertResourceResult> Invoke(GetAlertResourceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAlertResourceResult>("alicloud:log/getAlertResource:getAlertResource", args ?? new GetAlertResourceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAlertResourceResult>("alicloud:log/getAlertResource:getAlertResource", args ?? new GetAlertResourceInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAlertResourceArgs : Pulumi.InvokeArgs
+    public sealed class GetAlertResourceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The lang of alert center resource when type is user.
@@ -114,9 +112,10 @@ namespace Pulumi.AliCloud.Log
         public GetAlertResourceArgs()
         {
         }
+        public static new GetAlertResourceArgs Empty => new GetAlertResourceArgs();
     }
 
-    public sealed class GetAlertResourceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAlertResourceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The lang of alert center resource when type is user.
@@ -139,6 +138,7 @@ namespace Pulumi.AliCloud.Log
         public GetAlertResourceInvokeArgs()
         {
         }
+        public static new GetAlertResourceInvokeArgs Empty => new GetAlertResourceInvokeArgs();
     }
 
 

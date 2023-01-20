@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketLifecycleRuleNoncurrentVersionTransition
     {
         /// <summary>
-        /// Specifies the number of days noncurrent object versions transition.
+        /// Specifies the number of days after object creation when the specific rule action takes effect.
         /// </summary>
         public readonly int Days;
         /// <summary>
-        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         /// </summary>
         public readonly string StorageClass;
 

@@ -73,6 +73,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment")
 public class CommonBandwithPackageAttachment extends com.pulumi.resources.CustomResource {
     /**
+     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     * 
+     */
+    @Export(name="bandwidthPackageBandwidth", type=String.class, parameters={})
+    private Output<String> bandwidthPackageBandwidth;
+
+    /**
+     * @return The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     * 
+     */
+    public Output<String> bandwidthPackageBandwidth() {
+        return this.bandwidthPackageBandwidth;
+    }
+    /**
      * The bandwidth_package_id of the common bandwidth package attachment, the field can&#39;t be changed.
      * 
      */

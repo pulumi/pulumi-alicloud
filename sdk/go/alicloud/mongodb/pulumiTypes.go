@@ -283,7 +283,7 @@ type ShardingInstanceConfigServerList struct {
 	MaxConnections *int `pulumi:"maxConnections"`
 	// The maximum IOPS of the Config Server node.
 	MaxIops *int `pulumi:"maxIops"`
-	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass *string `pulumi:"nodeClass"`
 	// The description of the Config Server node.
 	NodeDescription *string `pulumi:"nodeDescription"`
@@ -314,7 +314,7 @@ type ShardingInstanceConfigServerListArgs struct {
 	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
 	// The maximum IOPS of the Config Server node.
 	MaxIops pulumi.IntPtrInput `pulumi:"maxIops"`
-	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass pulumi.StringPtrInput `pulumi:"nodeClass"`
 	// The description of the Config Server node.
 	NodeDescription pulumi.StringPtrInput `pulumi:"nodeDescription"`
@@ -393,7 +393,7 @@ func (o ShardingInstanceConfigServerListOutput) MaxIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *int { return v.MaxIops }).(pulumi.IntPtrOutput)
 }
 
-// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 func (o ShardingInstanceConfigServerListOutput) NodeClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *string { return v.NodeClass }).(pulumi.StringPtrOutput)
 }
@@ -442,7 +442,7 @@ func (o ShardingInstanceConfigServerListArrayOutput) Index(i pulumi.IntInput) Sh
 type ShardingInstanceMongoList struct {
 	// The connection address of the Config Server node.
 	ConnectString *string `pulumi:"connectString"`
-	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass string `pulumi:"nodeClass"`
 	// The ID of the Config Server node.
 	NodeId *string `pulumi:"nodeId"`
@@ -464,7 +464,7 @@ type ShardingInstanceMongoListInput interface {
 type ShardingInstanceMongoListArgs struct {
 	// The connection address of the Config Server node.
 	ConnectString pulumi.StringPtrInput `pulumi:"connectString"`
-	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass pulumi.StringInput `pulumi:"nodeClass"`
 	// The ID of the Config Server node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
@@ -528,7 +528,7 @@ func (o ShardingInstanceMongoListOutput) ConnectString() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ShardingInstanceMongoList) *string { return v.ConnectString }).(pulumi.StringPtrOutput)
 }
 
-// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 func (o ShardingInstanceMongoListOutput) NodeClass() pulumi.StringOutput {
 	return o.ApplyT(func(v ShardingInstanceMongoList) string { return v.NodeClass }).(pulumi.StringOutput)
 }
@@ -564,7 +564,7 @@ func (o ShardingInstanceMongoListArrayOutput) Index(i pulumi.IntInput) ShardingI
 }
 
 type ShardingInstanceShardList struct {
-	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass string `pulumi:"nodeClass"`
 	// The ID of the Config Server node.
 	NodeId *string `pulumi:"nodeId"`
@@ -587,7 +587,7 @@ type ShardingInstanceShardListInput interface {
 }
 
 type ShardingInstanceShardListArgs struct {
-	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass pulumi.StringInput `pulumi:"nodeClass"`
 	// The ID of the Config Server node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
@@ -649,7 +649,7 @@ func (o ShardingInstanceShardListOutput) ToShardingInstanceShardListOutputWithCo
 	return o
 }
 
-// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 func (o ShardingInstanceShardListOutput) NodeClass() pulumi.StringOutput {
 	return o.ApplyT(func(v ShardingInstanceShardList) string { return v.NodeClass }).(pulumi.StringOutput)
 }

@@ -23,34 +23,33 @@ namespace Pulumi.AliCloud.Cfg
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cfg.GetAggregateConfigRules.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetAggregateConfigRules.InvokeAsync(new AliCloud.Cfg.GetAggregateConfigRulesArgs
+        ///         AggregatorId = "ca-3a9b626622af001d****",
+        ///         Ids = new[]
         ///         {
-        ///             AggregatorId = "ca-3a9b626622af001d****",
-        ///             Ids = 
-        ///             {
-        ///                 "cr-5154626622af0034****",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstConfigAggregateConfigRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
-        ///     }
+        ///             "cr-5154626622af0034****",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstConfigAggregateConfigRuleId")]
-        ///     public Output&lt;string&gt; FirstConfigAggregateConfigRuleId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigAggregateConfigRuleId"] = example.Apply(getAggregateConfigRulesResult =&gt; getAggregateConfigRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAggregateConfigRulesResult> InvokeAsync(GetAggregateConfigRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
@@ -64,38 +63,37 @@ namespace Pulumi.AliCloud.Cfg
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cfg.GetAggregateConfigRules.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetAggregateConfigRules.InvokeAsync(new AliCloud.Cfg.GetAggregateConfigRulesArgs
+        ///         AggregatorId = "ca-3a9b626622af001d****",
+        ///         Ids = new[]
         ///         {
-        ///             AggregatorId = "ca-3a9b626622af001d****",
-        ///             Ids = 
-        ///             {
-        ///                 "cr-5154626622af0034****",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstConfigAggregateConfigRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
-        ///     }
+        ///             "cr-5154626622af0034****",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstConfigAggregateConfigRuleId")]
-        ///     public Output&lt;string&gt; FirstConfigAggregateConfigRuleId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigAggregateConfigRuleId"] = example.Apply(getAggregateConfigRulesResult =&gt; getAggregateConfigRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAggregateConfigRulesResult> Invoke(GetAggregateConfigRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAggregateConfigRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetAggregateConfigRulesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The config rule name.
@@ -151,9 +149,10 @@ namespace Pulumi.AliCloud.Cfg
         public GetAggregateConfigRulesArgs()
         {
         }
+        public static new GetAggregateConfigRulesArgs Empty => new GetAggregateConfigRulesArgs();
     }
 
-    public sealed class GetAggregateConfigRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAggregateConfigRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The config rule name.
@@ -209,6 +208,7 @@ namespace Pulumi.AliCloud.Cfg
         public GetAggregateConfigRulesInvokeArgs()
         {
         }
+        public static new GetAggregateConfigRulesInvokeArgs Empty => new GetAggregateConfigRulesInvokeArgs();
     }
 
 
@@ -221,7 +221,6 @@ namespace Pulumi.AliCloud.Cfg
         public readonly string? AggregateConfigRuleName;
         /// <summary>
         /// The ID of Aggregator.
-        /// * `compliance` -The Compliance information.
         /// </summary>
         public readonly string AggregatorId;
         public readonly bool? EnableDetails;

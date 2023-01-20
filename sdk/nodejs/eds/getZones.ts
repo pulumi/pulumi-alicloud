@@ -2,11 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the available zones with the Elastic Desktop Service(EDS) of the current Alibaba Cloud user.
+ * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.174.0+.
  *
@@ -18,18 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = pulumi.output(alicloud.eds.getZones());
- *
- * export const alicloudEcdZones = defaultZones.zones[0].zoneId;
+ * const default = alicloud.eds.getZones({});
+ * export const alicloudEcdZones = _default.then(_default => _default.zones?.[0]?.zoneId);
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getZones:getZones", {
         "outputFile": args.outputFile,
     }, opts);
@@ -54,9 +51,25 @@ export interface GetZonesResult {
     readonly outputFile?: string;
     readonly zones: outputs.eds.GetZonesZone[];
 }
-
+/**
+ * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.174.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.eds.getZones({});
+ * export const alicloudEcdZones = _default.then(_default => _default.zones?.[0]?.zoneId);
+ * ```
+ */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(args).apply(a => getZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getZones(a, opts))
 }
 
 /**

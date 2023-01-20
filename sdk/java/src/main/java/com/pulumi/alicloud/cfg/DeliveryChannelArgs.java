@@ -62,7 +62,7 @@ public final class DeliveryChannelArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
+     * The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
      * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
      * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
      * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
@@ -72,7 +72,7 @@ public final class DeliveryChannelArgs extends com.pulumi.resources.ResourceArgs
     private Output<String> deliveryChannelTargetArn;
 
     /**
-     * @return - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
+     * @return The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
      * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
      * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
      * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
@@ -83,14 +83,14 @@ public final class DeliveryChannelArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+     * The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
      * 
      */
     @Import(name="deliveryChannelType", required=true)
     private Output<String> deliveryChannelType;
 
     /**
-     * @return - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+     * @return The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
      * 
      */
     public Output<String> deliveryChannelType() {
@@ -221,7 +221,7 @@ public final class DeliveryChannelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deliveryChannelTargetArn - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
+         * @param deliveryChannelTargetArn The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
          * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
          * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
          * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
@@ -235,7 +235,7 @@ public final class DeliveryChannelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deliveryChannelTargetArn - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
+         * @param deliveryChannelTargetArn The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
          * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
          * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
          * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
@@ -248,7 +248,7 @@ public final class DeliveryChannelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deliveryChannelType - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+         * @param deliveryChannelType The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class DeliveryChannelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deliveryChannelType - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+         * @param deliveryChannelType The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
          * 
          * @return builder
          * 

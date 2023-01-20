@@ -21,23 +21,21 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ecs.Command("example", new()
     ///     {
-    ///         var example = new AliCloud.Ecs.Command("example", new AliCloud.Ecs.CommandArgs
-    ///         {
-    ///             CommandContent = "bHMK",
-    ///             Description = "For Terraform Test",
-    ///             Type = "RunShellScript",
-    ///             WorkingDir = "/root",
-    ///         });
-    ///     }
+    ///         CommandContent = "bHMK",
+    ///         Description = "For Terraform Test",
+    ///         Type = "RunShellScript",
+    ///         WorkingDir = "/root",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/command:Command")]
-    public partial class Command : Pulumi.CustomResource
+    public partial class Command : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Base64-encoded content of the command.
@@ -137,7 +135,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class CommandArgs : Pulumi.ResourceArgs
+    public sealed class CommandArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Base64-encoded content of the command.
@@ -184,9 +182,10 @@ namespace Pulumi.AliCloud.Ecs
         public CommandArgs()
         {
         }
+        public static new CommandArgs Empty => new CommandArgs();
     }
 
-    public sealed class CommandState : Pulumi.ResourceArgs
+    public sealed class CommandState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Base64-encoded content of the command.
@@ -233,5 +232,6 @@ namespace Pulumi.AliCloud.Ecs
         public CommandState()
         {
         }
+        public static new CommandState Empty => new CommandState();
     }
 }

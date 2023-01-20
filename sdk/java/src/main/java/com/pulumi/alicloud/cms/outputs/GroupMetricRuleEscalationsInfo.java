@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GroupMetricRuleEscalationsInfo {
     /**
-     * @return The comparison operator of the threshold for warn-level alerts.
+     * @return The comparison operator of the threshold for critical-level alerts.
      * 
      */
     private @Nullable String comparisonOperator;
     /**
-     * @return The statistical aggregation method for warn-level alerts.
+     * @return The statistical aggregation method for critical-level alerts.
      * 
      */
     private @Nullable String statistics;
     /**
-     * @return The threshold for warn-level alerts.
+     * @return The threshold for critical-level alerts.
      * 
      */
     private @Nullable String threshold;
     /**
-     * @return The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+     * @return The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
      * 
      */
     private @Nullable Integer times;
 
     private GroupMetricRuleEscalationsInfo() {}
     /**
-     * @return The comparison operator of the threshold for warn-level alerts.
+     * @return The comparison operator of the threshold for critical-level alerts.
      * 
      */
     public Optional<String> comparisonOperator() {
         return Optional.ofNullable(this.comparisonOperator);
     }
     /**
-     * @return The statistical aggregation method for warn-level alerts.
+     * @return The statistical aggregation method for critical-level alerts.
      * 
      */
     public Optional<String> statistics() {
         return Optional.ofNullable(this.statistics);
     }
     /**
-     * @return The threshold for warn-level alerts.
+     * @return The threshold for critical-level alerts.
      * 
      */
     public Optional<String> threshold() {
         return Optional.ofNullable(this.threshold);
     }
     /**
-     * @return The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+     * @return The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
      * 
      */
     public Optional<Integer> times() {

@@ -17,14 +17,14 @@ public final class GroupMetricRuleEscalationsInfoArgs extends com.pulumi.resourc
     public static final GroupMetricRuleEscalationsInfoArgs Empty = new GroupMetricRuleEscalationsInfoArgs();
 
     /**
-     * The comparison operator of the threshold for warn-level alerts.
+     * The comparison operator of the threshold for critical-level alerts.
      * 
      */
     @Import(name="comparisonOperator")
     private @Nullable Output<String> comparisonOperator;
 
     /**
-     * @return The comparison operator of the threshold for warn-level alerts.
+     * @return The comparison operator of the threshold for critical-level alerts.
      * 
      */
     public Optional<Output<String>> comparisonOperator() {
@@ -32,14 +32,14 @@ public final class GroupMetricRuleEscalationsInfoArgs extends com.pulumi.resourc
     }
 
     /**
-     * The statistical aggregation method for warn-level alerts.
+     * The statistical aggregation method for critical-level alerts.
      * 
      */
     @Import(name="statistics")
     private @Nullable Output<String> statistics;
 
     /**
-     * @return The statistical aggregation method for warn-level alerts.
+     * @return The statistical aggregation method for critical-level alerts.
      * 
      */
     public Optional<Output<String>> statistics() {
@@ -47,14 +47,14 @@ public final class GroupMetricRuleEscalationsInfoArgs extends com.pulumi.resourc
     }
 
     /**
-     * The threshold for warn-level alerts.
+     * The threshold for critical-level alerts.
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<String> threshold;
 
     /**
-     * @return The threshold for warn-level alerts.
+     * @return The threshold for critical-level alerts.
      * 
      */
     public Optional<Output<String>> threshold() {
@@ -62,14 +62,14 @@ public final class GroupMetricRuleEscalationsInfoArgs extends com.pulumi.resourc
     }
 
     /**
-     * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+     * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
      * 
      */
     @Import(name="times")
     private @Nullable Output<Integer> times;
 
     /**
-     * @return The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+     * @return The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
      * 
      */
     public Optional<Output<Integer>> times() {
@@ -104,7 +104,7 @@ public final class GroupMetricRuleEscalationsInfoArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param comparisonOperator The comparison operator of the threshold for warn-level alerts.
+         * @param comparisonOperator The comparison operator of the threshold for critical-level alerts.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GroupMetricRuleEscalationsInfoArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param comparisonOperator The comparison operator of the threshold for warn-level alerts.
+         * @param comparisonOperator The comparison operator of the threshold for critical-level alerts.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class GroupMetricRuleEscalationsInfoArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param statistics The statistical aggregation method for warn-level alerts.
+         * @param statistics The statistical aggregation method for critical-level alerts.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class GroupMetricRuleEscalationsInfoArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param statistics The statistical aggregation method for warn-level alerts.
+         * @param statistics The statistical aggregation method for critical-level alerts.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class GroupMetricRuleEscalationsInfoArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param threshold The threshold for warn-level alerts.
+         * @param threshold The threshold for critical-level alerts.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class GroupMetricRuleEscalationsInfoArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param threshold The threshold for warn-level alerts.
+         * @param threshold The threshold for critical-level alerts.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class GroupMetricRuleEscalationsInfoArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param times The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         * @param times The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class GroupMetricRuleEscalationsInfoArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param times The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         * @param times The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
          * 
          * @return builder
          * 

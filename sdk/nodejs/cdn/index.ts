@@ -5,22 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./domain";
-export * from "./domainConfig";
-export * from "./domainNew";
-export * from "./fcTrigger";
-export * from "./getBlockedRegions";
-export * from "./getIpInfo";
-export * from "./getRealTimeLogDeliveries";
-export * from "./getService";
-export * from "./realTimeLogDelivery";
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
 
-// Import resources to register:
-import { Domain } from "./domain";
-import { DomainConfig } from "./domainConfig";
-import { DomainNew } from "./domainNew";
-import { FcTrigger } from "./fcTrigger";
-import { RealTimeLogDelivery } from "./realTimeLogDelivery";
+export { DomainConfigArgs, DomainConfigState } from "./domainConfig";
+export type DomainConfig = import("./domainConfig").DomainConfig;
+export const DomainConfig: typeof import("./domainConfig").DomainConfig = null as any;
+utilities.lazyLoad(exports, ["DomainConfig"], () => require("./domainConfig"));
+
+export { DomainNewArgs, DomainNewState } from "./domainNew";
+export type DomainNew = import("./domainNew").DomainNew;
+export const DomainNew: typeof import("./domainNew").DomainNew = null as any;
+utilities.lazyLoad(exports, ["DomainNew"], () => require("./domainNew"));
+
+export { FcTriggerArgs, FcTriggerState } from "./fcTrigger";
+export type FcTrigger = import("./fcTrigger").FcTrigger;
+export const FcTrigger: typeof import("./fcTrigger").FcTrigger = null as any;
+utilities.lazyLoad(exports, ["FcTrigger"], () => require("./fcTrigger"));
+
+export { GetBlockedRegionsArgs, GetBlockedRegionsResult, GetBlockedRegionsOutputArgs } from "./getBlockedRegions";
+export const getBlockedRegions: typeof import("./getBlockedRegions").getBlockedRegions = null as any;
+export const getBlockedRegionsOutput: typeof import("./getBlockedRegions").getBlockedRegionsOutput = null as any;
+utilities.lazyLoad(exports, ["getBlockedRegions","getBlockedRegionsOutput"], () => require("./getBlockedRegions"));
+
+export { GetIpInfoArgs, GetIpInfoResult, GetIpInfoOutputArgs } from "./getIpInfo";
+export const getIpInfo: typeof import("./getIpInfo").getIpInfo = null as any;
+export const getIpInfoOutput: typeof import("./getIpInfo").getIpInfoOutput = null as any;
+utilities.lazyLoad(exports, ["getIpInfo","getIpInfoOutput"], () => require("./getIpInfo"));
+
+export { GetRealTimeLogDeliveriesArgs, GetRealTimeLogDeliveriesResult, GetRealTimeLogDeliveriesOutputArgs } from "./getRealTimeLogDeliveries";
+export const getRealTimeLogDeliveries: typeof import("./getRealTimeLogDeliveries").getRealTimeLogDeliveries = null as any;
+export const getRealTimeLogDeliveriesOutput: typeof import("./getRealTimeLogDeliveries").getRealTimeLogDeliveriesOutput = null as any;
+utilities.lazyLoad(exports, ["getRealTimeLogDeliveries","getRealTimeLogDeliveriesOutput"], () => require("./getRealTimeLogDeliveries"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { RealTimeLogDeliveryArgs, RealTimeLogDeliveryState } from "./realTimeLogDelivery";
+export type RealTimeLogDelivery = import("./realTimeLogDelivery").RealTimeLogDelivery;
+export const RealTimeLogDelivery: typeof import("./realTimeLogDelivery").RealTimeLogDelivery = null as any;
+utilities.lazyLoad(exports, ["RealTimeLogDelivery"], () => require("./realTimeLogDelivery"));
+
 
 const _module = {
     version: utilities.getVersion(),

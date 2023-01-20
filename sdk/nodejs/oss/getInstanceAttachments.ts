@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,23 +15,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const attachmentsDs = pulumi.output(alicloud.ots.getInstanceAttachments({
+ * const attachmentsDs = alicloud.ots.getInstanceAttachments({
  *     instanceName: "sample-instance",
  *     nameRegex: "testvpc",
  *     outputFile: "attachments.txt",
- * }));
- *
- * export const firstOtsAttachmentId = attachmentsDs.attachments[0].id;
+ * });
+ * export const firstOtsAttachmentId = attachmentsDs.then(attachmentsDs => attachmentsDs.attachments?.[0]?.id);
  * ```
  */
 /** @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
 export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceAttachmentsResult> {
     pulumi.log.warn("getInstanceAttachments is deprecated: alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments")
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oss/getInstanceAttachments:getInstanceAttachments", {
         "instanceName": args.instanceName,
         "nameRegex": args.nameRegex,
@@ -80,9 +77,26 @@ export interface GetInstanceAttachmentsResult {
      */
     readonly vpcIds: string[];
 }
-
+/**
+ * This data source provides the ots instance attachments of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const attachmentsDs = alicloud.ots.getInstanceAttachments({
+ *     instanceName: "sample-instance",
+ *     nameRegex: "testvpc",
+ *     outputFile: "attachments.txt",
+ * });
+ * export const firstOtsAttachmentId = attachmentsDs.then(attachmentsDs => attachmentsDs.attachments?.[0]?.id);
+ * ```
+ */
+/** @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
 export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {
-    return pulumi.output(args).apply(a => getInstanceAttachments(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceAttachments(a, opts))
 }
 
 /**

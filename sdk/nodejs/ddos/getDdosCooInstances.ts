@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,20 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const instanceDdosCooInstances = pulumi.output(alicloud.ddos.getDdosCooInstances({
+ * const instanceDdosCooInstances = alicloud.ddos.getDdosCooInstances({
  *     nameRegex: "^ddoscoo",
- * }));
- *
- * export const instance = alicloud_ddoscoo_instances_instance.map(v => v.id);
+ * });
+ * export const instance = alicloud_ddoscoo_instances.instance.map(__item => __item.id);
  * ```
  */
 export function getDdosCooInstances(args?: GetDdosCooInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -73,9 +70,23 @@ export interface GetDdosCooInstancesResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const instanceDdosCooInstances = alicloud.ddos.getDdosCooInstances({
+ *     nameRegex: "^ddoscoo",
+ * });
+ * export const instance = alicloud_ddoscoo_instances.instance.map(__item => __item.id);
+ * ```
+ */
 export function getDdosCooInstancesOutput(args?: GetDdosCooInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooInstancesResult> {
-    return pulumi.output(args).apply(a => getDdosCooInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getDdosCooInstances(a, opts))
 }
 
 /**

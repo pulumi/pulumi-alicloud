@@ -21,31 +21,30 @@ namespace Pulumi.AliCloud.Ots
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var tablesDs = AliCloud.Ots.GetTables.Invoke(new()
         ///     {
-        ///         var tablesDs = Output.Create(AliCloud.Ots.GetTables.InvokeAsync(new AliCloud.Ots.GetTablesArgs
-        ///         {
-        ///             InstanceName = "sample-instance",
-        ///             NameRegex = "sample-table",
-        ///             OutputFile = "tables.txt",
-        ///         }));
-        ///         this.FirstTableId = tablesDs.Apply(tablesDs =&gt; tablesDs.Tables?[0]?.Id);
-        ///     }
+        ///         InstanceName = "sample-instance",
+        ///         NameRegex = "sample-table",
+        ///         OutputFile = "tables.txt",
+        ///     });
         /// 
-        ///     [Output("firstTableId")]
-        ///     public Output&lt;string&gt; FirstTableId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTableId"] = tablesDs.Apply(getTablesResult =&gt; getTablesResult.Tables[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTablesResult> InvokeAsync(GetTablesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("alicloud:ots/getTables:getTables", args ?? new GetTablesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("alicloud:ots/getTables:getTables", args ?? new GetTablesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the ots tables of the current Alibaba Cloud user.
@@ -57,35 +56,34 @@ namespace Pulumi.AliCloud.Ots
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var tablesDs = AliCloud.Ots.GetTables.Invoke(new()
         ///     {
-        ///         var tablesDs = Output.Create(AliCloud.Ots.GetTables.InvokeAsync(new AliCloud.Ots.GetTablesArgs
-        ///         {
-        ///             InstanceName = "sample-instance",
-        ///             NameRegex = "sample-table",
-        ///             OutputFile = "tables.txt",
-        ///         }));
-        ///         this.FirstTableId = tablesDs.Apply(tablesDs =&gt; tablesDs.Tables?[0]?.Id);
-        ///     }
+        ///         InstanceName = "sample-instance",
+        ///         NameRegex = "sample-table",
+        ///         OutputFile = "tables.txt",
+        ///     });
         /// 
-        ///     [Output("firstTableId")]
-        ///     public Output&lt;string&gt; FirstTableId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTableId"] = tablesDs.Apply(getTablesResult =&gt; getTablesResult.Tables[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTablesResult> Invoke(GetTablesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTablesResult>("alicloud:ots/getTables:getTables", args ?? new GetTablesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTablesResult>("alicloud:ots/getTables:getTables", args ?? new GetTablesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTablesArgs : Pulumi.InvokeArgs
+    public sealed class GetTablesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -117,9 +115,10 @@ namespace Pulumi.AliCloud.Ots
         public GetTablesArgs()
         {
         }
+        public static new GetTablesArgs Empty => new GetTablesArgs();
     }
 
-    public sealed class GetTablesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTablesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -151,6 +150,7 @@ namespace Pulumi.AliCloud.Ots
         public GetTablesInvokeArgs()
         {
         }
+        public static new GetTablesInvokeArgs Empty => new GetTablesInvokeArgs();
     }
 
 

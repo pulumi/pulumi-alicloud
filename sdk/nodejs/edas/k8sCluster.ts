@@ -17,9 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultK8sCluster = new alicloud.edas.K8sCluster("default", {
- *     csClusterId: "xxxx-xxx-xxx",
- * });
+ * const _default = new alicloud.edas.K8sCluster("default", {csClusterId: "xxxx-xxx-xxx"});
  * ```
  *
  * ## Import

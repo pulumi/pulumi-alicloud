@@ -34,14 +34,14 @@ public final class EcsPrefixListState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+     * The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+     * @return The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -143,7 +143,7 @@ public final class EcsPrefixListState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+         * @param description The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class EcsPrefixListState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+         * @param description The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 

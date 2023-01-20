@@ -64,6 +64,8 @@ import (
 type DbInstance struct {
 	pulumi.CustomResourceState
 
+	// (Available in 1.196.0+)  The connection string of the instance.
+	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
 	DbInstanceCategory pulumi.StringOutput `pulumi:"dbInstanceCategory"`
 	// According to the practical example or notes.
@@ -82,6 +84,8 @@ type DbInstance struct {
 	DbVersion pulumi.StringOutput `pulumi:"dbVersion"`
 	// The paymen type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
+	// (Available in 1.196.0+) The connection port of the instance.
+	Port pulumi.StringOutput `pulumi:"port"`
 	// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// ID of the VPC.
@@ -142,6 +146,8 @@ func GetDbInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DbInstance resources.
 type dbInstanceState struct {
+	// (Available in 1.196.0+)  The connection string of the instance.
+	ConnectionString *string `pulumi:"connectionString"`
 	// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
 	DbInstanceCategory *string `pulumi:"dbInstanceCategory"`
 	// According to the practical example or notes.
@@ -160,6 +166,8 @@ type dbInstanceState struct {
 	DbVersion *string `pulumi:"dbVersion"`
 	// The paymen type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
+	// (Available in 1.196.0+) The connection port of the instance.
+	Port *string `pulumi:"port"`
 	// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
 	Status *string `pulumi:"status"`
 	// ID of the VPC.
@@ -171,6 +179,8 @@ type dbInstanceState struct {
 }
 
 type DbInstanceState struct {
+	// (Available in 1.196.0+)  The connection string of the instance.
+	ConnectionString pulumi.StringPtrInput
 	// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
 	DbInstanceCategory pulumi.StringPtrInput
 	// According to the practical example or notes.
@@ -189,6 +199,8 @@ type DbInstanceState struct {
 	DbVersion pulumi.StringPtrInput
 	// The paymen type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
+	// (Available in 1.196.0+) The connection port of the instance.
+	Port pulumi.StringPtrInput
 	// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
 	Status pulumi.StringPtrInput
 	// ID of the VPC.
@@ -345,6 +357,11 @@ func (o DbInstanceOutput) ToDbInstanceOutputWithContext(ctx context.Context) DbI
 	return o
 }
 
+// (Available in 1.196.0+)  The connection string of the instance.
+func (o DbInstanceOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
 // The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
 func (o DbInstanceOutput) DbInstanceCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.DbInstanceCategory }).(pulumi.StringOutput)
@@ -388,6 +405,11 @@ func (o DbInstanceOutput) DbVersion() pulumi.StringOutput {
 // The paymen type of the resource. Valid values: `PayAsYouGo`.
 func (o DbInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// (Available in 1.196.0+) The connection port of the instance.
+func (o DbInstanceOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
 
 // Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.

@@ -20,24 +20,22 @@ namespace Pulumi.AliCloud.Cfg
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Cfg.ConfigurationRecorder("example", new()
     ///     {
-    ///         var example = new AliCloud.Cfg.ConfigurationRecorder("example", new AliCloud.Cfg.ConfigurationRecorderArgs
+    ///         ResourceTypes = new[]
     ///         {
-    ///             ResourceTypes = 
-    ///             {
-    ///                 "ACS::ECS::Instance",
-    ///                 "ACS::ECS::Disk",
-    ///             },
-    ///         });
-    ///     }
+    ///             "ACS::ECS::Instance",
+    ///             "ACS::ECS::Disk",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.Cfg
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/configurationRecorder:ConfigurationRecorder")]
-    public partial class ConfigurationRecorder : Pulumi.CustomResource
+    public partial class ConfigurationRecorder : global::Pulumi.CustomResource
     {
         [Output("enterpriseEdition")]
         public Output<bool> EnterpriseEdition { get; private set; } = null!;
@@ -124,7 +122,7 @@ namespace Pulumi.AliCloud.Cfg
         }
     }
 
-    public sealed class ConfigurationRecorderArgs : Pulumi.ResourceArgs
+    public sealed class ConfigurationRecorderArgs : global::Pulumi.ResourceArgs
     {
         [Input("enterpriseEdition")]
         public Input<bool>? EnterpriseEdition { get; set; }
@@ -146,9 +144,10 @@ namespace Pulumi.AliCloud.Cfg
         public ConfigurationRecorderArgs()
         {
         }
+        public static new ConfigurationRecorderArgs Empty => new ConfigurationRecorderArgs();
     }
 
-    public sealed class ConfigurationRecorderState : Pulumi.ResourceArgs
+    public sealed class ConfigurationRecorderState : global::Pulumi.ResourceArgs
     {
         [Input("enterpriseEdition")]
         public Input<bool>? EnterpriseEdition { get; set; }
@@ -188,5 +187,6 @@ namespace Pulumi.AliCloud.Cfg
         public ConfigurationRecorderState()
         {
         }
+        public static new ConfigurationRecorderState Empty => new ConfigurationRecorderState();
     }
 }

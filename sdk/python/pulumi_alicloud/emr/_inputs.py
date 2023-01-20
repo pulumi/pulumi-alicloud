@@ -31,7 +31,7 @@ class ClusterBootstrapActionArgs:
         :param pulumi.Input[str] execution_fail_strategy: bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
         :param pulumi.Input[str] execution_moment: bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
         :param pulumi.Input[str] execution_target: bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
-        :param pulumi.Input[str] name: bootstrap action name.
+        :param pulumi.Input[str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] path: bootstrap action path, e.g. "oss://bucket/path".
         """
         if arg is not None:
@@ -99,7 +99,7 @@ class ClusterBootstrapActionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        bootstrap action name.
+        The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         """
         return pulumi.get(self, "name")
 
@@ -131,7 +131,7 @@ class ClusterConfigArgs:
         :param pulumi.Input[str] config_key: Custom configuration service config key, e.g. ’dfs.replication’.
         :param pulumi.Input[str] config_value: Custom configuration service config value, e.g. ’3’.
         :param pulumi.Input[str] file_name: Custom configuration service file name, e.g. ’hdfs-site’.
-        :param pulumi.Input[str] service_name: Cluster service configuration modification name, e.g. ’HDFS’.
+        :param pulumi.Input[str] service_name: Custom configuration service name, e.g. ’HDFS’.
         """
         pulumi.set(__self__, "config_key", config_key)
         pulumi.set(__self__, "config_value", config_value)
@@ -178,7 +178,7 @@ class ClusterConfigArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Cluster service configuration modification name, e.g. ’HDFS’.
+        Custom configuration service name, e.g. ’HDFS’.
         """
         return pulumi.get(self, "service_name")
 
@@ -208,7 +208,7 @@ class ClusterHostGroupArgs:
                  sys_disk_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-        :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        :param pulumi.Input[str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         :param pulumi.Input[int] decommission_timeout: Graceful decommission timeout, unit: seconds.
         :param pulumi.Input[str] disk_capacity: Data disk capacity.
         :param pulumi.Input[str] disk_count: Data disk count.
@@ -272,7 +272,7 @@ class ClusterHostGroupArgs:
     @pulumi.getter(name="chargeType")
     def charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         """
         return pulumi.get(self, "charge_type")
 
@@ -512,7 +512,7 @@ class ClusterModifyClusterServiceConfigArgs:
                  refresh_host_config: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] config_params: Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
-        :param pulumi.Input[str] service_name: Cluster service configuration modification name, e.g. ’HDFS’.
+        :param pulumi.Input[str] service_name: Custom configuration service name, e.g. ’HDFS’.
         :param pulumi.Input[str] comment: Cluster service configuration modification comment, e.g. "Modify tez configuration".
         :param pulumi.Input[str] config_type: Cluster service configuration modification type.
         :param pulumi.Input[str] custom_config_params: Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
@@ -554,7 +554,7 @@ class ClusterModifyClusterServiceConfigArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Cluster service configuration modification name, e.g. ’HDFS’.
+        Custom configuration service name, e.g. ’HDFS’.
         """
         return pulumi.get(self, "service_name")
 

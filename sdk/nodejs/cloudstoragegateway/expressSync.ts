@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: vpc.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultStocks.then(defaultStocks => defaultStocks.stocks?[0]?.zoneId),
+ *     zoneId: defaultStocks.then(defaultStocks => defaultStocks.stocks?.[0]?.zoneId),
  *     vswitchName: name,
  * });
  * const defaultStorageBundle = new alicloud.cloudstoragegateway.StorageBundle("defaultStorageBundle", {storageBundleName: name});

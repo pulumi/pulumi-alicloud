@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class ImageCacheImageRegistryCredentialArgs : Pulumi.ResourceArgs
+    public sealed class ImageCacheImageRegistryCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The password of the Image Registry.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public ImageCacheImageRegistryCredentialArgs()
         {
         }
+        public static new ImageCacheImageRegistryCredentialArgs Empty => new ImageCacheImageRegistryCredentialArgs();
     }
 }

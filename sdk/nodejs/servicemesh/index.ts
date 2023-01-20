@@ -5,19 +5,43 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getServiceMeshes";
-export * from "./getVersions";
-export * from "./serviceMesh";
-export * from "./userPermission";
+export { ExtensionProviderArgs, ExtensionProviderState } from "./extensionProvider";
+export type ExtensionProvider = import("./extensionProvider").ExtensionProvider;
+export const ExtensionProvider: typeof import("./extensionProvider").ExtensionProvider = null as any;
+utilities.lazyLoad(exports, ["ExtensionProvider"], () => require("./extensionProvider"));
 
-// Import resources to register:
-import { ServiceMesh } from "./serviceMesh";
-import { UserPermission } from "./userPermission";
+export { GetExtensionProvidersArgs, GetExtensionProvidersResult, GetExtensionProvidersOutputArgs } from "./getExtensionProviders";
+export const getExtensionProviders: typeof import("./getExtensionProviders").getExtensionProviders = null as any;
+export const getExtensionProvidersOutput: typeof import("./getExtensionProviders").getExtensionProvidersOutput = null as any;
+utilities.lazyLoad(exports, ["getExtensionProviders","getExtensionProvidersOutput"], () => require("./getExtensionProviders"));
+
+export { GetServiceMeshesArgs, GetServiceMeshesResult, GetServiceMeshesOutputArgs } from "./getServiceMeshes";
+export const getServiceMeshes: typeof import("./getServiceMeshes").getServiceMeshes = null as any;
+export const getServiceMeshesOutput: typeof import("./getServiceMeshes").getServiceMeshesOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceMeshes","getServiceMeshesOutput"], () => require("./getServiceMeshes"));
+
+export { GetVersionsArgs, GetVersionsResult, GetVersionsOutputArgs } from "./getVersions";
+export const getVersions: typeof import("./getVersions").getVersions = null as any;
+export const getVersionsOutput: typeof import("./getVersions").getVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getVersions","getVersionsOutput"], () => require("./getVersions"));
+
+export { ServiceMeshArgs, ServiceMeshState } from "./serviceMesh";
+export type ServiceMesh = import("./serviceMesh").ServiceMesh;
+export const ServiceMesh: typeof import("./serviceMesh").ServiceMesh = null as any;
+utilities.lazyLoad(exports, ["ServiceMesh"], () => require("./serviceMesh"));
+
+export { UserPermissionArgs, UserPermissionState } from "./userPermission";
+export type UserPermission = import("./userPermission").UserPermission;
+export const UserPermission: typeof import("./userPermission").UserPermission = null as any;
+utilities.lazyLoad(exports, ["UserPermission"], () => require("./userPermission"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:servicemesh/extensionProvider:ExtensionProvider":
+                return new ExtensionProvider(name, <any>undefined, { urn })
             case "alicloud:servicemesh/serviceMesh:ServiceMesh":
                 return new ServiceMesh(name, <any>undefined, { urn })
             case "alicloud:servicemesh/userPermission:UserPermission":
@@ -27,5 +51,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "servicemesh/extensionProvider", _module)
 pulumi.runtime.registerResourceModule("alicloud", "servicemesh/serviceMesh", _module)
 pulumi.runtime.registerResourceModule("alicloud", "servicemesh/userPermission", _module)

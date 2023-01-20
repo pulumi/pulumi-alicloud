@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Quotas.Inputs
 {
 
-    public sealed class GetApplicationInfosDimensionArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationInfosDimensionArgs : global::Pulumi.InvokeArgs
     {
         [Input("key")]
         public string? Key { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Quotas.Inputs
         public GetApplicationInfosDimensionArgs()
         {
         }
+        public static new GetApplicationInfosDimensionArgs Empty => new GetApplicationInfosDimensionArgs();
     }
 }

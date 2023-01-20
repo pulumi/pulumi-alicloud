@@ -62,9 +62,6 @@ export class Key extends pulumi.CustomResource {
 
     /**
      * The Alicloud Resource Name (ARN) of the key.
-     * * `creationDate` -The date and time when the CMK was created. The time is displayed in UTC.
-     * * `creator` -The creator of the CMK.
-     * * `deleteDate` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
@@ -74,8 +71,17 @@ export class Key extends pulumi.CustomResource {
      * **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
      */
     public readonly automaticRotation!: pulumi.Output<string | undefined>;
+    /**
+     * The date and time when the CMK was created. The time is displayed in UTC.
+     */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    /**
+     * The creator of the CMK.
+     */
     public /*out*/ readonly creator!: pulumi.Output<string>;
+    /**
+     * The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+     */
     public /*out*/ readonly deleteDate!: pulumi.Output<string>;
     /**
      * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
@@ -87,6 +93,10 @@ export class Key extends pulumi.CustomResource {
      * The description of the CMK. The description can be 0 to 8,192 characters in length.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The instance ID of the exclusive KMS instance.
+     */
+    public readonly dkmsInstanceId!: pulumi.Output<string | undefined>;
     /**
      * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      *
@@ -131,11 +141,12 @@ export class Key extends pulumi.CustomResource {
      * you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
      * For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
      */
-    public readonly origin!: pulumi.Output<string | undefined>;
+    public readonly origin!: pulumi.Output<string>;
     /**
      * The number of days before the CMK is deleted. 
      * During this period, the CMK is in the PendingDeletion state.
-     * After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+     * After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+     * **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      */
     public readonly pendingWindowInDays!: pulumi.Output<number>;
     /**
@@ -187,6 +198,7 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["deleteDate"] = state ? state.deleteDate : undefined;
             resourceInputs["deletionWindowInDays"] = state ? state.deletionWindowInDays : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dkmsInstanceId"] = state ? state.dkmsInstanceId : undefined;
             resourceInputs["isEnabled"] = state ? state.isEnabled : undefined;
             resourceInputs["keySpec"] = state ? state.keySpec : undefined;
             resourceInputs["keyState"] = state ? state.keyState : undefined;
@@ -205,6 +217,7 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["automaticRotation"] = args ? args.automaticRotation : undefined;
             resourceInputs["deletionWindowInDays"] = args ? args.deletionWindowInDays : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dkmsInstanceId"] = args ? args.dkmsInstanceId : undefined;
             resourceInputs["isEnabled"] = args ? args.isEnabled : undefined;
             resourceInputs["keySpec"] = args ? args.keySpec : undefined;
             resourceInputs["keyState"] = args ? args.keyState : undefined;
@@ -234,9 +247,6 @@ export class Key extends pulumi.CustomResource {
 export interface KeyState {
     /**
      * The Alicloud Resource Name (ARN) of the key.
-     * * `creationDate` -The date and time when the CMK was created. The time is displayed in UTC.
-     * * `creator` -The creator of the CMK.
-     * * `deleteDate` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
      */
     arn?: pulumi.Input<string>;
     /**
@@ -246,8 +256,17 @@ export interface KeyState {
      * **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
      */
     automaticRotation?: pulumi.Input<string>;
+    /**
+     * The date and time when the CMK was created. The time is displayed in UTC.
+     */
     creationDate?: pulumi.Input<string>;
+    /**
+     * The creator of the CMK.
+     */
     creator?: pulumi.Input<string>;
+    /**
+     * The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+     */
     deleteDate?: pulumi.Input<string>;
     /**
      * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
@@ -259,6 +278,10 @@ export interface KeyState {
      * The description of the CMK. The description can be 0 to 8,192 characters in length.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The instance ID of the exclusive KMS instance.
+     */
+    dkmsInstanceId?: pulumi.Input<string>;
     /**
      * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      *
@@ -307,7 +330,8 @@ export interface KeyState {
     /**
      * The number of days before the CMK is deleted. 
      * During this period, the CMK is in the PendingDeletion state.
-     * After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+     * After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+     * **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      */
     pendingWindowInDays?: pulumi.Input<number>;
     /**
@@ -362,6 +386,10 @@ export interface KeyArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * The instance ID of the exclusive KMS instance.
+     */
+    dkmsInstanceId?: pulumi.Input<string>;
+    /**
      * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      *
      * @deprecated Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
@@ -397,7 +425,8 @@ export interface KeyArgs {
     /**
      * The number of days before the CMK is deleted. 
      * During this period, the CMK is in the PendingDeletion state.
-     * After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+     * After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+     * **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      */
     pendingWindowInDays?: pulumi.Input<number>;
     /**

@@ -53,7 +53,7 @@ func GetTriggers(ctx *pulumi.Context, args *GetTriggersArgs, opts ...pulumi.Invo
 type GetTriggersArgs struct {
 	// FC function name.
 	FunctionName string `pulumi:"functionName"`
-	// - A list of FC triggers ids.
+	// A list of FC triggers ids.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by FC trigger name.
 	NameRegex  *string `pulumi:"nameRegex"`
@@ -95,7 +95,7 @@ func GetTriggersOutput(ctx *pulumi.Context, args GetTriggersOutputArgs, opts ...
 type GetTriggersOutputArgs struct {
 	// FC function name.
 	FunctionName pulumi.StringInput `pulumi:"functionName"`
-	// - A list of FC triggers ids.
+	// A list of FC triggers ids.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by FC trigger name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`

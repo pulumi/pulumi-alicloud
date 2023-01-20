@@ -4,6 +4,8 @@
 package com.pulumi.alicloud.resourcemanager;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.resourcemanager.inputs.GetAccountDeletionCheckTaskArgs;
+import com.pulumi.alicloud.resourcemanager.inputs.GetAccountDeletionCheckTaskPlainArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsPlainArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
@@ -34,6 +36,7 @@ import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesPlainArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.GetSharedTargetsPlainArgs;
+import com.pulumi.alicloud.resourcemanager.outputs.GetAccountDeletionCheckTaskResult;
 import com.pulumi.alicloud.resourcemanager.outputs.GetAccountsResult;
 import com.pulumi.alicloud.resourcemanager.outputs.GetControlPoliciesResult;
 import com.pulumi.alicloud.resourcemanager.outputs.GetControlPolicyAttachmentsResult;
@@ -57,6 +60,190 @@ import java.util.concurrent.CompletableFuture;
 
 public final class ResourcemanagerFunctions {
     /**
+     * Using this data source can open Resource Manager Account Deletion Check Task.
+     * 
+     * For information about Resource Manager Account Deletion Check Task and how to use it, see [What is Resource Manager Account Deletion Check Task](https://www.alibabacloud.com/help/en/resource-management/latest/check-account-delete).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * &gt; **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountDeletionCheckTaskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var task = ResourcemanagerFunctions.getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs.builder()
+     *             .accountId(&#34;your_account_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;abandonAbleChecksIds&#34;, task.applyValue(getAccountDeletionCheckTaskResult -&gt; getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -&gt; element.checkId()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountDeletionCheckTaskResult> getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs args) {
+        return getAccountDeletionCheckTask(args, InvokeOptions.Empty);
+    }
+    /**
+     * Using this data source can open Resource Manager Account Deletion Check Task.
+     * 
+     * For information about Resource Manager Account Deletion Check Task and how to use it, see [What is Resource Manager Account Deletion Check Task](https://www.alibabacloud.com/help/en/resource-management/latest/check-account-delete).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * &gt; **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountDeletionCheckTaskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var task = ResourcemanagerFunctions.getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs.builder()
+     *             .accountId(&#34;your_account_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;abandonAbleChecksIds&#34;, task.applyValue(getAccountDeletionCheckTaskResult -&gt; getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -&gt; element.checkId()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountDeletionCheckTaskResult> getAccountDeletionCheckTaskPlain(GetAccountDeletionCheckTaskPlainArgs args) {
+        return getAccountDeletionCheckTaskPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Using this data source can open Resource Manager Account Deletion Check Task.
+     * 
+     * For information about Resource Manager Account Deletion Check Task and how to use it, see [What is Resource Manager Account Deletion Check Task](https://www.alibabacloud.com/help/en/resource-management/latest/check-account-delete).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * &gt; **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountDeletionCheckTaskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var task = ResourcemanagerFunctions.getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs.builder()
+     *             .accountId(&#34;your_account_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;abandonAbleChecksIds&#34;, task.applyValue(getAccountDeletionCheckTaskResult -&gt; getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -&gt; element.checkId()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountDeletionCheckTaskResult> getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", TypeShape.of(GetAccountDeletionCheckTaskResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Using this data source can open Resource Manager Account Deletion Check Task.
+     * 
+     * For information about Resource Manager Account Deletion Check Task and how to use it, see [What is Resource Manager Account Deletion Check Task](https://www.alibabacloud.com/help/en/resource-management/latest/check-account-delete).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * &gt; **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountDeletionCheckTaskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var task = ResourcemanagerFunctions.getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs.builder()
+     *             .accountId(&#34;your_account_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;abandonAbleChecksIds&#34;, task.applyValue(getAccountDeletionCheckTaskResult -&gt; getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -&gt; element.checkId()).collect(toList()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountDeletionCheckTaskResult> getAccountDeletionCheckTaskPlain(GetAccountDeletionCheckTaskPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", TypeShape.of(GetAccountDeletionCheckTaskResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:**  Available in 1.86.0+.
@@ -69,7 +256,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -107,7 +294,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -145,7 +332,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -183,7 +370,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -221,7 +408,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -259,7 +446,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -299,7 +486,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -342,7 +529,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -385,7 +572,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -428,7 +615,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -471,7 +658,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -514,7 +701,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetControlPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -977,7 +1164,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1019,7 +1206,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1061,7 +1248,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1103,7 +1290,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1145,7 +1332,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1187,7 +1374,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1448,6 +1635,7 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -1455,7 +1643,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1490,6 +1678,7 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -1497,7 +1686,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1532,6 +1721,7 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -1539,7 +1729,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1574,6 +1764,7 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -1581,7 +1772,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1616,6 +1807,7 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -1623,7 +1815,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1658,6 +1850,7 @@ public final class ResourcemanagerFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -1665,7 +1858,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2743,7 +2936,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2783,7 +2976,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2823,7 +3016,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2863,7 +3056,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2903,7 +3096,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2943,7 +3136,7 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetRolesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

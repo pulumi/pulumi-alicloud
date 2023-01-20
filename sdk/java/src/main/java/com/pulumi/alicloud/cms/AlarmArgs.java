@@ -314,7 +314,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: [&#34;Availability&#34;,&#34;Average&#34;, &#34;Minimum&#34;, &#34;Maximum&#34;, &#34;Value&#34;, &#34;ErrorCodeMaximum&#34;, &#34;Sum&#34;, &#34;Count&#34;]. Default to &#34;Average&#34;.
+     * It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
      * 
      * @deprecated
      * Field &#39;statistics&#39; has been deprecated from provider version 1.94.0. New field &#39;escalations_critical.statistics&#39; instead.
@@ -325,7 +325,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> statistics;
 
     /**
-     * @return Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: [&#34;Availability&#34;,&#34;Average&#34;, &#34;Minimum&#34;, &#34;Maximum&#34;, &#34;Value&#34;, &#34;ErrorCodeMaximum&#34;, &#34;Sum&#34;, &#34;Count&#34;]. Default to &#34;Average&#34;.
+     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
      * 
      * @deprecated
      * Field &#39;statistics&#39; has been deprecated from provider version 1.94.0. New field &#39;escalations_critical.statistics&#39; instead.
@@ -352,7 +352,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Critical level alarm threshold value, which must be a numeric value currently.
+     * It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
      * 
      * @deprecated
      * Field &#39;threshold&#39; has been deprecated from provider version 1.94.0. New field &#39;escalations_critical.threshold&#39; instead.
@@ -363,7 +363,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> threshold;
 
     /**
-     * @return Critical level alarm threshold value, which must be a numeric value currently.
+     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
      * 
      * @deprecated
      * Field &#39;threshold&#39; has been deprecated from provider version 1.94.0. New field &#39;escalations_critical.threshold&#39; instead.
@@ -869,7 +869,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param statistics Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: [&#34;Availability&#34;,&#34;Average&#34;, &#34;Minimum&#34;, &#34;Maximum&#34;, &#34;Value&#34;, &#34;ErrorCodeMaximum&#34;, &#34;Sum&#34;, &#34;Count&#34;]. Default to &#34;Average&#34;.
+         * @param statistics It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
          * 
          * @return builder
          * 
@@ -884,7 +884,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param statistics Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: [&#34;Availability&#34;,&#34;Average&#34;, &#34;Minimum&#34;, &#34;Maximum&#34;, &#34;Value&#34;, &#34;ErrorCodeMaximum&#34;, &#34;Sum&#34;, &#34;Count&#34;]. Default to &#34;Average&#34;.
+         * @param statistics It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
          * 
          * @return builder
          * 
@@ -919,7 +919,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threshold Critical level alarm threshold value, which must be a numeric value currently.
+         * @param threshold It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
          * 
          * @return builder
          * 
@@ -934,7 +934,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threshold Critical level alarm threshold value, which must be a numeric value currently.
+         * @param threshold It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
          * 
          * @return builder
          * 

@@ -23,40 +23,38 @@ namespace Pulumi.AliCloud.Eci
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Eci.GetVirtualNodes.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Eci.GetVirtualNodes.InvokeAsync(new AliCloud.Eci.GetVirtualNodesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.EciVirtualNodeId1 = ids.Apply(ids =&gt; ids.Nodes?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Eci.GetVirtualNodes.InvokeAsync(new AliCloud.Eci.GetVirtualNodesArgs
-        ///         {
-        ///             NameRegex = "^my-VirtualNode",
-        ///         }));
-        ///         this.EciVirtualNodeId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Nodes?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("eciVirtualNodeId1")]
-        ///     public Output&lt;string&gt; EciVirtualNodeId1 { get; set; }
-        ///     [Output("eciVirtualNodeId2")]
-        ///     public Output&lt;string&gt; EciVirtualNodeId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Eci.GetVirtualNodes.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-VirtualNode",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["eciVirtualNodeId1"] = ids.Apply(getVirtualNodesResult =&gt; getVirtualNodesResult.Nodes[0]?.Id),
+        ///         ["eciVirtualNodeId2"] = nameRegex.Apply(getVirtualNodesResult =&gt; getVirtualNodesResult.Nodes[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVirtualNodesResult> InvokeAsync(GetVirtualNodesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualNodesResult>("alicloud:eci/getVirtualNodes:getVirtualNodes", args ?? new GetVirtualNodesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualNodesResult>("alicloud:eci/getVirtualNodes:getVirtualNodes", args ?? new GetVirtualNodesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
@@ -70,44 +68,42 @@ namespace Pulumi.AliCloud.Eci
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Eci.GetVirtualNodes.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Eci.GetVirtualNodes.InvokeAsync(new AliCloud.Eci.GetVirtualNodesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.EciVirtualNodeId1 = ids.Apply(ids =&gt; ids.Nodes?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Eci.GetVirtualNodes.InvokeAsync(new AliCloud.Eci.GetVirtualNodesArgs
-        ///         {
-        ///             NameRegex = "^my-VirtualNode",
-        ///         }));
-        ///         this.EciVirtualNodeId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Nodes?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("eciVirtualNodeId1")]
-        ///     public Output&lt;string&gt; EciVirtualNodeId1 { get; set; }
-        ///     [Output("eciVirtualNodeId2")]
-        ///     public Output&lt;string&gt; EciVirtualNodeId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Eci.GetVirtualNodes.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-VirtualNode",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["eciVirtualNodeId1"] = ids.Apply(getVirtualNodesResult =&gt; getVirtualNodesResult.Nodes[0]?.Id),
+        ///         ["eciVirtualNodeId2"] = nameRegex.Apply(getVirtualNodesResult =&gt; getVirtualNodesResult.Nodes[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVirtualNodesResult> Invoke(GetVirtualNodesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVirtualNodesResult>("alicloud:eci/getVirtualNodes:getVirtualNodes", args ?? new GetVirtualNodesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVirtualNodesResult>("alicloud:eci/getVirtualNodes:getVirtualNodes", args ?? new GetVirtualNodesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetVirtualNodesArgs : Pulumi.InvokeArgs
+    public sealed class GetVirtualNodesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -175,9 +171,10 @@ namespace Pulumi.AliCloud.Eci
         public GetVirtualNodesArgs()
         {
         }
+        public static new GetVirtualNodesArgs Empty => new GetVirtualNodesArgs();
     }
 
-    public sealed class GetVirtualNodesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVirtualNodesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -245,6 +242,7 @@ namespace Pulumi.AliCloud.Eci
         public GetVirtualNodesInvokeArgs()
         {
         }
+        public static new GetVirtualNodesInvokeArgs Empty => new GetVirtualNodesInvokeArgs();
     }
 
 

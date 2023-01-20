@@ -40,7 +40,7 @@ public final class GetGatewayVpnAttachmentsAttachmentIkeConfig {
      */
     private String ikeVersion;
     /**
-     * @return The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+     * @return The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
      * 
      */
     private String localId;
@@ -99,7 +99,7 @@ public final class GetGatewayVpnAttachmentsAttachmentIkeConfig {
         return this.ikeVersion;
     }
     /**
-     * @return The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+     * @return The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
      * 
      */
     public String localId() {

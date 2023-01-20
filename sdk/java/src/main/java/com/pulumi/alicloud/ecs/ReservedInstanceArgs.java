@@ -6,7 +6,9 @@ package com.pulumi.alicloud.ecs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +19,29 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
     public static final ReservedInstanceArgs Empty = new ReservedInstanceArgs();
 
     /**
-     * Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+     * The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+     * 
+     */
+    @Import(name="autoRenewPeriod")
+    private @Nullable Output<Integer> autoRenewPeriod;
+
+    /**
+     * @return The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+     * 
+     */
+    public Optional<Output<Integer>> autoRenewPeriod() {
+        return Optional.ofNullable(this.autoRenewPeriod);
+    }
+
+    /**
+     * Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+     * @return Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -62,51 +79,77 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+     * Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated from provider version 1.194.0. New field &#39;reserved_instance_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+     * @return Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated from provider version 1.194.0. New field &#39;reserved_instance_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+     * Payment type of the RI. Default value: `All Upfront`. Valid values:
+     * - `No Upfront`: No upfront payment.
+     * - `Partial Upfront`: A portion of upfront payment.
+     * - `All Upfront`: Full upfront payment.
      * 
      */
     @Import(name="offeringType")
     private @Nullable Output<String> offeringType;
 
     /**
-     * @return Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+     * @return Payment type of the RI. Default value: `All Upfront`. Valid values:
+     * - `No Upfront`: No upfront payment.
+     * - `Partial Upfront`: A portion of upfront payment.
+     * - `All Upfront`: Full upfront payment.
      * 
      */
     public Optional<Output<String>> offeringType() {
         return Optional.ofNullable(this.offeringType);
     }
 
+    /**
+     * The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+     * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `period_unit` is `Month`, Valid values: `1`.
+     * 
+     */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
+    /**
+     * @return The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+     * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `period_unit` is `Month`, Valid values: `1`.
+     * 
+     */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
 
     /**
-     * Term unit. Optional value: Year.
+     * The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
      * 
      */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return Term unit. Optional value: Year.
+     * @return The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
      * 
      */
     public Optional<Output<String>> periodUnit() {
@@ -126,6 +169,36 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> platform() {
         return Optional.ofNullable(this.platform);
+    }
+
+    /**
+     * Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+     * 
+     */
+    @Import(name="renewalStatus")
+    private @Nullable Output<String> renewalStatus;
+
+    /**
+     * @return Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+     * 
+     */
+    public Optional<Output<String>> renewalStatus() {
+        return Optional.ofNullable(this.renewalStatus);
+    }
+
+    /**
+     * Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+     * 
+     */
+    @Import(name="reservedInstanceName")
+    private @Nullable Output<String> reservedInstanceName;
+
+    /**
+     * @return Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+     * 
+     */
+    public Optional<Output<String>> reservedInstanceName() {
+        return Optional.ofNullable(this.reservedInstanceName);
     }
 
     /**
@@ -159,6 +232,21 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
      * 
      */
@@ -176,6 +264,7 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
     private ReservedInstanceArgs() {}
 
     private ReservedInstanceArgs(ReservedInstanceArgs $) {
+        this.autoRenewPeriod = $.autoRenewPeriod;
         this.description = $.description;
         this.instanceAmount = $.instanceAmount;
         this.instanceType = $.instanceType;
@@ -184,8 +273,11 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
         this.period = $.period;
         this.periodUnit = $.periodUnit;
         this.platform = $.platform;
+        this.renewalStatus = $.renewalStatus;
+        this.reservedInstanceName = $.reservedInstanceName;
         this.resourceGroupId = $.resourceGroupId;
         this.scope = $.scope;
+        this.tags = $.tags;
         this.zoneId = $.zoneId;
     }
 
@@ -208,7 +300,28 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+         * @param autoRenewPeriod The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewPeriod(@Nullable Output<Integer> autoRenewPeriod) {
+            $.autoRenewPeriod = autoRenewPeriod;
+            return this;
+        }
+
+        /**
+         * @param autoRenewPeriod The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewPeriod(Integer autoRenewPeriod) {
+            return autoRenewPeriod(Output.of(autoRenewPeriod));
+        }
+
+        /**
+         * @param description Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -219,7 +332,7 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+         * @param description Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -271,28 +384,39 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+         * @param name Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated from provider version 1.194.0. New field &#39;reserved_instance_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+         * @param name Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated from provider version 1.194.0. New field &#39;reserved_instance_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param offeringType Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+         * @param offeringType Payment type of the RI. Default value: `All Upfront`. Valid values:
+         * - `No Upfront`: No upfront payment.
+         * - `Partial Upfront`: A portion of upfront payment.
+         * - `All Upfront`: Full upfront payment.
          * 
          * @return builder
          * 
@@ -303,7 +427,10 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param offeringType Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+         * @param offeringType Payment type of the RI. Default value: `All Upfront`. Valid values:
+         * - `No Upfront`: No upfront payment.
+         * - `Partial Upfront`: A portion of upfront payment.
+         * - `All Upfront`: Full upfront payment.
          * 
          * @return builder
          * 
@@ -312,17 +439,33 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
             return offeringType(Output.of(offeringType));
         }
 
+        /**
+         * @param period The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+         * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+         * - When `period_unit` is `Month`, Valid values: `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
+        /**
+         * @param period The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+         * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+         * - When `period_unit` is `Month`, Valid values: `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }
 
         /**
-         * @param periodUnit Term unit. Optional value: Year.
+         * @param periodUnit The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
          * 
          * @return builder
          * 
@@ -333,7 +476,7 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param periodUnit Term unit. Optional value: Year.
+         * @param periodUnit The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
          * 
          * @return builder
          * 
@@ -361,6 +504,48 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder platform(String platform) {
             return platform(Output.of(platform));
+        }
+
+        /**
+         * @param renewalStatus Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalStatus(@Nullable Output<String> renewalStatus) {
+            $.renewalStatus = renewalStatus;
+            return this;
+        }
+
+        /**
+         * @param renewalStatus Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalStatus(String renewalStatus) {
+            return renewalStatus(Output.of(renewalStatus));
+        }
+
+        /**
+         * @param reservedInstanceName Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedInstanceName(@Nullable Output<String> reservedInstanceName) {
+            $.reservedInstanceName = reservedInstanceName;
+            return this;
+        }
+
+        /**
+         * @param reservedInstanceName Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedInstanceName(String reservedInstanceName) {
+            return reservedInstanceName(Output.of(reservedInstanceName));
         }
 
         /**
@@ -403,6 +588,27 @@ public final class ReservedInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder scope(String scope) {
             return scope(Output.of(scope));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

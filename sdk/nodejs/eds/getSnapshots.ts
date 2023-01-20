@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,16 +20,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.eds.getSnapshots({});
- * export const ecdSnapshotId1 = ids.then(ids => ids.snapshots?[0]?.id);
+ * export const ecdSnapshotId1 = ids.then(ids => ids.snapshots?.[0]?.id);
  * ```
  */
 export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getSnapshots:getSnapshots", {
         "desktopId": args.desktopId,
         "ids": args.ids,
@@ -77,9 +75,25 @@ export interface GetSnapshotsResult {
     readonly snapshotId?: string;
     readonly snapshots: outputs.eds.GetSnapshotsSnapshot[];
 }
-
+/**
+ * This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.169.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eds.getSnapshots({});
+ * export const ecdSnapshotId1 = ids.then(ids => ids.snapshots?.[0]?.id);
+ * ```
+ */
 export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
-    return pulumi.output(args).apply(a => getSnapshots(a, opts))
+    return pulumi.output(args).apply((a: any) => getSnapshots(a, opts))
 }
 
 /**

@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Ecp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.Ecp.GetInstanceTypes.InvokeAsync());
-        ///         this.FirstEcpInstanceTypesInstanceType = @default.Apply(@default =&gt; @default.InstanceTypes?[0]?.InstanceType);
-        ///     }
+        ///     var @default = AliCloud.Ecp.GetInstanceTypes.Invoke();
         /// 
-        ///     [Output("firstEcpInstanceTypesInstanceType")]
-        ///     public Output&lt;string&gt; FirstEcpInstanceTypesInstanceType { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcpInstanceTypesInstanceType"] = @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult).Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.InstanceType)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:ecp/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:ecp/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the available instance types with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Ecp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.Ecp.GetInstanceTypes.InvokeAsync());
-        ///         this.FirstEcpInstanceTypesInstanceType = @default.Apply(@default =&gt; @default.InstanceTypes?[0]?.InstanceType);
-        ///     }
+        ///     var @default = AliCloud.Ecp.GetInstanceTypes.Invoke();
         /// 
-        ///     [Output("firstEcpInstanceTypesInstanceType")]
-        ///     public Output&lt;string&gt; FirstEcpInstanceTypesInstanceType { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcpInstanceTypesInstanceType"] = @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult).Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.InstanceType)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:ecp/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:ecp/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceTypesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypesArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -87,9 +85,10 @@ namespace Pulumi.AliCloud.Ecp
         public GetInstanceTypesArgs()
         {
         }
+        public static new GetInstanceTypesArgs Empty => new GetInstanceTypesArgs();
     }
 
-    public sealed class GetInstanceTypesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -97,6 +96,7 @@ namespace Pulumi.AliCloud.Ecp
         public GetInstanceTypesInvokeArgs()
         {
         }
+        public static new GetInstanceTypesInvokeArgs Empty => new GetInstanceTypesInvokeArgs();
     }
 
 

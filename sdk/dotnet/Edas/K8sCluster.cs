@@ -19,20 +19,18 @@ namespace Pulumi.AliCloud.Edas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Edas.K8sCluster("default", new()
     ///     {
-    ///         var @default = new AliCloud.Edas.K8sCluster("default", new AliCloud.Edas.K8sClusterArgs
-    ///         {
-    ///             CsClusterId = "xxxx-xxx-xxx",
-    ///         });
-    ///     }
+    ///         CsClusterId = "xxxx-xxx-xxx",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.AliCloud.Edas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:edas/k8sCluster:K8sCluster")]
-    public partial class K8sCluster : Pulumi.CustomResource
+    public partial class K8sCluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The import status of cluster: 
@@ -136,7 +134,7 @@ namespace Pulumi.AliCloud.Edas
         }
     }
 
-    public sealed class K8sClusterArgs : Pulumi.ResourceArgs
+    public sealed class K8sClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the alicloud container service kubernetes cluster that you want to import.
@@ -153,9 +151,10 @@ namespace Pulumi.AliCloud.Edas
         public K8sClusterArgs()
         {
         }
+        public static new K8sClusterArgs Empty => new K8sClusterArgs();
     }
 
-    public sealed class K8sClusterState : Pulumi.ResourceArgs
+    public sealed class K8sClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The import status of cluster: 
@@ -206,5 +205,6 @@ namespace Pulumi.AliCloud.Edas
         public K8sClusterState()
         {
         }
+        public static new K8sClusterState Empty => new K8sClusterState();
     }
 }

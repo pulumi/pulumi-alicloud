@@ -21,26 +21,24 @@ namespace Pulumi.AliCloud.Dts
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Dts.SynchronizationInstance("default", new()
     ///     {
-    ///         var @default = new AliCloud.Dts.SynchronizationInstance("default", new AliCloud.Dts.SynchronizationInstanceArgs
-    ///         {
-    ///             DestinationEndpointEngineName = "ADB30",
-    ///             DestinationEndpointRegion = "cn-hangzhou",
-    ///             InstanceClass = "small",
-    ///             PaymentType = "PayAsYouGo",
-    ///             SourceEndpointEngineName = "PolarDB",
-    ///             SourceEndpointRegion = "cn-hangzhou",
-    ///             SyncArchitecture = "oneway",
-    ///         });
-    ///     }
+    ///         DestinationEndpointEngineName = "ADB30",
+    ///         DestinationEndpointRegion = "cn-hangzhou",
+    ///         InstanceClass = "small",
+    ///         PaymentType = "PayAsYouGo",
+    ///         SourceEndpointEngineName = "PolarDB",
+    ///         SourceEndpointRegion = "cn-hangzhou",
+    ///         SyncArchitecture = "oneway",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +50,7 @@ namespace Pulumi.AliCloud.Dts
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dts/synchronizationInstance:SynchronizationInstance")]
-    public partial class SynchronizationInstance : Pulumi.CustomResource
+    public partial class SynchronizationInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to automatically renew when it expires. Valid values: `true`, `false`.
@@ -188,7 +186,7 @@ namespace Pulumi.AliCloud.Dts
         }
     }
 
-    public sealed class SynchronizationInstanceArgs : Pulumi.ResourceArgs
+    public sealed class SynchronizationInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to automatically renew when it expires. Valid values: `true`, `false`.
@@ -277,9 +275,10 @@ namespace Pulumi.AliCloud.Dts
         public SynchronizationInstanceArgs()
         {
         }
+        public static new SynchronizationInstanceArgs Empty => new SynchronizationInstanceArgs();
     }
 
-    public sealed class SynchronizationInstanceState : Pulumi.ResourceArgs
+    public sealed class SynchronizationInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to automatically renew when it expires. Valid values: `true`, `false`.
@@ -374,5 +373,6 @@ namespace Pulumi.AliCloud.Dts
         public SynchronizationInstanceState()
         {
         }
+        public static new SynchronizationInstanceState Empty => new SynchronizationInstanceState();
     }
 }

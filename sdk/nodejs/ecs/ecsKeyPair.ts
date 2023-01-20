@@ -19,13 +19,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.ecs.EcsKeyPair("example", {
- *     keyPairName: "key_pair_name",
- * });
+ * const example = new alicloud.ecs.EcsKeyPair("example", {keyPairName: "key_pair_name"});
  * // Using name prefix to build key pair
- * const prefix = new alicloud.ecs.EcsKeyPair("prefix", {
- *     keyNamePrefix: "terraform-test-key-pair-prefix",
- * });
+ * const prefix = new alicloud.ecs.EcsKeyPair("prefix", {keyNamePrefix: "terraform-test-key-pair-prefix"});
  * // Import an existing public key to build a alicloud key pair
  * const publickey = new alicloud.ecs.EcsKeyPair("publickey", {
  *     keyPairName: "my_public_key",
@@ -69,6 +65,9 @@ export class EcsKeyPair extends pulumi.CustomResource {
         return obj['__pulumiType'] === EcsKeyPair.__pulumiType;
     }
 
+    /**
+     * The finger print of the key pair.
+     */
     public /*out*/ readonly fingerPrint!: pulumi.Output<string>;
     /**
      * The key file.
@@ -139,6 +138,9 @@ export class EcsKeyPair extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EcsKeyPair resources.
  */
 export interface EcsKeyPairState {
+    /**
+     * The finger print of the key pair.
+     */
     fingerPrint?: pulumi.Input<string>;
     /**
      * The key file.

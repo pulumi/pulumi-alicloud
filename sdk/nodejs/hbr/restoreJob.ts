@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -30,48 +32,48 @@ import * as utilities from "../utilities";
  * });
  * const ecsSnapshots = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getSnapshots({
  *     sourceType: "ECS_FILE",
- *     vaultId: defaultEcsBackupPlans.plans?[0]?.vaultId,
- *     instanceId: defaultEcsBackupPlans1.plans?[0]?.instanceId,
+ *     vaultId: defaultEcsBackupPlans.plans?.[0]?.vaultId,
+ *     instanceId: defaultEcsBackupPlans1.plans?.[0]?.instanceId,
  * }));
  * const ossSnapshots = Promise.all([defaultOssBackupPlans, defaultOssBackupPlans]).then(([defaultOssBackupPlans, defaultOssBackupPlans1]) => alicloud.hbr.getSnapshots({
  *     sourceType: "OSS",
- *     vaultId: defaultOssBackupPlans.plans?[0]?.vaultId,
- *     bucket: defaultOssBackupPlans1.plans?[0]?.bucket,
+ *     vaultId: defaultOssBackupPlans.plans?.[0]?.vaultId,
+ *     bucket: defaultOssBackupPlans1.plans?.[0]?.bucket,
  * }));
  * const nasSnapshots = Promise.all([defaultNasBackupPlans, defaultNasBackupPlans, defaultNasBackupPlans]).then(([defaultNasBackupPlans, defaultNasBackupPlans1, defaultNasBackupPlans2]) => alicloud.hbr.getSnapshots({
  *     sourceType: "NAS",
- *     vaultId: defaultNasBackupPlans.plans?[0]?.vaultId,
- *     fileSystemId: defaultNasBackupPlans1.plans?[0]?.fileSystemId,
- *     createTime: defaultNasBackupPlans2.plans?[0]?.createTime,
+ *     vaultId: defaultNasBackupPlans.plans?.[0]?.vaultId,
+ *     fileSystemId: defaultNasBackupPlans1.plans?.[0]?.fileSystemId,
+ *     createTime: defaultNasBackupPlans2.plans?.[0]?.createTime,
  * }));
  * const nasJob = new alicloud.hbr.RestoreJob("nasJob", {
- *     snapshotHash: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?[0]?.snapshotHash),
- *     vaultId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?[0]?.vaultId),
+ *     snapshotHash: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?.[0]?.snapshotHash),
+ *     vaultId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?.[0]?.vaultId),
  *     sourceType: "NAS",
  *     restoreType: "NAS",
- *     snapshotId: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?[0]?.snapshotId),
- *     targetFileSystemId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?[0]?.fileSystemId),
- *     targetCreateTime: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?[0]?.createTime),
+ *     snapshotId: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?.[0]?.snapshotId),
+ *     targetFileSystemId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?.[0]?.fileSystemId),
+ *     targetCreateTime: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?.[0]?.createTime),
  *     targetPath: "/",
  *     options: "    {\"includes\":[], \"excludes\":[]}\n",
  * });
  * const ossJob = new alicloud.hbr.RestoreJob("ossJob", {
- *     snapshotHash: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots?[0]?.snapshotHash),
- *     vaultId: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans?[0]?.vaultId),
+ *     snapshotHash: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots?.[0]?.snapshotHash),
+ *     vaultId: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans?.[0]?.vaultId),
  *     sourceType: "OSS",
  *     restoreType: "OSS",
- *     snapshotId: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots?[0]?.snapshotId),
- *     targetBucket: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans?[0]?.bucket),
+ *     snapshotId: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots?.[0]?.snapshotId),
+ *     targetBucket: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans?.[0]?.bucket),
  *     targetPrefix: "",
  *     options: "    {\"includes\":[], \"excludes\":[]}\n",
  * });
  * const ecsJob = new alicloud.hbr.RestoreJob("ecsJob", {
- *     snapshotHash: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots?[0]?.snapshotHash),
- *     vaultId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans?[0]?.vaultId),
+ *     snapshotHash: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots?.[0]?.snapshotHash),
+ *     vaultId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans?.[0]?.vaultId),
  *     sourceType: "ECS_FILE",
  *     restoreType: "ECS_FILE",
- *     snapshotId: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots?[0]?.snapshotId),
- *     targetInstanceId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans?[0]?.instanceId),
+ *     snapshotId: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots?.[0]?.snapshotId),
+ *     targetInstanceId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans?.[0]?.instanceId),
  *     targetPath: "/",
  * });
  * ```
@@ -80,10 +82,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Hybrid Backup Recovery (HBR) Restore Job can be imported using the id, e.g.
+ * Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `<restore_job_id>:<restore_type>`, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:hbr/restoreJob:RestoreJob example <restore_job_id>:<restore_type>
+ *  $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
  * ```
  */
 export class RestoreJob extends pulumi.CustomResource {
@@ -115,6 +117,18 @@ export class RestoreJob extends pulumi.CustomResource {
     }
 
     /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    public readonly crossAccountRoleName!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    public readonly crossAccountType!: pulumi.Output<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    public readonly crossAccountUserId!: pulumi.Output<number | undefined>;
+    /**
      * The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     public readonly exclude!: pulumi.Output<string | undefined>;
@@ -126,6 +140,10 @@ export class RestoreJob extends pulumi.CustomResource {
      * Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
      */
     public readonly options!: pulumi.Output<string | undefined>;
+    /**
+     * The details about the Tablestore instance. See the following `Block otsDetail`.
+     */
+    public readonly otsDetail!: pulumi.Output<outputs.hbr.RestoreJobOtsDetail>;
     /**
      * Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
      */
@@ -216,9 +234,13 @@ export class RestoreJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RestoreJobState | undefined;
+            resourceInputs["crossAccountRoleName"] = state ? state.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = state ? state.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = state ? state.crossAccountUserId : undefined;
             resourceInputs["exclude"] = state ? state.exclude : undefined;
             resourceInputs["include"] = state ? state.include : undefined;
             resourceInputs["options"] = state ? state.options : undefined;
+            resourceInputs["otsDetail"] = state ? state.otsDetail : undefined;
             resourceInputs["restoreJobId"] = state ? state.restoreJobId : undefined;
             resourceInputs["restoreType"] = state ? state.restoreType : undefined;
             resourceInputs["snapshotHash"] = state ? state.snapshotHash : undefined;
@@ -255,9 +277,13 @@ export class RestoreJob extends pulumi.CustomResource {
             if ((!args || args.vaultId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vaultId'");
             }
+            resourceInputs["crossAccountRoleName"] = args ? args.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = args ? args.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = args ? args.crossAccountUserId : undefined;
             resourceInputs["exclude"] = args ? args.exclude : undefined;
             resourceInputs["include"] = args ? args.include : undefined;
             resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["otsDetail"] = args ? args.otsDetail : undefined;
             resourceInputs["restoreJobId"] = args ? args.restoreJobId : undefined;
             resourceInputs["restoreType"] = args ? args.restoreType : undefined;
             resourceInputs["snapshotHash"] = args ? args.snapshotHash : undefined;
@@ -288,6 +314,18 @@ export class RestoreJob extends pulumi.CustomResource {
  */
 export interface RestoreJobState {
     /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
+    /**
      * The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     exclude?: pulumi.Input<string>;
@@ -299,6 +337,10 @@ export interface RestoreJobState {
      * Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
      */
     options?: pulumi.Input<string>;
+    /**
+     * The details about the Tablestore instance. See the following `Block otsDetail`.
+     */
+    otsDetail?: pulumi.Input<inputs.hbr.RestoreJobOtsDetail>;
     /**
      * Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
      */
@@ -382,6 +424,18 @@ export interface RestoreJobState {
  */
 export interface RestoreJobArgs {
     /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
+    /**
      * The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     exclude?: pulumi.Input<string>;
@@ -393,6 +447,10 @@ export interface RestoreJobArgs {
      * Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
      */
     options?: pulumi.Input<string>;
+    /**
+     * The details about the Tablestore instance. See the following `Block otsDetail`.
+     */
+    otsDetail?: pulumi.Input<inputs.hbr.RestoreJobOtsDetail>;
     /**
      * Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
      */

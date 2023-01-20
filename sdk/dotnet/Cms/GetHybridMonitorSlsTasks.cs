@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Cms.GetHybridMonitorSlsTasks.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Cms.GetHybridMonitorSlsTasks.InvokeAsync(new AliCloud.Cms.GetHybridMonitorSlsTasksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.CmsHybridMonitorSlsTaskId1 = ids.Apply(ids =&gt; ids.Tasks?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cmsHybridMonitorSlsTaskId1")]
-        ///     public Output&lt;string&gt; CmsHybridMonitorSlsTaskId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cmsHybridMonitorSlsTaskId1"] = ids.Apply(getHybridMonitorSlsTasksResult =&gt; getHybridMonitorSlsTasksResult.Tasks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHybridMonitorSlsTasksResult> InvokeAsync(GetHybridMonitorSlsTasksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHybridMonitorSlsTasksResult>("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", args ?? new GetHybridMonitorSlsTasksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHybridMonitorSlsTasksResult>("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", args ?? new GetHybridMonitorSlsTasksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Cms.GetHybridMonitorSlsTasks.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Cms.GetHybridMonitorSlsTasks.InvokeAsync(new AliCloud.Cms.GetHybridMonitorSlsTasksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.CmsHybridMonitorSlsTaskId1 = ids.Apply(ids =&gt; ids.Tasks?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cmsHybridMonitorSlsTaskId1")]
-        ///     public Output&lt;string&gt; CmsHybridMonitorSlsTaskId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cmsHybridMonitorSlsTaskId1"] = ids.Apply(getHybridMonitorSlsTasksResult =&gt; getHybridMonitorSlsTasksResult.Tasks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHybridMonitorSlsTasksResult> Invoke(GetHybridMonitorSlsTasksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHybridMonitorSlsTasksResult>("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", args ?? new GetHybridMonitorSlsTasksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHybridMonitorSlsTasksResult>("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", args ?? new GetHybridMonitorSlsTasksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHybridMonitorSlsTasksArgs : Pulumi.InvokeArgs
+    public sealed class GetHybridMonitorSlsTasksArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -129,9 +127,10 @@ namespace Pulumi.AliCloud.Cms
         public GetHybridMonitorSlsTasksArgs()
         {
         }
+        public static new GetHybridMonitorSlsTasksArgs Empty => new GetHybridMonitorSlsTasksArgs();
     }
 
-    public sealed class GetHybridMonitorSlsTasksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHybridMonitorSlsTasksInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -169,6 +168,7 @@ namespace Pulumi.AliCloud.Cms
         public GetHybridMonitorSlsTasksInvokeArgs()
         {
         }
+        public static new GetHybridMonitorSlsTasksInvokeArgs Empty => new GetHybridMonitorSlsTasksInvokeArgs();
     }
 
 

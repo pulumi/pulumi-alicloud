@@ -14,14 +14,14 @@ public final class BucketLifecycleRuleNoncurrentVersionExpirationArgs extends co
     public static final BucketLifecycleRuleNoncurrentVersionExpirationArgs Empty = new BucketLifecycleRuleNoncurrentVersionExpirationArgs();
 
     /**
-     * Specifies the number of days noncurrent object versions transition.
+     * Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     @Import(name="days", required=true)
     private Output<Integer> days;
 
     /**
-     * @return Specifies the number of days noncurrent object versions transition.
+     * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     public Output<Integer> days() {
@@ -53,7 +53,7 @@ public final class BucketLifecycleRuleNoncurrentVersionExpirationArgs extends co
         }
 
         /**
-         * @param days Specifies the number of days noncurrent object versions transition.
+         * @param days Specifies the number of days after object creation when the specific rule action takes effect.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class BucketLifecycleRuleNoncurrentVersionExpirationArgs extends co
         }
 
         /**
-         * @param days Specifies the number of days noncurrent object versions transition.
+         * @param days Specifies the number of days after object creation when the specific rule action takes effect.
          * 
          * @return builder
          * 

@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.Ddos
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ddos.GetDdosCooDomainResources.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ddos.GetDdosCooDomainResources.InvokeAsync(new AliCloud.Ddos.GetDdosCooDomainResourcesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "tftestacc1234.abc",
-        ///             },
-        ///         }));
-        ///         this.FirstDdoscooDomainResourceId = example.Apply(example =&gt; example.Resources?[0]?.Id);
-        ///     }
+        ///             "tftestacc1234.abc",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstDdoscooDomainResourceId")]
-        ///     public Output&lt;string&gt; FirstDdoscooDomainResourceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDdoscooDomainResourceId"] = example.Apply(getDdosCooDomainResourcesResult =&gt; getDdosCooDomainResourcesResult.Resources[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDdosCooDomainResourcesResult> InvokeAsync(GetDdosCooDomainResourcesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooDomainResourcesResult>("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args ?? new GetDdosCooDomainResourcesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooDomainResourcesResult>("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args ?? new GetDdosCooDomainResourcesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.Ddos
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ddos.GetDdosCooDomainResources.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ddos.GetDdosCooDomainResources.InvokeAsync(new AliCloud.Ddos.GetDdosCooDomainResourcesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "tftestacc1234.abc",
-        ///             },
-        ///         }));
-        ///         this.FirstDdoscooDomainResourceId = example.Apply(example =&gt; example.Resources?[0]?.Id);
-        ///     }
+        ///             "tftestacc1234.abc",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstDdoscooDomainResourceId")]
-        ///     public Output&lt;string&gt; FirstDdoscooDomainResourceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDdoscooDomainResourceId"] = example.Apply(getDdosCooDomainResourcesResult =&gt; getDdosCooDomainResourcesResult.Resources[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDdosCooDomainResourcesResult> Invoke(GetDdosCooDomainResourcesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDdosCooDomainResourcesResult>("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args ?? new GetDdosCooDomainResourcesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDdosCooDomainResourcesResult>("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args ?? new GetDdosCooDomainResourcesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDdosCooDomainResourcesArgs : Pulumi.InvokeArgs
+    public sealed class GetDdosCooDomainResourcesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -129,9 +127,10 @@ namespace Pulumi.AliCloud.Ddos
         public GetDdosCooDomainResourcesArgs()
         {
         }
+        public static new GetDdosCooDomainResourcesArgs Empty => new GetDdosCooDomainResourcesArgs();
     }
 
-    public sealed class GetDdosCooDomainResourcesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDdosCooDomainResourcesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -169,6 +168,7 @@ namespace Pulumi.AliCloud.Ddos
         public GetDdosCooDomainResourcesInvokeArgs()
         {
         }
+        public static new GetDdosCooDomainResourcesInvokeArgs Empty => new GetDdosCooDomainResourcesInvokeArgs();
     }
 
 

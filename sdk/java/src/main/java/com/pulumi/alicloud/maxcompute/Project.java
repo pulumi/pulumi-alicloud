@@ -6,17 +6,23 @@ package com.pulumi.alicloud.maxcompute;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.maxcompute.ProjectArgs;
 import com.pulumi.alicloud.maxcompute.inputs.ProjectState;
+import com.pulumi.alicloud.maxcompute.outputs.ProjectIpWhiteList;
+import com.pulumi.alicloud.maxcompute.outputs.ProjectProperties;
+import com.pulumi.alicloud.maxcompute.outputs.ProjectSecurityProperties;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The project is the basic unit of operation in maxcompute. It is similar to the concept of Database or Schema in traditional databases, and sets the boundary for maxcompute multi-user isolation and access control. [Refer to details](https://www.alibabacloud.com/help/doc-detail/27818.html).
+ * Provides a Max Compute Project resource.
  * 
- * -&gt;**NOTE:** Available in 1.77.0+.
+ * For information about Max Compute Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/473237.html).
+ * 
+ * &gt; **NOTE:** Available in v1.77.0+.
  * 
  * ## Example Usage
  * 
@@ -42,82 +48,159 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .orderType(&#34;PayAsYouGo&#34;)
- *             .projectName(&#34;tf_maxcompute_project&#34;)
- *             .specificationType(&#34;OdpsStandard&#34;)
+ *         var default_ = new Project(&#34;default&#34;, ProjectArgs.builder()        
+ *             .comment(&#34;test_for_terraform&#34;)
+ *             .defaultQuota(&#34;默认后付费Quota&#34;)
+ *             .productType(&#34;PAYASYOUGO&#34;)
+ *             .projectName(&#34;test_create_spec_one&#34;)
  *             .build());
  * 
  *     }
  * }
  * ```
  * 
- * ## Import
- * 
- * MaxCompute project can be imported using the *name* or ID, e.g.
- * 
- * ```sh
- *  $ pulumi import alicloud:maxcompute/project:Project example tf_maxcompute_project
- * ```
- * 
  */
 @ResourceType(type="alicloud:maxcompute/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
     /**
-     * It has been deprecated from provider version 1.110.0 and `project_name` instead.
+     * Comments of project
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
-    private Output<String> name;
+    @Export(name="comment", type=String.class, parameters={})
+    private Output</* @Nullable */ String> comment;
 
     /**
-     * @return It has been deprecated from provider version 1.110.0 and `project_name` instead.
+     * @return Comments of project
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> comment() {
+        return Codegen.optional(this.comment);
     }
     /**
-     * The type of payment, only `PayAsYouGo` supported currently.
+     * Default Computing Resource Group
      * 
      */
-    @Export(name="orderType", type=String.class, parameters={})
-    private Output<String> orderType;
+    @Export(name="defaultQuota", type=String.class, parameters={})
+    private Output</* @Nullable */ String> defaultQuota;
 
     /**
-     * @return The type of payment, only `PayAsYouGo` supported currently.
+     * @return Default Computing Resource Group
      * 
      */
-    public Output<String> orderType() {
-        return this.orderType;
+    public Output<Optional<String>> defaultQuota() {
+        return Codegen.optional(this.defaultQuota);
     }
     /**
-     * The name of the maxcompute project.
+     * IP whitelistSee the following `Block IpWhiteList`.
+     * 
+     */
+    @Export(name="ipWhiteList", type=ProjectIpWhiteList.class, parameters={})
+    private Output</* @Nullable */ ProjectIpWhiteList> ipWhiteList;
+
+    /**
+     * @return IP whitelistSee the following `Block IpWhiteList`.
+     * 
+     */
+    public Output<Optional<ProjectIpWhiteList>> ipWhiteList() {
+        return Codegen.optional(this.ipWhiteList);
+    }
+    /**
+     * Project owner
+     * 
+     */
+    @Export(name="owner", type=String.class, parameters={})
+    private Output<String> owner;
+
+    /**
+     * @return Project owner
+     * 
+     */
+    public Output<String> owner() {
+        return this.owner;
+    }
+    /**
+     * Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+     * 
+     */
+    @Export(name="productType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> productType;
+
+    /**
+     * @return Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+     * 
+     */
+    public Output<Optional<String>> productType() {
+        return Codegen.optional(this.productType);
+    }
+    /**
+     * The name of the project
      * 
      */
     @Export(name="projectName", type=String.class, parameters={})
     private Output<String> projectName;
 
     /**
-     * @return The name of the maxcompute project.
+     * @return The name of the project
      * 
      */
     public Output<String> projectName() {
         return this.projectName;
     }
     /**
-     * The type of resource Specification, only `OdpsStandard` supported currently.
+     * Project base attributesSee the following `Block Properties`.
      * 
      */
-    @Export(name="specificationType", type=String.class, parameters={})
-    private Output<String> specificationType;
+    @Export(name="properties", type=ProjectProperties.class, parameters={})
+    private Output<ProjectProperties> properties;
 
     /**
-     * @return The type of resource Specification, only `OdpsStandard` supported currently.
+     * @return Project base attributesSee the following `Block Properties`.
      * 
      */
-    public Output<String> specificationType() {
-        return this.specificationType;
+    public Output<ProjectProperties> properties() {
+        return this.properties;
+    }
+    /**
+     * Security-related attributesSee the following `Block SecurityProperties`.
+     * 
+     */
+    @Export(name="securityProperties", type=ProjectSecurityProperties.class, parameters={})
+    private Output<ProjectSecurityProperties> securityProperties;
+
+    /**
+     * @return Security-related attributesSee the following `Block SecurityProperties`.
+     * 
+     */
+    public Output<ProjectSecurityProperties> securityProperties() {
+        return this.securityProperties;
+    }
+    /**
+     * The status of the resource
+     * 
+     */
+    @Export(name="status", type=String.class, parameters={})
+    private Output<String> status;
+
+    /**
+     * @return The status of the resource
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * Life cycle type.
+     * 
+     */
+    @Export(name="type", type=String.class, parameters={})
+    private Output<String> type;
+
+    /**
+     * @return Life cycle type.
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
     }
 
     /**

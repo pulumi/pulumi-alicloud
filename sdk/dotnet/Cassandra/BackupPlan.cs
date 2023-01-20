@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Cassandra
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cassandra/backupPlan:BackupPlan")]
-    public partial class BackupPlan : Pulumi.CustomResource
+    public partial class BackupPlan : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Cassandra
         }
     }
 
-    public sealed class BackupPlanArgs : Pulumi.ResourceArgs
+    public sealed class BackupPlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
@@ -148,9 +148,10 @@ namespace Pulumi.AliCloud.Cassandra
         public BackupPlanArgs()
         {
         }
+        public static new BackupPlanArgs Empty => new BackupPlanArgs();
     }
 
-    public sealed class BackupPlanState : Pulumi.ResourceArgs
+    public sealed class BackupPlanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
@@ -191,5 +192,6 @@ namespace Pulumi.AliCloud.Cassandra
         public BackupPlanState()
         {
         }
+        public static new BackupPlanState Empty => new BackupPlanState();
     }
 }

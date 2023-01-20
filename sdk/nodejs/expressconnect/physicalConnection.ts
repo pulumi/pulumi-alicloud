@@ -118,6 +118,8 @@ export class PhysicalConnection extends pulumi.CustomResource {
      * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
      * * 10GBase-T: Gigabit Electrical Port
      * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+     * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+     * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
      */
     public readonly portType!: pulumi.Output<string | undefined>;
     /**
@@ -230,6 +232,8 @@ export interface PhysicalConnectionState {
      * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
      * * 10GBase-T: Gigabit Electrical Port
      * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+     * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+     * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
      */
     portType?: pulumi.Input<string>;
     /**
@@ -291,6 +295,8 @@ export interface PhysicalConnectionArgs {
      * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
      * * 10GBase-T: Gigabit Electrical Port
      * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+     * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+     * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
      */
     portType?: pulumi.Input<string>;
     /**

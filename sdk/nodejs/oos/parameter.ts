@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *         Created: "TF",
  *         For: "OosParameter",
  *     },
- *     resourceGroupId: _default.then(_default => _default.groups?[0]?.id),
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  * });
  * ```
  *
@@ -71,10 +71,6 @@ export class Parameter extends pulumi.CustomResource {
 
     /**
      * The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
-     * * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
-     * * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
-     * * `MinLength`: The minimum length of the common parameter.
-     * * `MaxLength`: The maximum length of the common parameter.
      */
     public readonly constraints!: pulumi.Output<string | undefined>;
     /**
@@ -152,10 +148,6 @@ export class Parameter extends pulumi.CustomResource {
 export interface ParameterState {
     /**
      * The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
-     * * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
-     * * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
-     * * `MinLength`: The minimum length of the common parameter.
-     * * `MaxLength`: The maximum length of the common parameter.
      */
     constraints?: pulumi.Input<string>;
     /**
@@ -190,10 +182,6 @@ export interface ParameterState {
 export interface ParameterArgs {
     /**
      * The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
-     * * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
-     * * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
-     * * `MinLength`: The minimum length of the common parameter.
-     * * `MaxLength`: The maximum length of the common parameter.
      */
     constraints?: pulumi.Input<string>;
     /**

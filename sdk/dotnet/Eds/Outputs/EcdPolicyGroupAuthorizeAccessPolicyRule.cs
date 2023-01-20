@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Eds.Outputs
     public sealed class EcdPolicyGroupAuthorizeAccessPolicyRule
     {
         /// <summary>
-        /// The cidrip of authorize access rule.
+        /// The cidrip of security rules.
         /// </summary>
         public readonly string? CidrIp;
         /// <summary>
-        /// The description of authorize access rule.
+        /// The description of security rules.
         /// </summary>
         public readonly string? Description;
 

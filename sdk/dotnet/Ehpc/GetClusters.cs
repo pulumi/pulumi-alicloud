@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Ehpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ehpc.GetClusters.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ehpc.GetClusters.InvokeAsync(new AliCloud.Ehpc.GetClustersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.EhpcClusterId1 = ids.Apply(ids =&gt; ids.Clusters?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Ehpc.GetClusters.InvokeAsync(new AliCloud.Ehpc.GetClustersArgs
-        ///         {
-        ///             NameRegex = "^my-Cluster",
-        ///         }));
-        ///         this.EhpcClusterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Clusters?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ehpcClusterId1")]
-        ///     public Output&lt;string&gt; EhpcClusterId1 { get; set; }
-        ///     [Output("ehpcClusterId2")]
-        ///     public Output&lt;string&gt; EhpcClusterId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Ehpc.GetClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Cluster",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ehpcClusterId1"] = ids.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         ["ehpcClusterId2"] = nameRegex.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:ehpc/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:ehpc/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Ehpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ehpc.GetClusters.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ehpc.GetClusters.InvokeAsync(new AliCloud.Ehpc.GetClustersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.EhpcClusterId1 = ids.Apply(ids =&gt; ids.Clusters?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Ehpc.GetClusters.InvokeAsync(new AliCloud.Ehpc.GetClustersArgs
-        ///         {
-        ///             NameRegex = "^my-Cluster",
-        ///         }));
-        ///         this.EhpcClusterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Clusters?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ehpcClusterId1")]
-        ///     public Output&lt;string&gt; EhpcClusterId1 { get; set; }
-        ///     [Output("ehpcClusterId2")]
-        ///     public Output&lt;string&gt; EhpcClusterId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Ehpc.GetClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Cluster",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ehpcClusterId1"] = ids.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         ["ehpcClusterId2"] = nameRegex.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:ehpc/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:ehpc/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClustersArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -143,9 +139,10 @@ namespace Pulumi.AliCloud.Ehpc
         public GetClustersArgs()
         {
         }
+        public static new GetClustersArgs Empty => new GetClustersArgs();
     }
 
-    public sealed class GetClustersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -183,6 +180,7 @@ namespace Pulumi.AliCloud.Ehpc
         public GetClustersInvokeArgs()
         {
         }
+        public static new GetClustersInvokeArgs Empty => new GetClustersInvokeArgs();
     }
 
 

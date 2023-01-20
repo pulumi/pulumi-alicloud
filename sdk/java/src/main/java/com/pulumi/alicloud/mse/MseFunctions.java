@@ -36,7 +36,7 @@ public final class MseFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mse.MseFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.mse.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -77,7 +77,7 @@ public final class MseFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mse.MseFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.mse.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -118,7 +118,7 @@ public final class MseFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mse.MseFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.mse.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -159,7 +159,7 @@ public final class MseFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mse.MseFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.mse.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -200,7 +200,7 @@ public final class MseFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mse.MseFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.mse.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -241,7 +241,7 @@ public final class MseFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mse.MseFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.mse.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -456,7 +456,7 @@ public final class MseFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mse.MseFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.mse.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -508,7 +508,7 @@ public final class MseFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mse.MseFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.mse.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -560,7 +560,7 @@ public final class MseFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mse.MseFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.mse.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -612,7 +612,7 @@ public final class MseFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mse.MseFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.mse.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -664,7 +664,7 @@ public final class MseFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mse.MseFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.mse.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -716,7 +716,7 @@ public final class MseFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mse.MseFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.mse.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

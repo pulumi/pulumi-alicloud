@@ -15,14 +15,14 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
     public static final BucketLifecycleRuleNoncurrentVersionTransitionArgs Empty = new BucketLifecycleRuleNoncurrentVersionTransitionArgs();
 
     /**
-     * Specifies the number of days noncurrent object versions transition.
+     * Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     @Import(name="days", required=true)
     private Output<Integer> days;
 
     /**
-     * @return Specifies the number of days noncurrent object versions transition.
+     * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     public Output<Integer> days() {
@@ -30,14 +30,14 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
     }
 
     /**
-     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34; and &#34;Archive&#34;. Defaults to &#34;Standard&#34;.
      * 
      */
     @Import(name="storageClass", required=true)
     private Output<String> storageClass;
 
     /**
-     * @return Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34; and &#34;Archive&#34;. Defaults to &#34;Standard&#34;.
      * 
      */
     public Output<String> storageClass() {
@@ -70,7 +70,7 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
         }
 
         /**
-         * @param days Specifies the number of days noncurrent object versions transition.
+         * @param days Specifies the number of days after object creation when the specific rule action takes effect.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
         }
 
         /**
-         * @param days Specifies the number of days noncurrent object versions transition.
+         * @param days Specifies the number of days after object creation when the specific rule action takes effect.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
         }
 
         /**
-         * @param storageClass Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+         * @param storageClass The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34; and &#34;Archive&#34;. Defaults to &#34;Standard&#34;.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
         }
 
         /**
-         * @param storageClass Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+         * @param storageClass The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34; and &#34;Archive&#34;. Defaults to &#34;Standard&#34;.
          * 
          * @return builder
          * 

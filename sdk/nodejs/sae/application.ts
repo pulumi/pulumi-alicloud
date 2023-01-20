@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * const vsw = new alicloud.vpc.Switch("vsw", {
  *     vpcId: vpc.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
@@ -89,6 +89,14 @@ export class Application extends pulumi.CustomResource {
         return obj['__pulumiType'] === Application.__pulumiType;
     }
 
+    /**
+     * The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
+     */
+    public readonly acrAssumeRoleArn!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
+     */
+    public readonly acrInstanceId!: pulumi.Output<string | undefined>;
     /**
      * Application description information. No more than 1024 characters.
      */
@@ -258,7 +266,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * Security group ID.
      */
-    public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    public readonly securityGroupId!: pulumi.Output<string>;
     /**
      * SLS  configuration.
      */
@@ -321,6 +329,8 @@ export class Application extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
+            resourceInputs["acrAssumeRoleArn"] = state ? state.acrAssumeRoleArn : undefined;
+            resourceInputs["acrInstanceId"] = state ? state.acrInstanceId : undefined;
             resourceInputs["appDescription"] = state ? state.appDescription : undefined;
             resourceInputs["appName"] = state ? state.appName : undefined;
             resourceInputs["autoConfig"] = state ? state.autoConfig : undefined;
@@ -386,6 +396,8 @@ export class Application extends pulumi.CustomResource {
             if ((!args || args.replicas === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'replicas'");
             }
+            resourceInputs["acrAssumeRoleArn"] = args ? args.acrAssumeRoleArn : undefined;
+            resourceInputs["acrInstanceId"] = args ? args.acrInstanceId : undefined;
             resourceInputs["appDescription"] = args ? args.appDescription : undefined;
             resourceInputs["appName"] = args ? args.appName : undefined;
             resourceInputs["autoConfig"] = args ? args.autoConfig : undefined;
@@ -414,8 +426,8 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["mountHost"] = args ? args.mountHost : undefined;
             resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
             resourceInputs["nasId"] = args ? args.nasId : undefined;
-            resourceInputs["ossAkId"] = args ? args.ossAkId : undefined;
-            resourceInputs["ossAkSecret"] = args ? args.ossAkSecret : undefined;
+            resourceInputs["ossAkId"] = args?.ossAkId ? pulumi.secret(args.ossAkId) : undefined;
+            resourceInputs["ossAkSecret"] = args?.ossAkSecret ? pulumi.secret(args.ossAkSecret) : undefined;
             resourceInputs["ossMountDescs"] = args ? args.ossMountDescs : undefined;
             resourceInputs["packageType"] = args ? args.packageType : undefined;
             resourceInputs["packageUrl"] = args ? args.packageUrl : undefined;
@@ -442,6 +454,8 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["webContainer"] = args ? args.webContainer : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["ossAkId", "ossAkSecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Application.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -450,6 +464,14 @@ export class Application extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Application resources.
  */
 export interface ApplicationState {
+    /**
+     * The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
+     */
+    acrAssumeRoleArn?: pulumi.Input<string>;
+    /**
+     * The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
+     */
+    acrInstanceId?: pulumi.Input<string>;
     /**
      * Application description information. No more than 1024 characters.
      */
@@ -674,6 +696,14 @@ export interface ApplicationState {
  * The set of arguments for constructing a Application resource.
  */
 export interface ApplicationArgs {
+    /**
+     * The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
+     */
+    acrAssumeRoleArn?: pulumi.Input<string>;
+    /**
+     * The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
+     */
+    acrInstanceId?: pulumi.Input<string>;
     /**
      * Application description information. No more than 1024 characters.
      */

@@ -21,54 +21,55 @@ namespace Pulumi.AliCloud.Hbr
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testAccHBRNas";
+    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testAccHBRNas";
-    ///         var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new AliCloud.Hbr.VaultArgs
-    ///         {
-    ///             VaultName = name,
-    ///         });
-    ///         var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new AliCloud.Nas.FileSystemArgs
-    ///         {
-    ///             ProtocolType = "NFS",
-    ///             StorageType = "Performance",
-    ///             Description = name,
-    ///             EncryptType = 1,
-    ///         });
-    ///         var defaultFileSystems = defaultFileSystem.Description.Apply(description =&gt; AliCloud.Nas.GetFileSystems.Invoke(new AliCloud.Nas.GetFileSystemsInvokeArgs
-    ///         {
-    ///             ProtocolType = "NFS",
-    ///             DescriptionRegex = description,
-    ///         }));
-    ///         var defaultNasBackupPlan = new AliCloud.Hbr.NasBackupPlan("defaultNasBackupPlan", new AliCloud.Hbr.NasBackupPlanArgs
-    ///         {
-    ///             NasBackupPlanName = name,
-    ///             FileSystemId = defaultFileSystem.Id,
-    ///             Schedule = "I|1602673264|PT2H",
-    ///             BackupType = "COMPLETE",
-    ///             VaultId = defaultVault.Id,
-    ///             CreateTime = defaultFileSystems.Apply(defaultFileSystems =&gt; defaultFileSystems.Systems?[0]?.CreateTime),
-    ///             Retention = "2",
-    ///             Paths = 
-    ///             {
-    ///                 "/",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 "alicloud_nas_file_system.default",
-    ///             },
-    ///         });
-    ///     }
+    ///         VaultName = name,
+    ///     });
     /// 
-    /// }
+    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new()
+    ///     {
+    ///         ProtocolType = "NFS",
+    ///         StorageType = "Performance",
+    ///         Description = name,
+    ///         EncryptType = 1,
+    ///     });
+    /// 
+    ///     var defaultFileSystems = AliCloud.Nas.GetFileSystems.Invoke(new()
+    ///     {
+    ///         ProtocolType = "NFS",
+    ///         DescriptionRegex = defaultFileSystem.Description,
+    ///     });
+    /// 
+    ///     var defaultNasBackupPlan = new AliCloud.Hbr.NasBackupPlan("defaultNasBackupPlan", new()
+    ///     {
+    ///         NasBackupPlanName = name,
+    ///         FileSystemId = defaultFileSystem.Id,
+    ///         Schedule = "I|1602673264|PT2H",
+    ///         BackupType = "COMPLETE",
+    ///         VaultId = defaultVault.Id,
+    ///         CreateTime = defaultFileSystems.Apply(getFileSystemsResult =&gt; getFileSystemsResult.Systems[0]?.CreateTime),
+    ///         Retention = "2",
+    ///         Paths = new[]
+    ///         {
+    ///             "/",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             "alicloud_nas_file_system.default",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -80,7 +81,7 @@ namespace Pulumi.AliCloud.Hbr
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/nasBackupPlan:NasBackupPlan")]
-    public partial class NasBackupPlan : Pulumi.CustomResource
+    public partial class NasBackupPlan : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Backup type. Valid values: `COMPLETE`.
@@ -93,6 +94,24 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Output("crossAccountRoleName")]
+        public Output<string?> CrossAccountRoleName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Output("crossAccountType")]
+        public Output<string> CrossAccountType { get; private set; } = null!;
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Output("crossAccountUserId")]
+        public Output<int?> CrossAccountUserId { get; private set; } = null!;
 
         /// <summary>
         /// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -112,6 +131,9 @@ namespace Pulumi.AliCloud.Hbr
         [Output("nasBackupPlanName")]
         public Output<string> NasBackupPlanName { get; private set; } = null!;
 
+        /// <summary>
+        /// This parameter specifies whether to use Windows VSS to define a backup path.
+        /// </summary>
         [Output("options")]
         public Output<string?> Options { get; private set; } = null!;
 
@@ -183,7 +205,7 @@ namespace Pulumi.AliCloud.Hbr
         }
     }
 
-    public sealed class NasBackupPlanArgs : Pulumi.ResourceArgs
+    public sealed class NasBackupPlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Backup type. Valid values: `COMPLETE`.
@@ -196,6 +218,24 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
 
         /// <summary>
         /// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -215,6 +255,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("nasBackupPlanName", required: true)]
         public Input<string> NasBackupPlanName { get; set; } = null!;
 
+        /// <summary>
+        /// This parameter specifies whether to use Windows VSS to define a backup path.
+        /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
 
@@ -251,9 +294,10 @@ namespace Pulumi.AliCloud.Hbr
         public NasBackupPlanArgs()
         {
         }
+        public static new NasBackupPlanArgs Empty => new NasBackupPlanArgs();
     }
 
-    public sealed class NasBackupPlanState : Pulumi.ResourceArgs
+    public sealed class NasBackupPlanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Backup type. Valid values: `COMPLETE`.
@@ -266,6 +310,24 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
 
         /// <summary>
         /// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -285,6 +347,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("nasBackupPlanName")]
         public Input<string>? NasBackupPlanName { get; set; }
 
+        /// <summary>
+        /// This parameter specifies whether to use Windows VSS to define a backup path.
+        /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
 
@@ -321,5 +386,6 @@ namespace Pulumi.AliCloud.Hbr
         public NasBackupPlanState()
         {
         }
+        public static new NasBackupPlanState Empty => new NasBackupPlanState();
     }
 }

@@ -13,9 +13,21 @@ namespace Pulumi.AliCloud.CS.Outputs
     [OutputType]
     public sealed class EdgeKubernetesConnections
     {
+        /// <summary>
+        /// API Server Internet endpoint.
+        /// </summary>
         public readonly string? ApiServerInternet;
+        /// <summary>
+        /// API Server Intranet endpoint.
+        /// </summary>
         public readonly string? ApiServerIntranet;
+        /// <summary>
+        /// Master node SSH IP address.
+        /// </summary>
         public readonly string? MasterPublicIp;
+        /// <summary>
+        /// Service Access Domain.
+        /// </summary>
         public readonly string? ServiceDomain;
 
         [OutputConstructor]

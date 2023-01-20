@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  *     descriptionRegex: "pc-\\w+",
  *     status: "Running",
  * });
- * export const firstPolardbClusterId = polardbClustersDs.then(polardbClustersDs => polardbClustersDs.clusters?[0]?.id);
+ * export const firstPolardbClusterId = polardbClustersDs.then(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id);
  * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:polardb/getClusters:getClusters", {
         "dbType": args.dbType,
         "descriptionRegex": args.descriptionRegex,
@@ -102,9 +100,27 @@ export interface GetClustersResult {
     readonly status?: string;
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * The `alicloud.polardb.getClusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
+ * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+ *
+ * > **NOTE:** Available in v1.66.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const polardbClustersDs = alicloud.polardb.getClusters({
+ *     descriptionRegex: "pc-\\w+",
+ *     status: "Running",
+ * });
+ * export const firstPolardbClusterId = polardbClustersDs.then(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id);
+ * ```
+ */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
-    return pulumi.output(args).apply(a => getClusters(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusters(a, opts))
 }
 
 /**

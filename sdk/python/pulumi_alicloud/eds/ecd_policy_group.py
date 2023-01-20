@@ -27,6 +27,7 @@ class EcdPolicyGroupArgs:
                  policy_group_name: Optional[pulumi.Input[str]] = None,
                  recording: Optional[pulumi.Input[str]] = None,
                  recording_end_time: Optional[pulumi.Input[str]] = None,
+                 recording_expires: Optional[pulumi.Input[int]] = None,
                  recording_fps: Optional[pulumi.Input[int]] = None,
                  recording_start_time: Optional[pulumi.Input[str]] = None,
                  usb_redirect: Optional[pulumi.Input[str]] = None,
@@ -47,6 +48,7 @@ class EcdPolicyGroupArgs:
         :param pulumi.Input[str] policy_group_name: The name of policy group.
         :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
         :param pulumi.Input[str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        :param pulumi.Input[int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
         :param pulumi.Input[int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         :param pulumi.Input[str] recording_start_time: The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[str] usb_redirect: The usb redirect policy. Valid values: `off`, `on`.
@@ -77,6 +79,8 @@ class EcdPolicyGroupArgs:
             pulumi.set(__self__, "recording", recording)
         if recording_end_time is not None:
             pulumi.set(__self__, "recording_end_time", recording_end_time)
+        if recording_expires is not None:
+            pulumi.set(__self__, "recording_expires", recording_expires)
         if recording_fps is not None:
             pulumi.set(__self__, "recording_fps", recording_fps)
         if recording_start_time is not None:
@@ -225,6 +229,18 @@ class EcdPolicyGroupArgs:
         pulumi.set(self, "recording_end_time", value)
 
     @property
+    @pulumi.getter(name="recordingExpires")
+    def recording_expires(self) -> Optional[pulumi.Input[int]]:
+        """
+        The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        """
+        return pulumi.get(self, "recording_expires")
+
+    @recording_expires.setter
+    def recording_expires(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "recording_expires", value)
+
+    @property
     @pulumi.getter(name="recordingFps")
     def recording_fps(self) -> Optional[pulumi.Input[int]]:
         """
@@ -323,6 +339,7 @@ class _EcdPolicyGroupState:
                  policy_group_name: Optional[pulumi.Input[str]] = None,
                  recording: Optional[pulumi.Input[str]] = None,
                  recording_end_time: Optional[pulumi.Input[str]] = None,
+                 recording_expires: Optional[pulumi.Input[int]] = None,
                  recording_fps: Optional[pulumi.Input[int]] = None,
                  recording_start_time: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -344,6 +361,7 @@ class _EcdPolicyGroupState:
         :param pulumi.Input[str] policy_group_name: The name of policy group.
         :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
         :param pulumi.Input[str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        :param pulumi.Input[int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
         :param pulumi.Input[int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         :param pulumi.Input[str] recording_start_time: The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[str] status: The status of policy.
@@ -375,6 +393,8 @@ class _EcdPolicyGroupState:
             pulumi.set(__self__, "recording", recording)
         if recording_end_time is not None:
             pulumi.set(__self__, "recording_end_time", recording_end_time)
+        if recording_expires is not None:
+            pulumi.set(__self__, "recording_expires", recording_expires)
         if recording_fps is not None:
             pulumi.set(__self__, "recording_fps", recording_fps)
         if recording_start_time is not None:
@@ -525,6 +545,18 @@ class _EcdPolicyGroupState:
         pulumi.set(self, "recording_end_time", value)
 
     @property
+    @pulumi.getter(name="recordingExpires")
+    def recording_expires(self) -> Optional[pulumi.Input[int]]:
+        """
+        The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        """
+        return pulumi.get(self, "recording_expires")
+
+    @recording_expires.setter
+    def recording_expires(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "recording_expires", value)
+
+    @property
     @pulumi.getter(name="recordingFps")
     def recording_fps(self) -> Optional[pulumi.Input[int]]:
         """
@@ -637,6 +669,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
                  policy_group_name: Optional[pulumi.Input[str]] = None,
                  recording: Optional[pulumi.Input[str]] = None,
                  recording_end_time: Optional[pulumi.Input[str]] = None,
+                 recording_expires: Optional[pulumi.Input[int]] = None,
                  recording_fps: Optional[pulumi.Input[int]] = None,
                  recording_start_time: Optional[pulumi.Input[str]] = None,
                  usb_redirect: Optional[pulumi.Input[str]] = None,
@@ -646,9 +679,9 @@ class EcdPolicyGroup(pulumi.CustomResource):
                  watermark_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Elastic Desktop Service(EDS) Policy Group resource.
+        Provides a Elastic Desktop Service (ECD) Policy Group resource.
 
-        For information about Elastic Desktop Service(EDS) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
+        For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
 
         > **NOTE:** Available in v1.130.0+.
 
@@ -683,7 +716,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
 
         ## Import
 
-        Elastic Desktop Service(EDS) Policy Group can be imported using the id, e.g.
+        Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
@@ -702,6 +735,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
         :param pulumi.Input[str] policy_group_name: The name of policy group.
         :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
         :param pulumi.Input[str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        :param pulumi.Input[int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
         :param pulumi.Input[int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         :param pulumi.Input[str] recording_start_time: The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[str] usb_redirect: The usb redirect policy. Valid values: `off`, `on`.
@@ -717,9 +751,9 @@ class EcdPolicyGroup(pulumi.CustomResource):
                  args: Optional[EcdPolicyGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Elastic Desktop Service(EDS) Policy Group resource.
+        Provides a Elastic Desktop Service (ECD) Policy Group resource.
 
-        For information about Elastic Desktop Service(EDS) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
+        For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
 
         > **NOTE:** Available in v1.130.0+.
 
@@ -754,7 +788,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
 
         ## Import
 
-        Elastic Desktop Service(EDS) Policy Group can be imported using the id, e.g.
+        Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
@@ -786,6 +820,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
                  policy_group_name: Optional[pulumi.Input[str]] = None,
                  recording: Optional[pulumi.Input[str]] = None,
                  recording_end_time: Optional[pulumi.Input[str]] = None,
+                 recording_expires: Optional[pulumi.Input[int]] = None,
                  recording_fps: Optional[pulumi.Input[int]] = None,
                  recording_start_time: Optional[pulumi.Input[str]] = None,
                  usb_redirect: Optional[pulumi.Input[str]] = None,
@@ -813,6 +848,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
             __props__.__dict__["policy_group_name"] = policy_group_name
             __props__.__dict__["recording"] = recording
             __props__.__dict__["recording_end_time"] = recording_end_time
+            __props__.__dict__["recording_expires"] = recording_expires
             __props__.__dict__["recording_fps"] = recording_fps
             __props__.__dict__["recording_start_time"] = recording_start_time
             __props__.__dict__["usb_redirect"] = usb_redirect
@@ -842,6 +878,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
             policy_group_name: Optional[pulumi.Input[str]] = None,
             recording: Optional[pulumi.Input[str]] = None,
             recording_end_time: Optional[pulumi.Input[str]] = None,
+            recording_expires: Optional[pulumi.Input[int]] = None,
             recording_fps: Optional[pulumi.Input[int]] = None,
             recording_start_time: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -868,6 +905,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
         :param pulumi.Input[str] policy_group_name: The name of policy group.
         :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
         :param pulumi.Input[str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        :param pulumi.Input[int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
         :param pulumi.Input[int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         :param pulumi.Input[str] recording_start_time: The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[str] status: The status of policy.
@@ -892,6 +930,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
         __props__.__dict__["policy_group_name"] = policy_group_name
         __props__.__dict__["recording"] = recording
         __props__.__dict__["recording_end_time"] = recording_end_time
+        __props__.__dict__["recording_expires"] = recording_expires
         __props__.__dict__["recording_fps"] = recording_fps
         __props__.__dict__["recording_start_time"] = recording_start_time
         __props__.__dict__["status"] = status
@@ -989,6 +1028,14 @@ class EcdPolicyGroup(pulumi.CustomResource):
         The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         """
         return pulumi.get(self, "recording_end_time")
+
+    @property
+    @pulumi.getter(name="recordingExpires")
+    def recording_expires(self) -> pulumi.Output[int]:
+        """
+        The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        """
+        return pulumi.get(self, "recording_expires")
 
     @property
     @pulumi.getter(name="recordingFps")

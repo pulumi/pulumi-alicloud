@@ -47,7 +47,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -89,7 +89,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -131,7 +131,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -173,7 +173,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -249,7 +249,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetInstanceClassesArgs;
      * import java.util.List;
@@ -299,7 +299,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetInstanceClassesArgs;
      * import java.util.List;
@@ -349,7 +349,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetInstanceClassesArgs;
      * import java.util.List;
@@ -399,7 +399,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetInstanceClassesArgs;
      * import java.util.List;
@@ -449,7 +449,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetInstanceEnginesArgs;
      * import java.util.List;
@@ -499,7 +499,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetInstanceEnginesArgs;
      * import java.util.List;
@@ -549,7 +549,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetInstanceEnginesArgs;
      * import java.util.List;
@@ -599,7 +599,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
      * import com.pulumi.alicloud.kvstore.inputs.GetInstanceEnginesArgs;
      * import java.util.List;
@@ -648,7 +648,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -687,7 +687,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -726,7 +726,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -765,7 +765,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -804,7 +804,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -843,7 +843,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1141,7 +1141,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.Instance;
      * import com.pulumi.alicloud.kvstore.InstanceArgs;
      * import java.util.List;
@@ -1184,7 +1184,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.Instance;
      * import com.pulumi.alicloud.kvstore.InstanceArgs;
      * import java.util.List;
@@ -1227,7 +1227,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.Instance;
      * import com.pulumi.alicloud.kvstore.InstanceArgs;
      * import java.util.List;
@@ -1270,7 +1270,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.Instance;
      * import com.pulumi.alicloud.kvstore.InstanceArgs;
      * import java.util.List;
@@ -1313,7 +1313,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.Instance;
      * import com.pulumi.alicloud.kvstore.InstanceArgs;
      * import java.util.List;
@@ -1356,7 +1356,7 @@ public final class KvstoreFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.kvstore.Instance;
      * import com.pulumi.alicloud.kvstore.InstanceArgs;
      * import java.util.List;

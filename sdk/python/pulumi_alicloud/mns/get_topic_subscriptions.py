@@ -79,6 +79,9 @@ class GetTopicSubscriptionsResult:
     @property
     @pulumi.getter(name="topicName")
     def topic_name(self) -> str:
+        """
+        The topic which The subscription belongs to was named with the name.
+        """
         return pulumi.get(self, "topic_name")
 
 
@@ -101,8 +104,6 @@ def get_topic_subscriptions(name_prefix: Optional[str] = None,
                             topic_name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTopicSubscriptionsResult:
     """
-    This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
-
     ## Example Usage
 
     ```python
@@ -140,8 +141,6 @@ def get_topic_subscriptions_output(name_prefix: Optional[pulumi.Input[Optional[s
                                    topic_name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicSubscriptionsResult]:
     """
-    This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
-
     ## Example Usage
 
     ```python

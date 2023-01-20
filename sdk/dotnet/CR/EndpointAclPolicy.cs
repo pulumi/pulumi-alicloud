@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CR
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cr/endpointAclPolicy:EndpointAclPolicy")]
-    public partial class EndpointAclPolicy : Pulumi.CustomResource
+    public partial class EndpointAclPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the entry.
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.CR
         }
     }
 
-    public sealed class EndpointAclPolicyArgs : Pulumi.ResourceArgs
+    public sealed class EndpointAclPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the entry.
@@ -136,9 +136,10 @@ namespace Pulumi.AliCloud.CR
         public EndpointAclPolicyArgs()
         {
         }
+        public static new EndpointAclPolicyArgs Empty => new EndpointAclPolicyArgs();
     }
 
-    public sealed class EndpointAclPolicyState : Pulumi.ResourceArgs
+    public sealed class EndpointAclPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the entry.
@@ -173,5 +174,6 @@ namespace Pulumi.AliCloud.CR
         public EndpointAclPolicyState()
         {
         }
+        public static new EndpointAclPolicyState Empty => new EndpointAclPolicyState();
     }
 }

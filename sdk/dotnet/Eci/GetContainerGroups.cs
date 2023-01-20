@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.Eci
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Eci.GetContainerGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Eci.GetContainerGroups.InvokeAsync(new AliCloud.Eci.GetContainerGroupsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.FirstEciContainerGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstEciContainerGroupId")]
-        ///     public Output&lt;string&gt; FirstEciContainerGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEciContainerGroupId"] = example.Apply(getContainerGroupsResult =&gt; getContainerGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerGroupsResult> InvokeAsync(GetContainerGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerGroupsResult>("alicloud:eci/getContainerGroups:getContainerGroups", args ?? new GetContainerGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerGroupsResult>("alicloud:eci/getContainerGroups:getContainerGroups", args ?? new GetContainerGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Eci Container Groups of the current Alibaba Cloud user.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.Eci
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Eci.GetContainerGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Eci.GetContainerGroups.InvokeAsync(new AliCloud.Eci.GetContainerGroupsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.FirstEciContainerGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstEciContainerGroupId")]
-        ///     public Output&lt;string&gt; FirstEciContainerGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEciContainerGroupId"] = example.Apply(getContainerGroupsResult =&gt; getContainerGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerGroupsResult> Invoke(GetContainerGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetContainerGroupsResult>("alicloud:eci/getContainerGroups:getContainerGroups", args ?? new GetContainerGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetContainerGroupsResult>("alicloud:eci/getContainerGroups:getContainerGroups", args ?? new GetContainerGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetContainerGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetContainerGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of ContainerGroup.
@@ -174,9 +172,10 @@ namespace Pulumi.AliCloud.Eci
         public GetContainerGroupsArgs()
         {
         }
+        public static new GetContainerGroupsArgs Empty => new GetContainerGroupsArgs();
     }
 
-    public sealed class GetContainerGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetContainerGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of ContainerGroup.
@@ -259,6 +258,7 @@ namespace Pulumi.AliCloud.Eci
         public GetContainerGroupsInvokeArgs()
         {
         }
+        public static new GetContainerGroupsInvokeArgs Empty => new GetContainerGroupsInvokeArgs();
     }
 
 

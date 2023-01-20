@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PolarDB.Inputs
 {
 
-    public sealed class ClusterParameterGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterParameterGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.PolarDB.Inputs
         public ClusterParameterGetArgs()
         {
         }
+        public static new ClusterParameterGetArgs Empty => new ClusterParameterGetArgs();
     }
 }

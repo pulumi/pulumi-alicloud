@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.Alb
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Alb.HealthCheckTemplate("example", new()
     ///     {
-    ///         var example = new AliCloud.Alb.HealthCheckTemplate("example", new AliCloud.Alb.HealthCheckTemplateArgs
-    ///         {
-    ///             HealthCheckTemplateName = "example_name",
-    ///         });
-    ///     }
+    ///         HealthCheckTemplateName = "example_name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.Alb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/healthCheckTemplate:HealthCheckTemplate")]
-    public partial class HealthCheckTemplate : Pulumi.CustomResource
+    public partial class HealthCheckTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to precheck the API request.
@@ -170,7 +168,7 @@ namespace Pulumi.AliCloud.Alb
         }
     }
 
-    public sealed class HealthCheckTemplateArgs : Pulumi.ResourceArgs
+    public sealed class HealthCheckTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to precheck the API request.
@@ -259,9 +257,10 @@ namespace Pulumi.AliCloud.Alb
         public HealthCheckTemplateArgs()
         {
         }
+        public static new HealthCheckTemplateArgs Empty => new HealthCheckTemplateArgs();
     }
 
-    public sealed class HealthCheckTemplateState : Pulumi.ResourceArgs
+    public sealed class HealthCheckTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to precheck the API request.
@@ -350,5 +349,6 @@ namespace Pulumi.AliCloud.Alb
         public HealthCheckTemplateState()
         {
         }
+        public static new HealthCheckTemplateState Empty => new HealthCheckTemplateState();
     }
 }

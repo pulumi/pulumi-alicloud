@@ -67,7 +67,7 @@ export class HybridMonitorFcTask extends pulumi.CustomResource {
      */
     public /*out*/ readonly hybridMonitorFcTaskId!: pulumi.Output<string>;
     /**
-     * The index warehouse where the host belongs.
+     * the namespace of the Alibaba Cloud service.
      */
     public readonly namespace!: pulumi.Output<string>;
     /**
@@ -76,8 +76,6 @@ export class HybridMonitorFcTask extends pulumi.CustomResource {
     public readonly targetUserId!: pulumi.Output<string>;
     /**
      * The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-     * - `namespace`: the namespace of the Alibaba Cloud service.
-     * - `metricList`: the metrics of the Alibaba Cloud service.
      */
     public readonly yarmConfig!: pulumi.Output<string>;
 
@@ -125,7 +123,7 @@ export interface HybridMonitorFcTaskState {
      */
     hybridMonitorFcTaskId?: pulumi.Input<string>;
     /**
-     * The index warehouse where the host belongs.
+     * the namespace of the Alibaba Cloud service.
      */
     namespace?: pulumi.Input<string>;
     /**
@@ -134,8 +132,6 @@ export interface HybridMonitorFcTaskState {
     targetUserId?: pulumi.Input<string>;
     /**
      * The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-     * - `namespace`: the namespace of the Alibaba Cloud service.
-     * - `metricList`: the metrics of the Alibaba Cloud service.
      */
     yarmConfig?: pulumi.Input<string>;
 }
@@ -145,7 +141,7 @@ export interface HybridMonitorFcTaskState {
  */
 export interface HybridMonitorFcTaskArgs {
     /**
-     * The index warehouse where the host belongs.
+     * the namespace of the Alibaba Cloud service.
      */
     namespace: pulumi.Input<string>;
     /**
@@ -154,8 +150,6 @@ export interface HybridMonitorFcTaskArgs {
     targetUserId?: pulumi.Input<string>;
     /**
      * The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-     * - `namespace`: the namespace of the Alibaba Cloud service.
-     * - `metricList`: the metrics of the Alibaba Cloud service.
      */
     yarmConfig: pulumi.Input<string>;
 }

@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Imm.Outputs
         /// </summary>
         public readonly string ModifyTime;
         /// <summary>
-        /// -The name of project.
+        /// The name of project.
         /// </summary>
         public readonly string Project;
         /// <summary>

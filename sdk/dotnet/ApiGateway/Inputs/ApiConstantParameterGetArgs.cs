@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ApiGateway.Inputs
 {
 
-    public sealed class ApiConstantParameterGetArgs : Pulumi.ResourceArgs
+    public sealed class ApiConstantParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of Constant parameter.
+        /// The description of the api. Defaults to null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// System parameter location; values: 'HEAD' and 'QUERY'.
+        /// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
         /// </summary>
         [Input("in", required: true)]
         public Input<string> In { get; set; } = null!;
 
         /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        /// The name of the api gateway api. Defaults to null.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public ApiConstantParameterGetArgs()
         {
         }
+        public static new ApiConstantParameterGetArgs Empty => new ApiConstantParameterGetArgs();
     }
 }

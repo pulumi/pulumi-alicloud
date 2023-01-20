@@ -46,14 +46,14 @@ public final class PatchBaselineState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      * 
      */
     @Import(name="operationSystem")
     private @Nullable Output<String> operationSystem;
 
     /**
-     * @return Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+     * @return Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      * 
      */
     public Optional<Output<String>> operationSystem() {
@@ -145,7 +145,7 @@ public final class PatchBaselineState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param operationSystem Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+         * @param operationSystem Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class PatchBaselineState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param operationSystem Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+         * @param operationSystem Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
          * 
          * @return builder
          * 

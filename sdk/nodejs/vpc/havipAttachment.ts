@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?[0]?.id,
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
  *     vpcId: fooNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
  * const fooHAVip = new alicloud.vpc.HAVip("fooHAVip", {
  *     vswitchId: fooSwitch.id,
@@ -43,10 +43,10 @@ import * as utilities from "../utilities";
  *     vpcId: fooNetwork.id,
  * });
  * const fooInstance = new alicloud.ecs.Instance("fooInstance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchId: fooSwitch.id,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
  *     systemDiskCategory: "cloud_efficiency",
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 5,

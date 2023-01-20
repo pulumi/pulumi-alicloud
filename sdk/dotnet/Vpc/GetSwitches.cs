@@ -19,41 +19,42 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "vswitchDatasourceName";
-        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync());
-        ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/16",
-        ///             VpcName = name,
-        ///         });
-        ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
-        ///         {
-        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-        ///             CidrBlock = "172.16.0.0/24",
-        ///             VpcId = vpc.Id,
-        ///             VswitchName = name,
-        ///         });
-        ///         var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new AliCloud.Vpc.GetSwitchesInvokeArgs
-        ///         {
-        ///             NameRegex = vswitch.VswitchName,
-        ///         });
-        ///     }
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "vswitchDatasourceName";
+        ///     var defaultZones = AliCloud.GetZones.Invoke();
         /// 
-        /// }
+        ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/16",
+        ///         VpcName = name,
+        ///     });
+        /// 
+        ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+        ///     {
+        ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         VpcId = vpc.Id,
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         NameRegex = vswitch.VswitchName,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSwitchesResult> InvokeAsync(GetSwitchesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of VSwitches owned by an Alibaba Cloud account.
@@ -63,45 +64,46 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "vswitchDatasourceName";
-        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync());
-        ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/16",
-        ///             VpcName = name,
-        ///         });
-        ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
-        ///         {
-        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-        ///             CidrBlock = "172.16.0.0/24",
-        ///             VpcId = vpc.Id,
-        ///             VswitchName = name,
-        ///         });
-        ///         var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new AliCloud.Vpc.GetSwitchesInvokeArgs
-        ///         {
-        ///             NameRegex = vswitch.VswitchName,
-        ///         });
-        ///     }
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "vswitchDatasourceName";
+        ///     var defaultZones = AliCloud.GetZones.Invoke();
         /// 
-        /// }
+        ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/16",
+        ///         VpcName = name,
+        ///     });
+        /// 
+        ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+        ///     {
+        ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         VpcId = vpc.Id,
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         NameRegex = vswitch.VswitchName,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSwitchesResult> Invoke(GetSwitchesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSwitchesArgs : Pulumi.InvokeArgs
+    public sealed class GetSwitchesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
@@ -199,9 +201,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetSwitchesArgs()
         {
         }
+        public static new GetSwitchesArgs Empty => new GetSwitchesArgs();
     }
 
-    public sealed class GetSwitchesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSwitchesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
@@ -299,6 +302,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetSwitchesInvokeArgs()
         {
         }
+        public static new GetSwitchesInvokeArgs Empty => new GetSwitchesInvokeArgs();
     }
 
 

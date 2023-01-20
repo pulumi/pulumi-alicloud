@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Vpc.TrafficMirrorFilter("example", new()
     ///     {
-    ///         var example = new AliCloud.Vpc.TrafficMirrorFilter("example", new AliCloud.Vpc.TrafficMirrorFilterArgs
-    ///         {
-    ///             TrafficMirrorFilterName = "example_value",
-    ///         });
-    ///     }
+    ///         TrafficMirrorFilterName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter")]
-    public partial class TrafficMirrorFilter : Pulumi.CustomResource
+    public partial class TrafficMirrorFilter : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The dry run.
@@ -116,7 +114,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class TrafficMirrorFilterArgs : Pulumi.ResourceArgs
+    public sealed class TrafficMirrorFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
@@ -139,9 +137,10 @@ namespace Pulumi.AliCloud.Vpc
         public TrafficMirrorFilterArgs()
         {
         }
+        public static new TrafficMirrorFilterArgs Empty => new TrafficMirrorFilterArgs();
     }
 
-    public sealed class TrafficMirrorFilterState : Pulumi.ResourceArgs
+    public sealed class TrafficMirrorFilterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
@@ -170,5 +169,6 @@ namespace Pulumi.AliCloud.Vpc
         public TrafficMirrorFilterState()
         {
         }
+        public static new TrafficMirrorFilterState Empty => new TrafficMirrorFilterState();
     }
 }

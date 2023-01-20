@@ -19,24 +19,21 @@ namespace Pulumi.AliCloud.Kms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var thisKey = new AliCloud.Kms.Key("thisKey", new AliCloud.Kms.KeyArgs
-    ///         {
-    ///         });
-    ///         var thisAlias = new AliCloud.Kms.Alias("thisAlias", new AliCloud.Kms.AliasArgs
-    ///         {
-    ///             AliasName = "alias/test_kms_alias",
-    ///             KeyId = thisKey.Id,
-    ///         });
-    ///     }
+    ///     var thisKey = new AliCloud.Kms.Key("thisKey");
     /// 
-    /// }
+    ///     var thisAlias = new AliCloud.Kms.Alias("thisAlias", new()
+    ///     {
+    ///         AliasName = "alias/test_kms_alias",
+    ///         KeyId = thisKey.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +45,7 @@ namespace Pulumi.AliCloud.Kms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kms/alias:Alias")]
-    public partial class Alias : Pulumi.CustomResource
+    public partial class Alias : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
@@ -106,7 +103,7 @@ namespace Pulumi.AliCloud.Kms
         }
     }
 
-    public sealed class AliasArgs : Pulumi.ResourceArgs
+    public sealed class AliasArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
@@ -123,9 +120,10 @@ namespace Pulumi.AliCloud.Kms
         public AliasArgs()
         {
         }
+        public static new AliasArgs Empty => new AliasArgs();
     }
 
-    public sealed class AliasState : Pulumi.ResourceArgs
+    public sealed class AliasState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
@@ -142,5 +140,6 @@ namespace Pulumi.AliCloud.Kms
         public AliasState()
         {
         }
+        public static new AliasState Empty => new AliasState();
     }
 }

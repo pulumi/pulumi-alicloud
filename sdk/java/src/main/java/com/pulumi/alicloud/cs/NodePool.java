@@ -10,6 +10,7 @@ import com.pulumi.alicloud.cs.outputs.NodePoolDataDisk;
 import com.pulumi.alicloud.cs.outputs.NodePoolKubeletConfiguration;
 import com.pulumi.alicloud.cs.outputs.NodePoolLabel;
 import com.pulumi.alicloud.cs.outputs.NodePoolManagement;
+import com.pulumi.alicloud.cs.outputs.NodePoolRollingPolicy;
 import com.pulumi.alicloud.cs.outputs.NodePoolRolloutPolicy;
 import com.pulumi.alicloud.cs.outputs.NodePoolScalingConfig;
 import com.pulumi.alicloud.cs.outputs.NodePoolSpotPriceLimit;
@@ -38,9 +39,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -541,7 +542,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cs.NodePool;
  * import com.pulumi.alicloud.cs.NodePoolArgs;
  * import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolRolloutPolicyArgs;
+ * import com.pulumi.alicloud.cs.inputs.NodePoolRollingPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -564,10 +565,10 @@ import javax.annotation.Nullable;
  *             .instanceChargeType(&#34;PostPaid&#34;)
  *             .desiredSize(3)
  *             .kubeletConfiguration(NodePoolKubeletConfigurationArgs.builder()
- *                 .registryPullQps(0)
- *                 .registryBurst(0)
- *                 .eventRecordQps(0)
- *                 .eventBurst(0)
+ *                 .registryPullQps(10)
+ *                 .registryBurst(5)
+ *                 .eventRecordQps(10)
+ *                 .eventBurst(5)
  *                 .evictionHard(Map.ofEntries(
  *                     Map.entry(&#34;memory.available&#34;, &#34;1024Mi&#34;),
  *                     Map.entry(&#34;nodefs.available&#34;, &#34;10%&#34;),
@@ -580,15 +581,15 @@ import javax.annotation.Nullable;
  *                 .systemReserved(Map.ofEntries(
  *                     Map.entry(&#34;cpu&#34;, &#34;1&#34;),
  *                     Map.entry(&#34;memory&#34;, &#34;1Gi&#34;),
- *                     Map.entry(&#34;ephemeral_storage&#34;, &#34;10Gi&#34;)
+ *                     Map.entry(&#34;ephemeral-storage&#34;, &#34;10Gi&#34;)
  *                 ))
  *                 .kubeReserved(Map.ofEntries(
  *                     Map.entry(&#34;cpu&#34;, &#34;500m&#34;),
  *                     Map.entry(&#34;memory&#34;, &#34;1Gi&#34;)
  *                 ))
  *                 .build())
- *             .rolloutPolicy(NodePoolRolloutPolicyArgs.builder()
- *                 .maxUnavailable(1)
+ *             .rollingPolicy(NodePoolRollingPolicyArgs.builder()
+ *                 .maxParallelism(1)
  *                 .build())
  *             .build());
  * 
@@ -601,7 +602,7 @@ import javax.annotation.Nullable;
  * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
  * 
  * ```sh
- *  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_kubernetes_node_pool.custom_nodepool cluster_id:nodepool_id
+ *  $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
  * ```
  * 
  */
@@ -636,14 +637,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenewPeriod);
     }
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
      * 
      */
     @Export(name="cisEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> cisEnabled;
 
     /**
-     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
      * 
      */
     public Output<Optional<Boolean>> cisEnabled() {
@@ -1050,6 +1051,20 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.platform;
     }
     /**
+     * PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+     * 
+     */
+    @Export(name="polardbIds", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> polardbIds;
+
+    /**
+     * @return PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+     * 
+     */
+    public Output<Optional<List<String>>> polardbIds() {
+        return Codegen.optional(this.polardbIds);
+    }
+    /**
      * RDS instance list, You can choose which RDS instances whitelist to add instances to.
      * 
      */
@@ -1078,14 +1093,32 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
      * 
      */
+    @Export(name="rollingPolicy", type=NodePoolRollingPolicy.class, parameters={})
+    private Output</* @Nullable */ NodePoolRollingPolicy> rollingPolicy;
+
+    /**
+     * @return Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * 
+     */
+    public Output<Optional<NodePoolRollingPolicy>> rollingPolicy() {
+        return Codegen.optional(this.rollingPolicy);
+    }
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+     * 
+     * @deprecated
+     * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
+     * 
+     */
+    @Deprecated /* Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect */
     @Export(name="rolloutPolicy", type=NodePoolRolloutPolicy.class, parameters={})
     private Output</* @Nullable */ NodePoolRolloutPolicy> rolloutPolicy;
 
     /**
-     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
      * 
      */
     public Output<Optional<NodePoolRolloutPolicy>> rolloutPolicy() {
@@ -1194,7 +1227,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.securityGroupIds;
     }
     /**
-     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
      * &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
      * 
      */
@@ -1202,7 +1235,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> socEnabled;
 
     /**
-     * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+     * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
      * &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
      * 
      */
@@ -1224,18 +1257,18 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.spotPriceLimits);
     }
     /**
-     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
      * 
      */
     @Export(name="spotStrategy", type=String.class, parameters={})
-    private Output</* @Nullable */ String> spotStrategy;
+    private Output<String> spotStrategy;
 
     /**
-     * @return The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+     * @return The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
      * 
      */
-    public Output<Optional<String>> spotStrategy() {
-        return Codegen.optional(this.spotStrategy);
+    public Output<String> spotStrategy() {
+        return this.spotStrategy;
     }
     /**
      * The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
@@ -1452,6 +1485,9 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

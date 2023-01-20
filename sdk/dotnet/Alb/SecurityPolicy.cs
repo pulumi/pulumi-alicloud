@@ -21,31 +21,29 @@ namespace Pulumi.AliCloud.Alb
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "testAccSecurityPolicy";
+    ///     var @default = new AliCloud.Alb.SecurityPolicy("default", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "testAccSecurityPolicy";
-    ///         var @default = new AliCloud.Alb.SecurityPolicy("default", new AliCloud.Alb.SecurityPolicyArgs
+    ///         SecurityPolicyName = name,
+    ///         TlsVersions = new[]
     ///         {
-    ///             SecurityPolicyName = name,
-    ///             TlsVersions = 
-    ///             {
-    ///                 "TLSv1.0",
-    ///             },
-    ///             Ciphers = 
-    ///             {
-    ///                 "ECDHE-ECDSA-AES128-SHA",
-    ///                 "AES256-SHA",
-    ///             },
-    ///         });
-    ///     }
+    ///             "TLSv1.0",
+    ///         },
+    ///         Ciphers = new[]
+    ///         {
+    ///             "ECDHE-ECDSA-AES128-SHA",
+    ///             "AES256-SHA",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.AliCloud.Alb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/securityPolicy:SecurityPolicy")]
-    public partial class SecurityPolicy : Pulumi.CustomResource
+    public partial class SecurityPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The supported cipher suites, which are determined by the TLS protocol version.The specified cipher suites must be supported by at least one TLS protocol version that you select.
@@ -145,7 +143,7 @@ namespace Pulumi.AliCloud.Alb
         }
     }
 
-    public sealed class SecurityPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("ciphers", required: true)]
         private InputList<string>? _ciphers;
@@ -204,9 +202,10 @@ namespace Pulumi.AliCloud.Alb
         public SecurityPolicyArgs()
         {
         }
+        public static new SecurityPolicyArgs Empty => new SecurityPolicyArgs();
     }
 
-    public sealed class SecurityPolicyState : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyState : global::Pulumi.ResourceArgs
     {
         [Input("ciphers")]
         private InputList<string>? _ciphers;
@@ -271,5 +270,6 @@ namespace Pulumi.AliCloud.Alb
         public SecurityPolicyState()
         {
         }
+        public static new SecurityPolicyState Empty => new SecurityPolicyState();
     }
 }

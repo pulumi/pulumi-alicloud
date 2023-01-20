@@ -5,28 +5,71 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./alias";
-export * from "./customDomain";
-export * from "./function";
-export * from "./functionAsyncInvokeConfig";
-export * from "./getCustomDomains";
-export * from "./getFunctions";
-export * from "./getService";
-export * from "./getServices";
-export * from "./getTriggers";
-export * from "./getZones";
-export * from "./layerVersion";
-export * from "./service";
-export * from "./trigger";
+export { AliasArgs, AliasState } from "./alias";
+export type Alias = import("./alias").Alias;
+export const Alias: typeof import("./alias").Alias = null as any;
+utilities.lazyLoad(exports, ["Alias"], () => require("./alias"));
 
-// Import resources to register:
-import { Alias } from "./alias";
-import { CustomDomain } from "./customDomain";
-import { Function } from "./function";
-import { FunctionAsyncInvokeConfig } from "./functionAsyncInvokeConfig";
-import { LayerVersion } from "./layerVersion";
-import { Service } from "./service";
-import { Trigger } from "./trigger";
+export { CustomDomainArgs, CustomDomainState } from "./customDomain";
+export type CustomDomain = import("./customDomain").CustomDomain;
+export const CustomDomain: typeof import("./customDomain").CustomDomain = null as any;
+utilities.lazyLoad(exports, ["CustomDomain"], () => require("./customDomain"));
+
+export { FunctionArgs, FunctionState } from "./function";
+export type Function = import("./function").Function;
+export const Function: typeof import("./function").Function = null as any;
+utilities.lazyLoad(exports, ["Function"], () => require("./function"));
+
+export { FunctionAsyncInvokeConfigArgs, FunctionAsyncInvokeConfigState } from "./functionAsyncInvokeConfig";
+export type FunctionAsyncInvokeConfig = import("./functionAsyncInvokeConfig").FunctionAsyncInvokeConfig;
+export const FunctionAsyncInvokeConfig: typeof import("./functionAsyncInvokeConfig").FunctionAsyncInvokeConfig = null as any;
+utilities.lazyLoad(exports, ["FunctionAsyncInvokeConfig"], () => require("./functionAsyncInvokeConfig"));
+
+export { GetCustomDomainsArgs, GetCustomDomainsResult, GetCustomDomainsOutputArgs } from "./getCustomDomains";
+export const getCustomDomains: typeof import("./getCustomDomains").getCustomDomains = null as any;
+export const getCustomDomainsOutput: typeof import("./getCustomDomains").getCustomDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomDomains","getCustomDomainsOutput"], () => require("./getCustomDomains"));
+
+export { GetFunctionsArgs, GetFunctionsResult, GetFunctionsOutputArgs } from "./getFunctions";
+export const getFunctions: typeof import("./getFunctions").getFunctions = null as any;
+export const getFunctionsOutput: typeof import("./getFunctions").getFunctionsOutput = null as any;
+utilities.lazyLoad(exports, ["getFunctions","getFunctionsOutput"], () => require("./getFunctions"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { GetServicesArgs, GetServicesResult, GetServicesOutputArgs } from "./getServices";
+export const getServices: typeof import("./getServices").getServices = null as any;
+export const getServicesOutput: typeof import("./getServices").getServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getServices","getServicesOutput"], () => require("./getServices"));
+
+export { GetTriggersArgs, GetTriggersResult, GetTriggersOutputArgs } from "./getTriggers";
+export const getTriggers: typeof import("./getTriggers").getTriggers = null as any;
+export const getTriggersOutput: typeof import("./getTriggers").getTriggersOutput = null as any;
+utilities.lazyLoad(exports, ["getTriggers","getTriggersOutput"], () => require("./getTriggers"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
+export { LayerVersionArgs, LayerVersionState } from "./layerVersion";
+export type LayerVersion = import("./layerVersion").LayerVersion;
+export const LayerVersion: typeof import("./layerVersion").LayerVersion = null as any;
+utilities.lazyLoad(exports, ["LayerVersion"], () => require("./layerVersion"));
+
+export { ServiceArgs, ServiceState } from "./service";
+export type Service = import("./service").Service;
+export const Service: typeof import("./service").Service = null as any;
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+
+export { TriggerArgs, TriggerState } from "./trigger";
+export type Trigger = import("./trigger").Trigger;
+export const Trigger: typeof import("./trigger").Trigger = null as any;
+utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
+
 
 const _module = {
     version: utilities.getVersion(),

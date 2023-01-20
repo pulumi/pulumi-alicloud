@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.EventBridge
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.EventBridge.EventBus("example", new()
     ///     {
-    ///         var example = new AliCloud.EventBridge.EventBus("example", new AliCloud.EventBridge.EventBusArgs
-    ///         {
-    ///             EventBusName = "my-EventBus",
-    ///         });
-    ///     }
+    ///         EventBusName = "my-EventBus",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.EventBridge
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eventbridge/eventBus:EventBus")]
-    public partial class EventBus : Pulumi.CustomResource
+    public partial class EventBus : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of event bus.
@@ -104,7 +102,7 @@ namespace Pulumi.AliCloud.EventBridge
         }
     }
 
-    public sealed class EventBusArgs : Pulumi.ResourceArgs
+    public sealed class EventBusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of event bus.
@@ -121,9 +119,10 @@ namespace Pulumi.AliCloud.EventBridge
         public EventBusArgs()
         {
         }
+        public static new EventBusArgs Empty => new EventBusArgs();
     }
 
-    public sealed class EventBusState : Pulumi.ResourceArgs
+    public sealed class EventBusState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of event bus.
@@ -140,5 +139,6 @@ namespace Pulumi.AliCloud.EventBridge
         public EventBusState()
         {
         }
+        public static new EventBusState Empty => new EventBusState();
     }
 }

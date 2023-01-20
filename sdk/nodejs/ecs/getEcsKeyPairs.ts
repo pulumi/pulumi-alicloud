@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["key_pair_name"],
  *     nameRegex: "key_pair_name",
  * });
- * export const firstEcsKeyPairId = example.then(example => example.pairs?[0]?.id);
+ * export const firstEcsKeyPairId = example.then(example => example.pairs?.[0]?.id);
  * ```
  */
 export function getEcsKeyPairs(args?: GetEcsKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsKeyPairsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", {
         "fingerPrint": args.fingerPrint,
         "ids": args.ids,
@@ -90,9 +88,28 @@ export interface GetEcsKeyPairsResult {
     readonly resourceGroupId?: string;
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.121.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getEcsKeyPairs({
+ *     ids: ["key_pair_name"],
+ *     nameRegex: "key_pair_name",
+ * });
+ * export const firstEcsKeyPairId = example.then(example => example.pairs?.[0]?.id);
+ * ```
+ */
 export function getEcsKeyPairsOutput(args?: GetEcsKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsKeyPairsResult> {
-    return pulumi.output(args).apply(a => getEcsKeyPairs(a, opts))
+    return pulumi.output(args).apply((a: any) => getEcsKeyPairs(a, opts))
 }
 
 /**

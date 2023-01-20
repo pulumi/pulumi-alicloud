@@ -86,7 +86,7 @@ def get_users(ids: Optional[Sequence[str]] = None,
               status: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
-    This data source provides the Elastic Desktop Service(EDS) Users of the current Alibaba Cloud user.
+    This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.142.0+.
 
@@ -132,7 +132,7 @@ def get_users_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
                      status: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
     """
-    This data source provides the Elastic Desktop Service(EDS) Users of the current Alibaba Cloud user.
+    This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.142.0+.
 

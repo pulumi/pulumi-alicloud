@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:simpleapplicationserver/firewallRule:FirewallRule")]
-    public partial class FirewallRule : Pulumi.CustomResource
+    public partial class FirewallRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the firewall rule.
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         }
     }
 
-    public sealed class FirewallRuleArgs : Pulumi.ResourceArgs
+    public sealed class FirewallRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alibaba Cloud simple application server instance ID.
@@ -130,9 +130,10 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public FirewallRuleArgs()
         {
         }
+        public static new FirewallRuleArgs Empty => new FirewallRuleArgs();
     }
 
-    public sealed class FirewallRuleState : Pulumi.ResourceArgs
+    public sealed class FirewallRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the firewall rule.
@@ -167,5 +168,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public FirewallRuleState()
         {
         }
+        public static new FirewallRuleState Empty => new FirewallRuleState();
     }
 }

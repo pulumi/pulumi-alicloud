@@ -30,8 +30,6 @@ public final class InstanceAllowedIpAttachmentArgs extends com.pulumi.resources.
 
     /**
      * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-     * - `vpc`: IP address whitelist for VPC access.
-     * - `internet`: IP address whitelist for Internet access.
      * 
      */
     @Import(name="allowedType", required=true)
@@ -39,8 +37,6 @@ public final class InstanceAllowedIpAttachmentArgs extends com.pulumi.resources.
 
     /**
      * @return The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-     * - `vpc`: IP address whitelist for VPC access.
-     * - `internet`: IP address whitelist for Internet access.
      * 
      */
     public Output<String> allowedType() {
@@ -131,8 +127,6 @@ public final class InstanceAllowedIpAttachmentArgs extends com.pulumi.resources.
 
         /**
          * @param allowedType The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-         * - `vpc`: IP address whitelist for VPC access.
-         * - `internet`: IP address whitelist for Internet access.
          * 
          * @return builder
          * 
@@ -144,8 +138,6 @@ public final class InstanceAllowedIpAttachmentArgs extends com.pulumi.resources.
 
         /**
          * @param allowedType The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-         * - `vpc`: IP address whitelist for VPC access.
-         * - `internet`: IP address whitelist for Internet access.
          * 
          * @return builder
          * 

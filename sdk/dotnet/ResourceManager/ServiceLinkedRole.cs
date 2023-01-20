@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.ResourceManager.ServiceLinkedRole("default", new()
     ///     {
-    ///         var @default = new AliCloud.ResourceManager.ServiceLinkedRole("default", new AliCloud.ResourceManager.ServiceLinkedRoleArgs
-    ///         {
-    ///             ServiceName = "ops.elasticsearch.aliyuncs.com",
-    ///         });
-    ///     }
+    ///         ServiceName = "ops.elasticsearch.aliyuncs.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole")]
-    public partial class ServiceLinkedRole : Pulumi.CustomResource
+    public partial class ServiceLinkedRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the role.
@@ -128,7 +126,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class ServiceLinkedRoleArgs : Pulumi.ResourceArgs
+    public sealed class ServiceLinkedRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The suffix of the role name. Only a few service linked roles support custom suffixes. The role name (including its suffix) must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-). For example, if the suffix is Example, the role name is ServiceLinkedRoleName_Example.
@@ -151,9 +149,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public ServiceLinkedRoleArgs()
         {
         }
+        public static new ServiceLinkedRoleArgs Empty => new ServiceLinkedRoleArgs();
     }
 
-    public sealed class ServiceLinkedRoleState : Pulumi.ResourceArgs
+    public sealed class ServiceLinkedRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the role.
@@ -194,5 +193,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public ServiceLinkedRoleState()
         {
         }
+        public static new ServiceLinkedRoleState Empty => new ServiceLinkedRoleState();
     }
 }

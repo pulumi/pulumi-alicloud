@@ -12,11 +12,15 @@ from . import outputs
 
 __all__ = [
     'TransitRouterVpcAttachmentZoneMapping',
+    'TransitRouterVpnAttachmentZone',
     'GetBandwidthLimitsLimitResult',
     'GetBandwidthPackagesPackageResult',
+    'GetChildInstanceRouteEntryToAttachmentsAttachmentResult',
     'GetFlowlogsFlowlogResult',
     'GetInstanceAttachmentsAttachmentResult',
     'GetInstancesInstanceResult',
+    'GetInterRegionTrafficQosPoliciesPolicyResult',
+    'GetInterRegionTrafficQosQueuesQueueResult',
     'GetPrivateZonesZoneResult',
     'GetRegionRouteEntriesEntryResult',
     'GetRouteEntriesEntryResult',
@@ -25,7 +29,14 @@ __all__ = [
     'GetRouteServicesServiceResult',
     'GetTrafficMarkingPoliciesPolicyResult',
     'GetTransitRouterAvailableResourcesResourceResult',
+    'GetTransitRouterCidrsCidrResult',
+    'GetTransitRouterMulticastDomainAssociationsAssociationResult',
+    'GetTransitRouterMulticastDomainMembersMemberResult',
+    'GetTransitRouterMulticastDomainPeerMembersMemberResult',
+    'GetTransitRouterMulticastDomainSourcesSourceResult',
+    'GetTransitRouterMulticastDomainsDomainResult',
     'GetTransitRouterPeerAttachmentsAttachmentResult',
+    'GetTransitRouterPrefixListAssociationsAssociationResult',
     'GetTransitRouterRouteEntriesEntryResult',
     'GetTransitRouterRouteTableAssociationsAssociationResult',
     'GetTransitRouterRouteTablePropagationsPropagationResult',
@@ -33,6 +44,8 @@ __all__ = [
     'GetTransitRouterVbrAttachmentsAttachmentResult',
     'GetTransitRouterVpcAttachmentsAttachmentResult',
     'GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult',
+    'GetTransitRouterVpnAttachmentsAttachmentResult',
+    'GetTransitRouterVpnAttachmentsAttachmentZoneResult',
     'GetTransitRoutersTransitRouterResult',
     'GetVbrHealthChecksCheckResult',
 ]
@@ -83,6 +96,41 @@ class TransitRouterVpcAttachmentZoneMapping(dict):
     def zone_id(self) -> Optional[str]:
         """
         The zone Id of VSwitch.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class TransitRouterVpnAttachmentZone(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "zoneId":
+            suggest = "zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransitRouterVpnAttachmentZone. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransitRouterVpnAttachmentZone.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransitRouterVpnAttachmentZone.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 zone_id: str):
+        """
+        :param str zone_id: The id of the zone.
+        """
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The id of the zone.
         """
         return pulumi.get(self, "zone_id")
 
@@ -395,6 +443,90 @@ class GetBandwidthPackagesPackageResult(dict):
 
 
 @pulumi.output_type
+class GetChildInstanceRouteEntryToAttachmentsAttachmentResult(dict):
+    def __init__(__self__, *,
+                 cen_id: str,
+                 child_instance_route_table_id: str,
+                 destination_cidr_block: str,
+                 id: str,
+                 service_type: str,
+                 status: str,
+                 transit_router_attachment_id: str):
+        """
+        :param str cen_id: The ID of the CEN instance.
+        :param str child_instance_route_table_id: The first ID of the resource
+        :param str destination_cidr_block: DestinationCidrBlock
+        :param str id: The ID of the resource. The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
+        :param str service_type: ServiceType
+        :param str status: The status of the resource
+        :param str transit_router_attachment_id: TransitRouterAttachmentId
+        """
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "child_instance_route_table_id", child_instance_route_table_id)
+        pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "service_type", service_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> str:
+        """
+        The ID of the CEN instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @property
+    @pulumi.getter(name="childInstanceRouteTableId")
+    def child_instance_route_table_id(self) -> str:
+        """
+        The first ID of the resource
+        """
+        return pulumi.get(self, "child_instance_route_table_id")
+
+    @property
+    @pulumi.getter(name="destinationCidrBlock")
+    def destination_cidr_block(self) -> str:
+        """
+        DestinationCidrBlock
+        """
+        return pulumi.get(self, "destination_cidr_block")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the resource. The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> str:
+        """
+        ServiceType
+        """
+        return pulumi.get(self, "service_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouterAttachmentId")
+    def transit_router_attachment_id(self) -> str:
+        """
+        TransitRouterAttachmentId
+        """
+        return pulumi.get(self, "transit_router_attachment_id")
+
+
+@pulumi.output_type
 class GetFlowlogsFlowlogResult(dict):
     def __init__(__self__, *,
                  cen_id: str,
@@ -699,6 +831,181 @@ class GetInstancesInstanceResult(dict):
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetInterRegionTrafficQosPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 inter_region_traffic_qos_policy_description: str,
+                 inter_region_traffic_qos_policy_id: str,
+                 inter_region_traffic_qos_policy_name: str,
+                 status: str,
+                 transit_router_attachment_id: str,
+                 transit_router_id: str):
+        """
+        :param str id: The ID of the Inter Region Traffic Qos Policy.
+        :param str inter_region_traffic_qos_policy_description: The description of the Inter Region Traffic Qos Policy.
+        :param str inter_region_traffic_qos_policy_id: The ID of the Inter Region Traffic Qos Policy.
+        :param str inter_region_traffic_qos_policy_name: The name of the Inter Region Traffic Qos Policy.
+        :param str status: The status of the traffic scheduling policy. Valid Value: `Creating`, `Active`, `Modifying`, `Deleting`, `Deleted`.
+        :param str transit_router_attachment_id: The ID of the inter-region connection.
+        :param str transit_router_id: The ID of the transit router.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
+        pulumi.set(__self__, "inter_region_traffic_qos_policy_id", inter_region_traffic_qos_policy_id)
+        pulumi.set(__self__, "inter_region_traffic_qos_policy_name", inter_region_traffic_qos_policy_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Inter Region Traffic Qos Policy.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="interRegionTrafficQosPolicyDescription")
+    def inter_region_traffic_qos_policy_description(self) -> str:
+        """
+        The description of the Inter Region Traffic Qos Policy.
+        """
+        return pulumi.get(self, "inter_region_traffic_qos_policy_description")
+
+    @property
+    @pulumi.getter(name="interRegionTrafficQosPolicyId")
+    def inter_region_traffic_qos_policy_id(self) -> str:
+        """
+        The ID of the Inter Region Traffic Qos Policy.
+        """
+        return pulumi.get(self, "inter_region_traffic_qos_policy_id")
+
+    @property
+    @pulumi.getter(name="interRegionTrafficQosPolicyName")
+    def inter_region_traffic_qos_policy_name(self) -> str:
+        """
+        The name of the Inter Region Traffic Qos Policy.
+        """
+        return pulumi.get(self, "inter_region_traffic_qos_policy_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the traffic scheduling policy. Valid Value: `Creating`, `Active`, `Modifying`, `Deleting`, `Deleted`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouterAttachmentId")
+    def transit_router_attachment_id(self) -> str:
+        """
+        The ID of the inter-region connection.
+        """
+        return pulumi.get(self, "transit_router_attachment_id")
+
+    @property
+    @pulumi.getter(name="transitRouterId")
+    def transit_router_id(self) -> str:
+        """
+        The ID of the transit router.
+        """
+        return pulumi.get(self, "transit_router_id")
+
+
+@pulumi.output_type
+class GetInterRegionTrafficQosQueuesQueueResult(dict):
+    def __init__(__self__, *,
+                 dscps: Sequence[str],
+                 id: str,
+                 inter_region_traffic_qos_queue_description: str,
+                 inter_region_traffic_qos_queue_id: str,
+                 inter_region_traffic_qos_queue_name: str,
+                 remain_bandwidth_percent: int,
+                 status: str,
+                 traffic_qos_policy_id: str):
+        """
+        :param Sequence[str] dscps: The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
+        :param str inter_region_traffic_qos_queue_description: The description information of the traffic scheduling policy.
+        :param str inter_region_traffic_qos_queue_id: The ID of the resource.
+        :param str inter_region_traffic_qos_queue_name: The name of the traffic scheduling policy.
+        :param int remain_bandwidth_percent: The percentage of cross-region bandwidth that the current queue can use.
+        :param str status: The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+        :param str traffic_qos_policy_id: The ID of the traffic scheduling policy.
+        """
+        pulumi.set(__self__, "dscps", dscps)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "inter_region_traffic_qos_queue_description", inter_region_traffic_qos_queue_description)
+        pulumi.set(__self__, "inter_region_traffic_qos_queue_id", inter_region_traffic_qos_queue_id)
+        pulumi.set(__self__, "inter_region_traffic_qos_queue_name", inter_region_traffic_qos_queue_name)
+        pulumi.set(__self__, "remain_bandwidth_percent", remain_bandwidth_percent)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "traffic_qos_policy_id", traffic_qos_policy_id)
+
+    @property
+    @pulumi.getter
+    def dscps(self) -> Sequence[str]:
+        """
+        The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
+        """
+        return pulumi.get(self, "dscps")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="interRegionTrafficQosQueueDescription")
+    def inter_region_traffic_qos_queue_description(self) -> str:
+        """
+        The description information of the traffic scheduling policy.
+        """
+        return pulumi.get(self, "inter_region_traffic_qos_queue_description")
+
+    @property
+    @pulumi.getter(name="interRegionTrafficQosQueueId")
+    def inter_region_traffic_qos_queue_id(self) -> str:
+        """
+        The ID of the resource.
+        """
+        return pulumi.get(self, "inter_region_traffic_qos_queue_id")
+
+    @property
+    @pulumi.getter(name="interRegionTrafficQosQueueName")
+    def inter_region_traffic_qos_queue_name(self) -> str:
+        """
+        The name of the traffic scheduling policy.
+        """
+        return pulumi.get(self, "inter_region_traffic_qos_queue_name")
+
+    @property
+    @pulumi.getter(name="remainBandwidthPercent")
+    def remain_bandwidth_percent(self) -> int:
+        """
+        The percentage of cross-region bandwidth that the current queue can use.
+        """
+        return pulumi.get(self, "remain_bandwidth_percent")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trafficQosPolicyId")
+    def traffic_qos_policy_id(self) -> str:
+        """
+        The ID of the traffic scheduling policy.
+        """
+        return pulumi.get(self, "traffic_qos_policy_id")
 
 
 @pulumi.output_type
@@ -1356,10 +1663,10 @@ class GetRouteServicesServiceResult(dict):
                  update_interval: str):
         """
         :param str access_region_id: The region of the network instances that access the cloud services.
-        :param str cen_id: -(Required, ForceNew) The ID of the CEN instance.
+        :param str cen_id: The ID of the CEN instance.
         :param Sequence[str] cidrs: The IP address of the cloud service.
         :param str description: The description of the cloud service.
-        :param str host: -(Optional, ForceNew) The domain name or IP address of the cloud service.
+        :param str host: The domain name or IP address of the cloud service.
         :param str host_region_id: The region of the cloud service.
         :param str host_vpc_id: The VPC associated with the cloud service.
         :param str id: The ID of the route service.
@@ -1389,7 +1696,7 @@ class GetRouteServicesServiceResult(dict):
     @pulumi.getter(name="cenId")
     def cen_id(self) -> str:
         """
-        -(Required, ForceNew) The ID of the CEN instance.
+        The ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
 
@@ -1413,7 +1720,7 @@ class GetRouteServicesServiceResult(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        -(Optional, ForceNew) The domain name or IP address of the cloud service.
+        The domain name or IP address of the cloud service.
         """
         return pulumi.get(self, "host")
 
@@ -1583,6 +1890,473 @@ class GetTransitRouterAvailableResourcesResourceResult(dict):
 
 
 @pulumi.output_type
+class GetTransitRouterCidrsCidrResult(dict):
+    def __init__(__self__, *,
+                 cidr: str,
+                 description: str,
+                 family: str,
+                 id: str,
+                 publish_cidr_route: bool,
+                 transit_router_cidr_id: str,
+                 transit_router_cidr_name: str,
+                 transit_router_id: str):
+        """
+        :param str cidr: The cidr of the transit router.
+        :param str description: The description of the transit router.
+        :param str family: The type of the transit router cidr.
+        :param str id: The ID of the Cen Transit Router Cidr. It formats as `<transit_router_id>:<transit_router_cidr_id>`.
+        :param bool publish_cidr_route: Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table.
+        :param str transit_router_cidr_id: The ID of the transit router cidr.
+        :param str transit_router_cidr_name: The name of the transit router.
+        :param str transit_router_id: The ID of the transit router.
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "family", family)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "publish_cidr_route", publish_cidr_route)
+        pulumi.set(__self__, "transit_router_cidr_id", transit_router_cidr_id)
+        pulumi.set(__self__, "transit_router_cidr_name", transit_router_cidr_name)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> str:
+        """
+        The cidr of the transit router.
+        """
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the transit router.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def family(self) -> str:
+        """
+        The type of the transit router cidr.
+        """
+        return pulumi.get(self, "family")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Cen Transit Router Cidr. It formats as `<transit_router_id>:<transit_router_cidr_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="publishCidrRoute")
+    def publish_cidr_route(self) -> bool:
+        """
+        Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table.
+        """
+        return pulumi.get(self, "publish_cidr_route")
+
+    @property
+    @pulumi.getter(name="transitRouterCidrId")
+    def transit_router_cidr_id(self) -> str:
+        """
+        The ID of the transit router cidr.
+        """
+        return pulumi.get(self, "transit_router_cidr_id")
+
+    @property
+    @pulumi.getter(name="transitRouterCidrName")
+    def transit_router_cidr_name(self) -> str:
+        """
+        The name of the transit router.
+        """
+        return pulumi.get(self, "transit_router_cidr_name")
+
+    @property
+    @pulumi.getter(name="transitRouterId")
+    def transit_router_id(self) -> str:
+        """
+        The ID of the transit router.
+        """
+        return pulumi.get(self, "transit_router_id")
+
+
+@pulumi.output_type
+class GetTransitRouterMulticastDomainAssociationsAssociationResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 resource_id: str,
+                 resource_owner_id: int,
+                 resource_type: str,
+                 status: str,
+                 transit_router_attachment_id: str,
+                 transit_router_multicast_domain_id: str,
+                 vswitch_id: str):
+        """
+        :param str id: The ID of the Transit Router Multicast Domain Association. It formats as `<transit_router_multicast_domain_id>:<transit_router_attachment_id>:<vswitch_id>`.
+        :param str resource_id: The ID of the resource associated with the multicast domain.
+        :param int resource_owner_id: The ID of the Alibaba Cloud account to which the resource associated with the multicast domain belongs.
+        :param str resource_type: The type of resource associated with the multicast domain. Valid Value: `VPC`.
+        :param str status: The status of the associated resource. Valid Value: `Associated`, `Associating`, `Dissociating`.
+        :param str transit_router_attachment_id: The ID of the network instance connection.
+        :param str transit_router_multicast_domain_id: The ID of the multicast domain.
+        :param str vswitch_id: The ID of the vSwitch.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_owner_id", resource_owner_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Transit Router Multicast Domain Association. It formats as `<transit_router_multicast_domain_id>:<transit_router_attachment_id>:<vswitch_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        The ID of the resource associated with the multicast domain.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceOwnerId")
+    def resource_owner_id(self) -> int:
+        """
+        The ID of the Alibaba Cloud account to which the resource associated with the multicast domain belongs.
+        """
+        return pulumi.get(self, "resource_owner_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        The type of resource associated with the multicast domain. Valid Value: `VPC`.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the associated resource. Valid Value: `Associated`, `Associating`, `Dissociating`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouterAttachmentId")
+    def transit_router_attachment_id(self) -> str:
+        """
+        The ID of the network instance connection.
+        """
+        return pulumi.get(self, "transit_router_attachment_id")
+
+    @property
+    @pulumi.getter(name="transitRouterMulticastDomainId")
+    def transit_router_multicast_domain_id(self) -> str:
+        """
+        The ID of the multicast domain.
+        """
+        return pulumi.get(self, "transit_router_multicast_domain_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the vSwitch.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetTransitRouterMulticastDomainMembersMemberResult(dict):
+    def __init__(__self__, *,
+                 group_ip_address: str,
+                 id: str,
+                 network_interface_id: str,
+                 status: str,
+                 transit_router_multicast_domain_id: str,
+                 vpc_id: str):
+        """
+        :param str group_ip_address: The IP address of the multicast group to which the multicast member belongs. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
+        :param str id: The `key` of the resource supplied above.The value is formulated as `<transit_router_multicast_domain_id>:<group_ip_address>:<network_interface_id>`.
+        :param str network_interface_id: The ID of the ENI.
+        :param str status: The status of the resource
+        :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
+        :param str vpc_id: The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
+        """
+        pulumi.set(__self__, "group_ip_address", group_ip_address)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="groupIpAddress")
+    def group_ip_address(self) -> str:
+        """
+        The IP address of the multicast group to which the multicast member belongs. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
+        """
+        return pulumi.get(self, "group_ip_address")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The `key` of the resource supplied above.The value is formulated as `<transit_router_multicast_domain_id>:<group_ip_address>:<network_interface_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="networkInterfaceId")
+    def network_interface_id(self) -> str:
+        """
+        The ID of the ENI.
+        """
+        return pulumi.get(self, "network_interface_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouterMulticastDomainId")
+    def transit_router_multicast_domain_id(self) -> str:
+        """
+        The ID of the multicast domain to which the multicast member belongs.
+        """
+        return pulumi.get(self, "transit_router_multicast_domain_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class GetTransitRouterMulticastDomainPeerMembersMemberResult(dict):
+    def __init__(__self__, *,
+                 group_ip_address: str,
+                 id: str,
+                 peer_transit_router_multicast_domain_id: str,
+                 status: str,
+                 transit_router_multicast_domain_id: str):
+        """
+        :param str group_ip_address: The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
+        :param str id: The `key` of the resource supplied above.The value is formulated as `<transit_router_multicast_domain_id>:<group_ip_address>:<peer_transit_router_multicast_domain_id>`.
+        :param str peer_transit_router_multicast_domain_id: The multicast domain ID of the peer transit router.
+        :param str status: The status of the resource
+        :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
+        """
+        pulumi.set(__self__, "group_ip_address", group_ip_address)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "peer_transit_router_multicast_domain_id", peer_transit_router_multicast_domain_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+
+    @property
+    @pulumi.getter(name="groupIpAddress")
+    def group_ip_address(self) -> str:
+        """
+        The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
+        """
+        return pulumi.get(self, "group_ip_address")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The `key` of the resource supplied above.The value is formulated as `<transit_router_multicast_domain_id>:<group_ip_address>:<peer_transit_router_multicast_domain_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="peerTransitRouterMulticastDomainId")
+    def peer_transit_router_multicast_domain_id(self) -> str:
+        """
+        The multicast domain ID of the peer transit router.
+        """
+        return pulumi.get(self, "peer_transit_router_multicast_domain_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouterMulticastDomainId")
+    def transit_router_multicast_domain_id(self) -> str:
+        """
+        The ID of the multicast domain to which the multicast member belongs.
+        """
+        return pulumi.get(self, "transit_router_multicast_domain_id")
+
+
+@pulumi.output_type
+class GetTransitRouterMulticastDomainSourcesSourceResult(dict):
+    def __init__(__self__, *,
+                 group_ip_address: str,
+                 id: str,
+                 network_interface_id: str,
+                 status: str,
+                 transit_router_multicast_domain_id: str,
+                 vpc_id: str):
+        """
+        :param str group_ip_address: The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
+        :param str network_interface_id: ENI ID of the multicast source.
+        :param str status: The status of the resource.
+        :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast source belongs.
+        :param str vpc_id: The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
+        """
+        pulumi.set(__self__, "group_ip_address", group_ip_address)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="groupIpAddress")
+    def group_ip_address(self) -> str:
+        """
+        The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
+        """
+        return pulumi.get(self, "group_ip_address")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="networkInterfaceId")
+    def network_interface_id(self) -> str:
+        """
+        ENI ID of the multicast source.
+        """
+        return pulumi.get(self, "network_interface_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouterMulticastDomainId")
+    def transit_router_multicast_domain_id(self) -> str:
+        """
+        The ID of the multicast domain to which the multicast source belongs.
+        """
+        return pulumi.get(self, "transit_router_multicast_domain_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class GetTransitRouterMulticastDomainsDomainResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 status: str,
+                 transit_router_id: str,
+                 transit_router_multicast_domain_description: str,
+                 transit_router_multicast_domain_id: str,
+                 transit_router_multicast_domain_name: str):
+        """
+        :param str id: The ID of the Transit Router Multicast Domain.
+        :param str status: The status of the multicast domain. Valid Value: `Active`.
+        :param str transit_router_id: The ID of the transit router.
+        :param str transit_router_multicast_domain_description: The description of the Transit Router Multicast Domain.
+        :param str transit_router_multicast_domain_id: The ID of the multicast domain.
+        :param str transit_router_multicast_domain_name: The name of the Transit Router Multicast Domain.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        pulumi.set(__self__, "transit_router_multicast_domain_description", transit_router_multicast_domain_description)
+        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        pulumi.set(__self__, "transit_router_multicast_domain_name", transit_router_multicast_domain_name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Transit Router Multicast Domain.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the multicast domain. Valid Value: `Active`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouterId")
+    def transit_router_id(self) -> str:
+        """
+        The ID of the transit router.
+        """
+        return pulumi.get(self, "transit_router_id")
+
+    @property
+    @pulumi.getter(name="transitRouterMulticastDomainDescription")
+    def transit_router_multicast_domain_description(self) -> str:
+        """
+        The description of the Transit Router Multicast Domain.
+        """
+        return pulumi.get(self, "transit_router_multicast_domain_description")
+
+    @property
+    @pulumi.getter(name="transitRouterMulticastDomainId")
+    def transit_router_multicast_domain_id(self) -> str:
+        """
+        The ID of the multicast domain.
+        """
+        return pulumi.get(self, "transit_router_multicast_domain_id")
+
+    @property
+    @pulumi.getter(name="transitRouterMulticastDomainName")
+    def transit_router_multicast_domain_name(self) -> str:
+        """
+        The name of the Transit Router Multicast Domain.
+        """
+        return pulumi.get(self, "transit_router_multicast_domain_name")
+
+
+@pulumi.output_type
 class GetTransitRouterPeerAttachmentsAttachmentResult(dict):
     def __init__(__self__, *,
                  auto_publish_route_enabled: bool,
@@ -1741,6 +2515,112 @@ class GetTransitRouterPeerAttachmentsAttachmentResult(dict):
         The ID of transit router.
         """
         return pulumi.get(self, "transit_router_id")
+
+
+@pulumi.output_type
+class GetTransitRouterPrefixListAssociationsAssociationResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 next_hop: str,
+                 next_hop_instance_id: str,
+                 next_hop_type: str,
+                 owner_uid: int,
+                 prefix_list_id: str,
+                 status: str,
+                 transit_router_id: str,
+                 transit_router_table_id: str):
+        """
+        :param str id: The ID of the Cen Transit Router Prefix List Association. It formats as `<prefix_list_id>:<transit_router_id>:<transit_router_table_id>:<next_hop>`.
+        :param str next_hop: The ID of the next hop connection.
+        :param str next_hop_instance_id: The ID of the network instance associated with the next hop connection.
+        :param str next_hop_type: The type of the next hop.
+        :param int owner_uid: The ID of the Alibaba Cloud account to which the prefix list belongs.
+        :param str prefix_list_id: The ID of the prefix list.
+        :param str status: The status of the prefix list.
+        :param str transit_router_id: The ID of the transit router.
+        :param str transit_router_table_id: The ID of the route table of the transit router.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "next_hop", next_hop)
+        pulumi.set(__self__, "next_hop_instance_id", next_hop_instance_id)
+        pulumi.set(__self__, "next_hop_type", next_hop_type)
+        pulumi.set(__self__, "owner_uid", owner_uid)
+        pulumi.set(__self__, "prefix_list_id", prefix_list_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        pulumi.set(__self__, "transit_router_table_id", transit_router_table_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Cen Transit Router Prefix List Association. It formats as `<prefix_list_id>:<transit_router_id>:<transit_router_table_id>:<next_hop>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> str:
+        """
+        The ID of the next hop connection.
+        """
+        return pulumi.get(self, "next_hop")
+
+    @property
+    @pulumi.getter(name="nextHopInstanceId")
+    def next_hop_instance_id(self) -> str:
+        """
+        The ID of the network instance associated with the next hop connection.
+        """
+        return pulumi.get(self, "next_hop_instance_id")
+
+    @property
+    @pulumi.getter(name="nextHopType")
+    def next_hop_type(self) -> str:
+        """
+        The type of the next hop.
+        """
+        return pulumi.get(self, "next_hop_type")
+
+    @property
+    @pulumi.getter(name="ownerUid")
+    def owner_uid(self) -> int:
+        """
+        The ID of the Alibaba Cloud account to which the prefix list belongs.
+        """
+        return pulumi.get(self, "owner_uid")
+
+    @property
+    @pulumi.getter(name="prefixListId")
+    def prefix_list_id(self) -> str:
+        """
+        The ID of the prefix list.
+        """
+        return pulumi.get(self, "prefix_list_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the prefix list.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouterId")
+    def transit_router_id(self) -> str:
+        """
+        The ID of the transit router.
+        """
+        return pulumi.get(self, "transit_router_id")
+
+    @property
+    @pulumi.getter(name="transitRouterTableId")
+    def transit_router_table_id(self) -> str:
+        """
+        The ID of the route table of the transit router.
+        """
+        return pulumi.get(self, "transit_router_table_id")
 
 
 @pulumi.output_type
@@ -2254,6 +3134,155 @@ class GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult(dict):
     def zone_id(self) -> str:
         """
         The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
+    def __init__(__self__, *,
+                 auto_publish_route_enabled: bool,
+                 create_time: str,
+                 id: str,
+                 resource_type: str,
+                 status: str,
+                 transit_router_attachment_description: str,
+                 transit_router_attachment_id: str,
+                 transit_router_attachment_name: str,
+                 transit_router_id: str,
+                 vpn_id: str,
+                 vpn_owner_id: str,
+                 zones: Sequence['outputs.GetTransitRouterVpnAttachmentsAttachmentZoneResult']):
+        """
+        :param bool auto_publish_route_enabled: Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+        :param str create_time: The creation time of the resource.
+        :param str resource_type: Type of the resource.
+        :param str status: The status of the transit router attachment.
+        :param str transit_router_attachment_description: The description of the VPN connection.
+        :param str transit_router_attachment_name: The name of the VPN connection.
+        :param str transit_router_id: The ID of the forwarding router instance.
+        :param str vpn_id: The id of the vpn.
+        :param str vpn_owner_id: The owner id of vpn.
+        :param Sequence['GetTransitRouterVpnAttachmentsAttachmentZoneArgs'] zones: The list of zone mapping.
+        """
+        pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        pulumi.set(__self__, "vpn_id", vpn_id)
+        pulumi.set(__self__, "vpn_owner_id", vpn_owner_id)
+        pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter(name="autoPublishRouteEnabled")
+    def auto_publish_route_enabled(self) -> bool:
+        """
+        Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+        """
+        return pulumi.get(self, "auto_publish_route_enabled")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        Type of the resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the transit router attachment.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouterAttachmentDescription")
+    def transit_router_attachment_description(self) -> str:
+        """
+        The description of the VPN connection.
+        """
+        return pulumi.get(self, "transit_router_attachment_description")
+
+    @property
+    @pulumi.getter(name="transitRouterAttachmentId")
+    def transit_router_attachment_id(self) -> str:
+        return pulumi.get(self, "transit_router_attachment_id")
+
+    @property
+    @pulumi.getter(name="transitRouterAttachmentName")
+    def transit_router_attachment_name(self) -> str:
+        """
+        The name of the VPN connection.
+        """
+        return pulumi.get(self, "transit_router_attachment_name")
+
+    @property
+    @pulumi.getter(name="transitRouterId")
+    def transit_router_id(self) -> str:
+        """
+        The ID of the forwarding router instance.
+        """
+        return pulumi.get(self, "transit_router_id")
+
+    @property
+    @pulumi.getter(name="vpnId")
+    def vpn_id(self) -> str:
+        """
+        The id of the vpn.
+        """
+        return pulumi.get(self, "vpn_id")
+
+    @property
+    @pulumi.getter(name="vpnOwnerId")
+    def vpn_owner_id(self) -> str:
+        """
+        The owner id of vpn.
+        """
+        return pulumi.get(self, "vpn_owner_id")
+
+    @property
+    @pulumi.getter
+    def zones(self) -> Sequence['outputs.GetTransitRouterVpnAttachmentsAttachmentZoneResult']:
+        """
+        The list of zone mapping.
+        """
+        return pulumi.get(self, "zones")
+
+
+@pulumi.output_type
+class GetTransitRouterVpnAttachmentsAttachmentZoneResult(dict):
+    def __init__(__self__, *,
+                 zone_id: str):
+        """
+        :param str zone_id: The id of the zone.
+        """
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The id of the zone.
         """
         return pulumi.get(self, "zone_id")
 

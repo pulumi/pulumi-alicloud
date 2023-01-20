@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetEcsKeyPairs.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetEcsKeyPairs.InvokeAsync(new AliCloud.Ecs.GetEcsKeyPairsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "key_pair_name",
-        ///             },
-        ///             NameRegex = "key_pair_name",
-        ///         }));
-        ///         this.FirstEcsKeyPairId = example.Apply(example =&gt; example.Pairs?[0]?.Id);
-        ///     }
+        ///             "key_pair_name",
+        ///         },
+        ///         NameRegex = "key_pair_name",
+        ///     });
         /// 
-        ///     [Output("firstEcsKeyPairId")]
-        ///     public Output&lt;string&gt; FirstEcsKeyPairId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsKeyPairId"] = example.Apply(getEcsKeyPairsResult =&gt; getEcsKeyPairsResult.Pairs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsKeyPairsResult> InvokeAsync(GetEcsKeyPairsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsKeyPairsResult>("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args ?? new GetEcsKeyPairsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsKeyPairsResult>("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args ?? new GetEcsKeyPairsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetEcsKeyPairs.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetEcsKeyPairs.InvokeAsync(new AliCloud.Ecs.GetEcsKeyPairsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "key_pair_name",
-        ///             },
-        ///             NameRegex = "key_pair_name",
-        ///         }));
-        ///         this.FirstEcsKeyPairId = example.Apply(example =&gt; example.Pairs?[0]?.Id);
-        ///     }
+        ///             "key_pair_name",
+        ///         },
+        ///         NameRegex = "key_pair_name",
+        ///     });
         /// 
-        ///     [Output("firstEcsKeyPairId")]
-        ///     public Output&lt;string&gt; FirstEcsKeyPairId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsKeyPairId"] = example.Apply(getEcsKeyPairsResult =&gt; getEcsKeyPairsResult.Pairs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsKeyPairsResult> Invoke(GetEcsKeyPairsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsKeyPairsResult>("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args ?? new GetEcsKeyPairsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsKeyPairsResult>("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args ?? new GetEcsKeyPairsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsKeyPairsArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsKeyPairsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The finger print of the key pair.
@@ -143,9 +141,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsKeyPairsArgs()
         {
         }
+        public static new GetEcsKeyPairsArgs Empty => new GetEcsKeyPairsArgs();
     }
 
-    public sealed class GetEcsKeyPairsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsKeyPairsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The finger print of the key pair.
@@ -195,6 +194,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsKeyPairsInvokeArgs()
         {
         }
+        public static new GetEcsKeyPairsInvokeArgs Empty => new GetEcsKeyPairsInvokeArgs();
     }
 
 

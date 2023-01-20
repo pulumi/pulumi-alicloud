@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const nameRegex = alicloud.securitycenter.getGroups({
  *     nameRegex: "^my-Group",
  * });
- * export const securityCenterGroups = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
+ * export const securityCenterGroups = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:securitycenter/getGroups:getGroups", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -67,9 +65,27 @@ export interface GetGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Security Center Groups of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.133.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const nameRegex = alicloud.securitycenter.getGroups({
+ *     nameRegex: "^my-Group",
+ * });
+ * export const securityCenterGroups = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * ```
+ */
 export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
-    return pulumi.output(args).apply(a => getGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getGroups(a, opts))
 }
 
 /**

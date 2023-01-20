@@ -23,19 +23,15 @@ namespace Pulumi.AliCloud.RocketMQ
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new AliCloud.RocketMQ.Qos("default", new AliCloud.RocketMQ.QosArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var @default = new AliCloud.RocketMQ.Qos("default");
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +43,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/qos:Qos")]
-    public partial class Qos : Pulumi.CustomResource
+    public partial class Qos : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the QoS policy to be created. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
@@ -99,7 +95,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
-    public sealed class QosArgs : Pulumi.ResourceArgs
+    public sealed class QosArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the QoS policy to be created. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
@@ -110,9 +106,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public QosArgs()
         {
         }
+        public static new QosArgs Empty => new QosArgs();
     }
 
-    public sealed class QosState : Pulumi.ResourceArgs
+    public sealed class QosState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the QoS policy to be created. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
@@ -123,5 +120,6 @@ namespace Pulumi.AliCloud.RocketMQ
         public QosState()
         {
         }
+        public static new QosState Empty => new QosState();
     }
 }

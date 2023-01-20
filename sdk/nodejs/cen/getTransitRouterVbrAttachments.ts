@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -11,11 +12,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.126.0+
  */
 export function getTransitRouterVbrAttachments(args: GetTransitRouterVbrAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterVbrAttachmentsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", {
         "cenId": args.cenId,
         "ids": args.ids,
@@ -72,9 +70,13 @@ export interface GetTransitRouterVbrAttachmentsResult {
     readonly status?: string;
     readonly transitRouterId?: string;
 }
-
+/**
+ * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
+ *
+ * > **NOTE:** Available in 1.126.0+
+ */
 export function getTransitRouterVbrAttachmentsOutput(args: GetTransitRouterVbrAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterVbrAttachmentsResult> {
-    return pulumi.output(args).apply(a => getTransitRouterVbrAttachments(a, opts))
+    return pulumi.output(args).apply((a: any) => getTransitRouterVbrAttachments(a, opts))
 }
 
 /**

@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AutoProvisioningGroup{}
 	case "alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy":
 		r = &AutoSnapshotPolicy{}
+	case "alicloud:ecs/capacityReservation:CapacityReservation":
+		r = &CapacityReservation{}
 	case "alicloud:ecs/command:Command":
 		r = &Command{}
 	case "alicloud:ecs/copyImage:CopyImage":
@@ -81,6 +83,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EipAddress{}
 	case "alicloud:ecs/eipAssociation:EipAssociation":
 		r = &EipAssociation{}
+	case "alicloud:ecs/elasticityAssurance:ElasticityAssurance":
+		r = &ElasticityAssurance{}
 	case "alicloud:ecs/hpcCluster:HpcCluster":
 		r = &HpcCluster{}
 	case "alicloud:ecs/image:Image":
@@ -139,6 +143,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/autoSnapshotPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/capacityReservation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -274,6 +283,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/eipAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/elasticityAssurance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

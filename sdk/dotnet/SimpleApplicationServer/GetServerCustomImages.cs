@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.SimpleApplicationServer.GetServerCustomImages.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.SimpleApplicationServer.GetServerCustomImages.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerCustomImagesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.SimpleApplicationServerCustomImageId1 = ids.Apply(ids =&gt; ids.Images?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.SimpleApplicationServer.GetServerCustomImages.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerCustomImagesArgs
-        ///         {
-        ///             NameRegex = "^my-CustomImage",
-        ///         }));
-        ///         this.SimpleApplicationServerCustomImageId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Images?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("simpleApplicationServerCustomImageId1")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerCustomImageId1 { get; set; }
-        ///     [Output("simpleApplicationServerCustomImageId2")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerCustomImageId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.SimpleApplicationServer.GetServerCustomImages.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-CustomImage",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerCustomImageId1"] = ids.Apply(getServerCustomImagesResult =&gt; getServerCustomImagesResult.Images[0]?.Id),
+        ///         ["simpleApplicationServerCustomImageId2"] = nameRegex.Apply(getServerCustomImagesResult =&gt; getServerCustomImagesResult.Images[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerCustomImagesResult> InvokeAsync(GetServerCustomImagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.SimpleApplicationServer.GetServerCustomImages.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.SimpleApplicationServer.GetServerCustomImages.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerCustomImagesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.SimpleApplicationServerCustomImageId1 = ids.Apply(ids =&gt; ids.Images?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.SimpleApplicationServer.GetServerCustomImages.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerCustomImagesArgs
-        ///         {
-        ///             NameRegex = "^my-CustomImage",
-        ///         }));
-        ///         this.SimpleApplicationServerCustomImageId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Images?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("simpleApplicationServerCustomImageId1")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerCustomImageId1 { get; set; }
-        ///     [Output("simpleApplicationServerCustomImageId2")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerCustomImageId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.SimpleApplicationServer.GetServerCustomImages.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-CustomImage",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerCustomImageId1"] = ids.Apply(getServerCustomImagesResult =&gt; getServerCustomImagesResult.Images[0]?.Id),
+        ///         ["simpleApplicationServerCustomImageId2"] = nameRegex.Apply(getServerCustomImagesResult =&gt; getServerCustomImagesResult.Images[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerCustomImagesResult> Invoke(GetServerCustomImagesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServerCustomImagesArgs : Pulumi.InvokeArgs
+    public sealed class GetServerCustomImagesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -131,9 +127,10 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public GetServerCustomImagesArgs()
         {
         }
+        public static new GetServerCustomImagesArgs Empty => new GetServerCustomImagesArgs();
     }
 
-    public sealed class GetServerCustomImagesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServerCustomImagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -159,6 +156,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public GetServerCustomImagesInvokeArgs()
         {
         }
+        public static new GetServerCustomImagesInvokeArgs Empty => new GetServerCustomImagesInvokeArgs();
     }
 
 

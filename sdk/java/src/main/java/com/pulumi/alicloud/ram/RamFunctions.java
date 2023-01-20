@@ -12,6 +12,8 @@ import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
 import com.pulumi.alicloud.ram.inputs.GetGroupsPlainArgs;
 import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
 import com.pulumi.alicloud.ram.inputs.GetPoliciesPlainArgs;
+import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentPlainArgs;
 import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
 import com.pulumi.alicloud.ram.inputs.GetRolesPlainArgs;
 import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
@@ -22,6 +24,7 @@ import com.pulumi.alicloud.ram.outputs.GetAccountAliasResult;
 import com.pulumi.alicloud.ram.outputs.GetAccountAliasesResult;
 import com.pulumi.alicloud.ram.outputs.GetGroupsResult;
 import com.pulumi.alicloud.ram.outputs.GetPoliciesResult;
+import com.pulumi.alicloud.ram.outputs.GetPolicyDocumentResult;
 import com.pulumi.alicloud.ram.outputs.GetRolesResult;
 import com.pulumi.alicloud.ram.outputs.GetSamlProvidersResult;
 import com.pulumi.alicloud.ram.outputs.GetUsersResult;
@@ -289,7 +292,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -329,7 +332,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -369,7 +372,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -409,7 +412,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -449,7 +452,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -489,7 +492,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -763,6 +766,2304 @@ public final class RamFunctions {
      */
     public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ram/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source Generates a RAM policy document of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+.
+     * 
+     * ## Example Usage
+     * ### Basic Example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version(&#34;1&#34;)
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;oss:*&#34;)
+     *                 .resources(                
+     *                     &#34;acs:oss:*:*:myphotos&#34;,
+     *                     &#34;acs:oss:*:*:myphotos/*&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;tf-test&#34;)
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Multiple Condition Keys and Values
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version(&#34;1&#34;)
+     *             .statements(            
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(                    
+     *                         &#34;oss:ListBuckets&#34;,
+     *                         &#34;oss:GetBucketStat&#34;,
+     *                         &#34;oss:GetBucketInfo&#34;,
+     *                         &#34;oss:GetBucketTagging&#34;,
+     *                         &#34;oss:GetBucketAcl&#34;)
+     *                     .resources(&#34;acs:oss:*:*:*&#34;)
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(                    
+     *                         &#34;oss:GetObject&#34;,
+     *                         &#34;oss:GetObjectAcl&#34;)
+     *                     .resources(&#34;acs:oss:*:*:myphotos/hangzhou/2015/*&#34;)
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;oss:ListObjects&#34;)
+     *                     .resources(&#34;acs:oss:*:*:myphotos&#34;)
+     *                     .conditions(                    
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator(&#34;StringLike&#34;)
+     *                             .variable(&#34;oss:Delimiter&#34;)
+     *                             .values(&#34;/&#34;)
+     *                             .build(),
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator(&#34;StringLike&#34;)
+     *                             .variable(&#34;oss:Prefix&#34;)
+     *                             .values(                            
+     *                                 &#34;&#34;,
+     *                                 &#34;hangzhou/&#34;,
+     *                                 &#34;hangzhou/2015/*&#34;)
+     *                             .build())
+     *                     .build())
+     *             .build());
+     * 
+     *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;tf-test-condition&#34;)
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with RAM Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;RAM&#34;)
+     *                     .identifiers(&#34;acs:ram::123456789012****:root&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with Service Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;Service&#34;)
+     *                     .identifiers(&#34;ecs.aliyuncs.com&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with Federated Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;Federated&#34;)
+     *                     .identifiers(&#34;acs:ram::123456789012****:saml-provider/testprovider&#34;)
+     *                     .build())
+     *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                     .operator(&#34;StringEquals&#34;)
+     *                     .variable(&#34;saml:recipient&#34;)
+     *                     .values(&#34;https://signin.aliyun.com/saml-role/sso&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPolicyDocumentResult> getPolicyDocument() {
+        return getPolicyDocument(GetPolicyDocumentArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source Generates a RAM policy document of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+.
+     * 
+     * ## Example Usage
+     * ### Basic Example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version(&#34;1&#34;)
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;oss:*&#34;)
+     *                 .resources(                
+     *                     &#34;acs:oss:*:*:myphotos&#34;,
+     *                     &#34;acs:oss:*:*:myphotos/*&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;tf-test&#34;)
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Multiple Condition Keys and Values
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version(&#34;1&#34;)
+     *             .statements(            
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(                    
+     *                         &#34;oss:ListBuckets&#34;,
+     *                         &#34;oss:GetBucketStat&#34;,
+     *                         &#34;oss:GetBucketInfo&#34;,
+     *                         &#34;oss:GetBucketTagging&#34;,
+     *                         &#34;oss:GetBucketAcl&#34;)
+     *                     .resources(&#34;acs:oss:*:*:*&#34;)
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(                    
+     *                         &#34;oss:GetObject&#34;,
+     *                         &#34;oss:GetObjectAcl&#34;)
+     *                     .resources(&#34;acs:oss:*:*:myphotos/hangzhou/2015/*&#34;)
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;oss:ListObjects&#34;)
+     *                     .resources(&#34;acs:oss:*:*:myphotos&#34;)
+     *                     .conditions(                    
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator(&#34;StringLike&#34;)
+     *                             .variable(&#34;oss:Delimiter&#34;)
+     *                             .values(&#34;/&#34;)
+     *                             .build(),
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator(&#34;StringLike&#34;)
+     *                             .variable(&#34;oss:Prefix&#34;)
+     *                             .values(                            
+     *                                 &#34;&#34;,
+     *                                 &#34;hangzhou/&#34;,
+     *                                 &#34;hangzhou/2015/*&#34;)
+     *                             .build())
+     *                     .build())
+     *             .build());
+     * 
+     *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;tf-test-condition&#34;)
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with RAM Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;RAM&#34;)
+     *                     .identifiers(&#34;acs:ram::123456789012****:root&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with Service Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;Service&#34;)
+     *                     .identifiers(&#34;ecs.aliyuncs.com&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with Federated Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;Federated&#34;)
+     *                     .identifiers(&#34;acs:ram::123456789012****:saml-provider/testprovider&#34;)
+     *                     .build())
+     *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                     .operator(&#34;StringEquals&#34;)
+     *                     .variable(&#34;saml:recipient&#34;)
+     *                     .values(&#34;https://signin.aliyun.com/saml-role/sso&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPolicyDocumentResult> getPolicyDocumentPlain() {
+        return getPolicyDocumentPlain(GetPolicyDocumentPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source Generates a RAM policy document of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+.
+     * 
+     * ## Example Usage
+     * ### Basic Example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version(&#34;1&#34;)
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;oss:*&#34;)
+     *                 .resources(                
+     *                     &#34;acs:oss:*:*:myphotos&#34;,
+     *                     &#34;acs:oss:*:*:myphotos/*&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;tf-test&#34;)
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Multiple Condition Keys and Values
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version(&#34;1&#34;)
+     *             .statements(            
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(                    
+     *                         &#34;oss:ListBuckets&#34;,
+     *                         &#34;oss:GetBucketStat&#34;,
+     *                         &#34;oss:GetBucketInfo&#34;,
+     *                         &#34;oss:GetBucketTagging&#34;,
+     *                         &#34;oss:GetBucketAcl&#34;)
+     *                     .resources(&#34;acs:oss:*:*:*&#34;)
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(                    
+     *                         &#34;oss:GetObject&#34;,
+     *                         &#34;oss:GetObjectAcl&#34;)
+     *                     .resources(&#34;acs:oss:*:*:myphotos/hangzhou/2015/*&#34;)
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;oss:ListObjects&#34;)
+     *                     .resources(&#34;acs:oss:*:*:myphotos&#34;)
+     *                     .conditions(                    
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator(&#34;StringLike&#34;)
+     *                             .variable(&#34;oss:Delimiter&#34;)
+     *                             .values(&#34;/&#34;)
+     *                             .build(),
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator(&#34;StringLike&#34;)
+     *                             .variable(&#34;oss:Prefix&#34;)
+     *                             .values(                            
+     *                                 &#34;&#34;,
+     *                                 &#34;hangzhou/&#34;,
+     *                                 &#34;hangzhou/2015/*&#34;)
+     *                             .build())
+     *                     .build())
+     *             .build());
+     * 
+     *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;tf-test-condition&#34;)
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with RAM Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;RAM&#34;)
+     *                     .identifiers(&#34;acs:ram::123456789012****:root&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with Service Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;Service&#34;)
+     *                     .identifiers(&#34;ecs.aliyuncs.com&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with Federated Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;Federated&#34;)
+     *                     .identifiers(&#34;acs:ram::123456789012****:saml-provider/testprovider&#34;)
+     *                     .build())
+     *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                     .operator(&#34;StringEquals&#34;)
+     *                     .variable(&#34;saml:recipient&#34;)
+     *                     .values(&#34;https://signin.aliyun.com/saml-role/sso&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPolicyDocumentResult> getPolicyDocument(GetPolicyDocumentArgs args) {
+        return getPolicyDocument(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source Generates a RAM policy document of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+.
+     * 
+     * ## Example Usage
+     * ### Basic Example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version(&#34;1&#34;)
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;oss:*&#34;)
+     *                 .resources(                
+     *                     &#34;acs:oss:*:*:myphotos&#34;,
+     *                     &#34;acs:oss:*:*:myphotos/*&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;tf-test&#34;)
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Multiple Condition Keys and Values
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version(&#34;1&#34;)
+     *             .statements(            
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(                    
+     *                         &#34;oss:ListBuckets&#34;,
+     *                         &#34;oss:GetBucketStat&#34;,
+     *                         &#34;oss:GetBucketInfo&#34;,
+     *                         &#34;oss:GetBucketTagging&#34;,
+     *                         &#34;oss:GetBucketAcl&#34;)
+     *                     .resources(&#34;acs:oss:*:*:*&#34;)
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(                    
+     *                         &#34;oss:GetObject&#34;,
+     *                         &#34;oss:GetObjectAcl&#34;)
+     *                     .resources(&#34;acs:oss:*:*:myphotos/hangzhou/2015/*&#34;)
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;oss:ListObjects&#34;)
+     *                     .resources(&#34;acs:oss:*:*:myphotos&#34;)
+     *                     .conditions(                    
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator(&#34;StringLike&#34;)
+     *                             .variable(&#34;oss:Delimiter&#34;)
+     *                             .values(&#34;/&#34;)
+     *                             .build(),
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator(&#34;StringLike&#34;)
+     *                             .variable(&#34;oss:Prefix&#34;)
+     *                             .values(                            
+     *                                 &#34;&#34;,
+     *                                 &#34;hangzhou/&#34;,
+     *                                 &#34;hangzhou/2015/*&#34;)
+     *                             .build())
+     *                     .build())
+     *             .build());
+     * 
+     *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;tf-test-condition&#34;)
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with RAM Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;RAM&#34;)
+     *                     .identifiers(&#34;acs:ram::123456789012****:root&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with Service Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;Service&#34;)
+     *                     .identifiers(&#34;ecs.aliyuncs.com&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with Federated Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;Federated&#34;)
+     *                     .identifiers(&#34;acs:ram::123456789012****:saml-provider/testprovider&#34;)
+     *                     .build())
+     *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                     .operator(&#34;StringEquals&#34;)
+     *                     .variable(&#34;saml:recipient&#34;)
+     *                     .values(&#34;https://signin.aliyun.com/saml-role/sso&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPolicyDocumentResult> getPolicyDocumentPlain(GetPolicyDocumentPlainArgs args) {
+        return getPolicyDocumentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source Generates a RAM policy document of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+.
+     * 
+     * ## Example Usage
+     * ### Basic Example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version(&#34;1&#34;)
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;oss:*&#34;)
+     *                 .resources(                
+     *                     &#34;acs:oss:*:*:myphotos&#34;,
+     *                     &#34;acs:oss:*:*:myphotos/*&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;tf-test&#34;)
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Multiple Condition Keys and Values
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version(&#34;1&#34;)
+     *             .statements(            
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(                    
+     *                         &#34;oss:ListBuckets&#34;,
+     *                         &#34;oss:GetBucketStat&#34;,
+     *                         &#34;oss:GetBucketInfo&#34;,
+     *                         &#34;oss:GetBucketTagging&#34;,
+     *                         &#34;oss:GetBucketAcl&#34;)
+     *                     .resources(&#34;acs:oss:*:*:*&#34;)
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(                    
+     *                         &#34;oss:GetObject&#34;,
+     *                         &#34;oss:GetObjectAcl&#34;)
+     *                     .resources(&#34;acs:oss:*:*:myphotos/hangzhou/2015/*&#34;)
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;oss:ListObjects&#34;)
+     *                     .resources(&#34;acs:oss:*:*:myphotos&#34;)
+     *                     .conditions(                    
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator(&#34;StringLike&#34;)
+     *                             .variable(&#34;oss:Delimiter&#34;)
+     *                             .values(&#34;/&#34;)
+     *                             .build(),
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator(&#34;StringLike&#34;)
+     *                             .variable(&#34;oss:Prefix&#34;)
+     *                             .values(                            
+     *                                 &#34;&#34;,
+     *                                 &#34;hangzhou/&#34;,
+     *                                 &#34;hangzhou/2015/*&#34;)
+     *                             .build())
+     *                     .build())
+     *             .build());
+     * 
+     *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;tf-test-condition&#34;)
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with RAM Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;RAM&#34;)
+     *                     .identifiers(&#34;acs:ram::123456789012****:root&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with Service Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;Service&#34;)
+     *                     .identifiers(&#34;ecs.aliyuncs.com&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with Federated Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;Federated&#34;)
+     *                     .identifiers(&#34;acs:ram::123456789012****:saml-provider/testprovider&#34;)
+     *                     .build())
+     *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                     .operator(&#34;StringEquals&#34;)
+     *                     .variable(&#34;saml:recipient&#34;)
+     *                     .values(&#34;https://signin.aliyun.com/saml-role/sso&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPolicyDocumentResult> getPolicyDocument(GetPolicyDocumentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getPolicyDocument:getPolicyDocument", TypeShape.of(GetPolicyDocumentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source Generates a RAM policy document of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.184.0+.
+     * 
+     * ## Example Usage
+     * ### Basic Example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version(&#34;1&#34;)
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;oss:*&#34;)
+     *                 .resources(                
+     *                     &#34;acs:oss:*:*:myphotos&#34;,
+     *                     &#34;acs:oss:*:*:myphotos/*&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;tf-test&#34;)
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Multiple Condition Keys and Values
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .version(&#34;1&#34;)
+     *             .statements(            
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(                    
+     *                         &#34;oss:ListBuckets&#34;,
+     *                         &#34;oss:GetBucketStat&#34;,
+     *                         &#34;oss:GetBucketInfo&#34;,
+     *                         &#34;oss:GetBucketTagging&#34;,
+     *                         &#34;oss:GetBucketAcl&#34;)
+     *                     .resources(&#34;acs:oss:*:*:*&#34;)
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(                    
+     *                         &#34;oss:GetObject&#34;,
+     *                         &#34;oss:GetObjectAcl&#34;)
+     *                     .resources(&#34;acs:oss:*:*:myphotos/hangzhou/2015/*&#34;)
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;oss:ListObjects&#34;)
+     *                     .resources(&#34;acs:oss:*:*:myphotos&#34;)
+     *                     .conditions(                    
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator(&#34;StringLike&#34;)
+     *                             .variable(&#34;oss:Delimiter&#34;)
+     *                             .values(&#34;/&#34;)
+     *                             .build(),
+     *                         GetPolicyDocumentStatementConditionArgs.builder()
+     *                             .operator(&#34;StringLike&#34;)
+     *                             .variable(&#34;oss:Prefix&#34;)
+     *                             .values(                            
+     *                                 &#34;&#34;,
+     *                                 &#34;hangzhou/&#34;,
+     *                                 &#34;hangzhou/2015/*&#34;)
+     *                             .build())
+     *                     .build())
+     *             .build());
+     * 
+     *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;tf-test-condition&#34;)
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with RAM Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;RAM&#34;)
+     *                     .identifiers(&#34;acs:ram::123456789012****:root&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with Service Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;Service&#34;)
+     *                     .identifiers(&#34;ecs.aliyuncs.com&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * ### Example Assume-Role Policy with Federated Principal
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(GetPolicyDocumentStatementArgs.builder()
+     *                 .effect(&#34;Allow&#34;)
+     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                     .entity(&#34;Federated&#34;)
+     *                     .identifiers(&#34;acs:ram::123456789012****:saml-provider/testprovider&#34;)
+     *                     .build())
+     *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                     .operator(&#34;StringEquals&#34;)
+     *                     .variable(&#34;saml:recipient&#34;)
+     *                     .values(&#34;https://signin.aliyun.com/saml-role/sso&#34;)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *             .force(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPolicyDocumentResult> getPolicyDocumentPlain(GetPolicyDocumentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ram/getPolicyDocument:getPolicyDocument", TypeShape.of(GetPolicyDocumentResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
@@ -1279,7 +3580,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1321,7 +3622,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1363,7 +3664,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1405,7 +3706,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1447,7 +3748,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1489,7 +3790,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

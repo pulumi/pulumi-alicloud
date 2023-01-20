@@ -21,26 +21,24 @@ namespace Pulumi.AliCloud.Sag
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Sag.SmartagFlowLog("example", new()
     ///     {
-    ///         var example = new AliCloud.Sag.SmartagFlowLog("example", new AliCloud.Sag.SmartagFlowLogArgs
-    ///         {
-    ///             FlowLogName = "example_value",
-    ///             LogstoreName = "example_value",
-    ///             NetflowServerIp = "example_value",
-    ///             NetflowServerPort = 1,
-    ///             OutputType = "all",
-    ///             ProjectName = "example_value",
-    ///             SlsRegionId = "example_value",
-    ///         });
-    ///     }
+    ///         FlowLogName = "example_value",
+    ///         LogstoreName = "example_value",
+    ///         NetflowServerIp = "example_value",
+    ///         NetflowServerPort = 1,
+    ///         OutputType = "all",
+    ///         ProjectName = "example_value",
+    ///         SlsRegionId = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +50,7 @@ namespace Pulumi.AliCloud.Sag
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sag/smartagFlowLog:SmartagFlowLog")]
-    public partial class SmartagFlowLog : Pulumi.CustomResource
+    public partial class SmartagFlowLog : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
@@ -103,10 +101,7 @@ namespace Pulumi.AliCloud.Sag
         public Output<string> NetflowVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The location where the flow log is stored. Valid values:  
-        /// - `sls`: The flow log is stored in Log Service.
-        /// - `netflow`: The flow log is stored on a NetFlow collector.
-        /// - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+        /// The location where the flow log is stored. Valid values:
         /// </summary>
         [Output("outputType")]
         public Output<string> OutputType { get; private set; } = null!;
@@ -173,7 +168,7 @@ namespace Pulumi.AliCloud.Sag
         }
     }
 
-    public sealed class SmartagFlowLogArgs : Pulumi.ResourceArgs
+    public sealed class SmartagFlowLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
@@ -224,10 +219,7 @@ namespace Pulumi.AliCloud.Sag
         public Input<string>? NetflowVersion { get; set; }
 
         /// <summary>
-        /// The location where the flow log is stored. Valid values:  
-        /// - `sls`: The flow log is stored in Log Service.
-        /// - `netflow`: The flow log is stored on a NetFlow collector.
-        /// - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+        /// The location where the flow log is stored. Valid values:
         /// </summary>
         [Input("outputType", required: true)]
         public Input<string> OutputType { get; set; } = null!;
@@ -253,9 +245,10 @@ namespace Pulumi.AliCloud.Sag
         public SmartagFlowLogArgs()
         {
         }
+        public static new SmartagFlowLogArgs Empty => new SmartagFlowLogArgs();
     }
 
-    public sealed class SmartagFlowLogState : Pulumi.ResourceArgs
+    public sealed class SmartagFlowLogState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
@@ -306,10 +299,7 @@ namespace Pulumi.AliCloud.Sag
         public Input<string>? NetflowVersion { get; set; }
 
         /// <summary>
-        /// The location where the flow log is stored. Valid values:  
-        /// - `sls`: The flow log is stored in Log Service.
-        /// - `netflow`: The flow log is stored on a NetFlow collector.
-        /// - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+        /// The location where the flow log is stored. Valid values:
         /// </summary>
         [Input("outputType")]
         public Input<string>? OutputType { get; set; }
@@ -335,5 +325,6 @@ namespace Pulumi.AliCloud.Sag
         public SmartagFlowLogState()
         {
         }
+        public static new SmartagFlowLogState Empty => new SmartagFlowLogState();
     }
 }

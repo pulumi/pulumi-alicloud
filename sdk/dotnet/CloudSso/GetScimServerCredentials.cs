@@ -26,34 +26,33 @@ namespace Pulumi.AliCloud.CloudSso
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CloudSso.GetScimServerCredentials.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CloudSso.GetScimServerCredentials.InvokeAsync(new AliCloud.CloudSso.GetScimServerCredentialsArgs
+        ///         DirectoryId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             DirectoryId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CloudSsoScimServerCredentialId1 = ids.Apply(ids =&gt; ids.Credentials?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cloudSsoScimServerCredentialId1")]
-        ///     public Output&lt;string&gt; CloudSsoScimServerCredentialId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudSsoScimServerCredentialId1"] = ids.Apply(getScimServerCredentialsResult =&gt; getScimServerCredentialsResult.Credentials[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetScimServerCredentialsResult> InvokeAsync(GetScimServerCredentialsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetScimServerCredentialsResult>("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", args ?? new GetScimServerCredentialsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetScimServerCredentialsResult>("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", args ?? new GetScimServerCredentialsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
@@ -70,38 +69,37 @@ namespace Pulumi.AliCloud.CloudSso
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CloudSso.GetScimServerCredentials.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CloudSso.GetScimServerCredentials.InvokeAsync(new AliCloud.CloudSso.GetScimServerCredentialsArgs
+        ///         DirectoryId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             DirectoryId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CloudSsoScimServerCredentialId1 = ids.Apply(ids =&gt; ids.Credentials?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cloudSsoScimServerCredentialId1")]
-        ///     public Output&lt;string&gt; CloudSsoScimServerCredentialId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudSsoScimServerCredentialId1"] = ids.Apply(getScimServerCredentialsResult =&gt; getScimServerCredentialsResult.Credentials[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetScimServerCredentialsResult> Invoke(GetScimServerCredentialsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetScimServerCredentialsResult>("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", args ?? new GetScimServerCredentialsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetScimServerCredentialsResult>("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", args ?? new GetScimServerCredentialsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetScimServerCredentialsArgs : Pulumi.InvokeArgs
+    public sealed class GetScimServerCredentialsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Directory.
@@ -133,9 +131,10 @@ namespace Pulumi.AliCloud.CloudSso
         public GetScimServerCredentialsArgs()
         {
         }
+        public static new GetScimServerCredentialsArgs Empty => new GetScimServerCredentialsArgs();
     }
 
-    public sealed class GetScimServerCredentialsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetScimServerCredentialsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Directory.
@@ -167,6 +166,7 @@ namespace Pulumi.AliCloud.CloudSso
         public GetScimServerCredentialsInvokeArgs()
         {
         }
+        public static new GetScimServerCredentialsInvokeArgs Empty => new GetScimServerCredentialsInvokeArgs();
     }
 
 

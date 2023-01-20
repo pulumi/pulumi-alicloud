@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,20 +26,17 @@ import * as utilities from "../utilities";
  *         "2",
  *     ],
  * });
- * export const bastionhostHostId1 = ids.then(ids => ids.hosts?[0]?.id);
+ * export const bastionhostHostId1 = ids.then(ids => ids.hosts?.[0]?.id);
  * const nameRegex = alicloud.bastionhost.getHosts({
  *     instanceId: "example_value",
  *     nameRegex: "^my-Host",
  * });
- * export const bastionhostHostId2 = nameRegex.then(nameRegex => nameRegex.hosts?[0]?.id);
+ * export const bastionhostHostId2 = nameRegex.then(nameRegex => nameRegex.hosts?.[0]?.id);
  * ```
  */
 export function getHosts(args: GetHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:bastionhost/getHosts:getHosts", {
         "enableDetails": args.enableDetails,
         "hostAddress": args.hostAddress,
@@ -123,9 +121,36 @@ export interface GetHostsResult {
     readonly sourceInstanceId?: string;
     readonly sourceInstanceState?: string;
 }
-
+/**
+ * This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.bastionhost.getHosts({
+ *     instanceId: "example_value",
+ *     ids: [
+ *         "1",
+ *         "2",
+ *     ],
+ * });
+ * export const bastionhostHostId1 = ids.then(ids => ids.hosts?.[0]?.id);
+ * const nameRegex = alicloud.bastionhost.getHosts({
+ *     instanceId: "example_value",
+ *     nameRegex: "^my-Host",
+ * });
+ * export const bastionhostHostId2 = nameRegex.then(nameRegex => nameRegex.hosts?.[0]?.id);
+ * ```
+ */
 export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostsResult> {
-    return pulumi.output(args).apply(a => getHosts(a, opts))
+    return pulumi.output(args).apply((a: any) => getHosts(a, opts))
 }
 
 /**

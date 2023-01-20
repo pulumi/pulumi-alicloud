@@ -8,9 +8,11 @@ import typing
 from .connection import *
 from .customer_gateway import *
 from .gateway import *
+from .gateway_vco_route import *
 from .gateway_vpn_attachment import *
 from .get_connections import *
 from .get_customer_gateways import *
+from .get_gateway_vco_routes import *
 from .get_gateway_vpn_attachments import *
 from .get_gateways import *
 from .ipsec_server import *

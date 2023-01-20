@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     status: "Running",
  * });
  * const example = new alicloud.hbr.EcsBackupClient("example", {
- *     instanceId: _default.then(_default => _default.instances?[0]?.id),
+ *     instanceId: _default.then(_default => _default.instances?.[0]?.id),
  *     useHttps: false,
  *     dataNetworkType: "PUBLIC",
  *     maxCpuCore: "2",

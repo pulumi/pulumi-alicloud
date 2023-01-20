@@ -21,24 +21,22 @@ namespace Pulumi.AliCloud.Arms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Arms.PrometheusAlertRule("example", new()
     ///     {
-    ///         var example = new AliCloud.Arms.PrometheusAlertRule("example", new AliCloud.Arms.PrometheusAlertRuleArgs
-    ///         {
-    ///             ClusterId = "example_value",
-    ///             Duration = "example_value",
-    ///             Expression = "example_value",
-    ///             Message = "example_value",
-    ///             PrometheusAlertRuleName = "example_value",
-    ///         });
-    ///     }
+    ///         ClusterId = "example_value",
+    ///         Duration = "example_value",
+    ///         Expression = "example_value",
+    ///         Message = "example_value",
+    ///         PrometheusAlertRuleName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.Arms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:arms/prometheusAlertRule:PrometheusAlertRule")]
-    public partial class PrometheusAlertRule : Pulumi.CustomResource
+    public partial class PrometheusAlertRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The annotations of the alert rule.. See the following `Block annotations`.
@@ -168,7 +166,7 @@ namespace Pulumi.AliCloud.Arms
         }
     }
 
-    public sealed class PrometheusAlertRuleArgs : Pulumi.ResourceArgs
+    public sealed class PrometheusAlertRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputList<Inputs.PrometheusAlertRuleAnnotationArgs>? _annotations;
@@ -245,9 +243,10 @@ namespace Pulumi.AliCloud.Arms
         public PrometheusAlertRuleArgs()
         {
         }
+        public static new PrometheusAlertRuleArgs Empty => new PrometheusAlertRuleArgs();
     }
 
-    public sealed class PrometheusAlertRuleState : Pulumi.ResourceArgs
+    public sealed class PrometheusAlertRuleState : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputList<Inputs.PrometheusAlertRuleAnnotationGetArgs>? _annotations;
@@ -336,5 +335,6 @@ namespace Pulumi.AliCloud.Arms
         public PrometheusAlertRuleState()
         {
         }
+        public static new PrometheusAlertRuleState Empty => new PrometheusAlertRuleState();
     }
 }

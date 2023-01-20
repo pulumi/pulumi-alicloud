@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -143,9 +144,23 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> pgpKey() {
         return Codegen.optional(this.pgpKey);
     }
+    /**
+     * (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+     * If you use this, please protect your backend state file judiciously.
+     * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+     * at the cost of preventing the use of the secret key in automation.
+     * 
+     */
     @Export(name="secret", type=String.class, parameters={})
     private Output<String> secret;
 
+    /**
+     * @return (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+     * If you use this, please protect your backend state file judiciously.
+     * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+     * at the cost of preventing the use of the secret key in automation.
+     * 
+     */
     public Output<String> secret() {
         return this.secret;
     }
@@ -224,6 +239,9 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "secret"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

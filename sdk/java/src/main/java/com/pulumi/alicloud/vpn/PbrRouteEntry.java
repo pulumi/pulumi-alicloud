@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.vpn.VpnFunctions;
- * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
  * import com.pulumi.alicloud.vpn.CustomerGateway;
  * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
  * import com.pulumi.alicloud.vpn.Connection;

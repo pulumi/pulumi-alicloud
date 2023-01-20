@@ -32,7 +32,7 @@ public final class ClusterBootstrapAction {
      */
     private @Nullable String executionTarget;
     /**
-     * @return bootstrap action name.
+     * @return The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
      * 
      */
     private @Nullable String name;
@@ -72,7 +72,7 @@ public final class ClusterBootstrapAction {
         return Optional.ofNullable(this.executionTarget);
     }
     /**
-     * @return bootstrap action name.
+     * @return The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
      * 
      */
     public Optional<String> name() {

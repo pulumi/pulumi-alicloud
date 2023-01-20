@@ -23,20 +23,18 @@ namespace Pulumi.AliCloud.CloudSso
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CloudSso.Directory("default", new()
     ///     {
-    ///         var @default = new AliCloud.CloudSso.Directory("default", new AliCloud.CloudSso.DirectoryArgs
-    ///         {
-    ///             DirectoryName = "example-value",
-    ///         });
-    ///     }
+    ///         DirectoryName = "example-value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudsso/directory:Directory")]
-    public partial class Directory : Pulumi.CustomResource
+    public partial class Directory : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
@@ -118,7 +116,7 @@ namespace Pulumi.AliCloud.CloudSso
         }
     }
 
-    public sealed class DirectoryArgs : Pulumi.ResourceArgs
+    public sealed class DirectoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
@@ -147,9 +145,10 @@ namespace Pulumi.AliCloud.CloudSso
         public DirectoryArgs()
         {
         }
+        public static new DirectoryArgs Empty => new DirectoryArgs();
     }
 
-    public sealed class DirectoryState : Pulumi.ResourceArgs
+    public sealed class DirectoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
@@ -178,5 +177,6 @@ namespace Pulumi.AliCloud.CloudSso
         public DirectoryState()
         {
         }
+        public static new DirectoryState Empty => new DirectoryState();
     }
 }

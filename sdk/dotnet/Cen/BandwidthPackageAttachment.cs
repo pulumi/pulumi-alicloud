@@ -17,35 +17,35 @@ namespace Pulumi.AliCloud.Cen
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new bandwidth package attachment and use it to attach a bandwidth package to a new CEN
+    ///     var cen = new AliCloud.Cen.Instance("cen", new()
     ///     {
-    ///         // Create a new bandwidth package attachment and use it to attach a bandwidth package to a new CEN
-    ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///             Description = "tf-testAccCenBandwidthPackageAttachmentDescription",
-    ///         });
-    ///         var bwp = new AliCloud.Cen.BandwidthPackage("bwp", new AliCloud.Cen.BandwidthPackageArgs
-    ///         {
-    ///             Bandwidth = 20,
-    ///             GeographicRegionIds = 
-    ///             {
-    ///                 "China",
-    ///                 "Asia-Pacific",
-    ///             },
-    ///         });
-    ///         var foo = new AliCloud.Cen.BandwidthPackageAttachment("foo", new AliCloud.Cen.BandwidthPackageAttachmentArgs
-    ///         {
-    ///             InstanceId = cen.Id,
-    ///             BandwidthPackageId = bwp.Id,
-    ///         });
-    ///     }
+    ///         Description = "tf-testAccCenBandwidthPackageAttachmentDescription",
+    ///     });
     /// 
-    /// }
+    ///     var bwp = new AliCloud.Cen.BandwidthPackage("bwp", new()
+    ///     {
+    ///         Bandwidth = 20,
+    ///         GeographicRegionIds = new[]
+    ///         {
+    ///             "China",
+    ///             "Asia-Pacific",
+    ///         },
+    ///     });
+    /// 
+    ///     var foo = new AliCloud.Cen.BandwidthPackageAttachment("foo", new()
+    ///     {
+    ///         InstanceId = cen.Id,
+    ///         BandwidthPackageId = bwp.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment")]
-    public partial class BandwidthPackageAttachment : Pulumi.CustomResource
+    public partial class BandwidthPackageAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the bandwidth package.
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class BandwidthPackageAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class BandwidthPackageAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the bandwidth package.
@@ -132,9 +132,10 @@ namespace Pulumi.AliCloud.Cen
         public BandwidthPackageAttachmentArgs()
         {
         }
+        public static new BandwidthPackageAttachmentArgs Empty => new BandwidthPackageAttachmentArgs();
     }
 
-    public sealed class BandwidthPackageAttachmentState : Pulumi.ResourceArgs
+    public sealed class BandwidthPackageAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the bandwidth package.
@@ -151,5 +152,6 @@ namespace Pulumi.AliCloud.Cen
         public BandwidthPackageAttachmentState()
         {
         }
+        public static new BandwidthPackageAttachmentState Empty => new BandwidthPackageAttachmentState();
     }
 }

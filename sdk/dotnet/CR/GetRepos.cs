@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.CR
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myRepos = AliCloud.CR.GetRepos.Invoke(new()
         ///     {
-        ///         var myRepos = Output.Create(AliCloud.CR.GetRepos.InvokeAsync(new AliCloud.CR.GetReposArgs
-        ///         {
-        ///             NameRegex = "my-repos",
-        ///             OutputFile = "my-repo-json",
-        ///         }));
-        ///         this.Output = myRepos.Apply(myRepos =&gt; myRepos.Repos);
-        ///     }
+        ///         NameRegex = "my-repos",
+        ///         OutputFile = "my-repo-json",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myRepos.Apply(getReposResult =&gt; getReposResult.Repos),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetReposResult> InvokeAsync(GetReposArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list Container Registry repositories on Alibaba Cloud.
@@ -56,34 +55,33 @@ namespace Pulumi.AliCloud.CR
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myRepos = AliCloud.CR.GetRepos.Invoke(new()
         ///     {
-        ///         var myRepos = Output.Create(AliCloud.CR.GetRepos.InvokeAsync(new AliCloud.CR.GetReposArgs
-        ///         {
-        ///             NameRegex = "my-repos",
-        ///             OutputFile = "my-repo-json",
-        ///         }));
-        ///         this.Output = myRepos.Apply(myRepos =&gt; myRepos.Repos);
-        ///     }
+        ///         NameRegex = "my-repos",
+        ///         OutputFile = "my-repo-json",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myRepos.Apply(getReposResult =&gt; getReposResult.Repos),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetReposResult> Invoke(GetReposInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetReposArgs : Pulumi.InvokeArgs
+    public sealed class GetReposArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.
@@ -109,9 +107,10 @@ namespace Pulumi.AliCloud.CR
         public GetReposArgs()
         {
         }
+        public static new GetReposArgs Empty => new GetReposArgs();
     }
 
-    public sealed class GetReposInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReposInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.
@@ -137,6 +136,7 @@ namespace Pulumi.AliCloud.CR
         public GetReposInvokeArgs()
         {
         }
+        public static new GetReposInvokeArgs Empty => new GetReposInvokeArgs();
     }
 
 

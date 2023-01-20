@@ -23,41 +23,39 @@ namespace Pulumi.AliCloud.Dcdn
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dcdn.GetIpaDomains.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dcdn.GetIpaDomains.InvokeAsync(new AliCloud.Dcdn.GetIpaDomainsArgs
+        ///         DomainName = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             DomainName = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.DcdnIpaDomainId1 = ids.Apply(ids =&gt; ids.Domains?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Dcdn.GetIpaDomains.InvokeAsync(new AliCloud.Dcdn.GetIpaDomainsArgs
-        ///         {
-        ///             Status = "online",
-        ///         }));
-        ///         this.DcdnIpaDomainId2 = status.Apply(status =&gt; status.Domains?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("dcdnIpaDomainId1")]
-        ///     public Output&lt;string&gt; DcdnIpaDomainId1 { get; set; }
-        ///     [Output("dcdnIpaDomainId2")]
-        ///     public Output&lt;string&gt; DcdnIpaDomainId2 { get; set; }
-        /// }
+        ///     var status = AliCloud.Dcdn.GetIpaDomains.Invoke(new()
+        ///     {
+        ///         Status = "online",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dcdnIpaDomainId1"] = ids.Apply(getIpaDomainsResult =&gt; getIpaDomainsResult.Domains[0]?.Id),
+        ///         ["dcdnIpaDomainId2"] = status.Apply(getIpaDomainsResult =&gt; getIpaDomainsResult.Domains[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpaDomainsResult> InvokeAsync(GetIpaDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpaDomainsResult>("alicloud:dcdn/getIpaDomains:getIpaDomains", args ?? new GetIpaDomainsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpaDomainsResult>("alicloud:dcdn/getIpaDomains:getIpaDomains", args ?? new GetIpaDomainsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
@@ -71,45 +69,43 @@ namespace Pulumi.AliCloud.Dcdn
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dcdn.GetIpaDomains.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dcdn.GetIpaDomains.InvokeAsync(new AliCloud.Dcdn.GetIpaDomainsArgs
+        ///         DomainName = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             DomainName = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.DcdnIpaDomainId1 = ids.Apply(ids =&gt; ids.Domains?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Dcdn.GetIpaDomains.InvokeAsync(new AliCloud.Dcdn.GetIpaDomainsArgs
-        ///         {
-        ///             Status = "online",
-        ///         }));
-        ///         this.DcdnIpaDomainId2 = status.Apply(status =&gt; status.Domains?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("dcdnIpaDomainId1")]
-        ///     public Output&lt;string&gt; DcdnIpaDomainId1 { get; set; }
-        ///     [Output("dcdnIpaDomainId2")]
-        ///     public Output&lt;string&gt; DcdnIpaDomainId2 { get; set; }
-        /// }
+        ///     var status = AliCloud.Dcdn.GetIpaDomains.Invoke(new()
+        ///     {
+        ///         Status = "online",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dcdnIpaDomainId1"] = ids.Apply(getIpaDomainsResult =&gt; getIpaDomainsResult.Domains[0]?.Id),
+        ///         ["dcdnIpaDomainId2"] = status.Apply(getIpaDomainsResult =&gt; getIpaDomainsResult.Domains[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpaDomainsResult> Invoke(GetIpaDomainsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpaDomainsResult>("alicloud:dcdn/getIpaDomains:getIpaDomains", args ?? new GetIpaDomainsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpaDomainsResult>("alicloud:dcdn/getIpaDomains:getIpaDomains", args ?? new GetIpaDomainsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetIpaDomainsArgs : Pulumi.InvokeArgs
+    public sealed class GetIpaDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The accelerated domain names.
@@ -147,9 +143,10 @@ namespace Pulumi.AliCloud.Dcdn
         public GetIpaDomainsArgs()
         {
         }
+        public static new GetIpaDomainsArgs Empty => new GetIpaDomainsArgs();
     }
 
-    public sealed class GetIpaDomainsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIpaDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The accelerated domain names.
@@ -187,6 +184,7 @@ namespace Pulumi.AliCloud.Dcdn
         public GetIpaDomainsInvokeArgs()
         {
         }
+        public static new GetIpaDomainsInvokeArgs Empty => new GetIpaDomainsInvokeArgs();
     }
 
 

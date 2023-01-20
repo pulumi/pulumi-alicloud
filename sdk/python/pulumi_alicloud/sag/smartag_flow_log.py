@@ -28,10 +28,7 @@ class SmartagFlowLogArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SmartagFlowLog resource.
-        :param pulumi.Input[str] output_type: The location where the flow log is stored. Valid values:  
-               - `sls`: The flow log is stored in Log Service.
-               - `netflow`: The flow log is stored on a NetFlow collector.
-               - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+        :param pulumi.Input[str] output_type: The location where the flow log is stored. Valid values:
         :param pulumi.Input[int] active_aging: The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
         :param pulumi.Input[str] description: The description of the flow log.
         :param pulumi.Input[str] flow_log_name: The name of the flow log.
@@ -72,10 +69,7 @@ class SmartagFlowLogArgs:
     @pulumi.getter(name="outputType")
     def output_type(self) -> pulumi.Input[str]:
         """
-        The location where the flow log is stored. Valid values:  
-        - `sls`: The flow log is stored in Log Service.
-        - `netflow`: The flow log is stored on a NetFlow collector.
-        - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+        The location where the flow log is stored. Valid values:
         """
         return pulumi.get(self, "output_type")
 
@@ -241,10 +235,7 @@ class _SmartagFlowLogState:
         :param pulumi.Input[str] netflow_server_ip: The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
         :param pulumi.Input[int] netflow_server_port: The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
         :param pulumi.Input[str] netflow_version: The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
-        :param pulumi.Input[str] output_type: The location where the flow log is stored. Valid values:  
-               - `sls`: The flow log is stored in Log Service.
-               - `netflow`: The flow log is stored on a NetFlow collector.
-               - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+        :param pulumi.Input[str] output_type: The location where the flow log is stored. Valid values:
         :param pulumi.Input[str] project_name: The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
         :param pulumi.Input[str] sls_region_id: The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
         :param pulumi.Input[str] status: The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
@@ -374,10 +365,7 @@ class _SmartagFlowLogState:
     @pulumi.getter(name="outputType")
     def output_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The location where the flow log is stored. Valid values:  
-        - `sls`: The flow log is stored in Log Service.
-        - `netflow`: The flow log is stored on a NetFlow collector.
-        - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+        The location where the flow log is stored. Valid values:
         """
         return pulumi.get(self, "output_type")
 
@@ -483,10 +471,7 @@ class SmartagFlowLog(pulumi.CustomResource):
         :param pulumi.Input[str] netflow_server_ip: The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
         :param pulumi.Input[int] netflow_server_port: The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
         :param pulumi.Input[str] netflow_version: The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
-        :param pulumi.Input[str] output_type: The location where the flow log is stored. Valid values:  
-               - `sls`: The flow log is stored in Log Service.
-               - `netflow`: The flow log is stored on a NetFlow collector.
-               - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+        :param pulumi.Input[str] output_type: The location where the flow log is stored. Valid values:
         :param pulumi.Input[str] project_name: The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
         :param pulumi.Input[str] sls_region_id: The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
         :param pulumi.Input[str] status: The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
@@ -617,10 +602,7 @@ class SmartagFlowLog(pulumi.CustomResource):
         :param pulumi.Input[str] netflow_server_ip: The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
         :param pulumi.Input[int] netflow_server_port: The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
         :param pulumi.Input[str] netflow_version: The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
-        :param pulumi.Input[str] output_type: The location where the flow log is stored. Valid values:  
-               - `sls`: The flow log is stored in Log Service.
-               - `netflow`: The flow log is stored on a NetFlow collector.
-               - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+        :param pulumi.Input[str] output_type: The location where the flow log is stored. Valid values:
         :param pulumi.Input[str] project_name: The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
         :param pulumi.Input[str] sls_region_id: The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
         :param pulumi.Input[str] status: The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
@@ -711,10 +693,7 @@ class SmartagFlowLog(pulumi.CustomResource):
     @pulumi.getter(name="outputType")
     def output_type(self) -> pulumi.Output[str]:
         """
-        The location where the flow log is stored. Valid values:  
-        - `sls`: The flow log is stored in Log Service.
-        - `netflow`: The flow log is stored on a NetFlow collector.
-        - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+        The location where the flow log is stored. Valid values:
         """
         return pulumi.get(self, "output_type")
 

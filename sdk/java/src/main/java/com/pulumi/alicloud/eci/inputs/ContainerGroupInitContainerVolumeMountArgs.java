@@ -32,14 +32,14 @@ public final class ContainerGroupInitContainerVolumeMountArgs extends com.pulumi
     }
 
     /**
-     * The name of the security context that the container group runs.
+     * The name of the volume.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     public Optional<Output<String>> name() {
@@ -109,7 +109,7 @@ public final class ContainerGroupInitContainerVolumeMountArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the security context that the container group runs.
+         * @param name The name of the volume.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ContainerGroupInitContainerVolumeMountArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the security context that the container group runs.
+         * @param name The name of the volume.
          * 
          * @return builder
          * 

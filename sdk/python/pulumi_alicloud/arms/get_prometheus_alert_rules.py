@@ -163,8 +163,6 @@ def get_prometheus_alert_rules(cluster_id: Optional[str] = None,
     :param Sequence[str] ids: A list of Prometheus Alert Rule IDs.
     :param str name_regex: A regex string to filter results by Prometheus Alert Rule name.
     :param int status: The status of the resource. Valid values: `0`, `1`.
-           * `1`: open.
-           * `0`: off.
     :param str type: The type of the alert rule.
     """
     __args__ = dict()
@@ -229,8 +227,6 @@ def get_prometheus_alert_rules_output(cluster_id: Optional[pulumi.Input[str]] = 
     :param Sequence[str] ids: A list of Prometheus Alert Rule IDs.
     :param str name_regex: A regex string to filter results by Prometheus Alert Rule name.
     :param int status: The status of the resource. Valid values: `0`, `1`.
-           * `1`: open.
-           * `0`: off.
     :param str type: The type of the alert rule.
     """
     ...

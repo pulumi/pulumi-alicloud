@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  *             .clusterType(&#34;Nacos-Ans&#34;)
  *             .clusterVersion(&#34;NACOS_ANS_1_2_1&#34;)
  *             .instanceCount(1)
+ *             .mseVersion(&#34;mse_dev&#34;)
  *             .netType(&#34;privatenet&#34;)
  *             .pubNetworkFlow(&#34;1&#34;)
  *             .vswitchId(&#34;vsw-123456&#34;)
@@ -113,22 +114,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * The engine specification of MSE Cluster. Valid values:
-     * `MSE_SC_1_2_200_c`：1C2G
-     * `MSE_SC_2_4_200_c`：2C4G
-     * `MSE_SC_4_8_200_c`：4C8G
-     * `MSE_SC_8_16_200_c`：8C16G
+     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
      * 
      */
     @Export(name="clusterSpecification", type=String.class, parameters={})
     private Output<String> clusterSpecification;
 
     /**
-     * @return The engine specification of MSE Cluster. Valid values:
-     * `MSE_SC_1_2_200_c`：1C2G
-     * `MSE_SC_2_4_200_c`：2C4G
-     * `MSE_SC_4_8_200_c`：4C8G
-     * `MSE_SC_8_16_200_c`：8C16G
+     * @return The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
      * 
      */
     public Output<String> clusterSpecification() {
@@ -149,18 +142,32 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterType;
     }
     /**
-     * The version of MSE Cluster.
+     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
      * 
      */
     @Export(name="clusterVersion", type=String.class, parameters={})
     private Output<String> clusterVersion;
 
     /**
-     * @return The version of MSE Cluster.
+     * @return The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
      * 
      */
     public Output<String> clusterVersion() {
         return this.clusterVersion;
+    }
+    /**
+     * The connection type. Valid values: `slb`.
+     * 
+     */
+    @Export(name="connectionType", type=String.class, parameters={})
+    private Output<String> connectionType;
+
+    /**
+     * @return The connection type. Valid values: `slb`.
+     * 
+     */
+    public Output<String> connectionType() {
+        return this.connectionType;
     }
     /**
      * The type of Disk.
@@ -177,28 +184,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.diskType);
     }
     /**
-     * The count of instance.
+     * The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
      * 
      */
     @Export(name="instanceCount", type=Integer.class, parameters={})
     private Output<Integer> instanceCount;
 
     /**
-     * @return The count of instance.
+     * @return The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
      * 
      */
     public Output<Integer> instanceCount() {
         return this.instanceCount;
     }
     /**
-     * The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+     * The version of MSE. Valid values: `mse_dev` or `mse_pro`.
      * 
      */
     @Export(name="mseVersion", type=String.class, parameters={})
     private Output<String> mseVersion;
 
     /**
-     * @return The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+     * @return The version of MSE. Valid values: `mse_dev` or `mse_pro`.
      * 
      */
     public Output<String> mseVersion() {
@@ -261,6 +268,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pubSlbSpecification);
     }
     /**
+     * The extended request parameters in the JSON format.
+     * 
+     */
+    @Export(name="requestPars", type=String.class, parameters={})
+    private Output</* @Nullable */ String> requestPars;
+
+    /**
+     * @return The extended request parameters in the JSON format.
+     * 
+     */
+    public Output<Optional<String>> requestPars() {
+        return Codegen.optional(this.requestPars);
+    }
+    /**
      * The status of MSE Cluster.
      * 
      */
@@ -273,6 +294,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The id of the VPC.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output<String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Output<String> vpcId() {
+        return this.vpcId;
     }
     /**
      * The id of VSwitch.

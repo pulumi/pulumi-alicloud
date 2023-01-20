@@ -50,7 +50,7 @@ func GetFunctions(ctx *pulumi.Context, args *GetFunctionsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getFunctions.
 type GetFunctionsArgs struct {
-	// - A list of functions ids.
+	// A list of functions ids.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by function name.
 	NameRegex  *string `pulumi:"nameRegex"`
@@ -89,7 +89,7 @@ func GetFunctionsOutput(ctx *pulumi.Context, args GetFunctionsOutputArgs, opts .
 
 // A collection of arguments for invoking getFunctions.
 type GetFunctionsOutputArgs struct {
-	// - A list of functions ids.
+	// A list of functions ids.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by function name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`

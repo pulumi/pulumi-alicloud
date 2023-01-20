@@ -19,26 +19,25 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetCaCertificates.InvokeAsync());
-        ///         this.FirstSlbCaCertificateId = sampleDs.Apply(sampleDs =&gt; sampleDs.Certificates?[0]?.Id);
-        ///     }
+        ///     var sampleDs = AliCloud.Slb.GetCaCertificates.Invoke();
         /// 
-        ///     [Output("firstSlbCaCertificateId")]
-        ///     public Output&lt;string&gt; FirstSlbCaCertificateId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbCaCertificateId"] = sampleDs.Apply(getCaCertificatesResult =&gt; getCaCertificatesResult.Certificates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCaCertificatesResult> InvokeAsync(GetCaCertificatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCaCertificatesResult>("alicloud:slb/getCaCertificates:getCaCertificates", args ?? new GetCaCertificatesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCaCertificatesResult>("alicloud:slb/getCaCertificates:getCaCertificates", args ?? new GetCaCertificatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the CA certificate list.
@@ -48,30 +47,29 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetCaCertificates.InvokeAsync());
-        ///         this.FirstSlbCaCertificateId = sampleDs.Apply(sampleDs =&gt; sampleDs.Certificates?[0]?.Id);
-        ///     }
+        ///     var sampleDs = AliCloud.Slb.GetCaCertificates.Invoke();
         /// 
-        ///     [Output("firstSlbCaCertificateId")]
-        ///     public Output&lt;string&gt; FirstSlbCaCertificateId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbCaCertificateId"] = sampleDs.Apply(getCaCertificatesResult =&gt; getCaCertificatesResult.Certificates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCaCertificatesResult> Invoke(GetCaCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCaCertificatesResult>("alicloud:slb/getCaCertificates:getCaCertificates", args ?? new GetCaCertificatesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCaCertificatesResult>("alicloud:slb/getCaCertificates:getCaCertificates", args ?? new GetCaCertificatesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCaCertificatesArgs : Pulumi.InvokeArgs
+    public sealed class GetCaCertificatesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -115,9 +113,10 @@ namespace Pulumi.AliCloud.Slb
         public GetCaCertificatesArgs()
         {
         }
+        public static new GetCaCertificatesArgs Empty => new GetCaCertificatesArgs();
     }
 
-    public sealed class GetCaCertificatesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCaCertificatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -161,6 +160,7 @@ namespace Pulumi.AliCloud.Slb
         public GetCaCertificatesInvokeArgs()
         {
         }
+        public static new GetCaCertificatesInvokeArgs Empty => new GetCaCertificatesInvokeArgs();
     }
 
 

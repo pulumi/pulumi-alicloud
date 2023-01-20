@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,22 +19,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const tunnelsDs = pulumi.output(alicloud.ots.getTunnels({
+ * const tunnelsDs = alicloud.ots.getTunnels({
  *     instanceName: "sample-instance",
  *     nameRegex: "sample-tunnel",
  *     outputFile: "tunnels.txt",
  *     tableName: "sample-table",
- * }));
- *
- * export const firstTunnelId = tunnelsDs.tunnels[0].id;
+ * });
+ * export const firstTunnelId = tunnelsDs.then(tunnelsDs => tunnelsDs.tunnels?.[0]?.id);
  * ```
  */
 export function getTunnels(args: GetTunnelsArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ots/getTunnels:getTunnels", {
         "ids": args.ids,
         "instanceName": args.instanceName,
@@ -97,9 +94,30 @@ export interface GetTunnelsResult {
      */
     readonly tunnels: outputs.ots.GetTunnelsTunnel[];
 }
-
+/**
+ * This data source provides the ots tunnels of the current Alibaba Cloud user.
+ *
+ * For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
+ *
+ * > **NOTE:** Available in v1.172.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const tunnelsDs = alicloud.ots.getTunnels({
+ *     instanceName: "sample-instance",
+ *     nameRegex: "sample-tunnel",
+ *     outputFile: "tunnels.txt",
+ *     tableName: "sample-table",
+ * });
+ * export const firstTunnelId = tunnelsDs.then(tunnelsDs => tunnelsDs.tunnels?.[0]?.id);
+ * ```
+ */
 export function getTunnelsOutput(args: GetTunnelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelsResult> {
-    return pulumi.output(args).apply(a => getTunnels(a, opts))
+    return pulumi.output(args).apply((a: any) => getTunnels(a, opts))
 }
 
 /**

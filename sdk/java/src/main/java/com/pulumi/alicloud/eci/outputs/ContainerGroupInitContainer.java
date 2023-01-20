@@ -29,7 +29,7 @@ public final class ContainerGroupInitContainer {
      */
     private @Nullable List<String> commands;
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     private @Nullable Double cpu;
@@ -54,12 +54,12 @@ public final class ContainerGroupInitContainer {
      */
     private @Nullable String imagePullPolicy;
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     private @Nullable Double memory;
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     private @Nullable String name;
@@ -97,7 +97,7 @@ public final class ContainerGroupInitContainer {
         return this.commands == null ? List.of() : this.commands;
     }
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     public Optional<Double> cpu() {
@@ -132,14 +132,14 @@ public final class ContainerGroupInitContainer {
         return Optional.ofNullable(this.imagePullPolicy);
     }
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     public Optional<Double> memory() {
         return Optional.ofNullable(this.memory);
     }
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     public Optional<String> name() {

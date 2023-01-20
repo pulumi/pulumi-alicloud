@@ -21,49 +21,50 @@ namespace Pulumi.AliCloud.Hbr
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
     ///     {
-    ///         var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new AliCloud.Hbr.VaultArgs
-    ///         {
-    ///             VaultName = @var.Name,
-    ///         });
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
-    ///         {
-    ///             Status = "OK",
-    ///         }));
-    ///         var defaultHanaInstance = new AliCloud.Hbr.HanaInstance("defaultHanaInstance", new AliCloud.Hbr.HanaInstanceArgs
-    ///         {
-    ///             AlertSetting = "INHERITED",
-    ///             HanaName = @var.Name,
-    ///             Host = "1.1.1.1",
-    ///             InstanceNumber = 1,
-    ///             Password = "YouPassword123",
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///             Sid = "HXE",
-    ///             UseSsl = false,
-    ///             UserName = "admin",
-    ///             ValidateCertificate = false,
-    ///             VaultId = defaultVault.Id,
-    ///         });
-    ///         var defaultHanaBackupPlan = new AliCloud.Hbr.HanaBackupPlan("defaultHanaBackupPlan", new AliCloud.Hbr.HanaBackupPlanArgs
-    ///         {
-    ///             BackupPrefix = "DIFF_DATA_BACKUP",
-    ///             BackupType = "COMPLETE",
-    ///             ClusterId = defaultHanaInstance.HanaInstanceId,
-    ///             DatabaseName = "SYSTEMDB",
-    ///             PlanName = @var.Name,
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///             Schedule = "I|1602673264|P1D",
-    ///             VaultId = defaultHanaInstance.VaultId,
-    ///         });
-    ///     }
+    ///         VaultName = @var.Name,
+    ///     });
     /// 
-    /// }
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultHanaInstance = new AliCloud.Hbr.HanaInstance("defaultHanaInstance", new()
+    ///     {
+    ///         AlertSetting = "INHERITED",
+    ///         HanaName = @var.Name,
+    ///         Host = "1.1.1.1",
+    ///         InstanceNumber = 1,
+    ///         Password = "YouPassword123",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         Sid = "HXE",
+    ///         UseSsl = false,
+    ///         UserName = "admin",
+    ///         ValidateCertificate = false,
+    ///         VaultId = defaultVault.Id,
+    ///     });
+    /// 
+    ///     var defaultHanaBackupPlan = new AliCloud.Hbr.HanaBackupPlan("defaultHanaBackupPlan", new()
+    ///     {
+    ///         BackupPrefix = "DIFF_DATA_BACKUP",
+    ///         BackupType = "COMPLETE",
+    ///         ClusterId = defaultHanaInstance.HanaInstanceId,
+    ///         DatabaseName = "SYSTEMDB",
+    ///         PlanName = @var.Name,
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         Schedule = "I|1602673264|P1D",
+    ///         VaultId = defaultHanaInstance.VaultId,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -75,7 +76,7 @@ namespace Pulumi.AliCloud.Hbr
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/hanaBackupPlan:HanaBackupPlan")]
-    public partial class HanaBackupPlan : Pulumi.CustomResource
+    public partial class HanaBackupPlan : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The backup prefix.
@@ -85,9 +86,6 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// The backup type. Valid values:
-        /// - `COMPLETE`: full backup.
-        /// - `INCREMENTAL`: incremental backup.
-        /// - `DIFFERENTIAL`: differential backup.
         /// </summary>
         [Output("backupType")]
         public Output<string> BackupType { get; private set; } = null!;
@@ -184,7 +182,7 @@ namespace Pulumi.AliCloud.Hbr
         }
     }
 
-    public sealed class HanaBackupPlanArgs : Pulumi.ResourceArgs
+    public sealed class HanaBackupPlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The backup prefix.
@@ -194,9 +192,6 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// The backup type. Valid values:
-        /// - `COMPLETE`: full backup.
-        /// - `INCREMENTAL`: incremental backup.
-        /// - `DIFFERENTIAL`: differential backup.
         /// </summary>
         [Input("backupType", required: true)]
         public Input<string> BackupType { get; set; } = null!;
@@ -246,9 +241,10 @@ namespace Pulumi.AliCloud.Hbr
         public HanaBackupPlanArgs()
         {
         }
+        public static new HanaBackupPlanArgs Empty => new HanaBackupPlanArgs();
     }
 
-    public sealed class HanaBackupPlanState : Pulumi.ResourceArgs
+    public sealed class HanaBackupPlanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The backup prefix.
@@ -258,9 +254,6 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// The backup type. Valid values:
-        /// - `COMPLETE`: full backup.
-        /// - `INCREMENTAL`: incremental backup.
-        /// - `DIFFERENTIAL`: differential backup.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
@@ -316,5 +309,6 @@ namespace Pulumi.AliCloud.Hbr
         public HanaBackupPlanState()
         {
         }
+        public static new HanaBackupPlanState Empty => new HanaBackupPlanState();
     }
 }

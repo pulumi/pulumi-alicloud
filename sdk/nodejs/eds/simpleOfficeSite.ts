@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("default", {
+ * const _default = new alicloud.eds.SimpleOfficeSite("default", {
  *     bandwidth: 5,
  *     cidrBlock: "172.16.0.0/12",
  *     desktopAccessType: "Internet",

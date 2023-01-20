@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -141,7 +142,8 @@ import * as utilities from "../utilities";
  *         "Resource":
  *             ["acs:oss:*:*:*"]}],
  *    "Version":"1"}
- *   `,
+ *   
+ * `,
  * });
  * ```
  *
@@ -330,7 +332,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly serverSideEncryptionRule!: pulumi.Output<outputs.oss.BucketServerSideEncryptionRule | undefined>;
     /**
-     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
      */
     public readonly storageClass!: pulumi.Output<string | undefined>;
     /**
@@ -481,7 +483,7 @@ export interface BucketState {
      */
     serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
     /**
-     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
      */
     storageClass?: pulumi.Input<string>;
     /**
@@ -550,7 +552,7 @@ export interface BucketArgs {
      */
     serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
     /**
-     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
      */
     storageClass?: pulumi.Input<string>;
     /**

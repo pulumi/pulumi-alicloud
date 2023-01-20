@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,20 +22,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.ecs.getEcsImageComponents({
  *     ids: ["example_id"],
  * });
- * export const ecsImageComponentId1 = ids.then(ids => ids.components?[0]?.id);
+ * export const ecsImageComponentId1 = ids.then(ids => ids.components?.[0]?.id);
  * const nameRegex = alicloud.ecs.getEcsImageComponents({
  *     nameRegex: "^my-ImageComponent",
  * });
- * export const ecsImageComponentId2 = nameRegex.then(nameRegex => nameRegex.components?[0]?.id);
+ * export const ecsImageComponentId2 = nameRegex.then(nameRegex => nameRegex.components?.[0]?.id);
  * ```
  */
 export function getEcsImageComponents(args?: GetEcsImageComponentsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsImageComponentsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", {
         "ids": args.ids,
         "imageComponentName": args.imageComponentName,
@@ -95,9 +93,31 @@ export interface GetEcsImageComponentsResult {
     readonly resourceGroupId?: string;
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.159.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ecs.getEcsImageComponents({
+ *     ids: ["example_id"],
+ * });
+ * export const ecsImageComponentId1 = ids.then(ids => ids.components?.[0]?.id);
+ * const nameRegex = alicloud.ecs.getEcsImageComponents({
+ *     nameRegex: "^my-ImageComponent",
+ * });
+ * export const ecsImageComponentId2 = nameRegex.then(nameRegex => nameRegex.components?.[0]?.id);
+ * ```
+ */
 export function getEcsImageComponentsOutput(args?: GetEcsImageComponentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsImageComponentsResult> {
-    return pulumi.output(args).apply(a => getEcsImageComponents(a, opts))
+    return pulumi.output(args).apply((a: any) => getEcsImageComponents(a, opts))
 }
 
 /**

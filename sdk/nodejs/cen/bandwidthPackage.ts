@@ -84,7 +84,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
      */
     public readonly paymentType!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<number | undefined>;
@@ -188,7 +188,7 @@ export interface BandwidthPackageState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
      */
     paymentType?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
@@ -241,7 +241,7 @@ export interface BandwidthPackageArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
      */
     paymentType?: pulumi.Input<string>;
     period?: pulumi.Input<number>;

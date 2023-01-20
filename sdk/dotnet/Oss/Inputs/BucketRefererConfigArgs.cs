@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketRefererConfigArgs : Pulumi.ResourceArgs
+    public sealed class BucketRefererConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allows referer to be empty. Defaults false.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketRefererConfigArgs()
         {
         }
+        public static new BucketRefererConfigArgs Empty => new BucketRefererConfigArgs();
     }
 }

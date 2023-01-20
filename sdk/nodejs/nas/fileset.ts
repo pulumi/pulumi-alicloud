@@ -26,8 +26,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.zones?[0]?.zoneId,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.zoneId,
  * }));
  * const defaultFileSystem = new alicloud.nas.FileSystem("defaultFileSystem", {
  *     protocolType: "cpfs",
@@ -35,9 +35,9 @@ import * as utilities from "../utilities";
  *     fileSystemType: "cpfs",
  *     capacity: 3600,
  *     description: "tf-testacc",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.zoneId),
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  * });
  * const defaultFileset = new alicloud.nas.Fileset("defaultFileset", {
  *     fileSystemId: defaultFileSystem.id,

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class ManagedKubernetesWorkerDataDiskGetArgs : Pulumi.ResourceArgs
+    public sealed class ManagedKubernetesWorkerDataDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
@@ -60,5 +60,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public ManagedKubernetesWorkerDataDiskGetArgs()
         {
         }
+        public static new ManagedKubernetesWorkerDataDiskGetArgs Empty => new ManagedKubernetesWorkerDataDiskGetArgs();
     }
 }

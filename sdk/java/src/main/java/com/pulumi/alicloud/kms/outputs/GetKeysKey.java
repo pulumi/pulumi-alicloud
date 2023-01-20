@@ -14,6 +14,10 @@ public final class GetKeysKey {
      * 
      */
     private String arn;
+    /**
+     * @return (Available in 1.123.1+) Specifies whether to enable automatic key rotation.
+     * 
+     */
     private String automaticRotation;
     /**
      * @return Creation date of key.
@@ -22,17 +26,6 @@ public final class GetKeysKey {
     private String creationDate;
     /**
      * @return The owner of the key.
-     * * `automatic_rotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
-     * * `key_id` -(Available in 1.123.1+)  ID of the key.
-     * * `key_spec` -(Available in 1.123.1+)  The type of the CMK.
-     * * `key_usage` -(Available in 1.123.1+)  The usage of CMK.
-     * * `last_rotation_date` -(Available in 1.123.1+)  The date and time the last rotation was performed.
-     * * `material_expire_time` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
-     * * `next_rotation_date` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
-     * * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
-     * * `protection_level` -(Available in 1.123.1+)  The protection level of the CMK.
-     * * `rotation_interval` -(Available in 1.123.1+)  The period of automatic key rotation.
-     * * `primary_key_version` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
      * 
      */
     private String creator;
@@ -51,15 +44,55 @@ public final class GetKeysKey {
      * 
      */
     private String id;
+    /**
+     * @return (Available in 1.123.1+)  ID of the key.
+     * 
+     */
     private String keyId;
+    /**
+     * @return (Available in 1.123.1+)  The type of the CMK.
+     * 
+     */
     private String keySpec;
+    /**
+     * @return (Available in 1.123.1+)  The usage of CMK.
+     * 
+     */
     private String keyUsage;
+    /**
+     * @return (Available in 1.123.1+)  The date and time the last rotation was performed.
+     * 
+     */
     private String lastRotationDate;
+    /**
+     * @return (Available in 1.123.1+)  The time and date the key material for the CMK expires.
+     * 
+     */
     private String materialExpireTime;
+    /**
+     * @return (Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+     * 
+     */
     private String nextRotationDate;
+    /**
+     * @return (Available in 1.123.1+)  The source of the key material for the CMK.
+     * 
+     */
     private String origin;
+    /**
+     * @return (Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
+     * 
+     */
     private String primaryKeyVersion;
+    /**
+     * @return (Available in 1.123.1+)  The protection level of the CMK.
+     * 
+     */
     private String protectionLevel;
+    /**
+     * @return (Available in 1.123.1+)  The period of automatic key rotation.
+     * 
+     */
     private String rotationInterval;
     /**
      * @return Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
@@ -75,6 +108,10 @@ public final class GetKeysKey {
     public String arn() {
         return this.arn;
     }
+    /**
+     * @return (Available in 1.123.1+) Specifies whether to enable automatic key rotation.
+     * 
+     */
     public String automaticRotation() {
         return this.automaticRotation;
     }
@@ -87,17 +124,6 @@ public final class GetKeysKey {
     }
     /**
      * @return The owner of the key.
-     * * `automatic_rotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
-     * * `key_id` -(Available in 1.123.1+)  ID of the key.
-     * * `key_spec` -(Available in 1.123.1+)  The type of the CMK.
-     * * `key_usage` -(Available in 1.123.1+)  The usage of CMK.
-     * * `last_rotation_date` -(Available in 1.123.1+)  The date and time the last rotation was performed.
-     * * `material_expire_time` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
-     * * `next_rotation_date` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
-     * * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
-     * * `protection_level` -(Available in 1.123.1+)  The protection level of the CMK.
-     * * `rotation_interval` -(Available in 1.123.1+)  The period of automatic key rotation.
-     * * `primary_key_version` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
      * 
      */
     public String creator() {
@@ -124,33 +150,73 @@ public final class GetKeysKey {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Available in 1.123.1+)  ID of the key.
+     * 
+     */
     public String keyId() {
         return this.keyId;
     }
+    /**
+     * @return (Available in 1.123.1+)  The type of the CMK.
+     * 
+     */
     public String keySpec() {
         return this.keySpec;
     }
+    /**
+     * @return (Available in 1.123.1+)  The usage of CMK.
+     * 
+     */
     public String keyUsage() {
         return this.keyUsage;
     }
+    /**
+     * @return (Available in 1.123.1+)  The date and time the last rotation was performed.
+     * 
+     */
     public String lastRotationDate() {
         return this.lastRotationDate;
     }
+    /**
+     * @return (Available in 1.123.1+)  The time and date the key material for the CMK expires.
+     * 
+     */
     public String materialExpireTime() {
         return this.materialExpireTime;
     }
+    /**
+     * @return (Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+     * 
+     */
     public String nextRotationDate() {
         return this.nextRotationDate;
     }
+    /**
+     * @return (Available in 1.123.1+)  The source of the key material for the CMK.
+     * 
+     */
     public String origin() {
         return this.origin;
     }
+    /**
+     * @return (Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
+     * 
+     */
     public String primaryKeyVersion() {
         return this.primaryKeyVersion;
     }
+    /**
+     * @return (Available in 1.123.1+)  The protection level of the CMK.
+     * 
+     */
     public String protectionLevel() {
         return this.protectionLevel;
     }
+    /**
+     * @return (Available in 1.123.1+)  The period of automatic key rotation.
+     * 
+     */
     public String rotationInterval() {
         return this.rotationInterval;
     }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Quotas.Inputs
 {
 
-    public sealed class QuotaApplicationDimensionGetArgs : Pulumi.ResourceArgs
+    public sealed class QuotaApplicationDimensionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key of dimensions.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Quotas.Inputs
         public QuotaApplicationDimensionGetArgs()
         {
         }
+        public static new QuotaApplicationDimensionGetArgs Empty => new QuotaApplicationDimensionGetArgs();
     }
 }

@@ -10,6 +10,7 @@ import com.pulumi.alicloud.cs.outputs.ManagedKubernetesAddon;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesCertificateAuthority;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesConnections;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesMaintenanceWindow;
+import com.pulumi.alicloud.cs.outputs.ManagedKubernetesRrsaMetadata;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesRuntime;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesTaint;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesWorkerDataDisk;
@@ -30,10 +31,10 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+ * Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
  * 
  * ```sh
- *  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster_id
+ *  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes main cluster_id
  * ```
  * 
  */
@@ -272,14 +273,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
-     * Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
     @Export(name="enableRrsa", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableRrsa;
 
     /**
-     * @return Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * @return Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
     public Output<Optional<Boolean>> enableRrsa() {
@@ -354,7 +355,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.imageId);
     }
     /**
-     * (Optional) Install cloud monitor agent on ECS. Default to `true`.
+     * Install cloud monitor agent on ECS. Default to `true`.
      * 
      * @deprecated
      * Field &#39;install_cloud_monitor&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;install_cloud_monitor&#39; to replace it
@@ -365,7 +366,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> installCloudMonitor;
 
     /**
-     * @return (Optional) Install cloud monitor agent on ECS. Default to `true`.
+     * @return Install cloud monitor agent on ECS. Default to `true`.
      * 
      */
     public Output<Optional<Boolean>> installCloudMonitor() {
@@ -442,7 +443,11 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * The path of kube config, like `~/.kube/config`.
      * 
+     * @deprecated
+     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+     * 
      */
+    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
     @Export(name="kubeConfig", type=String.class, parameters={})
     private Output</* @Nullable */ String> kubeConfig;
 
@@ -634,28 +639,28 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.platform;
     }
     /**
-     * - [Flannel Specific] The CIDR block for the pod network when using Flannel.
+     * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      * 
      */
     @Export(name="podCidr", type=String.class, parameters={})
     private Output</* @Nullable */ String> podCidr;
 
     /**
-     * @return - [Flannel Specific] The CIDR block for the pod network when using Flannel.
+     * @return [Flannel Specific] The CIDR block for the pod network when using Flannel.
      * 
      */
     public Output<Optional<String>> podCidr() {
         return Codegen.optional(this.podCidr);
     }
     /**
-     * - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
      * 
      */
     @Export(name="podVswitchIds", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> podVswitchIds;
 
     /**
-     * @return - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+     * @return [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
      * 
      */
     public Output<Optional<List<String>>> podVswitchIds() {
@@ -714,7 +719,21 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retainResources);
     }
     /**
-     * (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * 
+     */
+    @Export(name="rrsaMetadata", type=ManagedKubernetesRrsaMetadata.class, parameters={})
+    private Output<ManagedKubernetesRrsaMetadata> rrsaMetadata;
+
+    /**
+     * @return (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * 
+     */
+    public Output<ManagedKubernetesRrsaMetadata> rrsaMetadata() {
+        return this.rrsaMetadata;
+    }
+    /**
+     * (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      * 
      * @deprecated
      * Field &#39;runtime&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;runtime_name&#39; and &#39;runtime_version&#39; to replace it.
@@ -725,7 +744,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ManagedKubernetesRuntime> runtime;
 
     /**
-     * @return (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * @return (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      * 
      */
     public Output<Optional<ManagedKubernetesRuntime>> runtime() {
@@ -958,7 +977,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.workerAutoRenew);
     }
     /**
-     * (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      * 
      * @deprecated
      * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;auto_renew_period&#39; to replace it
@@ -969,7 +988,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     private Output<Integer> workerAutoRenewPeriod;
 
     /**
-     * @return (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * @return Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      * 
      */
     public Output<Integer> workerAutoRenewPeriod() {
@@ -1102,7 +1121,7 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.workerDiskSnapshotPolicyId);
     }
     /**
-     * (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+     * (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
      * 
      * @deprecated
      * Field &#39;worker_instance_charge_type&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;instance_charge_type&#39; to replace it
@@ -1110,14 +1129,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'instance_charge_type' to replace it */
     @Export(name="workerInstanceChargeType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> workerInstanceChargeType;
+    private Output<String> workerInstanceChargeType;
 
     /**
-     * @return (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+     * @return (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
      * 
      */
-    public Output<Optional<String>> workerInstanceChargeType() {
-        return Codegen.optional(this.workerInstanceChargeType);
+    public Output<String> workerInstanceChargeType() {
+        return this.workerInstanceChargeType;
     }
     /**
      * (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
@@ -1270,6 +1289,9 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

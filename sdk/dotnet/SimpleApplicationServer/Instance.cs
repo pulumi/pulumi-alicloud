@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:simpleapplicationserver/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
@@ -196,9 +196,10 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
@@ -263,5 +264,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

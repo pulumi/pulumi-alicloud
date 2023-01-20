@@ -25,16 +25,16 @@ import * as utilities from "../utilities";
  *     nameRegex: "^default-NODELETING",
  * });
  * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
+ *     vpcId: defaultNetworks.ids?.[0],
  * }));
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0])});
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
- *     topicQuota: 50,
+ *     partitionNum: 50,
  *     diskType: 1,
  *     diskSize: 500,
  *     deployType: 5,
  *     ioMax: 20,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     securityGroup: defaultSecurityGroup.id,
  * });
  * const defaultInstanceAllowedIpAttachment = new alicloud.alikafka.InstanceAllowedIpAttachment("defaultInstanceAllowedIpAttachment", {
@@ -87,8 +87,6 @@ export class InstanceAllowedIpAttachment extends pulumi.CustomResource {
     public readonly allowedIp!: pulumi.Output<string>;
     /**
      * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
-     * - `vpc`: IP address whitelist for VPC access.
-     * - `internet`: IP address whitelist for Internet access.
      */
     public readonly allowedType!: pulumi.Output<string>;
     /**
@@ -153,8 +151,6 @@ export interface InstanceAllowedIpAttachmentState {
     allowedIp?: pulumi.Input<string>;
     /**
      * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
-     * - `vpc`: IP address whitelist for VPC access.
-     * - `internet`: IP address whitelist for Internet access.
      */
     allowedType?: pulumi.Input<string>;
     /**
@@ -179,8 +175,6 @@ export interface InstanceAllowedIpAttachmentArgs {
     allowedIp: pulumi.Input<string>;
     /**
      * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
-     * - `vpc`: IP address whitelist for VPC access.
-     * - `internet`: IP address whitelist for Internet access.
      */
     allowedType: pulumi.Input<string>;
     /**

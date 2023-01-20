@@ -80,14 +80,14 @@ public class HybridMonitorFcTask extends com.pulumi.resources.CustomResource {
         return this.hybridMonitorFcTaskId;
     }
     /**
-     * The index warehouse where the host belongs.
+     * the namespace of the Alibaba Cloud service.
      * 
      */
     @Export(name="namespace", type=String.class, parameters={})
     private Output<String> namespace;
 
     /**
-     * @return The index warehouse where the host belongs.
+     * @return the namespace of the Alibaba Cloud service.
      * 
      */
     public Output<String> namespace() {
@@ -109,8 +109,6 @@ public class HybridMonitorFcTask extends com.pulumi.resources.CustomResource {
     }
     /**
      * The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-     * - `namespace`: the namespace of the Alibaba Cloud service.
-     * - `metric_list`: the metrics of the Alibaba Cloud service.
      * 
      */
     @Export(name="yarmConfig", type=String.class, parameters={})
@@ -118,8 +116,6 @@ public class HybridMonitorFcTask extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-     * - `namespace`: the namespace of the Alibaba Cloud service.
-     * - `metric_list`: the metrics of the Alibaba Cloud service.
      * 
      */
     public Output<String> yarmConfig() {

@@ -21,38 +21,37 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var domestic = new AliCloud.ExpressConnect.PhysicalConnection("domestic", new()
     ///     {
-    ///         var domestic = new AliCloud.ExpressConnect.PhysicalConnection("domestic", new AliCloud.ExpressConnect.PhysicalConnectionArgs
-    ///         {
-    ///             AccessPointId = "ap-cn-hangzhou-yh-B",
-    ///             Bandwidth = "100",
-    ///             Description = "my domestic connection",
-    ///             LineOperator = "CT",
-    ///             PeerLocation = "example_value",
-    ///             PhysicalConnectionName = "example_value",
-    ///             PortType = "1000Base-LX",
-    ///             Type = "VPC",
-    ///         });
-    ///         var international = new AliCloud.ExpressConnect.PhysicalConnection("international", new AliCloud.ExpressConnect.PhysicalConnectionArgs
-    ///         {
-    ///             AccessPointId = "ap-sg-singpore-A",
-    ///             Bandwidth = "100",
-    ///             Description = "my domestic connection",
-    ///             LineOperator = "Other",
-    ///             PeerLocation = "example_value",
-    ///             PhysicalConnectionName = "example_value",
-    ///             PortType = "1000Base-LX",
-    ///             Type = "VPC",
-    ///         });
-    ///     }
+    ///         AccessPointId = "ap-cn-hangzhou-yh-B",
+    ///         Bandwidth = "100",
+    ///         Description = "my domestic connection",
+    ///         LineOperator = "CT",
+    ///         PeerLocation = "example_value",
+    ///         PhysicalConnectionName = "example_value",
+    ///         PortType = "1000Base-LX",
+    ///         Type = "VPC",
+    ///     });
     /// 
-    /// }
+    ///     var international = new AliCloud.ExpressConnect.PhysicalConnection("international", new()
+    ///     {
+    ///         AccessPointId = "ap-sg-singpore-A",
+    ///         Bandwidth = "100",
+    ///         Description = "my domestic connection",
+    ///         LineOperator = "Other",
+    ///         PeerLocation = "example_value",
+    ///         PhysicalConnectionName = "example_value",
+    ///         PortType = "1000Base-LX",
+    ///         Type = "VPC",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +63,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:expressconnect/physicalConnection:PhysicalConnection")]
-    public partial class PhysicalConnection : Pulumi.CustomResource
+    public partial class PhysicalConnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Physical Leased Line Access Point ID.
@@ -121,6 +120,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
         /// * 10GBase-T: Gigabit Electrical Port
         /// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+        /// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+        /// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
         /// </summary>
         [Output("portType")]
         public Output<string?> PortType { get; private set; } = null!;
@@ -187,7 +188,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         }
     }
 
-    public sealed class PhysicalConnectionArgs : Pulumi.ResourceArgs
+    public sealed class PhysicalConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Physical Leased Line Access Point ID.
@@ -244,6 +245,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
         /// * 10GBase-T: Gigabit Electrical Port
         /// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+        /// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+        /// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
         /// </summary>
         [Input("portType")]
         public Input<string>? PortType { get; set; }
@@ -269,9 +272,10 @@ namespace Pulumi.AliCloud.ExpressConnect
         public PhysicalConnectionArgs()
         {
         }
+        public static new PhysicalConnectionArgs Empty => new PhysicalConnectionArgs();
     }
 
-    public sealed class PhysicalConnectionState : Pulumi.ResourceArgs
+    public sealed class PhysicalConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Physical Leased Line Access Point ID.
@@ -328,6 +332,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
         /// * 10GBase-T: Gigabit Electrical Port
         /// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+        /// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+        /// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
         /// </summary>
         [Input("portType")]
         public Input<string>? PortType { get; set; }
@@ -353,5 +359,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         public PhysicalConnectionState()
         {
         }
+        public static new PhysicalConnectionState Empty => new PhysicalConnectionState();
     }
 }

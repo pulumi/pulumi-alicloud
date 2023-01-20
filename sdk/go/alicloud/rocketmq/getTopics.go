@@ -59,9 +59,9 @@ import (
 //				NameRegex:  pulumi.String(topic),
 //				OutputFile: pulumi.String("topics.txt"),
 //			}, nil)
-//			ctx.Export("firstTopicName", topicsDs.ApplyT(func(topicsDs rocketmq.GetTopicsResult) (string, error) {
-//				return topicsDs.Topics[0].TopicName, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("firstTopicName", topicsDs.ApplyT(func(topicsDs rocketmq.GetTopicsResult) (*string, error) {
+//				return &topicsDs.Topics[0].TopicName, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

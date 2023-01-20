@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ListenerAccessLogTracingConfigArgs : Pulumi.ResourceArgs
+    public sealed class ListenerAccessLogTracingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public ListenerAccessLogTracingConfigArgs()
         {
         }
+        public static new ListenerAccessLogTracingConfigArgs Empty => new ListenerAccessLogTracingConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.EventBridge.Inputs
 {
 
-    public sealed class RuleTargetParamListGetArgs : Pulumi.ResourceArgs
+    public sealed class RuleTargetParamListGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         public RuleTargetParamListGetArgs()
         {
         }
+        public static new RuleTargetParamListGetArgs Empty => new RuleTargetParamListGetArgs();
     }
 }

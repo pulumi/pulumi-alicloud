@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ros
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ros.GetTemplates.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ros.GetTemplates.InvokeAsync(new AliCloud.Ros.GetTemplatesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstRosTemplateId = example.Apply(example =&gt; example.Templates?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstRosTemplateId")]
-        ///     public Output&lt;string&gt; FirstRosTemplateId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRosTemplateId"] = example.Apply(getTemplatesResult =&gt; getTemplatesResult.Templates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTemplatesResult> InvokeAsync(GetTemplatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTemplatesResult>("alicloud:ros/getTemplates:getTemplates", args ?? new GetTemplatesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTemplatesResult>("alicloud:ros/getTemplates:getTemplates", args ?? new GetTemplatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ros Templates of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ros
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ros.GetTemplates.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ros.GetTemplates.InvokeAsync(new AliCloud.Ros.GetTemplatesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstRosTemplateId = example.Apply(example =&gt; example.Templates?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstRosTemplateId")]
-        ///     public Output&lt;string&gt; FirstRosTemplateId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRosTemplateId"] = example.Apply(getTemplatesResult =&gt; getTemplatesResult.Templates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTemplatesResult> Invoke(GetTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTemplatesResult>("alicloud:ros/getTemplates:getTemplates", args ?? new GetTemplatesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTemplatesResult>("alicloud:ros/getTemplates:getTemplates", args ?? new GetTemplatesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTemplatesArgs : Pulumi.InvokeArgs
+    public sealed class GetTemplatesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -149,9 +147,10 @@ namespace Pulumi.AliCloud.Ros
         public GetTemplatesArgs()
         {
         }
+        public static new GetTemplatesArgs Empty => new GetTemplatesArgs();
     }
 
-    public sealed class GetTemplatesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTemplatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -207,6 +206,7 @@ namespace Pulumi.AliCloud.Ros
         public GetTemplatesInvokeArgs()
         {
         }
+        public static new GetTemplatesInvokeArgs Empty => new GetTemplatesInvokeArgs();
     }
 
 

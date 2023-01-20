@@ -85,6 +85,13 @@ func NewLoginProfile(ctx *pulumi.Context,
 	if args.UserName == nil {
 		return nil, errors.New("invalid value for required argument 'UserName'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource LoginProfile
 	err := ctx.RegisterResource("alicloud:ram/loginProfile:LoginProfile", name, args, &resource, opts...)
 	if err != nil {

@@ -14,10 +14,13 @@ public final class GetHandshakesHandshake {
      * 
      */
     private String expireTime;
+    /**
+     * @return The ID of the invitation.
+     * 
+     */
     private String handshakeId;
     /**
      * @return The ID of the resource.
-     * * `handshake_id`- The ID of the invitation.
      * 
      */
     private String id;
@@ -80,12 +83,15 @@ public final class GetHandshakesHandshake {
     public String expireTime() {
         return this.expireTime;
     }
+    /**
+     * @return The ID of the invitation.
+     * 
+     */
     public String handshakeId() {
         return this.handshakeId;
     }
     /**
      * @return The ID of the resource.
-     * * `handshake_id`- The ID of the invitation.
      * 
      */
     public String id() {

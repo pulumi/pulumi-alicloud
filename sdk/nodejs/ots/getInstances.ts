@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,21 +15,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const instancesDs = pulumi.output(alicloud.ots.getInstances({
+ * const instancesDs = alicloud.ots.getInstances({
  *     nameRegex: "sample-instance",
  *     outputFile: "instances.txt",
- * }));
- *
- * export const firstInstanceId = instancesDs.instances[0].id;
+ * });
+ * export const firstInstanceId = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ots/getInstances:getInstances", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -56,12 +53,12 @@ export interface GetInstancesArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const instancesDs = pulumi.output(alicloud.ots.getInstances({
+     * const instancesDs = alicloud.ots.getInstances({
      *     tags: {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }));
+     * });
      * ```
      */
     tags?: {[key: string]: any};
@@ -94,9 +91,24 @@ export interface GetInstancesResult {
      */
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides the ots instances of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const instancesDs = alicloud.ots.getInstances({
+ *     nameRegex: "sample-instance",
+ *     outputFile: "instances.txt",
+ * });
+ * export const firstInstanceId = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.id);
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**
@@ -118,12 +130,12 @@ export interface GetInstancesOutputArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const instancesDs = pulumi.output(alicloud.ots.getInstances({
+     * const instancesDs = alicloud.ots.getInstances({
      *     tags: {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }));
+     * });
      * ```
      */
     tags?: pulumi.Input<{[key: string]: any}>;

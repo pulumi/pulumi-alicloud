@@ -16,18 +16,26 @@ class TransitRouterArgs:
     def __init__(__self__, *,
                  cen_id: pulumi.Input[str],
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 support_multicast: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  transit_router_description: Optional[pulumi.Input[str]] = None,
                  transit_router_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TransitRouter resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_description: The description of the transit router.
         :param pulumi.Input[str] transit_router_name: The name of the transit router.
         """
         pulumi.set(__self__, "cen_id", cen_id)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if support_multicast is not None:
+            pulumi.set(__self__, "support_multicast", support_multicast)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if transit_router_description is not None:
             pulumi.set(__self__, "transit_router_description", transit_router_description)
         if transit_router_name is not None:
@@ -56,6 +64,30 @@ class TransitRouterArgs:
     @dry_run.setter
     def dry_run(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter(name="supportMulticast")
+    def support_multicast(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+        """
+        return pulumi.get(self, "support_multicast")
+
+    @support_multicast.setter
+    def support_multicast(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "support_multicast", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="transitRouterDescription")
@@ -88,6 +120,8 @@ class _TransitRouterState:
                  cen_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 support_multicast: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  transit_router_description: Optional[pulumi.Input[str]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
                  transit_router_name: Optional[pulumi.Input[str]] = None,
@@ -97,6 +131,8 @@ class _TransitRouterState:
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] status: The associating status of the Transit Router.
+        :param pulumi.Input[bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_description: The description of the transit router.
         :param pulumi.Input[str] transit_router_id: The transit router id of the transit router.
         :param pulumi.Input[str] transit_router_name: The name of the transit router.
@@ -108,6 +144,10 @@ class _TransitRouterState:
             pulumi.set(__self__, "dry_run", dry_run)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if support_multicast is not None:
+            pulumi.set(__self__, "support_multicast", support_multicast)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if transit_router_description is not None:
             pulumi.set(__self__, "transit_router_description", transit_router_description)
         if transit_router_id is not None:
@@ -152,6 +192,30 @@ class _TransitRouterState:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="supportMulticast")
+    def support_multicast(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+        """
+        return pulumi.get(self, "support_multicast")
+
+    @support_multicast.setter
+    def support_multicast(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "support_multicast", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="transitRouterDescription")
@@ -209,6 +273,8 @@ class TransitRouter(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 support_multicast: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  transit_router_description: Optional[pulumi.Input[str]] = None,
                  transit_router_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -249,6 +315,8 @@ class TransitRouter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_description: The description of the transit router.
         :param pulumi.Input[str] transit_router_name: The name of the transit router.
         """
@@ -308,6 +376,8 @@ class TransitRouter(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 support_multicast: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  transit_router_description: Optional[pulumi.Input[str]] = None,
                  transit_router_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -323,6 +393,8 @@ class TransitRouter(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cen_id'")
             __props__.__dict__["cen_id"] = cen_id
             __props__.__dict__["dry_run"] = dry_run
+            __props__.__dict__["support_multicast"] = support_multicast
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["transit_router_description"] = transit_router_description
             __props__.__dict__["transit_router_name"] = transit_router_name
             __props__.__dict__["status"] = None
@@ -341,6 +413,8 @@ class TransitRouter(pulumi.CustomResource):
             cen_id: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            support_multicast: Optional[pulumi.Input[bool]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             transit_router_description: Optional[pulumi.Input[str]] = None,
             transit_router_id: Optional[pulumi.Input[str]] = None,
             transit_router_name: Optional[pulumi.Input[str]] = None,
@@ -355,6 +429,8 @@ class TransitRouter(pulumi.CustomResource):
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] status: The associating status of the Transit Router.
+        :param pulumi.Input[bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_description: The description of the transit router.
         :param pulumi.Input[str] transit_router_id: The transit router id of the transit router.
         :param pulumi.Input[str] transit_router_name: The name of the transit router.
@@ -367,6 +443,8 @@ class TransitRouter(pulumi.CustomResource):
         __props__.__dict__["cen_id"] = cen_id
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["status"] = status
+        __props__.__dict__["support_multicast"] = support_multicast
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["transit_router_description"] = transit_router_description
         __props__.__dict__["transit_router_id"] = transit_router_id
         __props__.__dict__["transit_router_name"] = transit_router_name
@@ -396,6 +474,22 @@ class TransitRouter(pulumi.CustomResource):
         The associating status of the Transit Router.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="supportMulticast")
+    def support_multicast(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+        """
+        return pulumi.get(self, "support_multicast")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="transitRouterDescription")

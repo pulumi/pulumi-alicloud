@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     [AliCloudResourceType("alicloud:cs/kubernetesPermission:KubernetesPermission")]
-    public partial class KubernetesPermission : Pulumi.CustomResource
+    public partial class KubernetesPermission : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of user permission.
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class KubernetesPermissionArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesPermissionArgs : global::Pulumi.ResourceArgs
     {
         [Input("permissions")]
         private InputList<Inputs.KubernetesPermissionPermissionArgs>? _permissions;
@@ -91,9 +91,10 @@ namespace Pulumi.AliCloud.CS
         public KubernetesPermissionArgs()
         {
         }
+        public static new KubernetesPermissionArgs Empty => new KubernetesPermissionArgs();
     }
 
-    public sealed class KubernetesPermissionState : Pulumi.ResourceArgs
+    public sealed class KubernetesPermissionState : global::Pulumi.ResourceArgs
     {
         [Input("permissions")]
         private InputList<Inputs.KubernetesPermissionPermissionGetArgs>? _permissions;
@@ -116,5 +117,6 @@ namespace Pulumi.AliCloud.CS
         public KubernetesPermissionState()
         {
         }
+        public static new KubernetesPermissionState Empty => new KubernetesPermissionState();
     }
 }

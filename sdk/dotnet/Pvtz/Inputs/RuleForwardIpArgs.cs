@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Pvtz.Inputs
 {
 
-    public sealed class RuleForwardIpArgs : Pulumi.ResourceArgs
+    public sealed class RuleForwardIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ip of the forwarding destination.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Pvtz.Inputs
         public RuleForwardIpArgs()
         {
         }
+        public static new RuleForwardIpArgs Empty => new RuleForwardIpArgs();
     }
 }

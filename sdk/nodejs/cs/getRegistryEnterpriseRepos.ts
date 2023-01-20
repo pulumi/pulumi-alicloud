@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,22 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const myRepos = pulumi.output(alicloud.cs.getRegistryEnterpriseRepos({
+ * const myRepos = alicloud.cs.getRegistryEnterpriseRepos({
  *     instanceId: "cri-xx",
  *     nameRegex: "my-repos",
  *     outputFile: "my-repo-json",
- * }));
- *
- * export const output = myRepos.repos;
+ * });
+ * export const output = myRepos.then(myRepos => myRepos.repos);
  * ```
  */
 export function getRegistryEnterpriseRepos(args: GetRegistryEnterpriseReposArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseReposResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -101,9 +97,27 @@ export interface GetRegistryEnterpriseReposResult {
      */
     readonly repos: outputs.cs.GetRegistryEnterpriseReposRepo[];
 }
-
+/**
+ * This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.87.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const myRepos = alicloud.cs.getRegistryEnterpriseRepos({
+ *     instanceId: "cri-xx",
+ *     nameRegex: "my-repos",
+ *     outputFile: "my-repo-json",
+ * });
+ * export const output = myRepos.then(myRepos => myRepos.repos);
+ * ```
+ */
 export function getRegistryEnterpriseReposOutput(args: GetRegistryEnterpriseReposOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseReposResult> {
-    return pulumi.output(args).apply(a => getRegistryEnterpriseRepos(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegistryEnterpriseRepos(a, opts))
 }
 
 /**

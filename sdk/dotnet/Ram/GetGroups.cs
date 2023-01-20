@@ -19,31 +19,30 @@ namespace Pulumi.AliCloud.Ram
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var groupsDs = AliCloud.Ram.GetGroups.Invoke(new()
         ///     {
-        ///         var groupsDs = Output.Create(AliCloud.Ram.GetGroups.InvokeAsync(new AliCloud.Ram.GetGroupsArgs
-        ///         {
-        ///             NameRegex = "^group[0-9]*",
-        ///             OutputFile = "groups.txt",
-        ///             UserName = "user1",
-        ///         }));
-        ///         this.FirstGroupName = groupsDs.Apply(groupsDs =&gt; groupsDs.Groups?[0]?.Name);
-        ///     }
+        ///         NameRegex = "^group[0-9]*",
+        ///         OutputFile = "groups.txt",
+        ///         UserName = "user1",
+        ///     });
         /// 
-        ///     [Output("firstGroupName")]
-        ///     public Output&lt;string&gt; FirstGroupName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupName"] = groupsDs.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.Name),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:ram/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:ram/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
@@ -53,35 +52,34 @@ namespace Pulumi.AliCloud.Ram
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var groupsDs = AliCloud.Ram.GetGroups.Invoke(new()
         ///     {
-        ///         var groupsDs = Output.Create(AliCloud.Ram.GetGroups.InvokeAsync(new AliCloud.Ram.GetGroupsArgs
-        ///         {
-        ///             NameRegex = "^group[0-9]*",
-        ///             OutputFile = "groups.txt",
-        ///             UserName = "user1",
-        ///         }));
-        ///         this.FirstGroupName = groupsDs.Apply(groupsDs =&gt; groupsDs.Groups?[0]?.Name);
-        ///     }
+        ///         NameRegex = "^group[0-9]*",
+        ///         OutputFile = "groups.txt",
+        ///         UserName = "user1",
+        ///     });
         /// 
-        ///     [Output("firstGroupName")]
-        ///     public Output&lt;string&gt; FirstGroupName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupName"] = groupsDs.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.Name),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:ram/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:ram/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A regex string to filter the returned groups by their names.
@@ -113,9 +111,10 @@ namespace Pulumi.AliCloud.Ram
         public GetGroupsArgs()
         {
         }
+        public static new GetGroupsArgs Empty => new GetGroupsArgs();
     }
 
-    public sealed class GetGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A regex string to filter the returned groups by their names.
@@ -147,6 +146,7 @@ namespace Pulumi.AliCloud.Ram
         public GetGroupsInvokeArgs()
         {
         }
+        public static new GetGroupsInvokeArgs Empty => new GetGroupsInvokeArgs();
     }
 
 

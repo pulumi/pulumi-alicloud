@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Sae.Inputs
 {
 
-    public sealed class ApplicationScalingRuleScalingRuleMetricArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationScalingRuleScalingRuleMetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Maximum number of instances applied.
+        /// Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         /// </summary>
         [Input("maxReplicas")]
         public Input<int>? MaxReplicas { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         }
 
         /// <summary>
-        /// Minimum number of instances applied.
+        /// Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         /// </summary>
         [Input("minReplicas")]
         public Input<int>? MinReplicas { get; set; }
@@ -51,5 +51,6 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public ApplicationScalingRuleScalingRuleMetricArgs()
         {
         }
+        public static new ApplicationScalingRuleScalingRuleMetricArgs Empty => new ApplicationScalingRuleScalingRuleMetricArgs();
     }
 }

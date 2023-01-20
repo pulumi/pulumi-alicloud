@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Arms.Inputs
 {
 
-    public sealed class DispatchRuleLabelMatchExpressionGridGetArgs : Pulumi.ResourceArgs
+    public sealed class DispatchRuleLabelMatchExpressionGridGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("labelMatchExpressionGroups", required: true)]
         private InputList<Inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupGetArgs>? _labelMatchExpressionGroups;
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Arms.Inputs
         public DispatchRuleLabelMatchExpressionGridGetArgs()
         {
         }
+        public static new DispatchRuleLabelMatchExpressionGridGetArgs Empty => new DispatchRuleLabelMatchExpressionGridGetArgs();
     }
 }

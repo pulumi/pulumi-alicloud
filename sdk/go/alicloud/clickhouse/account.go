@@ -73,7 +73,7 @@ import (
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				DbNodeStorage:        pulumi.String("500"),
 //				StorageType:          pulumi.String("cloud_essd"),
-//				VswitchId:            pulumi.String(defaultSwitches.Vswitches[0].Id),
+//				VswitchId:            *pulumi.String(defaultSwitches.Vswitches[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -118,8 +118,6 @@ type Account struct {
 	// The db cluster id.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
 	// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-	// -`true`: grants DDL permissions to the database account.
-	// -`false`: does not grant DDL permissions to the database account.
 	DdlAuthority pulumi.BoolOutput `pulumi:"ddlAuthority"`
 	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
 	DmlAuthority pulumi.StringOutput `pulumi:"dmlAuthority"`
@@ -184,8 +182,6 @@ type accountState struct {
 	// The db cluster id.
 	DbClusterId *string `pulumi:"dbClusterId"`
 	// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-	// -`true`: grants DDL permissions to the database account.
-	// -`false`: does not grant DDL permissions to the database account.
 	DdlAuthority *bool `pulumi:"ddlAuthority"`
 	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
 	DmlAuthority *string `pulumi:"dmlAuthority"`
@@ -213,8 +209,6 @@ type AccountState struct {
 	// The db cluster id.
 	DbClusterId pulumi.StringPtrInput
 	// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-	// -`true`: grants DDL permissions to the database account.
-	// -`false`: does not grant DDL permissions to the database account.
 	DdlAuthority pulumi.BoolPtrInput
 	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
 	DmlAuthority pulumi.StringPtrInput
@@ -246,8 +240,6 @@ type accountArgs struct {
 	// The db cluster id.
 	DbClusterId string `pulumi:"dbClusterId"`
 	// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-	// -`true`: grants DDL permissions to the database account.
-	// -`false`: does not grant DDL permissions to the database account.
 	DdlAuthority *bool `pulumi:"ddlAuthority"`
 	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
 	DmlAuthority *string `pulumi:"dmlAuthority"`
@@ -272,8 +264,6 @@ type AccountArgs struct {
 	// The db cluster id.
 	DbClusterId pulumi.StringInput
 	// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-	// -`true`: grants DDL permissions to the database account.
-	// -`false`: does not grant DDL permissions to the database account.
 	DdlAuthority pulumi.BoolPtrInput
 	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
 	DmlAuthority pulumi.StringPtrInput
@@ -401,8 +391,6 @@ func (o AccountOutput) DbClusterId() pulumi.StringOutput {
 }
 
 // Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-// -`true`: grants DDL permissions to the database account.
-// -`false`: does not grant DDL permissions to the database account.
 func (o AccountOutput) DdlAuthority() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Account) pulumi.BoolOutput { return v.DdlAuthority }).(pulumi.BoolOutput)
 }

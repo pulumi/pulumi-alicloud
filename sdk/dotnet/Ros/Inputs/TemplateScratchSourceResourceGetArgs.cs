@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ros.Inputs
 {
 
-    public sealed class TemplateScratchSourceResourceGetArgs : Pulumi.ResourceArgs
+    public sealed class TemplateScratchSourceResourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Source Resource.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ros.Inputs
         public TemplateScratchSourceResourceGetArgs()
         {
         }
+        public static new TemplateScratchSourceResourceGetArgs Empty => new TemplateScratchSourceResourceGetArgs();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -11,11 +12,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.137.0+.
  */
 export function getIngresses(args: GetIngressesArgs, opts?: pulumi.InvokeOptions): Promise<GetIngressesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sae/getIngresses:getIngresses", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -57,9 +55,13 @@ export interface GetIngressesResult {
     readonly namespaceId: string;
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Sae Ingresses of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.137.0+.
+ */
 export function getIngressesOutput(args: GetIngressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIngressesResult> {
-    return pulumi.output(args).apply(a => getIngresses(a, opts))
+    return pulumi.output(args).apply((a: any) => getIngresses(a, opts))
 }
 
 /**

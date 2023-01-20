@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Ros
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(AliCloud.Ros.GetRegions.InvokeAsync());
-        ///         this.RosRegionRegionId1 = all.Apply(all =&gt; all.Regions?[0]?.RegionId);
-        ///     }
+        ///     var all = AliCloud.Ros.GetRegions.Invoke();
         /// 
-        ///     [Output("rosRegionRegionId1")]
-        ///     public Output&lt;string&gt; RosRegionRegionId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rosRegionRegionId1"] = all.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.RegionId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:ros/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:ros/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ros Regions of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Ros
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(AliCloud.Ros.GetRegions.InvokeAsync());
-        ///         this.RosRegionRegionId1 = all.Apply(all =&gt; all.Regions?[0]?.RegionId);
-        ///     }
+        ///     var all = AliCloud.Ros.GetRegions.Invoke();
         /// 
-        ///     [Output("rosRegionRegionId1")]
-        ///     public Output&lt;string&gt; RosRegionRegionId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rosRegionRegionId1"] = all.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.RegionId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("alicloud:ros/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("alicloud:ros/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRegionsArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionsArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -87,9 +85,10 @@ namespace Pulumi.AliCloud.Ros
         public GetRegionsArgs()
         {
         }
+        public static new GetRegionsArgs Empty => new GetRegionsArgs();
     }
 
-    public sealed class GetRegionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -97,6 +96,7 @@ namespace Pulumi.AliCloud.Ros
         public GetRegionsInvokeArgs()
         {
         }
+        public static new GetRegionsInvokeArgs Empty => new GetRegionsInvokeArgs();
     }
 
 

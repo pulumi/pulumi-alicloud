@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class ManagedKubernetesAddonGetArgs : Pulumi.ResourceArgs
+    public sealed class ManagedKubernetesAddonGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("config")]
         public Input<string>? Config { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public ManagedKubernetesAddonGetArgs()
         {
         }
+        public static new ManagedKubernetesAddonGetArgs Empty => new ManagedKubernetesAddonGetArgs();
     }
 }

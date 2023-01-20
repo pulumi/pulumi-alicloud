@@ -23,93 +23,87 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetNatIps.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetNatIps.InvokeAsync(new AliCloud.Vpc.GetNatIpsArgs
+        ///         NatGatewayId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             NatGatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.VpcNatIpId1 = ids.Apply(ids =&gt; ids.Ips?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetNatIps.InvokeAsync(new AliCloud.Vpc.GetNatIpsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             NameRegex = "^my-NatIp",
-        ///         }));
-        ///         this.VpcNatIpId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Ips?[0]?.Id);
-        ///         var natIpCidr = Output.Create(AliCloud.Vpc.GetNatIps.InvokeAsync(new AliCloud.Vpc.GetNatIpsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             NatIpCidr = "example_value",
-        ///             NameRegex = "^my-NatIp",
-        ///         }));
-        ///         this.VpcNatIpId3 = natIpCidr.Apply(natIpCidr =&gt; natIpCidr.Ips?[0]?.Id);
-        ///         var natIpName = Output.Create(AliCloud.Vpc.GetNatIps.InvokeAsync(new AliCloud.Vpc.GetNatIpsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NatIpNames = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.VpcNatIpId4 = natIpName.Apply(natIpName =&gt; natIpName.Ips?[0]?.Id);
-        ///         var natIpIds = Output.Create(AliCloud.Vpc.GetNatIps.InvokeAsync(new AliCloud.Vpc.GetNatIpsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NatIpIds = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.VpcNatIpId5 = natIpIds.Apply(natIpIds =&gt; natIpIds.Ips?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetNatIps.InvokeAsync(new AliCloud.Vpc.GetNatIpsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             Status = "example_value",
-        ///         }));
-        ///         this.VpcNatIpId6 = status.Apply(status =&gt; status.Ips?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcNatIpId1")]
-        ///     public Output&lt;string&gt; VpcNatIpId1 { get; set; }
-        ///     [Output("vpcNatIpId2")]
-        ///     public Output&lt;string&gt; VpcNatIpId2 { get; set; }
-        ///     [Output("vpcNatIpId3")]
-        ///     public Output&lt;string&gt; VpcNatIpId3 { get; set; }
-        ///     [Output("vpcNatIpId4")]
-        ///     public Output&lt;string&gt; VpcNatIpId4 { get; set; }
-        ///     [Output("vpcNatIpId5")]
-        ///     public Output&lt;string&gt; VpcNatIpId5 { get; set; }
-        ///     [Output("vpcNatIpId6")]
-        ///     public Output&lt;string&gt; VpcNatIpId6 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetNatIps.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         NameRegex = "^my-NatIp",
+        ///     });
+        /// 
+        ///     var natIpCidr = AliCloud.Vpc.GetNatIps.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         NatIpCidr = "example_value",
+        ///         NameRegex = "^my-NatIp",
+        ///     });
+        /// 
+        ///     var natIpName = AliCloud.Vpc.GetNatIps.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NatIpNames = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     var natIpIds = AliCloud.Vpc.GetNatIps.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NatIpIds = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetNatIps.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         Status = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcNatIpId1"] = ids.Apply(getNatIpsResult =&gt; getNatIpsResult.Ips[0]?.Id),
+        ///         ["vpcNatIpId2"] = nameRegex.Apply(getNatIpsResult =&gt; getNatIpsResult.Ips[0]?.Id),
+        ///         ["vpcNatIpId3"] = natIpCidr.Apply(getNatIpsResult =&gt; getNatIpsResult.Ips[0]?.Id),
+        ///         ["vpcNatIpId4"] = natIpName.Apply(getNatIpsResult =&gt; getNatIpsResult.Ips[0]?.Id),
+        ///         ["vpcNatIpId5"] = natIpIds.Apply(getNatIpsResult =&gt; getNatIpsResult.Ips[0]?.Id),
+        ///         ["vpcNatIpId6"] = status.Apply(getNatIpsResult =&gt; getNatIpsResult.Ips[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNatIpsResult> InvokeAsync(GetNatIpsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNatIpsResult>("alicloud:vpc/getNatIps:getNatIps", args ?? new GetNatIpsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNatIpsResult>("alicloud:vpc/getNatIps:getNatIps", args ?? new GetNatIpsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
@@ -123,97 +117,91 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetNatIps.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetNatIps.InvokeAsync(new AliCloud.Vpc.GetNatIpsArgs
+        ///         NatGatewayId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             NatGatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.VpcNatIpId1 = ids.Apply(ids =&gt; ids.Ips?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetNatIps.InvokeAsync(new AliCloud.Vpc.GetNatIpsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             NameRegex = "^my-NatIp",
-        ///         }));
-        ///         this.VpcNatIpId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Ips?[0]?.Id);
-        ///         var natIpCidr = Output.Create(AliCloud.Vpc.GetNatIps.InvokeAsync(new AliCloud.Vpc.GetNatIpsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             NatIpCidr = "example_value",
-        ///             NameRegex = "^my-NatIp",
-        ///         }));
-        ///         this.VpcNatIpId3 = natIpCidr.Apply(natIpCidr =&gt; natIpCidr.Ips?[0]?.Id);
-        ///         var natIpName = Output.Create(AliCloud.Vpc.GetNatIps.InvokeAsync(new AliCloud.Vpc.GetNatIpsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NatIpNames = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.VpcNatIpId4 = natIpName.Apply(natIpName =&gt; natIpName.Ips?[0]?.Id);
-        ///         var natIpIds = Output.Create(AliCloud.Vpc.GetNatIps.InvokeAsync(new AliCloud.Vpc.GetNatIpsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NatIpIds = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.VpcNatIpId5 = natIpIds.Apply(natIpIds =&gt; natIpIds.Ips?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetNatIps.InvokeAsync(new AliCloud.Vpc.GetNatIpsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             Status = "example_value",
-        ///         }));
-        ///         this.VpcNatIpId6 = status.Apply(status =&gt; status.Ips?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcNatIpId1")]
-        ///     public Output&lt;string&gt; VpcNatIpId1 { get; set; }
-        ///     [Output("vpcNatIpId2")]
-        ///     public Output&lt;string&gt; VpcNatIpId2 { get; set; }
-        ///     [Output("vpcNatIpId3")]
-        ///     public Output&lt;string&gt; VpcNatIpId3 { get; set; }
-        ///     [Output("vpcNatIpId4")]
-        ///     public Output&lt;string&gt; VpcNatIpId4 { get; set; }
-        ///     [Output("vpcNatIpId5")]
-        ///     public Output&lt;string&gt; VpcNatIpId5 { get; set; }
-        ///     [Output("vpcNatIpId6")]
-        ///     public Output&lt;string&gt; VpcNatIpId6 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetNatIps.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         NameRegex = "^my-NatIp",
+        ///     });
+        /// 
+        ///     var natIpCidr = AliCloud.Vpc.GetNatIps.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         NatIpCidr = "example_value",
+        ///         NameRegex = "^my-NatIp",
+        ///     });
+        /// 
+        ///     var natIpName = AliCloud.Vpc.GetNatIps.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NatIpNames = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     var natIpIds = AliCloud.Vpc.GetNatIps.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NatIpIds = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetNatIps.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         Status = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcNatIpId1"] = ids.Apply(getNatIpsResult =&gt; getNatIpsResult.Ips[0]?.Id),
+        ///         ["vpcNatIpId2"] = nameRegex.Apply(getNatIpsResult =&gt; getNatIpsResult.Ips[0]?.Id),
+        ///         ["vpcNatIpId3"] = natIpCidr.Apply(getNatIpsResult =&gt; getNatIpsResult.Ips[0]?.Id),
+        ///         ["vpcNatIpId4"] = natIpName.Apply(getNatIpsResult =&gt; getNatIpsResult.Ips[0]?.Id),
+        ///         ["vpcNatIpId5"] = natIpIds.Apply(getNatIpsResult =&gt; getNatIpsResult.Ips[0]?.Id),
+        ///         ["vpcNatIpId6"] = status.Apply(getNatIpsResult =&gt; getNatIpsResult.Ips[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNatIpsResult> Invoke(GetNatIpsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNatIpsResult>("alicloud:vpc/getNatIps:getNatIps", args ?? new GetNatIpsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNatIpsResult>("alicloud:vpc/getNatIps:getNatIps", args ?? new GetNatIpsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNatIpsArgs : Pulumi.InvokeArgs
+    public sealed class GetNatIpsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -277,9 +265,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetNatIpsArgs()
         {
         }
+        public static new GetNatIpsArgs Empty => new GetNatIpsArgs();
     }
 
-    public sealed class GetNatIpsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNatIpsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -343,6 +332,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetNatIpsInvokeArgs()
         {
         }
+        public static new GetNatIpsInvokeArgs Empty => new GetNatIpsInvokeArgs();
     }
 
 

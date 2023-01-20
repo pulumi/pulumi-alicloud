@@ -21,69 +21,74 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "example";
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "example";
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("defaultStorageBundle", new AliCloud.CloudStorageGateway.StorageBundleArgs
-    ///         {
-    ///             StorageBundleName = name,
-    ///         });
-    ///         var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new AliCloud.CloudStorageGateway.GatewayArgs
-    ///         {
-    ///             Description = "tf-acctestDesalone",
-    ///             GatewayClass = "Basic",
-    ///             Type = "File",
-    ///             PaymentType = "PayAsYouGo",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             ReleaseAfterExpiration = true,
-    ///             PublicNetworkBandwidth = 10,
-    ///             StorageBundleId = defaultStorageBundle.Id,
-    ///             Location = "Cloud",
-    ///             GatewayName = name,
-    ///         });
-    ///         var defaultProject = new AliCloud.Log.Project("defaultProject", new AliCloud.Log.ProjectArgs
-    ///         {
-    ///             Description = "created by terraform",
-    ///         });
-    ///         var defaultStore = new AliCloud.Log.Store("defaultStore", new AliCloud.Log.StoreArgs
-    ///         {
-    ///             Project = defaultProject.Name,
-    ///             ShardCount = 3,
-    ///             AutoSplit = true,
-    ///             MaxSplitShardCount = 60,
-    ///             AppendMeta = true,
-    ///         });
-    ///         var defaultGatewayLogging = new AliCloud.CloudStorageGateway.GatewayLogging("defaultGatewayLogging", new AliCloud.CloudStorageGateway.GatewayLoggingArgs
-    ///         {
-    ///             GatewayId = defaultGateway.Id,
-    ///             SlsLogstore = defaultStore.Name,
-    ///             SlsProject = defaultProject.Name,
-    ///         });
-    ///     }
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
     /// 
-    /// }
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("defaultStorageBundle", new()
+    ///     {
+    ///         StorageBundleName = name,
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new()
+    ///     {
+    ///         Description = "tf-acctestDesalone",
+    ///         GatewayClass = "Basic",
+    ///         Type = "File",
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ReleaseAfterExpiration = true,
+    ///         PublicNetworkBandwidth = 10,
+    ///         StorageBundleId = defaultStorageBundle.Id,
+    ///         Location = "Cloud",
+    ///         GatewayName = name,
+    ///     });
+    /// 
+    ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
+    ///     {
+    ///         Description = "created by terraform",
+    ///     });
+    /// 
+    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
+    ///     {
+    ///         Project = defaultProject.Name,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var defaultGatewayLogging = new AliCloud.CloudStorageGateway.GatewayLogging("defaultGatewayLogging", new()
+    ///     {
+    ///         GatewayId = defaultGateway.Id,
+    ///         SlsLogstore = defaultStore.Name,
+    ///         SlsProject = defaultProject.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -95,7 +100,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging")]
-    public partial class GatewayLogging : Pulumi.CustomResource
+    public partial class GatewayLogging : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Gateway.
@@ -165,7 +170,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         }
     }
 
-    public sealed class GatewayLoggingArgs : Pulumi.ResourceArgs
+    public sealed class GatewayLoggingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Gateway.
@@ -194,9 +199,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GatewayLoggingArgs()
         {
         }
+        public static new GatewayLoggingArgs Empty => new GatewayLoggingArgs();
     }
 
-    public sealed class GatewayLoggingState : Pulumi.ResourceArgs
+    public sealed class GatewayLoggingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Gateway.
@@ -225,5 +231,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GatewayLoggingState()
         {
         }
+        public static new GatewayLoggingState Empty => new GatewayLoggingState();
     }
 }

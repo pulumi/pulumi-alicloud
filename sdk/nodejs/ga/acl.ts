@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -20,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAcl = new alicloud.ga.Acl("default", {
+ * const _default = new alicloud.ga.Acl("default", {
  *     aclEntries: [{
  *         entry: "192.168.1.0/24",
  *         entryDescription: "tf-test1",
@@ -67,9 +68,11 @@ export class Acl extends pulumi.CustomResource {
     }
 
     /**
-     * The entries of the Acl. See the following `Block aclEntries`.
+     * The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+     *
+     * @deprecated Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
      */
-    public readonly aclEntries!: pulumi.Output<outputs.ga.AclAclEntry[] | undefined>;
+    public readonly aclEntries!: pulumi.Output<outputs.ga.AclAclEntry[]>;
     /**
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
      */
@@ -126,7 +129,9 @@ export class Acl extends pulumi.CustomResource {
  */
 export interface AclState {
     /**
-     * The entries of the Acl. See the following `Block aclEntries`.
+     * The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+     *
+     * @deprecated Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
      */
     aclEntries?: pulumi.Input<pulumi.Input<inputs.ga.AclAclEntry>[]>;
     /**
@@ -152,7 +157,9 @@ export interface AclState {
  */
 export interface AclArgs {
     /**
-     * The entries of the Acl. See the following `Block aclEntries`.
+     * The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+     *
+     * @deprecated Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
      */
     aclEntries?: pulumi.Input<pulumi.Input<inputs.ga.AclAclEntry>[]>;
     /**

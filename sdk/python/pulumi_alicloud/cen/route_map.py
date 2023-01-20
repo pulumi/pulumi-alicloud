@@ -1000,12 +1000,11 @@ class RouteMap(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         # Create a cen Route map resource and use it.
         default_instance = alicloud.cen.Instance("defaultInstance")
-        vpc00_region = pulumi.providers.Alicloud("vpc00Region", region="cn-hangzhou")
-        vpc01_region = pulumi.providers.Alicloud("vpc01Region", region="cn-shanghai")
+        vpc00_region = alicloud.Provider("vpc00Region", region="cn-hangzhou")
+        vpc01_region = alicloud.Provider("vpc01Region", region="cn-shanghai")
         vpc00 = alicloud.vpc.Network("vpc00", cidr_block="172.16.0.0/12",
         opts=pulumi.ResourceOptions(provider=alicloud["vpc00_region"]))
         vpc01 = alicloud.vpc.Network("vpc01", cidr_block="172.16.0.0/12",
@@ -1115,12 +1114,11 @@ class RouteMap(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         # Create a cen Route map resource and use it.
         default_instance = alicloud.cen.Instance("defaultInstance")
-        vpc00_region = pulumi.providers.Alicloud("vpc00Region", region="cn-hangzhou")
-        vpc01_region = pulumi.providers.Alicloud("vpc01Region", region="cn-shanghai")
+        vpc00_region = alicloud.Provider("vpc00Region", region="cn-hangzhou")
+        vpc01_region = alicloud.Provider("vpc01Region", region="cn-shanghai")
         vpc00 = alicloud.vpc.Network("vpc00", cidr_block="172.16.0.0/12",
         opts=pulumi.ResourceOptions(provider=alicloud["vpc00_region"]))
         vpc01 = alicloud.vpc.Network("vpc01", cidr_block="172.16.0.0/12",

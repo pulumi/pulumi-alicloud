@@ -19,21 +19,19 @@ namespace Pulumi.AliCloud.Brain
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Brain.IndustrialPidProject("example", new()
     ///     {
-    ///         var example = new AliCloud.Brain.IndustrialPidProject("example", new AliCloud.Brain.IndustrialPidProjectArgs
-    ///         {
-    ///             PidOrganizationId = "3e74e684-cbb5-xxxx",
-    ///             PidProjectName = "tf-testAcc",
-    ///         });
-    ///     }
+    ///         PidOrganizationId = "3e74e684-cbb5-xxxx",
+    ///         PidProjectName = "tf-testAcc",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +43,7 @@ namespace Pulumi.AliCloud.Brain
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:brain/industrialPidProject:IndustrialPidProject")]
-    public partial class IndustrialPidProject : Pulumi.CustomResource
+    public partial class IndustrialPidProject : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of Pid Organization.
@@ -109,7 +107,7 @@ namespace Pulumi.AliCloud.Brain
         }
     }
 
-    public sealed class IndustrialPidProjectArgs : Pulumi.ResourceArgs
+    public sealed class IndustrialPidProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of Pid Organization.
@@ -132,9 +130,10 @@ namespace Pulumi.AliCloud.Brain
         public IndustrialPidProjectArgs()
         {
         }
+        public static new IndustrialPidProjectArgs Empty => new IndustrialPidProjectArgs();
     }
 
-    public sealed class IndustrialPidProjectState : Pulumi.ResourceArgs
+    public sealed class IndustrialPidProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of Pid Organization.
@@ -157,5 +156,6 @@ namespace Pulumi.AliCloud.Brain
         public IndustrialPidProjectState()
         {
         }
+        public static new IndustrialPidProjectState Empty => new IndustrialPidProjectState();
     }
 }

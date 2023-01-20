@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,23 +17,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const resources = pulumi.output(alicloud.rds.getInstanceClasses({
+ * const resources = alicloud.rds.getInstanceClasses({
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceChargeType: "PostPaid",
  *     outputFile: "./classes.txt",
- * }));
- *
- * export const firstDbInstanceClass = resources.instanceClasses[0].instanceClass;
+ * });
+ * export const firstDbInstanceClass = resources.then(resources => resources.instanceClasses?.[0]?.instanceClass);
  * ```
  */
 export function getInstanceClasses(args?: GetInstanceClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceClassesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getInstanceClasses:getInstanceClasses", {
         "category": args.category,
         "commodityCode": args.commodityCode,
@@ -140,9 +137,28 @@ export interface GetInstanceClassesResult {
     readonly storageType?: string;
     readonly zoneId?: string;
 }
-
+/**
+ * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.46.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const resources = alicloud.rds.getInstanceClasses({
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     instanceChargeType: "PostPaid",
+ *     outputFile: "./classes.txt",
+ * });
+ * export const firstDbInstanceClass = resources.then(resources => resources.instanceClasses?.[0]?.instanceClass);
+ * ```
+ */
 export function getInstanceClassesOutput(args?: GetInstanceClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceClassesResult> {
-    return pulumi.output(args).apply(a => getInstanceClasses(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceClasses(a, opts))
 }
 
 /**

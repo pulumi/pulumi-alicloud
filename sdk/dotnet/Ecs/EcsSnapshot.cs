@@ -21,29 +21,27 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ecs.EcsSnapshot("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ecs.EcsSnapshot("default", new AliCloud.Ecs.EcsSnapshotArgs
+    ///         Category = "standard",
+    ///         Description = "Test For Terraform",
+    ///         DiskId = "d-gw8csgxxxxxxxxx",
+    ///         RetentionDays = 20,
+    ///         SnapshotName = "tf-test",
+    ///         Tags = 
     ///         {
-    ///             Category = "standard",
-    ///             Description = "Test For Terraform",
-    ///             DiskId = "d-gw8csgxxxxxxxxx",
-    ///             RetentionDays = 20,
-    ///             SnapshotName = "tf-test",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "Acceptance-test" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "Created", "TF" },
+    ///             { "For", "Acceptance-test" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsSnapshot:EcsSnapshot")]
-    public partial class EcsSnapshot : Pulumi.CustomResource
+    public partial class EcsSnapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The category of the snapshot. Valid Values: `standard` and `flash`.
@@ -173,7 +171,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsSnapshotArgs : Pulumi.ResourceArgs
+    public sealed class EcsSnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The category of the snapshot. Valid Values: `standard` and `flash`.
@@ -250,9 +248,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsSnapshotArgs()
         {
         }
+        public static new EcsSnapshotArgs Empty => new EcsSnapshotArgs();
     }
 
-    public sealed class EcsSnapshotState : Pulumi.ResourceArgs
+    public sealed class EcsSnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The category of the snapshot. Valid Values: `standard` and `flash`.
@@ -335,5 +334,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsSnapshotState()
         {
         }
+        public static new EcsSnapshotState Empty => new EcsSnapshotState();
     }
 }

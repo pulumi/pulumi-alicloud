@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.CS
     /// <summary>
     /// ## Import
     /// 
-    /// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`
+    /// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cs/kubernetes:Kubernetes alicloud_cs_kubernetes.main cluster-id
+    ///  $ pulumi import alicloud:cs/kubernetes:Kubernetes main cluster-id
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/kubernetes:Kubernetes")]
-    public partial class Kubernetes : Pulumi.CustomResource
+    public partial class Kubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The addon you want to install in cluster.
@@ -241,7 +241,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> NatGatewayId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
         /// </summary>
         [Output("newNatGateway")]
         public Output<bool?> NewNatGateway { get; private set; } = null!;
@@ -316,7 +316,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
 
         /// <summary>
-        /// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
         /// </summary>
         [Output("runtime")]
         public Output<Outputs.KubernetesRuntime?> Runtime { get; private set; } = null!;
@@ -460,10 +460,10 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> WorkerDiskSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        /// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         /// </summary>
         [Output("workerInstanceChargeType")]
-        public Output<string?> WorkerInstanceChargeType { get; private set; } = null!;
+        public Output<string> WorkerInstanceChargeType { get; private set; } = null!;
 
         /// <summary>
         /// (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
@@ -530,6 +530,10 @@ namespace Pulumi.AliCloud.CS
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -551,7 +555,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class KubernetesArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesArgs : global::Pulumi.ResourceArgs
     {
         [Input("addons")]
         private InputList<Inputs.KubernetesAddonArgs>? _addons;
@@ -779,7 +783,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
         /// </summary>
         [Input("newNatGateway")]
         public Input<bool>? NewNatGateway { get; set; }
@@ -808,11 +812,21 @@ namespace Pulumi.AliCloud.CS
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
@@ -871,7 +885,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.KubernetesRuntimeArgs>? Runtime { get; set; }
@@ -1011,7 +1025,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        /// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         /// </summary>
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
@@ -1063,9 +1077,10 @@ namespace Pulumi.AliCloud.CS
         public KubernetesArgs()
         {
         }
+        public static new KubernetesArgs Empty => new KubernetesArgs();
     }
 
-    public sealed class KubernetesState : Pulumi.ResourceArgs
+    public sealed class KubernetesState : global::Pulumi.ResourceArgs
     {
         [Input("addons")]
         private InputList<Inputs.KubernetesAddonGetArgs>? _addons;
@@ -1323,7 +1338,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? NatGatewayId { get; set; }
 
         /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
         /// </summary>
         [Input("newNatGateway")]
         public Input<bool>? NewNatGateway { get; set; }
@@ -1352,11 +1367,21 @@ namespace Pulumi.AliCloud.CS
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
@@ -1415,7 +1440,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.KubernetesRuntimeGetArgs>? Runtime { get; set; }
@@ -1579,7 +1604,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        /// (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         /// </summary>
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
@@ -1650,5 +1675,6 @@ namespace Pulumi.AliCloud.CS
         public KubernetesState()
         {
         }
+        public static new KubernetesState Empty => new KubernetesState();
     }
 }

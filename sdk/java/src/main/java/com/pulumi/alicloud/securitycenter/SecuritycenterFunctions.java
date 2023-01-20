@@ -29,7 +29,7 @@ public final class SecuritycenterFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.securitycenter.SecuritycenterFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.securitycenter.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -71,7 +71,7 @@ public final class SecuritycenterFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.securitycenter.SecuritycenterFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.securitycenter.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -113,7 +113,7 @@ public final class SecuritycenterFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.securitycenter.SecuritycenterFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.securitycenter.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -155,7 +155,7 @@ public final class SecuritycenterFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.securitycenter.SecuritycenterFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.securitycenter.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -197,7 +197,7 @@ public final class SecuritycenterFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.securitycenter.SecuritycenterFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.securitycenter.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -239,7 +239,7 @@ public final class SecuritycenterFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.securitycenter.SecuritycenterFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.securitycenter.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

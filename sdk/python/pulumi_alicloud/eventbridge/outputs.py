@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'RuleTarget',
+    'RuleTargetDeadLetterQueue',
     'RuleTargetParamList',
     'GetEventBusesBusResult',
     'GetEventSourcesSourceResult',
@@ -28,6 +29,10 @@ class RuleTarget(dict):
             suggest = "param_lists"
         elif key == "targetId":
             suggest = "target_id"
+        elif key == "deadLetterQueue":
+            suggest = "dead_letter_queue"
+        elif key == "pushRetryStrategy":
+            suggest = "push_retry_strategy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RuleTarget. Access the value via the '{suggest}' property getter instead.")
@@ -44,17 +49,25 @@ class RuleTarget(dict):
                  endpoint: str,
                  param_lists: Sequence['outputs.RuleTargetParamList'],
                  target_id: str,
-                 type: str):
+                 type: str,
+                 dead_letter_queue: Optional['outputs.RuleTargetDeadLetterQueue'] = None,
+                 push_retry_strategy: Optional[str] = None):
         """
         :param str endpoint: The endpoint of target.
-        :param Sequence['RuleTargetParamListArgs'] param_lists: A list of param.
+        :param Sequence['RuleTargetParamListArgs'] param_lists: A list of param. See the following `Block param_list`.
         :param str target_id: The ID of target.
         :param str type: The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+        :param 'RuleTargetDeadLetterQueueArgs' dead_letter_queue: Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+        :param str push_retry_strategy: The retry policy that is used to push the event. Valid values:
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "param_lists", param_lists)
         pulumi.set(__self__, "target_id", target_id)
         pulumi.set(__self__, "type", type)
+        if dead_letter_queue is not None:
+            pulumi.set(__self__, "dead_letter_queue", dead_letter_queue)
+        if push_retry_strategy is not None:
+            pulumi.set(__self__, "push_retry_strategy", push_retry_strategy)
 
     @property
     @pulumi.getter
@@ -68,7 +81,7 @@ class RuleTarget(dict):
     @pulumi.getter(name="paramLists")
     def param_lists(self) -> Sequence['outputs.RuleTargetParamList']:
         """
-        A list of param.
+        A list of param. See the following `Block param_list`.
         """
         return pulumi.get(self, "param_lists")
 
@@ -87,6 +100,41 @@ class RuleTarget(dict):
         The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="deadLetterQueue")
+    def dead_letter_queue(self) -> Optional['outputs.RuleTargetDeadLetterQueue']:
+        """
+        Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+        """
+        return pulumi.get(self, "dead_letter_queue")
+
+    @property
+    @pulumi.getter(name="pushRetryStrategy")
+    def push_retry_strategy(self) -> Optional[str]:
+        """
+        The retry policy that is used to push the event. Valid values:
+        """
+        return pulumi.get(self, "push_retry_strategy")
+
+
+@pulumi.output_type
+class RuleTargetDeadLetterQueue(dict):
+    def __init__(__self__, *,
+                 arn: Optional[str] = None):
+        """
+        :param str arn: The srn of the dead letter queue.
+        """
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[str]:
+        """
+        The srn of the dead letter queue.
+        """
+        return pulumi.get(self, "arn")
 
 
 @pulumi.output_type

@@ -23,6 +23,131 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// &gt; **NOTE:** Only rule's virtual server group can be modified.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var slbRuleName = config.Get("slbRuleName") ?? "forSlbRule";
+    ///     var ruleZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var ruleInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = ruleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
+    ///     });
+    /// 
+    ///     var ruleImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var ruleNetwork = new AliCloud.Vpc.Network("ruleNetwork", new()
+    ///     {
+    ///         VpcName = slbRuleName,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var ruleSwitch = new AliCloud.Vpc.Switch("ruleSwitch", new()
+    ///     {
+    ///         VpcId = ruleNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///         ZoneId = ruleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = slbRuleName,
+    ///     });
+    /// 
+    ///     var ruleSecurityGroup = new AliCloud.Ecs.SecurityGroup("ruleSecurityGroup", new()
+    ///     {
+    ///         VpcId = ruleNetwork.Id,
+    ///     });
+    /// 
+    ///     var ruleInstance = new AliCloud.Ecs.Instance("ruleInstance", new()
+    ///     {
+    ///         ImageId = ruleImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = ruleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             ruleSecurityGroup,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 10,
+    ///         AvailabilityZone = ruleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceChargeType = "PostPaid",
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         VswitchId = ruleSwitch.Id,
+    ///         InstanceName = slbRuleName,
+    ///     });
+    /// 
+    ///     var ruleApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("ruleApplicationLoadBalancer", new()
+    ///     {
+    ///         LoadBalancerName = slbRuleName,
+    ///         VswitchId = ruleSwitch.Id,
+    ///         InstanceChargeType = "PayByCLCU",
+    ///     });
+    /// 
+    ///     var ruleListener = new AliCloud.Slb.Listener("ruleListener", new()
+    ///     {
+    ///         LoadBalancerId = ruleApplicationLoadBalancer.Id,
+    ///         BackendPort = 22,
+    ///         FrontendPort = 22,
+    ///         Protocol = "http",
+    ///         Bandwidth = 5,
+    ///         HealthCheckConnectPort = 20,
+    ///     });
+    /// 
+    ///     var ruleServerGroup = new AliCloud.Slb.ServerGroup("ruleServerGroup", new()
+    ///     {
+    ///         LoadBalancerId = ruleApplicationLoadBalancer.Id,
+    ///     });
+    /// 
+    ///     var ruleServerGroupServerAttachment = new AliCloud.Slb.ServerGroupServerAttachment("ruleServerGroupServerAttachment", new()
+    ///     {
+    ///         ServerGroupId = ruleServerGroup.Id,
+    ///         ServerId = ruleInstance.Id,
+    ///         Port = 80,
+    ///         Weight = 100,
+    ///     });
+    /// 
+    ///     var ruleRule = new AliCloud.Slb.Rule("ruleRule", new()
+    ///     {
+    ///         LoadBalancerId = ruleApplicationLoadBalancer.Id,
+    ///         FrontendPort = ruleListener.FrontendPort,
+    ///         Domain = "*.aliyun.com",
+    ///         Url = "/image",
+    ///         ServerGroupId = ruleServerGroup.Id,
+    ///         Cookie = "23ffsa",
+    ///         CookieTimeout = 100,
+    ///         HealthCheckHttpCode = "http_2xx",
+    ///         HealthCheckInterval = 10,
+    ///         HealthCheckUri = "/test",
+    ///         HealthCheckConnectPort = 80,
+    ///         HealthCheckTimeout = 30,
+    ///         HealthyThreshold = 3,
+    ///         UnhealthyThreshold = 5,
+    ///         StickySession = "on",
+    ///         StickySessionType = "server",
+    ///         ListenerSync = "off",
+    ///         Scheduler = "rr",
+    ///         HealthCheckDomain = "test",
+    ///         HealthCheck = "on",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Load balancer forwarding rule can be imported using the id, e.g.
@@ -32,7 +157,7 @@ namespace Pulumi.AliCloud.Slb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/rule:Rule")]
-    public partial class Rule : Pulumi.CustomResource
+    public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
@@ -214,7 +339,7 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
-    public sealed class RuleArgs : Pulumi.ResourceArgs
+    public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
@@ -355,9 +480,10 @@ namespace Pulumi.AliCloud.Slb
         public RuleArgs()
         {
         }
+        public static new RuleArgs Empty => new RuleArgs();
     }
 
-    public sealed class RuleState : Pulumi.ResourceArgs
+    public sealed class RuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
@@ -498,5 +624,6 @@ namespace Pulumi.AliCloud.Slb
         public RuleState()
         {
         }
+        public static new RuleState Empty => new RuleState();
     }
 }

@@ -33,14 +33,14 @@ public final class GetBandwidthPackagesArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+     * Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
      * 
      */
     @Import(name="includeReservationData")
     private @Nullable Output<Boolean> includeReservationData;
 
     /**
-     * @return -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+     * @return Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
      * 
      */
     public Optional<Output<Boolean>> includeReservationData() {
@@ -160,7 +160,7 @@ public final class GetBandwidthPackagesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param includeReservationData -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+         * @param includeReservationData Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class GetBandwidthPackagesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param includeReservationData -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+         * @param includeReservationData Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
          * 
          * @return builder
          * 

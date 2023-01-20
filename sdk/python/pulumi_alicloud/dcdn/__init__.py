@@ -10,6 +10,11 @@ from .domain_config import *
 from .get_domains import *
 from .get_ipa_domains import *
 from .get_service import *
+from .get_waf_domains import *
+from .get_waf_policies import *
 from .ipa_domain import *
+from .waf_domain import *
+from .waf_policy import *
+from .waf_policy_domain_attachment import *
 from ._inputs import *
 from . import outputs

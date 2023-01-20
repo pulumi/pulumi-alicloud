@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -15,21 +16,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const imagesDs = pulumi.output(alicloud.ecs.getImages({
+ * const imagesDs = alicloud.ecs.getImages({
  *     nameRegex: "^centos_6",
  *     owners: "system",
- * }));
- *
- * export const firstImageId = imagesDs.images[0].id;
+ * });
+ * export const firstImageId = imagesDs.then(imagesDs => imagesDs.images?.[0]?.id);
  * ```
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getImages:getImages", {
         "actionType": args.actionType,
         "architecture": args.architecture,
@@ -59,9 +56,7 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  */
 export interface GetImagesArgs {
     /**
-     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
-     * * `CreateEcs`: instance creation.
-     * * `ChangeOS`: replacement of the system disk or operating system.
+     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
      */
     actionType?: string;
     /**
@@ -69,9 +64,7 @@ export interface GetImagesArgs {
      */
     architecture?: string;
     /**
-     * Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:                                           
-     * * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-     * * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
+     * Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
      */
     dryRun?: boolean;
     /**
@@ -128,13 +121,7 @@ export interface GetImagesArgs {
      */
     snapshotId?: string;
     /**
-     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-     * * `Creating`: The image is being created.
-     * * `Waiting`: The image is waiting to be processed.
-     * * `Available`: The image is available.
-     * * `UnAvailable`: The image is unavailable.
-     * * `CreateFailed`: The image failed to be created.
-     * * `Deprecated`: The image is discontinued.
+     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
      */
     status?: string;
     /**
@@ -142,9 +129,7 @@ export interface GetImagesArgs {
      */
     tags?: {[key: string]: any};
     /**
-     * Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
-     * * `instance`: The image is already in use and running on an ECS instance.
-     * * `none`: The image is not in use.
+     * Specifies whether to check the validity of the request without actually making the request. Valid values:
      */
     usage?: string;
 }
@@ -195,9 +180,25 @@ export interface GetImagesResult {
     readonly tags?: {[key: string]: any};
     readonly usage?: string;
 }
-
+/**
+ * This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
+ * other public images and the ones available on the image market.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const imagesDs = alicloud.ecs.getImages({
+ *     nameRegex: "^centos_6",
+ *     owners: "system",
+ * });
+ * export const firstImageId = imagesDs.then(imagesDs => imagesDs.images?.[0]?.id);
+ * ```
+ */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
-    return pulumi.output(args).apply(a => getImages(a, opts))
+    return pulumi.output(args).apply((a: any) => getImages(a, opts))
 }
 
 /**
@@ -205,9 +206,7 @@ export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.Invoke
  */
 export interface GetImagesOutputArgs {
     /**
-     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
-     * * `CreateEcs`: instance creation.
-     * * `ChangeOS`: replacement of the system disk or operating system.
+     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
      */
     actionType?: pulumi.Input<string>;
     /**
@@ -215,9 +214,7 @@ export interface GetImagesOutputArgs {
      */
     architecture?: pulumi.Input<string>;
     /**
-     * Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:                                           
-     * * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-     * * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
+     * Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -274,13 +271,7 @@ export interface GetImagesOutputArgs {
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-     * * `Creating`: The image is being created.
-     * * `Waiting`: The image is waiting to be processed.
-     * * `Available`: The image is available.
-     * * `UnAvailable`: The image is unavailable.
-     * * `CreateFailed`: The image failed to be created.
-     * * `Deprecated`: The image is discontinued.
+     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
      */
     status?: pulumi.Input<string>;
     /**
@@ -288,9 +279,7 @@ export interface GetImagesOutputArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
-     * * `instance`: The image is already in use and running on an ECS instance.
-     * * `none`: The image is not in use.
+     * Specifies whether to check the validity of the request without actually making the request. Valid values:
      */
     usage?: pulumi.Input<string>;
 }

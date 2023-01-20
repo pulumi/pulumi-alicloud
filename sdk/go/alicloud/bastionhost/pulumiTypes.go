@@ -11,29 +11,29 @@ import (
 )
 
 type InstanceAdAuthServer struct {
-	// The username of the account that is used for the LDAP server.
+	// The username of the account that is used for the AD server.
 	Account string `pulumi:"account"`
 	// The Base distinguished name (DN).
 	BaseDn string `pulumi:"baseDn"`
 	// The domain on the AD server.
 	Domain string `pulumi:"domain"`
-	// The field that is used to indicate the email address of a user on the LDAP server.
+	// The field that is used to indicate the email address of a user on the AD server.
 	EmailMapping *string `pulumi:"emailMapping"`
 	// The condition that is used to filter users.
 	Filter *string `pulumi:"filter"`
 	// Specifies whether to support SSL.
 	IsSsl bool `pulumi:"isSsl"`
-	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+	// The field that is used to indicate the mobile phone number of a user on the AD server.
 	MobileMapping *string `pulumi:"mobileMapping"`
-	// The field that is used to indicate the name of a user on the LDAP server.
+	// The field that is used to indicate the name of a user on the AD server.
 	NameMapping *string `pulumi:"nameMapping"`
-	// The password of the account that is used for the LDAP server.
+	// The password of the account that is used for the AD server.
 	Password string `pulumi:"password"`
-	// The port that is used to access the LDAP server.
+	// The port that is used to access the AD server.
 	Port int `pulumi:"port"`
-	// The address of the LDAP server.
+	// The address of the AD server.
 	Server string `pulumi:"server"`
-	// The address of the secondary LDAP server.
+	// The address of the secondary AD server.
 	StandbyServer *string `pulumi:"standbyServer"`
 }
 
@@ -49,29 +49,29 @@ type InstanceAdAuthServerInput interface {
 }
 
 type InstanceAdAuthServerArgs struct {
-	// The username of the account that is used for the LDAP server.
+	// The username of the account that is used for the AD server.
 	Account pulumi.StringInput `pulumi:"account"`
 	// The Base distinguished name (DN).
 	BaseDn pulumi.StringInput `pulumi:"baseDn"`
 	// The domain on the AD server.
 	Domain pulumi.StringInput `pulumi:"domain"`
-	// The field that is used to indicate the email address of a user on the LDAP server.
+	// The field that is used to indicate the email address of a user on the AD server.
 	EmailMapping pulumi.StringPtrInput `pulumi:"emailMapping"`
 	// The condition that is used to filter users.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// Specifies whether to support SSL.
 	IsSsl pulumi.BoolInput `pulumi:"isSsl"`
-	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+	// The field that is used to indicate the mobile phone number of a user on the AD server.
 	MobileMapping pulumi.StringPtrInput `pulumi:"mobileMapping"`
-	// The field that is used to indicate the name of a user on the LDAP server.
+	// The field that is used to indicate the name of a user on the AD server.
 	NameMapping pulumi.StringPtrInput `pulumi:"nameMapping"`
-	// The password of the account that is used for the LDAP server.
+	// The password of the account that is used for the AD server.
 	Password pulumi.StringInput `pulumi:"password"`
-	// The port that is used to access the LDAP server.
+	// The port that is used to access the AD server.
 	Port pulumi.IntInput `pulumi:"port"`
-	// The address of the LDAP server.
+	// The address of the AD server.
 	Server pulumi.StringInput `pulumi:"server"`
-	// The address of the secondary LDAP server.
+	// The address of the secondary AD server.
 	StandbyServer pulumi.StringPtrInput `pulumi:"standbyServer"`
 }
 
@@ -126,7 +126,7 @@ func (o InstanceAdAuthServerOutput) ToInstanceAdAuthServerOutputWithContext(ctx 
 	return o
 }
 
-// The username of the account that is used for the LDAP server.
+// The username of the account that is used for the AD server.
 func (o InstanceAdAuthServerOutput) Account() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceAdAuthServer) string { return v.Account }).(pulumi.StringOutput)
 }
@@ -141,7 +141,7 @@ func (o InstanceAdAuthServerOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceAdAuthServer) string { return v.Domain }).(pulumi.StringOutput)
 }
 
-// The field that is used to indicate the email address of a user on the LDAP server.
+// The field that is used to indicate the email address of a user on the AD server.
 func (o InstanceAdAuthServerOutput) EmailMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceAdAuthServer) *string { return v.EmailMapping }).(pulumi.StringPtrOutput)
 }
@@ -156,32 +156,32 @@ func (o InstanceAdAuthServerOutput) IsSsl() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceAdAuthServer) bool { return v.IsSsl }).(pulumi.BoolOutput)
 }
 
-// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+// The field that is used to indicate the mobile phone number of a user on the AD server.
 func (o InstanceAdAuthServerOutput) MobileMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceAdAuthServer) *string { return v.MobileMapping }).(pulumi.StringPtrOutput)
 }
 
-// The field that is used to indicate the name of a user on the LDAP server.
+// The field that is used to indicate the name of a user on the AD server.
 func (o InstanceAdAuthServerOutput) NameMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceAdAuthServer) *string { return v.NameMapping }).(pulumi.StringPtrOutput)
 }
 
-// The password of the account that is used for the LDAP server.
+// The password of the account that is used for the AD server.
 func (o InstanceAdAuthServerOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceAdAuthServer) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// The port that is used to access the LDAP server.
+// The port that is used to access the AD server.
 func (o InstanceAdAuthServerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceAdAuthServer) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// The address of the LDAP server.
+// The address of the AD server.
 func (o InstanceAdAuthServerOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceAdAuthServer) string { return v.Server }).(pulumi.StringOutput)
 }
 
-// The address of the secondary LDAP server.
+// The address of the secondary AD server.
 func (o InstanceAdAuthServerOutput) StandbyServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceAdAuthServer) *string { return v.StandbyServer }).(pulumi.StringPtrOutput)
 }
@@ -207,11 +207,11 @@ func (o InstanceAdAuthServerArrayOutput) Index(i pulumi.IntInput) InstanceAdAuth
 }
 
 type InstanceLdapAuthServer struct {
-	// The username of the account that is used for the LDAP server.
+	// The username of the account that is used for the AD server.
 	Account string `pulumi:"account"`
 	// The Base distinguished name (DN).
 	BaseDn string `pulumi:"baseDn"`
-	// The field that is used to indicate the email address of a user on the LDAP server.
+	// The field that is used to indicate the email address of a user on the AD server.
 	EmailMapping *string `pulumi:"emailMapping"`
 	// The condition that is used to filter users.
 	Filter *string `pulumi:"filter"`
@@ -219,17 +219,17 @@ type InstanceLdapAuthServer struct {
 	IsSsl *bool `pulumi:"isSsl"`
 	// The field that is used to indicate the logon name of a user on the LDAP server.
 	LoginNameMapping *string `pulumi:"loginNameMapping"`
-	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+	// The field that is used to indicate the mobile phone number of a user on the AD server.
 	MobileMapping *string `pulumi:"mobileMapping"`
-	// The field that is used to indicate the name of a user on the LDAP server.
+	// The field that is used to indicate the name of a user on the AD server.
 	NameMapping *string `pulumi:"nameMapping"`
-	// The password of the account that is used for the LDAP server.
+	// The password of the account that is used for the AD server.
 	Password string `pulumi:"password"`
-	// The port that is used to access the LDAP server.
+	// The port that is used to access the AD server.
 	Port int `pulumi:"port"`
-	// The address of the LDAP server.
+	// The address of the AD server.
 	Server string `pulumi:"server"`
-	// The address of the secondary LDAP server.
+	// The address of the secondary AD server.
 	StandbyServer *string `pulumi:"standbyServer"`
 }
 
@@ -245,11 +245,11 @@ type InstanceLdapAuthServerInput interface {
 }
 
 type InstanceLdapAuthServerArgs struct {
-	// The username of the account that is used for the LDAP server.
+	// The username of the account that is used for the AD server.
 	Account pulumi.StringInput `pulumi:"account"`
 	// The Base distinguished name (DN).
 	BaseDn pulumi.StringInput `pulumi:"baseDn"`
-	// The field that is used to indicate the email address of a user on the LDAP server.
+	// The field that is used to indicate the email address of a user on the AD server.
 	EmailMapping pulumi.StringPtrInput `pulumi:"emailMapping"`
 	// The condition that is used to filter users.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
@@ -257,17 +257,17 @@ type InstanceLdapAuthServerArgs struct {
 	IsSsl pulumi.BoolPtrInput `pulumi:"isSsl"`
 	// The field that is used to indicate the logon name of a user on the LDAP server.
 	LoginNameMapping pulumi.StringPtrInput `pulumi:"loginNameMapping"`
-	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+	// The field that is used to indicate the mobile phone number of a user on the AD server.
 	MobileMapping pulumi.StringPtrInput `pulumi:"mobileMapping"`
-	// The field that is used to indicate the name of a user on the LDAP server.
+	// The field that is used to indicate the name of a user on the AD server.
 	NameMapping pulumi.StringPtrInput `pulumi:"nameMapping"`
-	// The password of the account that is used for the LDAP server.
+	// The password of the account that is used for the AD server.
 	Password pulumi.StringInput `pulumi:"password"`
-	// The port that is used to access the LDAP server.
+	// The port that is used to access the AD server.
 	Port pulumi.IntInput `pulumi:"port"`
-	// The address of the LDAP server.
+	// The address of the AD server.
 	Server pulumi.StringInput `pulumi:"server"`
-	// The address of the secondary LDAP server.
+	// The address of the secondary AD server.
 	StandbyServer pulumi.StringPtrInput `pulumi:"standbyServer"`
 }
 
@@ -322,7 +322,7 @@ func (o InstanceLdapAuthServerOutput) ToInstanceLdapAuthServerOutputWithContext(
 	return o
 }
 
-// The username of the account that is used for the LDAP server.
+// The username of the account that is used for the AD server.
 func (o InstanceLdapAuthServerOutput) Account() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceLdapAuthServer) string { return v.Account }).(pulumi.StringOutput)
 }
@@ -332,7 +332,7 @@ func (o InstanceLdapAuthServerOutput) BaseDn() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceLdapAuthServer) string { return v.BaseDn }).(pulumi.StringOutput)
 }
 
-// The field that is used to indicate the email address of a user on the LDAP server.
+// The field that is used to indicate the email address of a user on the AD server.
 func (o InstanceLdapAuthServerOutput) EmailMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceLdapAuthServer) *string { return v.EmailMapping }).(pulumi.StringPtrOutput)
 }
@@ -352,32 +352,32 @@ func (o InstanceLdapAuthServerOutput) LoginNameMapping() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v InstanceLdapAuthServer) *string { return v.LoginNameMapping }).(pulumi.StringPtrOutput)
 }
 
-// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+// The field that is used to indicate the mobile phone number of a user on the AD server.
 func (o InstanceLdapAuthServerOutput) MobileMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceLdapAuthServer) *string { return v.MobileMapping }).(pulumi.StringPtrOutput)
 }
 
-// The field that is used to indicate the name of a user on the LDAP server.
+// The field that is used to indicate the name of a user on the AD server.
 func (o InstanceLdapAuthServerOutput) NameMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceLdapAuthServer) *string { return v.NameMapping }).(pulumi.StringPtrOutput)
 }
 
-// The password of the account that is used for the LDAP server.
+// The password of the account that is used for the AD server.
 func (o InstanceLdapAuthServerOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceLdapAuthServer) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// The port that is used to access the LDAP server.
+// The port that is used to access the AD server.
 func (o InstanceLdapAuthServerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceLdapAuthServer) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// The address of the LDAP server.
+// The address of the AD server.
 func (o InstanceLdapAuthServerOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceLdapAuthServer) string { return v.Server }).(pulumi.StringOutput)
 }
 
-// The address of the secondary LDAP server.
+// The address of the secondary AD server.
 func (o InstanceLdapAuthServerOutput) StandbyServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceLdapAuthServer) *string { return v.StandbyServer }).(pulumi.StringPtrOutput)
 }

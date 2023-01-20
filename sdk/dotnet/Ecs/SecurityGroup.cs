@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/securityGroup:SecurityGroup")]
-    public partial class SecurityGroup : Pulumi.CustomResource
+    public partial class SecurityGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The security group description. Defaults to null.
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class SecurityGroupArgs : Pulumi.ResourceArgs
+    public sealed class SecurityGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The security group description. Defaults to null.
@@ -176,9 +176,10 @@ namespace Pulumi.AliCloud.Ecs
         public SecurityGroupArgs()
         {
         }
+        public static new SecurityGroupArgs Empty => new SecurityGroupArgs();
     }
 
-    public sealed class SecurityGroupState : Pulumi.ResourceArgs
+    public sealed class SecurityGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The security group description. Defaults to null.
@@ -239,5 +240,6 @@ namespace Pulumi.AliCloud.Ecs
         public SecurityGroupState()
         {
         }
+        public static new SecurityGroupState Empty => new SecurityGroupState();
     }
 }

@@ -1343,6 +1343,7 @@ class GetListenersSlbListenerResult(dict):
                  master_slave_server_group_id: str,
                  persistence_timeout: int,
                  protocol: str,
+                 proxy_protocol_v2_enabled: bool,
                  request_timeout: int,
                  scheduler: str,
                  security_status: str,
@@ -1383,6 +1384,7 @@ class GetListenersSlbListenerResult(dict):
         :param str master_slave_server_group_id: ID of the active/standby server group.
         :param int persistence_timeout: Timeout value of the TCP connection in seconds. If the value is 0, the session persistence function is disabled. Only available when the protocol is `tcp`.
         :param str protocol: Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
+        :param bool proxy_protocol_v2_enabled: Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
         :param int request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param str scheduler: Algorithm used to distribute traffic. Possible values: `wrr` (weighted round robin), `wlc` (weighted least connection) and `rr` (round robin).
         :param str security_status: Security status. Only available when the protocol is `https`.
@@ -1422,6 +1424,7 @@ class GetListenersSlbListenerResult(dict):
         pulumi.set(__self__, "master_slave_server_group_id", master_slave_server_group_id)
         pulumi.set(__self__, "persistence_timeout", persistence_timeout)
         pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "proxy_protocol_v2_enabled", proxy_protocol_v2_enabled)
         pulumi.set(__self__, "request_timeout", request_timeout)
         pulumi.set(__self__, "scheduler", scheduler)
         pulumi.set(__self__, "security_status", security_status)
@@ -1629,6 +1632,14 @@ class GetListenersSlbListenerResult(dict):
         Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
         """
         return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="proxyProtocolV2Enabled")
+    def proxy_protocol_v2_enabled(self) -> bool:
+        """
+        Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        """
+        return pulumi.get(self, "proxy_protocol_v2_enabled")
 
     @property
     @pulumi.getter(name="requestTimeout")
@@ -2472,8 +2483,7 @@ class GetServerCertificatesCertificateResult(dict):
                  tags: Optional[Mapping[str, Any]] = None):
         """
         :param str alicloud_certificate_id: Id of server certificate issued by alibaba cloud.
-               * `alicloud_certificate_name`- Name of server certificate issued by alibaba cloud.
-               * `is_alicloud_certificate`- Is server certificate issued by alibaba cloud or not.
+        :param str alicloud_certificate_name: Name of server certificate issued by alibaba cloud.
         :param str common_name: Server certificate common name.
         :param str created_time: Server certificate created time.
         :param int created_timestamp: Server certificate created timestamp.
@@ -2481,6 +2491,7 @@ class GetServerCertificatesCertificateResult(dict):
         :param int expired_timestamp: Server certificate expired timestamp.
         :param str fingerprint: Server certificate fingerprint.
         :param str id: Server certificate ID.
+        :param bool is_alicloud_certificate: Is server certificate issued by alibaba cloud or not.
         :param str name: Server certificate name.
         :param Sequence[str] subject_alternative_names: Server certificate subject alternative name list.
         :param str resource_group_id: The Id of resource group which the slb server certificates belongs.
@@ -2508,14 +2519,15 @@ class GetServerCertificatesCertificateResult(dict):
     def alicloud_certificate_id(self) -> str:
         """
         Id of server certificate issued by alibaba cloud.
-        * `alicloud_certificate_name`- Name of server certificate issued by alibaba cloud.
-        * `is_alicloud_certificate`- Is server certificate issued by alibaba cloud or not.
         """
         return pulumi.get(self, "alicloud_certificate_id")
 
     @property
     @pulumi.getter(name="alicloudCertificateName")
     def alicloud_certificate_name(self) -> str:
+        """
+        Name of server certificate issued by alibaba cloud.
+        """
         return pulumi.get(self, "alicloud_certificate_name")
 
     @property
@@ -2577,6 +2589,9 @@ class GetServerCertificatesCertificateResult(dict):
     @property
     @pulumi.getter(name="isAlicloudCertificate")
     def is_alicloud_certificate(self) -> bool:
+        """
+        Is server certificate issued by alibaba cloud or not.
+        """
         return pulumi.get(self, "is_alicloud_certificate")
 
     @property

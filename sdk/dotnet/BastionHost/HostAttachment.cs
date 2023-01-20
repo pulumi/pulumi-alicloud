@@ -19,22 +19,20 @@ namespace Pulumi.AliCloud.BastionHost
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.BastionHost.HostAttachment("example", new()
     ///     {
-    ///         var example = new AliCloud.BastionHost.HostAttachment("example", new AliCloud.BastionHost.HostAttachmentArgs
-    ///         {
-    ///             HostGroupId = "6",
-    ///             HostId = "15",
-    ///             InstanceId = "bastionhost-cn-tl32bh0no30",
-    ///         });
-    ///     }
+    ///         HostGroupId = "6",
+    ///         HostId = "15",
+    ///         InstanceId = "bastionhost-cn-tl32bh0no30",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/hostAttachment:HostAttachment")]
-    public partial class HostAttachment : Pulumi.CustomResource
+    public partial class HostAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies the added to the host group ID.
@@ -110,7 +108,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
     }
 
-    public sealed class HostAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class HostAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the added to the host group ID.
@@ -133,9 +131,10 @@ namespace Pulumi.AliCloud.BastionHost
         public HostAttachmentArgs()
         {
         }
+        public static new HostAttachmentArgs Empty => new HostAttachmentArgs();
     }
 
-    public sealed class HostAttachmentState : Pulumi.ResourceArgs
+    public sealed class HostAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the added to the host group ID.
@@ -158,5 +157,6 @@ namespace Pulumi.AliCloud.BastionHost
         public HostAttachmentState()
         {
         }
+        public static new HostAttachmentState Empty => new HostAttachmentState();
     }
 }

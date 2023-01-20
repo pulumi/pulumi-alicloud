@@ -78,7 +78,8 @@ type DhcpOptionsSetAttachment struct {
 	DhcpOptionsSetId pulumi.StringOutput `pulumi:"dhcpOptionsSetId"`
 	// Specifies whether to precheck this request only. Default values: `false`. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	Status pulumi.StringOutput  `pulumi:"status"`
+	// The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The ID of the VPC network that is to be associated with the DHCP options set..
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
@@ -121,7 +122,8 @@ type dhcpOptionsSetAttachmentState struct {
 	// The ID of the DHCP options set.
 	DhcpOptionsSetId *string `pulumi:"dhcpOptionsSetId"`
 	// Specifies whether to precheck this request only. Default values: `false`. Valid values:
-	DryRun *bool   `pulumi:"dryRun"`
+	DryRun *bool `pulumi:"dryRun"`
+	// The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
 	Status *string `pulumi:"status"`
 	// The ID of the VPC network that is to be associated with the DHCP options set..
 	VpcId *string `pulumi:"vpcId"`
@@ -132,6 +134,7 @@ type DhcpOptionsSetAttachmentState struct {
 	DhcpOptionsSetId pulumi.StringPtrInput
 	// Specifies whether to precheck this request only. Default values: `false`. Valid values:
 	DryRun pulumi.BoolPtrInput
+	// The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
 	Status pulumi.StringPtrInput
 	// The ID of the VPC network that is to be associated with the DHCP options set..
 	VpcId pulumi.StringPtrInput
@@ -257,6 +260,7 @@ func (o DhcpOptionsSetAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DhcpOptionsSetAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
+// The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
 func (o DhcpOptionsSetAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DhcpOptionsSetAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

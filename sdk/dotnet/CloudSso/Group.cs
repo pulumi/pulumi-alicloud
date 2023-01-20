@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.CloudSso
     /// 
     /// &gt; **NOTE:** Available in v1.138.0+.
     /// 
-    /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-    /// 
     /// ## Import
     /// 
     /// Cloud SSO Group can be imported using the id, e.g.
@@ -27,7 +25,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudsso/group:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Description of the group. The description can be up to `1024` characters long.
@@ -97,7 +95,7 @@ namespace Pulumi.AliCloud.CloudSso
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Description of the group. The description can be up to `1024` characters long.
@@ -120,9 +118,10 @@ namespace Pulumi.AliCloud.CloudSso
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 
-    public sealed class GroupState : Pulumi.ResourceArgs
+    public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Description of the group. The description can be up to `1024` characters long.
@@ -151,5 +150,6 @@ namespace Pulumi.AliCloud.CloudSso
         public GroupState()
         {
         }
+        public static new GroupState Empty => new GroupState();
     }
 }

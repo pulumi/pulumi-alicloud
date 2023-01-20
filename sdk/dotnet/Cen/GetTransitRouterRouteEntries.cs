@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Cen
         /// &gt; **NOTE:** Available in 1.126.0+
         /// </summary>
         public static Task<GetTransitRouterRouteEntriesResult> InvokeAsync(GetTransitRouterRouteEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteEntriesResult>("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", args ?? new GetTransitRouterRouteEntriesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteEntriesResult>("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", args ?? new GetTransitRouterRouteEntriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Cen
         /// &gt; **NOTE:** Available in 1.126.0+
         /// </summary>
         public static Output<GetTransitRouterRouteEntriesResult> Invoke(GetTransitRouterRouteEntriesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteEntriesResult>("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", args ?? new GetTransitRouterRouteEntriesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteEntriesResult>("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", args ?? new GetTransitRouterRouteEntriesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTransitRouterRouteEntriesArgs : Pulumi.InvokeArgs
+    public sealed class GetTransitRouterRouteEntriesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -91,9 +91,10 @@ namespace Pulumi.AliCloud.Cen
         public GetTransitRouterRouteEntriesArgs()
         {
         }
+        public static new GetTransitRouterRouteEntriesArgs Empty => new GetTransitRouterRouteEntriesArgs();
     }
 
-    public sealed class GetTransitRouterRouteEntriesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTransitRouterRouteEntriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -155,6 +156,7 @@ namespace Pulumi.AliCloud.Cen
         public GetTransitRouterRouteEntriesInvokeArgs()
         {
         }
+        public static new GetTransitRouterRouteEntriesInvokeArgs Empty => new GetTransitRouterRouteEntriesInvokeArgs();
     }
 
 

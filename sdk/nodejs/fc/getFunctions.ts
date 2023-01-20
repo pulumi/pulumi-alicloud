@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,20 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const functionsDs = pulumi.output(alicloud.fc.getFunctions({
+ * const functionsDs = alicloud.fc.getFunctions({
  *     nameRegex: "sample_fc_function",
  *     serviceName: "sample_service",
- * }));
- *
- * export const firstFcFunctionName = functionsDs.functions[0].name;
+ * });
+ * export const firstFcFunctionName = functionsDs.then(functionsDs => functionsDs.functions?.[0]?.name);
  * ```
  */
 export function getFunctions(args: GetFunctionsArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:fc/getFunctions:getFunctions", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -41,7 +38,7 @@ export function getFunctions(args: GetFunctionsArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetFunctionsArgs {
     /**
-     * - A list of functions ids.
+     * A list of functions ids.
      */
     ids?: string[];
     /**
@@ -79,9 +76,24 @@ export interface GetFunctionsResult {
     readonly outputFile?: string;
     readonly serviceName: string;
 }
-
+/**
+ * This data source provides the Function Compute functions of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const functionsDs = alicloud.fc.getFunctions({
+ *     nameRegex: "sample_fc_function",
+ *     serviceName: "sample_service",
+ * });
+ * export const firstFcFunctionName = functionsDs.then(functionsDs => functionsDs.functions?.[0]?.name);
+ * ```
+ */
 export function getFunctionsOutput(args: GetFunctionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionsResult> {
-    return pulumi.output(args).apply(a => getFunctions(a, opts))
+    return pulumi.output(args).apply((a: any) => getFunctions(a, opts))
 }
 
 /**
@@ -89,7 +101,7 @@ export function getFunctionsOutput(args: GetFunctionsOutputArgs, opts?: pulumi.I
  */
 export interface GetFunctionsOutputArgs {
     /**
-     * - A list of functions ids.
+     * A list of functions ids.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -19,122 +19,129 @@ namespace Pulumi.AliCloud.Cen
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a cen_route_entry resource and use it to publish a route entry pointing to an ECS.
+    ///     var hz = new AliCloud.Provider("hz", new()
     ///     {
-    ///         // Create a cen_route_entry resource and use it to publish a route entry pointing to an ECS.
-    ///         var hz = new AliCloud.Provider("hz", new AliCloud.ProviderArgs
-    ///         {
-    ///             Region = "cn-hangzhou",
-    ///         });
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testAccCenRouteEntryConfig";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableDiskCategory = "cloud_efficiency",
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-    ///         {
-    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
-    ///             CpuCoreCount = 1,
-    ///             MemorySize = 2,
-    ///         })));
-    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             NameRegex = "^ubuntu_18.*64",
-    ///             MostRecent = true,
-    ///             Owners = "system",
-    ///         }));
-    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Hz,
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = vpc.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Hz,
-    ///         });
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             Description = "foo",
-    ///             VpcId = vpc.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Hz,
-    ///         });
-    ///         var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new AliCloud.Ecs.InstanceArgs
-    ///         {
-    ///             VswitchId = defaultSwitch.Id,
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
-    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             InternetChargeType = "PayByTraffic",
-    ///             InternetMaxBandwidthOut = 5,
-    ///             SecurityGroups = 
-    ///             {
-    ///                 defaultSecurityGroup.Id,
-    ///             },
-    ///             InstanceName = name,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Hz,
-    ///         });
-    ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///         });
-    ///         var attach = new AliCloud.Cen.InstanceAttachment("attach", new AliCloud.Cen.InstanceAttachmentArgs
-    ///         {
-    ///             InstanceId = cen.Id,
-    ///             ChildInstanceId = vpc.Id,
-    ///             ChildInstanceType = "VPC",
-    ///             ChildInstanceRegionId = "cn-hangzhou",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 defaultSwitch,
-    ///             },
-    ///         });
-    ///         var route = new AliCloud.Vpc.RouteEntry("route", new AliCloud.Vpc.RouteEntryArgs
-    ///         {
-    ///             RouteTableId = vpc.RouteTableId,
-    ///             DestinationCidrblock = "11.0.0.0/16",
-    ///             NexthopType = "Instance",
-    ///             NexthopId = defaultInstance.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Hz,
-    ///         });
-    ///         var foo = new AliCloud.Cen.RouteEntry("foo", new AliCloud.Cen.RouteEntryArgs
-    ///         {
-    ///             InstanceId = cen.Id,
-    ///             RouteTableId = vpc.RouteTableId,
-    ///             CidrBlock = route.DestinationCidrblock,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Hz,
-    ///             DependsOn = 
-    ///             {
-    ///                 attach,
-    ///             },
-    ///         });
-    ///     }
+    ///         Region = "cn-hangzhou",
+    ///     });
     /// 
-    /// }
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testAccCenRouteEntryConfig";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         Description = "foo",
+    ///         VpcId = vpc.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     {
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 5,
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///         InstanceName = name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var cen = new AliCloud.Cen.Instance("cen");
+    /// 
+    ///     var attach = new AliCloud.Cen.InstanceAttachment("attach", new()
+    ///     {
+    ///         InstanceId = cen.Id,
+    ///         ChildInstanceId = vpc.Id,
+    ///         ChildInstanceType = "VPC",
+    ///         ChildInstanceRegionId = "cn-hangzhou",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             defaultSwitch,
+    ///         },
+    ///     });
+    /// 
+    ///     var route = new AliCloud.Vpc.RouteEntry("route", new()
+    ///     {
+    ///         RouteTableId = vpc.RouteTableId,
+    ///         DestinationCidrblock = "11.0.0.0/16",
+    ///         NexthopType = "Instance",
+    ///         NexthopId = defaultInstance.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var foo = new AliCloud.Cen.RouteEntry("foo", new()
+    ///     {
+    ///         InstanceId = cen.Id,
+    ///         RouteTableId = vpc.RouteTableId,
+    ///         CidrBlock = route.DestinationCidrblock,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///         DependsOn = new[]
+    ///         {
+    ///             attach,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -146,7 +153,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/routeEntry:RouteEntry")]
-    public partial class RouteEntry : Pulumi.CustomResource
+    public partial class RouteEntry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The destination CIDR block of the route entry to publish.
@@ -210,7 +217,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class RouteEntryArgs : Pulumi.ResourceArgs
+    public sealed class RouteEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination CIDR block of the route entry to publish.
@@ -233,9 +240,10 @@ namespace Pulumi.AliCloud.Cen
         public RouteEntryArgs()
         {
         }
+        public static new RouteEntryArgs Empty => new RouteEntryArgs();
     }
 
-    public sealed class RouteEntryState : Pulumi.ResourceArgs
+    public sealed class RouteEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination CIDR block of the route entry to publish.
@@ -258,5 +266,6 @@ namespace Pulumi.AliCloud.Cen
         public RouteEntryState()
         {
         }
+        public static new RouteEntryState Empty => new RouteEntryState();
     }
 }

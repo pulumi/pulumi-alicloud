@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -23,16 +24,13 @@ import * as utilities from "../utilities";
  *         tagKey2: "tagValue2",
  *     },
  * });
- * export const firstSlbId = example.then(example => example.balancers?[0]?.id);
+ * export const firstSlbId = example.then(example => example.balancers?.[0]?.id);
  * ```
  */
 export function getApplicationLoadBalancers(args?: GetApplicationLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationLoadBalancersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers", {
         "address": args.address,
         "addressIpVersion": args.addressIpVersion,
@@ -230,9 +228,29 @@ export interface GetApplicationLoadBalancersResult {
      */
     readonly vswitchId?: string;
 }
-
+/**
+ * This data source provides the server load balancers of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in 1.123.1+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.slb.getApplicationLoadBalancers({
+ *     nameRegex: "sample_slb",
+ *     tags: {
+ *         tagKey1: "tagValue1",
+ *         tagKey2: "tagValue2",
+ *     },
+ * });
+ * export const firstSlbId = example.then(example => example.balancers?.[0]?.id);
+ * ```
+ */
 export function getApplicationLoadBalancersOutput(args?: GetApplicationLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationLoadBalancersResult> {
-    return pulumi.output(args).apply(a => getApplicationLoadBalancers(a, opts))
+    return pulumi.output(args).apply((a: any) => getApplicationLoadBalancers(a, opts))
 }
 
 /**

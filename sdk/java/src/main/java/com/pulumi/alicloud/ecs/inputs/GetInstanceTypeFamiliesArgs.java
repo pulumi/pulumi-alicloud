@@ -16,14 +16,14 @@ public final class GetInstanceTypeFamiliesArgs extends com.pulumi.resources.Invo
     public static final GetInstanceTypeFamiliesArgs Empty = new GetInstanceTypeFamiliesArgs();
 
     /**
-     * The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+     * The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
      * 
      */
     @Import(name="generation")
     private @Nullable Output<String> generation;
 
     /**
-     * @return The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+     * @return The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
      * 
      */
     public Optional<Output<String>> generation() {
@@ -111,7 +111,7 @@ public final class GetInstanceTypeFamiliesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param generation The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+         * @param generation The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class GetInstanceTypeFamiliesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param generation The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+         * @param generation The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
          * 
          * @return builder
          * 

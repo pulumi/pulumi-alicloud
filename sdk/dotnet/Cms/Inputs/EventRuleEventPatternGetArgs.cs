@@ -10,17 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class EventRuleEventPatternGetArgs : Pulumi.ResourceArgs
+    public sealed class EventRuleEventPatternGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("eventTypeLists")]
         private InputList<string>? _eventTypeLists;
 
         /// <summary>
         /// The type of the event-triggered alert rule. Valid values:
-        /// - `StatusNotification`: fault notifications.
-        /// - `Exception`: exceptions.
-        /// - `Maintenance`: O&amp;M.
-        /// - `*`: all types.
         /// </summary>
         public InputList<string> EventTypeLists
         {
@@ -33,10 +29,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
 
         /// <summary>
         /// The level of the event-triggered alert rule. Valid values:
-        /// - `CRITICAL`: critical.
-        /// - `WARN`: warning.
-        /// - `INFO`: information.
-        /// - `*`: all types.
         /// </summary>
         public InputList<string> LevelLists
         {
@@ -71,5 +63,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public EventRuleEventPatternGetArgs()
         {
         }
+        public static new EventRuleEventPatternGetArgs Empty => new EventRuleEventPatternGetArgs();
     }
 }

@@ -21,26 +21,25 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Vpc.Network("default", new()
     ///     {
-    ///         var @default = new AliCloud.Vpc.Network("default", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = "example_value",
-    ///             EnableIpv6 = true,
-    ///         });
-    ///         var example = new AliCloud.Vpc.Ipv6Gateway("example", new AliCloud.Vpc.Ipv6GatewayArgs
-    ///         {
-    ///             Ipv6GatewayName = "example_value",
-    ///             VpcId = @default.Id,
-    ///         });
-    ///     }
+    ///         VpcName = "example_value",
+    ///         EnableIpv6 = true,
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.Vpc.Ipv6Gateway("example", new()
+    ///     {
+    ///         Ipv6GatewayName = "example_value",
+    ///         VpcId = @default.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +51,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/ipv6Gateway:Ipv6Gateway")]
-    public partial class Ipv6Gateway : Pulumi.CustomResource
+    public partial class Ipv6Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
@@ -128,7 +127,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class Ipv6GatewayArgs : Pulumi.ResourceArgs
+    public sealed class Ipv6GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
@@ -157,9 +156,10 @@ namespace Pulumi.AliCloud.Vpc
         public Ipv6GatewayArgs()
         {
         }
+        public static new Ipv6GatewayArgs Empty => new Ipv6GatewayArgs();
     }
 
-    public sealed class Ipv6GatewayState : Pulumi.ResourceArgs
+    public sealed class Ipv6GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
@@ -194,5 +194,6 @@ namespace Pulumi.AliCloud.Vpc
         public Ipv6GatewayState()
         {
         }
+        public static new Ipv6GatewayState Empty => new Ipv6GatewayState();
     }
 }

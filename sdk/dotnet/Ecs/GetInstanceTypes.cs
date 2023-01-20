@@ -23,31 +23,30 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var typesDs = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
         ///     {
-        ///         var typesDs = Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-        ///         {
-        ///             CpuCoreCount = 1,
-        ///             MemorySize = 2,
-        ///         }));
-        ///         var instance = new AliCloud.Ecs.Instance("instance", new AliCloud.Ecs.InstanceArgs
-        ///         {
-        ///             InstanceType = typesDs.Apply(typesDs =&gt; typesDs.InstanceTypes?[0]?.Id),
-        ///         });
-        ///     }
+        ///         CpuCoreCount = 1,
+        ///         MemorySize = 2,
+        ///     });
         /// 
-        /// }
+        ///     var instance = new AliCloud.Ecs.Instance("instance", new()
+        ///     {
+        ///         InstanceType = typesDs.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the ECS instance types of Alibaba Cloud.
@@ -61,35 +60,34 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var typesDs = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
         ///     {
-        ///         var typesDs = Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-        ///         {
-        ///             CpuCoreCount = 1,
-        ///             MemorySize = 2,
-        ///         }));
-        ///         var instance = new AliCloud.Ecs.Instance("instance", new AliCloud.Ecs.InstanceArgs
-        ///         {
-        ///             InstanceType = typesDs.Apply(typesDs =&gt; typesDs.InstanceTypes?[0]?.Id),
-        ///         });
-        ///     }
+        ///         CpuCoreCount = 1,
+        ///         MemorySize = 2,
+        ///     });
         /// 
-        /// }
+        ///     var instance = new AliCloud.Ecs.Instance("instance", new()
+        ///     {
+        ///         InstanceType = typesDs.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceTypesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The zone where instance types are supported.
@@ -155,6 +153,12 @@ namespace Pulumi.AliCloud.Ecs
         public double? MemorySize { get; set; }
 
         /// <summary>
+        /// The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+        /// </summary>
+        [Input("minimumEniIpv6AddressQuantity")]
+        public int? MinimumEniIpv6AddressQuantity { get; set; }
+
+        /// <summary>
         /// Filter the results by network type. Valid values: `Classic` and `Vpc`.
         /// </summary>
         [Input("networkType")]
@@ -182,9 +186,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetInstanceTypesArgs()
         {
         }
+        public static new GetInstanceTypesArgs Empty => new GetInstanceTypesArgs();
     }
 
-    public sealed class GetInstanceTypesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The zone where instance types are supported.
@@ -250,6 +255,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<double>? MemorySize { get; set; }
 
         /// <summary>
+        /// The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+        /// </summary>
+        [Input("minimumEniIpv6AddressQuantity")]
+        public Input<int>? MinimumEniIpv6AddressQuantity { get; set; }
+
+        /// <summary>
         /// Filter the results by network type. Valid values: `Classic` and `Vpc`.
         /// </summary>
         [Input("networkType")]
@@ -277,6 +288,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetInstanceTypesInvokeArgs()
         {
         }
+        public static new GetInstanceTypesInvokeArgs Empty => new GetInstanceTypesInvokeArgs();
     }
 
 
@@ -315,6 +327,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Size of memory, measured in GB.
         /// </summary>
         public readonly double? MemorySize;
+        public readonly int? MinimumEniIpv6AddressQuantity;
         public readonly string? NetworkType;
         public readonly string? OutputFile;
         public readonly string? SortedBy;
@@ -351,6 +364,8 @@ namespace Pulumi.AliCloud.Ecs
 
             double? memorySize,
 
+            int? minimumEniIpv6AddressQuantity,
+
             string? networkType,
 
             string? outputFile,
@@ -375,6 +390,7 @@ namespace Pulumi.AliCloud.Ecs
             IsOutdated = isOutdated;
             KubernetesNodeRole = kubernetesNodeRole;
             MemorySize = memorySize;
+            MinimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
             NetworkType = networkType;
             OutputFile = outputFile;
             SortedBy = sortedBy;

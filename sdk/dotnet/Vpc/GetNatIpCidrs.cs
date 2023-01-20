@@ -23,76 +23,71 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetNatIpCidrs.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetNatIpCidrs.InvokeAsync(new AliCloud.Vpc.GetNatIpCidrsArgs
+        ///         NatGatewayId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             NatGatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.VpcNatIpCidrId1 = ids.Apply(ids =&gt; ids.Cidrs?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetNatIpCidrs.InvokeAsync(new AliCloud.Vpc.GetNatIpCidrsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             NameRegex = "^my-NatIpCidr",
-        ///         }));
-        ///         this.VpcNatIpCidrId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Cidrs?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetNatIpCidrs.InvokeAsync(new AliCloud.Vpc.GetNatIpCidrsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///             },
-        ///             Status = "Available",
-        ///         }));
-        ///         this.VpcNatIpCidrId3 = status.Apply(status =&gt; status.Cidrs?[0]?.Id);
-        ///         var natIpCidr = Output.Create(AliCloud.Vpc.GetNatIpCidrs.InvokeAsync(new AliCloud.Vpc.GetNatIpCidrsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             NatIpCidrs = 
-        ///             {
-        ///                 "example_value-1",
-        ///             },
-        ///         }));
-        ///         this.VpcNatIpCidrId4 = natIpCidr.Apply(natIpCidr =&gt; natIpCidr.Cidrs?[0]?.Id);
-        ///         var atIpCidrName = Output.Create(AliCloud.Vpc.GetNatIpCidrs.InvokeAsync(new AliCloud.Vpc.GetNatIpCidrsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             NatIpCidrNames = 
-        ///             {
-        ///                 "example_value-1",
-        ///             },
-        ///         }));
-        ///         this.VpcNatIpCidrId5 = atIpCidrName.Apply(atIpCidrName =&gt; atIpCidrName.Cidrs?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcNatIpCidrId1")]
-        ///     public Output&lt;string&gt; VpcNatIpCidrId1 { get; set; }
-        ///     [Output("vpcNatIpCidrId2")]
-        ///     public Output&lt;string&gt; VpcNatIpCidrId2 { get; set; }
-        ///     [Output("vpcNatIpCidrId3")]
-        ///     public Output&lt;string&gt; VpcNatIpCidrId3 { get; set; }
-        ///     [Output("vpcNatIpCidrId4")]
-        ///     public Output&lt;string&gt; VpcNatIpCidrId4 { get; set; }
-        ///     [Output("vpcNatIpCidrId5")]
-        ///     public Output&lt;string&gt; VpcNatIpCidrId5 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetNatIpCidrs.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         NameRegex = "^my-NatIpCidr",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetNatIpCidrs.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///         },
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     var natIpCidr = AliCloud.Vpc.GetNatIpCidrs.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         NatIpCidrs = new[]
+        ///         {
+        ///             "example_value-1",
+        ///         },
+        ///     });
+        /// 
+        ///     var atIpCidrName = AliCloud.Vpc.GetNatIpCidrs.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         NatIpCidrNames = new[]
+        ///         {
+        ///             "example_value-1",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcNatIpCidrId1"] = ids.Apply(getNatIpCidrsResult =&gt; getNatIpCidrsResult.Cidrs[0]?.Id),
+        ///         ["vpcNatIpCidrId2"] = nameRegex.Apply(getNatIpCidrsResult =&gt; getNatIpCidrsResult.Cidrs[0]?.Id),
+        ///         ["vpcNatIpCidrId3"] = status.Apply(getNatIpCidrsResult =&gt; getNatIpCidrsResult.Cidrs[0]?.Id),
+        ///         ["vpcNatIpCidrId4"] = natIpCidr.Apply(getNatIpCidrsResult =&gt; getNatIpCidrsResult.Cidrs[0]?.Id),
+        ///         ["vpcNatIpCidrId5"] = atIpCidrName.Apply(getNatIpCidrsResult =&gt; getNatIpCidrsResult.Cidrs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNatIpCidrsResult> InvokeAsync(GetNatIpCidrsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNatIpCidrsResult>("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", args ?? new GetNatIpCidrsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNatIpCidrsResult>("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", args ?? new GetNatIpCidrsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
@@ -106,80 +101,75 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetNatIpCidrs.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetNatIpCidrs.InvokeAsync(new AliCloud.Vpc.GetNatIpCidrsArgs
+        ///         NatGatewayId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             NatGatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.VpcNatIpCidrId1 = ids.Apply(ids =&gt; ids.Cidrs?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetNatIpCidrs.InvokeAsync(new AliCloud.Vpc.GetNatIpCidrsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             NameRegex = "^my-NatIpCidr",
-        ///         }));
-        ///         this.VpcNatIpCidrId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Cidrs?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetNatIpCidrs.InvokeAsync(new AliCloud.Vpc.GetNatIpCidrsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///             },
-        ///             Status = "Available",
-        ///         }));
-        ///         this.VpcNatIpCidrId3 = status.Apply(status =&gt; status.Cidrs?[0]?.Id);
-        ///         var natIpCidr = Output.Create(AliCloud.Vpc.GetNatIpCidrs.InvokeAsync(new AliCloud.Vpc.GetNatIpCidrsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             NatIpCidrs = 
-        ///             {
-        ///                 "example_value-1",
-        ///             },
-        ///         }));
-        ///         this.VpcNatIpCidrId4 = natIpCidr.Apply(natIpCidr =&gt; natIpCidr.Cidrs?[0]?.Id);
-        ///         var atIpCidrName = Output.Create(AliCloud.Vpc.GetNatIpCidrs.InvokeAsync(new AliCloud.Vpc.GetNatIpCidrsArgs
-        ///         {
-        ///             NatGatewayId = "example_value",
-        ///             NatIpCidrNames = 
-        ///             {
-        ///                 "example_value-1",
-        ///             },
-        ///         }));
-        ///         this.VpcNatIpCidrId5 = atIpCidrName.Apply(atIpCidrName =&gt; atIpCidrName.Cidrs?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcNatIpCidrId1")]
-        ///     public Output&lt;string&gt; VpcNatIpCidrId1 { get; set; }
-        ///     [Output("vpcNatIpCidrId2")]
-        ///     public Output&lt;string&gt; VpcNatIpCidrId2 { get; set; }
-        ///     [Output("vpcNatIpCidrId3")]
-        ///     public Output&lt;string&gt; VpcNatIpCidrId3 { get; set; }
-        ///     [Output("vpcNatIpCidrId4")]
-        ///     public Output&lt;string&gt; VpcNatIpCidrId4 { get; set; }
-        ///     [Output("vpcNatIpCidrId5")]
-        ///     public Output&lt;string&gt; VpcNatIpCidrId5 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetNatIpCidrs.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         NameRegex = "^my-NatIpCidr",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetNatIpCidrs.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///         },
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     var natIpCidr = AliCloud.Vpc.GetNatIpCidrs.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         NatIpCidrs = new[]
+        ///         {
+        ///             "example_value-1",
+        ///         },
+        ///     });
+        /// 
+        ///     var atIpCidrName = AliCloud.Vpc.GetNatIpCidrs.Invoke(new()
+        ///     {
+        ///         NatGatewayId = "example_value",
+        ///         NatIpCidrNames = new[]
+        ///         {
+        ///             "example_value-1",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcNatIpCidrId1"] = ids.Apply(getNatIpCidrsResult =&gt; getNatIpCidrsResult.Cidrs[0]?.Id),
+        ///         ["vpcNatIpCidrId2"] = nameRegex.Apply(getNatIpCidrsResult =&gt; getNatIpCidrsResult.Cidrs[0]?.Id),
+        ///         ["vpcNatIpCidrId3"] = status.Apply(getNatIpCidrsResult =&gt; getNatIpCidrsResult.Cidrs[0]?.Id),
+        ///         ["vpcNatIpCidrId4"] = natIpCidr.Apply(getNatIpCidrsResult =&gt; getNatIpCidrsResult.Cidrs[0]?.Id),
+        ///         ["vpcNatIpCidrId5"] = atIpCidrName.Apply(getNatIpCidrsResult =&gt; getNatIpCidrsResult.Cidrs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNatIpCidrsResult> Invoke(GetNatIpCidrsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNatIpCidrsResult>("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", args ?? new GetNatIpCidrsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNatIpCidrsResult>("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", args ?? new GetNatIpCidrsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNatIpCidrsArgs : Pulumi.InvokeArgs
+    public sealed class GetNatIpCidrsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -241,9 +231,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetNatIpCidrsArgs()
         {
         }
+        public static new GetNatIpCidrsArgs Empty => new GetNatIpCidrsArgs();
     }
 
-    public sealed class GetNatIpCidrsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNatIpCidrsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -305,6 +296,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetNatIpCidrsInvokeArgs()
         {
         }
+        public static new GetNatIpCidrsInvokeArgs Empty => new GetNatIpCidrsInvokeArgs();
     }
 
 

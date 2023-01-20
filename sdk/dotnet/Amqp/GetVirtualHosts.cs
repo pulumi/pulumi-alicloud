@@ -23,42 +23,40 @@ namespace Pulumi.AliCloud.Amqp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Amqp.GetVirtualHosts.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Amqp.GetVirtualHosts.InvokeAsync(new AliCloud.Amqp.GetVirtualHostsArgs
+        ///         InstanceId = "amqp-abc12345",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "amqp-abc12345",
-        ///             Ids = 
-        ///             {
-        ///                 "my-VirtualHost-1",
-        ///                 "my-VirtualHost-2",
-        ///             },
-        ///         }));
-        ///         this.AmqpVirtualHostId1 = ids.Apply(ids =&gt; ids.Hosts?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Amqp.GetVirtualHosts.InvokeAsync(new AliCloud.Amqp.GetVirtualHostsArgs
-        ///         {
-        ///             InstanceId = "amqp-abc12345",
-        ///             NameRegex = "^my-VirtualHost",
-        ///         }));
-        ///         this.AmqpVirtualHostId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Hosts?[0]?.Id);
-        ///     }
+        ///             "my-VirtualHost-1",
+        ///             "my-VirtualHost-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("amqpVirtualHostId1")]
-        ///     public Output&lt;string&gt; AmqpVirtualHostId1 { get; set; }
-        ///     [Output("amqpVirtualHostId2")]
-        ///     public Output&lt;string&gt; AmqpVirtualHostId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Amqp.GetVirtualHosts.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-abc12345",
+        ///         NameRegex = "^my-VirtualHost",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["amqpVirtualHostId1"] = ids.Apply(getVirtualHostsResult =&gt; getVirtualHostsResult.Hosts[0]?.Id),
+        ///         ["amqpVirtualHostId2"] = nameRegex.Apply(getVirtualHostsResult =&gt; getVirtualHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVirtualHostsResult> InvokeAsync(GetVirtualHostsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualHostsResult>("alicloud:amqp/getVirtualHosts:getVirtualHosts", args ?? new GetVirtualHostsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualHostsResult>("alicloud:amqp/getVirtualHosts:getVirtualHosts", args ?? new GetVirtualHostsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
@@ -72,46 +70,44 @@ namespace Pulumi.AliCloud.Amqp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Amqp.GetVirtualHosts.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Amqp.GetVirtualHosts.InvokeAsync(new AliCloud.Amqp.GetVirtualHostsArgs
+        ///         InstanceId = "amqp-abc12345",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "amqp-abc12345",
-        ///             Ids = 
-        ///             {
-        ///                 "my-VirtualHost-1",
-        ///                 "my-VirtualHost-2",
-        ///             },
-        ///         }));
-        ///         this.AmqpVirtualHostId1 = ids.Apply(ids =&gt; ids.Hosts?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Amqp.GetVirtualHosts.InvokeAsync(new AliCloud.Amqp.GetVirtualHostsArgs
-        ///         {
-        ///             InstanceId = "amqp-abc12345",
-        ///             NameRegex = "^my-VirtualHost",
-        ///         }));
-        ///         this.AmqpVirtualHostId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Hosts?[0]?.Id);
-        ///     }
+        ///             "my-VirtualHost-1",
+        ///             "my-VirtualHost-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("amqpVirtualHostId1")]
-        ///     public Output&lt;string&gt; AmqpVirtualHostId1 { get; set; }
-        ///     [Output("amqpVirtualHostId2")]
-        ///     public Output&lt;string&gt; AmqpVirtualHostId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Amqp.GetVirtualHosts.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-abc12345",
+        ///         NameRegex = "^my-VirtualHost",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["amqpVirtualHostId1"] = ids.Apply(getVirtualHostsResult =&gt; getVirtualHostsResult.Hosts[0]?.Id),
+        ///         ["amqpVirtualHostId2"] = nameRegex.Apply(getVirtualHostsResult =&gt; getVirtualHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVirtualHostsResult> Invoke(GetVirtualHostsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVirtualHostsResult>("alicloud:amqp/getVirtualHosts:getVirtualHosts", args ?? new GetVirtualHostsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVirtualHostsResult>("alicloud:amqp/getVirtualHosts:getVirtualHosts", args ?? new GetVirtualHostsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetVirtualHostsArgs : Pulumi.InvokeArgs
+    public sealed class GetVirtualHostsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -143,9 +139,10 @@ namespace Pulumi.AliCloud.Amqp
         public GetVirtualHostsArgs()
         {
         }
+        public static new GetVirtualHostsArgs Empty => new GetVirtualHostsArgs();
     }
 
-    public sealed class GetVirtualHostsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVirtualHostsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -177,6 +174,7 @@ namespace Pulumi.AliCloud.Amqp
         public GetVirtualHostsInvokeArgs()
         {
         }
+        public static new GetVirtualHostsInvokeArgs Empty => new GetVirtualHostsInvokeArgs();
     }
 
 

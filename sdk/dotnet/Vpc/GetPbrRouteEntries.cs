@@ -21,33 +21,32 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetPbrRouteEntries.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetPbrRouteEntries.InvokeAsync(new AliCloud.Vpc.GetPbrRouteEntriesArgs
+        ///         VpnGatewayId = "example_vpn_gateway_id",
+        ///         Ids = new[]
         ///         {
-        ///             VpnGatewayId = "example_vpn_gateway_id",
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpnIpsecServerId1 = ids.Apply(ids =&gt; ids.Entries?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpnIpsecServerId1")]
-        ///     public Output&lt;string&gt; VpnIpsecServerId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpnIpsecServerId1"] = ids.Apply(getPbrRouteEntriesResult =&gt; getPbrRouteEntriesResult.Entries[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPbrRouteEntriesResult> InvokeAsync(GetPbrRouteEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPbrRouteEntriesResult>("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", args ?? new GetPbrRouteEntriesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPbrRouteEntriesResult>("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", args ?? new GetPbrRouteEntriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **NOTE:** Available in v1.162.0+.
@@ -59,37 +58,36 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetPbrRouteEntries.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetPbrRouteEntries.InvokeAsync(new AliCloud.Vpc.GetPbrRouteEntriesArgs
+        ///         VpnGatewayId = "example_vpn_gateway_id",
+        ///         Ids = new[]
         ///         {
-        ///             VpnGatewayId = "example_vpn_gateway_id",
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpnIpsecServerId1 = ids.Apply(ids =&gt; ids.Entries?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpnIpsecServerId1")]
-        ///     public Output&lt;string&gt; VpnIpsecServerId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpnIpsecServerId1"] = ids.Apply(getPbrRouteEntriesResult =&gt; getPbrRouteEntriesResult.Entries[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPbrRouteEntriesResult> Invoke(GetPbrRouteEntriesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPbrRouteEntriesResult>("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", args ?? new GetPbrRouteEntriesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPbrRouteEntriesResult>("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", args ?? new GetPbrRouteEntriesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPbrRouteEntriesArgs : Pulumi.InvokeArgs
+    public sealed class GetPbrRouteEntriesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -115,9 +113,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetPbrRouteEntriesArgs()
         {
         }
+        public static new GetPbrRouteEntriesArgs Empty => new GetPbrRouteEntriesArgs();
     }
 
-    public sealed class GetPbrRouteEntriesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPbrRouteEntriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -143,6 +142,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetPbrRouteEntriesInvokeArgs()
         {
         }
+        public static new GetPbrRouteEntriesInvokeArgs Empty => new GetPbrRouteEntriesInvokeArgs();
     }
 
 

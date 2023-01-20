@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.CS
     /// <summary>
     /// ## Import
     /// 
-    /// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+    /// Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster_id
+    ///  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes main cluster_id
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/managedKubernetes:ManagedKubernetes")]
-    public partial class ManagedKubernetes : Pulumi.CustomResource
+    public partial class ManagedKubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The addon you want to install in cluster.
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Output("enableRrsa")]
         public Output<bool?> EnableRrsa { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Install cloud monitor agent on ECS. Default to `true`.
+        /// Install cloud monitor agent on ECS. Default to `true`.
         /// </summary>
         [Output("installCloudMonitor")]
         public Output<bool?> InstallCloudMonitor { get; private set; } = null!;
@@ -255,13 +255,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string> Platform { get; private set; } = null!;
 
         /// <summary>
-        /// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
         /// </summary>
         [Output("podCidr")]
         public Output<string?> PodCidr { get; private set; } = null!;
 
         /// <summary>
-        /// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         /// </summary>
         [Output("podVswitchIds")]
         public Output<ImmutableArray<string>> PodVswitchIds { get; private set; } = null!;
@@ -288,7 +288,13 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        /// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        /// </summary>
+        [Output("rrsaMetadata")]
+        public Output<Outputs.ManagedKubernetesRrsaMetadata> RrsaMetadata { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         /// </summary>
         [Output("runtime")]
         public Output<Outputs.ManagedKubernetesRuntime?> Runtime { get; private set; } = null!;
@@ -384,7 +390,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> WorkerAutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        /// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Output("workerAutoRenewPeriod")]
         public Output<int> WorkerAutoRenewPeriod { get; private set; } = null!;
@@ -432,10 +438,10 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> WorkerDiskSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        /// (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         /// </summary>
         [Output("workerInstanceChargeType")]
-        public Output<string?> WorkerInstanceChargeType { get; private set; } = null!;
+        public Output<string> WorkerInstanceChargeType { get; private set; } = null!;
 
         /// <summary>
         /// (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
@@ -502,6 +508,10 @@ namespace Pulumi.AliCloud.CS
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -523,7 +533,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class ManagedKubernetesArgs : Pulumi.ResourceArgs
+    public sealed class ManagedKubernetesArgs : global::Pulumi.ResourceArgs
     {
         [Input("addons")]
         private InputList<Inputs.ManagedKubernetesAddonArgs>? _addons;
@@ -630,7 +640,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Input("enableRrsa")]
         public Input<bool>? EnableRrsa { get; set; }
@@ -660,7 +670,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// (Optional) Install cloud monitor agent on ECS. Default to `true`.
+        /// Install cloud monitor agent on ECS. Default to `true`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -753,11 +763,22 @@ namespace Pulumi.AliCloud.CS
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Obsolete(@"Field 'password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'password' to replace it")]
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
@@ -766,7 +787,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Platform { get; set; }
 
         /// <summary>
-        /// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
         /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
@@ -775,7 +796,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _podVswitchIds;
 
         /// <summary>
-        /// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         /// </summary>
         public InputList<string> PodVswitchIds
         {
@@ -817,7 +838,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        /// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        /// </summary>
+        [Input("rrsaMetadata")]
+        public Input<Inputs.ManagedKubernetesRrsaMetadataArgs>? RrsaMetadata { get; set; }
+
+        /// <summary>
+        /// (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.ManagedKubernetesRuntimeArgs>? Runtime { get; set; }
@@ -902,7 +929,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? WorkerAutoRenew { get; set; }
 
         /// <summary>
-        /// (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        /// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Input("workerAutoRenewPeriod")]
         public Input<int>? WorkerAutoRenewPeriod { get; set; }
@@ -957,7 +984,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        /// (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         /// </summary>
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
@@ -1008,9 +1035,10 @@ namespace Pulumi.AliCloud.CS
         public ManagedKubernetesArgs()
         {
         }
+        public static new ManagedKubernetesArgs Empty => new ManagedKubernetesArgs();
     }
 
-    public sealed class ManagedKubernetesState : Pulumi.ResourceArgs
+    public sealed class ManagedKubernetesState : global::Pulumi.ResourceArgs
     {
         [Input("addons")]
         private InputList<Inputs.ManagedKubernetesAddonGetArgs>? _addons;
@@ -1129,7 +1157,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Input("enableRrsa")]
         public Input<bool>? EnableRrsa { get; set; }
@@ -1159,7 +1187,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// (Optional) Install cloud monitor agent on ECS. Default to `true`.
+        /// Install cloud monitor agent on ECS. Default to `true`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -1258,11 +1286,22 @@ namespace Pulumi.AliCloud.CS
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Obsolete(@"Field 'password' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster nodes, by using field 'password' to replace it")]
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
@@ -1271,7 +1310,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Platform { get; set; }
 
         /// <summary>
-        /// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
         /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
@@ -1280,7 +1319,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _podVswitchIds;
 
         /// <summary>
-        /// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         /// </summary>
         public InputList<string> PodVswitchIds
         {
@@ -1322,7 +1361,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// (Optional, Available in 1.103.2+) The runtime of containers. Default to `docker`. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        /// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        /// </summary>
+        [Input("rrsaMetadata")]
+        public Input<Inputs.ManagedKubernetesRrsaMetadataGetArgs>? RrsaMetadata { get; set; }
+
+        /// <summary>
+        /// (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.ManagedKubernetesRuntimeGetArgs>? Runtime { get; set; }
@@ -1431,7 +1476,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? WorkerAutoRenew { get; set; }
 
         /// <summary>
-        /// (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        /// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Input("workerAutoRenewPeriod")]
         public Input<int>? WorkerAutoRenewPeriod { get; set; }
@@ -1486,7 +1531,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        /// (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         /// </summary>
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
@@ -1556,5 +1601,6 @@ namespace Pulumi.AliCloud.CS
         public ManagedKubernetesState()
         {
         }
+        public static new ManagedKubernetesState Empty => new ManagedKubernetesState();
     }
 }

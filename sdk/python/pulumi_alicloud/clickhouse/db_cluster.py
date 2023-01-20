@@ -32,7 +32,9 @@ class DbClusterArgs:
                  period: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
-                 vswitch_id: Optional[pulumi.Input[str]] = None):
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DbCluster resource.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
@@ -40,7 +42,7 @@ class DbClusterArgs:
                * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
         :param pulumi.Input[str] db_cluster_network_type: The DBCluster network type. Valid values: `vpc`.
-        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         :param pulumi.Input[int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[str] db_node_storage: The db node storage.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
@@ -53,7 +55,9 @@ class DbClusterArgs:
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] used_time: The used time of DBCluster.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "db_cluster_class", db_cluster_class)
@@ -79,8 +83,12 @@ class DbClusterArgs:
             pulumi.set(__self__, "status", status)
         if used_time is not None:
             pulumi.set(__self__, "used_time", used_time)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -124,7 +132,7 @@ class DbClusterArgs:
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> pulumi.Input[str]:
         """
-        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -277,6 +285,18 @@ class DbClusterArgs:
         pulumi.set(self, "used_time", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -288,11 +308,24 @@ class DbClusterArgs:
     def vswitch_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vswitch_id", value)
 
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID of the instance.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.input_type
 class _DbClusterState:
     def __init__(__self__, *,
                  category: Optional[pulumi.Input[str]] = None,
+                 connection_string: Optional[pulumi.Input[str]] = None,
                  db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]] = None,
                  db_cluster_class: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
@@ -305,20 +338,24 @@ class _DbClusterState:
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
-                 vswitch_id: Optional[pulumi.Input[str]] = None):
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DbCluster resources.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
+        :param pulumi.Input[str] connection_string: (Available in 1.196.0+) - The connection string of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]] db_cluster_access_white_lists: The db cluster access white list.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
         :param pulumi.Input[str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[str] db_cluster_network_type: The DBCluster network type. Valid values: `vpc`.
-        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         :param pulumi.Input[int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[str] db_node_storage: The db node storage.
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID.
@@ -326,13 +363,18 @@ class _DbClusterState:
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the cluster.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
         if db_cluster_access_white_lists is not None:
             pulumi.set(__self__, "db_cluster_access_white_lists", db_cluster_access_white_lists)
         if db_cluster_class is not None:
@@ -357,14 +399,20 @@ class _DbClusterState:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if storage_type is not None:
             pulumi.set(__self__, "storage_type", storage_type)
         if used_time is not None:
             pulumi.set(__self__, "used_time", used_time)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -377,6 +425,18 @@ class _DbClusterState:
     @category.setter
     def category(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.196.0+) - The connection string of the cluster.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @connection_string.setter
+    def connection_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string", value)
 
     @property
     @pulumi.getter(name="dbClusterAccessWhiteLists")
@@ -432,7 +492,7 @@ class _DbClusterState:
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -526,6 +586,18 @@ class _DbClusterState:
 
     @property
     @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.196.0+) The connection port of the cluster.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
@@ -561,6 +633,18 @@ class _DbClusterState:
         pulumi.set(self, "used_time", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -571,6 +655,18 @@ class _DbClusterState:
     @vswitch_id.setter
     def vswitch_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID of the instance.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class DbCluster(pulumi.CustomResource):
@@ -594,7 +690,9 @@ class DbCluster(pulumi.CustomResource):
                  status: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Click House DBCluster resource.
@@ -649,7 +747,7 @@ class DbCluster(pulumi.CustomResource):
                * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
         :param pulumi.Input[str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[str] db_cluster_network_type: The DBCluster network type. Valid values: `vpc`.
-        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         :param pulumi.Input[int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[str] db_node_storage: The db node storage.
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID.
@@ -660,7 +758,9 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         ...
     @overload
@@ -743,7 +843,9 @@ class DbCluster(pulumi.CustomResource):
                  status: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -785,7 +887,11 @@ class DbCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'storage_type'")
             __props__.__dict__["storage_type"] = storage_type
             __props__.__dict__["used_time"] = used_time
+            __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["connection_string"] = None
+            __props__.__dict__["port"] = None
         super(DbCluster, __self__).__init__(
             'alicloud:clickhouse/dbCluster:DbCluster',
             resource_name,
@@ -797,6 +903,7 @@ class DbCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             category: Optional[pulumi.Input[str]] = None,
+            connection_string: Optional[pulumi.Input[str]] = None,
             db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]]] = None,
             db_cluster_class: Optional[pulumi.Input[str]] = None,
             db_cluster_description: Optional[pulumi.Input[str]] = None,
@@ -809,10 +916,13 @@ class DbCluster(pulumi.CustomResource):
             maintain_time: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[str]] = None,
+            port: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_type: Optional[pulumi.Input[str]] = None,
             used_time: Optional[pulumi.Input[str]] = None,
-            vswitch_id: Optional[pulumi.Input[str]] = None) -> 'DbCluster':
+            vpc_id: Optional[pulumi.Input[str]] = None,
+            vswitch_id: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'DbCluster':
         """
         Get an existing DbCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -821,13 +931,14 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
+        :param pulumi.Input[str] connection_string: (Available in 1.196.0+) - The connection string of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]] db_cluster_access_white_lists: The db cluster access white list.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
         :param pulumi.Input[str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[str] db_cluster_network_type: The DBCluster network type. Valid values: `vpc`.
-        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         :param pulumi.Input[int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[str] db_node_storage: The db node storage.
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID.
@@ -835,16 +946,20 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the cluster.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _DbClusterState.__new__(_DbClusterState)
 
         __props__.__dict__["category"] = category
+        __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["db_cluster_access_white_lists"] = db_cluster_access_white_lists
         __props__.__dict__["db_cluster_class"] = db_cluster_class
         __props__.__dict__["db_cluster_description"] = db_cluster_description
@@ -857,10 +972,13 @@ class DbCluster(pulumi.CustomResource):
         __props__.__dict__["maintain_time"] = maintain_time
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["port"] = port
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_type"] = storage_type
         __props__.__dict__["used_time"] = used_time
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["zone_id"] = zone_id
         return DbCluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -870,6 +988,14 @@ class DbCluster(pulumi.CustomResource):
         The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         """
         return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.196.0+) - The connection string of the cluster.
+        """
+        return pulumi.get(self, "connection_string")
 
     @property
     @pulumi.getter(name="dbClusterAccessWhiteLists")
@@ -909,7 +1035,7 @@ class DbCluster(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> pulumi.Output[str]:
         """
-        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -971,6 +1097,14 @@ class DbCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def port(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.196.0+) The connection port of the cluster.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
         The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
@@ -994,10 +1128,26 @@ class DbCluster(pulumi.CustomResource):
         return pulumi.get(self, "used_time")
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[str]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         The vswitch id of DBCluster.
         """
         return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[str]:
+        """
+        The zone ID of the instance.
+        """
+        return pulumi.get(self, "zone_id")
 

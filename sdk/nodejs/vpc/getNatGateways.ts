@@ -2,49 +2,19 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
  *
  * > **NOTE:** Available in 1.37.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "natGatewaysDatasource";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * }));
- * const fooNetwork = new alicloud.vpc.Network("foo", {
- *     cidrBlock: "172.16.0.0/12",
- *     vpcName: name,
- * });
- * const fooNatGateway = new alicloud.vpc.NatGateway("foo", {
- *     natGateName: name,
- *     specification: "Small",
- *     vpcId: fooNetwork.id,
- * });
- * const fooNatGateways = pulumi.all([fooNatGateway.id, fooNatGateway.name, fooNetwork.id]).apply(([fooNatGatewayId, name, fooNetworkId]) => alicloud.vpc.getNatGateways({
- *     ids: [fooNatGatewayId],
- *     nameRegex: name,
- *     vpcId: fooNetworkId,
- * }));
- * ```
  */
 export function getNatGateways(args?: GetNatGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetNatGatewaysResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getNatGateways:getNatGateways", {
         "dryRun": args.dryRun,
         "enableDetails": args.enableDetails,
@@ -181,9 +151,13 @@ export interface GetNatGatewaysResult {
      */
     readonly vpcId?: string;
 }
-
+/**
+ * This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
+ *
+ * > **NOTE:** Available in 1.37.0+.
+ */
 export function getNatGatewaysOutput(args?: GetNatGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatGatewaysResult> {
-    return pulumi.output(args).apply(a => getNatGateways(a, opts))
+    return pulumi.output(args).apply((a: any) => getNatGateways(a, opts))
 }
 
 /**

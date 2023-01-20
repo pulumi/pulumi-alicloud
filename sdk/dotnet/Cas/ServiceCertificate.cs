@@ -21,23 +21,21 @@ namespace Pulumi.AliCloud.Cas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Cas.ServiceCertificate("example", new()
     ///     {
-    ///         var example = new AliCloud.Cas.ServiceCertificate("example", new AliCloud.Cas.ServiceCertificateArgs
-    ///         {
-    ///             CertificateName = "test",
-    ///             Cert = File.ReadAllText($"{path.Module}/test.crt"),
-    ///             Key = File.ReadAllText($"{path.Module}/test.key"),
-    ///         });
-    ///     }
+    ///         CertificateName = "test",
+    ///         Cert = File.ReadAllText($"{path.Module}/test.crt"),
+    ///         Key = File.ReadAllText($"{path.Module}/test.key"),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.Cas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cas/serviceCertificate:ServiceCertificate")]
-    public partial class ServiceCertificate : Pulumi.CustomResource
+    public partial class ServiceCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Cert of the Certificate in which the Certificate will add.
@@ -129,7 +127,7 @@ namespace Pulumi.AliCloud.Cas
         }
     }
 
-    public sealed class ServiceCertificateArgs : Pulumi.ResourceArgs
+    public sealed class ServiceCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cert of the Certificate in which the Certificate will add.
@@ -168,9 +166,10 @@ namespace Pulumi.AliCloud.Cas
         public ServiceCertificateArgs()
         {
         }
+        public static new ServiceCertificateArgs Empty => new ServiceCertificateArgs();
     }
 
-    public sealed class ServiceCertificateState : Pulumi.ResourceArgs
+    public sealed class ServiceCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cert of the Certificate in which the Certificate will add.
@@ -209,5 +208,6 @@ namespace Pulumi.AliCloud.Cas
         public ServiceCertificateState()
         {
         }
+        public static new ServiceCertificateState Empty => new ServiceCertificateState();
     }
 }

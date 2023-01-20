@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.oss.outputs;
 
+import com.pulumi.alicloud.oss.outputs.GetTablesTableDefinedColumn;
 import com.pulumi.alicloud.oss.outputs.GetTablesTablePrimaryKey;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
@@ -12,6 +13,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTablesTable {
+    private List<GetTablesTableDefinedColumn> definedColumns;
     /**
      * @return ID of the table. The value is `&lt;instance_name&gt;:&lt;table_name&gt;`.
      * 
@@ -44,6 +46,9 @@ public final class GetTablesTable {
     private Integer timeToLive;
 
     private GetTablesTable() {}
+    public List<GetTablesTableDefinedColumn> definedColumns() {
+        return this.definedColumns;
+    }
     /**
      * @return ID of the table. The value is `&lt;instance_name&gt;:&lt;table_name&gt;`.
      * 
@@ -96,6 +101,7 @@ public final class GetTablesTable {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetTablesTableDefinedColumn> definedColumns;
         private String id;
         private String instanceName;
         private Integer maxVersion;
@@ -105,6 +111,7 @@ public final class GetTablesTable {
         public Builder() {}
         public Builder(GetTablesTable defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.definedColumns = defaults.definedColumns;
     	      this.id = defaults.id;
     	      this.instanceName = defaults.instanceName;
     	      this.maxVersion = defaults.maxVersion;
@@ -113,6 +120,14 @@ public final class GetTablesTable {
     	      this.timeToLive = defaults.timeToLive;
         }
 
+        @CustomType.Setter
+        public Builder definedColumns(List<GetTablesTableDefinedColumn> definedColumns) {
+            this.definedColumns = Objects.requireNonNull(definedColumns);
+            return this;
+        }
+        public Builder definedColumns(GetTablesTableDefinedColumn... definedColumns) {
+            return definedColumns(List.of(definedColumns));
+        }
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
@@ -148,6 +163,7 @@ public final class GetTablesTable {
         }
         public GetTablesTable build() {
             final var o = new GetTablesTable();
+            o.definedColumns = definedColumns;
             o.id = id;
             o.instanceName = instanceName;
             o.maxVersion = maxVersion;

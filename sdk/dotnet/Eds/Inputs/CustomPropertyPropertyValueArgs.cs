@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eds.Inputs
 {
 
-    public sealed class CustomPropertyPropertyValueArgs : Pulumi.ResourceArgs
+    public sealed class CustomPropertyPropertyValueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The value of an attribute.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Eds.Inputs
         public CustomPropertyPropertyValueArgs()
         {
         }
+        public static new CustomPropertyPropertyValueArgs Empty => new CustomPropertyPropertyValueArgs();
     }
 }

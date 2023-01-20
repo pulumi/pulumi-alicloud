@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstVpcFlowLogId = example.then(example => example.logs?[0]?.id);
+ * export const firstVpcFlowLogId = example.then(example => example.logs?.[0]?.id);
  * ```
  */
 export function getVpcFlowLogs(args?: GetVpcFlowLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcFlowLogsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", {
         "description": args.description,
         "flowLogName": args.flowLogName,
@@ -116,9 +114,28 @@ export interface GetVpcFlowLogsResult {
     readonly status?: string;
     readonly trafficType?: string;
 }
-
+/**
+ * This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.122.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.vpc.getVpcFlowLogs({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstVpcFlowLogId = example.then(example => example.logs?.[0]?.id);
+ * ```
+ */
 export function getVpcFlowLogsOutput(args?: GetVpcFlowLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFlowLogsResult> {
-    return pulumi.output(args).apply(a => getVpcFlowLogs(a, opts))
+    return pulumi.output(args).apply((a: any) => getVpcFlowLogs(a, opts))
 }
 
 /**

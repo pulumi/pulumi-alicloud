@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ServiceMesh.Inputs
 {
 
-    public sealed class ServiceMeshMeshConfigControlPlaneLogArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMeshMeshConfigControlPlaneLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable Service grid audit.
+        /// Whether to enable of the access logging. Valid values: `true` and `false`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The Service grid audit that to the project.
+        /// The SLS Project of the access logging.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public ServiceMeshMeshConfigControlPlaneLogArgs()
         {
         }
+        public static new ServiceMeshMeshConfigControlPlaneLogArgs Empty => new ServiceMeshMeshConfigControlPlaneLogArgs();
     }
 }

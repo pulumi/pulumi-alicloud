@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class ContainerGroupContainerEnvironmentVarGetArgs : Pulumi.ResourceArgs
+    public sealed class ContainerGroupContainerEnvironmentVarGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The variable value of the security context that the container group runs.
+        /// The value of the variable. The value can be 0 to 256 characters in length.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public ContainerGroupContainerEnvironmentVarGetArgs()
         {
         }
+        public static new ContainerGroupContainerEnvironmentVarGetArgs Empty => new ContainerGroupContainerEnvironmentVarGetArgs();
     }
 }

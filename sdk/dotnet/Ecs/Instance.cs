@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
@@ -116,6 +116,26 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> HpcClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        /// </summary>
+        [Output("httpEndpoint")]
+        public Output<string> HttpEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        /// </summary>
+        [Output("httpPutResponseHopLimit")]
+        public Output<int> HttpPutResponseHopLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+        /// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+        /// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+        /// </summary>
+        [Output("httpTokens")]
+        public Output<string> HttpTokens { get; private set; } = null!;
+
+        /// <summary>
         /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("imageId")]
@@ -165,6 +185,18 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("ioOptimized")]
         public Output<string?> IoOptimized { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        /// </summary>
+        [Output("ipv6AddressCount")]
+        public Output<int> Ipv6AddressCount { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        /// </summary>
+        [Output("ipv6Addresses")]
+        public Output<ImmutableArray<string>> Ipv6Addresses { get; private set; } = null!;
 
         /// <summary>
         /// Whether to use outdated instance type. Default to false.
@@ -243,9 +275,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
-        /// - `AutoRenewal`: Enable auto renewal.
-        /// - `Normal`: Disable auto renewal.
-        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string?> RenewalStatus { get; private set; } = null!;
@@ -289,6 +318,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
+        /// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        /// </summary>
+        [Output("spotDuration")]
+        public Output<int> SpotDuration { get; private set; } = null!;
+
+        /// <summary>
         /// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         /// </summary>
         [Output("spotPriceLimit")]
@@ -310,7 +345,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        /// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         /// </summary>
         [Output("stoppedMode")]
         public Output<string> StoppedMode { get; private set; } = null!;
@@ -325,7 +360,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SystemDiskAutoSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string?> SystemDiskCategory { get; private set; } = null!;
@@ -343,9 +378,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SystemDiskEncryptAlgorithm { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-        /// - `true`: encrypts the system disk.
-        /// - `false`: does not encrypt the system disk.
+        /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
         /// </summary>
         [Output("systemDiskEncrypted")]
         public Output<bool?> SystemDiskEncrypted { get; private set; } = null!;
@@ -431,6 +464,10 @@ namespace Pulumi.AliCloud.Ecs
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -452,7 +489,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
@@ -549,6 +586,26 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HpcClusterId { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        /// </summary>
+        [Input("httpEndpoint")]
+        public Input<string>? HttpEndpoint { get; set; }
+
+        /// <summary>
+        /// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        /// </summary>
+        [Input("httpPutResponseHopLimit")]
+        public Input<int>? HttpPutResponseHopLimit { get; set; }
+
+        /// <summary>
+        /// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+        /// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+        /// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+        /// </summary>
+        [Input("httpTokens")]
+        public Input<string>? HttpTokens { get; set; }
+
+        /// <summary>
         /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("imageId", required: true)]
@@ -598,6 +655,24 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("ioOptimized")]
         public Input<string>? IoOptimized { get; set; }
+
+        /// <summary>
+        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        /// </summary>
+        [Input("ipv6AddressCount")]
+        public Input<int>? Ipv6AddressCount { get; set; }
+
+        [Input("ipv6Addresses")]
+        private InputList<string>? _ipv6Addresses;
+
+        /// <summary>
+        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        /// </summary>
+        public InputList<string> Ipv6Addresses
+        {
+            get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<string>());
+            set => _ipv6Addresses = value;
+        }
 
         /// <summary>
         /// Whether to use outdated instance type. Default to false.
@@ -653,11 +728,21 @@ namespace Pulumi.AliCloud.Ecs
         [Input("operatorType")]
         public Input<string>? OperatorType { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -676,9 +761,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
-        /// - `AutoRenewal`: Enable auto renewal.
-        /// - `Normal`: Disable auto renewal.
-        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -734,6 +816,12 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
+        /// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        /// </summary>
+        [Input("spotDuration")]
+        public Input<int>? SpotDuration { get; set; }
+
+        /// <summary>
         /// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         /// </summary>
         [Input("spotPriceLimit")]
@@ -755,7 +843,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        /// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         /// </summary>
         [Input("stoppedMode")]
         public Input<string>? StoppedMode { get; set; }
@@ -770,7 +858,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -788,9 +876,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskEncryptAlgorithm { get; set; }
 
         /// <summary>
-        /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-        /// - `true`: encrypts the system disk.
-        /// - `false`: does not encrypt the system disk.
+        /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
         /// </summary>
         [Input("systemDiskEncrypted")]
         public Input<bool>? SystemDiskEncrypted { get; set; }
@@ -868,9 +954,10 @@ namespace Pulumi.AliCloud.Ecs
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
@@ -973,6 +1060,26 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HpcClusterId { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        /// </summary>
+        [Input("httpEndpoint")]
+        public Input<string>? HttpEndpoint { get; set; }
+
+        /// <summary>
+        /// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        /// </summary>
+        [Input("httpPutResponseHopLimit")]
+        public Input<int>? HttpPutResponseHopLimit { get; set; }
+
+        /// <summary>
+        /// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+        /// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+        /// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+        /// </summary>
+        [Input("httpTokens")]
+        public Input<string>? HttpTokens { get; set; }
+
+        /// <summary>
         /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("imageId")]
@@ -1022,6 +1129,24 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("ioOptimized")]
         public Input<string>? IoOptimized { get; set; }
+
+        /// <summary>
+        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        /// </summary>
+        [Input("ipv6AddressCount")]
+        public Input<int>? Ipv6AddressCount { get; set; }
+
+        [Input("ipv6Addresses")]
+        private InputList<string>? _ipv6Addresses;
+
+        /// <summary>
+        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        /// </summary>
+        public InputList<string> Ipv6Addresses
+        {
+            get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<string>());
+            set => _ipv6Addresses = value;
+        }
 
         /// <summary>
         /// Whether to use outdated instance type. Default to false.
@@ -1077,11 +1202,21 @@ namespace Pulumi.AliCloud.Ecs
         [Input("operatorType")]
         public Input<string>? OperatorType { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -1106,9 +1241,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
-        /// - `AutoRenewal`: Enable auto renewal.
-        /// - `Normal`: Disable auto renewal.
-        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -1164,6 +1296,12 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
+        /// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        /// </summary>
+        [Input("spotDuration")]
+        public Input<int>? SpotDuration { get; set; }
+
+        /// <summary>
         /// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         /// </summary>
         [Input("spotPriceLimit")]
@@ -1185,7 +1323,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        /// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         /// </summary>
         [Input("stoppedMode")]
         public Input<string>? StoppedMode { get; set; }
@@ -1200,7 +1338,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1218,9 +1356,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskEncryptAlgorithm { get; set; }
 
         /// <summary>
-        /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-        /// - `true`: encrypts the system disk.
-        /// - `false`: does not encrypt the system disk.
+        /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
         /// </summary>
         [Input("systemDiskEncrypted")]
         public Input<bool>? SystemDiskEncrypted { get; set; }
@@ -1298,5 +1434,6 @@ namespace Pulumi.AliCloud.Ecs
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

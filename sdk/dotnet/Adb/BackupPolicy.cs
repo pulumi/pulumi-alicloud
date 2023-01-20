@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Adb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:adb/backupPolicy:BackupPolicy")]
-    public partial class BackupPolicy : Pulumi.CustomResource
+    public partial class BackupPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Cluster backup retention days, Fixed for 7 days, not modified.
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Adb
         }
     }
 
-    public sealed class BackupPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackupPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Id of cluster that can run database.
@@ -118,9 +118,10 @@ namespace Pulumi.AliCloud.Adb
         public BackupPolicyArgs()
         {
         }
+        public static new BackupPolicyArgs Empty => new BackupPolicyArgs();
     }
 
-    public sealed class BackupPolicyState : Pulumi.ResourceArgs
+    public sealed class BackupPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cluster backup retention days, Fixed for 7 days, not modified.
@@ -155,5 +156,6 @@ namespace Pulumi.AliCloud.Adb
         public BackupPolicyState()
         {
         }
+        public static new BackupPolicyState Empty => new BackupPolicyState();
     }
 }

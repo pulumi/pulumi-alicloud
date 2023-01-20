@@ -26,12 +26,8 @@ class VaultArgs:
         :param pulumi.Input[str] vault_name: The name of Vault.
         :param pulumi.Input[str] description: The description of Vault. Defaults to an empty string.
         :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-               - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
-               - `KMS`: Use Alibaba Cloud Kms to encryption.
         :param pulumi.Input[str] kms_key_id: The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
         :param pulumi.Input[str] redundancy_type: The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-               - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-               - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
         :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
         """
@@ -78,8 +74,6 @@ class VaultArgs:
     def encrypt_type(self) -> Optional[pulumi.Input[str]]:
         """
         Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-        - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
-        - `KMS`: Use Alibaba Cloud Kms to encryption.
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -104,8 +98,6 @@ class VaultArgs:
     def redundancy_type(self) -> Optional[pulumi.Input[str]]:
         """
         The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-        - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -153,12 +145,8 @@ class _VaultState:
         Input properties used for looking up and filtering Vault resources.
         :param pulumi.Input[str] description: The description of Vault. Defaults to an empty string.
         :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-               - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
-               - `KMS`: Use Alibaba Cloud Kms to encryption.
         :param pulumi.Input[str] kms_key_id: The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
         :param pulumi.Input[str] redundancy_type: The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-               - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-               - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         :param pulumi.Input[str] status: The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
         :param pulumi.Input[str] vault_name: The name of Vault.
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
@@ -198,8 +186,6 @@ class _VaultState:
     def encrypt_type(self) -> Optional[pulumi.Input[str]]:
         """
         Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-        - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
-        - `KMS`: Use Alibaba Cloud Kms to encryption.
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -224,8 +210,6 @@ class _VaultState:
     def redundancy_type(self) -> Optional[pulumi.Input[str]]:
         """
         The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-        - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -325,12 +309,8 @@ class Vault(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of Vault. Defaults to an empty string.
         :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-               - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
-               - `KMS`: Use Alibaba Cloud Kms to encryption.
         :param pulumi.Input[str] kms_key_id: The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
         :param pulumi.Input[str] redundancy_type: The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-               - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-               - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         :param pulumi.Input[str] vault_name: The name of Vault.
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
         :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
@@ -435,12 +415,8 @@ class Vault(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of Vault. Defaults to an empty string.
         :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-               - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
-               - `KMS`: Use Alibaba Cloud Kms to encryption.
         :param pulumi.Input[str] kms_key_id: The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
         :param pulumi.Input[str] redundancy_type: The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-               - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-               - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         :param pulumi.Input[str] status: The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
         :param pulumi.Input[str] vault_name: The name of Vault.
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
@@ -473,8 +449,6 @@ class Vault(pulumi.CustomResource):
     def encrypt_type(self) -> pulumi.Output[str]:
         """
         Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-        - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
-        - `KMS`: Use Alibaba Cloud Kms to encryption.
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -491,8 +465,6 @@ class Vault(pulumi.CustomResource):
     def redundancy_type(self) -> pulumi.Output[str]:
         """
         The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-        - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         """
         return pulumi.get(self, "redundancy_type")
 

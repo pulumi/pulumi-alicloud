@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class EciScalingConfigurationImageRegistryCredentialArgs : Pulumi.ResourceArgs
+    public sealed class EciScalingConfigurationImageRegistryCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The password used to log on to the image repository. It is required
@@ -32,5 +32,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public EciScalingConfigurationImageRegistryCredentialArgs()
         {
         }
+        public static new EciScalingConfigurationImageRegistryCredentialArgs Empty => new EciScalingConfigurationImageRegistryCredentialArgs();
     }
 }

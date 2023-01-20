@@ -100,11 +100,11 @@ export class BandwidthPackage extends pulumi.CustomResource {
     /**
      * Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
      */
-    public readonly cbnGeographicRegionIda!: pulumi.Output<string | undefined>;
+    public readonly cbnGeographicRegionIda!: pulumi.Output<string>;
     /**
      * Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
      */
-    public readonly cbnGeographicRegionIdb!: pulumi.Output<string | undefined>;
+    public readonly cbnGeographicRegionIdb!: pulumi.Output<string>;
     /**
      * The description of bandwidth package.
      */
@@ -123,9 +123,6 @@ export class BandwidthPackage extends pulumi.CustomResource {
     public readonly ratio!: pulumi.Output<number | undefined>;
     /**
      * Whether to renew a bandwidth packet. automatically or not. Valid values:
-     * - `AutoRenewal`: Enable auto renewal.
-     * - `Normal`: Disable auto renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     public readonly renewalStatus!: pulumi.Output<string>;
     /**
@@ -256,9 +253,6 @@ export interface BandwidthPackageState {
     ratio?: pulumi.Input<number>;
     /**
      * Whether to renew a bandwidth packet. automatically or not. Valid values:
-     * - `AutoRenewal`: Enable auto renewal.
-     * - `Normal`: Disable auto renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
     /**
@@ -331,9 +325,6 @@ export interface BandwidthPackageArgs {
     ratio?: pulumi.Input<number>;
     /**
      * Whether to renew a bandwidth packet. automatically or not. Valid values:
-     * - `AutoRenewal`: Enable auto renewal.
-     * - `Normal`: Disable auto renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
     /**

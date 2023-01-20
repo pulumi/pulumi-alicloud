@@ -44,8 +44,14 @@ import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
 import com.pulumi.alicloud.vpc.inputs.GetNetworksPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
+import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
 import com.pulumi.alicloud.vpc.inputs.GetPrefixListsPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolCidrBlocksArgs;
+import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolCidrBlocksPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
+import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
@@ -92,7 +98,10 @@ import com.pulumi.alicloud.vpc.outputs.GetNatIpsResult;
 import com.pulumi.alicloud.vpc.outputs.GetNetworkAclsResult;
 import com.pulumi.alicloud.vpc.outputs.GetNetworksResult;
 import com.pulumi.alicloud.vpc.outputs.GetPbrRouteEntriesResult;
+import com.pulumi.alicloud.vpc.outputs.GetPeerConnectionsResult;
 import com.pulumi.alicloud.vpc.outputs.GetPrefixListsResult;
+import com.pulumi.alicloud.vpc.outputs.GetPublicIpAddressPoolCidrBlocksResult;
+import com.pulumi.alicloud.vpc.outputs.GetPublicIpAddressPoolsResult;
 import com.pulumi.alicloud.vpc.outputs.GetRouteEntriesResult;
 import com.pulumi.alicloud.vpc.outputs.GetRouteTablesResult;
 import com.pulumi.alicloud.vpc.outputs.GetRouterInterfacesResult;
@@ -1800,7 +1809,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -1894,7 +1903,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -1988,7 +1997,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -2082,7 +2091,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -4269,6 +4278,7 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -4276,7 +4286,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.NatGateway;
@@ -4333,6 +4343,7 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -4340,7 +4351,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.NatGateway;
@@ -4397,6 +4408,7 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -4404,7 +4416,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.NatGateway;
@@ -4461,6 +4473,7 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -4468,7 +4481,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.NatGateway;
@@ -4525,6 +4538,7 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -4532,7 +4546,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.NatGateway;
@@ -4589,6 +4603,7 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
      * ```java
      * package generated_program;
      * 
@@ -4596,7 +4611,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.NatGateway;
@@ -5512,7 +5527,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5552,7 +5567,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5592,7 +5607,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5632,7 +5647,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5672,7 +5687,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5712,7 +5727,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5904,6 +5919,276 @@ public final class VpcFunctions {
      */
     public static CompletableFuture<GetPbrRouteEntriesResult> getPbrRouteEntriesPlain(GetPbrRouteEntriesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", TypeShape.of(GetPbrRouteEntriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPeerConnections();
+     * 
+     *         ctx.export(&#34;vpcPeerConnectionId1&#34;, ids.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .nameRegex(&#34;^my-PeerConnection&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPeerConnectionId2&#34;, nameRegex.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPeerConnectionsResult> getPeerConnections() {
+        return getPeerConnections(GetPeerConnectionsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPeerConnections();
+     * 
+     *         ctx.export(&#34;vpcPeerConnectionId1&#34;, ids.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .nameRegex(&#34;^my-PeerConnection&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPeerConnectionId2&#34;, nameRegex.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPeerConnectionsResult> getPeerConnectionsPlain() {
+        return getPeerConnectionsPlain(GetPeerConnectionsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPeerConnections();
+     * 
+     *         ctx.export(&#34;vpcPeerConnectionId1&#34;, ids.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .nameRegex(&#34;^my-PeerConnection&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPeerConnectionId2&#34;, nameRegex.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPeerConnectionsResult> getPeerConnections(GetPeerConnectionsArgs args) {
+        return getPeerConnections(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPeerConnections();
+     * 
+     *         ctx.export(&#34;vpcPeerConnectionId1&#34;, ids.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .nameRegex(&#34;^my-PeerConnection&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPeerConnectionId2&#34;, nameRegex.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPeerConnectionsResult> getPeerConnectionsPlain(GetPeerConnectionsPlainArgs args) {
+        return getPeerConnectionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPeerConnections();
+     * 
+     *         ctx.export(&#34;vpcPeerConnectionId1&#34;, ids.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .nameRegex(&#34;^my-PeerConnection&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPeerConnectionId2&#34;, nameRegex.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPeerConnectionsResult> getPeerConnections(GetPeerConnectionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getPeerConnections:getPeerConnections", TypeShape.of(GetPeerConnectionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPeerConnections();
+     * 
+     *         ctx.export(&#34;vpcPeerConnectionId1&#34;, ids.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .nameRegex(&#34;^my-PeerConnection&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPeerConnectionId2&#34;, nameRegex.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPeerConnectionsResult> getPeerConnectionsPlain(GetPeerConnectionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getPeerConnections:getPeerConnections", TypeShape.of(GetPeerConnectionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
@@ -6176,6 +6461,492 @@ public final class VpcFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getPrefixLists:getPrefixLists", TypeShape.of(GetPrefixListsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides the Vpc Public Ip Address Pool Cidr Blocks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.189.0+.
+     * 
+     * &gt; **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolCidrBlocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .publicIpAddressPoolId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId1&#34;, ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
+     *             .publicIpAddressPoolId(&#34;example_value&#34;)
+     *             .cidrBlock(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId2&#34;, cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPublicIpAddressPoolCidrBlocksResult> getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs args) {
+        return getPublicIpAddressPoolCidrBlocks(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Public Ip Address Pool Cidr Blocks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.189.0+.
+     * 
+     * &gt; **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolCidrBlocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .publicIpAddressPoolId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId1&#34;, ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
+     *             .publicIpAddressPoolId(&#34;example_value&#34;)
+     *             .cidrBlock(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId2&#34;, cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPublicIpAddressPoolCidrBlocksResult> getPublicIpAddressPoolCidrBlocksPlain(GetPublicIpAddressPoolCidrBlocksPlainArgs args) {
+        return getPublicIpAddressPoolCidrBlocksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Public Ip Address Pool Cidr Blocks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.189.0+.
+     * 
+     * &gt; **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolCidrBlocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .publicIpAddressPoolId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId1&#34;, ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
+     *             .publicIpAddressPoolId(&#34;example_value&#34;)
+     *             .cidrBlock(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId2&#34;, cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPublicIpAddressPoolCidrBlocksResult> getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", TypeShape.of(GetPublicIpAddressPoolCidrBlocksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Vpc Public Ip Address Pool Cidr Blocks of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.189.0+.
+     * 
+     * &gt; **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolCidrBlocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .publicIpAddressPoolId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId1&#34;, ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
+     *             .publicIpAddressPoolId(&#34;example_value&#34;)
+     *             .cidrBlock(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId2&#34;, cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPublicIpAddressPoolCidrBlocksResult> getPublicIpAddressPoolCidrBlocksPlain(GetPublicIpAddressPoolCidrBlocksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", TypeShape.of(GetPublicIpAddressPoolCidrBlocksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolId1&#34;, ids.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
+     *             .nameRegex(&#34;example_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolId2&#34;, nameRegex.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPublicIpAddressPoolsResult> getPublicIpAddressPools() {
+        return getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolId1&#34;, ids.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
+     *             .nameRegex(&#34;example_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolId2&#34;, nameRegex.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPublicIpAddressPoolsResult> getPublicIpAddressPoolsPlain() {
+        return getPublicIpAddressPoolsPlain(GetPublicIpAddressPoolsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolId1&#34;, ids.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
+     *             .nameRegex(&#34;example_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolId2&#34;, nameRegex.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPublicIpAddressPoolsResult> getPublicIpAddressPools(GetPublicIpAddressPoolsArgs args) {
+        return getPublicIpAddressPools(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolId1&#34;, ids.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
+     *             .nameRegex(&#34;example_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolId2&#34;, nameRegex.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPublicIpAddressPoolsResult> getPublicIpAddressPoolsPlain(GetPublicIpAddressPoolsPlainArgs args) {
+        return getPublicIpAddressPoolsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolId1&#34;, ids.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
+     *             .nameRegex(&#34;example_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolId2&#34;, nameRegex.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPublicIpAddressPoolsResult> getPublicIpAddressPools(GetPublicIpAddressPoolsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getPublicIpAddressPools:getPublicIpAddressPools", TypeShape.of(GetPublicIpAddressPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.186.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolId1&#34;, ids.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
+     *             .nameRegex(&#34;example_name&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpcPublicIpAddressPoolId2&#34;, nameRegex.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPublicIpAddressPoolsResult> getPublicIpAddressPoolsPlain(GetPublicIpAddressPoolsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getPublicIpAddressPools:getPublicIpAddressPools", TypeShape.of(GetPublicIpAddressPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides a list of Route Entries owned by an Alibaba Cloud account.
      * 
      * &gt; **NOTE:** Available in 1.37.0+.
@@ -6188,9 +6959,9 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -6205,7 +6976,7 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.ecs.SecurityGroupRule;
      * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6309,9 +7080,9 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -6326,7 +7097,7 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.ecs.SecurityGroupRule;
      * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6430,9 +7201,9 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -6447,7 +7218,7 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.ecs.SecurityGroupRule;
      * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6551,9 +7322,9 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -6568,7 +7339,7 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.ecs.SecurityGroupRule;
      * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cen.inputs.GetRouteEntriesArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -7254,7 +8025,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -7344,7 +8115,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -7434,7 +8205,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -7524,7 +8295,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -8092,7 +8863,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -8151,7 +8922,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -8210,7 +8981,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -8269,7 +9040,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -8328,7 +9099,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -8387,7 +9158,7 @@ public final class VpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;

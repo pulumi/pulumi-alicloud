@@ -21,34 +21,33 @@ namespace Pulumi.AliCloud.Oos
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Oos.GetExecutions.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Oos.GetExecutions.InvokeAsync(new AliCloud.Oos.GetExecutionsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "execution_id",
-        ///             },
-        ///             Status = "Success",
-        ///             TemplateName = "name",
-        ///         }));
-        ///         this.FirstExecutionId = example.Apply(example =&gt; example.Executions?[0]?.Id);
-        ///     }
+        ///             "execution_id",
+        ///         },
+        ///         Status = "Success",
+        ///         TemplateName = "name",
+        ///     });
         /// 
-        ///     [Output("firstExecutionId")]
-        ///     public Output&lt;string&gt; FirstExecutionId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstExecutionId"] = example.Apply(getExecutionsResult =&gt; getExecutionsResult.Executions[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetExecutionsResult> InvokeAsync(GetExecutionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
@@ -60,38 +59,37 @@ namespace Pulumi.AliCloud.Oos
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Oos.GetExecutions.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Oos.GetExecutions.InvokeAsync(new AliCloud.Oos.GetExecutionsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "execution_id",
-        ///             },
-        ///             Status = "Success",
-        ///             TemplateName = "name",
-        ///         }));
-        ///         this.FirstExecutionId = example.Apply(example =&gt; example.Executions?[0]?.Id);
-        ///     }
+        ///             "execution_id",
+        ///         },
+        ///         Status = "Success",
+        ///         TemplateName = "name",
+        ///     });
         /// 
-        ///     [Output("firstExecutionId")]
-        ///     public Output&lt;string&gt; FirstExecutionId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstExecutionId"] = example.Apply(getExecutionsResult =&gt; getExecutionsResult.Executions[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetExecutionsResult> Invoke(GetExecutionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetExecutionsArgs : Pulumi.InvokeArgs
+    public sealed class GetExecutionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
@@ -207,9 +205,10 @@ namespace Pulumi.AliCloud.Oos
         public GetExecutionsArgs()
         {
         }
+        public static new GetExecutionsArgs Empty => new GetExecutionsArgs();
     }
 
-    public sealed class GetExecutionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetExecutionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
@@ -325,6 +324,7 @@ namespace Pulumi.AliCloud.Oos
         public GetExecutionsInvokeArgs()
         {
         }
+        public static new GetExecutionsInvokeArgs Empty => new GetExecutionsInvokeArgs();
     }
 
 

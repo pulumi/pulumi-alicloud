@@ -11,13 +11,14 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Elastic Desktop Service(EDS) User resource.
+ * Provides a Elastic Desktop Service (ECD) User resource.
  * 
- * For information about Elastic Desktop Service(EDS) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
+ * For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
  * 
  * &gt; **NOTE:** Available in v1.142.0+.
  * 
@@ -168,6 +169,9 @@ public class User extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

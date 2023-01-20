@@ -39,10 +39,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FlowLog{}
 	case "alicloud:vpc/forwardEntry:ForwardEntry":
 		r = &ForwardEntry{}
+	case "alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment":
+		r = &GatewayRouteTableAttachment{}
 	case "alicloud:vpc/hAVip:HAVip":
 		r = &HAVip{}
 	case "alicloud:vpc/hAVipAttachment:HAVipAttachment":
 		r = &HAVipAttachment{}
+	case "alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock":
+		r = &Ipv4CidrBlock{}
 	case "alicloud:vpc/ipv4Gateway:Ipv4Gateway":
 		r = &Ipv4Gateway{}
 	case "alicloud:vpc/ipv6EgressRule:Ipv6EgressRule":
@@ -69,8 +73,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkInterface{}
 	case "alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment":
 		r = &NetworkInterfaceAttachment{}
+	case "alicloud:vpc/peerConnection:PeerConnection":
+		r = &PeerConnection{}
+	case "alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter":
+		r = &PeerConnectionAccepter{}
 	case "alicloud:vpc/prefixList:PrefixList":
 		r = &PrefixList{}
+	case "alicloud:vpc/publicIpAddressPool:PublicIpAddressPool":
+		r = &PublicIpAddressPool{}
+	case "alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock":
+		r = &PublicIpAddressPoolCidrBlock{}
 	case "alicloud:vpc/routeEntry:RouteEntry":
 		r = &RouteEntry{}
 	case "alicloud:vpc/routeTable:RouteTable":
@@ -97,6 +109,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TrafficMirrorSession{}
 	case "alicloud:vpc/vbrHa:VbrHa":
 		r = &VbrHa{}
+	case "alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment":
+		r = &VpcNetworkAclAttachment{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -157,12 +171,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"vpc/gatewayRouteTableAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"vpc/hAVip",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/hAVipAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/ipv4CidrBlock",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -232,7 +256,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"vpc/peerConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/peerConnectionAccepter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"vpc/prefixList",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/publicIpAddressPool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/publicIpAddressPoolCidrBlock",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -298,6 +342,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/vbrHa",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/vpcNetworkAclAttachment",
 		&module{version},
 	)
 }

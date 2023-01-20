@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -330,8 +331,8 @@ export class Etl extends pulumi.CustomResource {
             if ((!args || args.script === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'script'");
             }
-            resourceInputs["accessKeyId"] = args ? args.accessKeyId : undefined;
-            resourceInputs["accessKeySecret"] = args ? args.accessKeySecret : undefined;
+            resourceInputs["accessKeyId"] = args?.accessKeyId ? pulumi.secret(args.accessKeyId) : undefined;
+            resourceInputs["accessKeySecret"] = args?.accessKeySecret ? pulumi.secret(args.accessKeySecret) : undefined;
             resourceInputs["createTime"] = args ? args.createTime : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -355,6 +356,8 @@ export class Etl extends pulumi.CustomResource {
             resourceInputs["version"] = args ? args.version : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accessKeyId", "accessKeySecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Etl.__pulumiType, name, resourceInputs, opts);
     }
 }

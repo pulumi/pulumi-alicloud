@@ -21,33 +21,32 @@ namespace Pulumi.AliCloud.Oos
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
-    ///         var defaultStateConfiguration = new AliCloud.Oos.StateConfiguration("defaultStateConfiguration", new AliCloud.Oos.StateConfigurationArgs
-    ///         {
-    ///             TemplateName = "ACS-ECS-InventoryDataCollection",
-    ///             ConfigureMode = "ApplyOnly",
-    ///             Description = @var.Name,
-    ///             ScheduleType = "rate",
-    ///             ScheduleExpression = "1 hour",
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Ids?[0]),
-    ///             Targets = "{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}",
-    ///             Parameters = "{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "Test" },
-    ///             },
-    ///         });
-    ///     }
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    /// }
+    ///     var defaultStateConfiguration = new AliCloud.Oos.StateConfiguration("defaultStateConfiguration", new()
+    ///     {
+    ///         TemplateName = "ACS-ECS-InventoryDataCollection",
+    ///         ConfigureMode = "ApplyOnly",
+    ///         Description = @var.Name,
+    ///         ScheduleType = "rate",
+    ///         ScheduleExpression = "1 hour",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         Targets = "{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}",
+    ///         Parameters = "{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "Test" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.Oos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/stateConfiguration:StateConfiguration")]
-    public partial class StateConfiguration : Pulumi.CustomResource
+    public partial class StateConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configuration mode. Valid values: `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `ApplyOnly`.
@@ -165,7 +164,7 @@ namespace Pulumi.AliCloud.Oos
         }
     }
 
-    public sealed class StateConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class StateConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration mode. Valid values: `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `ApplyOnly`.
@@ -236,9 +235,10 @@ namespace Pulumi.AliCloud.Oos
         public StateConfigurationArgs()
         {
         }
+        public static new StateConfigurationArgs Empty => new StateConfigurationArgs();
     }
 
-    public sealed class StateConfigurationState : Pulumi.ResourceArgs
+    public sealed class StateConfigurationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration mode. Valid values: `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `ApplyOnly`.
@@ -309,5 +309,6 @@ namespace Pulumi.AliCloud.Oos
         public StateConfigurationState()
         {
         }
+        public static new StateConfigurationState Empty => new StateConfigurationState();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -24,20 +25,17 @@ import * as utilities from "../utilities";
  *         "amqp-abc34567",
  *     ],
  * });
- * export const amqpInstanceId1 = ids.then(ids => ids.instances?[0]?.id);
+ * export const amqpInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
  * const nameRegex = alicloud.amqp.getInstances({
  *     nameRegex: "^my-Instance",
  * });
- * export const amqpInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?[0]?.id);
+ * export const amqpInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:amqp/getInstances:getInstances", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -86,9 +84,34 @@ export interface GetInstancesResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Amqp Instances of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.128.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.amqp.getInstances({
+ *     ids: [
+ *         "amqp-abc12345",
+ *         "amqp-abc34567",
+ *     ],
+ * });
+ * export const amqpInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
+ * const nameRegex = alicloud.amqp.getInstances({
+ *     nameRegex: "^my-Instance",
+ * });
+ * export const amqpInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**

@@ -5,29 +5,88 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getAccessPoints";
-export * from "./getPhysicalConnectionService";
-export * from "./getPhysicalConnections";
-export * from "./getVirtualBorderRouters";
-export * from "./physicalConnection";
-export * from "./virtualBorderRouter";
+export { GetAccessPointsArgs, GetAccessPointsResult, GetAccessPointsOutputArgs } from "./getAccessPoints";
+export const getAccessPoints: typeof import("./getAccessPoints").getAccessPoints = null as any;
+export const getAccessPointsOutput: typeof import("./getAccessPoints").getAccessPointsOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessPoints","getAccessPointsOutput"], () => require("./getAccessPoints"));
 
-// Import resources to register:
-import { PhysicalConnection } from "./physicalConnection";
-import { VirtualBorderRouter } from "./virtualBorderRouter";
+export { GetGrantRuleToCensArgs, GetGrantRuleToCensResult, GetGrantRuleToCensOutputArgs } from "./getGrantRuleToCens";
+export const getGrantRuleToCens: typeof import("./getGrantRuleToCens").getGrantRuleToCens = null as any;
+export const getGrantRuleToCensOutput: typeof import("./getGrantRuleToCens").getGrantRuleToCensOutput = null as any;
+utilities.lazyLoad(exports, ["getGrantRuleToCens","getGrantRuleToCensOutput"], () => require("./getGrantRuleToCens"));
+
+export { GetPhysicalConnectionServiceArgs, GetPhysicalConnectionServiceResult, GetPhysicalConnectionServiceOutputArgs } from "./getPhysicalConnectionService";
+export const getPhysicalConnectionService: typeof import("./getPhysicalConnectionService").getPhysicalConnectionService = null as any;
+export const getPhysicalConnectionServiceOutput: typeof import("./getPhysicalConnectionService").getPhysicalConnectionServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getPhysicalConnectionService","getPhysicalConnectionServiceOutput"], () => require("./getPhysicalConnectionService"));
+
+export { GetPhysicalConnectionsArgs, GetPhysicalConnectionsResult, GetPhysicalConnectionsOutputArgs } from "./getPhysicalConnections";
+export const getPhysicalConnections: typeof import("./getPhysicalConnections").getPhysicalConnections = null as any;
+export const getPhysicalConnectionsOutput: typeof import("./getPhysicalConnections").getPhysicalConnectionsOutput = null as any;
+utilities.lazyLoad(exports, ["getPhysicalConnections","getPhysicalConnectionsOutput"], () => require("./getPhysicalConnections"));
+
+export { GetVbrPconnAssociationsArgs, GetVbrPconnAssociationsResult, GetVbrPconnAssociationsOutputArgs } from "./getVbrPconnAssociations";
+export const getVbrPconnAssociations: typeof import("./getVbrPconnAssociations").getVbrPconnAssociations = null as any;
+export const getVbrPconnAssociationsOutput: typeof import("./getVbrPconnAssociations").getVbrPconnAssociationsOutput = null as any;
+utilities.lazyLoad(exports, ["getVbrPconnAssociations","getVbrPconnAssociationsOutput"], () => require("./getVbrPconnAssociations"));
+
+export { GetVirtualBorderRoutersArgs, GetVirtualBorderRoutersResult, GetVirtualBorderRoutersOutputArgs } from "./getVirtualBorderRouters";
+export const getVirtualBorderRouters: typeof import("./getVirtualBorderRouters").getVirtualBorderRouters = null as any;
+export const getVirtualBorderRoutersOutput: typeof import("./getVirtualBorderRouters").getVirtualBorderRoutersOutput = null as any;
+utilities.lazyLoad(exports, ["getVirtualBorderRouters","getVirtualBorderRoutersOutput"], () => require("./getVirtualBorderRouters"));
+
+export { GetVirtualPhysicalConnectionsArgs, GetVirtualPhysicalConnectionsResult, GetVirtualPhysicalConnectionsOutputArgs } from "./getVirtualPhysicalConnections";
+export const getVirtualPhysicalConnections: typeof import("./getVirtualPhysicalConnections").getVirtualPhysicalConnections = null as any;
+export const getVirtualPhysicalConnectionsOutput: typeof import("./getVirtualPhysicalConnections").getVirtualPhysicalConnectionsOutput = null as any;
+utilities.lazyLoad(exports, ["getVirtualPhysicalConnections","getVirtualPhysicalConnectionsOutput"], () => require("./getVirtualPhysicalConnections"));
+
+export { GrantRuleToCenArgs, GrantRuleToCenState } from "./grantRuleToCen";
+export type GrantRuleToCen = import("./grantRuleToCen").GrantRuleToCen;
+export const GrantRuleToCen: typeof import("./grantRuleToCen").GrantRuleToCen = null as any;
+utilities.lazyLoad(exports, ["GrantRuleToCen"], () => require("./grantRuleToCen"));
+
+export { PhysicalConnectionArgs, PhysicalConnectionState } from "./physicalConnection";
+export type PhysicalConnection = import("./physicalConnection").PhysicalConnection;
+export const PhysicalConnection: typeof import("./physicalConnection").PhysicalConnection = null as any;
+utilities.lazyLoad(exports, ["PhysicalConnection"], () => require("./physicalConnection"));
+
+export { VbrPconnAssociationArgs, VbrPconnAssociationState } from "./vbrPconnAssociation";
+export type VbrPconnAssociation = import("./vbrPconnAssociation").VbrPconnAssociation;
+export const VbrPconnAssociation: typeof import("./vbrPconnAssociation").VbrPconnAssociation = null as any;
+utilities.lazyLoad(exports, ["VbrPconnAssociation"], () => require("./vbrPconnAssociation"));
+
+export { VirtualBorderRouterArgs, VirtualBorderRouterState } from "./virtualBorderRouter";
+export type VirtualBorderRouter = import("./virtualBorderRouter").VirtualBorderRouter;
+export const VirtualBorderRouter: typeof import("./virtualBorderRouter").VirtualBorderRouter = null as any;
+utilities.lazyLoad(exports, ["VirtualBorderRouter"], () => require("./virtualBorderRouter"));
+
+export { VirtualPhysicalConnectionArgs, VirtualPhysicalConnectionState } from "./virtualPhysicalConnection";
+export type VirtualPhysicalConnection = import("./virtualPhysicalConnection").VirtualPhysicalConnection;
+export const VirtualPhysicalConnection: typeof import("./virtualPhysicalConnection").VirtualPhysicalConnection = null as any;
+utilities.lazyLoad(exports, ["VirtualPhysicalConnection"], () => require("./virtualPhysicalConnection"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:expressconnect/grantRuleToCen:GrantRuleToCen":
+                return new GrantRuleToCen(name, <any>undefined, { urn })
             case "alicloud:expressconnect/physicalConnection:PhysicalConnection":
                 return new PhysicalConnection(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation":
+                return new VbrPconnAssociation(name, <any>undefined, { urn })
             case "alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter":
                 return new VirtualBorderRouter(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection":
+                return new VirtualPhysicalConnection(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/grantRuleToCen", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/physicalConnection", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/vbrPconnAssociation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/virtualBorderRouter", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/virtualPhysicalConnection", _module)

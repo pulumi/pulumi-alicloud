@@ -21,6 +21,7 @@ class TableArgs:
                  primary_keys: pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]],
                  table_name: pulumi.Input[str],
                  time_to_live: pulumi.Input[int],
+                 defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
                  deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
                  enable_sse: Optional[pulumi.Input[bool]] = None,
                  sse_key_type: Optional[pulumi.Input[str]] = None):
@@ -31,6 +32,7 @@ class TableArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
+        :param pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
@@ -40,6 +42,8 @@ class TableArgs:
         pulumi.set(__self__, "primary_keys", primary_keys)
         pulumi.set(__self__, "table_name", table_name)
         pulumi.set(__self__, "time_to_live", time_to_live)
+        if defined_columns is not None:
+            pulumi.set(__self__, "defined_columns", defined_columns)
         if deviation_cell_version_in_sec is not None:
             pulumi.set(__self__, "deviation_cell_version_in_sec", deviation_cell_version_in_sec)
         if enable_sse is not None:
@@ -108,6 +112,18 @@ class TableArgs:
         pulumi.set(self, "time_to_live", value)
 
     @property
+    @pulumi.getter(name="definedColumns")
+    def defined_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]:
+        """
+        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        """
+        return pulumi.get(self, "defined_columns")
+
+    @defined_columns.setter
+    def defined_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]):
+        pulumi.set(self, "defined_columns", value)
+
+    @property
     @pulumi.getter(name="deviationCellVersionInSec")
     def deviation_cell_version_in_sec(self) -> Optional[pulumi.Input[str]]:
         """
@@ -147,6 +163,7 @@ class TableArgs:
 @pulumi.input_type
 class _TableState:
     def __init__(__self__, *,
+                 defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
                  deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
                  enable_sse: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -157,6 +174,7 @@ class _TableState:
                  time_to_live: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Table resources.
+        :param pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
@@ -166,6 +184,8 @@ class _TableState:
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """
+        if defined_columns is not None:
+            pulumi.set(__self__, "defined_columns", defined_columns)
         if deviation_cell_version_in_sec is not None:
             pulumi.set(__self__, "deviation_cell_version_in_sec", deviation_cell_version_in_sec)
         if enable_sse is not None:
@@ -182,6 +202,18 @@ class _TableState:
             pulumi.set(__self__, "table_name", table_name)
         if time_to_live is not None:
             pulumi.set(__self__, "time_to_live", time_to_live)
+
+    @property
+    @pulumi.getter(name="definedColumns")
+    def defined_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]:
+        """
+        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        """
+        return pulumi.get(self, "defined_columns")
+
+    @defined_columns.setter
+    def defined_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]):
+        pulumi.set(self, "defined_columns", value)
 
     @property
     @pulumi.getter(name="deviationCellVersionInSec")
@@ -285,6 +317,7 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]]] = None,
                  deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
                  enable_sse: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -334,6 +367,20 @@ class Table(pulumi.CustomResource):
                     type="Binary",
                 ),
             ],
+            defined_columns=[
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col1",
+                    type="Integer",
+                ),
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col2",
+                    type="String",
+                ),
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col3",
+                    type="Binary",
+                ),
+            ],
             time_to_live=-1,
             max_version=1,
             deviation_cell_version_in_sec="1",
@@ -346,11 +393,12 @@ class Table(pulumi.CustomResource):
         OTS table can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ots/table:Table table "my-ots:ots_table"
+         $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
@@ -406,6 +454,20 @@ class Table(pulumi.CustomResource):
                     type="Binary",
                 ),
             ],
+            defined_columns=[
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col1",
+                    type="Integer",
+                ),
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col2",
+                    type="String",
+                ),
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col3",
+                    type="Binary",
+                ),
+            ],
             time_to_live=-1,
             max_version=1,
             deviation_cell_version_in_sec="1",
@@ -418,7 +480,7 @@ class Table(pulumi.CustomResource):
         OTS table can be imported using id, e.g.
 
         ```sh
-         $ pulumi import alicloud:ots/table:Table table "my-ots:ots_table"
+         $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
         ```
 
         :param str resource_name: The name of the resource.
@@ -436,6 +498,7 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]]] = None,
                  deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
                  enable_sse: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -453,6 +516,7 @@ class Table(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TableArgs.__new__(TableArgs)
 
+            __props__.__dict__["defined_columns"] = defined_columns
             __props__.__dict__["deviation_cell_version_in_sec"] = deviation_cell_version_in_sec
             __props__.__dict__["enable_sse"] = enable_sse
             if instance_name is None and not opts.urn:
@@ -481,6 +545,7 @@ class Table(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]]] = None,
             deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
             enable_sse: Optional[pulumi.Input[bool]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
@@ -496,6 +561,7 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
@@ -509,6 +575,7 @@ class Table(pulumi.CustomResource):
 
         __props__ = _TableState.__new__(_TableState)
 
+        __props__.__dict__["defined_columns"] = defined_columns
         __props__.__dict__["deviation_cell_version_in_sec"] = deviation_cell_version_in_sec
         __props__.__dict__["enable_sse"] = enable_sse
         __props__.__dict__["instance_name"] = instance_name
@@ -518,6 +585,14 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["table_name"] = table_name
         __props__.__dict__["time_to_live"] = time_to_live
         return Table(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="definedColumns")
+    def defined_columns(self) -> pulumi.Output[Optional[Sequence['outputs.TableDefinedColumn']]]:
+        """
+        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        """
+        return pulumi.get(self, "defined_columns")
 
     @property
     @pulumi.getter(name="deviationCellVersionInSec")

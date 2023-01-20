@@ -23,6 +23,49 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.cdn.FcTrigger;
+ * import com.pulumi.alicloud.cdn.FcTriggerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultAccount = AlicloudFunctions.getAccount();
+ * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var example = new FcTrigger(&#34;example&#34;, FcTriggerArgs.builder()        
+ *             .eventMetaName(&#34;LogFileCreated&#34;)
+ *             .eventMetaVersion(&#34;1.0.0&#34;)
+ *             .notes(&#34;example_value&#34;)
+ *             .roleArn(String.format(&#34;acs:ram::%s:role/aliyuncdneventnotificationrole&#34;, defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id())))
+ *             .sourceArn(String.format(&#34;acs:cdn:*:%s:domain/example.com&#34;, defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id())))
+ *             .triggerArn(String.format(&#34;acs:fc:%s:%s:services/FCTestService/functions/printEvent/triggers/testtrigger&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id())))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * CDN Fc Trigger can be imported using the id, e.g.

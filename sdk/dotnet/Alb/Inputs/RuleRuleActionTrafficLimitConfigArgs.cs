@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class RuleRuleActionTrafficLimitConfigArgs : Pulumi.ResourceArgs
+    public sealed class RuleRuleActionTrafficLimitConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Number of requests per second. Value range: 1~100000.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public RuleRuleActionTrafficLimitConfigArgs()
         {
         }
+        public static new RuleRuleActionTrafficLimitConfigArgs Empty => new RuleRuleActionTrafficLimitConfigArgs();
     }
 }

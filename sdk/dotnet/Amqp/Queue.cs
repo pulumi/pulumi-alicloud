@@ -21,27 +21,26 @@ namespace Pulumi.AliCloud.Amqp
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleVirtualHost = new AliCloud.Amqp.VirtualHost("exampleVirtualHost", new()
     ///     {
-    ///         var exampleVirtualHost = new AliCloud.Amqp.VirtualHost("exampleVirtualHost", new AliCloud.Amqp.VirtualHostArgs
-    ///         {
-    ///             InstanceId = "amqp-abc12345",
-    ///             VirtualHostName = "my-VirtualHost",
-    ///         });
-    ///         var exampleQueue = new AliCloud.Amqp.Queue("exampleQueue", new AliCloud.Amqp.QueueArgs
-    ///         {
-    ///             InstanceId = exampleVirtualHost.InstanceId,
-    ///             QueueName = "my-Queue",
-    ///             VirtualHostName = exampleVirtualHost.VirtualHostName,
-    ///         });
-    ///     }
+    ///         InstanceId = "amqp-abc12345",
+    ///         VirtualHostName = "my-VirtualHost",
+    ///     });
     /// 
-    /// }
+    ///     var exampleQueue = new AliCloud.Amqp.Queue("exampleQueue", new()
+    ///     {
+    ///         InstanceId = exampleVirtualHost.InstanceId,
+    ///         QueueName = "my-Queue",
+    ///         VirtualHostName = exampleVirtualHost.VirtualHostName,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +52,7 @@ namespace Pulumi.AliCloud.Amqp
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:amqp/queue:Queue")]
-    public partial class Queue : Pulumi.CustomResource
+    public partial class Queue : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies whether the Auto Delete attribute is configured. Valid values:
@@ -178,7 +177,7 @@ namespace Pulumi.AliCloud.Amqp
         }
     }
 
-    public sealed class QueueArgs : Pulumi.ResourceArgs
+    public sealed class QueueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether the Auto Delete attribute is configured. Valid values:
@@ -262,9 +261,10 @@ namespace Pulumi.AliCloud.Amqp
         public QueueArgs()
         {
         }
+        public static new QueueArgs Empty => new QueueArgs();
     }
 
-    public sealed class QueueState : Pulumi.ResourceArgs
+    public sealed class QueueState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether the Auto Delete attribute is configured. Valid values:
@@ -348,5 +348,6 @@ namespace Pulumi.AliCloud.Amqp
         public QueueState()
         {
         }
+        public static new QueueState Empty => new QueueState();
     }
 }

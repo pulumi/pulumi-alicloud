@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,22 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const myNamespaces = pulumi.output(alicloud.cr.getNamespaces({
+ * const myNamespaces = alicloud.cr.getNamespaces({
  *     nameRegex: "my-namespace",
  *     outputFile: "my-namespace-json",
- * }));
- *
- * export const output = myNamespaces.namespaces;
+ * });
+ * export const output = myNamespaces.then(myNamespaces => myNamespaces.namespaces);
  * ```
  */
 export function getNamespaces(args?: GetNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespacesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cr/getNamespaces:getNamespaces", {
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -72,9 +68,26 @@ export interface GetNamespacesResult {
     readonly namespaces: outputs.cr.GetNamespacesNamespace[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list Container Registry namespaces on Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.35.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const myNamespaces = alicloud.cr.getNamespaces({
+ *     nameRegex: "my-namespace",
+ *     outputFile: "my-namespace-json",
+ * });
+ * export const output = myNamespaces.then(myNamespaces => myNamespaces.namespaces);
+ * ```
+ */
 export function getNamespacesOutput(args?: GetNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespacesResult> {
-    return pulumi.output(args).apply(a => getNamespaces(a, opts))
+    return pulumi.output(args).apply((a: any) => getNamespaces(a, opts))
 }
 
 /**

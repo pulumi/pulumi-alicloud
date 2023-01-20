@@ -16,7 +16,6 @@ public final class GetCiphertextPlainArgs extends com.pulumi.resources.InvokeArg
     public static final GetCiphertextPlainArgs Empty = new GetCiphertextPlainArgs();
 
     /**
-     * - 
      * (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      * 
      */
@@ -24,8 +23,7 @@ public final class GetCiphertextPlainArgs extends com.pulumi.resources.InvokeArg
     private @Nullable Map<String,String> encryptionContext;
 
     /**
-     * @return -
-     * (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     * @return (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      * 
      */
     public Optional<Map<String,String>> encryptionContext() {
@@ -89,8 +87,7 @@ public final class GetCiphertextPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param encryptionContext -
-         * (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+         * @param encryptionContext (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
          * 
          * @return builder
          * 

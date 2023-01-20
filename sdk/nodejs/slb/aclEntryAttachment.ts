@@ -17,12 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraformslbaclconfig";
- * const ipVersion = config.get("ipVersion") || "ipv4";
- * const defaultAcl = new alicloud.slb.Acl("defaultAcl", {ipVersion: ipVersion});
- * const defaultAclEntryAttachment = new alicloud.slb.AclEntryAttachment("defaultAclEntryAttachment", {
- *     aclId: defaultAcl.id,
+ * const attachmentAcl = new alicloud.slb.Acl("attachmentAcl", {ipVersion: "ipv4"});
+ * const attachmentAclEntryAttachment = new alicloud.slb.AclEntryAttachment("attachmentAclEntryAttachment", {
+ *     aclId: attachmentAcl.id,
  *     entry: "168.10.10.0/24",
  *     comment: "second",
  * });

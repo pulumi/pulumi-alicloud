@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Cen
         /// &gt; **NOTE:** Available in 1.128.0+
         /// </summary>
         public static Task<GetTransitRouterPeerAttachmentsResult> InvokeAsync(GetTransitRouterPeerAttachmentsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterPeerAttachmentsResult>("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", args ?? new GetTransitRouterPeerAttachmentsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterPeerAttachmentsResult>("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", args ?? new GetTransitRouterPeerAttachmentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN Transit Router peer attachments available to the user.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Cen
         /// &gt; **NOTE:** Available in 1.128.0+
         /// </summary>
         public static Output<GetTransitRouterPeerAttachmentsResult> Invoke(GetTransitRouterPeerAttachmentsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTransitRouterPeerAttachmentsResult>("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", args ?? new GetTransitRouterPeerAttachmentsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterPeerAttachmentsResult>("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", args ?? new GetTransitRouterPeerAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTransitRouterPeerAttachmentsArgs : Pulumi.InvokeArgs
+    public sealed class GetTransitRouterPeerAttachmentsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the CEN instance.
@@ -79,9 +79,10 @@ namespace Pulumi.AliCloud.Cen
         public GetTransitRouterPeerAttachmentsArgs()
         {
         }
+        public static new GetTransitRouterPeerAttachmentsArgs Empty => new GetTransitRouterPeerAttachmentsArgs();
     }
 
-    public sealed class GetTransitRouterPeerAttachmentsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTransitRouterPeerAttachmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the CEN instance.
@@ -131,6 +132,7 @@ namespace Pulumi.AliCloud.Cen
         public GetTransitRouterPeerAttachmentsInvokeArgs()
         {
         }
+        public static new GetTransitRouterPeerAttachmentsInvokeArgs Empty => new GetTransitRouterPeerAttachmentsInvokeArgs();
     }
 
 

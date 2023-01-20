@@ -5,19 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./dedicatedHost";
-export * from "./dedicatedHostAccount";
-export * from "./dedicatedHostGroup";
-export * from "./getDedicatedHostAccounts";
-export * from "./getDedicatedHostGroups";
-export * from "./getDedicatedHosts";
-export * from "./getHostEcsLevelInfos";
-export * from "./getZones";
+export { DedicatedHostArgs, DedicatedHostState } from "./dedicatedHost";
+export type DedicatedHost = import("./dedicatedHost").DedicatedHost;
+export const DedicatedHost: typeof import("./dedicatedHost").DedicatedHost = null as any;
+utilities.lazyLoad(exports, ["DedicatedHost"], () => require("./dedicatedHost"));
 
-// Import resources to register:
-import { DedicatedHost } from "./dedicatedHost";
-import { DedicatedHostAccount } from "./dedicatedHostAccount";
-import { DedicatedHostGroup } from "./dedicatedHostGroup";
+export { DedicatedHostAccountArgs, DedicatedHostAccountState } from "./dedicatedHostAccount";
+export type DedicatedHostAccount = import("./dedicatedHostAccount").DedicatedHostAccount;
+export const DedicatedHostAccount: typeof import("./dedicatedHostAccount").DedicatedHostAccount = null as any;
+utilities.lazyLoad(exports, ["DedicatedHostAccount"], () => require("./dedicatedHostAccount"));
+
+export { DedicatedHostGroupArgs, DedicatedHostGroupState } from "./dedicatedHostGroup";
+export type DedicatedHostGroup = import("./dedicatedHostGroup").DedicatedHostGroup;
+export const DedicatedHostGroup: typeof import("./dedicatedHostGroup").DedicatedHostGroup = null as any;
+utilities.lazyLoad(exports, ["DedicatedHostGroup"], () => require("./dedicatedHostGroup"));
+
+export { GetDedicatedHostAccountsArgs, GetDedicatedHostAccountsResult, GetDedicatedHostAccountsOutputArgs } from "./getDedicatedHostAccounts";
+export const getDedicatedHostAccounts: typeof import("./getDedicatedHostAccounts").getDedicatedHostAccounts = null as any;
+export const getDedicatedHostAccountsOutput: typeof import("./getDedicatedHostAccounts").getDedicatedHostAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedHostAccounts","getDedicatedHostAccountsOutput"], () => require("./getDedicatedHostAccounts"));
+
+export { GetDedicatedHostGroupsArgs, GetDedicatedHostGroupsResult, GetDedicatedHostGroupsOutputArgs } from "./getDedicatedHostGroups";
+export const getDedicatedHostGroups: typeof import("./getDedicatedHostGroups").getDedicatedHostGroups = null as any;
+export const getDedicatedHostGroupsOutput: typeof import("./getDedicatedHostGroups").getDedicatedHostGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedHostGroups","getDedicatedHostGroupsOutput"], () => require("./getDedicatedHostGroups"));
+
+export { GetDedicatedHostsArgs, GetDedicatedHostsResult, GetDedicatedHostsOutputArgs } from "./getDedicatedHosts";
+export const getDedicatedHosts: typeof import("./getDedicatedHosts").getDedicatedHosts = null as any;
+export const getDedicatedHostsOutput: typeof import("./getDedicatedHosts").getDedicatedHostsOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedHosts","getDedicatedHostsOutput"], () => require("./getDedicatedHosts"));
+
+export { GetHostEcsLevelInfosArgs, GetHostEcsLevelInfosResult, GetHostEcsLevelInfosOutputArgs } from "./getHostEcsLevelInfos";
+export const getHostEcsLevelInfos: typeof import("./getHostEcsLevelInfos").getHostEcsLevelInfos = null as any;
+export const getHostEcsLevelInfosOutput: typeof import("./getHostEcsLevelInfos").getHostEcsLevelInfosOutput = null as any;
+utilities.lazyLoad(exports, ["getHostEcsLevelInfos","getHostEcsLevelInfosOutput"], () => require("./getHostEcsLevelInfos"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
 
 const _module = {
     version: utilities.getVersion(),

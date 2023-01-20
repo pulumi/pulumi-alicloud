@@ -1058,6 +1058,405 @@ func (o GetIpaDomainsDomainSourceArrayOutput) Index(i pulumi.IntInput) GetIpaDom
 	}).(GetIpaDomainsDomainSourceOutput)
 }
 
+type GetWafDomainsDomain struct {
+	// The client ip tag.
+	ClientIpTag string `pulumi:"clientIpTag"`
+	// Protection policy type.
+	DefenseScenes []GetWafDomainsDomainDefenseScene `pulumi:"defenseScenes"`
+	// The accelerated domain name.
+	DomainName string `pulumi:"domainName"`
+	// The ID of the Waf Domain.
+	Id string `pulumi:"id"`
+}
+
+// GetWafDomainsDomainInput is an input type that accepts GetWafDomainsDomainArgs and GetWafDomainsDomainOutput values.
+// You can construct a concrete instance of `GetWafDomainsDomainInput` via:
+//
+//	GetWafDomainsDomainArgs{...}
+type GetWafDomainsDomainInput interface {
+	pulumi.Input
+
+	ToGetWafDomainsDomainOutput() GetWafDomainsDomainOutput
+	ToGetWafDomainsDomainOutputWithContext(context.Context) GetWafDomainsDomainOutput
+}
+
+type GetWafDomainsDomainArgs struct {
+	// The client ip tag.
+	ClientIpTag pulumi.StringInput `pulumi:"clientIpTag"`
+	// Protection policy type.
+	DefenseScenes GetWafDomainsDomainDefenseSceneArrayInput `pulumi:"defenseScenes"`
+	// The accelerated domain name.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The ID of the Waf Domain.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetWafDomainsDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafDomainsDomain)(nil)).Elem()
+}
+
+func (i GetWafDomainsDomainArgs) ToGetWafDomainsDomainOutput() GetWafDomainsDomainOutput {
+	return i.ToGetWafDomainsDomainOutputWithContext(context.Background())
+}
+
+func (i GetWafDomainsDomainArgs) ToGetWafDomainsDomainOutputWithContext(ctx context.Context) GetWafDomainsDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafDomainsDomainOutput)
+}
+
+// GetWafDomainsDomainArrayInput is an input type that accepts GetWafDomainsDomainArray and GetWafDomainsDomainArrayOutput values.
+// You can construct a concrete instance of `GetWafDomainsDomainArrayInput` via:
+//
+//	GetWafDomainsDomainArray{ GetWafDomainsDomainArgs{...} }
+type GetWafDomainsDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetWafDomainsDomainArrayOutput() GetWafDomainsDomainArrayOutput
+	ToGetWafDomainsDomainArrayOutputWithContext(context.Context) GetWafDomainsDomainArrayOutput
+}
+
+type GetWafDomainsDomainArray []GetWafDomainsDomainInput
+
+func (GetWafDomainsDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafDomainsDomain)(nil)).Elem()
+}
+
+func (i GetWafDomainsDomainArray) ToGetWafDomainsDomainArrayOutput() GetWafDomainsDomainArrayOutput {
+	return i.ToGetWafDomainsDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetWafDomainsDomainArray) ToGetWafDomainsDomainArrayOutputWithContext(ctx context.Context) GetWafDomainsDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafDomainsDomainArrayOutput)
+}
+
+type GetWafDomainsDomainOutput struct{ *pulumi.OutputState }
+
+func (GetWafDomainsDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafDomainsDomain)(nil)).Elem()
+}
+
+func (o GetWafDomainsDomainOutput) ToGetWafDomainsDomainOutput() GetWafDomainsDomainOutput {
+	return o
+}
+
+func (o GetWafDomainsDomainOutput) ToGetWafDomainsDomainOutputWithContext(ctx context.Context) GetWafDomainsDomainOutput {
+	return o
+}
+
+// The client ip tag.
+func (o GetWafDomainsDomainOutput) ClientIpTag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafDomainsDomain) string { return v.ClientIpTag }).(pulumi.StringOutput)
+}
+
+// Protection policy type.
+func (o GetWafDomainsDomainOutput) DefenseScenes() GetWafDomainsDomainDefenseSceneArrayOutput {
+	return o.ApplyT(func(v GetWafDomainsDomain) []GetWafDomainsDomainDefenseScene { return v.DefenseScenes }).(GetWafDomainsDomainDefenseSceneArrayOutput)
+}
+
+// The accelerated domain name.
+func (o GetWafDomainsDomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The ID of the Waf Domain.
+func (o GetWafDomainsDomainOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafDomainsDomain) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetWafDomainsDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWafDomainsDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafDomainsDomain)(nil)).Elem()
+}
+
+func (o GetWafDomainsDomainArrayOutput) ToGetWafDomainsDomainArrayOutput() GetWafDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetWafDomainsDomainArrayOutput) ToGetWafDomainsDomainArrayOutputWithContext(ctx context.Context) GetWafDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetWafDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetWafDomainsDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWafDomainsDomain {
+		return vs[0].([]GetWafDomainsDomain)[vs[1].(int)]
+	}).(GetWafDomainsDomainOutput)
+}
+
+type GetWafDomainsDomainDefenseScene struct {
+	// The type of protection policy.
+	DefenseScene string `pulumi:"defenseScene"`
+	// The protection policy ID.
+	PolicyId string `pulumi:"policyId"`
+}
+
+// GetWafDomainsDomainDefenseSceneInput is an input type that accepts GetWafDomainsDomainDefenseSceneArgs and GetWafDomainsDomainDefenseSceneOutput values.
+// You can construct a concrete instance of `GetWafDomainsDomainDefenseSceneInput` via:
+//
+//	GetWafDomainsDomainDefenseSceneArgs{...}
+type GetWafDomainsDomainDefenseSceneInput interface {
+	pulumi.Input
+
+	ToGetWafDomainsDomainDefenseSceneOutput() GetWafDomainsDomainDefenseSceneOutput
+	ToGetWafDomainsDomainDefenseSceneOutputWithContext(context.Context) GetWafDomainsDomainDefenseSceneOutput
+}
+
+type GetWafDomainsDomainDefenseSceneArgs struct {
+	// The type of protection policy.
+	DefenseScene pulumi.StringInput `pulumi:"defenseScene"`
+	// The protection policy ID.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+}
+
+func (GetWafDomainsDomainDefenseSceneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafDomainsDomainDefenseScene)(nil)).Elem()
+}
+
+func (i GetWafDomainsDomainDefenseSceneArgs) ToGetWafDomainsDomainDefenseSceneOutput() GetWafDomainsDomainDefenseSceneOutput {
+	return i.ToGetWafDomainsDomainDefenseSceneOutputWithContext(context.Background())
+}
+
+func (i GetWafDomainsDomainDefenseSceneArgs) ToGetWafDomainsDomainDefenseSceneOutputWithContext(ctx context.Context) GetWafDomainsDomainDefenseSceneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafDomainsDomainDefenseSceneOutput)
+}
+
+// GetWafDomainsDomainDefenseSceneArrayInput is an input type that accepts GetWafDomainsDomainDefenseSceneArray and GetWafDomainsDomainDefenseSceneArrayOutput values.
+// You can construct a concrete instance of `GetWafDomainsDomainDefenseSceneArrayInput` via:
+//
+//	GetWafDomainsDomainDefenseSceneArray{ GetWafDomainsDomainDefenseSceneArgs{...} }
+type GetWafDomainsDomainDefenseSceneArrayInput interface {
+	pulumi.Input
+
+	ToGetWafDomainsDomainDefenseSceneArrayOutput() GetWafDomainsDomainDefenseSceneArrayOutput
+	ToGetWafDomainsDomainDefenseSceneArrayOutputWithContext(context.Context) GetWafDomainsDomainDefenseSceneArrayOutput
+}
+
+type GetWafDomainsDomainDefenseSceneArray []GetWafDomainsDomainDefenseSceneInput
+
+func (GetWafDomainsDomainDefenseSceneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafDomainsDomainDefenseScene)(nil)).Elem()
+}
+
+func (i GetWafDomainsDomainDefenseSceneArray) ToGetWafDomainsDomainDefenseSceneArrayOutput() GetWafDomainsDomainDefenseSceneArrayOutput {
+	return i.ToGetWafDomainsDomainDefenseSceneArrayOutputWithContext(context.Background())
+}
+
+func (i GetWafDomainsDomainDefenseSceneArray) ToGetWafDomainsDomainDefenseSceneArrayOutputWithContext(ctx context.Context) GetWafDomainsDomainDefenseSceneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafDomainsDomainDefenseSceneArrayOutput)
+}
+
+type GetWafDomainsDomainDefenseSceneOutput struct{ *pulumi.OutputState }
+
+func (GetWafDomainsDomainDefenseSceneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafDomainsDomainDefenseScene)(nil)).Elem()
+}
+
+func (o GetWafDomainsDomainDefenseSceneOutput) ToGetWafDomainsDomainDefenseSceneOutput() GetWafDomainsDomainDefenseSceneOutput {
+	return o
+}
+
+func (o GetWafDomainsDomainDefenseSceneOutput) ToGetWafDomainsDomainDefenseSceneOutputWithContext(ctx context.Context) GetWafDomainsDomainDefenseSceneOutput {
+	return o
+}
+
+// The type of protection policy.
+func (o GetWafDomainsDomainDefenseSceneOutput) DefenseScene() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafDomainsDomainDefenseScene) string { return v.DefenseScene }).(pulumi.StringOutput)
+}
+
+// The protection policy ID.
+func (o GetWafDomainsDomainDefenseSceneOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafDomainsDomainDefenseScene) string { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+type GetWafDomainsDomainDefenseSceneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWafDomainsDomainDefenseSceneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafDomainsDomainDefenseScene)(nil)).Elem()
+}
+
+func (o GetWafDomainsDomainDefenseSceneArrayOutput) ToGetWafDomainsDomainDefenseSceneArrayOutput() GetWafDomainsDomainDefenseSceneArrayOutput {
+	return o
+}
+
+func (o GetWafDomainsDomainDefenseSceneArrayOutput) ToGetWafDomainsDomainDefenseSceneArrayOutputWithContext(ctx context.Context) GetWafDomainsDomainDefenseSceneArrayOutput {
+	return o
+}
+
+func (o GetWafDomainsDomainDefenseSceneArrayOutput) Index(i pulumi.IntInput) GetWafDomainsDomainDefenseSceneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWafDomainsDomainDefenseScene {
+		return vs[0].([]GetWafDomainsDomainDefenseScene)[vs[1].(int)]
+	}).(GetWafDomainsDomainDefenseSceneOutput)
+}
+
+type GetWafPoliciesPolicy struct {
+	// The first ID of the resource.
+	DcdnWafPolicyId string `pulumi:"dcdnWafPolicyId"`
+	// The type of protection policy.
+	DefenseScene string `pulumi:"defenseScene"`
+	// The number of domain names that use this protection policy.
+	DomainCount int `pulumi:"domainCount"`
+	// The time when the protection policy was modified.
+	GmtModified string `pulumi:"gmtModified"`
+	// The ID of the Waf Policy.
+	Id string `pulumi:"id"`
+	// The name of the protection policy.
+	PolicyName string `pulumi:"policyName"`
+	// The type of the protection policy.
+	PolicyType string `pulumi:"policyType"`
+	// The number of protection rules in this protection policy.
+	RuleCount string `pulumi:"ruleCount"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+}
+
+// GetWafPoliciesPolicyInput is an input type that accepts GetWafPoliciesPolicyArgs and GetWafPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetWafPoliciesPolicyInput` via:
+//
+//	GetWafPoliciesPolicyArgs{...}
+type GetWafPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetWafPoliciesPolicyOutput() GetWafPoliciesPolicyOutput
+	ToGetWafPoliciesPolicyOutputWithContext(context.Context) GetWafPoliciesPolicyOutput
+}
+
+type GetWafPoliciesPolicyArgs struct {
+	// The first ID of the resource.
+	DcdnWafPolicyId pulumi.StringInput `pulumi:"dcdnWafPolicyId"`
+	// The type of protection policy.
+	DefenseScene pulumi.StringInput `pulumi:"defenseScene"`
+	// The number of domain names that use this protection policy.
+	DomainCount pulumi.IntInput `pulumi:"domainCount"`
+	// The time when the protection policy was modified.
+	GmtModified pulumi.StringInput `pulumi:"gmtModified"`
+	// The ID of the Waf Policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the protection policy.
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// The type of the protection policy.
+	PolicyType pulumi.StringInput `pulumi:"policyType"`
+	// The number of protection rules in this protection policy.
+	RuleCount pulumi.StringInput `pulumi:"ruleCount"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetWafPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetWafPoliciesPolicyArgs) ToGetWafPoliciesPolicyOutput() GetWafPoliciesPolicyOutput {
+	return i.ToGetWafPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetWafPoliciesPolicyArgs) ToGetWafPoliciesPolicyOutputWithContext(ctx context.Context) GetWafPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafPoliciesPolicyOutput)
+}
+
+// GetWafPoliciesPolicyArrayInput is an input type that accepts GetWafPoliciesPolicyArray and GetWafPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetWafPoliciesPolicyArrayInput` via:
+//
+//	GetWafPoliciesPolicyArray{ GetWafPoliciesPolicyArgs{...} }
+type GetWafPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetWafPoliciesPolicyArrayOutput() GetWafPoliciesPolicyArrayOutput
+	ToGetWafPoliciesPolicyArrayOutputWithContext(context.Context) GetWafPoliciesPolicyArrayOutput
+}
+
+type GetWafPoliciesPolicyArray []GetWafPoliciesPolicyInput
+
+func (GetWafPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetWafPoliciesPolicyArray) ToGetWafPoliciesPolicyArrayOutput() GetWafPoliciesPolicyArrayOutput {
+	return i.ToGetWafPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetWafPoliciesPolicyArray) ToGetWafPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetWafPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafPoliciesPolicyArrayOutput)
+}
+
+type GetWafPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetWafPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetWafPoliciesPolicyOutput) ToGetWafPoliciesPolicyOutput() GetWafPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetWafPoliciesPolicyOutput) ToGetWafPoliciesPolicyOutputWithContext(ctx context.Context) GetWafPoliciesPolicyOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetWafPoliciesPolicyOutput) DcdnWafPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafPoliciesPolicy) string { return v.DcdnWafPolicyId }).(pulumi.StringOutput)
+}
+
+// The type of protection policy.
+func (o GetWafPoliciesPolicyOutput) DefenseScene() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafPoliciesPolicy) string { return v.DefenseScene }).(pulumi.StringOutput)
+}
+
+// The number of domain names that use this protection policy.
+func (o GetWafPoliciesPolicyOutput) DomainCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWafPoliciesPolicy) int { return v.DomainCount }).(pulumi.IntOutput)
+}
+
+// The time when the protection policy was modified.
+func (o GetWafPoliciesPolicyOutput) GmtModified() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafPoliciesPolicy) string { return v.GmtModified }).(pulumi.StringOutput)
+}
+
+// The ID of the Waf Policy.
+func (o GetWafPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the protection policy.
+func (o GetWafPoliciesPolicyOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafPoliciesPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+// The type of the protection policy.
+func (o GetWafPoliciesPolicyOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafPoliciesPolicy) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+// The number of protection rules in this protection policy.
+func (o GetWafPoliciesPolicyOutput) RuleCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafPoliciesPolicy) string { return v.RuleCount }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetWafPoliciesPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetWafPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWafPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetWafPoliciesPolicyArrayOutput) ToGetWafPoliciesPolicyArrayOutput() GetWafPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetWafPoliciesPolicyArrayOutput) ToGetWafPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetWafPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetWafPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetWafPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWafPoliciesPolicy {
+		return vs[0].([]GetWafPoliciesPolicy)[vs[1].(int)]
+	}).(GetWafPoliciesPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigFunctionArgInput)(nil)).Elem(), DomainConfigFunctionArgArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigFunctionArgArrayInput)(nil)).Elem(), DomainConfigFunctionArgArray{})
@@ -1073,6 +1472,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpaDomainsDomainArrayInput)(nil)).Elem(), GetIpaDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpaDomainsDomainSourceInput)(nil)).Elem(), GetIpaDomainsDomainSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpaDomainsDomainSourceArrayInput)(nil)).Elem(), GetIpaDomainsDomainSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafDomainsDomainInput)(nil)).Elem(), GetWafDomainsDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafDomainsDomainArrayInput)(nil)).Elem(), GetWafDomainsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafDomainsDomainDefenseSceneInput)(nil)).Elem(), GetWafDomainsDomainDefenseSceneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafDomainsDomainDefenseSceneArrayInput)(nil)).Elem(), GetWafDomainsDomainDefenseSceneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafPoliciesPolicyInput)(nil)).Elem(), GetWafPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafPoliciesPolicyArrayInput)(nil)).Elem(), GetWafPoliciesPolicyArray{})
 	pulumi.RegisterOutputType(DomainConfigFunctionArgOutput{})
 	pulumi.RegisterOutputType(DomainConfigFunctionArgArrayOutput{})
 	pulumi.RegisterOutputType(DomainSourceOutput{})
@@ -1087,4 +1492,10 @@ func init() {
 	pulumi.RegisterOutputType(GetIpaDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetIpaDomainsDomainSourceOutput{})
 	pulumi.RegisterOutputType(GetIpaDomainsDomainSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetWafDomainsDomainOutput{})
+	pulumi.RegisterOutputType(GetWafDomainsDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetWafDomainsDomainDefenseSceneOutput{})
+	pulumi.RegisterOutputType(GetWafDomainsDomainDefenseSceneArrayOutput{})
+	pulumi.RegisterOutputType(GetWafPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetWafPoliciesPolicyArrayOutput{})
 }

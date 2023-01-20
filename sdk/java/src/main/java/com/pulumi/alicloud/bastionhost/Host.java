@@ -197,9 +197,6 @@ public class Host extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specify the new create a host of source. Valid values:
-     * * `Local`: localhost
-     * * `Ecs`:ECS instance
-     * * `Rds`:RDS exclusive cluster host.
      * 
      */
     @Export(name="source", type=String.class, parameters={})
@@ -207,9 +204,6 @@ public class Host extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specify the new create a host of source. Valid values:
-     * * `Local`: localhost
-     * * `Ecs`:ECS instance
-     * * `Rds`:RDS exclusive cluster host.
      * 
      */
     public Output<String> source() {

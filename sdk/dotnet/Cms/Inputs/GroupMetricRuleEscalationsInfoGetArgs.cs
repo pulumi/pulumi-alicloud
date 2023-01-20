@@ -10,28 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class GroupMetricRuleEscalationsInfoGetArgs : Pulumi.ResourceArgs
+    public sealed class GroupMetricRuleEscalationsInfoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The comparison operator of the threshold for warn-level alerts.
+        /// The comparison operator of the threshold for critical-level alerts.
         /// </summary>
         [Input("comparisonOperator")]
         public Input<string>? ComparisonOperator { get; set; }
 
         /// <summary>
-        /// The statistical aggregation method for warn-level alerts.
+        /// The statistical aggregation method for critical-level alerts.
         /// </summary>
         [Input("statistics")]
         public Input<string>? Statistics { get; set; }
 
         /// <summary>
-        /// The threshold for warn-level alerts.
+        /// The threshold for critical-level alerts.
         /// </summary>
         [Input("threshold")]
         public Input<string>? Threshold { get; set; }
 
         /// <summary>
-        /// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        /// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
         /// </summary>
         [Input("times")]
         public Input<int>? Times { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public GroupMetricRuleEscalationsInfoGetArgs()
         {
         }
+        public static new GroupMetricRuleEscalationsInfoGetArgs Empty => new GroupMetricRuleEscalationsInfoGetArgs();
     }
 }

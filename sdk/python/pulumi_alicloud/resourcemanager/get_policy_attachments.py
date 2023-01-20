@@ -91,21 +91,33 @@ class GetPolicyAttachmentsResult:
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[str]:
+        """
+        The name of the policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @property
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[str]:
+        """
+        The type of the policy.
+        """
         return pulumi.get(self, "policy_type")
 
     @property
     @pulumi.getter(name="principalName")
     def principal_name(self) -> Optional[str]:
+        """
+        The name of the object to which the policy is attached.
+        """
         return pulumi.get(self, "principal_name")
 
     @property
     @pulumi.getter(name="principalType")
     def principal_type(self) -> Optional[str]:
+        """
+        The type of the object to which the policy is attached.
+        """
         return pulumi.get(self, "principal_type")
 
     @property

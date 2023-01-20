@@ -369,8 +369,6 @@ type GetAppGroupsGroup struct {
 	// Coarse deployment ID.
 	FirstRankAlgoDeploymentId int `pulumi:"firstRankAlgoDeploymentId"`
 	// Whether the quota status is under approval. Valid status:
-	// * `0`: normal
-	// * `1`: Approving.
 	HasPendingQuotaReviewTask int    `pulumi:"hasPendingQuotaReviewTask"`
 	Id                        string `pulumi:"id"`
 	// The Instance ID.
@@ -386,8 +384,6 @@ type GetAppGroupsGroup struct {
 	// Unfinished order number.
 	ProcessingOrderId string `pulumi:"processingOrderId"`
 	// Whether the production is completed. Valid values:
-	// * `0`: producing.
-	// * `1`: completed.
 	Produced int `pulumi:"produced"`
 	// The Project ID.
 	ProjectId string `pulumi:"projectId"`
@@ -438,8 +434,6 @@ type GetAppGroupsGroupArgs struct {
 	// Coarse deployment ID.
 	FirstRankAlgoDeploymentId pulumi.IntInput `pulumi:"firstRankAlgoDeploymentId"`
 	// Whether the quota status is under approval. Valid status:
-	// * `0`: normal
-	// * `1`: Approving.
 	HasPendingQuotaReviewTask pulumi.IntInput    `pulumi:"hasPendingQuotaReviewTask"`
 	Id                        pulumi.StringInput `pulumi:"id"`
 	// The Instance ID.
@@ -455,8 +449,6 @@ type GetAppGroupsGroupArgs struct {
 	// Unfinished order number.
 	ProcessingOrderId pulumi.StringInput `pulumi:"processingOrderId"`
 	// Whether the production is completed. Valid values:
-	// * `0`: producing.
-	// * `1`: completed.
 	Produced pulumi.IntInput `pulumi:"produced"`
 	// The Project ID.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
@@ -576,8 +568,6 @@ func (o GetAppGroupsGroupOutput) FirstRankAlgoDeploymentId() pulumi.IntOutput {
 }
 
 // Whether the quota status is under approval. Valid status:
-// * `0`: normal
-// * `1`: Approving.
 func (o GetAppGroupsGroupOutput) HasPendingQuotaReviewTask() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) int { return v.HasPendingQuotaReviewTask }).(pulumi.IntOutput)
 }
@@ -617,8 +607,6 @@ func (o GetAppGroupsGroupOutput) ProcessingOrderId() pulumi.StringOutput {
 }
 
 // Whether the production is completed. Valid values:
-// * `0`: producing.
-// * `1`: completed.
 func (o GetAppGroupsGroupOutput) Produced() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) int { return v.Produced }).(pulumi.IntOutput)
 }

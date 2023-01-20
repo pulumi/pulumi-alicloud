@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -29,11 +30,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getExecutions(args: GetExecutionsArgs, opts?: pulumi.InvokeOptions): Promise<GetExecutionsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:fnf/getExecutions:getExecutions", {
         "enableDetails": args.enableDetails,
         "flowName": args.flowName,
@@ -88,9 +86,31 @@ export interface GetExecutionsResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the FnF Executions of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.149.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.fnf.getExecutions({
+ *     flowName: "example_value",
+ *     ids: [
+ *         "my-Execution-1",
+ *         "my-Execution-2",
+ *     ],
+ * });
+ * export const fnfExecutionId1 = data.alicloud_fn_f_executions.ids.executions[0].id;
+ * ```
+ */
 export function getExecutionsOutput(args: GetExecutionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionsResult> {
-    return pulumi.output(args).apply(a => getExecutions(a, opts))
+    return pulumi.output(args).apply((a: any) => getExecutions(a, opts))
 }
 
 /**

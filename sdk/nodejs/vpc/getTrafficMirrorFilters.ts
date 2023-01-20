@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,28 +22,25 @@ import * as utilities from "../utilities";
  * const ids = alicloud.vpc.getTrafficMirrorFilters({
  *     ids: ["example_id"],
  * });
- * export const vpcTrafficMirrorFilterId1 = ids.then(ids => ids.filters?[0]?.id);
+ * export const vpcTrafficMirrorFilterId1 = ids.then(ids => ids.filters?.[0]?.id);
  * const nameRegex = alicloud.vpc.getTrafficMirrorFilters({
  *     nameRegex: "^my-TrafficMirrorFilter",
  * });
- * export const vpcTrafficMirrorFilterId2 = nameRegex.then(nameRegex => nameRegex.filters?[0]?.id);
+ * export const vpcTrafficMirrorFilterId2 = nameRegex.then(nameRegex => nameRegex.filters?.[0]?.id);
  * const filterName = alicloud.vpc.getTrafficMirrorFilters({
  *     trafficMirrorFilterName: "example_traffic_mirror_filter_name",
  * });
- * export const vpcTrafficMirrorFilterId3 = filterName.then(filterName => filterName.filters?[0]?.id);
+ * export const vpcTrafficMirrorFilterId3 = filterName.then(filterName => filterName.filters?.[0]?.id);
  * const status = alicloud.vpc.getTrafficMirrorFilters({
  *     status: "^my-TrafficMirrorFilter",
  * });
- * export const vpcTrafficMirrorFilterId4 = status.then(status => status.filters?[0]?.id);
+ * export const vpcTrafficMirrorFilterId4 = status.then(status => status.filters?.[0]?.id);
  * ```
  */
 export function getTrafficMirrorFilters(args?: GetTrafficMirrorFiltersArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorFiltersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -91,9 +89,39 @@ export interface GetTrafficMirrorFiltersResult {
     readonly status?: string;
     readonly trafficMirrorFilterName?: string;
 }
-
+/**
+ * This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.140.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getTrafficMirrorFilters({
+ *     ids: ["example_id"],
+ * });
+ * export const vpcTrafficMirrorFilterId1 = ids.then(ids => ids.filters?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getTrafficMirrorFilters({
+ *     nameRegex: "^my-TrafficMirrorFilter",
+ * });
+ * export const vpcTrafficMirrorFilterId2 = nameRegex.then(nameRegex => nameRegex.filters?.[0]?.id);
+ * const filterName = alicloud.vpc.getTrafficMirrorFilters({
+ *     trafficMirrorFilterName: "example_traffic_mirror_filter_name",
+ * });
+ * export const vpcTrafficMirrorFilterId3 = filterName.then(filterName => filterName.filters?.[0]?.id);
+ * const status = alicloud.vpc.getTrafficMirrorFilters({
+ *     status: "^my-TrafficMirrorFilter",
+ * });
+ * export const vpcTrafficMirrorFilterId4 = status.then(status => status.filters?.[0]?.id);
+ * ```
+ */
 export function getTrafficMirrorFiltersOutput(args?: GetTrafficMirrorFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorFiltersResult> {
-    return pulumi.output(args).apply(a => getTrafficMirrorFilters(a, opts))
+    return pulumi.output(args).apply((a: any) => getTrafficMirrorFilters(a, opts))
 }
 
 /**

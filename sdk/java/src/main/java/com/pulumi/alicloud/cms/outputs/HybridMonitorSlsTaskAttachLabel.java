@@ -17,7 +17,7 @@ public final class HybridMonitorSlsTaskAttachLabel {
      */
     private @Nullable String name;
     /**
-     * @return The tag value of the metric.
+     * @return The value of the key that is used to filter logs imported from Log Service.
      * 
      */
     private @Nullable String value;
@@ -31,7 +31,7 @@ public final class HybridMonitorSlsTaskAttachLabel {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The tag value of the metric.
+     * @return The value of the key that is used to filter logs imported from Log Service.
      * 
      */
     public Optional<String> value() {

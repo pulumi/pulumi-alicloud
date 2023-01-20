@@ -5,44 +5,136 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./ecsBackupClient";
-export * from "./ecsBackupPlan";
-export * from "./getBackupJobs";
-export * from "./getEcsBackupClients";
-export * from "./getEcsBackupPlans";
-export * from "./getHanaBackupPlans";
-export * from "./getHanaInstances";
-export * from "./getNasBackupPlans";
-export * from "./getOssBackupPlans";
-export * from "./getOtsBackupPlans";
-export * from "./getOtsSnapshots";
-export * from "./getReplicationVaultRegions";
-export * from "./getRestoreJobs";
-export * from "./getServerBackupPlans";
-export * from "./getSnapshots";
-export * from "./getVaults";
-export * from "./hanaBackupPlan";
-export * from "./hanaInstance";
-export * from "./nasBackupPlan";
-export * from "./ossBackupPlan";
-export * from "./otsBackupPlan";
-export * from "./replicationVault";
-export * from "./restoreJob";
-export * from "./serverBackupPlan";
-export * from "./vault";
+export { EcsBackupClientArgs, EcsBackupClientState } from "./ecsBackupClient";
+export type EcsBackupClient = import("./ecsBackupClient").EcsBackupClient;
+export const EcsBackupClient: typeof import("./ecsBackupClient").EcsBackupClient = null as any;
+utilities.lazyLoad(exports, ["EcsBackupClient"], () => require("./ecsBackupClient"));
 
-// Import resources to register:
-import { EcsBackupClient } from "./ecsBackupClient";
-import { EcsBackupPlan } from "./ecsBackupPlan";
-import { HanaBackupPlan } from "./hanaBackupPlan";
-import { HanaInstance } from "./hanaInstance";
-import { NasBackupPlan } from "./nasBackupPlan";
-import { OssBackupPlan } from "./ossBackupPlan";
-import { OtsBackupPlan } from "./otsBackupPlan";
-import { ReplicationVault } from "./replicationVault";
-import { RestoreJob } from "./restoreJob";
-import { ServerBackupPlan } from "./serverBackupPlan";
-import { Vault } from "./vault";
+export { EcsBackupPlanArgs, EcsBackupPlanState } from "./ecsBackupPlan";
+export type EcsBackupPlan = import("./ecsBackupPlan").EcsBackupPlan;
+export const EcsBackupPlan: typeof import("./ecsBackupPlan").EcsBackupPlan = null as any;
+utilities.lazyLoad(exports, ["EcsBackupPlan"], () => require("./ecsBackupPlan"));
+
+export { GetBackupJobsArgs, GetBackupJobsResult, GetBackupJobsOutputArgs } from "./getBackupJobs";
+export const getBackupJobs: typeof import("./getBackupJobs").getBackupJobs = null as any;
+export const getBackupJobsOutput: typeof import("./getBackupJobs").getBackupJobsOutput = null as any;
+utilities.lazyLoad(exports, ["getBackupJobs","getBackupJobsOutput"], () => require("./getBackupJobs"));
+
+export { GetEcsBackupClientsArgs, GetEcsBackupClientsResult, GetEcsBackupClientsOutputArgs } from "./getEcsBackupClients";
+export const getEcsBackupClients: typeof import("./getEcsBackupClients").getEcsBackupClients = null as any;
+export const getEcsBackupClientsOutput: typeof import("./getEcsBackupClients").getEcsBackupClientsOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsBackupClients","getEcsBackupClientsOutput"], () => require("./getEcsBackupClients"));
+
+export { GetEcsBackupPlansArgs, GetEcsBackupPlansResult, GetEcsBackupPlansOutputArgs } from "./getEcsBackupPlans";
+export const getEcsBackupPlans: typeof import("./getEcsBackupPlans").getEcsBackupPlans = null as any;
+export const getEcsBackupPlansOutput: typeof import("./getEcsBackupPlans").getEcsBackupPlansOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsBackupPlans","getEcsBackupPlansOutput"], () => require("./getEcsBackupPlans"));
+
+export { GetHanaBackupPlansArgs, GetHanaBackupPlansResult, GetHanaBackupPlansOutputArgs } from "./getHanaBackupPlans";
+export const getHanaBackupPlans: typeof import("./getHanaBackupPlans").getHanaBackupPlans = null as any;
+export const getHanaBackupPlansOutput: typeof import("./getHanaBackupPlans").getHanaBackupPlansOutput = null as any;
+utilities.lazyLoad(exports, ["getHanaBackupPlans","getHanaBackupPlansOutput"], () => require("./getHanaBackupPlans"));
+
+export { GetHanaInstancesArgs, GetHanaInstancesResult, GetHanaInstancesOutputArgs } from "./getHanaInstances";
+export const getHanaInstances: typeof import("./getHanaInstances").getHanaInstances = null as any;
+export const getHanaInstancesOutput: typeof import("./getHanaInstances").getHanaInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getHanaInstances","getHanaInstancesOutput"], () => require("./getHanaInstances"));
+
+export { GetNasBackupPlansArgs, GetNasBackupPlansResult, GetNasBackupPlansOutputArgs } from "./getNasBackupPlans";
+export const getNasBackupPlans: typeof import("./getNasBackupPlans").getNasBackupPlans = null as any;
+export const getNasBackupPlansOutput: typeof import("./getNasBackupPlans").getNasBackupPlansOutput = null as any;
+utilities.lazyLoad(exports, ["getNasBackupPlans","getNasBackupPlansOutput"], () => require("./getNasBackupPlans"));
+
+export { GetOssBackupPlansArgs, GetOssBackupPlansResult, GetOssBackupPlansOutputArgs } from "./getOssBackupPlans";
+export const getOssBackupPlans: typeof import("./getOssBackupPlans").getOssBackupPlans = null as any;
+export const getOssBackupPlansOutput: typeof import("./getOssBackupPlans").getOssBackupPlansOutput = null as any;
+utilities.lazyLoad(exports, ["getOssBackupPlans","getOssBackupPlansOutput"], () => require("./getOssBackupPlans"));
+
+export { GetOtsBackupPlansArgs, GetOtsBackupPlansResult, GetOtsBackupPlansOutputArgs } from "./getOtsBackupPlans";
+export const getOtsBackupPlans: typeof import("./getOtsBackupPlans").getOtsBackupPlans = null as any;
+export const getOtsBackupPlansOutput: typeof import("./getOtsBackupPlans").getOtsBackupPlansOutput = null as any;
+utilities.lazyLoad(exports, ["getOtsBackupPlans","getOtsBackupPlansOutput"], () => require("./getOtsBackupPlans"));
+
+export { GetOtsSnapshotsArgs, GetOtsSnapshotsResult, GetOtsSnapshotsOutputArgs } from "./getOtsSnapshots";
+export const getOtsSnapshots: typeof import("./getOtsSnapshots").getOtsSnapshots = null as any;
+export const getOtsSnapshotsOutput: typeof import("./getOtsSnapshots").getOtsSnapshotsOutput = null as any;
+utilities.lazyLoad(exports, ["getOtsSnapshots","getOtsSnapshotsOutput"], () => require("./getOtsSnapshots"));
+
+export { GetReplicationVaultRegionsArgs, GetReplicationVaultRegionsResult, GetReplicationVaultRegionsOutputArgs } from "./getReplicationVaultRegions";
+export const getReplicationVaultRegions: typeof import("./getReplicationVaultRegions").getReplicationVaultRegions = null as any;
+export const getReplicationVaultRegionsOutput: typeof import("./getReplicationVaultRegions").getReplicationVaultRegionsOutput = null as any;
+utilities.lazyLoad(exports, ["getReplicationVaultRegions","getReplicationVaultRegionsOutput"], () => require("./getReplicationVaultRegions"));
+
+export { GetRestoreJobsArgs, GetRestoreJobsResult, GetRestoreJobsOutputArgs } from "./getRestoreJobs";
+export const getRestoreJobs: typeof import("./getRestoreJobs").getRestoreJobs = null as any;
+export const getRestoreJobsOutput: typeof import("./getRestoreJobs").getRestoreJobsOutput = null as any;
+utilities.lazyLoad(exports, ["getRestoreJobs","getRestoreJobsOutput"], () => require("./getRestoreJobs"));
+
+export { GetServerBackupPlansArgs, GetServerBackupPlansResult, GetServerBackupPlansOutputArgs } from "./getServerBackupPlans";
+export const getServerBackupPlans: typeof import("./getServerBackupPlans").getServerBackupPlans = null as any;
+export const getServerBackupPlansOutput: typeof import("./getServerBackupPlans").getServerBackupPlansOutput = null as any;
+utilities.lazyLoad(exports, ["getServerBackupPlans","getServerBackupPlansOutput"], () => require("./getServerBackupPlans"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { GetSnapshotsArgs, GetSnapshotsResult, GetSnapshotsOutputArgs } from "./getSnapshots";
+export const getSnapshots: typeof import("./getSnapshots").getSnapshots = null as any;
+export const getSnapshotsOutput: typeof import("./getSnapshots").getSnapshotsOutput = null as any;
+utilities.lazyLoad(exports, ["getSnapshots","getSnapshotsOutput"], () => require("./getSnapshots"));
+
+export { GetVaultsArgs, GetVaultsResult, GetVaultsOutputArgs } from "./getVaults";
+export const getVaults: typeof import("./getVaults").getVaults = null as any;
+export const getVaultsOutput: typeof import("./getVaults").getVaultsOutput = null as any;
+utilities.lazyLoad(exports, ["getVaults","getVaultsOutput"], () => require("./getVaults"));
+
+export { HanaBackupPlanArgs, HanaBackupPlanState } from "./hanaBackupPlan";
+export type HanaBackupPlan = import("./hanaBackupPlan").HanaBackupPlan;
+export const HanaBackupPlan: typeof import("./hanaBackupPlan").HanaBackupPlan = null as any;
+utilities.lazyLoad(exports, ["HanaBackupPlan"], () => require("./hanaBackupPlan"));
+
+export { HanaInstanceArgs, HanaInstanceState } from "./hanaInstance";
+export type HanaInstance = import("./hanaInstance").HanaInstance;
+export const HanaInstance: typeof import("./hanaInstance").HanaInstance = null as any;
+utilities.lazyLoad(exports, ["HanaInstance"], () => require("./hanaInstance"));
+
+export { NasBackupPlanArgs, NasBackupPlanState } from "./nasBackupPlan";
+export type NasBackupPlan = import("./nasBackupPlan").NasBackupPlan;
+export const NasBackupPlan: typeof import("./nasBackupPlan").NasBackupPlan = null as any;
+utilities.lazyLoad(exports, ["NasBackupPlan"], () => require("./nasBackupPlan"));
+
+export { OssBackupPlanArgs, OssBackupPlanState } from "./ossBackupPlan";
+export type OssBackupPlan = import("./ossBackupPlan").OssBackupPlan;
+export const OssBackupPlan: typeof import("./ossBackupPlan").OssBackupPlan = null as any;
+utilities.lazyLoad(exports, ["OssBackupPlan"], () => require("./ossBackupPlan"));
+
+export { OtsBackupPlanArgs, OtsBackupPlanState } from "./otsBackupPlan";
+export type OtsBackupPlan = import("./otsBackupPlan").OtsBackupPlan;
+export const OtsBackupPlan: typeof import("./otsBackupPlan").OtsBackupPlan = null as any;
+utilities.lazyLoad(exports, ["OtsBackupPlan"], () => require("./otsBackupPlan"));
+
+export { ReplicationVaultArgs, ReplicationVaultState } from "./replicationVault";
+export type ReplicationVault = import("./replicationVault").ReplicationVault;
+export const ReplicationVault: typeof import("./replicationVault").ReplicationVault = null as any;
+utilities.lazyLoad(exports, ["ReplicationVault"], () => require("./replicationVault"));
+
+export { RestoreJobArgs, RestoreJobState } from "./restoreJob";
+export type RestoreJob = import("./restoreJob").RestoreJob;
+export const RestoreJob: typeof import("./restoreJob").RestoreJob = null as any;
+utilities.lazyLoad(exports, ["RestoreJob"], () => require("./restoreJob"));
+
+export { ServerBackupPlanArgs, ServerBackupPlanState } from "./serverBackupPlan";
+export type ServerBackupPlan = import("./serverBackupPlan").ServerBackupPlan;
+export const ServerBackupPlan: typeof import("./serverBackupPlan").ServerBackupPlan = null as any;
+utilities.lazyLoad(exports, ["ServerBackupPlan"], () => require("./serverBackupPlan"));
+
+export { VaultArgs, VaultState } from "./vault";
+export type Vault = import("./vault").Vault;
+export const Vault: typeof import("./vault").Vault = null as any;
+utilities.lazyLoad(exports, ["Vault"], () => require("./vault"));
+
 
 const _module = {
     version: utilities.getVersion(),

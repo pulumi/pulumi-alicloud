@@ -32,8 +32,6 @@ import javax.annotation.Nullable;
 public class Gateway extends com.pulumi.resources.CustomResource {
     /**
      * Whether to pay automatically. Default value: `true`. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
      * 
      */
     @Export(name="autoPay", type=Boolean.class, parameters={})
@@ -41,12 +39,24 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to pay automatically. Default value: `true`. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
      * 
      */
     public Output<Optional<Boolean>> autoPay() {
         return Codegen.optional(this.autoPay);
+    }
+    /**
+     * Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     * 
+     */
+    @Export(name="autoPropagate", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> autoPropagate;
+
+    /**
+     * @return Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> autoPropagate() {
+        return Codegen.optional(this.autoPropagate);
     }
     @Export(name="bandwidth", type=Integer.class, parameters={})
     private Output<Integer> bandwidth;
@@ -153,6 +163,24 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The network type of the VPN gateway. Value:
+     * - public (default): Public VPN gateway.
+     * - private: Private VPN gateway.
+     * 
+     */
+    @Export(name="networkType", type=String.class, parameters={})
+    private Output<String> networkType;
+
+    /**
+     * @return The network type of the VPN gateway. Value:
+     * - public (default): Public VPN gateway.
+     * - private: Private VPN gateway.
+     * 
+     */
+    public Output<String> networkType() {
+        return this.networkType;
     }
     /**
      * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.

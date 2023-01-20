@@ -19,61 +19,61 @@ namespace Pulumi.AliCloud.Ots
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraformtest";
+    ///     var fooInstance = new AliCloud.Ots.Instance("fooInstance", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "terraformtest";
-    ///         var fooInstance = new AliCloud.Ots.Instance("fooInstance", new AliCloud.Ots.InstanceArgs
+    ///         Description = name,
+    ///         AccessedBy = "Any",
+    ///         Tags = 
     ///         {
-    ///             Description = name,
-    ///             AccessedBy = "Any",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "acceptance test" },
-    ///             },
-    ///         });
-    ///         var fooTable = new AliCloud.Ots.Table("fooTable", new AliCloud.Ots.TableArgs
-    ///         {
-    ///             InstanceName = fooInstance.Name,
-    ///             TableName = name,
-    ///             PrimaryKeys = 
-    ///             {
-    ///                 new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
-    ///                 {
-    ///                     Name = "pk1",
-    ///                     Type = "Integer",
-    ///                 },
-    ///                 new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
-    ///                 {
-    ///                     Name = "pk2",
-    ///                     Type = "String",
-    ///                 },
-    ///                 new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
-    ///                 {
-    ///                     Name = "pk3",
-    ///                     Type = "Binary",
-    ///                 },
-    ///             },
-    ///             TimeToLive = -1,
-    ///             MaxVersion = 1,
-    ///             DeviationCellVersionInSec = "1",
-    ///         });
-    ///         var fooTunnel = new AliCloud.Ots.Tunnel("fooTunnel", new AliCloud.Ots.TunnelArgs
-    ///         {
-    ///             InstanceName = fooInstance.Name,
-    ///             TableName = fooTable.TableName,
-    ///             TunnelName = name,
-    ///             TunnelType = "BaseAndStream",
-    ///         });
-    ///     }
+    ///             { "Created", "TF" },
+    ///             { "For", "acceptance test" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var fooTable = new AliCloud.Ots.Table("fooTable", new()
+    ///     {
+    ///         InstanceName = fooInstance.Name,
+    ///         TableName = name,
+    ///         PrimaryKeys = new[]
+    ///         {
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk1",
+    ///                 Type = "Integer",
+    ///             },
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk2",
+    ///                 Type = "String",
+    ///             },
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk3",
+    ///                 Type = "Binary",
+    ///             },
+    ///         },
+    ///         TimeToLive = -1,
+    ///         MaxVersion = 1,
+    ///         DeviationCellVersionInSec = "1",
+    ///     });
+    /// 
+    ///     var fooTunnel = new AliCloud.Ots.Tunnel("fooTunnel", new()
+    ///     {
+    ///         InstanceName = fooInstance.Name,
+    ///         TableName = fooTable.TableName,
+    ///         TunnelName = name,
+    ///         TunnelType = "BaseAndStream",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -81,11 +81,11 @@ namespace Pulumi.AliCloud.Ots
     /// OTS tunnel can be imported using id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ots/tunnel:Tunnel foo "&lt;instance_name&gt;:&lt;table_name&gt;:&lt;tunnel_name&gt;"
+    ///  $ pulumi import alicloud:ots/tunnel:Tunnel foo &lt;instance_name&gt;:&lt;table_name&gt;:&lt;tunnel_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ots/tunnel:Tunnel")]
-    public partial class Tunnel : Pulumi.CustomResource
+    public partial class Tunnel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The channels of OTS tunnel. Each element contains the following attributes:
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Ots
         }
     }
 
-    public sealed class TunnelArgs : Pulumi.ResourceArgs
+    public sealed class TunnelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the OTS instance in which table will located.
@@ -220,9 +220,10 @@ namespace Pulumi.AliCloud.Ots
         public TunnelArgs()
         {
         }
+        public static new TunnelArgs Empty => new TunnelArgs();
     }
 
-    public sealed class TunnelState : Pulumi.ResourceArgs
+    public sealed class TunnelState : global::Pulumi.ResourceArgs
     {
         [Input("channels")]
         private InputList<Inputs.TunnelChannelGetArgs>? _channels;
@@ -293,5 +294,6 @@ namespace Pulumi.AliCloud.Ots
         public TunnelState()
         {
         }
+        public static new TunnelState Empty => new TunnelState();
     }
 }

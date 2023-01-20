@@ -21,35 +21,34 @@ namespace Pulumi.AliCloud.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var kmsSecretsDs = AliCloud.Kms.GetSecrets.Invoke(new()
         ///     {
-        ///         var kmsSecretsDs = Output.Create(AliCloud.Kms.GetSecrets.InvokeAsync(new AliCloud.Kms.GetSecretsArgs
+        ///         FetchTags = true,
+        ///         NameRegex = "name_regex",
+        ///         Tags = 
         ///         {
-        ///             FetchTags = true,
-        ///             NameRegex = "name_regex",
-        ///             Tags = 
-        ///             {
-        ///                 { "k-aa", "v-aa" },
-        ///                 { "k-bb", "v-bb" },
-        ///             },
-        ///         }));
-        ///         this.FirstSecretId = kmsSecretsDs.Apply(kmsSecretsDs =&gt; kmsSecretsDs.Secrets?[0]?.Id);
-        ///     }
+        ///             { "k-aa", "v-aa" },
+        ///             { "k-bb", "v-bb" },
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstSecretId")]
-        ///     public Output&lt;string&gt; FirstSecretId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSecretId"] = kmsSecretsDs.Apply(getSecretsResult =&gt; getSecretsResult.Secrets[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretsResult> InvokeAsync(GetSecretsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretsResult>("alicloud:kms/getSecrets:getSecrets", args ?? new GetSecretsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretsResult>("alicloud:kms/getSecrets:getSecrets", args ?? new GetSecretsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
@@ -61,39 +60,38 @@ namespace Pulumi.AliCloud.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var kmsSecretsDs = AliCloud.Kms.GetSecrets.Invoke(new()
         ///     {
-        ///         var kmsSecretsDs = Output.Create(AliCloud.Kms.GetSecrets.InvokeAsync(new AliCloud.Kms.GetSecretsArgs
+        ///         FetchTags = true,
+        ///         NameRegex = "name_regex",
+        ///         Tags = 
         ///         {
-        ///             FetchTags = true,
-        ///             NameRegex = "name_regex",
-        ///             Tags = 
-        ///             {
-        ///                 { "k-aa", "v-aa" },
-        ///                 { "k-bb", "v-bb" },
-        ///             },
-        ///         }));
-        ///         this.FirstSecretId = kmsSecretsDs.Apply(kmsSecretsDs =&gt; kmsSecretsDs.Secrets?[0]?.Id);
-        ///     }
+        ///             { "k-aa", "v-aa" },
+        ///             { "k-bb", "v-bb" },
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstSecretId")]
-        ///     public Output&lt;string&gt; FirstSecretId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSecretId"] = kmsSecretsDs.Apply(getSecretsResult =&gt; getSecretsResult.Secrets[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSecretsResult> Invoke(GetSecretsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretsResult>("alicloud:kms/getSecrets:getSecrets", args ?? new GetSecretsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretsResult>("alicloud:kms/getSecrets:getSecrets", args ?? new GetSecretsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSecretsArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to true can output more details.
@@ -149,9 +147,10 @@ namespace Pulumi.AliCloud.Kms
         public GetSecretsArgs()
         {
         }
+        public static new GetSecretsArgs Empty => new GetSecretsArgs();
     }
 
-    public sealed class GetSecretsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to true can output more details.
@@ -207,6 +206,7 @@ namespace Pulumi.AliCloud.Kms
         public GetSecretsInvokeArgs()
         {
         }
+        public static new GetSecretsInvokeArgs Empty => new GetSecretsInvokeArgs();
     }
 
 

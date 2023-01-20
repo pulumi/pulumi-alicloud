@@ -21,25 +21,23 @@ namespace Pulumi.AliCloud.Ros
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ros.StackGroup("example", new()
     ///     {
-    ///         var example = new AliCloud.Ros.StackGroup("example", new AliCloud.Ros.StackGroupArgs
-    ///         {
-    ///             StackGroupName = "example_value",
-    ///             TemplateBody = @"    {
+    ///         StackGroupName = "example_value",
+    ///         TemplateBody = @"    {
     ///     	""ROSTemplateFormatVersion"": ""2015-09-01""
     ///     }
     ///     
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +49,7 @@ namespace Pulumi.AliCloud.Ros
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ros/stackGroup:StackGroup")]
-    public partial class StackGroup : Pulumi.CustomResource
+    public partial class StackGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
@@ -181,7 +179,7 @@ namespace Pulumi.AliCloud.Ros
         }
     }
 
-    public sealed class StackGroupArgs : Pulumi.ResourceArgs
+    public sealed class StackGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
@@ -264,9 +262,10 @@ namespace Pulumi.AliCloud.Ros
         public StackGroupArgs()
         {
         }
+        public static new StackGroupArgs Empty => new StackGroupArgs();
     }
 
-    public sealed class StackGroupState : Pulumi.ResourceArgs
+    public sealed class StackGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
@@ -361,5 +360,6 @@ namespace Pulumi.AliCloud.Ros
         public StackGroupState()
         {
         }
+        public static new StackGroupState Empty => new StackGroupState();
     }
 }

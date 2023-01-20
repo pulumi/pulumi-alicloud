@@ -195,7 +195,6 @@ class _ImageCacheState:
         """
         Input properties used for looking up and filtering ImageCache resources.
         :param pulumi.Input[str] container_group_id: The ID of the container group job that is used to create the image cache.
-               * `status` -The status of the image cache.
         :param pulumi.Input[str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
         :param pulumi.Input[str] image_cache_name: The name of the image cache.
         :param pulumi.Input[int] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
@@ -204,6 +203,7 @@ class _ImageCacheState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
         :param pulumi.Input[str] security_group_id: The ID of the security group. You do not need to specify the same security group as the container group.
+        :param pulumi.Input[str] status: The status of the image cache.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
         :param pulumi.Input[str] zone_id: The zone id to cache image.
         """
@@ -237,7 +237,6 @@ class _ImageCacheState:
     def container_group_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the container group job that is used to create the image cache.
-        * `status` -The status of the image cache.
         """
         return pulumi.get(self, "container_group_id")
 
@@ -344,6 +343,9 @@ class _ImageCacheState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the image cache.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -556,7 +558,6 @@ class ImageCache(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_group_id: The ID of the container group job that is used to create the image cache.
-               * `status` -The status of the image cache.
         :param pulumi.Input[str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
         :param pulumi.Input[str] image_cache_name: The name of the image cache.
         :param pulumi.Input[int] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
@@ -565,6 +566,7 @@ class ImageCache(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
         :param pulumi.Input[str] security_group_id: The ID of the security group. You do not need to specify the same security group as the container group.
+        :param pulumi.Input[str] status: The status of the image cache.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
         :param pulumi.Input[str] zone_id: The zone id to cache image.
         """
@@ -591,7 +593,6 @@ class ImageCache(pulumi.CustomResource):
     def container_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the container group job that is used to create the image cache.
-        * `status` -The status of the image cache.
         """
         return pulumi.get(self, "container_group_id")
 
@@ -662,6 +663,9 @@ class ImageCache(pulumi.CustomResource):
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        The status of the image cache.
+        """
         return pulumi.get(self, "status")
 
     @property

@@ -17,7 +17,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:vpc/natGateway:NatGateway example ngw-abc123456
+//	$ pulumi import alicloud:vpc/natGateway:NatGateway example <id>
 //
 // ```
 type NatGateway struct {
@@ -29,8 +29,12 @@ type NatGateway struct {
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	DryRun      pulumi.BoolPtrOutput   `pulumi:"dryRun"`
-	Force       pulumi.BoolPtrOutput   `pulumi:"force"`
+	// Specifies whether to only precheck this request. Default value: `false`.
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+	EipBindMode pulumi.StringOutput `pulumi:"eipBindMode"`
+	// Specifies whether to forcefully delete the NAT gateway.
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// The nat gateway will auto create a forward item.
 	ForwardTableIds pulumi.StringOutput `pulumi:"forwardTableIds"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
@@ -100,8 +104,12 @@ type natGatewayState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description *string `pulumi:"description"`
-	DryRun      *bool   `pulumi:"dryRun"`
-	Force       *bool   `pulumi:"force"`
+	// Specifies whether to only precheck this request. Default value: `false`.
+	DryRun *bool `pulumi:"dryRun"`
+	// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+	EipBindMode *string `pulumi:"eipBindMode"`
+	// Specifies whether to forcefully delete the NAT gateway.
+	Force *bool `pulumi:"force"`
 	// The nat gateway will auto create a forward item.
 	ForwardTableIds *string `pulumi:"forwardTableIds"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
@@ -140,8 +148,12 @@ type NatGatewayState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description pulumi.StringPtrInput
-	DryRun      pulumi.BoolPtrInput
-	Force       pulumi.BoolPtrInput
+	// Specifies whether to only precheck this request. Default value: `false`.
+	DryRun pulumi.BoolPtrInput
+	// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+	EipBindMode pulumi.StringPtrInput
+	// Specifies whether to forcefully delete the NAT gateway.
+	Force pulumi.BoolPtrInput
 	// The nat gateway will auto create a forward item.
 	ForwardTableIds pulumi.StringPtrInput
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
@@ -184,8 +196,12 @@ type natGatewayArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description *string `pulumi:"description"`
-	DryRun      *bool   `pulumi:"dryRun"`
-	Force       *bool   `pulumi:"force"`
+	// Specifies whether to only precheck this request. Default value: `false`.
+	DryRun *bool `pulumi:"dryRun"`
+	// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+	EipBindMode *string `pulumi:"eipBindMode"`
+	// Specifies whether to forcefully delete the NAT gateway.
+	Force *bool `pulumi:"force"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
@@ -219,8 +235,12 @@ type NatGatewayArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description pulumi.StringPtrInput
-	DryRun      pulumi.BoolPtrInput
-	Force       pulumi.BoolPtrInput
+	// Specifies whether to only precheck this request. Default value: `false`.
+	DryRun pulumi.BoolPtrInput
+	// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+	EipBindMode pulumi.StringPtrInput
+	// Specifies whether to forcefully delete the NAT gateway.
+	Force pulumi.BoolPtrInput
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
@@ -345,10 +365,17 @@ func (o NatGatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to only precheck this request. Default value: `false`.
 func (o NatGatewayOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
+// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+func (o NatGatewayOutput) EipBindMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.EipBindMode }).(pulumi.StringOutput)
+}
+
+// Specifies whether to forcefully delete the NAT gateway.
 func (o NatGatewayOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }

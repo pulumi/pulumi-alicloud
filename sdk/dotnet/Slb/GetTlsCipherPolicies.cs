@@ -23,40 +23,38 @@ namespace Pulumi.AliCloud.Slb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Slb.GetTlsCipherPolicies.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Slb.GetTlsCipherPolicies.InvokeAsync(new AliCloud.Slb.GetTlsCipherPoliciesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.SlbTlsCipherPolicyId1 = ids.Apply(ids =&gt; ids.Policies?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Slb.GetTlsCipherPolicies.InvokeAsync(new AliCloud.Slb.GetTlsCipherPoliciesArgs
-        ///         {
-        ///             NameRegex = "^My-TlsCipherPolicy",
-        ///         }));
-        ///         this.SlbTlsCipherPolicyId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Policies?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("slbTlsCipherPolicyId1")]
-        ///     public Output&lt;string&gt; SlbTlsCipherPolicyId1 { get; set; }
-        ///     [Output("slbTlsCipherPolicyId2")]
-        ///     public Output&lt;string&gt; SlbTlsCipherPolicyId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Slb.GetTlsCipherPolicies.Invoke(new()
+        ///     {
+        ///         NameRegex = "^My-TlsCipherPolicy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["slbTlsCipherPolicyId1"] = ids.Apply(getTlsCipherPoliciesResult =&gt; getTlsCipherPoliciesResult.Policies[0]?.Id),
+        ///         ["slbTlsCipherPolicyId2"] = nameRegex.Apply(getTlsCipherPoliciesResult =&gt; getTlsCipherPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTlsCipherPoliciesResult> InvokeAsync(GetTlsCipherPoliciesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTlsCipherPoliciesResult>("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", args ?? new GetTlsCipherPoliciesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTlsCipherPoliciesResult>("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", args ?? new GetTlsCipherPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
@@ -70,44 +68,42 @@ namespace Pulumi.AliCloud.Slb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Slb.GetTlsCipherPolicies.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Slb.GetTlsCipherPolicies.InvokeAsync(new AliCloud.Slb.GetTlsCipherPoliciesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.SlbTlsCipherPolicyId1 = ids.Apply(ids =&gt; ids.Policies?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Slb.GetTlsCipherPolicies.InvokeAsync(new AliCloud.Slb.GetTlsCipherPoliciesArgs
-        ///         {
-        ///             NameRegex = "^My-TlsCipherPolicy",
-        ///         }));
-        ///         this.SlbTlsCipherPolicyId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Policies?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("slbTlsCipherPolicyId1")]
-        ///     public Output&lt;string&gt; SlbTlsCipherPolicyId1 { get; set; }
-        ///     [Output("slbTlsCipherPolicyId2")]
-        ///     public Output&lt;string&gt; SlbTlsCipherPolicyId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Slb.GetTlsCipherPolicies.Invoke(new()
+        ///     {
+        ///         NameRegex = "^My-TlsCipherPolicy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["slbTlsCipherPolicyId1"] = ids.Apply(getTlsCipherPoliciesResult =&gt; getTlsCipherPoliciesResult.Policies[0]?.Id),
+        ///         ["slbTlsCipherPolicyId2"] = nameRegex.Apply(getTlsCipherPoliciesResult =&gt; getTlsCipherPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTlsCipherPoliciesResult> Invoke(GetTlsCipherPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTlsCipherPoliciesResult>("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", args ?? new GetTlsCipherPoliciesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTlsCipherPoliciesResult>("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", args ?? new GetTlsCipherPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTlsCipherPoliciesArgs : Pulumi.InvokeArgs
+    public sealed class GetTlsCipherPoliciesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -151,9 +147,10 @@ namespace Pulumi.AliCloud.Slb
         public GetTlsCipherPoliciesArgs()
         {
         }
+        public static new GetTlsCipherPoliciesArgs Empty => new GetTlsCipherPoliciesArgs();
     }
 
-    public sealed class GetTlsCipherPoliciesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTlsCipherPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -197,6 +194,7 @@ namespace Pulumi.AliCloud.Slb
         public GetTlsCipherPoliciesInvokeArgs()
         {
         }
+        public static new GetTlsCipherPoliciesInvokeArgs Empty => new GetTlsCipherPoliciesInvokeArgs();
     }
 
 

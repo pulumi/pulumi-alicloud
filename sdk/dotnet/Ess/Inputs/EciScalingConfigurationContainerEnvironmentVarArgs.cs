@@ -10,10 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class EciScalingConfigurationContainerEnvironmentVarArgs : Pulumi.ResourceArgs
+    public sealed class EciScalingConfigurationContainerEnvironmentVarArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+        /// digits, and underscores (_). It cannot start with a digit.
         /// digits, and underscores (_). It cannot start with a digit.
         /// </summary>
         [Input("key")]
@@ -28,5 +29,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public EciScalingConfigurationContainerEnvironmentVarArgs()
         {
         }
+        public static new EciScalingConfigurationContainerEnvironmentVarArgs Empty => new EciScalingConfigurationContainerEnvironmentVarArgs();
     }
 }

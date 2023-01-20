@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/routeEntry:RouteEntry")]
-    public partial class RouteEntry : Pulumi.CustomResource
+    public partial class RouteEntry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The RouteEntry's target network segment.
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class RouteEntryArgs : Pulumi.ResourceArgs
+    public sealed class RouteEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The RouteEntry's target network segment.
@@ -142,9 +142,10 @@ namespace Pulumi.AliCloud.Vpc
         public RouteEntryArgs()
         {
         }
+        public static new RouteEntryArgs Empty => new RouteEntryArgs();
     }
 
-    public sealed class RouteEntryState : Pulumi.ResourceArgs
+    public sealed class RouteEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The RouteEntry's target network segment.
@@ -185,5 +186,6 @@ namespace Pulumi.AliCloud.Vpc
         public RouteEntryState()
         {
         }
+        public static new RouteEntryState Empty => new RouteEntryState();
     }
 }

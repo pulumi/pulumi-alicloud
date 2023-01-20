@@ -71,7 +71,7 @@ export class PatchBaseline extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      */
     public readonly operationSystem!: pulumi.Output<string>;
     /**
@@ -130,7 +130,7 @@ export interface PatchBaselineState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      */
     operationSystem?: pulumi.Input<string>;
     /**
@@ -152,7 +152,7 @@ export interface PatchBaselineArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      */
     operationSystem: pulumi.Input<string>;
     /**

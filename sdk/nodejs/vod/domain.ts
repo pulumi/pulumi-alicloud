@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -20,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultDomain = new alicloud.vod.Domain("default", {
+ * const _default = new alicloud.vod.Domain("default", {
  *     domainName: "your_domain_name",
  *     scope: "domestic",
  *     sources: [{
@@ -121,8 +122,6 @@ export class Domain extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -245,8 +244,6 @@ export interface DomainState {
     status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -281,8 +278,6 @@ export interface DomainArgs {
     sources: pulumi.Input<pulumi.Input<inputs.vod.DomainSource>[]>;
     /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

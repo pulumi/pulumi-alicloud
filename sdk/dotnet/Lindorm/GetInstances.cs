@@ -23,33 +23,31 @@ namespace Pulumi.AliCloud.Lindorm
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Lindorm.GetInstances.InvokeAsync());
-        ///         this.LindormInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Lindorm.GetInstances.InvokeAsync(new AliCloud.Lindorm.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "^my-Instance",
-        ///         }));
-        ///         this.LindormInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Lindorm.GetInstances.Invoke();
         /// 
-        ///     [Output("lindormInstanceId1")]
-        ///     public Output&lt;string&gt; LindormInstanceId1 { get; set; }
-        ///     [Output("lindormInstanceId2")]
-        ///     public Output&lt;string&gt; LindormInstanceId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Lindorm.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["lindormInstanceId1"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["lindormInstanceId2"] = nameRegex.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:lindorm/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:lindorm/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Lindorm Instances of the current Alibaba Cloud user.
@@ -63,37 +61,35 @@ namespace Pulumi.AliCloud.Lindorm
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Lindorm.GetInstances.InvokeAsync());
-        ///         this.LindormInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Lindorm.GetInstances.InvokeAsync(new AliCloud.Lindorm.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "^my-Instance",
-        ///         }));
-        ///         this.LindormInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Lindorm.GetInstances.Invoke();
         /// 
-        ///     [Output("lindormInstanceId1")]
-        ///     public Output&lt;string&gt; LindormInstanceId1 { get; set; }
-        ///     [Output("lindormInstanceId2")]
-        ///     public Output&lt;string&gt; LindormInstanceId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Lindorm.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["lindormInstanceId1"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["lindormInstanceId2"] = nameRegex.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:lindorm/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:lindorm/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -143,9 +139,10 @@ namespace Pulumi.AliCloud.Lindorm
         public GetInstancesArgs()
         {
         }
+        public static new GetInstancesArgs Empty => new GetInstancesArgs();
     }
 
-    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -195,6 +192,7 @@ namespace Pulumi.AliCloud.Lindorm
         public GetInstancesInvokeArgs()
         {
         }
+        public static new GetInstancesInvokeArgs Empty => new GetInstancesInvokeArgs();
     }
 
 

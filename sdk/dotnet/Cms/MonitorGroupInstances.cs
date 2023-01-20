@@ -21,39 +21,39 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = "tf-testacc-vpcname",
-    ///             CidrBlock = "192.168.0.0/16",
-    ///         });
-    ///         var defaultMonitorGroup = new AliCloud.Cms.MonitorGroup("defaultMonitorGroup", new AliCloud.Cms.MonitorGroupArgs
-    ///         {
-    ///             MonitorGroupName = "tf-testaccmonitorgroup",
-    ///         });
-    ///         var example = new AliCloud.Cms.MonitorGroupInstances("example", new AliCloud.Cms.MonitorGroupInstancesArgs
-    ///         {
-    ///             GroupId = defaultMonitorGroup.Id,
-    ///             Instances = 
-    ///             {
-    ///                 new AliCloud.Cms.Inputs.MonitorGroupInstancesInstanceArgs
-    ///                 {
-    ///                     InstanceId = defaultNetwork.Id,
-    ///                     InstanceName = "tf-testacc-vpcname",
-    ///                     RegionId = "cn-hangzhou",
-    ///                     Category = "vpc",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         VpcName = "tf-testacc-vpcname",
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
     /// 
-    /// }
+    ///     var defaultMonitorGroup = new AliCloud.Cms.MonitorGroup("defaultMonitorGroup", new()
+    ///     {
+    ///         MonitorGroupName = "tf-testaccmonitorgroup",
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Cms.MonitorGroupInstances("example", new()
+    ///     {
+    ///         GroupId = defaultMonitorGroup.Id,
+    ///         Instances = new[]
+    ///         {
+    ///             new AliCloud.Cms.Inputs.MonitorGroupInstancesInstanceArgs
+    ///             {
+    ///                 InstanceId = defaultNetwork.Id,
+    ///                 InstanceName = "tf-testacc-vpcname",
+    ///                 RegionId = "cn-hangzhou",
+    ///                 Category = "vpc",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/monitorGroupInstances:MonitorGroupInstances")]
-    public partial class MonitorGroupInstances : Pulumi.CustomResource
+    public partial class MonitorGroupInstances : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The id of Cms Group.
@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class MonitorGroupInstancesArgs : Pulumi.ResourceArgs
+    public sealed class MonitorGroupInstancesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of Cms Group.
@@ -146,9 +146,10 @@ namespace Pulumi.AliCloud.Cms
         public MonitorGroupInstancesArgs()
         {
         }
+        public static new MonitorGroupInstancesArgs Empty => new MonitorGroupInstancesArgs();
     }
 
-    public sealed class MonitorGroupInstancesState : Pulumi.ResourceArgs
+    public sealed class MonitorGroupInstancesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of Cms Group.
@@ -171,5 +172,6 @@ namespace Pulumi.AliCloud.Cms
         public MonitorGroupInstancesState()
         {
         }
+        public static new MonitorGroupInstancesState Empty => new MonitorGroupInstancesState();
     }
 }

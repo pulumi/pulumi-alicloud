@@ -1151,8 +1151,8 @@ class Etl(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EtlArgs.__new__(EtlArgs)
 
-            __props__.__dict__["access_key_id"] = access_key_id
-            __props__.__dict__["access_key_secret"] = access_key_secret
+            __props__.__dict__["access_key_id"] = None if access_key_id is None else pulumi.Output.secret(access_key_id)
+            __props__.__dict__["access_key_secret"] = None if access_key_secret is None else pulumi.Output.secret(access_key_secret)
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
@@ -1186,6 +1186,8 @@ class Etl(pulumi.CustomResource):
             __props__.__dict__["status"] = status
             __props__.__dict__["to_time"] = to_time
             __props__.__dict__["version"] = version
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessKeyId", "accessKeySecret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Etl, __self__).__init__(
             'alicloud:log/etl:Etl',
             resource_name,

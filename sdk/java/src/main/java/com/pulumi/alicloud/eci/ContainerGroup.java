@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eci;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.eci.ContainerGroupArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupState;
+import com.pulumi.alicloud.eci.outputs.ContainerGroupAcrRegistryInfo;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupContainer;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupDnsConfig;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupEciSecurityContext;
@@ -92,6 +93,26 @@ import javax.annotation.Nullable;
  *                         .key(&#34;test&#34;)
  *                         .value(&#34;nginx&#34;)
  *                         .build())
+ *                     .livenessProbes(ContainerGroupContainerLivenessProbeArgs.builder()
+ *                         .periodSeconds(&#34;5&#34;)
+ *                         .initialDelaySeconds(&#34;5&#34;)
+ *                         .successThreshold(&#34;1&#34;)
+ *                         .failureThreshold(&#34;3&#34;)
+ *                         .timeoutSeconds(&#34;1&#34;)
+ *                         .execs(ContainerGroupContainerLivenessProbeExecArgs.builder()
+ *                             .commands(&#34;cat /tmp/healthy&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .readinessProbes(ContainerGroupContainerReadinessProbeArgs.builder()
+ *                         .periodSeconds(&#34;5&#34;)
+ *                         .initialDelaySeconds(&#34;5&#34;)
+ *                         .successThreshold(&#34;1&#34;)
+ *                         .failureThreshold(&#34;3&#34;)
+ *                         .timeoutSeconds(&#34;1&#34;)
+ *                         .execs(ContainerGroupContainerReadinessProbeExecArgs.builder()
+ *                             .commands(&#34;cat /tmp/healthy&#34;)
+ *                             .build())
+ *                         .build())
  *                     .build(),
  *                 ContainerGroupContainerArgs.builder()
  *                     .image(&#34;registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7&#34;)
@@ -134,6 +155,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:eci/containerGroup:ContainerGroup")
 public class ContainerGroup extends com.pulumi.resources.CustomResource {
+    /**
+     * The ACR enterprise edition example properties.
+     * 
+     */
+    @Export(name="acrRegistryInfos", type=List.class, parameters={ContainerGroupAcrRegistryInfo.class})
+    private Output</* @Nullable */ List<ContainerGroupAcrRegistryInfo>> acrRegistryInfos;
+
+    /**
+     * @return The ACR enterprise edition example properties.
+     * 
+     */
+    public Output<Optional<List<ContainerGroupAcrRegistryInfo>>> acrRegistryInfos() {
+        return Codegen.optional(this.acrRegistryInfos);
+    }
     /**
      * Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
      * 
@@ -191,14 +226,14 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return this.containers;
     }
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      * 
      */
     @Export(name="cpu", type=Double.class, parameters={})
     private Output<Double> cpu;
 
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     public Output<Double> cpu() {
@@ -359,14 +394,14 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return this.intranetIp;
     }
     /**
-     * The amount of memory resources allocated to the container.
+     * The amount of memory resources allocated to the container group.
      * 
      */
     @Export(name="memory", type=Double.class, parameters={})
     private Output<Double> memory;
 
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     public Output<Double> memory() {

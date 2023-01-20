@@ -22,30 +22,29 @@ namespace Pulumi.AliCloud.PolarDB
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var polardbClustersDs = AliCloud.PolarDB.GetClusters.Invoke(new()
         ///     {
-        ///         var polardbClustersDs = Output.Create(AliCloud.PolarDB.GetClusters.InvokeAsync(new AliCloud.PolarDB.GetClustersArgs
-        ///         {
-        ///             DescriptionRegex = "pc-\\w+",
-        ///             Status = "Running",
-        ///         }));
-        ///         this.FirstPolardbClusterId = polardbClustersDs.Apply(polardbClustersDs =&gt; polardbClustersDs.Clusters?[0]?.Id);
-        ///     }
+        ///         DescriptionRegex = "pc-\\w+",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("firstPolardbClusterId")]
-        ///     public Output&lt;string&gt; FirstPolardbClusterId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPolardbClusterId"] = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.polardb.getClusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
@@ -58,34 +57,33 @@ namespace Pulumi.AliCloud.PolarDB
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var polardbClustersDs = AliCloud.PolarDB.GetClusters.Invoke(new()
         ///     {
-        ///         var polardbClustersDs = Output.Create(AliCloud.PolarDB.GetClusters.InvokeAsync(new AliCloud.PolarDB.GetClustersArgs
-        ///         {
-        ///             DescriptionRegex = "pc-\\w+",
-        ///             Status = "Running",
-        ///         }));
-        ///         this.FirstPolardbClusterId = polardbClustersDs.Apply(polardbClustersDs =&gt; polardbClustersDs.Clusters?[0]?.Id);
-        ///     }
+        ///         DescriptionRegex = "pc-\\w+",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("firstPolardbClusterId")]
-        ///     public Output&lt;string&gt; FirstPolardbClusterId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPolardbClusterId"] = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClustersArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
@@ -137,9 +135,10 @@ namespace Pulumi.AliCloud.PolarDB
         public GetClustersArgs()
         {
         }
+        public static new GetClustersArgs Empty => new GetClustersArgs();
     }
 
-    public sealed class GetClustersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
@@ -191,6 +190,7 @@ namespace Pulumi.AliCloud.PolarDB
         public GetClustersInvokeArgs()
         {
         }
+        public static new GetClustersInvokeArgs Empty => new GetClustersInvokeArgs();
     }
 
 

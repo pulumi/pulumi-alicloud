@@ -20,30 +20,29 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var imagesDs = AliCloud.Ecs.GetImages.Invoke(new()
         ///     {
-        ///         var imagesDs = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-        ///         {
-        ///             NameRegex = "^centos_6",
-        ///             Owners = "system",
-        ///         }));
-        ///         this.FirstImageId = imagesDs.Apply(imagesDs =&gt; imagesDs.Images?[0]?.Id);
-        ///     }
+        ///         NameRegex = "^centos_6",
+        ///         Owners = "system",
+        ///     });
         /// 
-        ///     [Output("firstImageId")]
-        ///     public Output&lt;string&gt; FirstImageId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstImageId"] = imagesDs.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:ecs/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:ecs/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
@@ -54,39 +53,36 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var imagesDs = AliCloud.Ecs.GetImages.Invoke(new()
         ///     {
-        ///         var imagesDs = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-        ///         {
-        ///             NameRegex = "^centos_6",
-        ///             Owners = "system",
-        ///         }));
-        ///         this.FirstImageId = imagesDs.Apply(imagesDs =&gt; imagesDs.Images?[0]?.Id);
-        ///     }
+        ///         NameRegex = "^centos_6",
+        ///         Owners = "system",
+        ///     });
         /// 
-        ///     [Output("firstImageId")]
-        ///     public Output&lt;string&gt; FirstImageId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstImageId"] = imagesDs.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:ecs/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:ecs/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetImagesArgs : Pulumi.InvokeArgs
+    public sealed class GetImagesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
-        /// * `CreateEcs`: instance creation.
-        /// * `ChangeOS`: replacement of the system disk or operating system.
+        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
         /// </summary>
         [Input("actionType")]
         public string? ActionType { get; set; }
@@ -98,9 +94,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? Architecture { get; set; }
 
         /// <summary>
-        /// Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:                                           
-        /// * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-        /// * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
+        /// Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
         /// </summary>
         [Input("dryRun")]
         public bool? DryRun { get; set; }
@@ -187,13 +181,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? SnapshotId { get; set; }
 
         /// <summary>
-        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-        /// * `Creating`: The image is being created.
-        /// * `Waiting`: The image is waiting to be processed.
-        /// * `Available`: The image is available.
-        /// * `UnAvailable`: The image is unavailable.
-        /// * `CreateFailed`: The image failed to be created.
-        /// * `Deprecated`: The image is discontinued.
+        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -211,9 +199,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
-        /// * `instance`: The image is already in use and running on an ECS instance.
-        /// * `none`: The image is not in use.
+        /// Specifies whether to check the validity of the request without actually making the request. Valid values:
         /// </summary>
         [Input("usage")]
         public string? Usage { get; set; }
@@ -221,14 +207,13 @@ namespace Pulumi.AliCloud.Ecs
         public GetImagesArgs()
         {
         }
+        public static new GetImagesArgs Empty => new GetImagesArgs();
     }
 
-    public sealed class GetImagesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
-        /// * `CreateEcs`: instance creation.
-        /// * `ChangeOS`: replacement of the system disk or operating system.
+        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
         /// </summary>
         [Input("actionType")]
         public Input<string>? ActionType { get; set; }
@@ -240,9 +225,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Architecture { get; set; }
 
         /// <summary>
-        /// Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:                                           
-        /// * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-        /// * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
+        /// Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -329,13 +312,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-        /// * `Creating`: The image is being created.
-        /// * `Waiting`: The image is waiting to be processed.
-        /// * `Available`: The image is available.
-        /// * `UnAvailable`: The image is unavailable.
-        /// * `CreateFailed`: The image failed to be created.
-        /// * `Deprecated`: The image is discontinued.
+        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -353,9 +330,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
-        /// * `instance`: The image is already in use and running on an ECS instance.
-        /// * `none`: The image is not in use.
+        /// Specifies whether to check the validity of the request without actually making the request. Valid values:
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }
@@ -363,6 +338,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetImagesInvokeArgs()
         {
         }
+        public static new GetImagesInvokeArgs Empty => new GetImagesInvokeArgs();
     }
 
 

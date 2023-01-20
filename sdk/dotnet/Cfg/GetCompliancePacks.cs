@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Cfg
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cfg.GetCompliancePacks.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetCompliancePacks.InvokeAsync(new AliCloud.Cfg.GetCompliancePacksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "cp-152a626622af00bc****",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstConfigCompliancePackId = example.Apply(example =&gt; example.Packs?[0]?.Id);
-        ///     }
+        ///             "cp-152a626622af00bc****",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstConfigCompliancePackId")]
-        ///     public Output&lt;string&gt; FirstConfigCompliancePackId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigCompliancePackId"] = example.Apply(getCompliancePacksResult =&gt; getCompliancePacksResult.Packs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCompliancePacksResult> InvokeAsync(GetCompliancePacksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCompliancePacksResult>("alicloud:cfg/getCompliancePacks:getCompliancePacks", args ?? new GetCompliancePacksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCompliancePacksResult>("alicloud:cfg/getCompliancePacks:getCompliancePacks", args ?? new GetCompliancePacksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Cfg
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cfg.GetCompliancePacks.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetCompliancePacks.InvokeAsync(new AliCloud.Cfg.GetCompliancePacksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "cp-152a626622af00bc****",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstConfigCompliancePackId = example.Apply(example =&gt; example.Packs?[0]?.Id);
-        ///     }
+        ///             "cp-152a626622af00bc****",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstConfigCompliancePackId")]
-        ///     public Output&lt;string&gt; FirstConfigCompliancePackId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigCompliancePackId"] = example.Apply(getCompliancePacksResult =&gt; getCompliancePacksResult.Packs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCompliancePacksResult> Invoke(GetCompliancePacksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCompliancePacksResult>("alicloud:cfg/getCompliancePacks:getCompliancePacks", args ?? new GetCompliancePacksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCompliancePacksResult>("alicloud:cfg/getCompliancePacks:getCompliancePacks", args ?? new GetCompliancePacksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCompliancePacksArgs : Pulumi.InvokeArgs
+    public sealed class GetCompliancePacksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -131,9 +129,10 @@ namespace Pulumi.AliCloud.Cfg
         public GetCompliancePacksArgs()
         {
         }
+        public static new GetCompliancePacksArgs Empty => new GetCompliancePacksArgs();
     }
 
-    public sealed class GetCompliancePacksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCompliancePacksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -171,6 +170,7 @@ namespace Pulumi.AliCloud.Cfg
         public GetCompliancePacksInvokeArgs()
         {
         }
+        public static new GetCompliancePacksInvokeArgs Empty => new GetCompliancePacksInvokeArgs();
     }
 
 

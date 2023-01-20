@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,55 +22,52 @@ import * as utilities from "../utilities";
  * const ids = alicloud.vpc.getTrafficMirrorSessions({
  *     ids: ["example_id"],
  * });
- * export const vpcTrafficMirrorSessionId1 = ids.then(ids => ids.sessions?[0]?.id);
+ * export const vpcTrafficMirrorSessionId1 = ids.then(ids => ids.sessions?.[0]?.id);
  * const nameRegex = alicloud.vpc.getTrafficMirrorSessions({
  *     nameRegex: "^my-TrafficMirrorSession",
  * });
- * export const vpcTrafficMirrorSessionId2 = nameRegex.then(nameRegex => nameRegex.sessions?[0]?.id);
+ * export const vpcTrafficMirrorSessionId2 = nameRegex.then(nameRegex => nameRegex.sessions?.[0]?.id);
  * const enabled = alicloud.vpc.getTrafficMirrorSessions({
  *     ids: ["example_id"],
  *     enabled: false,
  * });
- * export const vpcTrafficMirrorSessionId3 = enabled.then(enabled => enabled.sessions?[0]?.id);
+ * export const vpcTrafficMirrorSessionId3 = enabled.then(enabled => enabled.sessions?.[0]?.id);
  * const priority = alicloud.vpc.getTrafficMirrorSessions({
  *     ids: ["example_id"],
  *     priority: 1,
  * });
- * export const vpcTrafficMirrorSessionId4 = priority.then(priority => priority.sessions?[0]?.id);
+ * export const vpcTrafficMirrorSessionId4 = priority.then(priority => priority.sessions?.[0]?.id);
  * const filterId = alicloud.vpc.getTrafficMirrorSessions({
  *     ids: ["example_id"],
  *     trafficMirrorFilterId: "example_value",
  * });
- * export const vpcTrafficMirrorSessionId5 = filterId.then(filterId => filterId.sessions?[0]?.id);
+ * export const vpcTrafficMirrorSessionId5 = filterId.then(filterId => filterId.sessions?.[0]?.id);
  * const sessionName = alicloud.vpc.getTrafficMirrorSessions({
  *     ids: ["example_id"],
  *     trafficMirrorSessionName: "example_value",
  * });
- * export const vpcTrafficMirrorSessionId6 = sessionName.then(sessionName => sessionName.sessions?[0]?.id);
+ * export const vpcTrafficMirrorSessionId6 = sessionName.then(sessionName => sessionName.sessions?.[0]?.id);
  * const sourceId = alicloud.vpc.getTrafficMirrorSessions({
  *     ids: ["example_id"],
  *     trafficMirrorSourceId: "example_value",
  * });
- * export const vpcTrafficMirrorSessionId7 = sourceId.then(sourceId => sourceId.sessions?[0]?.id);
+ * export const vpcTrafficMirrorSessionId7 = sourceId.then(sourceId => sourceId.sessions?.[0]?.id);
  * const targetId = alicloud.vpc.getTrafficMirrorSessions({
  *     ids: ["example_id"],
  *     trafficMirrorTargetId: "example_value",
  * });
- * export const vpcTrafficMirrorSessionId8 = targetId.then(targetId => targetId.sessions?[0]?.id);
+ * export const vpcTrafficMirrorSessionId8 = targetId.then(targetId => targetId.sessions?.[0]?.id);
  * const status = alicloud.vpc.getTrafficMirrorSessions({
  *     ids: ["example_id"],
  *     status: "Created",
  * });
- * export const vpcTrafficMirrorSessionId9 = status.then(status => status.sessions?[0]?.id);
+ * export const vpcTrafficMirrorSessionId9 = status.then(status => status.sessions?.[0]?.id);
  * ```
  */
 export function getTrafficMirrorSessions(args?: GetTrafficMirrorSessionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorSessionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions", {
         "enabled": args.enabled,
         "ids": args.ids,
@@ -148,9 +146,66 @@ export interface GetTrafficMirrorSessionsResult {
     readonly trafficMirrorSourceId?: string;
     readonly trafficMirrorTargetId?: string;
 }
-
+/**
+ * This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.142.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getTrafficMirrorSessions({
+ *     ids: ["example_id"],
+ * });
+ * export const vpcTrafficMirrorSessionId1 = ids.then(ids => ids.sessions?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getTrafficMirrorSessions({
+ *     nameRegex: "^my-TrafficMirrorSession",
+ * });
+ * export const vpcTrafficMirrorSessionId2 = nameRegex.then(nameRegex => nameRegex.sessions?.[0]?.id);
+ * const enabled = alicloud.vpc.getTrafficMirrorSessions({
+ *     ids: ["example_id"],
+ *     enabled: false,
+ * });
+ * export const vpcTrafficMirrorSessionId3 = enabled.then(enabled => enabled.sessions?.[0]?.id);
+ * const priority = alicloud.vpc.getTrafficMirrorSessions({
+ *     ids: ["example_id"],
+ *     priority: 1,
+ * });
+ * export const vpcTrafficMirrorSessionId4 = priority.then(priority => priority.sessions?.[0]?.id);
+ * const filterId = alicloud.vpc.getTrafficMirrorSessions({
+ *     ids: ["example_id"],
+ *     trafficMirrorFilterId: "example_value",
+ * });
+ * export const vpcTrafficMirrorSessionId5 = filterId.then(filterId => filterId.sessions?.[0]?.id);
+ * const sessionName = alicloud.vpc.getTrafficMirrorSessions({
+ *     ids: ["example_id"],
+ *     trafficMirrorSessionName: "example_value",
+ * });
+ * export const vpcTrafficMirrorSessionId6 = sessionName.then(sessionName => sessionName.sessions?.[0]?.id);
+ * const sourceId = alicloud.vpc.getTrafficMirrorSessions({
+ *     ids: ["example_id"],
+ *     trafficMirrorSourceId: "example_value",
+ * });
+ * export const vpcTrafficMirrorSessionId7 = sourceId.then(sourceId => sourceId.sessions?.[0]?.id);
+ * const targetId = alicloud.vpc.getTrafficMirrorSessions({
+ *     ids: ["example_id"],
+ *     trafficMirrorTargetId: "example_value",
+ * });
+ * export const vpcTrafficMirrorSessionId8 = targetId.then(targetId => targetId.sessions?.[0]?.id);
+ * const status = alicloud.vpc.getTrafficMirrorSessions({
+ *     ids: ["example_id"],
+ *     status: "Created",
+ * });
+ * export const vpcTrafficMirrorSessionId9 = status.then(status => status.sessions?.[0]?.id);
+ * ```
+ */
 export function getTrafficMirrorSessionsOutput(args?: GetTrafficMirrorSessionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorSessionsResult> {
-    return pulumi.output(args).apply(a => getTrafficMirrorSessions(a, opts))
+    return pulumi.output(args).apply((a: any) => getTrafficMirrorSessions(a, opts))
 }
 
 /**

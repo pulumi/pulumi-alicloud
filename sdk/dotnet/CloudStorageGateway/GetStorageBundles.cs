@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public static class GetStorageBundles
     {
         public static Task<GetStorageBundlesResult> InvokeAsync(GetStorageBundlesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStorageBundlesResult>("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", args ?? new GetStorageBundlesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetStorageBundlesResult>("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", args ?? new GetStorageBundlesArgs(), options.WithDefaults());
 
         public static Output<GetStorageBundlesResult> Invoke(GetStorageBundlesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStorageBundlesResult>("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", args ?? new GetStorageBundlesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetStorageBundlesResult>("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", args ?? new GetStorageBundlesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetStorageBundlesArgs : Pulumi.InvokeArgs
+    public sealed class GetStorageBundlesArgs : global::Pulumi.InvokeArgs
     {
         [Input("backendBucketRegionId", required: true)]
         public string BackendBucketRegionId { get; set; } = null!;
@@ -47,9 +47,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GetStorageBundlesArgs()
         {
         }
+        public static new GetStorageBundlesArgs Empty => new GetStorageBundlesArgs();
     }
 
-    public sealed class GetStorageBundlesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetStorageBundlesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("backendBucketRegionId", required: true)]
         public Input<string> BackendBucketRegionId { get; set; } = null!;
@@ -77,6 +78,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GetStorageBundlesInvokeArgs()
         {
         }
+        public static new GetStorageBundlesInvokeArgs Empty => new GetStorageBundlesInvokeArgs();
     }
 
 

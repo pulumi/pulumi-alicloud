@@ -21,76 +21,82 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var zoneId = "cn-hangzhou-i";
-    ///         var defaultSwitches = defaultNetworks.Apply(defaultNetworks =&gt; Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///         {
-    ///             VpcId = defaultNetworks.Ids?[0],
-    ///             ZoneId = zoneId,
-    ///         })));
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             Description = "tf test",
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///         });
-    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             Owners = "system",
-    ///             NameRegex = "^centos_8",
-    ///             MostRecent = true,
-    ///         }));
-    ///         var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new AliCloud.Ecs.InstanceArgs
-    ///         {
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
-    ///             InstanceName = @var.Name,
-    ///             InstanceType = "ecs.g7se.large",
-    ///             AvailabilityZone = zoneId,
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             SystemDiskCategory = "cloud_essd",
-    ///             SecurityGroups = 
-    ///             {
-    ///                 defaultSecurityGroup.Id,
-    ///             },
-    ///         });
-    ///         var defaultDatabasefilesystem_instanceInstance = new AliCloud.DatabaseFilesystem.Instance("defaultDatabasefilesystem/instanceInstance", new AliCloud.DatabaseFilesystem.InstanceArgs
-    ///         {
-    ///             Category = "standard",
-    ///             ZoneId = defaultInstance.AvailabilityZone,
-    ///             PerformanceLevel = "PL1",
-    ///             InstanceName = @var.Name,
-    ///             Size = 100,
-    ///         });
-    ///         var defaultInstanceAttachment = new AliCloud.DatabaseFilesystem.InstanceAttachment("defaultInstanceAttachment", new AliCloud.DatabaseFilesystem.InstanceAttachmentArgs
-    ///         {
-    ///             EcsId = defaultInstance.Id,
-    ///             InstanceId = defaultDatabasefilesystem / instanceInstance.Id,
-    ///         });
-    ///         var example = new AliCloud.DatabaseFilesystem.Snapshot("example", new AliCloud.DatabaseFilesystem.SnapshotArgs
-    ///         {
-    ///             InstanceId = data.Alicloud_dbfs_instances.Default.Ids[0],
-    ///             SnapshotName = "example_value",
-    ///             Description = "example_value",
-    ///             RetentionDays = 30,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 defaultInstanceAttachment,
-    ///             },
-    ///         });
-    ///     }
+    ///         NameRegex = "default-NODELETING",
+    ///     });
     /// 
-    /// }
+    ///     var zoneId = "cn-hangzhou-i";
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         Description = "tf test",
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         Owners = "system",
+    ///         NameRegex = "^centos_8",
+    ///         MostRecent = true,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     {
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceName = @var.Name,
+    ///         InstanceType = "ecs.g7se.large",
+    ///         AvailabilityZone = zoneId,
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         SystemDiskCategory = "cloud_essd",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultDatabasefilesystem_instanceInstance = new AliCloud.DatabaseFilesystem.Instance("defaultDatabasefilesystem/instanceInstance", new()
+    ///     {
+    ///         Category = "standard",
+    ///         ZoneId = defaultInstance.AvailabilityZone,
+    ///         PerformanceLevel = "PL1",
+    ///         InstanceName = @var.Name,
+    ///         Size = 100,
+    ///     });
+    /// 
+    ///     var defaultInstanceAttachment = new AliCloud.DatabaseFilesystem.InstanceAttachment("defaultInstanceAttachment", new()
+    ///     {
+    ///         EcsId = defaultInstance.Id,
+    ///         InstanceId = defaultDatabasefilesystem / instanceInstance.Id,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.DatabaseFilesystem.Snapshot("example", new()
+    ///     {
+    ///         InstanceId = data.Alicloud_dbfs_instances.Default.Ids[0],
+    ///         SnapshotName = "example_value",
+    ///         Description = "example_value",
+    ///         RetentionDays = 30,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             defaultInstanceAttachment,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -102,7 +108,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:databasefilesystem/snapshot:Snapshot")]
-    public partial class Snapshot : Pulumi.CustomResource
+    public partial class Snapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
@@ -184,7 +190,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         }
     }
 
-    public sealed class SnapshotArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
@@ -219,9 +225,10 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public SnapshotArgs()
         {
         }
+        public static new SnapshotArgs Empty => new SnapshotArgs();
     }
 
-    public sealed class SnapshotState : Pulumi.ResourceArgs
+    public sealed class SnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
@@ -262,5 +269,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public SnapshotState()
         {
         }
+        public static new SnapshotState Empty => new SnapshotState();
     }
 }

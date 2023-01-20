@@ -74,6 +74,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string PaidType;
         /// <summary>
+        /// (Available in 1.194.0+) The number of partitions.
+        /// </summary>
+        public readonly int PartitionNum;
+        /// <summary>
         /// The SASL domain point of the instance.
         /// </summary>
         public readonly string SaslDomainEndpoint;
@@ -158,6 +162,8 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string paidType,
 
+            int partitionNum,
+
             string saslDomainEndpoint,
 
             string securityGroup,
@@ -199,6 +205,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
             MsgRetain = msgRetain;
             Name = name;
             PaidType = paidType;
+            PartitionNum = partitionNum;
             SaslDomainEndpoint = saslDomainEndpoint;
             SecurityGroup = securityGroup;
             ServiceStatus = serviceStatus;

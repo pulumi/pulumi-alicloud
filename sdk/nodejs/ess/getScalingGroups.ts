@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,24 +15,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const scalinggroupsDs = pulumi.output(alicloud.ess.getScalingGroups({
+ * const scalinggroupsDs = alicloud.ess.getScalingGroups({
  *     ids: [
  *         "scaling_group_id1",
  *         "scaling_group_id2",
  *     ],
  *     nameRegex: "scaling_group_name",
- * }));
- *
- * export const firstScalingGroup = scalinggroupsDs.groups[0].id;
+ * });
+ * export const firstScalingGroup = scalinggroupsDs.then(scalinggroupsDs => scalinggroupsDs.groups?.[0]?.id);
  * ```
  */
 export function getScalingGroups(args?: GetScalingGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ess/getScalingGroups:getScalingGroups", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -77,9 +74,27 @@ export interface GetScalingGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides available scaling group resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const scalinggroupsDs = alicloud.ess.getScalingGroups({
+ *     ids: [
+ *         "scaling_group_id1",
+ *         "scaling_group_id2",
+ *     ],
+ *     nameRegex: "scaling_group_name",
+ * });
+ * export const firstScalingGroup = scalinggroupsDs.then(scalinggroupsDs => scalinggroupsDs.groups?.[0]?.id);
+ * ```
+ */
 export function getScalingGroupsOutput(args?: GetScalingGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingGroupsResult> {
-    return pulumi.output(args).apply(a => getScalingGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getScalingGroups(a, opts))
 }
 
 /**

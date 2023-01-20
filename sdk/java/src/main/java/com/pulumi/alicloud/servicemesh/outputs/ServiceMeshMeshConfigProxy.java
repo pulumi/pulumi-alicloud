@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfigProxy {
     /**
-     * @return The CPU resource  of the limitsOPA proxy container.
+     * @return The limit cpu of the Sidecar injector Pods.
      * 
      */
     private @Nullable String limitCpu;
     /**
-     * @return The memory resource limit of the OPA proxy container.
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     private @Nullable String limitMemory;
     /**
-     * @return The CPU resource request of the OPA proxy container.
+     * @return The requested cpu the Sidecar injector Pods.
      * 
      */
     private @Nullable String requestCpu;
     /**
-     * @return The memory resource request of the OPA proxy container.
+     * @return The requested memory the Sidecar injector Pods.
      * 
      */
     private @Nullable String requestMemory;
 
     private ServiceMeshMeshConfigProxy() {}
     /**
-     * @return The CPU resource  of the limitsOPA proxy container.
+     * @return The limit cpu of the Sidecar injector Pods.
      * 
      */
     public Optional<String> limitCpu() {
         return Optional.ofNullable(this.limitCpu);
     }
     /**
-     * @return The memory resource limit of the OPA proxy container.
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     public Optional<String> limitMemory() {
         return Optional.ofNullable(this.limitMemory);
     }
     /**
-     * @return The CPU resource request of the OPA proxy container.
+     * @return The requested cpu the Sidecar injector Pods.
      * 
      */
     public Optional<String> requestCpu() {
         return Optional.ofNullable(this.requestCpu);
     }
     /**
-     * @return The memory resource request of the OPA proxy container.
+     * @return The requested memory the Sidecar injector Pods.
      * 
      */
     public Optional<String> requestMemory() {

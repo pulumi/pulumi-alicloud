@@ -292,8 +292,6 @@ type GetDomainsDomain struct {
 	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
 	LoadBalancing string `pulumi:"loadBalancing"`
 	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-	// * `key`: The key of label.
-	// * `value`: The value of label.
 	LogHeaders []GetDomainsDomainLogHeader `pulumi:"logHeaders"`
 	// The read timeout of a WAF exclusive cluster. Unit: seconds.
 	ReadTime int `pulumi:"readTime"`
@@ -346,8 +344,6 @@ type GetDomainsDomainArgs struct {
 	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
 	LoadBalancing pulumi.StringInput `pulumi:"loadBalancing"`
 	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-	// * `key`: The key of label.
-	// * `value`: The value of label.
 	LogHeaders GetDomainsDomainLogHeaderArrayInput `pulumi:"logHeaders"`
 	// The read timeout of a WAF exclusive cluster. Unit: seconds.
 	ReadTime pulumi.IntInput `pulumi:"readTime"`
@@ -478,8 +474,6 @@ func (o GetDomainsDomainOutput) LoadBalancing() pulumi.StringOutput {
 }
 
 // The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-// * `key`: The key of label.
-// * `value`: The value of label.
 func (o GetDomainsDomainOutput) LogHeaders() GetDomainsDomainLogHeaderArrayOutput {
 	return o.ApplyT(func(v GetDomainsDomain) []GetDomainsDomainLogHeader { return v.LogHeaders }).(GetDomainsDomainLogHeaderArrayOutput)
 }
@@ -530,7 +524,9 @@ func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOu
 }
 
 type GetDomainsDomainLogHeader struct {
-	Key   string `pulumi:"key"`
+	// The key of label.
+	Key string `pulumi:"key"`
+	// The value of label.
 	Value string `pulumi:"value"`
 }
 
@@ -546,7 +542,9 @@ type GetDomainsDomainLogHeaderInput interface {
 }
 
 type GetDomainsDomainLogHeaderArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// The key of label.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of label.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -601,10 +599,12 @@ func (o GetDomainsDomainLogHeaderOutput) ToGetDomainsDomainLogHeaderOutputWithCo
 	return o
 }
 
+// The key of label.
 func (o GetDomainsDomainLogHeaderOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomainLogHeader) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The value of label.
 func (o GetDomainsDomainLogHeaderOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomainLogHeader) string { return v.Value }).(pulumi.StringOutput)
 }

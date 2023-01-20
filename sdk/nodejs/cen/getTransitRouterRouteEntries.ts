@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -11,11 +12,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.126.0+
  */
 export function getTransitRouterRouteEntries(args: GetTransitRouterRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterRouteEntriesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -88,9 +86,13 @@ export interface GetTransitRouterRouteEntriesResult {
     readonly transitRouterRouteEntryStatus?: string;
     readonly transitRouterRouteTableId: string;
 }
-
+/**
+ * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+ *
+ * > **NOTE:** Available in 1.126.0+
+ */
 export function getTransitRouterRouteEntriesOutput(args: GetTransitRouterRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteEntriesResult> {
-    return pulumi.output(args).apply(a => getTransitRouterRouteEntries(a, opts))
+    return pulumi.output(args).apply((a: any) => getTransitRouterRouteEntries(a, opts))
 }
 
 /**

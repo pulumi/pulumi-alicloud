@@ -21,27 +21,25 @@ namespace Pulumi.AliCloud.Imp
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Imp.AppTemplate("example", new()
     ///     {
-    ///         var example = new AliCloud.Imp.AppTemplate("example", new AliCloud.Imp.AppTemplateArgs
+    ///         AppTemplateName = "example_value",
+    ///         ComponentLists = new[]
     ///         {
-    ///             AppTemplateName = "example_value",
-    ///             ComponentLists = 
-    ///             {
-    ///                 "component.live",
-    ///                 "component.liveRecord",
-    ///             },
-    ///             IntegrationMode = "paasSDK",
-    ///             Scene = "business",
-    ///         });
-    ///     }
+    ///             "component.live",
+    ///             "component.liveRecord",
+    ///         },
+    ///         IntegrationMode = "paasSDK",
+    ///         Scene = "business",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +51,7 @@ namespace Pulumi.AliCloud.Imp
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:imp/appTemplate:AppTemplate")]
-    public partial class AppTemplate : Pulumi.CustomResource
+    public partial class AppTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the resource.
@@ -137,7 +135,7 @@ namespace Pulumi.AliCloud.Imp
         }
     }
 
-    public sealed class AppTemplateArgs : Pulumi.ResourceArgs
+    public sealed class AppTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the resource.
@@ -186,9 +184,10 @@ namespace Pulumi.AliCloud.Imp
         public AppTemplateArgs()
         {
         }
+        public static new AppTemplateArgs Empty => new AppTemplateArgs();
     }
 
-    public sealed class AppTemplateState : Pulumi.ResourceArgs
+    public sealed class AppTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the resource.
@@ -243,5 +242,6 @@ namespace Pulumi.AliCloud.Imp
         public AppTemplateState()
         {
         }
+        public static new AppTemplateState Empty => new AppTemplateState();
     }
 }

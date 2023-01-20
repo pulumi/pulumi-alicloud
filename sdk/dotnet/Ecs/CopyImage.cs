@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     [AliCloudResourceType("alicloud:ecs/copyImage:CopyImage")]
-    public partial class CopyImage : Pulumi.CustomResource
+    public partial class CopyImage : global::Pulumi.CustomResource
     {
         [Output("deleteAutoSnapshot")]
         public Output<bool?> DeleteAutoSnapshot { get; private set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class CopyImageArgs : Pulumi.ResourceArgs
+    public sealed class CopyImageArgs : global::Pulumi.ResourceArgs
     {
         [Input("deleteAutoSnapshot")]
         public Input<bool>? DeleteAutoSnapshot { get; set; }
@@ -126,9 +126,10 @@ namespace Pulumi.AliCloud.Ecs
         public CopyImageArgs()
         {
         }
+        public static new CopyImageArgs Empty => new CopyImageArgs();
     }
 
-    public sealed class CopyImageState : Pulumi.ResourceArgs
+    public sealed class CopyImageState : global::Pulumi.ResourceArgs
     {
         [Input("deleteAutoSnapshot")]
         public Input<bool>? DeleteAutoSnapshot { get; set; }
@@ -168,5 +169,6 @@ namespace Pulumi.AliCloud.Ecs
         public CopyImageState()
         {
         }
+        public static new CopyImageState Empty => new CopyImageState();
     }
 }

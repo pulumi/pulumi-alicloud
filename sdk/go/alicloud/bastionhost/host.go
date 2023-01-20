@@ -81,9 +81,6 @@ type Host struct {
 	// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
 	OsType pulumi.StringOutput `pulumi:"osType"`
 	// Specify the new create a host of source. Valid values:
-	// * `Local`: localhost
-	// * `Ecs`:ECS instance
-	// * `Rds`:RDS exclusive cluster host.
 	Source pulumi.StringOutput `pulumi:"source"`
 	// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
 	SourceInstanceId pulumi.StringPtrOutput `pulumi:"sourceInstanceId"`
@@ -152,9 +149,6 @@ type hostState struct {
 	// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
 	OsType *string `pulumi:"osType"`
 	// Specify the new create a host of source. Valid values:
-	// * `Local`: localhost
-	// * `Ecs`:ECS instance
-	// * `Rds`:RDS exclusive cluster host.
 	Source *string `pulumi:"source"`
 	// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
 	SourceInstanceId *string `pulumi:"sourceInstanceId"`
@@ -180,9 +174,6 @@ type HostState struct {
 	// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
 	OsType pulumi.StringPtrInput
 	// Specify the new create a host of source. Valid values:
-	// * `Local`: localhost
-	// * `Ecs`:ECS instance
-	// * `Rds`:RDS exclusive cluster host.
 	Source pulumi.StringPtrInput
 	// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
 	SourceInstanceId pulumi.StringPtrInput
@@ -210,9 +201,6 @@ type hostArgs struct {
 	// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
 	OsType string `pulumi:"osType"`
 	// Specify the new create a host of source. Valid values:
-	// * `Local`: localhost
-	// * `Ecs`:ECS instance
-	// * `Rds`:RDS exclusive cluster host.
 	Source string `pulumi:"source"`
 	// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
 	SourceInstanceId *string `pulumi:"sourceInstanceId"`
@@ -237,9 +225,6 @@ type HostArgs struct {
 	// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
 	OsType pulumi.StringInput
 	// Specify the new create a host of source. Valid values:
-	// * `Local`: localhost
-	// * `Ecs`:ECS instance
-	// * `Rds`:RDS exclusive cluster host.
 	Source pulumi.StringInput
 	// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
 	SourceInstanceId pulumi.StringPtrInput
@@ -378,9 +363,6 @@ func (o HostOutput) OsType() pulumi.StringOutput {
 }
 
 // Specify the new create a host of source. Valid values:
-// * `Local`: localhost
-// * `Ecs`:ECS instance
-// * `Rds`:RDS exclusive cluster host.
 func (o HostOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v *Host) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
 }

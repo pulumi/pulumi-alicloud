@@ -189,72 +189,68 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        ms_server_group_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        ms_server_group_instance_types = alicloud.ecs.get_instance_types(availability_zone=ms_server_group_zones.zones[0].id,
             eni_amount=2)
         image = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
         config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccSlbMasterSlaveServerGroupVpc"
-        number = config.get("number")
-        if number is None:
-            number = "1"
-        main_network = alicloud.vpc.Network("mainNetwork", cidr_block="172.16.0.0/16")
+        slb_master_slave_server_group = config.get("slbMasterSlaveServerGroup")
+        if slb_master_slave_server_group is None:
+            slb_master_slave_server_group = "forSlbMasterSlaveServerGroup"
+        main_network = alicloud.vpc.Network("mainNetwork",
+            vpc_name=slb_master_slave_server_group,
+            cidr_block="172.16.0.0/16")
         main_switch = alicloud.vpc.Switch("mainSwitch",
             vpc_id=main_network.id,
             cidr_block="172.16.0.0/16",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            zone_id=ms_server_group_zones.zones[0].id,
+            vswitch_name=slb_master_slave_server_group)
         group_security_group = alicloud.ecs.SecurityGroup("groupSecurityGroup", vpc_id=main_network.id)
-        instance_instance = []
+        ms_server_group_instance = []
         for range in [{"value": i} for i in range(0, 2)]:
-            instance_instance.append(alicloud.ecs.Instance(f"instanceInstance-{range['value']}",
+            ms_server_group_instance.append(alicloud.ecs.Instance(f"msServerGroupInstance-{range['value']}",
                 image_id=image.images[0].id,
-                instance_type=default_instance_types.instance_types[0].id,
-                instance_name=name,
+                instance_type=ms_server_group_instance_types.instance_types[0].id,
+                instance_name=slb_master_slave_server_group,
                 security_groups=[group_security_group.id],
                 internet_charge_type="PayByTraffic",
                 internet_max_bandwidth_out=10,
-                availability_zone=default_zones.zones[0].id,
+                availability_zone=ms_server_group_zones.zones[0].id,
                 instance_charge_type="PostPaid",
                 system_disk_category="cloud_efficiency",
                 vswitch_id=main_switch.id))
-        instance_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("instanceApplicationLoadBalancer",
-            load_balancer_name=name,
+        ms_server_group_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("msServerGroupApplicationLoadBalancer",
+            load_balancer_name=slb_master_slave_server_group,
             vswitch_id=main_switch.id,
             load_balancer_spec="slb.s2.small")
-        default_network_interface = []
-        for range in [{"value": i} for i in range(0, number)]:
-            default_network_interface.append(alicloud.vpc.NetworkInterface(f"defaultNetworkInterface-{range['value']}",
-                vswitch_id=main_switch.id,
-                security_groups=[group_security_group.id]))
-        default_network_interface_attachment = []
-        for range in [{"value": i} for i in range(0, number)]:
-            default_network_interface_attachment.append(alicloud.vpc.NetworkInterfaceAttachment(f"defaultNetworkInterfaceAttachment-{range['value']}",
-                instance_id=instance_instance[0].id,
-                network_interface_id=[__item.id for __item in default_network_interface][range["index"]]))
+        ms_server_group_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("msServerGroupEcsNetworkInterface",
+            network_interface_name=slb_master_slave_server_group,
+            vswitch_id=main_switch.id,
+            security_group_ids=[group_security_group.id])
+        ms_server_group_ecs_network_interface_attachment = alicloud.ecs.EcsNetworkInterfaceAttachment("msServerGroupEcsNetworkInterfaceAttachment",
+            instance_id=ms_server_group_instance[0].id,
+            network_interface_id=ms_server_group_ecs_network_interface.id)
         group_master_slave_server_group = alicloud.slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup",
-            load_balancer_id=instance_application_load_balancer.id,
+            load_balancer_id=ms_server_group_application_load_balancer.id,
             servers=[
                 alicloud.slb.MasterSlaveServerGroupServerArgs(
-                    server_id=instance_instance[0].id,
+                    server_id=ms_server_group_instance[0].id,
                     port=100,
                     weight=100,
                     server_type="Master",
                 ),
                 alicloud.slb.MasterSlaveServerGroupServerArgs(
-                    server_id=instance_instance[1].id,
+                    server_id=ms_server_group_instance[1].id,
                     port=100,
                     weight=100,
                     server_type="Slave",
                 ),
             ])
         tcp = alicloud.slb.Listener("tcp",
-            load_balancer_id=instance_application_load_balancer.id,
+            load_balancer_id=ms_server_group_application_load_balancer.id,
             master_slave_server_group_id=group_master_slave_server_group.id,
             frontend_port=22,
             protocol="tcp",
@@ -325,72 +321,68 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        ms_server_group_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        ms_server_group_instance_types = alicloud.ecs.get_instance_types(availability_zone=ms_server_group_zones.zones[0].id,
             eni_amount=2)
         image = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
         config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccSlbMasterSlaveServerGroupVpc"
-        number = config.get("number")
-        if number is None:
-            number = "1"
-        main_network = alicloud.vpc.Network("mainNetwork", cidr_block="172.16.0.0/16")
+        slb_master_slave_server_group = config.get("slbMasterSlaveServerGroup")
+        if slb_master_slave_server_group is None:
+            slb_master_slave_server_group = "forSlbMasterSlaveServerGroup"
+        main_network = alicloud.vpc.Network("mainNetwork",
+            vpc_name=slb_master_slave_server_group,
+            cidr_block="172.16.0.0/16")
         main_switch = alicloud.vpc.Switch("mainSwitch",
             vpc_id=main_network.id,
             cidr_block="172.16.0.0/16",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            zone_id=ms_server_group_zones.zones[0].id,
+            vswitch_name=slb_master_slave_server_group)
         group_security_group = alicloud.ecs.SecurityGroup("groupSecurityGroup", vpc_id=main_network.id)
-        instance_instance = []
+        ms_server_group_instance = []
         for range in [{"value": i} for i in range(0, 2)]:
-            instance_instance.append(alicloud.ecs.Instance(f"instanceInstance-{range['value']}",
+            ms_server_group_instance.append(alicloud.ecs.Instance(f"msServerGroupInstance-{range['value']}",
                 image_id=image.images[0].id,
-                instance_type=default_instance_types.instance_types[0].id,
-                instance_name=name,
+                instance_type=ms_server_group_instance_types.instance_types[0].id,
+                instance_name=slb_master_slave_server_group,
                 security_groups=[group_security_group.id],
                 internet_charge_type="PayByTraffic",
                 internet_max_bandwidth_out=10,
-                availability_zone=default_zones.zones[0].id,
+                availability_zone=ms_server_group_zones.zones[0].id,
                 instance_charge_type="PostPaid",
                 system_disk_category="cloud_efficiency",
                 vswitch_id=main_switch.id))
-        instance_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("instanceApplicationLoadBalancer",
-            load_balancer_name=name,
+        ms_server_group_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("msServerGroupApplicationLoadBalancer",
+            load_balancer_name=slb_master_slave_server_group,
             vswitch_id=main_switch.id,
             load_balancer_spec="slb.s2.small")
-        default_network_interface = []
-        for range in [{"value": i} for i in range(0, number)]:
-            default_network_interface.append(alicloud.vpc.NetworkInterface(f"defaultNetworkInterface-{range['value']}",
-                vswitch_id=main_switch.id,
-                security_groups=[group_security_group.id]))
-        default_network_interface_attachment = []
-        for range in [{"value": i} for i in range(0, number)]:
-            default_network_interface_attachment.append(alicloud.vpc.NetworkInterfaceAttachment(f"defaultNetworkInterfaceAttachment-{range['value']}",
-                instance_id=instance_instance[0].id,
-                network_interface_id=[__item.id for __item in default_network_interface][range["index"]]))
+        ms_server_group_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("msServerGroupEcsNetworkInterface",
+            network_interface_name=slb_master_slave_server_group,
+            vswitch_id=main_switch.id,
+            security_group_ids=[group_security_group.id])
+        ms_server_group_ecs_network_interface_attachment = alicloud.ecs.EcsNetworkInterfaceAttachment("msServerGroupEcsNetworkInterfaceAttachment",
+            instance_id=ms_server_group_instance[0].id,
+            network_interface_id=ms_server_group_ecs_network_interface.id)
         group_master_slave_server_group = alicloud.slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup",
-            load_balancer_id=instance_application_load_balancer.id,
+            load_balancer_id=ms_server_group_application_load_balancer.id,
             servers=[
                 alicloud.slb.MasterSlaveServerGroupServerArgs(
-                    server_id=instance_instance[0].id,
+                    server_id=ms_server_group_instance[0].id,
                     port=100,
                     weight=100,
                     server_type="Master",
                 ),
                 alicloud.slb.MasterSlaveServerGroupServerArgs(
-                    server_id=instance_instance[1].id,
+                    server_id=ms_server_group_instance[1].id,
                     port=100,
                     weight=100,
                     server_type="Slave",
                 ),
             ])
         tcp = alicloud.slb.Listener("tcp",
-            load_balancer_id=instance_application_load_balancer.id,
+            load_balancer_id=ms_server_group_application_load_balancer.id,
             master_slave_server_group_id=group_master_slave_server_group.id,
             frontend_port=22,
             protocol="tcp",

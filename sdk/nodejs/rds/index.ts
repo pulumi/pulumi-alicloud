@@ -5,42 +5,141 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./account";
-export * from "./accountPrivilege";
-export * from "./backupPolicy";
-export * from "./connection";
-export * from "./database";
-export * from "./getAccounts";
-export * from "./getInstanceClasses";
-export * from "./getInstanceEngines";
-export * from "./getInstances";
-export * from "./getModifyParameterLogs";
-export * from "./getRdsBackups";
-export * from "./getRdsParameterGroups";
-export * from "./getZones";
-export * from "./instance";
-export * from "./rdsAccount";
-export * from "./rdsBackup";
-export * from "./rdsCloneDbInstance";
-export * from "./rdsParameterGroup";
-export * from "./rdsUpgradeDbInstance";
-export * from "./readOnlyInstance";
-export * from "./readWriteSplittingConnection";
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
 
-// Import resources to register:
-import { Account } from "./account";
-import { AccountPrivilege } from "./accountPrivilege";
-import { BackupPolicy } from "./backupPolicy";
-import { Connection } from "./connection";
-import { Database } from "./database";
-import { Instance } from "./instance";
-import { RdsAccount } from "./rdsAccount";
-import { RdsBackup } from "./rdsBackup";
-import { RdsCloneDbInstance } from "./rdsCloneDbInstance";
-import { RdsParameterGroup } from "./rdsParameterGroup";
-import { RdsUpgradeDbInstance } from "./rdsUpgradeDbInstance";
-import { ReadOnlyInstance } from "./readOnlyInstance";
-import { ReadWriteSplittingConnection } from "./readWriteSplittingConnection";
+export { AccountPrivilegeArgs, AccountPrivilegeState } from "./accountPrivilege";
+export type AccountPrivilege = import("./accountPrivilege").AccountPrivilege;
+export const AccountPrivilege: typeof import("./accountPrivilege").AccountPrivilege = null as any;
+utilities.lazyLoad(exports, ["AccountPrivilege"], () => require("./accountPrivilege"));
+
+export { BackupPolicyArgs, BackupPolicyState } from "./backupPolicy";
+export type BackupPolicy = import("./backupPolicy").BackupPolicy;
+export const BackupPolicy: typeof import("./backupPolicy").BackupPolicy = null as any;
+utilities.lazyLoad(exports, ["BackupPolicy"], () => require("./backupPolicy"));
+
+export { ConnectionArgs, ConnectionState } from "./connection";
+export type Connection = import("./connection").Connection;
+export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+
+export { DatabaseArgs, DatabaseState } from "./database";
+export type Database = import("./database").Database;
+export const Database: typeof import("./database").Database = null as any;
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
+
+export { GetAccountsArgs, GetAccountsResult, GetAccountsOutputArgs } from "./getAccounts";
+export const getAccounts: typeof import("./getAccounts").getAccounts = null as any;
+export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getAccounts","getAccountsOutput"], () => require("./getAccounts"));
+
+export { GetCrossRegionBackupsArgs, GetCrossRegionBackupsResult, GetCrossRegionBackupsOutputArgs } from "./getCrossRegionBackups";
+export const getCrossRegionBackups: typeof import("./getCrossRegionBackups").getCrossRegionBackups = null as any;
+export const getCrossRegionBackupsOutput: typeof import("./getCrossRegionBackups").getCrossRegionBackupsOutput = null as any;
+utilities.lazyLoad(exports, ["getCrossRegionBackups","getCrossRegionBackupsOutput"], () => require("./getCrossRegionBackups"));
+
+export { GetCrossRegionsArgs, GetCrossRegionsResult, GetCrossRegionsOutputArgs } from "./getCrossRegions";
+export const getCrossRegions: typeof import("./getCrossRegions").getCrossRegions = null as any;
+export const getCrossRegionsOutput: typeof import("./getCrossRegions").getCrossRegionsOutput = null as any;
+utilities.lazyLoad(exports, ["getCrossRegions","getCrossRegionsOutput"], () => require("./getCrossRegions"));
+
+export { GetInstanceClassInfosArgs, GetInstanceClassInfosResult, GetInstanceClassInfosOutputArgs } from "./getInstanceClassInfos";
+export const getInstanceClassInfos: typeof import("./getInstanceClassInfos").getInstanceClassInfos = null as any;
+export const getInstanceClassInfosOutput: typeof import("./getInstanceClassInfos").getInstanceClassInfosOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceClassInfos","getInstanceClassInfosOutput"], () => require("./getInstanceClassInfos"));
+
+export { GetInstanceClassesArgs, GetInstanceClassesResult, GetInstanceClassesOutputArgs } from "./getInstanceClasses";
+export const getInstanceClasses: typeof import("./getInstanceClasses").getInstanceClasses = null as any;
+export const getInstanceClassesOutput: typeof import("./getInstanceClasses").getInstanceClassesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceClasses","getInstanceClassesOutput"], () => require("./getInstanceClasses"));
+
+export { GetInstanceEnginesArgs, GetInstanceEnginesResult, GetInstanceEnginesOutputArgs } from "./getInstanceEngines";
+export const getInstanceEngines: typeof import("./getInstanceEngines").getInstanceEngines = null as any;
+export const getInstanceEnginesOutput: typeof import("./getInstanceEngines").getInstanceEnginesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceEngines","getInstanceEnginesOutput"], () => require("./getInstanceEngines"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetModifyParameterLogsArgs, GetModifyParameterLogsResult, GetModifyParameterLogsOutputArgs } from "./getModifyParameterLogs";
+export const getModifyParameterLogs: typeof import("./getModifyParameterLogs").getModifyParameterLogs = null as any;
+export const getModifyParameterLogsOutput: typeof import("./getModifyParameterLogs").getModifyParameterLogsOutput = null as any;
+utilities.lazyLoad(exports, ["getModifyParameterLogs","getModifyParameterLogsOutput"], () => require("./getModifyParameterLogs"));
+
+export { GetRdsBackupsArgs, GetRdsBackupsResult, GetRdsBackupsOutputArgs } from "./getRdsBackups";
+export const getRdsBackups: typeof import("./getRdsBackups").getRdsBackups = null as any;
+export const getRdsBackupsOutput: typeof import("./getRdsBackups").getRdsBackupsOutput = null as any;
+utilities.lazyLoad(exports, ["getRdsBackups","getRdsBackupsOutput"], () => require("./getRdsBackups"));
+
+export { GetRdsParameterGroupsArgs, GetRdsParameterGroupsResult, GetRdsParameterGroupsOutputArgs } from "./getRdsParameterGroups";
+export const getRdsParameterGroups: typeof import("./getRdsParameterGroups").getRdsParameterGroups = null as any;
+export const getRdsParameterGroupsOutput: typeof import("./getRdsParameterGroups").getRdsParameterGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getRdsParameterGroups","getRdsParameterGroupsOutput"], () => require("./getRdsParameterGroups"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { RdsAccountArgs, RdsAccountState } from "./rdsAccount";
+export type RdsAccount = import("./rdsAccount").RdsAccount;
+export const RdsAccount: typeof import("./rdsAccount").RdsAccount = null as any;
+utilities.lazyLoad(exports, ["RdsAccount"], () => require("./rdsAccount"));
+
+export { RdsBackupArgs, RdsBackupState } from "./rdsBackup";
+export type RdsBackup = import("./rdsBackup").RdsBackup;
+export const RdsBackup: typeof import("./rdsBackup").RdsBackup = null as any;
+utilities.lazyLoad(exports, ["RdsBackup"], () => require("./rdsBackup"));
+
+export { RdsCloneDbInstanceArgs, RdsCloneDbInstanceState } from "./rdsCloneDbInstance";
+export type RdsCloneDbInstance = import("./rdsCloneDbInstance").RdsCloneDbInstance;
+export const RdsCloneDbInstance: typeof import("./rdsCloneDbInstance").RdsCloneDbInstance = null as any;
+utilities.lazyLoad(exports, ["RdsCloneDbInstance"], () => require("./rdsCloneDbInstance"));
+
+export { RdsDbProxyArgs, RdsDbProxyState } from "./rdsDbProxy";
+export type RdsDbProxy = import("./rdsDbProxy").RdsDbProxy;
+export const RdsDbProxy: typeof import("./rdsDbProxy").RdsDbProxy = null as any;
+utilities.lazyLoad(exports, ["RdsDbProxy"], () => require("./rdsDbProxy"));
+
+export { RdsInstanceCrossBackupPolicyArgs, RdsInstanceCrossBackupPolicyState } from "./rdsInstanceCrossBackupPolicy";
+export type RdsInstanceCrossBackupPolicy = import("./rdsInstanceCrossBackupPolicy").RdsInstanceCrossBackupPolicy;
+export const RdsInstanceCrossBackupPolicy: typeof import("./rdsInstanceCrossBackupPolicy").RdsInstanceCrossBackupPolicy = null as any;
+utilities.lazyLoad(exports, ["RdsInstanceCrossBackupPolicy"], () => require("./rdsInstanceCrossBackupPolicy"));
+
+export { RdsParameterGroupArgs, RdsParameterGroupState } from "./rdsParameterGroup";
+export type RdsParameterGroup = import("./rdsParameterGroup").RdsParameterGroup;
+export const RdsParameterGroup: typeof import("./rdsParameterGroup").RdsParameterGroup = null as any;
+utilities.lazyLoad(exports, ["RdsParameterGroup"], () => require("./rdsParameterGroup"));
+
+export { RdsServiceLinkedRoleArgs, RdsServiceLinkedRoleState } from "./rdsServiceLinkedRole";
+export type RdsServiceLinkedRole = import("./rdsServiceLinkedRole").RdsServiceLinkedRole;
+export const RdsServiceLinkedRole: typeof import("./rdsServiceLinkedRole").RdsServiceLinkedRole = null as any;
+utilities.lazyLoad(exports, ["RdsServiceLinkedRole"], () => require("./rdsServiceLinkedRole"));
+
+export { RdsUpgradeDbInstanceArgs, RdsUpgradeDbInstanceState } from "./rdsUpgradeDbInstance";
+export type RdsUpgradeDbInstance = import("./rdsUpgradeDbInstance").RdsUpgradeDbInstance;
+export const RdsUpgradeDbInstance: typeof import("./rdsUpgradeDbInstance").RdsUpgradeDbInstance = null as any;
+utilities.lazyLoad(exports, ["RdsUpgradeDbInstance"], () => require("./rdsUpgradeDbInstance"));
+
+export { ReadOnlyInstanceArgs, ReadOnlyInstanceState } from "./readOnlyInstance";
+export type ReadOnlyInstance = import("./readOnlyInstance").ReadOnlyInstance;
+export const ReadOnlyInstance: typeof import("./readOnlyInstance").ReadOnlyInstance = null as any;
+utilities.lazyLoad(exports, ["ReadOnlyInstance"], () => require("./readOnlyInstance"));
+
+export { ReadWriteSplittingConnectionArgs, ReadWriteSplittingConnectionState } from "./readWriteSplittingConnection";
+export type ReadWriteSplittingConnection = import("./readWriteSplittingConnection").ReadWriteSplittingConnection;
+export const ReadWriteSplittingConnection: typeof import("./readWriteSplittingConnection").ReadWriteSplittingConnection = null as any;
+utilities.lazyLoad(exports, ["ReadWriteSplittingConnection"], () => require("./readWriteSplittingConnection"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -64,8 +163,14 @@ const _module = {
                 return new RdsBackup(name, <any>undefined, { urn })
             case "alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance":
                 return new RdsCloneDbInstance(name, <any>undefined, { urn })
+            case "alicloud:rds/rdsDbProxy:RdsDbProxy":
+                return new RdsDbProxy(name, <any>undefined, { urn })
+            case "alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy":
+                return new RdsInstanceCrossBackupPolicy(name, <any>undefined, { urn })
             case "alicloud:rds/rdsParameterGroup:RdsParameterGroup":
                 return new RdsParameterGroup(name, <any>undefined, { urn })
+            case "alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole":
+                return new RdsServiceLinkedRole(name, <any>undefined, { urn })
             case "alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance":
                 return new RdsUpgradeDbInstance(name, <any>undefined, { urn })
             case "alicloud:rds/readOnlyInstance:ReadOnlyInstance":
@@ -86,7 +191,10 @@ pulumi.runtime.registerResourceModule("alicloud", "rds/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsBackup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsCloneDbInstance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/rdsDbProxy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/rdsInstanceCrossBackupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsParameterGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/rdsServiceLinkedRole", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsUpgradeDbInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/readOnlyInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/readWriteSplittingConnection", _module)

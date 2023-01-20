@@ -52,7 +52,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.slb.Acl;
  * import com.pulumi.alicloud.slb.AclArgs;
- * import com.pulumi.alicloud.slb.inputs.AclEntryListArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -66,20 +65,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraformslbaclconfig&#34;);
- *         final var ipVersion = config.get(&#34;ipVersion&#34;).orElse(&#34;ipv4&#34;);
- *         var default_ = new Acl(&#34;default&#34;, AclArgs.builder()        
- *             .ipVersion(ipVersion)
- *             .entryLists(            
- *                 AclEntryListArgs.builder()
- *                     .entry(&#34;10.10.10.0/24&#34;)
- *                     .comment(&#34;first&#34;)
- *                     .build(),
- *                 AclEntryListArgs.builder()
- *                     .entry(&#34;168.10.10.0/24&#34;)
- *                     .comment(&#34;second&#34;)
- *                     .build())
+ *         var acl = new Acl(&#34;acl&#34;, AclArgs.builder()        
+ *             .ipVersion(&#34;ipv4&#34;)
  *             .build());
  * 
  *     }

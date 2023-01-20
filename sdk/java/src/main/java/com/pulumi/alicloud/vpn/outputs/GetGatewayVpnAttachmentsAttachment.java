@@ -56,6 +56,11 @@ public final class GetGatewayVpnAttachmentsAttachment {
      */
     private List<GetGatewayVpnAttachmentsAttachmentIkeConfig> ikeConfigs;
     /**
+     * @return The internet ip of the resource. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+     * 
+     */
+    private String internetIp;
+    /**
      * @return The configuration of Phase 2 negotiations.
      * 
      */
@@ -149,6 +154,13 @@ public final class GetGatewayVpnAttachmentsAttachment {
         return this.ikeConfigs;
     }
     /**
+     * @return The internet ip of the resource. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+     * 
+     */
+    public String internetIp() {
+        return this.internetIp;
+    }
+    /**
      * @return The configuration of Phase 2 negotiations.
      * 
      */
@@ -215,6 +227,7 @@ public final class GetGatewayVpnAttachmentsAttachment {
         private List<GetGatewayVpnAttachmentsAttachmentHealthCheckConfig> healthCheckConfigs;
         private String id;
         private List<GetGatewayVpnAttachmentsAttachmentIkeConfig> ikeConfigs;
+        private String internetIp;
         private List<GetGatewayVpnAttachmentsAttachmentIpsecConfig> ipsecConfigs;
         private String localSubnet;
         private String networkType;
@@ -233,6 +246,7 @@ public final class GetGatewayVpnAttachmentsAttachment {
     	      this.healthCheckConfigs = defaults.healthCheckConfigs;
     	      this.id = defaults.id;
     	      this.ikeConfigs = defaults.ikeConfigs;
+    	      this.internetIp = defaults.internetIp;
     	      this.ipsecConfigs = defaults.ipsecConfigs;
     	      this.localSubnet = defaults.localSubnet;
     	      this.networkType = defaults.networkType;
@@ -292,6 +306,11 @@ public final class GetGatewayVpnAttachmentsAttachment {
             return ikeConfigs(List.of(ikeConfigs));
         }
         @CustomType.Setter
+        public Builder internetIp(String internetIp) {
+            this.internetIp = Objects.requireNonNull(internetIp);
+            return this;
+        }
+        @CustomType.Setter
         public Builder ipsecConfigs(List<GetGatewayVpnAttachmentsAttachmentIpsecConfig> ipsecConfigs) {
             this.ipsecConfigs = Objects.requireNonNull(ipsecConfigs);
             return this;
@@ -339,6 +358,7 @@ public final class GetGatewayVpnAttachmentsAttachment {
             o.healthCheckConfigs = healthCheckConfigs;
             o.id = id;
             o.ikeConfigs = ikeConfigs;
+            o.internetIp = internetIp;
             o.ipsecConfigs = ipsecConfigs;
             o.localSubnet = localSubnet;
             o.networkType = networkType;

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb.Inputs
 {
 
-    public sealed class AclEntryListArgs : Pulumi.ResourceArgs
+    public sealed class AclEntryListArgs : global::Pulumi.ResourceArgs
     {
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Slb.Inputs
         public AclEntryListArgs()
         {
         }
+        public static new AclEntryListArgs Empty => new AclEntryListArgs();
     }
 }

@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.Dns
     public static class GetDomainGroups
     {
         public static Task<GetDomainGroupsResult> InvokeAsync(GetDomainGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? new GetDomainGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? new GetDomainGroupsArgs(), options.WithDefaults());
 
         public static Output<GetDomainGroupsResult> Invoke(GetDomainGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? new GetDomainGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? new GetDomainGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDomainGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainGroupsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -38,9 +38,10 @@ namespace Pulumi.AliCloud.Dns
         public GetDomainGroupsArgs()
         {
         }
+        public static new GetDomainGroupsArgs Empty => new GetDomainGroupsArgs();
     }
 
-    public sealed class GetDomainGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -59,6 +60,7 @@ namespace Pulumi.AliCloud.Dns
         public GetDomainGroupsInvokeArgs()
         {
         }
+        public static new GetDomainGroupsInvokeArgs Empty => new GetDomainGroupsInvokeArgs();
     }
 
 

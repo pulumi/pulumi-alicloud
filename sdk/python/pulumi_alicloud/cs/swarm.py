@@ -514,7 +514,7 @@ class Swarm(pulumi.CustomResource):
             __props__.__dict__["node_number"] = node_number
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["release_eip"] = release_eip
             if size is not None and not opts.urn:
                 warnings.warn("""Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""", DeprecationWarning)
@@ -528,6 +528,8 @@ class Swarm(pulumi.CustomResource):
             __props__.__dict__["security_group_id"] = None
             __props__.__dict__["slb_id"] = None
             __props__.__dict__["vpc_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Swarm, __self__).__init__(
             'alicloud:cs/swarm:Swarm',
             resource_name,

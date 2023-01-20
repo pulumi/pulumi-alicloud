@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,18 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const sampleDs = pulumi.output(alicloud.slb.getCaCertificates());
- *
- * export const firstSlbCaCertificateId = sampleDs.certificates[0].id;
+ * const sampleDs = alicloud.slb.getCaCertificates({});
+ * export const firstSlbCaCertificateId = sampleDs.then(sampleDs => sampleDs.certificates?.[0]?.id);
  * ```
  */
 export function getCaCertificates(args?: GetCaCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCaCertificatesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getCaCertificates:getCaCertificates", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -89,9 +86,21 @@ export interface GetCaCertificatesResult {
      */
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides the CA certificate list.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const sampleDs = alicloud.slb.getCaCertificates({});
+ * export const firstSlbCaCertificateId = sampleDs.then(sampleDs => sampleDs.certificates?.[0]?.id);
+ * ```
+ */
 export function getCaCertificatesOutput(args?: GetCaCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaCertificatesResult> {
-    return pulumi.output(args).apply(a => getCaCertificates(a, opts))
+    return pulumi.output(args).apply((a: any) => getCaCertificates(a, opts))
 }
 
 /**

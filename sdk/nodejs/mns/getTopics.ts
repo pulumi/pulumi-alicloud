@@ -2,32 +2,27 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const topics = pulumi.output(alicloud.mns.getTopics({
+ * const topics = alicloud.mns.getTopics({
  *     namePrefix: "tf-",
- * }));
- *
- * export const firstTopicId = topics.topics[0].id;
+ * });
+ * export const firstTopicId = topics.then(topics => topics.topics?.[0]?.id);
  * ```
  */
 export function getTopics(args?: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mns/getTopics:getTopics", {
         "namePrefix": args.namePrefix,
         "outputFile": args.outputFile,
@@ -64,9 +59,21 @@ export interface GetTopicsResult {
      */
     readonly topics: outputs.mns.GetTopicsTopic[];
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const topics = alicloud.mns.getTopics({
+ *     namePrefix: "tf-",
+ * });
+ * export const firstTopicId = topics.then(topics => topics.topics?.[0]?.id);
+ * ```
+ */
 export function getTopicsOutput(args?: GetTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicsResult> {
-    return pulumi.output(args).apply(a => getTopics(a, opts))
+    return pulumi.output(args).apply((a: any) => getTopics(a, opts))
 }
 
 /**

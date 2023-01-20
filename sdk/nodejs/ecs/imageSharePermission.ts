@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultImageSharePermission = new alicloud.ecs.ImageSharePermission("default", {
+ * const _default = new alicloud.ecs.ImageSharePermission("default", {
  *     accountId: "1234567890",
  *     imageId: "m-bp1gxyh***",
  * });

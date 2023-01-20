@@ -2,15 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getStorageBundles(args: GetStorageBundlesArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageBundlesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", {
         "backendBucketRegionId": args.backendBucketRegionId,
         "ids": args.ids,
@@ -51,9 +49,8 @@ export interface GetStorageBundlesResult {
     readonly pageSize?: number;
     readonly totalCount: number;
 }
-
 export function getStorageBundlesOutput(args: GetStorageBundlesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageBundlesResult> {
-    return pulumi.output(args).apply(a => getStorageBundles(a, opts))
+    return pulumi.output(args).apply((a: any) => getStorageBundles(a, opts))
 }
 
 /**

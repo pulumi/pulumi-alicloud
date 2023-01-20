@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Sae.Inputs
 {
 
-    public sealed class GreyTagRouteScRuleItemArgs : Pulumi.ResourceArgs
+    public sealed class GreyTagRouteScRuleItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public GreyTagRouteScRuleItemArgs()
         {
         }
+        public static new GreyTagRouteScRuleItemArgs Empty => new GreyTagRouteScRuleItemArgs();
     }
 }

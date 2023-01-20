@@ -19,46 +19,47 @@ namespace Pulumi.AliCloud.Amqp
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleVirtualHost = new AliCloud.Amqp.VirtualHost("exampleVirtualHost", new()
     ///     {
-    ///         var exampleVirtualHost = new AliCloud.Amqp.VirtualHost("exampleVirtualHost", new AliCloud.Amqp.VirtualHostArgs
-    ///         {
-    ///             InstanceId = "amqp-abc12345",
-    ///             VirtualHostName = "my-VirtualHost",
-    ///         });
-    ///         var exampleExchange = new AliCloud.Amqp.Exchange("exampleExchange", new AliCloud.Amqp.ExchangeArgs
-    ///         {
-    ///             AutoDeleteState = false,
-    ///             ExchangeName = "my-Exchange",
-    ///             ExchangeType = "HEADERS",
-    ///             InstanceId = exampleVirtualHost.InstanceId,
-    ///             Internal = false,
-    ///             VirtualHostName = exampleVirtualHost.VirtualHostName,
-    ///         });
-    ///         var exampleQueue = new AliCloud.Amqp.Queue("exampleQueue", new AliCloud.Amqp.QueueArgs
-    ///         {
-    ///             InstanceId = exampleVirtualHost.InstanceId,
-    ///             QueueName = "my-Queue",
-    ///             VirtualHostName = exampleVirtualHost.VirtualHostName,
-    ///         });
-    ///         var exampleBinding = new AliCloud.Amqp.Binding("exampleBinding", new AliCloud.Amqp.BindingArgs
-    ///         {
-    ///             Argument = "x-match:all",
-    ///             BindingKey = exampleQueue.QueueName,
-    ///             BindingType = "QUEUE",
-    ///             DestinationName = "binding-queue",
-    ///             InstanceId = exampleExchange.InstanceId,
-    ///             SourceExchange = exampleExchange.ExchangeName,
-    ///             VirtualHostName = exampleExchange.VirtualHostName,
-    ///         });
-    ///     }
+    ///         InstanceId = "amqp-abc12345",
+    ///         VirtualHostName = "my-VirtualHost",
+    ///     });
     /// 
-    /// }
+    ///     var exampleExchange = new AliCloud.Amqp.Exchange("exampleExchange", new()
+    ///     {
+    ///         AutoDeleteState = false,
+    ///         ExchangeName = "my-Exchange",
+    ///         ExchangeType = "HEADERS",
+    ///         InstanceId = exampleVirtualHost.InstanceId,
+    ///         Internal = false,
+    ///         VirtualHostName = exampleVirtualHost.VirtualHostName,
+    ///     });
+    /// 
+    ///     var exampleQueue = new AliCloud.Amqp.Queue("exampleQueue", new()
+    ///     {
+    ///         InstanceId = exampleVirtualHost.InstanceId,
+    ///         QueueName = "my-Queue",
+    ///         VirtualHostName = exampleVirtualHost.VirtualHostName,
+    ///     });
+    /// 
+    ///     var exampleBinding = new AliCloud.Amqp.Binding("exampleBinding", new()
+    ///     {
+    ///         Argument = "x-match:all",
+    ///         BindingKey = exampleQueue.QueueName,
+    ///         BindingType = "QUEUE",
+    ///         DestinationName = "binding-queue",
+    ///         InstanceId = exampleExchange.InstanceId,
+    ///         SourceExchange = exampleExchange.ExchangeName,
+    ///         VirtualHostName = exampleExchange.VirtualHostName,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -70,7 +71,7 @@ namespace Pulumi.AliCloud.Amqp
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:amqp/binding:Binding")]
-    public partial class Binding : Pulumi.CustomResource
+    public partial class Binding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// X-match Attributes. Valid Values: 
@@ -165,7 +166,7 @@ namespace Pulumi.AliCloud.Amqp
         }
     }
 
-    public sealed class BindingArgs : Pulumi.ResourceArgs
+    public sealed class BindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// X-match Attributes. Valid Values: 
@@ -219,9 +220,10 @@ namespace Pulumi.AliCloud.Amqp
         public BindingArgs()
         {
         }
+        public static new BindingArgs Empty => new BindingArgs();
     }
 
-    public sealed class BindingState : Pulumi.ResourceArgs
+    public sealed class BindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// X-match Attributes. Valid Values: 
@@ -275,5 +277,6 @@ namespace Pulumi.AliCloud.Amqp
         public BindingState()
         {
         }
+        public static new BindingState Empty => new BindingState();
     }
 }

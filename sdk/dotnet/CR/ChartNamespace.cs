@@ -21,28 +21,27 @@ namespace Pulumi.AliCloud.CR
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", new()
     ///     {
-    ///         var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", new AliCloud.CR.RegistryEnterpriseInstanceArgs
-    ///         {
-    ///             PaymentType = "Subscription",
-    ///             Period = 1,
-    ///             InstanceType = "Advanced",
-    ///             InstanceName = "name",
-    ///         });
-    ///         var defaultChartNamespace = new AliCloud.CR.ChartNamespace("defaultChartNamespace", new AliCloud.CR.ChartNamespaceArgs
-    ///         {
-    ///             InstanceId = defaultRegistryEnterpriseInstance.Id,
-    ///             NamespaceName = "name",
-    ///         });
-    ///     }
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = "name",
+    ///     });
     /// 
-    /// }
+    ///     var defaultChartNamespace = new AliCloud.CR.ChartNamespace("defaultChartNamespace", new()
+    ///     {
+    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
+    ///         NamespaceName = "name",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +53,7 @@ namespace Pulumi.AliCloud.CR
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cr/chartNamespace:ChartNamespace")]
-    public partial class ChartNamespace : Pulumi.CustomResource
+    public partial class ChartNamespace : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies whether to automatically create repositories in the namespace. Valid values:
@@ -124,7 +123,7 @@ namespace Pulumi.AliCloud.CR
         }
     }
 
-    public sealed class ChartNamespaceArgs : Pulumi.ResourceArgs
+    public sealed class ChartNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to automatically create repositories in the namespace. Valid values:
@@ -153,9 +152,10 @@ namespace Pulumi.AliCloud.CR
         public ChartNamespaceArgs()
         {
         }
+        public static new ChartNamespaceArgs Empty => new ChartNamespaceArgs();
     }
 
-    public sealed class ChartNamespaceState : Pulumi.ResourceArgs
+    public sealed class ChartNamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to automatically create repositories in the namespace. Valid values:
@@ -184,5 +184,6 @@ namespace Pulumi.AliCloud.CR
         public ChartNamespaceState()
         {
         }
+        public static new ChartNamespaceState Empty => new ChartNamespaceState();
     }
 }

@@ -25,7 +25,7 @@ public final class ClusterConfig {
      */
     private String fileName;
     /**
-     * @return Cluster service configuration modification name, e.g. ’HDFS’.
+     * @return Custom configuration service name, e.g. ’HDFS’.
      * 
      */
     private String serviceName;
@@ -53,7 +53,7 @@ public final class ClusterConfig {
         return this.fileName;
     }
     /**
-     * @return Cluster service configuration modification name, e.g. ’HDFS’.
+     * @return Custom configuration service name, e.g. ’HDFS’.
      * 
      */
     public String serviceName() {

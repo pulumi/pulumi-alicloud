@@ -39,7 +39,7 @@ import (
 //			}
 //			defaultDomain, err := waf.NewDomain(ctx, "defaultDomain", &waf.DomainArgs{
 //				DomainName:      pulumi.String("you domain"),
-//				InstanceId:      pulumi.String(defaultInstances.Ids[0]),
+//				InstanceId:      *pulumi.String(defaultInstances.Ids[0]),
 //				IsAccessProduct: pulumi.String("On"),
 //				SourceIps: pulumi.StringArray{
 //					pulumi.String("1.1.1.1"),
@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			_, err = waf.NewProtectionModule(ctx, "defaultProtectionModule", &waf.ProtectionModuleArgs{
-//				InstanceId:  pulumi.String(defaultInstances.Ids[0]),
+//				InstanceId:  *pulumi.String(defaultInstances.Ids[0]),
 //				Domain:      defaultDomain.DomainName,
 //				DefenseType: pulumi.String("ac_cc"),
 //				Mode:        pulumi.Int(0),
@@ -96,11 +96,6 @@ type ProtectionModule struct {
 	pulumi.CustomResourceState
 
 	// The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
-	// * `waf`: RegEx Protection Engine.
-	// * `dld`: Big Data Deep Learning Engine.
-	// * `acCc`: HTTP Flood Protection.
-	// * `antifraud`: Data Risk Control.
-	// * `normalized`: Positive Security Model.
 	DefenseType pulumi.StringOutput `pulumi:"defenseType"`
 	// The domain name that is added to WAF.
 	Domain pulumi.StringOutput `pulumi:"domain"`
@@ -114,8 +109,6 @@ type ProtectionModule struct {
 	// * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
 	Mode pulumi.IntOutput `pulumi:"mode"`
 	// The status of the resource. Valid values: `0`, `1`.
-	// * `0`: disables the protection module.
-	// * `1`: enables the protection module.
 	Status pulumi.IntPtrOutput `pulumi:"status"`
 }
 
@@ -161,11 +154,6 @@ func GetProtectionModule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ProtectionModule resources.
 type protectionModuleState struct {
 	// The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
-	// * `waf`: RegEx Protection Engine.
-	// * `dld`: Big Data Deep Learning Engine.
-	// * `acCc`: HTTP Flood Protection.
-	// * `antifraud`: Data Risk Control.
-	// * `normalized`: Positive Security Model.
 	DefenseType *string `pulumi:"defenseType"`
 	// The domain name that is added to WAF.
 	Domain *string `pulumi:"domain"`
@@ -179,18 +167,11 @@ type protectionModuleState struct {
 	// * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
 	Mode *int `pulumi:"mode"`
 	// The status of the resource. Valid values: `0`, `1`.
-	// * `0`: disables the protection module.
-	// * `1`: enables the protection module.
 	Status *int `pulumi:"status"`
 }
 
 type ProtectionModuleState struct {
 	// The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
-	// * `waf`: RegEx Protection Engine.
-	// * `dld`: Big Data Deep Learning Engine.
-	// * `acCc`: HTTP Flood Protection.
-	// * `antifraud`: Data Risk Control.
-	// * `normalized`: Positive Security Model.
 	DefenseType pulumi.StringPtrInput
 	// The domain name that is added to WAF.
 	Domain pulumi.StringPtrInput
@@ -204,8 +185,6 @@ type ProtectionModuleState struct {
 	// * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
 	Mode pulumi.IntPtrInput
 	// The status of the resource. Valid values: `0`, `1`.
-	// * `0`: disables the protection module.
-	// * `1`: enables the protection module.
 	Status pulumi.IntPtrInput
 }
 
@@ -215,11 +194,6 @@ func (ProtectionModuleState) ElementType() reflect.Type {
 
 type protectionModuleArgs struct {
 	// The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
-	// * `waf`: RegEx Protection Engine.
-	// * `dld`: Big Data Deep Learning Engine.
-	// * `acCc`: HTTP Flood Protection.
-	// * `antifraud`: Data Risk Control.
-	// * `normalized`: Positive Security Model.
 	DefenseType string `pulumi:"defenseType"`
 	// The domain name that is added to WAF.
 	Domain string `pulumi:"domain"`
@@ -233,19 +207,12 @@ type protectionModuleArgs struct {
 	// * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
 	Mode int `pulumi:"mode"`
 	// The status of the resource. Valid values: `0`, `1`.
-	// * `0`: disables the protection module.
-	// * `1`: enables the protection module.
 	Status *int `pulumi:"status"`
 }
 
 // The set of arguments for constructing a ProtectionModule resource.
 type ProtectionModuleArgs struct {
 	// The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
-	// * `waf`: RegEx Protection Engine.
-	// * `dld`: Big Data Deep Learning Engine.
-	// * `acCc`: HTTP Flood Protection.
-	// * `antifraud`: Data Risk Control.
-	// * `normalized`: Positive Security Model.
 	DefenseType pulumi.StringInput
 	// The domain name that is added to WAF.
 	Domain pulumi.StringInput
@@ -259,8 +226,6 @@ type ProtectionModuleArgs struct {
 	// * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
 	Mode pulumi.IntInput
 	// The status of the resource. Valid values: `0`, `1`.
-	// * `0`: disables the protection module.
-	// * `1`: enables the protection module.
 	Status pulumi.IntPtrInput
 }
 
@@ -352,11 +317,6 @@ func (o ProtectionModuleOutput) ToProtectionModuleOutputWithContext(ctx context.
 }
 
 // The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
-// * `waf`: RegEx Protection Engine.
-// * `dld`: Big Data Deep Learning Engine.
-// * `acCc`: HTTP Flood Protection.
-// * `antifraud`: Data Risk Control.
-// * `normalized`: Positive Security Model.
 func (o ProtectionModuleOutput) DefenseType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProtectionModule) pulumi.StringOutput { return v.DefenseType }).(pulumi.StringOutput)
 }
@@ -382,8 +342,6 @@ func (o ProtectionModuleOutput) Mode() pulumi.IntOutput {
 }
 
 // The status of the resource. Valid values: `0`, `1`.
-// * `0`: disables the protection module.
-// * `1`: enables the protection module.
 func (o ProtectionModuleOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProtectionModule) pulumi.IntPtrOutput { return v.Status }).(pulumi.IntPtrOutput)
 }

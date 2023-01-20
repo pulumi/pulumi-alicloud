@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,20 +26,17 @@ import * as utilities from "../utilities";
  *         "2",
  *     ],
  * });
- * export const bastionhostUserGroupId1 = ids.then(ids => ids.groups?[0]?.id);
+ * export const bastionhostUserGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
  * const nameRegex = alicloud.bastionhost.getUserGroups({
  *     instanceId: "bastionhost-cn-xxxx",
  *     nameRegex: "^my-UserGroup",
  * });
- * export const bastionhostUserGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
+ * export const bastionhostUserGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
 export function getUserGroups(args: GetUserGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserGroupsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:bastionhost/getUserGroups:getUserGroups", {
         "ids": args.ids,
         "instanceId": args.instanceId,
@@ -87,9 +85,36 @@ export interface GetUserGroupsResult {
     readonly outputFile?: string;
     readonly userGroupName?: string;
 }
-
+/**
+ * This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.132.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.bastionhost.getUserGroups({
+ *     instanceId: "bastionhost-cn-xxxx",
+ *     ids: [
+ *         "1",
+ *         "2",
+ *     ],
+ * });
+ * export const bastionhostUserGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * const nameRegex = alicloud.bastionhost.getUserGroups({
+ *     instanceId: "bastionhost-cn-xxxx",
+ *     nameRegex: "^my-UserGroup",
+ * });
+ * export const bastionhostUserGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * ```
+ */
 export function getUserGroupsOutput(args: GetUserGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserGroupsResult> {
-    return pulumi.output(args).apply(a => getUserGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getUserGroups(a, opts))
 }
 
 /**

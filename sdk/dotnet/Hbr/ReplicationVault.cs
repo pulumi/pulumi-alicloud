@@ -21,47 +21,50 @@ namespace Pulumi.AliCloud.Hbr
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testAccReplicationVault";
+    ///     var regionSource = config.Get("regionSource") ?? "you Replication value source region";
+    ///     var source = new AliCloud.Provider("source", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testAccReplicationVault";
-    ///         var regionSource = config.Get("regionSource") ?? "you Replication value source region";
-    ///         var source = new AliCloud.Provider("source", new AliCloud.ProviderArgs
-    ///         {
-    ///             Region = regionSource,
-    ///         });
-    ///         var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new AliCloud.Hbr.VaultArgs
-    ///         {
-    ///             VaultName = name,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Source,
-    ///         });
-    ///         var defaultReplicationVaultRegions = Output.Create(AliCloud.Hbr.GetReplicationVaultRegions.InvokeAsync());
-    ///         var regionReplication = defaultReplicationVaultRegions.Apply(defaultReplicationVaultRegions =&gt; defaultReplicationVaultRegions.Regions?[0]?.ReplicationRegionId);
-    ///         var replication = new AliCloud.Provider("replication", new AliCloud.ProviderArgs
-    ///         {
-    ///             Region = regionReplication,
-    ///         });
-    ///         var defaultReplicationVault = new AliCloud.Hbr.ReplicationVault("defaultReplicationVault", new AliCloud.Hbr.ReplicationVaultArgs
-    ///         {
-    ///             ReplicationSourceRegionId = regionReplication,
-    ///             ReplicationSourceVaultId = defaultVault.Id,
-    ///             VaultName = name,
-    ///             VaultStorageClass = "STANDARD",
-    ///             Description = name,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Replication,
-    ///         });
-    ///     }
+    ///         Region = regionSource,
+    ///     });
     /// 
-    /// }
+    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
+    ///     {
+    ///         VaultName = name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Source,
+    ///     });
+    /// 
+    ///     var defaultReplicationVaultRegions = AliCloud.Hbr.GetReplicationVaultRegions.Invoke();
+    /// 
+    ///     var regionReplication = defaultReplicationVaultRegions.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult.Regions[0]?.ReplicationRegionId);
+    /// 
+    ///     var replication = new AliCloud.Provider("replication", new()
+    ///     {
+    ///         Region = regionReplication,
+    ///     });
+    /// 
+    ///     var defaultReplicationVault = new AliCloud.Hbr.ReplicationVault("defaultReplicationVault", new()
+    ///     {
+    ///         ReplicationSourceRegionId = regionReplication,
+    ///         ReplicationSourceVaultId = defaultVault.Id,
+    ///         VaultName = name,
+    ///         VaultStorageClass = "STANDARD",
+    ///         Description = name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Replication,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -73,7 +76,7 @@ namespace Pulumi.AliCloud.Hbr
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/replicationVault:ReplicationVault")]
-    public partial class ReplicationVault : Pulumi.CustomResource
+    public partial class ReplicationVault : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the backup vault. The description must be 0 to 255 characters in length.
@@ -155,7 +158,7 @@ namespace Pulumi.AliCloud.Hbr
         }
     }
 
-    public sealed class ReplicationVaultArgs : Pulumi.ResourceArgs
+    public sealed class ReplicationVaultArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the backup vault. The description must be 0 to 255 characters in length.
@@ -190,9 +193,10 @@ namespace Pulumi.AliCloud.Hbr
         public ReplicationVaultArgs()
         {
         }
+        public static new ReplicationVaultArgs Empty => new ReplicationVaultArgs();
     }
 
-    public sealed class ReplicationVaultState : Pulumi.ResourceArgs
+    public sealed class ReplicationVaultState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the backup vault. The description must be 0 to 255 characters in length.
@@ -233,5 +237,6 @@ namespace Pulumi.AliCloud.Hbr
         public ReplicationVaultState()
         {
         }
+        public static new ReplicationVaultState Empty => new ReplicationVaultState();
     }
 }

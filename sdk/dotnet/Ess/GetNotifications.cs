@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.Ess
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ds = AliCloud.Ess.GetNotifications.Invoke(new()
         ///     {
-        ///         var ds = Output.Create(AliCloud.Ess.GetNotifications.InvokeAsync(new AliCloud.Ess.GetNotificationsArgs
-        ///         {
-        ///             ScalingGroupId = "scaling_group_id",
-        ///         }));
-        ///         this.FirstNotification = ds.Apply(ds =&gt; ds.Notifications?[0]?.Id);
-        ///     }
+        ///         ScalingGroupId = "scaling_group_id",
+        ///     });
         /// 
-        ///     [Output("firstNotification")]
-        ///     public Output&lt;string&gt; FirstNotification { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstNotification"] = ds.Apply(getNotificationsResult =&gt; getNotificationsResult.Notifications[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNotificationsResult> InvokeAsync(GetNotificationsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationsResult>("alicloud:ess/getNotifications:getNotifications", args ?? new GetNotificationsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotificationsResult>("alicloud:ess/getNotifications:getNotifications", args ?? new GetNotificationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides available notification resources. 
@@ -55,33 +54,32 @@ namespace Pulumi.AliCloud.Ess
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ds = AliCloud.Ess.GetNotifications.Invoke(new()
         ///     {
-        ///         var ds = Output.Create(AliCloud.Ess.GetNotifications.InvokeAsync(new AliCloud.Ess.GetNotificationsArgs
-        ///         {
-        ///             ScalingGroupId = "scaling_group_id",
-        ///         }));
-        ///         this.FirstNotification = ds.Apply(ds =&gt; ds.Notifications?[0]?.Id);
-        ///     }
+        ///         ScalingGroupId = "scaling_group_id",
+        ///     });
         /// 
-        ///     [Output("firstNotification")]
-        ///     public Output&lt;string&gt; FirstNotification { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstNotification"] = ds.Apply(getNotificationsResult =&gt; getNotificationsResult.Notifications[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNotificationsResult> Invoke(GetNotificationsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNotificationsResult>("alicloud:ess/getNotifications:getNotifications", args ?? new GetNotificationsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNotificationsResult>("alicloud:ess/getNotifications:getNotifications", args ?? new GetNotificationsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNotificationsArgs : Pulumi.InvokeArgs
+    public sealed class GetNotificationsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -107,9 +105,10 @@ namespace Pulumi.AliCloud.Ess
         public GetNotificationsArgs()
         {
         }
+        public static new GetNotificationsArgs Empty => new GetNotificationsArgs();
     }
 
-    public sealed class GetNotificationsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNotificationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -135,6 +134,7 @@ namespace Pulumi.AliCloud.Ess
         public GetNotificationsInvokeArgs()
         {
         }
+        public static new GetNotificationsInvokeArgs Empty => new GetNotificationsInvokeArgs();
     }
 
 

@@ -292,16 +292,7 @@ class _GatewayBlockVolumeState:
         :param pulumi.Input[str] protocol: The Protocol. Valid values: `iSCSI`.
         :param pulumi.Input[bool] recovery: The recovery.
         :param pulumi.Input[int] size: The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
-        :param pulumi.Input[str] status: The status of volume. Valid values: 
-               - `0`: Normal condition.
-               - `1`: Failed to create volume.
-               - `2`: Failed to delete volume.
-               - `3`: Failed to enable target.
-               - `4`: Failed to disable target.
-               - `5`: Database error.
-               - `6`: Failed to enable cache.
-               - `7`: Failed to disable cache.
-               - `8`: System error.
+        :param pulumi.Input[str] status: The status of volume. Valid values:
         """
         if cache_mode is not None:
             pulumi.set(__self__, "cache_mode", cache_mode)
@@ -534,16 +525,7 @@ class _GatewayBlockVolumeState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of volume. Valid values: 
-        - `0`: Normal condition.
-        - `1`: Failed to create volume.
-        - `2`: Failed to delete volume.
-        - `3`: Failed to enable target.
-        - `4`: Failed to disable target.
-        - `5`: Database error.
-        - `6`: Failed to enable cache.
-        - `7`: Failed to disable cache.
-        - `8`: System error.
+        The status of volume. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -743,16 +725,7 @@ class GatewayBlockVolume(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The Protocol. Valid values: `iSCSI`.
         :param pulumi.Input[bool] recovery: The recovery.
         :param pulumi.Input[int] size: The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
-        :param pulumi.Input[str] status: The status of volume. Valid values: 
-               - `0`: Normal condition.
-               - `1`: Failed to create volume.
-               - `2`: Failed to delete volume.
-               - `3`: Failed to enable target.
-               - `4`: Failed to disable target.
-               - `5`: Database error.
-               - `6`: Failed to enable cache.
-               - `7`: Failed to disable cache.
-               - `8`: System error.
+        :param pulumi.Input[str] status: The status of volume. Valid values:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -909,16 +882,7 @@ class GatewayBlockVolume(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of volume. Valid values: 
-        - `0`: Normal condition.
-        - `1`: Failed to create volume.
-        - `2`: Failed to delete volume.
-        - `3`: Failed to enable target.
-        - `4`: Failed to disable target.
-        - `5`: Database error.
-        - `6`: Failed to enable cache.
-        - `7`: Failed to disable cache.
-        - `8`: System error.
+        The status of volume. Valid values:
         """
         return pulumi.get(self, "status")
 

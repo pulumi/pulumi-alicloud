@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -20,17 +21,14 @@ import * as utilities from "../utilities";
  *     nameRegex: "your_user_name",
  * });
  * const default = usersDs.then(usersDs => alicloud.cs.getKubernetesPermission({
- *     uid: usersDs.users?[0]?.id,
+ *     uid: usersDs.users?.[0]?.id,
  * }));
  * export const permissions = _default.then(_default => _default.permissions);
  * ```
  */
 export function getKubernetesPermission(args: GetKubernetesPermissionArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesPermissionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getKubernetesPermission:getKubernetesPermission", {
         "permissions": args.permissions,
         "uid": args.uid,
@@ -68,9 +66,28 @@ export interface GetKubernetesPermissionResult {
      */
     readonly uid: string;
 }
-
+/**
+ * This data source provides a list of Ram user permissions.
+ *
+ * > **NOTE:** Available in v1.122.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const usersDs = alicloud.ram.getUsers({
+ *     nameRegex: "your_user_name",
+ * });
+ * const default = usersDs.then(usersDs => alicloud.cs.getKubernetesPermission({
+ *     uid: usersDs.users?.[0]?.id,
+ * }));
+ * export const permissions = _default.then(_default => _default.permissions);
+ * ```
+ */
 export function getKubernetesPermissionOutput(args: GetKubernetesPermissionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesPermissionResult> {
-    return pulumi.output(args).apply(a => getKubernetesPermission(a, opts))
+    return pulumi.output(args).apply((a: any) => getKubernetesPermission(a, opts))
 }
 
 /**

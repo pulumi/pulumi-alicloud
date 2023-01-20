@@ -2,15 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getApplicationInfos(args: GetApplicationInfosArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationInfosResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:quotas/getApplicationInfos:getApplicationInfos", {
         "dimensions": args.dimensions,
         "enableDetails": args.enableDetails,
@@ -58,9 +56,8 @@ export interface GetApplicationInfosResult {
     readonly quotaCategory?: string;
     readonly status?: string;
 }
-
 export function getApplicationInfosOutput(args: GetApplicationInfosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationInfosResult> {
-    return pulumi.output(args).apply(a => getApplicationInfos(a, opts))
+    return pulumi.output(args).apply((a: any) => getApplicationInfos(a, opts))
 }
 
 /**

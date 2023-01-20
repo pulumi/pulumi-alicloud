@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
     public sealed class ClusterAdditionalVolume
     {
         /// <summary>
-        /// The queue of the nodes to which the additional file system is attached.
+        /// The queue to which the compute nodes are added.
         /// </summary>
         public readonly string? JobQueue;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
         /// </summary>
         public readonly string? Location;
         /// <summary>
-        /// The remote directory to which the additional file system is mounted.
+        /// The remote directory to which the file system is mounted.
         /// </summary>
         public readonly string? RemoteDirectory;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterAdditionalVolumeRole> Roles;
         /// <summary>
-        /// The ID of the additional file system.
+        /// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         /// </summary>
         public readonly string? VolumeId;
         /// <summary>
@@ -42,15 +42,17 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
         /// </summary>
         public readonly string? VolumeMountOption;
         /// <summary>
-        /// The mount target of the additional file system.
+        /// The mount target of the file system. Take note of the following information:
+        /// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+        /// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
         /// </summary>
         public readonly string? VolumeMountpoint;
         /// <summary>
-        /// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+        /// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
         /// </summary>
         public readonly string? VolumeProtocol;
         /// <summary>
-        /// The type of the additional shared storage. Only NAS file systems are supported.
+        /// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         /// </summary>
         public readonly string? VolumeType;
 

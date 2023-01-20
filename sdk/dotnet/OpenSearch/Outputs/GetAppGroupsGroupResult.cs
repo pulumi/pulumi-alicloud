@@ -55,8 +55,6 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         public readonly int FirstRankAlgoDeploymentId;
         /// <summary>
         /// Whether the quota status is under approval. Valid status:
-        /// * `0`: normal
-        /// * `1`: Approving.
         /// </summary>
         public readonly int HasPendingQuotaReviewTask;
         public readonly string Id;
@@ -86,8 +84,6 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         public readonly string ProcessingOrderId;
         /// <summary>
         /// Whether the production is completed. Valid values:
-        /// * `0`: producing.
-        /// * `1`: completed.
         /// </summary>
         public readonly int Produced;
         /// <summary>

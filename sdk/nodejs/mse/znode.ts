@@ -24,8 +24,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.zones?[0]?.id,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
  * }));
  * const defaultCluster = new alicloud.mse.Cluster("defaultCluster", {
  *     clusterSpecification: "MSE_SC_1_2_200_c",
@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     clusterVersion: "ZooKeeper_3_5_5",
  *     instanceCount: 1,
  *     netType: "privatenet",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     pubNetworkFlow: "1",
  *     aclEntryLists: ["127.0.0.1/32"],
  *     clusterAliasName: "example_value",

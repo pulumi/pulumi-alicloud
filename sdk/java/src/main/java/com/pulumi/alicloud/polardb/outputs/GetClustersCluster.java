@@ -18,6 +18,11 @@ public final class GetClustersCluster {
      */
     private String chargeType;
     /**
+     * @return PolarDB cluster connection string.
+     * 
+     */
+    private String connectionString;
+    /**
      * @return The create_time of the db_nodes.
      * 
      */
@@ -88,6 +93,11 @@ public final class GetClustersCluster {
      */
     private String networkType;
     /**
+     * @return PolarDB cluster connection port.
+     * 
+     */
+    private String port;
+    /**
      * @return The region_id of the db_nodes.
      * 
      */
@@ -120,6 +130,13 @@ public final class GetClustersCluster {
      */
     public String chargeType() {
         return this.chargeType;
+    }
+    /**
+     * @return PolarDB cluster connection string.
+     * 
+     */
+    public String connectionString() {
+        return this.connectionString;
     }
     /**
      * @return The create_time of the db_nodes.
@@ -220,6 +237,13 @@ public final class GetClustersCluster {
         return this.networkType;
     }
     /**
+     * @return PolarDB cluster connection port.
+     * 
+     */
+    public String port() {
+        return this.port;
+    }
+    /**
      * @return The region_id of the db_nodes.
      * 
      */
@@ -265,6 +289,7 @@ public final class GetClustersCluster {
     @CustomType.Builder
     public static final class Builder {
         private String chargeType;
+        private String connectionString;
         private String createTime;
         private String dbNodeClass;
         private Integer dbNodeNumber;
@@ -279,6 +304,7 @@ public final class GetClustersCluster {
         private String id;
         private String lockMode;
         private String networkType;
+        private String port;
         private String regionId;
         private String status;
         private Integer storageUsed;
@@ -288,6 +314,7 @@ public final class GetClustersCluster {
         public Builder(GetClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.chargeType = defaults.chargeType;
+    	      this.connectionString = defaults.connectionString;
     	      this.createTime = defaults.createTime;
     	      this.dbNodeClass = defaults.dbNodeClass;
     	      this.dbNodeNumber = defaults.dbNodeNumber;
@@ -302,6 +329,7 @@ public final class GetClustersCluster {
     	      this.id = defaults.id;
     	      this.lockMode = defaults.lockMode;
     	      this.networkType = defaults.networkType;
+    	      this.port = defaults.port;
     	      this.regionId = defaults.regionId;
     	      this.status = defaults.status;
     	      this.storageUsed = defaults.storageUsed;
@@ -312,6 +340,11 @@ public final class GetClustersCluster {
         @CustomType.Setter
         public Builder chargeType(String chargeType) {
             this.chargeType = Objects.requireNonNull(chargeType);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectionString(String connectionString) {
+            this.connectionString = Objects.requireNonNull(connectionString);
             return this;
         }
         @CustomType.Setter
@@ -388,6 +421,11 @@ public final class GetClustersCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder port(String port) {
+            this.port = Objects.requireNonNull(port);
+            return this;
+        }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
@@ -415,6 +453,7 @@ public final class GetClustersCluster {
         public GetClustersCluster build() {
             final var o = new GetClustersCluster();
             o.chargeType = chargeType;
+            o.connectionString = connectionString;
             o.createTime = createTime;
             o.dbNodeClass = dbNodeClass;
             o.dbNodeNumber = dbNodeNumber;
@@ -429,6 +468,7 @@ public final class GetClustersCluster {
             o.id = id;
             o.lockMode = lockMode;
             o.networkType = networkType;
+            o.port = port;
             o.regionId = regionId;
             o.status = status;
             o.storageUsed = storageUsed;

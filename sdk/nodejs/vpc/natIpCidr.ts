@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
  *     vpcId: alicloud_vpc["default"].id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?[0]?.id),
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
  *     vswitchName: _var.name,
  * });
  * const exampleNatGateway = new alicloud.vpc.NatGateway("exampleNatGateway", {

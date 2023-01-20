@@ -6,6 +6,7 @@ package com.pulumi.alicloud.hbr;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -44,6 +45,51 @@ public final class OssBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> bucket() {
         return this.bucket;
+    }
+
+    /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    @Import(name="crossAccountRoleName")
+    private @Nullable Output<String> crossAccountRoleName;
+
+    /**
+     * @return The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    public Optional<Output<String>> crossAccountRoleName() {
+        return Optional.ofNullable(this.crossAccountRoleName);
+    }
+
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    @Import(name="crossAccountType")
+    private @Nullable Output<String> crossAccountType;
+
+    /**
+     * @return The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    public Optional<Output<String>> crossAccountType() {
+        return Optional.ofNullable(this.crossAccountType);
+    }
+
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    @Import(name="crossAccountUserId")
+    private @Nullable Output<Integer> crossAccountUserId;
+
+    /**
+     * @return The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    public Optional<Output<Integer>> crossAccountUserId() {
+        return Optional.ofNullable(this.crossAccountUserId);
     }
 
     /**
@@ -141,6 +187,9 @@ public final class OssBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     private OssBackupPlanArgs(OssBackupPlanArgs $) {
         this.backupType = $.backupType;
         this.bucket = $.bucket;
+        this.crossAccountRoleName = $.crossAccountRoleName;
+        this.crossAccountType = $.crossAccountType;
+        this.crossAccountUserId = $.crossAccountUserId;
         this.disabled = $.disabled;
         this.ossBackupPlanName = $.ossBackupPlanName;
         this.prefix = $.prefix;
@@ -207,6 +256,69 @@ public final class OssBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
+        }
+
+        /**
+         * @param crossAccountRoleName The role name created in the original account RAM backup by the cross account managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountRoleName(@Nullable Output<String> crossAccountRoleName) {
+            $.crossAccountRoleName = crossAccountRoleName;
+            return this;
+        }
+
+        /**
+         * @param crossAccountRoleName The role name created in the original account RAM backup by the cross account managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountRoleName(String crossAccountRoleName) {
+            return crossAccountRoleName(Output.of(crossAccountRoleName));
+        }
+
+        /**
+         * @param crossAccountType The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountType(@Nullable Output<String> crossAccountType) {
+            $.crossAccountType = crossAccountType;
+            return this;
+        }
+
+        /**
+         * @param crossAccountType The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountType(String crossAccountType) {
+            return crossAccountType(Output.of(crossAccountType));
+        }
+
+        /**
+         * @param crossAccountUserId The original account ID of the cross account backup managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountUserId(@Nullable Output<Integer> crossAccountUserId) {
+            $.crossAccountUserId = crossAccountUserId;
+            return this;
+        }
+
+        /**
+         * @param crossAccountUserId The original account ID of the cross account backup managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountUserId(Integer crossAccountUserId) {
+            return crossAccountUserId(Output.of(crossAccountUserId));
         }
 
         /**

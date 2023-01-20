@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -47,7 +48,7 @@ import * as utilities from "../utilities";
  * const defaultDesktop = new alicloud.eds.Desktop("defaultDesktop", {
  *     officeSiteId: defaultSimpleOfficeSite.id,
  *     policyGroupId: defaultEcdPolicyGroup.id,
- *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?[1]?.id),
+ *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?.[1]?.id),
  *     desktopName: "your_desktop_name",
  * });
  * const defaultImage = new alicloud.eds.Image("defaultImage", {
@@ -58,20 +59,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.eds.getImagesOutput({
  *     ids: [defaultImage.id],
  * });
- * export const ecdImageId1 = ids.apply(ids => ids.images?[0]?.id);
+ * export const ecdImageId1 = ids.apply(ids => ids.images?.[0]?.id);
  * const nameRegex = defaultImage.imageName.apply(imageName => alicloud.eds.getImagesOutput({
  *     nameRegex: imageName,
  * }));
- * export const ecdImageId2 = nameRegex.apply(nameRegex => nameRegex.images?[0]?.id);
+ * export const ecdImageId2 = nameRegex.apply(nameRegex => nameRegex.images?.[0]?.id);
  * ```
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getImages:getImages", {
         "desktopInstanceType": args.desktopInstanceType,
         "ids": args.ids,
@@ -132,9 +130,68 @@ export interface GetImagesResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Ecd Images of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.146.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     desktopAccessType: "Internet",
+ *     officeSiteName: "your_simple_office_site_name",
+ * });
+ * const defaultBundles = alicloud.eds.getBundles({
+ *     bundleType: "SYSTEM",
+ * });
+ * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup", {
+ *     policyGroupName: "your_policy_group_name",
+ *     clipboard: "readwrite",
+ *     localDrive: "read",
+ *     authorizeAccessPolicyRules: [{
+ *         description: "example_value",
+ *         cidrIp: "1.2.3.4/24",
+ *     }],
+ *     authorizeSecurityPolicyRules: [{
+ *         type: "inflow",
+ *         policy: "accept",
+ *         description: "example_value",
+ *         portRange: "80/80",
+ *         ipProtocol: "TCP",
+ *         priority: "1",
+ *         cidrIp: "0.0.0.0/0",
+ *     }],
+ * });
+ * const defaultDesktop = new alicloud.eds.Desktop("defaultDesktop", {
+ *     officeSiteId: defaultSimpleOfficeSite.id,
+ *     policyGroupId: defaultEcdPolicyGroup.id,
+ *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?.[1]?.id),
+ *     desktopName: "your_desktop_name",
+ * });
+ * const defaultImage = new alicloud.eds.Image("defaultImage", {
+ *     imageName: "your_image_name",
+ *     desktopId: defaultDesktop.id,
+ *     description: "example_value",
+ * });
+ * const ids = alicloud.eds.getImagesOutput({
+ *     ids: [defaultImage.id],
+ * });
+ * export const ecdImageId1 = ids.apply(ids => ids.images?.[0]?.id);
+ * const nameRegex = defaultImage.imageName.apply(imageName => alicloud.eds.getImagesOutput({
+ *     nameRegex: imageName,
+ * }));
+ * export const ecdImageId2 = nameRegex.apply(nameRegex => nameRegex.images?.[0]?.id);
+ * ```
+ */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
-    return pulumi.output(args).apply(a => getImages(a, opts))
+    return pulumi.output(args).apply((a: any) => getImages(a, opts))
 }
 
 /**

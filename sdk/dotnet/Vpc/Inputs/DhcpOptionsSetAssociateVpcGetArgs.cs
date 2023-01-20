@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc.Inputs
 {
 
-    public sealed class DhcpOptionsSetAssociateVpcGetArgs : Pulumi.ResourceArgs
+    public sealed class DhcpOptionsSetAssociateVpcGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public DhcpOptionsSetAssociateVpcGetArgs()
         {
         }
+        public static new DhcpOptionsSetAssociateVpcGetArgs Empty => new DhcpOptionsSetAssociateVpcGetArgs();
     }
 }

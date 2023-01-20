@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation")]
-    public partial class TransitRouterRouteTablePropagation : Pulumi.CustomResource
+    public partial class TransitRouterRouteTablePropagation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The dry run.
@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class TransitRouterRouteTablePropagationArgs : Pulumi.ResourceArgs
+    public sealed class TransitRouterRouteTablePropagationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
@@ -116,9 +116,10 @@ namespace Pulumi.AliCloud.Cen
         public TransitRouterRouteTablePropagationArgs()
         {
         }
+        public static new TransitRouterRouteTablePropagationArgs Empty => new TransitRouterRouteTablePropagationArgs();
     }
 
-    public sealed class TransitRouterRouteTablePropagationState : Pulumi.ResourceArgs
+    public sealed class TransitRouterRouteTablePropagationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
@@ -147,5 +148,6 @@ namespace Pulumi.AliCloud.Cen
         public TransitRouterRouteTablePropagationState()
         {
         }
+        public static new TransitRouterRouteTablePropagationState Empty => new TransitRouterRouteTablePropagationState();
     }
 }

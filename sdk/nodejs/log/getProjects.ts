@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,11 +13,8 @@ import * as utilities from "../utilities";
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:log/getProjects:getProjects", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -59,9 +57,13 @@ export interface GetProjectsResult {
     readonly projects: outputs.log.GetProjectsProject[];
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Log Projects of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.126.0+.
+ */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
-    return pulumi.output(args).apply(a => getProjects(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjects(a, opts))
 }
 
 /**

@@ -26,7 +26,7 @@ public final class GetReceiversReceiverse {
      */
     private String id;
     /**
-     * @return -The Receivers Alias.
+     * @return The Receivers Alias.
      * 
      */
     private String receiversAlias;
@@ -69,7 +69,7 @@ public final class GetReceiversReceiverse {
         return this.id;
     }
     /**
-     * @return -The Receivers Alias.
+     * @return The Receivers Alias.
      * 
      */
     public String receiversAlias() {

@@ -30,9 +30,25 @@ public final class GetPolicyAttachmentsResult {
     private List<String> ids;
     private @Nullable String language;
     private @Nullable String outputFile;
+    /**
+     * @return The name of the policy.
+     * 
+     */
     private @Nullable String policyName;
+    /**
+     * @return The type of the policy.
+     * 
+     */
     private @Nullable String policyType;
+    /**
+     * @return The name of the object to which the policy is attached.
+     * 
+     */
     private @Nullable String principalName;
+    /**
+     * @return The type of the object to which the policy is attached.
+     * 
+     */
     private @Nullable String principalType;
     /**
      * @return The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
@@ -68,15 +84,31 @@ public final class GetPolicyAttachmentsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The name of the policy.
+     * 
+     */
     public Optional<String> policyName() {
         return Optional.ofNullable(this.policyName);
     }
+    /**
+     * @return The type of the policy.
+     * 
+     */
     public Optional<String> policyType() {
         return Optional.ofNullable(this.policyType);
     }
+    /**
+     * @return The name of the object to which the policy is attached.
+     * 
+     */
     public Optional<String> principalName() {
         return Optional.ofNullable(this.principalName);
     }
+    /**
+     * @return The type of the object to which the policy is attached.
+     * 
+     */
     public Optional<String> principalType() {
         return Optional.ofNullable(this.principalType);
     }

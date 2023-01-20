@@ -26,5 +26,6 @@ from .get_zones import *
 from .lifecycle_policy import *
 from .mount_target import *
 from .recycle_bin import *
+from .smb_acl_attachment import *
 from .snapshot import *
 from . import outputs

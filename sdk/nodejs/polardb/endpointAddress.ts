@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * });
  * const endpoint = new alicloud.polardb.EndpointAddress("endpoint", {
  *     dbClusterId: defaultCluster.id,
- *     dbEndpointId: defaultEndpoints.apply(defaultEndpoints => defaultEndpoints.endpoints?[0]?.dbEndpointId),
+ *     dbEndpointId: defaultEndpoints.apply(defaultEndpoints => defaultEndpoints.endpoints?.[0]?.dbEndpointId),
  *     connectionPrefix: "testpolardbconn",
  *     netType: "Public",
  * });

@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.Ots
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var tunnelsDs = AliCloud.Ots.GetTunnels.Invoke(new()
         ///     {
-        ///         var tunnelsDs = Output.Create(AliCloud.Ots.GetTunnels.InvokeAsync(new AliCloud.Ots.GetTunnelsArgs
-        ///         {
-        ///             InstanceName = "sample-instance",
-        ///             NameRegex = "sample-tunnel",
-        ///             OutputFile = "tunnels.txt",
-        ///             TableName = "sample-table",
-        ///         }));
-        ///         this.FirstTunnelId = tunnelsDs.Apply(tunnelsDs =&gt; tunnelsDs.Tunnels?[0]?.Id);
-        ///     }
+        ///         InstanceName = "sample-instance",
+        ///         NameRegex = "sample-tunnel",
+        ///         OutputFile = "tunnels.txt",
+        ///         TableName = "sample-table",
+        ///     });
         /// 
-        ///     [Output("firstTunnelId")]
-        ///     public Output&lt;string&gt; FirstTunnelId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTunnelId"] = tunnelsDs.Apply(getTunnelsResult =&gt; getTunnelsResult.Tunnels[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTunnelsResult> InvokeAsync(GetTunnelsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTunnelsResult>("alicloud:ots/getTunnels:getTunnels", args ?? new GetTunnelsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTunnelsResult>("alicloud:ots/getTunnels:getTunnels", args ?? new GetTunnelsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the ots tunnels of the current Alibaba Cloud user.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.Ots
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var tunnelsDs = AliCloud.Ots.GetTunnels.Invoke(new()
         ///     {
-        ///         var tunnelsDs = Output.Create(AliCloud.Ots.GetTunnels.InvokeAsync(new AliCloud.Ots.GetTunnelsArgs
-        ///         {
-        ///             InstanceName = "sample-instance",
-        ///             NameRegex = "sample-tunnel",
-        ///             OutputFile = "tunnels.txt",
-        ///             TableName = "sample-table",
-        ///         }));
-        ///         this.FirstTunnelId = tunnelsDs.Apply(tunnelsDs =&gt; tunnelsDs.Tunnels?[0]?.Id);
-        ///     }
+        ///         InstanceName = "sample-instance",
+        ///         NameRegex = "sample-tunnel",
+        ///         OutputFile = "tunnels.txt",
+        ///         TableName = "sample-table",
+        ///     });
         /// 
-        ///     [Output("firstTunnelId")]
-        ///     public Output&lt;string&gt; FirstTunnelId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTunnelId"] = tunnelsDs.Apply(getTunnelsResult =&gt; getTunnelsResult.Tunnels[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTunnelsResult> Invoke(GetTunnelsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTunnelsResult>("alicloud:ots/getTunnels:getTunnels", args ?? new GetTunnelsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTunnelsResult>("alicloud:ots/getTunnels:getTunnels", args ?? new GetTunnelsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTunnelsArgs : Pulumi.InvokeArgs
+    public sealed class GetTunnelsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -129,9 +127,10 @@ namespace Pulumi.AliCloud.Ots
         public GetTunnelsArgs()
         {
         }
+        public static new GetTunnelsArgs Empty => new GetTunnelsArgs();
     }
 
-    public sealed class GetTunnelsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTunnelsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -169,6 +168,7 @@ namespace Pulumi.AliCloud.Ots
         public GetTunnelsInvokeArgs()
         {
         }
+        public static new GetTunnelsInvokeArgs Empty => new GetTunnelsInvokeArgs();
     }
 
 

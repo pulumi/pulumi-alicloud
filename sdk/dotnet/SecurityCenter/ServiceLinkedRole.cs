@@ -21,19 +21,15 @@ namespace Pulumi.AliCloud.SecurityCenter
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var serviceLinkedRole = new AliCloud.SecurityCenter.ServiceLinkedRole("serviceLinkedRole", new AliCloud.SecurityCenter.ServiceLinkedRoleArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var serviceLinkedRole = new AliCloud.SecurityCenter.ServiceLinkedRole("serviceLinkedRole");
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +41,7 @@ namespace Pulumi.AliCloud.SecurityCenter
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole")]
-    public partial class ServiceLinkedRole : Pulumi.CustomResource
+    public partial class ServiceLinkedRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
@@ -97,14 +93,15 @@ namespace Pulumi.AliCloud.SecurityCenter
         }
     }
 
-    public sealed class ServiceLinkedRoleArgs : Pulumi.ResourceArgs
+    public sealed class ServiceLinkedRoleArgs : global::Pulumi.ResourceArgs
     {
         public ServiceLinkedRoleArgs()
         {
         }
+        public static new ServiceLinkedRoleArgs Empty => new ServiceLinkedRoleArgs();
     }
 
-    public sealed class ServiceLinkedRoleState : Pulumi.ResourceArgs
+    public sealed class ServiceLinkedRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
@@ -115,5 +112,6 @@ namespace Pulumi.AliCloud.SecurityCenter
         public ServiceLinkedRoleState()
         {
         }
+        public static new ServiceLinkedRoleState Empty => new ServiceLinkedRoleState();
     }
 }

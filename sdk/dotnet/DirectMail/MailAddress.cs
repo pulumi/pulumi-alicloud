@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.DirectMail
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.DirectMail.MailAddress("example", new()
     ///     {
-    ///         var example = new AliCloud.DirectMail.MailAddress("example", new AliCloud.DirectMail.MailAddressArgs
-    ///         {
-    ///             AccountName = "example_value@email.com",
-    ///             Sendtype = "batch",
-    ///         });
-    ///     }
+    ///         AccountName = "example_value@email.com",
+    ///         Sendtype = "batch",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// &gt; **Note:**
@@ -52,7 +50,7 @@ namespace Pulumi.AliCloud.DirectMail
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:directmail/mailAddress:MailAddress")]
-    public partial class MailAddress : Pulumi.CustomResource
+    public partial class MailAddress : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
@@ -128,7 +126,7 @@ namespace Pulumi.AliCloud.DirectMail
         }
     }
 
-    public sealed class MailAddressArgs : Pulumi.ResourceArgs
+    public sealed class MailAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
@@ -157,9 +155,10 @@ namespace Pulumi.AliCloud.DirectMail
         public MailAddressArgs()
         {
         }
+        public static new MailAddressArgs Empty => new MailAddressArgs();
     }
 
-    public sealed class MailAddressState : Pulumi.ResourceArgs
+    public sealed class MailAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
@@ -194,5 +193,6 @@ namespace Pulumi.AliCloud.DirectMail
         public MailAddressState()
         {
         }
+        public static new MailAddressState Empty => new MailAddressState();
     }
 }

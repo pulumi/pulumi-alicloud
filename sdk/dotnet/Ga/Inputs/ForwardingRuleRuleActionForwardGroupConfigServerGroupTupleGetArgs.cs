@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ga.Inputs
 {
 
-    public sealed class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleGetArgs : Pulumi.ResourceArgs
+    public sealed class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Terminal node group ID.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleGetArgs()
         {
         }
+        public static new ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleGetArgs Empty => new ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ddos.Inputs
 {
 
-    public sealed class SchedulerRuleRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class SchedulerRuleRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The priority of the rule.
@@ -57,5 +57,6 @@ namespace Pulumi.AliCloud.Ddos.Inputs
         public SchedulerRuleRuleGetArgs()
         {
         }
+        public static new SchedulerRuleRuleGetArgs Empty => new SchedulerRuleRuleGetArgs();
     }
 }

@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.ActionTrail.GetTrails.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.ActionTrail.GetTrails.InvokeAsync(new AliCloud.ActionTrail.GetTrailsArgs
-        ///         {
-        ///             NameRegex = "tf-testacc-actiontrail",
-        ///         }));
-        ///         this.TrailName = @default.Apply(@default =&gt; @default.Trails?[0]?.Id);
-        ///     }
+        ///         NameRegex = "tf-testacc-actiontrail",
+        ///     });
         /// 
-        ///     [Output("trailName")]
-        ///     public Output&lt;string&gt; TrailName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["trailName"] = @default.Apply(getTrailsResult =&gt; getTrailsResult).Apply(@default =&gt; @default.Apply(getTrailsResult =&gt; getTrailsResult.Trails[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrailsResult> InvokeAsync(GetTrailsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTrailsResult>("alicloud:actiontrail/getTrails:getTrails", args ?? new GetTrailsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrailsResult>("alicloud:actiontrail/getTrails:getTrails", args ?? new GetTrailsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
@@ -55,33 +54,32 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.ActionTrail.GetTrails.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.ActionTrail.GetTrails.InvokeAsync(new AliCloud.ActionTrail.GetTrailsArgs
-        ///         {
-        ///             NameRegex = "tf-testacc-actiontrail",
-        ///         }));
-        ///         this.TrailName = @default.Apply(@default =&gt; @default.Trails?[0]?.Id);
-        ///     }
+        ///         NameRegex = "tf-testacc-actiontrail",
+        ///     });
         /// 
-        ///     [Output("trailName")]
-        ///     public Output&lt;string&gt; TrailName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["trailName"] = @default.Apply(getTrailsResult =&gt; getTrailsResult).Apply(@default =&gt; @default.Apply(getTrailsResult =&gt; getTrailsResult.Trails[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTrailsResult> Invoke(GetTrailsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTrailsResult>("alicloud:actiontrail/getTrails:getTrails", args ?? new GetTrailsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTrailsResult>("alicloud:actiontrail/getTrails:getTrails", args ?? new GetTrailsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTrailsArgs : Pulumi.InvokeArgs
+    public sealed class GetTrailsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -125,9 +123,10 @@ namespace Pulumi.AliCloud.ActionTrail
         public GetTrailsArgs()
         {
         }
+        public static new GetTrailsArgs Empty => new GetTrailsArgs();
     }
 
-    public sealed class GetTrailsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTrailsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -171,6 +170,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public GetTrailsInvokeArgs()
         {
         }
+        public static new GetTrailsInvokeArgs Empty => new GetTrailsInvokeArgs();
     }
 
 

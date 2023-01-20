@@ -17,51 +17,53 @@ namespace Pulumi.AliCloud.PolarDB
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "PolarDB";
+    ///     var name = config.Get("name") ?? "polardbaccountmysql";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "PolarDB";
-    ///         var name = config.Get("name") ?? "polardbaccountmysql";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var cluster = new AliCloud.PolarDB.Cluster("cluster", new AliCloud.PolarDB.ClusterArgs
-    ///         {
-    ///             DbType = "MySQL",
-    ///             DbVersion = "8.0",
-    ///             DbNodeClass = "polar.mysql.x4.large",
-    ///             PayType = "PostPaid",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             Description = name,
-    ///         });
-    ///         var account = new AliCloud.PolarDB.Account("account", new AliCloud.PolarDB.AccountArgs
-    ///         {
-    ///             DbClusterId = cluster.Id,
-    ///             AccountName = "tftestnormal",
-    ///             AccountPassword = "Test12345",
-    ///             AccountDescription = name,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var cluster = new AliCloud.PolarDB.Cluster("cluster", new()
+    ///     {
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         DbNodeClass = "polar.mysql.x4.large",
+    ///         PayType = "PostPaid",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var account = new AliCloud.PolarDB.Account("account", new()
+    ///     {
+    ///         DbClusterId = cluster.Id,
+    ///         AccountName = "tftestnormal",
+    ///         AccountPassword = "Test12345",
+    ///         AccountDescription = name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -73,7 +75,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/account:Account")]
-    public partial class Account : Pulumi.CustomResource
+    public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
@@ -140,6 +142,10 @@ namespace Pulumi.AliCloud.PolarDB
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -161,7 +167,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
     }
 
-    public sealed class AccountArgs : Pulumi.ResourceArgs
+    public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
@@ -175,11 +181,21 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
 
+        [Input("accountPassword", required: true)]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
         /// </summary>
-        [Input("accountPassword", required: true)]
-        public Input<string> AccountPassword { get; set; } = null!;
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
@@ -214,9 +230,10 @@ namespace Pulumi.AliCloud.PolarDB
         public AccountArgs()
         {
         }
+        public static new AccountArgs Empty => new AccountArgs();
     }
 
-    public sealed class AccountState : Pulumi.ResourceArgs
+    public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
@@ -230,11 +247,21 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
@@ -269,5 +296,6 @@ namespace Pulumi.AliCloud.PolarDB
         public AccountState()
         {
         }
+        public static new AccountState Empty => new AccountState();
     }
 }

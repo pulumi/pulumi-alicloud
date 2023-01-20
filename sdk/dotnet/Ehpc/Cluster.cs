@@ -21,80 +21,80 @@ namespace Pulumi.AliCloud.Ehpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Zones?[0]?.Id,
-    ///             }));
-    ///         });
-    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-    ///         {
-    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
-    ///         })));
-    ///         var config = new Config();
-    ///         var storageType = config.Get("storageType") ?? "Performance";
-    ///         var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new AliCloud.Nas.FileSystemArgs
-    ///         {
-    ///             StorageType = storageType,
-    ///             ProtocolType = "NFS",
-    ///         });
-    ///         var defaultMountTarget = new AliCloud.Nas.MountTarget("defaultMountTarget", new AliCloud.Nas.MountTargetArgs
-    ///         {
-    ///             FileSystemId = defaultFileSystem.Id,
-    ///             AccessGroupName = "DEFAULT_VPC_GROUP_NAME",
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///         });
-    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             NameRegex = "^centos_7_6_x64*",
-    ///             Owners = "system",
-    ///         }));
-    ///         var defaultCluster = new AliCloud.Ehpc.Cluster("defaultCluster", new AliCloud.Ehpc.ClusterArgs
-    ///         {
-    ///             ClusterName = "example_value",
-    ///             DeployMode = "Simple",
-    ///             Description = "example_description",
-    ///             HaEnable = false,
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
-    ///             ImageOwnerAlias = "system",
-    ///             VolumeProtocol = "nfs",
-    ///             VolumeId = defaultFileSystem.Id,
-    ///             VolumeMountpoint = defaultMountTarget.MountTargetDomain,
-    ///             ComputeCount = 1,
-    ///             ComputeInstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
-    ///             LoginCount = 1,
-    ///             LoginInstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
-    ///             ManagerCount = 1,
-    ///             ManagerInstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
-    ///             OsTag = "CentOS_7.6_64",
-    ///             SchedulerType = "pbs",
-    ///             Password = "your-password123",
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var config = new Config();
+    ///     var storageType = config.Get("storageType") ?? "Performance";
+    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new()
+    ///     {
+    ///         StorageType = storageType,
+    ///         ProtocolType = "NFS",
+    ///     });
+    /// 
+    ///     var defaultMountTarget = new AliCloud.Nas.MountTarget("defaultMountTarget", new()
+    ///     {
+    ///         FileSystemId = defaultFileSystem.Id,
+    ///         AccessGroupName = "DEFAULT_VPC_GROUP_NAME",
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^centos_7_6_x64*",
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.Ehpc.Cluster("defaultCluster", new()
+    ///     {
+    ///         ClusterName = "example_value",
+    ///         DeployMode = "Simple",
+    ///         Description = "example_description",
+    ///         HaEnable = false,
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         ImageOwnerAlias = "system",
+    ///         VolumeProtocol = "nfs",
+    ///         VolumeId = defaultFileSystem.Id,
+    ///         VolumeMountpoint = defaultMountTarget.MountTargetDomain,
+    ///         ComputeCount = 1,
+    ///         ComputeInstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         LoginCount = 1,
+    ///         LoginInstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         ManagerCount = 1,
+    ///         ManagerInstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         OsTag = "CentOS_7.6_64",
+    ///         SchedulerType = "pbs",
+    ///         Password = "your-password123",
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Ehpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ehpc/cluster:Cluster")]
-    public partial class Cluster : Pulumi.CustomResource
+    public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
@@ -182,18 +182,12 @@ namespace Pulumi.AliCloud.Ehpc
 
         /// <summary>
         /// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-        /// - `NoSpot`: The compute nodes are pay-as-you-go instances.
-        /// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-        /// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
         /// </summary>
         [Output("computeSpotStrategy")]
         public Output<string?> ComputeSpotStrategy { get; private set; } = null!;
 
         /// <summary>
         /// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-        /// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-        /// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-        /// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
         /// </summary>
         [Output("deployMode")]
         public Output<string> DeployMode { get; private set; } = null!;
@@ -253,7 +247,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<bool?> IsComputeEss { get; private set; } = null!;
 
         /// <summary>
-        /// The queue of the nodes to which the additional file system is attached.
+        /// The queue to which the compute nodes are added.
         /// </summary>
         [Output("jobQueue")]
         public Output<string?> JobQueue { get; private set; } = null!;
@@ -351,7 +345,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<bool?> ReleaseInstance { get; private set; } = null!;
 
         /// <summary>
-        /// The remote directory to which the additional file system is mounted.
+        /// The remote directory to which the file system is mounted.
         /// </summary>
         [Output("remoteDirectory")]
         public Output<string> RemoteDirectory { get; private set; } = null!;
@@ -400,10 +394,6 @@ namespace Pulumi.AliCloud.Ehpc
 
         /// <summary>
         /// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-        /// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        /// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         /// </summary>
         [Output("systemDiskLevel")]
         public Output<string?> SystemDiskLevel { get; private set; } = null!;
@@ -421,7 +411,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string?> SystemDiskType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the additional file system.
+        /// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         /// </summary>
         [Output("volumeId")]
         public Output<string> VolumeId { get; private set; } = null!;
@@ -433,19 +423,21 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string?> VolumeMountOption { get; private set; } = null!;
 
         /// <summary>
-        /// The mount target of the additional file system.
+        /// The mount target of the file system. Take note of the following information:
+        /// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+        /// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
         /// </summary>
         [Output("volumeMountpoint")]
         public Output<string> VolumeMountpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+        /// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
         /// </summary>
         [Output("volumeProtocol")]
         public Output<string> VolumeProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the additional shared storage. Only NAS file systems are supported.
+        /// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         /// </summary>
         [Output("volumeType")]
         public Output<string> VolumeType { get; private set; } = null!;
@@ -503,6 +495,10 @@ namespace Pulumi.AliCloud.Ehpc
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -524,7 +520,7 @@ namespace Pulumi.AliCloud.Ehpc
         }
     }
 
-    public sealed class ClusterArgs : Pulumi.ResourceArgs
+    public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
@@ -612,18 +608,12 @@ namespace Pulumi.AliCloud.Ehpc
 
         /// <summary>
         /// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-        /// - `NoSpot`: The compute nodes are pay-as-you-go instances.
-        /// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-        /// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
         /// </summary>
         [Input("computeSpotStrategy")]
         public Input<string>? ComputeSpotStrategy { get; set; }
 
         /// <summary>
         /// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-        /// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-        /// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-        /// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
         /// </summary>
         [Input("deployMode")]
         public Input<string>? DeployMode { get; set; }
@@ -683,7 +673,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<bool>? IsComputeEss { get; set; }
 
         /// <summary>
-        /// The queue of the nodes to which the additional file system is attached.
+        /// The queue to which the compute nodes are added.
         /// </summary>
         [Input("jobQueue")]
         public Input<string>? JobQueue { get; set; }
@@ -724,11 +714,21 @@ namespace Pulumi.AliCloud.Ehpc
         [Input("osTag", required: true)]
         public Input<string> OsTag { get; set; } = null!;
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
@@ -793,7 +793,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<bool>? ReleaseInstance { get; set; }
 
         /// <summary>
-        /// The remote directory to which the additional file system is mounted.
+        /// The remote directory to which the file system is mounted.
         /// </summary>
         [Input("remoteDirectory")]
         public Input<string>? RemoteDirectory { get; set; }
@@ -836,10 +836,6 @@ namespace Pulumi.AliCloud.Ehpc
 
         /// <summary>
         /// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-        /// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        /// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         /// </summary>
         [Input("systemDiskLevel")]
         public Input<string>? SystemDiskLevel { get; set; }
@@ -857,7 +853,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? SystemDiskType { get; set; }
 
         /// <summary>
-        /// The ID of the additional file system.
+        /// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         /// </summary>
         [Input("volumeId")]
         public Input<string>? VolumeId { get; set; }
@@ -869,19 +865,21 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? VolumeMountOption { get; set; }
 
         /// <summary>
-        /// The mount target of the additional file system.
+        /// The mount target of the file system. Take note of the following information:
+        /// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+        /// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
         /// </summary>
         [Input("volumeMountpoint")]
         public Input<string>? VolumeMountpoint { get; set; }
 
         /// <summary>
-        /// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+        /// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
         /// </summary>
         [Input("volumeProtocol")]
         public Input<string>? VolumeProtocol { get; set; }
 
         /// <summary>
-        /// The type of the additional shared storage. Only NAS file systems are supported.
+        /// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }
@@ -919,9 +917,10 @@ namespace Pulumi.AliCloud.Ehpc
         public ClusterArgs()
         {
         }
+        public static new ClusterArgs Empty => new ClusterArgs();
     }
 
-    public sealed class ClusterState : Pulumi.ResourceArgs
+    public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
@@ -1009,18 +1008,12 @@ namespace Pulumi.AliCloud.Ehpc
 
         /// <summary>
         /// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-        /// - `NoSpot`: The compute nodes are pay-as-you-go instances.
-        /// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-        /// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
         /// </summary>
         [Input("computeSpotStrategy")]
         public Input<string>? ComputeSpotStrategy { get; set; }
 
         /// <summary>
         /// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-        /// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-        /// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-        /// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
         /// </summary>
         [Input("deployMode")]
         public Input<string>? DeployMode { get; set; }
@@ -1080,7 +1073,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<bool>? IsComputeEss { get; set; }
 
         /// <summary>
-        /// The queue of the nodes to which the additional file system is attached.
+        /// The queue to which the compute nodes are added.
         /// </summary>
         [Input("jobQueue")]
         public Input<string>? JobQueue { get; set; }
@@ -1121,11 +1114,21 @@ namespace Pulumi.AliCloud.Ehpc
         [Input("osTag")]
         public Input<string>? OsTag { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
@@ -1190,7 +1193,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<bool>? ReleaseInstance { get; set; }
 
         /// <summary>
-        /// The remote directory to which the additional file system is mounted.
+        /// The remote directory to which the file system is mounted.
         /// </summary>
         [Input("remoteDirectory")]
         public Input<string>? RemoteDirectory { get; set; }
@@ -1239,10 +1242,6 @@ namespace Pulumi.AliCloud.Ehpc
 
         /// <summary>
         /// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-        /// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        /// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         /// </summary>
         [Input("systemDiskLevel")]
         public Input<string>? SystemDiskLevel { get; set; }
@@ -1260,7 +1259,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? SystemDiskType { get; set; }
 
         /// <summary>
-        /// The ID of the additional file system.
+        /// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         /// </summary>
         [Input("volumeId")]
         public Input<string>? VolumeId { get; set; }
@@ -1272,19 +1271,21 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? VolumeMountOption { get; set; }
 
         /// <summary>
-        /// The mount target of the additional file system.
+        /// The mount target of the file system. Take note of the following information:
+        /// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+        /// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
         /// </summary>
         [Input("volumeMountpoint")]
         public Input<string>? VolumeMountpoint { get; set; }
 
         /// <summary>
-        /// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+        /// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
         /// </summary>
         [Input("volumeProtocol")]
         public Input<string>? VolumeProtocol { get; set; }
 
         /// <summary>
-        /// The type of the additional shared storage. Only NAS file systems are supported.
+        /// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }
@@ -1322,5 +1323,6 @@ namespace Pulumi.AliCloud.Ehpc
         public ClusterState()
         {
         }
+        public static new ClusterState Empty => new ClusterState();
     }
 }

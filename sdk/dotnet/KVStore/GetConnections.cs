@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.KVStore
         /// &gt; **NOTE:** Available in v1.101.0+.
         /// </summary>
         public static Task<GetConnectionsResult> InvokeAsync(GetConnectionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("alicloud:kvstore/getConnections:getConnections", args ?? new GetConnectionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("alicloud:kvstore/getConnections:getConnections", args ?? new GetConnectionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source can query the public IP of the specified KVStore DBInstance.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.KVStore
         /// &gt; **NOTE:** Available in v1.101.0+.
         /// </summary>
         public static Output<GetConnectionsResult> Invoke(GetConnectionsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("alicloud:kvstore/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("alicloud:kvstore/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetConnectionsArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A list of KVStore DBInstance ids, only support one item.
@@ -43,9 +43,10 @@ namespace Pulumi.AliCloud.KVStore
         public GetConnectionsArgs()
         {
         }
+        public static new GetConnectionsArgs Empty => new GetConnectionsArgs();
     }
 
-    public sealed class GetConnectionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A list of KVStore DBInstance ids, only support one item.
@@ -59,6 +60,7 @@ namespace Pulumi.AliCloud.KVStore
         public GetConnectionsInvokeArgs()
         {
         }
+        public static new GetConnectionsInvokeArgs Empty => new GetConnectionsInvokeArgs();
     }
 
 

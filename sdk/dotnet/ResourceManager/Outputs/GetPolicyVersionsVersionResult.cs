@@ -15,14 +15,19 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
     {
         /// <summary>
         /// The ID of the resource, the value is `&lt;policy_name&gt;`:`&lt;version_id&gt;`.
-        /// * `version_id`- The ID of the policy version.
-        /// * `create_date`- (Removed form v1.114.0)The time when the policy version was created.
-        /// * `is_default_version`- Indicates whether the policy version is the default version.
-        /// * `policy_document`- (Available in v1.114.0+) The policy document of the policy version.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Indicates whether the policy version is the default version.
+        /// </summary>
         public readonly bool IsDefaultVersion;
+        /// <summary>
+        /// (Available in v1.114.0+) The policy document of the policy version.
+        /// </summary>
         public readonly string PolicyDocument;
+        /// <summary>
+        /// The ID of the policy version.
+        /// </summary>
         public readonly string VersionId;
 
         [OutputConstructor]

@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("defaultCustomerGateway", {ipAddress: "192.168.1.1"});
  * const defaultConnection = new alicloud.vpn.Connection("defaultConnection", {
  *     customerGatewayId: defaultCustomerGateway.id,
- *     vpnGatewayId: defaultGateways.then(defaultGateways => defaultGateways.ids?[0]),
+ *     vpnGatewayId: defaultGateways.then(defaultGateways => defaultGateways.ids?.[0]),
  *     localSubnets: ["192.168.2.0/24"],
  *     remoteSubnets: ["192.168.3.0/24"],
  * });
  * const defaultPbrRouteEntry = new alicloud.vpn.PbrRouteEntry("defaultPbrRouteEntry", {
- *     vpnGatewayId: defaultGateways.then(defaultGateways => defaultGateways.ids?[0]),
+ *     vpnGatewayId: defaultGateways.then(defaultGateways => defaultGateways.ids?.[0]),
  *     routeSource: "192.168.1.0/24",
  *     routeDest: "10.0.0.0/24",
  *     nextHop: defaultConnection.id,

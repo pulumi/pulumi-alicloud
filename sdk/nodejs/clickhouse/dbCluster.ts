@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -27,8 +28,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultRegions]).then(([defaultNetworks, defaultRegions]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultRegions.regions?[0]?.zoneIds?[0]?.zoneId,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultRegions.regions?.[0]?.zoneIds?.[0]?.zoneId,
  * }));
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
  *     dbClusterVersion: "20.3.10.75",
@@ -39,7 +40,7 @@ import * as utilities from "../utilities";
  *     paymentType: "PayAsYouGo",
  *     dbNodeStorage: "500",
  *     storageType: "cloud_essd",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     dbClusterAccessWhiteLists: [{
  *         dbClusterIpArrayAttribute: "test",
  *         dbClusterIpArrayName: "test",
@@ -89,6 +90,10 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly category!: pulumi.Output<string>;
     /**
+     * (Available in 1.196.0+) - The connection string of the cluster.
+     */
+    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    /**
      * The db cluster access white list.
      */
     public readonly dbClusterAccessWhiteLists!: pulumi.Output<outputs.clickhouse.DbClusterDbClusterAccessWhiteList[] | undefined>;
@@ -107,7 +112,7 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly dbClusterNetworkType!: pulumi.Output<string>;
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      */
     public readonly dbClusterVersion!: pulumi.Output<string>;
     /**
@@ -139,6 +144,10 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<string | undefined>;
     /**
+     * (Available in 1.196.0+) The connection port of the cluster.
+     */
+    public /*out*/ readonly port!: pulumi.Output<string>;
+    /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
     public readonly status!: pulumi.Output<string>;
@@ -151,9 +160,17 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly usedTime!: pulumi.Output<string | undefined>;
     /**
+     * The id of the VPC.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
+    /**
      * The vswitch id of DBCluster.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
+    /**
+     * The zone ID of the instance.
+     */
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a DbCluster resource with the given unique name, arguments, and options.
@@ -169,6 +186,7 @@ export class DbCluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DbClusterState | undefined;
             resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
             resourceInputs["dbClusterAccessWhiteLists"] = state ? state.dbClusterAccessWhiteLists : undefined;
             resourceInputs["dbClusterClass"] = state ? state.dbClusterClass : undefined;
             resourceInputs["dbClusterDescription"] = state ? state.dbClusterDescription : undefined;
@@ -181,10 +199,13 @@ export class DbCluster extends pulumi.CustomResource {
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["storageType"] = state ? state.storageType : undefined;
             resourceInputs["usedTime"] = state ? state.usedTime : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DbClusterArgs | undefined;
             if ((!args || args.category === undefined) && !opts.urn) {
@@ -227,7 +248,11 @@ export class DbCluster extends pulumi.CustomResource {
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["usedTime"] = args ? args.usedTime : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["connectionString"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DbCluster.__pulumiType, name, resourceInputs, opts);
@@ -242,6 +267,10 @@ export interface DbClusterState {
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      */
     category?: pulumi.Input<string>;
+    /**
+     * (Available in 1.196.0+) - The connection string of the cluster.
+     */
+    connectionString?: pulumi.Input<string>;
     /**
      * The db cluster access white list.
      */
@@ -261,7 +290,7 @@ export interface DbClusterState {
      */
     dbClusterNetworkType?: pulumi.Input<string>;
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      */
     dbClusterVersion?: pulumi.Input<string>;
     /**
@@ -293,6 +322,10 @@ export interface DbClusterState {
      */
     period?: pulumi.Input<string>;
     /**
+     * (Available in 1.196.0+) The connection port of the cluster.
+     */
+    port?: pulumi.Input<string>;
+    /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
     status?: pulumi.Input<string>;
@@ -305,9 +338,17 @@ export interface DbClusterState {
      */
     usedTime?: pulumi.Input<string>;
     /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
      * The vswitch id of DBCluster.
      */
     vswitchId?: pulumi.Input<string>;
+    /**
+     * The zone ID of the instance.
+     */
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -337,7 +378,7 @@ export interface DbClusterArgs {
      */
     dbClusterNetworkType: pulumi.Input<string>;
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      */
     dbClusterVersion: pulumi.Input<string>;
     /**
@@ -381,7 +422,15 @@ export interface DbClusterArgs {
      */
     usedTime?: pulumi.Input<string>;
     /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
      * The vswitch id of DBCluster.
      */
     vswitchId?: pulumi.Input<string>;
+    /**
+     * The zone ID of the instance.
+     */
+    zoneId?: pulumi.Input<string>;
 }

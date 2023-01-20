@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class ApplicationServiceGetArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationServiceGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public ApplicationServiceGetArgs()
         {
         }
+        public static new ApplicationServiceGetArgs Empty => new ApplicationServiceGetArgs();
     }
 }

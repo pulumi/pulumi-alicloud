@@ -184,10 +184,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["resolution"] = args ? args.resolution : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["vncPassword"] = args ? args.vncPassword : undefined;
+            resourceInputs["vncPassword"] = args?.vncPassword ? pulumi.secret(args.vncPassword) : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["vncPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }

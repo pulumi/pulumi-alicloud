@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Dts
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Dts.GetSubscriptionJobs.InvokeAsync());
-        ///         this.DtsSubscriptionJobId1 = ids.Apply(ids =&gt; ids.Jobs?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Dts.GetSubscriptionJobs.Invoke();
         /// 
-        ///     [Output("dtsSubscriptionJobId1")]
-        ///     public Output&lt;string&gt; DtsSubscriptionJobId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dtsSubscriptionJobId1"] = ids.Apply(getSubscriptionJobsResult =&gt; getSubscriptionJobsResult.Jobs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubscriptionJobsResult> InvokeAsync(GetSubscriptionJobsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionJobsResult>("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args ?? new GetSubscriptionJobsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionJobsResult>("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args ?? new GetSubscriptionJobsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Dts
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Dts.GetSubscriptionJobs.InvokeAsync());
-        ///         this.DtsSubscriptionJobId1 = ids.Apply(ids =&gt; ids.Jobs?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Dts.GetSubscriptionJobs.Invoke();
         /// 
-        ///     [Output("dtsSubscriptionJobId1")]
-        ///     public Output&lt;string&gt; DtsSubscriptionJobId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dtsSubscriptionJobId1"] = ids.Apply(getSubscriptionJobsResult =&gt; getSubscriptionJobsResult.Jobs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSubscriptionJobsResult> Invoke(GetSubscriptionJobsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSubscriptionJobsResult>("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args ?? new GetSubscriptionJobsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubscriptionJobsResult>("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args ?? new GetSubscriptionJobsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSubscriptionJobsArgs : Pulumi.InvokeArgs
+    public sealed class GetSubscriptionJobsArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -126,9 +124,10 @@ namespace Pulumi.AliCloud.Dts
         public GetSubscriptionJobsArgs()
         {
         }
+        public static new GetSubscriptionJobsArgs Empty => new GetSubscriptionJobsArgs();
     }
 
-    public sealed class GetSubscriptionJobsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSubscriptionJobsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -175,6 +174,7 @@ namespace Pulumi.AliCloud.Dts
         public GetSubscriptionJobsInvokeArgs()
         {
         }
+        public static new GetSubscriptionJobsInvokeArgs Empty => new GetSubscriptionJobsInvokeArgs();
     }
 
 

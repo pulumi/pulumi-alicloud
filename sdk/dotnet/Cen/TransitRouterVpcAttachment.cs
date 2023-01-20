@@ -14,6 +14,80 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available in 1.126.0+
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var transitRouterAttachmentName = config.Get("transitRouterAttachmentName") ?? "sdk_rebot_cen_tr_yaochi";
+    ///     var transitRouterAttachmentDescription = config.Get("transitRouterAttachmentDescription") ?? "sdk_rebot_cen_tr_yaochi";
+    ///     var defaultTransitRouterAvailableResources = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = "sdk_rebot_cen_tr_yaochi",
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultMaster = new AliCloud.Vpc.Switch("defaultMaster", new()
+    ///     {
+    ///         VswitchName = "sdk_rebot_cen_tr_yaochi",
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.1.0/24",
+    ///         ZoneId = defaultTransitRouterAvailableResources.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0]),
+    ///     });
+    /// 
+    ///     var defaultSlave = new AliCloud.Vpc.Switch("defaultSlave", new()
+    ///     {
+    ///         VswitchName = "sdk_rebot_cen_tr_yaochi",
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.2.0/24",
+    ///         ZoneId = defaultTransitRouterAvailableResources.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.SlaveZones[0]),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     {
+    ///         CenInstanceName = "sdk_rebot_cen_tr_yaochi",
+    ///         ProtectionLevel = "REDUCED",
+    ///     });
+    /// 
+    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
+    ///     {
+    ///         CenId = defaultInstance.Id,
+    ///     });
+    /// 
+    ///     var defaultTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", new()
+    ///     {
+    ///         CenId = defaultInstance.Id,
+    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+    ///             {
+    ///                 ZoneId = defaultTransitRouterAvailableResources.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0]),
+    ///                 VswitchId = defaultMaster.Id,
+    ///             },
+    ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+    ///             {
+    ///                 ZoneId = defaultTransitRouterAvailableResources.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.SlaveZones[1]),
+    ///                 VswitchId = defaultSlave.Id,
+    ///             },
+    ///         },
+    ///         TransitRouterAttachmentName = transitRouterAttachmentName,
+    ///         TransitRouterAttachmentDescription = transitRouterAttachmentDescription,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// CEN instance can be imported using the id, e.g.
@@ -23,7 +97,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment")]
-    public partial class TransitRouterVpcAttachment : Pulumi.CustomResource
+    public partial class TransitRouterVpcAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the CEN.
@@ -49,15 +123,9 @@ namespace Pulumi.AliCloud.Cen
         [Output("resourceType")]
         public Output<string?> ResourceType { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to enabled route table association. The system default value is `true`.
-        /// </summary>
         [Output("routeTableAssociationEnabled")]
         public Output<bool?> RouteTableAssociationEnabled { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to enabled route table propagation. The system default value is `true`.
-        /// </summary>
         [Output("routeTablePropagationEnabled")]
         public Output<bool?> RouteTablePropagationEnabled { get; private set; } = null!;
 
@@ -66,6 +134,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The description of the transit router vbr attachment.
@@ -104,7 +178,8 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> VpcOwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// The list of zone mapping of the VPC.
+        /// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.TransitRouterVpcAttachmentZoneMapping>> ZoneMappings { get; private set; } = null!;
@@ -153,7 +228,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class TransitRouterVpcAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class TransitRouterVpcAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CEN.
@@ -179,17 +254,23 @@ namespace Pulumi.AliCloud.Cen
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
-        /// <summary>
-        /// Whether to enabled route table association. The system default value is `true`.
-        /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
-        /// <summary>
-        /// Whether to enabled route table propagation. The system default value is `true`.
-        /// </summary>
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The description of the transit router vbr attachment.
@@ -225,7 +306,8 @@ namespace Pulumi.AliCloud.Cen
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// The list of zone mapping of the VPC.
+        /// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         /// </summary>
         public InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs> ZoneMappings
         {
@@ -236,9 +318,10 @@ namespace Pulumi.AliCloud.Cen
         public TransitRouterVpcAttachmentArgs()
         {
         }
+        public static new TransitRouterVpcAttachmentArgs Empty => new TransitRouterVpcAttachmentArgs();
     }
 
-    public sealed class TransitRouterVpcAttachmentState : Pulumi.ResourceArgs
+    public sealed class TransitRouterVpcAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CEN.
@@ -264,15 +347,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
-        /// <summary>
-        /// Whether to enabled route table association. The system default value is `true`.
-        /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
-        /// <summary>
-        /// Whether to enabled route table propagation. The system default value is `true`.
-        /// </summary>
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
 
@@ -281,6 +358,18 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The description of the transit router vbr attachment.
@@ -322,7 +411,8 @@ namespace Pulumi.AliCloud.Cen
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// The list of zone mapping of the VPC.
+        /// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         /// </summary>
         public InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs> ZoneMappings
         {
@@ -333,5 +423,6 @@ namespace Pulumi.AliCloud.Cen
         public TransitRouterVpcAttachmentState()
         {
         }
+        public static new TransitRouterVpcAttachmentState Empty => new TransitRouterVpcAttachmentState();
     }
 }

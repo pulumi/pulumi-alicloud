@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,7 +23,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
+ *     vpcId: defaultNetworks.ids?.[0],
  * }));
  * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
  * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("defaultGateway", {
@@ -30,7 +31,7 @@ import * as utilities from "../utilities";
  *     gatewayClass: "Standard",
  *     type: "File",
  *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     releaseAfterExpiration: false,
  *     publicNetworkBandwidth: 40,
  *     storageBundleId: example.id,
@@ -46,15 +47,12 @@ import * as utilities from "../utilities";
  *     gatewayId: defaultGateway.id,
  *     ids: [defaultGatewaySmbUser.id],
  * });
- * export const cloudStorageGatewayGatewaySmbUserId1 = ids.apply(ids => ids.users?[0]?.id);
+ * export const cloudStorageGatewayGatewaySmbUserId1 = ids.apply(ids => ids.users?.[0]?.id);
  * ```
  */
 export function getGatewaySmbUsers(args: GetGatewaySmbUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaySmbUsersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", {
         "gatewayId": args.gatewayId,
         "ids": args.ids,
@@ -96,9 +94,52 @@ export interface GetGatewaySmbUsersResult {
     readonly outputFile?: string;
     readonly users: outputs.cloudstoragegateway.GetGatewaySmbUsersUser[];
 }
-
+/**
+ * This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.142.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ * }));
+ * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
+ * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("defaultGateway", {
+ *     description: "tf-acctestDesalone",
+ *     gatewayClass: "Standard",
+ *     type: "File",
+ *     paymentType: "PayAsYouGo",
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     releaseAfterExpiration: false,
+ *     publicNetworkBandwidth: 40,
+ *     storageBundleId: example.id,
+ *     location: "Cloud",
+ *     gatewayName: "example_value",
+ * });
+ * const defaultGatewaySmbUser = new alicloud.cloudstoragegateway.GatewaySmbUser("defaultGatewaySmbUser", {
+ *     username: "your_username",
+ *     password: "password",
+ *     gatewayId: defaultGateway.id,
+ * });
+ * const ids = alicloud.cloudstoragegateway.getGatewaySmbUsersOutput({
+ *     gatewayId: defaultGateway.id,
+ *     ids: [defaultGatewaySmbUser.id],
+ * });
+ * export const cloudStorageGatewayGatewaySmbUserId1 = ids.apply(ids => ids.users?.[0]?.id);
+ * ```
+ */
 export function getGatewaySmbUsersOutput(args: GetGatewaySmbUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaySmbUsersResult> {
-    return pulumi.output(args).apply(a => getGatewaySmbUsers(a, opts))
+    return pulumi.output(args).apply((a: any) => getGatewaySmbUsers(a, opts))
 }
 
 /**

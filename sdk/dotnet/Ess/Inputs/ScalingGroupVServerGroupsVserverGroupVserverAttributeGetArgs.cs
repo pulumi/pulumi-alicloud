@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class ScalingGroupVServerGroupsVserverGroupVserverAttributeGetArgs : Pulumi.ResourceArgs
+    public sealed class ScalingGroupVServerGroupsVserverGroupVserverAttributeGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public ScalingGroupVServerGroupsVserverGroupVserverAttributeGetArgs()
         {
         }
+        public static new ScalingGroupVServerGroupsVserverGroupVserverAttributeGetArgs Empty => new ScalingGroupVServerGroupsVserverGroupVserverAttributeGetArgs();
     }
 }

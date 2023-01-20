@@ -23,26 +23,24 @@ namespace Pulumi.AliCloud.Waf
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Waf.GetDomains.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Waf.GetDomains.InvokeAsync(new AliCloud.Waf.GetDomainsArgs
-        ///         {
-        ///             InstanceId = "waf-cf-xxxxx",
-        ///         }));
-        ///     }
+        ///         InstanceId = "waf-cf-xxxxx",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:waf/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:waf/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a WAF datasource to retrieve domains.
@@ -56,30 +54,28 @@ namespace Pulumi.AliCloud.Waf
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Waf.GetDomains.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Waf.GetDomains.InvokeAsync(new AliCloud.Waf.GetDomainsArgs
-        ///         {
-        ///             InstanceId = "waf-cf-xxxxx",
-        ///         }));
-        ///     }
+        ///         InstanceId = "waf-cf-xxxxx",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:waf/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:waf/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDomainsArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to false and only output `id`, `domain_name`. Set it to true can output more details.
@@ -123,9 +119,10 @@ namespace Pulumi.AliCloud.Waf
         public GetDomainsArgs()
         {
         }
+        public static new GetDomainsArgs Empty => new GetDomainsArgs();
     }
 
-    public sealed class GetDomainsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to false and only output `id`, `domain_name`. Set it to true can output more details.
@@ -169,6 +166,7 @@ namespace Pulumi.AliCloud.Waf
         public GetDomainsInvokeArgs()
         {
         }
+        public static new GetDomainsInvokeArgs Empty => new GetDomainsInvokeArgs();
     }
 
 

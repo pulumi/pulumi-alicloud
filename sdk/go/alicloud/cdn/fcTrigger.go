@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &GetRegionsArgs{
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {

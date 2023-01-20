@@ -22,7 +22,6 @@ public final class GetAggregateConfigRulesResult {
     private @Nullable String aggregateConfigRuleName;
     /**
      * @return The ID of Aggregator.
-     * * `compliance` -The Compliance information.
      * 
      */
     private String aggregatorId;
@@ -66,7 +65,6 @@ public final class GetAggregateConfigRulesResult {
     }
     /**
      * @return The ID of Aggregator.
-     * * `compliance` -The Compliance information.
      * 
      */
     public String aggregatorId() {

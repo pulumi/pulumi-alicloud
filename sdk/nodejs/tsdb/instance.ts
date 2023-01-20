@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const exampleZones = alicloud.tsdb.getZones({});
  * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {cidrBlock: "192.168.0.0/16"});
  * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     availabilityZone: exampleZones.then(exampleZones => exampleZones.ids?[0]),
+ *     availabilityZone: exampleZones.then(exampleZones => exampleZones.ids?.[0]),
  *     cidrBlock: "192.168.1.0/24",
  *     vpcId: exampleNetwork.id,
  * });

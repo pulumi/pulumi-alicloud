@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mongodb/auditPolicy:AuditPolicy")]
-    public partial class AuditPolicy : Pulumi.CustomResource
+    public partial class AuditPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The status of the audit log. Valid values: `disabled`, `enable`.
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
     }
 
-    public sealed class AuditPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AuditPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The status of the audit log. Valid values: `disabled`, `enable`.
@@ -112,9 +112,10 @@ namespace Pulumi.AliCloud.MongoDB
         public AuditPolicyArgs()
         {
         }
+        public static new AuditPolicyArgs Empty => new AuditPolicyArgs();
     }
 
-    public sealed class AuditPolicyState : Pulumi.ResourceArgs
+    public sealed class AuditPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The status of the audit log. Valid values: `disabled`, `enable`.
@@ -137,5 +138,6 @@ namespace Pulumi.AliCloud.MongoDB
         public AuditPolicyState()
         {
         }
+        public static new AuditPolicyState Empty => new AuditPolicyState();
     }
 }

@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetActivations.InvokeAsync());
-        ///         this.EcsActivationId1 = ids.Apply(ids =&gt; ids.Activations?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Ecs.GetActivations.Invoke();
         /// 
-        ///     [Output("ecsActivationId1")]
-        ///     public Output&lt;string&gt; EcsActivationId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsActivationId1"] = ids.Apply(getActivationsResult =&gt; getActivationsResult.Activations[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetActivationsResult> InvokeAsync(GetActivationsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetActivationsResult>("alicloud:ecs/getActivations:getActivations", args ?? new GetActivationsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetActivationsResult>("alicloud:ecs/getActivations:getActivations", args ?? new GetActivationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Activations of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetActivations.InvokeAsync());
-        ///         this.EcsActivationId1 = ids.Apply(ids =&gt; ids.Activations?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Ecs.GetActivations.Invoke();
         /// 
-        ///     [Output("ecsActivationId1")]
-        ///     public Output&lt;string&gt; EcsActivationId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsActivationId1"] = ids.Apply(getActivationsResult =&gt; getActivationsResult.Activations[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetActivationsResult> Invoke(GetActivationsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetActivationsResult>("alicloud:ecs/getActivations:getActivations", args ?? new GetActivationsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetActivationsResult>("alicloud:ecs/getActivations:getActivations", args ?? new GetActivationsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetActivationsArgs : Pulumi.InvokeArgs
+    public sealed class GetActivationsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -111,9 +109,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetActivationsArgs()
         {
         }
+        public static new GetActivationsArgs Empty => new GetActivationsArgs();
     }
 
-    public sealed class GetActivationsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetActivationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -145,6 +144,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetActivationsInvokeArgs()
         {
         }
+        public static new GetActivationsInvokeArgs Empty => new GetActivationsInvokeArgs();
     }
 
 

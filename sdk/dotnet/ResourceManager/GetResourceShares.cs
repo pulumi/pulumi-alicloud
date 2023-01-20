@@ -23,34 +23,33 @@ namespace Pulumi.AliCloud.ResourceManager
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ResourceManager.GetResourceShares.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetResourceShares.InvokeAsync(new AliCloud.ResourceManager.GetResourceSharesArgs
+        ///         ResourceShareOwner = "Self",
+        ///         Ids = new[]
         ///         {
-        ///             ResourceShareOwner = "Self",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstResourceManagerResourceShareId = example.Apply(example =&gt; example.Shares?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstResourceManagerResourceShareId")]
-        ///     public Output&lt;string&gt; FirstResourceManagerResourceShareId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstResourceManagerResourceShareId"] = example.Apply(getResourceSharesResult =&gt; getResourceSharesResult.Shares[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourceSharesResult> InvokeAsync(GetResourceSharesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourceSharesResult>("alicloud:resourcemanager/getResourceShares:getResourceShares", args ?? new GetResourceSharesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceSharesResult>("alicloud:resourcemanager/getResourceShares:getResourceShares", args ?? new GetResourceSharesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
@@ -64,38 +63,37 @@ namespace Pulumi.AliCloud.ResourceManager
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ResourceManager.GetResourceShares.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetResourceShares.InvokeAsync(new AliCloud.ResourceManager.GetResourceSharesArgs
+        ///         ResourceShareOwner = "Self",
+        ///         Ids = new[]
         ///         {
-        ///             ResourceShareOwner = "Self",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstResourceManagerResourceShareId = example.Apply(example =&gt; example.Shares?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstResourceManagerResourceShareId")]
-        ///     public Output&lt;string&gt; FirstResourceManagerResourceShareId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstResourceManagerResourceShareId"] = example.Apply(getResourceSharesResult =&gt; getResourceSharesResult.Shares[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResourceSharesResult> Invoke(GetResourceSharesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResourceSharesResult>("alicloud:resourcemanager/getResourceShares:getResourceShares", args ?? new GetResourceSharesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetResourceSharesResult>("alicloud:resourcemanager/getResourceShares:getResourceShares", args ?? new GetResourceSharesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetResourceSharesArgs : Pulumi.InvokeArgs
+    public sealed class GetResourceSharesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -139,9 +137,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetResourceSharesArgs()
         {
         }
+        public static new GetResourceSharesArgs Empty => new GetResourceSharesArgs();
     }
 
-    public sealed class GetResourceSharesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetResourceSharesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -185,6 +184,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetResourceSharesInvokeArgs()
         {
         }
+        public static new GetResourceSharesInvokeArgs Empty => new GetResourceSharesInvokeArgs();
     }
 
 

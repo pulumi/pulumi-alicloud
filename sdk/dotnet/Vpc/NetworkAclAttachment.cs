@@ -15,55 +15,57 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "NatGatewayConfigSpec";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "NatGatewayConfigSpec";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultNetworkAcl = new AliCloud.Vpc.NetworkAcl("defaultNetworkAcl", new AliCloud.Vpc.NetworkAclArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             NetworkAclName = name,
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultNetworkAclAttachment = new AliCloud.Vpc.NetworkAclAttachment("defaultNetworkAclAttachment", new AliCloud.Vpc.NetworkAclAttachmentArgs
-    ///         {
-    ///             NetworkAclId = defaultNetworkAcl.Id,
-    ///             Resources = 
-    ///             {
-    ///                 new AliCloud.Vpc.Inputs.NetworkAclAttachmentResourceArgs
-    ///                 {
-    ///                     ResourceId = defaultSwitch.Id,
-    ///                     ResourceType = "VSwitch",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultNetworkAcl = new AliCloud.Vpc.NetworkAcl("defaultNetworkAcl", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         NetworkAclName = name,
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultNetworkAclAttachment = new AliCloud.Vpc.NetworkAclAttachment("defaultNetworkAclAttachment", new()
+    ///     {
+    ///         NetworkAclId = defaultNetworkAcl.Id,
+    ///         Resources = new[]
+    ///         {
+    ///             new AliCloud.Vpc.Inputs.NetworkAclAttachmentResourceArgs
+    ///             {
+    ///                 ResourceId = defaultSwitch.Id,
+    ///                 ResourceType = "VSwitch",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/networkAclAttachment:NetworkAclAttachment")]
-    public partial class NetworkAclAttachment : Pulumi.CustomResource
+    public partial class NetworkAclAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The id of the network acl, the field can't be changed.
@@ -121,7 +123,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class NetworkAclAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class NetworkAclAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the network acl, the field can't be changed.
@@ -144,9 +146,10 @@ namespace Pulumi.AliCloud.Vpc
         public NetworkAclAttachmentArgs()
         {
         }
+        public static new NetworkAclAttachmentArgs Empty => new NetworkAclAttachmentArgs();
     }
 
-    public sealed class NetworkAclAttachmentState : Pulumi.ResourceArgs
+    public sealed class NetworkAclAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the network acl, the field can't be changed.
@@ -169,5 +172,6 @@ namespace Pulumi.AliCloud.Vpc
         public NetworkAclAttachmentState()
         {
         }
+        public static new NetworkAclAttachmentState Empty => new NetworkAclAttachmentState();
     }
 }

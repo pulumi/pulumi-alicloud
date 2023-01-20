@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class NodePoolRolloutPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolRolloutPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Max number of unavailable nodes. Default to `1`.
+        /// Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
         /// </summary>
         [Input("maxUnavailable")]
         public Input<int>? MaxUnavailable { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public NodePoolRolloutPolicyGetArgs()
         {
         }
+        public static new NodePoolRolloutPolicyGetArgs Empty => new NodePoolRolloutPolicyGetArgs();
     }
 }

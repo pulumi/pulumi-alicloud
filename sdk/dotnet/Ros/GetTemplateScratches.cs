@@ -23,46 +23,43 @@ namespace Pulumi.AliCloud.Ros
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ros.GetTemplateScratches.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ros.GetTemplateScratches.InvokeAsync(new AliCloud.Ros.GetTemplateScratchesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.RosTemplateScratchId1 = ids.Apply(ids =&gt; ids.Scratches?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Ros.GetTemplateScratches.InvokeAsync(new AliCloud.Ros.GetTemplateScratchesArgs
-        ///         {
-        ///             Status = "GENERATE_COMPLETE",
-        ///         }));
-        ///         this.RosTemplateScratchId2 = status.Apply(status =&gt; status.Scratches?[0]?.Id);
-        ///         var templateScratchType = Output.Create(AliCloud.Ros.GetTemplateScratches.InvokeAsync(new AliCloud.Ros.GetTemplateScratchesArgs
-        ///         {
-        ///             TemplateScratchType = "ResourceImport",
-        ///         }));
-        ///         this.RosTemplateScratchId3 = templateScratchType.Apply(templateScratchType =&gt; templateScratchType.Scratches?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("rosTemplateScratchId1")]
-        ///     public Output&lt;string&gt; RosTemplateScratchId1 { get; set; }
-        ///     [Output("rosTemplateScratchId2")]
-        ///     public Output&lt;string&gt; RosTemplateScratchId2 { get; set; }
-        ///     [Output("rosTemplateScratchId3")]
-        ///     public Output&lt;string&gt; RosTemplateScratchId3 { get; set; }
-        /// }
+        ///     var status = AliCloud.Ros.GetTemplateScratches.Invoke(new()
+        ///     {
+        ///         Status = "GENERATE_COMPLETE",
+        ///     });
+        /// 
+        ///     var templateScratchType = AliCloud.Ros.GetTemplateScratches.Invoke(new()
+        ///     {
+        ///         TemplateScratchType = "ResourceImport",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rosTemplateScratchId1"] = ids.Apply(getTemplateScratchesResult =&gt; getTemplateScratchesResult.Scratches[0]?.Id),
+        ///         ["rosTemplateScratchId2"] = status.Apply(getTemplateScratchesResult =&gt; getTemplateScratchesResult.Scratches[0]?.Id),
+        ///         ["rosTemplateScratchId3"] = templateScratchType.Apply(getTemplateScratchesResult =&gt; getTemplateScratchesResult.Scratches[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTemplateScratchesResult> InvokeAsync(GetTemplateScratchesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTemplateScratchesResult>("alicloud:ros/getTemplateScratches:getTemplateScratches", args ?? new GetTemplateScratchesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTemplateScratchesResult>("alicloud:ros/getTemplateScratches:getTemplateScratches", args ?? new GetTemplateScratchesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
@@ -76,50 +73,47 @@ namespace Pulumi.AliCloud.Ros
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ros.GetTemplateScratches.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ros.GetTemplateScratches.InvokeAsync(new AliCloud.Ros.GetTemplateScratchesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.RosTemplateScratchId1 = ids.Apply(ids =&gt; ids.Scratches?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Ros.GetTemplateScratches.InvokeAsync(new AliCloud.Ros.GetTemplateScratchesArgs
-        ///         {
-        ///             Status = "GENERATE_COMPLETE",
-        ///         }));
-        ///         this.RosTemplateScratchId2 = status.Apply(status =&gt; status.Scratches?[0]?.Id);
-        ///         var templateScratchType = Output.Create(AliCloud.Ros.GetTemplateScratches.InvokeAsync(new AliCloud.Ros.GetTemplateScratchesArgs
-        ///         {
-        ///             TemplateScratchType = "ResourceImport",
-        ///         }));
-        ///         this.RosTemplateScratchId3 = templateScratchType.Apply(templateScratchType =&gt; templateScratchType.Scratches?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("rosTemplateScratchId1")]
-        ///     public Output&lt;string&gt; RosTemplateScratchId1 { get; set; }
-        ///     [Output("rosTemplateScratchId2")]
-        ///     public Output&lt;string&gt; RosTemplateScratchId2 { get; set; }
-        ///     [Output("rosTemplateScratchId3")]
-        ///     public Output&lt;string&gt; RosTemplateScratchId3 { get; set; }
-        /// }
+        ///     var status = AliCloud.Ros.GetTemplateScratches.Invoke(new()
+        ///     {
+        ///         Status = "GENERATE_COMPLETE",
+        ///     });
+        /// 
+        ///     var templateScratchType = AliCloud.Ros.GetTemplateScratches.Invoke(new()
+        ///     {
+        ///         TemplateScratchType = "ResourceImport",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rosTemplateScratchId1"] = ids.Apply(getTemplateScratchesResult =&gt; getTemplateScratchesResult.Scratches[0]?.Id),
+        ///         ["rosTemplateScratchId2"] = status.Apply(getTemplateScratchesResult =&gt; getTemplateScratchesResult.Scratches[0]?.Id),
+        ///         ["rosTemplateScratchId3"] = templateScratchType.Apply(getTemplateScratchesResult =&gt; getTemplateScratchesResult.Scratches[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTemplateScratchesResult> Invoke(GetTemplateScratchesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTemplateScratchesResult>("alicloud:ros/getTemplateScratches:getTemplateScratches", args ?? new GetTemplateScratchesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTemplateScratchesResult>("alicloud:ros/getTemplateScratches:getTemplateScratches", args ?? new GetTemplateScratchesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTemplateScratchesArgs : Pulumi.InvokeArgs
+    public sealed class GetTemplateScratchesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -157,9 +151,10 @@ namespace Pulumi.AliCloud.Ros
         public GetTemplateScratchesArgs()
         {
         }
+        public static new GetTemplateScratchesArgs Empty => new GetTemplateScratchesArgs();
     }
 
-    public sealed class GetTemplateScratchesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTemplateScratchesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -197,6 +192,7 @@ namespace Pulumi.AliCloud.Ros
         public GetTemplateScratchesInvokeArgs()
         {
         }
+        public static new GetTemplateScratchesInvokeArgs Empty => new GetTemplateScratchesInvokeArgs();
     }
 
 

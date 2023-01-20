@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ResourceManager.Inputs
 {
 
-    public sealed class ResourceGroupRegionStatusGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceGroupRegionStatusGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The region ID.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.ResourceManager.Inputs
         public ResourceGroupRegionStatusGetArgs()
         {
         }
+        public static new ResourceGroupRegionStatusGetArgs Empty => new ResourceGroupRegionStatusGetArgs();
     }
 }

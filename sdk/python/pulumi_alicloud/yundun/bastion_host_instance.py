@@ -16,22 +16,31 @@ __all__ = ['BastionHostInstanceArgs', 'BastionHostInstance']
 @pulumi.input_type
 class BastionHostInstanceArgs:
     def __init__(__self__, *,
+                 bandwidth: pulumi.Input[str],
                  description: pulumi.Input[str],
                  license_code: pulumi.Input[str],
+                 plan_code: pulumi.Input[str],
                  security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 storage: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
                  ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_period_unit: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a BastionHostInstance resource.
         """
+        pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "license_code", license_code)
+        pulumi.set(__self__, "plan_code", plan_code)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "storage", storage)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if ad_auth_servers is not None:
             pulumi.set(__self__, "ad_auth_servers", ad_auth_servers)
@@ -41,10 +50,25 @@ class BastionHostInstanceArgs:
             pulumi.set(__self__, "ldap_auth_servers", ldap_auth_servers)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if renew_period is not None:
+            pulumi.set(__self__, "renew_period", renew_period)
+        if renewal_period_unit is not None:
+            pulumi.set(__self__, "renewal_period_unit", renewal_period_unit)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bandwidth", value)
 
     @property
     @pulumi.getter
@@ -65,6 +89,15 @@ class BastionHostInstanceArgs:
         pulumi.set(self, "license_code", value)
 
     @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "plan_code")
+
+    @plan_code.setter
+    def plan_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plan_code", value)
+
+    @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "security_group_ids")
@@ -72,6 +105,15 @@ class BastionHostInstanceArgs:
     @security_group_ids.setter
     def security_group_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter
+    def storage(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "storage")
+
+    @storage.setter
+    def storage(self, value: pulumi.Input[str]):
+        pulumi.set(self, "storage", value)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -119,6 +161,33 @@ class BastionHostInstanceArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="renewPeriod")
+    def renew_period(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "renew_period")
+
+    @renew_period.setter
+    def renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "renew_period", value)
+
+    @property
+    @pulumi.getter(name="renewalPeriodUnit")
+    def renewal_period_unit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "renewal_period_unit")
+
+    @renewal_period_unit.setter
+    def renewal_period_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_period_unit", value)
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "resource_group_id")
@@ -141,13 +210,19 @@ class BastionHostInstanceArgs:
 class _BastionHostInstanceState:
     def __init__(__self__, *,
                  ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 plan_code: Optional[pulumi.Input[str]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_period_unit: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 storage: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
@@ -155,6 +230,8 @@ class _BastionHostInstanceState:
         """
         if ad_auth_servers is not None:
             pulumi.set(__self__, "ad_auth_servers", ad_auth_servers)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_public_access is not None:
@@ -165,10 +242,20 @@ class _BastionHostInstanceState:
             pulumi.set(__self__, "license_code", license_code)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if plan_code is not None:
+            pulumi.set(__self__, "plan_code", plan_code)
+        if renew_period is not None:
+            pulumi.set(__self__, "renew_period", renew_period)
+        if renewal_period_unit is not None:
+            pulumi.set(__self__, "renewal_period_unit", renewal_period_unit)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if storage is not None:
+            pulumi.set(__self__, "storage", storage)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
@@ -182,6 +269,15 @@ class _BastionHostInstanceState:
     @ad_auth_servers.setter
     def ad_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]):
         pulumi.set(self, "ad_auth_servers", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth", value)
 
     @property
     @pulumi.getter
@@ -229,6 +325,42 @@ class _BastionHostInstanceState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "plan_code")
+
+    @plan_code.setter
+    def plan_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_code", value)
+
+    @property
+    @pulumi.getter(name="renewPeriod")
+    def renew_period(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "renew_period")
+
+    @renew_period.setter
+    def renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "renew_period", value)
+
+    @property
+    @pulumi.getter(name="renewalPeriodUnit")
+    def renewal_period_unit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "renewal_period_unit")
+
+    @renewal_period_unit.setter
+    def renewal_period_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_period_unit", value)
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "resource_group_id")
@@ -245,6 +377,15 @@ class _BastionHostInstanceState:
     @security_group_ids.setter
     def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter
+    def storage(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage")
+
+    @storage.setter
+    def storage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage", value)
 
     @property
     @pulumi.getter
@@ -271,13 +412,19 @@ class BastionHostInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BastionHostInstanceAdAuthServerArgs']]]]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BastionHostInstanceLdapAuthServerArgs']]]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 plan_code: Optional[pulumi.Input[str]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_period_unit: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 storage: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -310,13 +457,19 @@ class BastionHostInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BastionHostInstanceAdAuthServerArgs']]]]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BastionHostInstanceLdapAuthServerArgs']]]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 plan_code: Optional[pulumi.Input[str]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_period_unit: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 storage: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -329,6 +482,9 @@ class BastionHostInstance(pulumi.CustomResource):
             __props__ = BastionHostInstanceArgs.__new__(BastionHostInstanceArgs)
 
             __props__.__dict__["ad_auth_servers"] = ad_auth_servers
+            if bandwidth is None and not opts.urn:
+                raise TypeError("Missing required property 'bandwidth'")
+            __props__.__dict__["bandwidth"] = bandwidth
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
@@ -338,10 +494,19 @@ class BastionHostInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'license_code'")
             __props__.__dict__["license_code"] = license_code
             __props__.__dict__["period"] = period
+            if plan_code is None and not opts.urn:
+                raise TypeError("Missing required property 'plan_code'")
+            __props__.__dict__["plan_code"] = plan_code
+            __props__.__dict__["renew_period"] = renew_period
+            __props__.__dict__["renewal_period_unit"] = renewal_period_unit
+            __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["resource_group_id"] = resource_group_id
             if security_group_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_ids'")
             __props__.__dict__["security_group_ids"] = security_group_ids
+            if storage is None and not opts.urn:
+                raise TypeError("Missing required property 'storage'")
+            __props__.__dict__["storage"] = storage
             __props__.__dict__["tags"] = tags
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
@@ -357,13 +522,19 @@ class BastionHostInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BastionHostInstanceAdAuthServerArgs']]]]] = None,
+            bandwidth: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_public_access: Optional[pulumi.Input[bool]] = None,
             ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BastionHostInstanceLdapAuthServerArgs']]]]] = None,
             license_code: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            plan_code: Optional[pulumi.Input[str]] = None,
+            renew_period: Optional[pulumi.Input[int]] = None,
+            renewal_period_unit: Optional[pulumi.Input[str]] = None,
+            renewal_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            storage: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'BastionHostInstance':
         """
@@ -379,13 +550,19 @@ class BastionHostInstance(pulumi.CustomResource):
         __props__ = _BastionHostInstanceState.__new__(_BastionHostInstanceState)
 
         __props__.__dict__["ad_auth_servers"] = ad_auth_servers
+        __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_public_access"] = enable_public_access
         __props__.__dict__["ldap_auth_servers"] = ldap_auth_servers
         __props__.__dict__["license_code"] = license_code
         __props__.__dict__["period"] = period
+        __props__.__dict__["plan_code"] = plan_code
+        __props__.__dict__["renew_period"] = renew_period
+        __props__.__dict__["renewal_period_unit"] = renewal_period_unit
+        __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["storage"] = storage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         return BastionHostInstance(resource_name, opts=opts, __props__=__props__)
@@ -394,6 +571,11 @@ class BastionHostInstance(pulumi.CustomResource):
     @pulumi.getter(name="adAuthServers")
     def ad_auth_servers(self) -> pulumi.Output[Sequence['outputs.BastionHostInstanceAdAuthServer']]:
         return pulumi.get(self, "ad_auth_servers")
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "bandwidth")
 
     @property
     @pulumi.getter
@@ -421,14 +603,39 @@ class BastionHostInstance(pulumi.CustomResource):
         return pulumi.get(self, "period")
 
     @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "plan_code")
+
+    @property
+    @pulumi.getter(name="renewPeriod")
+    def renew_period(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "renew_period")
+
+    @property
+    @pulumi.getter(name="renewalPeriodUnit")
+    def renewal_period_unit(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "renewal_period_unit")
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "renewal_status")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
+    def resource_group_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter
+    def storage(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "storage")
 
     @property
     @pulumi.getter

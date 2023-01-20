@@ -7,8 +7,10 @@ import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -79,31 +81,39 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * Whether to enabled route table association. The system default value is `true`.
+     * @deprecated
+     * Field &#39;route_table_association_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_association&#39; instead.
      * 
      */
+    @Deprecated /* Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead. */
     @Import(name="routeTableAssociationEnabled")
     private @Nullable Output<Boolean> routeTableAssociationEnabled;
 
     /**
-     * @return Whether to enabled route table association. The system default value is `true`.
+     * @deprecated
+     * Field &#39;route_table_association_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_association&#39; instead.
      * 
      */
+    @Deprecated /* Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead. */
     public Optional<Output<Boolean>> routeTableAssociationEnabled() {
         return Optional.ofNullable(this.routeTableAssociationEnabled);
     }
 
     /**
-     * Whether to enabled route table propagation. The system default value is `true`.
+     * @deprecated
+     * Field &#39;route_table_propagation_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_propagation&#39; instead.
      * 
      */
+    @Deprecated /* Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead. */
     @Import(name="routeTablePropagationEnabled")
     private @Nullable Output<Boolean> routeTablePropagationEnabled;
 
     /**
-     * @return Whether to enabled route table propagation. The system default value is `true`.
+     * @deprecated
+     * Field &#39;route_table_propagation_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_propagation&#39; instead.
      * 
      */
+    @Deprecated /* Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead. */
     public Optional<Output<Boolean>> routeTablePropagationEnabled() {
         return Optional.ofNullable(this.routeTablePropagationEnabled);
     }
@@ -121,6 +131,21 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -214,14 +239,16 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The list of zone mapping of the VPC.
+     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      * 
      */
     @Import(name="zoneMappings")
     private @Nullable Output<List<TransitRouterVpcAttachmentZoneMappingArgs>> zoneMappings;
 
     /**
-     * @return The list of zone mapping of the VPC.
+     * @return The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      * 
      */
     public Optional<Output<List<TransitRouterVpcAttachmentZoneMappingArgs>>> zoneMappings() {
@@ -238,6 +265,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         this.routeTableAssociationEnabled = $.routeTableAssociationEnabled;
         this.routeTablePropagationEnabled = $.routeTablePropagationEnabled;
         this.status = $.status;
+        this.tags = $.tags;
         this.transitRouterAttachmentDescription = $.transitRouterAttachmentDescription;
         this.transitRouterAttachmentId = $.transitRouterAttachmentId;
         this.transitRouterAttachmentName = $.transitRouterAttachmentName;
@@ -350,43 +378,51 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param routeTableAssociationEnabled Whether to enabled route table association. The system default value is `true`.
-         * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;route_table_association_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_association&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead. */
         public Builder routeTableAssociationEnabled(@Nullable Output<Boolean> routeTableAssociationEnabled) {
             $.routeTableAssociationEnabled = routeTableAssociationEnabled;
             return this;
         }
 
         /**
-         * @param routeTableAssociationEnabled Whether to enabled route table association. The system default value is `true`.
-         * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;route_table_association_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_association&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead. */
         public Builder routeTableAssociationEnabled(Boolean routeTableAssociationEnabled) {
             return routeTableAssociationEnabled(Output.of(routeTableAssociationEnabled));
         }
 
         /**
-         * @param routeTablePropagationEnabled Whether to enabled route table propagation. The system default value is `true`.
-         * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;route_table_propagation_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_propagation&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead. */
         public Builder routeTablePropagationEnabled(@Nullable Output<Boolean> routeTablePropagationEnabled) {
             $.routeTablePropagationEnabled = routeTablePropagationEnabled;
             return this;
         }
 
         /**
-         * @param routeTablePropagationEnabled Whether to enabled route table propagation. The system default value is `true`.
-         * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;route_table_propagation_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_propagation&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead. */
         public Builder routeTablePropagationEnabled(Boolean routeTablePropagationEnabled) {
             return routeTablePropagationEnabled(Output.of(routeTablePropagationEnabled));
         }
@@ -410,6 +446,27 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**
@@ -539,7 +596,8 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneMappings The list of zone mapping of the VPC.
+         * @param zoneMappings The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
          * 
          * @return builder
          * 
@@ -550,7 +608,8 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneMappings The list of zone mapping of the VPC.
+         * @param zoneMappings The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
          * 
          * @return builder
          * 
@@ -560,7 +619,8 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneMappings The list of zone mapping of the VPC.
+         * @param zoneMappings The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
          * 
          * @return builder
          * 

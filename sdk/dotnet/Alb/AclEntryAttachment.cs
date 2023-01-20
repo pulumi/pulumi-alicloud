@@ -17,30 +17,30 @@ namespace Pulumi.AliCloud.Alb
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "terraformalbaclconfig";
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
-    ///         var defaultAcl = new AliCloud.Alb.Acl("defaultAcl", new AliCloud.Alb.AclArgs
-    ///         {
-    ///             AclName = name,
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///         });
-    ///         var defaultAclEntryAttachment = new AliCloud.Alb.AclEntryAttachment("defaultAclEntryAttachment", new AliCloud.Alb.AclEntryAttachmentArgs
-    ///         {
-    ///             AclId = defaultAcl.Id,
-    ///             Entry = "168.10.10.0/24",
-    ///             Description = name,
-    ///         });
-    ///     }
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraformalbaclconfig";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    /// }
+    ///     var defaultAcl = new AliCloud.Alb.Acl("defaultAcl", new()
+    ///     {
+    ///         AclName = name,
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultAclEntryAttachment = new AliCloud.Alb.AclEntryAttachment("defaultAclEntryAttachment", new()
+    ///     {
+    ///         AclId = defaultAcl.Id,
+    ///         Entry = "168.10.10.0/24",
+    ///         Description = name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Alb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/aclEntryAttachment:AclEntryAttachment")]
-    public partial class AclEntryAttachment : Pulumi.CustomResource
+    public partial class AclEntryAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Acl.
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Alb
         }
     }
 
-    public sealed class AclEntryAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class AclEntryAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Acl.
@@ -145,9 +145,10 @@ namespace Pulumi.AliCloud.Alb
         public AclEntryAttachmentArgs()
         {
         }
+        public static new AclEntryAttachmentArgs Empty => new AclEntryAttachmentArgs();
     }
 
-    public sealed class AclEntryAttachmentState : Pulumi.ResourceArgs
+    public sealed class AclEntryAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Acl.
@@ -176,5 +177,6 @@ namespace Pulumi.AliCloud.Alb
         public AclEntryAttachmentState()
         {
         }
+        public static new AclEntryAttachmentState Empty => new AclEntryAttachmentState();
     }
 }

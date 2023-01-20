@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Arms.Inputs
 {
 
-    public sealed class DispatchRuleGroupRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class DispatchRuleGroupRuleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
@@ -48,5 +48,6 @@ namespace Pulumi.AliCloud.Arms.Inputs
         public DispatchRuleGroupRuleGetArgs()
         {
         }
+        public static new DispatchRuleGroupRuleGetArgs Empty => new DispatchRuleGroupRuleGetArgs();
     }
 }

@@ -41,14 +41,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+     * Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      * 
      */
     @Import(name="chargeType")
     private @Nullable Output<String> chargeType;
 
     /**
-     * @return Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+     * @return Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      * 
      */
     public Optional<Output<String>> chargeType() {
@@ -251,14 +251,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * bootstrap action name.
+     * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return bootstrap action name.
+     * @return The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -512,7 +512,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chargeType Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+         * @param chargeType Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chargeType Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+         * @param chargeType Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
          * 
          * @return builder
          * 
@@ -826,7 +826,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name bootstrap action name.
+         * @param name The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
          * 
          * @return builder
          * 
@@ -837,7 +837,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name bootstrap action name.
+         * @param name The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
          * 
          * @return builder
          * 

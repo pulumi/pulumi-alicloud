@@ -21,23 +21,21 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Vpc.DhcpOptionsSet("example", new()
     ///     {
-    ///         var example = new AliCloud.Vpc.DhcpOptionsSet("example", new AliCloud.Vpc.DhcpOptionsSetArgs
-    ///         {
-    ///             DhcpOptionsSetDescription = "example_value",
-    ///             DhcpOptionsSetName = "example_value",
-    ///             DomainName = "example.com",
-    ///             DomainNameServers = "100.100.2.136",
-    ///         });
-    ///     }
+    ///         DhcpOptionsSetDescription = "example_value",
+    ///         DhcpOptionsSetName = "example_value",
+    ///         DomainName = "example.com",
+    ///         DomainNameServers = "100.100.2.136",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet")]
-    public partial class DhcpOptionsSet : Pulumi.CustomResource
+    public partial class DhcpOptionsSet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
@@ -143,7 +141,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class DhcpOptionsSetArgs : Pulumi.ResourceArgs
+    public sealed class DhcpOptionsSetArgs : global::Pulumi.ResourceArgs
     {
         [Input("associateVpcs")]
         private InputList<Inputs.DhcpOptionsSetAssociateVpcArgs>? _associateVpcs;
@@ -191,9 +189,10 @@ namespace Pulumi.AliCloud.Vpc
         public DhcpOptionsSetArgs()
         {
         }
+        public static new DhcpOptionsSetArgs Empty => new DhcpOptionsSetArgs();
     }
 
-    public sealed class DhcpOptionsSetState : Pulumi.ResourceArgs
+    public sealed class DhcpOptionsSetState : global::Pulumi.ResourceArgs
     {
         [Input("associateVpcs")]
         private InputList<Inputs.DhcpOptionsSetAssociateVpcGetArgs>? _associateVpcs;
@@ -253,5 +252,6 @@ namespace Pulumi.AliCloud.Vpc
         public DhcpOptionsSetState()
         {
         }
+        public static new DhcpOptionsSetState Empty => new DhcpOptionsSetState();
     }
 }

@@ -72,7 +72,7 @@ import (
 //			defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
 //				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
 //				PolicyGroupId: defaultEcdPolicyGroup.ID(),
-//				BundleId:      pulumi.String(defaultBundles.Bundles[1].Id),
+//				BundleId:      *pulumi.String(defaultBundles.Bundles[1].Id),
 //				DesktopName:   pulumi.String("your_desktop_name"),
 //			})
 //			if err != nil {
@@ -91,12 +91,17 @@ import (
 //					defaultImage.ID(),
 //				},
 //			}, nil)
-//			ctx.Export("ecdImageId1", ids.ApplyT(func(ids eds.GetImagesResult) (string, error) {
-//				return ids.Images[0].Id, nil
-//			}).(pulumi.StringOutput))
-//			ctx.Export("ecdImageId2", nameRegex.ApplyT(func(nameRegex eds.GetImagesResult) (string, error) {
-//				return nameRegex.Images[0].Id, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("ecdImageId1", ids.ApplyT(func(ids eds.GetImagesResult) (*string, error) {
+//				return &ids.Images[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			nameRegex := defaultImage.ImageName.ApplyT(func(imageName *string) (eds.GetImagesResult, error) {
+//				return eds.GetImagesOutput(ctx, eds.GetImagesOutputArgs{
+//					NameRegex: imageName,
+//				}, nil), nil
+//			}).(eds.GetImagesResultOutput)
+//			ctx.Export("ecdImageId2", nameRegex.ApplyT(func(nameRegex eds.GetImagesResult) (*string, error) {
+//				return &nameRegex.Images[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

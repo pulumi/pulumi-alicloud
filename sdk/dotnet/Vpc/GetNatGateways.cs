@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Vpc
         /// &gt; **NOTE:** Available in 1.37.0+.
         /// </summary>
         public static Task<GetNatGatewaysResult> InvokeAsync(GetNatGatewaysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? new GetNatGatewaysArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? new GetNatGatewaysArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Vpc
         /// &gt; **NOTE:** Available in 1.37.0+.
         /// </summary>
         public static Output<GetNatGatewaysResult> Invoke(GetNatGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? new GetNatGatewaysInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? new GetNatGatewaysInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNatGatewaysArgs : Pulumi.InvokeArgs
+    public sealed class GetNatGatewaysArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specifies whether to only precheck the request.
@@ -127,9 +127,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetNatGatewaysArgs()
         {
         }
+        public static new GetNatGatewaysArgs Empty => new GetNatGatewaysArgs();
     }
 
-    public sealed class GetNatGatewaysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNatGatewaysInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specifies whether to only precheck the request.
@@ -227,6 +228,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetNatGatewaysInvokeArgs()
         {
         }
+        public static new GetNatGatewaysInvokeArgs Empty => new GetNatGatewaysInvokeArgs();
     }
 
 

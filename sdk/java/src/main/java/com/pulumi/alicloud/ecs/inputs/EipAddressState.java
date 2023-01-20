@@ -9,6 +9,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -248,6 +249,21 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+     * 
+     */
+    @Import(name="publicIpAddressPoolId")
+    private @Nullable Output<String> publicIpAddressPoolId;
+
+    /**
+     * @return The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+     * 
+     */
+    public Optional<Output<String>> publicIpAddressPoolId() {
+        return Optional.ofNullable(this.publicIpAddressPoolId);
+    }
+
+    /**
      * The ID of the resource group.
      * 
      */
@@ -260,6 +276,21 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     * 
+     */
+    @Import(name="securityProtectionTypes")
+    private @Nullable Output<List<String>> securityProtectionTypes;
+
+    /**
+     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     * 
+     */
+    public Optional<Output<List<String>>> securityProtectionTypes() {
+        return Optional.ofNullable(this.securityProtectionTypes);
     }
 
     /**
@@ -309,7 +340,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         this.netmode = $.netmode;
         this.paymentType = $.paymentType;
         this.period = $.period;
+        this.publicIpAddressPoolId = $.publicIpAddressPoolId;
         this.resourceGroupId = $.resourceGroupId;
+        this.securityProtectionTypes = $.securityProtectionTypes;
         this.status = $.status;
         this.tags = $.tags;
     }
@@ -645,6 +678,27 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param publicIpAddressPoolId The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicIpAddressPoolId(@Nullable Output<String> publicIpAddressPoolId) {
+            $.publicIpAddressPoolId = publicIpAddressPoolId;
+            return this;
+        }
+
+        /**
+         * @param publicIpAddressPoolId The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicIpAddressPoolId(String publicIpAddressPoolId) {
+            return publicIpAddressPoolId(Output.of(publicIpAddressPoolId));
+        }
+
+        /**
          * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
@@ -663,6 +717,37 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(@Nullable Output<List<String>> securityProtectionTypes) {
+            $.securityProtectionTypes = securityProtectionTypes;
+            return this;
+        }
+
+        /**
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(List<String> securityProtectionTypes) {
+            return securityProtectionTypes(Output.of(securityProtectionTypes));
+        }
+
+        /**
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(String... securityProtectionTypes) {
+            return securityProtectionTypes(List.of(securityProtectionTypes));
         }
 
         /**

@@ -16,12 +16,16 @@ __all__ = [
     'InstancePgHbaConf',
     'RdsCloneDbInstanceParameter',
     'RdsCloneDbInstancePgHbaConf',
+    'RdsDbProxyReadOnlyInstanceWeight',
     'RdsParameterGroupParamDetail',
     'RdsUpgradeDbInstanceParameter',
     'RdsUpgradeDbInstancePgHbaConf',
     'ReadOnlyInstanceParameter',
     'GetAccountsAccountResult',
     'GetAccountsAccountDatabasePrivilegeResult',
+    'GetCrossRegionBackupsBackupResult',
+    'GetCrossRegionsRegionResult',
+    'GetInstanceClassInfosInfoResult',
     'GetInstanceClassesInstanceClassResult',
     'GetInstanceClassesInstanceClassStorageRangeResult',
     'GetInstanceClassesInstanceClassZoneIdResult',
@@ -389,6 +393,48 @@ class RdsCloneDbInstancePgHbaConf(dict):
 
 
 @pulumi.output_type
+class RdsDbProxyReadOnlyInstanceWeight(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RdsDbProxyReadOnlyInstanceWeight. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RdsDbProxyReadOnlyInstanceWeight.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RdsDbProxyReadOnlyInstanceWeight.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_id: str,
+                 weight: str):
+        """
+        :param str instance_id: The Id of instance that can run database.
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The Id of instance that can run database.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> str:
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
 class RdsParameterGroupParamDetail(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -716,6 +762,410 @@ class GetAccountsAccountDatabasePrivilegeResult(dict):
         Database name.
         """
         return pulumi.get(self, "db_name")
+
+
+@pulumi.output_type
+class GetCrossRegionBackupsBackupResult(dict):
+    def __init__(__self__, *,
+                 backup_end_time: str,
+                 backup_method: str,
+                 backup_set_scale: str,
+                 backup_set_status: int,
+                 backup_start_time: str,
+                 backup_type: str,
+                 category: str,
+                 consistent_time: str,
+                 cross_backup_download_link: str,
+                 cross_backup_id: str,
+                 cross_backup_region: str,
+                 cross_backup_set_file: str,
+                 cross_backup_set_location: str,
+                 cross_backup_set_size: int,
+                 db_instance_storage_type: str,
+                 engine: str,
+                 engine_version: str,
+                 id: str,
+                 instance_id: int,
+                 recovery_begin_time: str,
+                 recovery_end_time: str,
+                 restore_regions: Sequence[str]):
+        """
+        :param str backup_end_time: The time when the cross-region data backup file was generated.
+        :param str backup_method: The method that is used to generate the cross-region data backup file. Valid values:
+               `L` - logical backup.
+               `P` - physical backup.
+        :param str backup_set_scale: The level at which the cross-region data backup file is generated.
+               `0` - instance-level backup.
+               `1` - database-level backup.
+        :param int backup_set_status: TThe status of the cross-region data backup. Valid values:
+               `0` - The cross-region data backup is successful.
+               `1` - The cross-region data backup failed.
+        :param str backup_start_time: The time when the cross-region data backup started.
+        :param str backup_type: The type of the cross-region data backup. Valid values:F: full data backup
+               `F` - full data backup.
+               `I` - incremental data backup.
+        :param str category: The RDS edition of the instance. Valid values:
+               `Basic` - Basic Edition.
+               `HighAvailability` - High-availability Edition.
+               `Finance` - Enterprise Edition. This edition is supported only by the China site (aliyun.com).
+        :param str consistent_time: The point in time that is indicated by the data in the cross-region data backup file.
+        :param str cross_backup_download_link: The external URL from which you can download the cross-region data backup file.
+        :param str cross_backup_id: The ID of the cross-region data backup file.
+        :param str cross_backup_region: The ID of the destination region where the cross-region data backup file of the instance is stored.
+        :param str cross_backup_set_file: The name of the compressed package that contains the cross-region data backup file.
+        :param str cross_backup_set_location: The location where the cross-region data backup file is stored.
+        :param int cross_backup_set_size: The size of the cross-region data backup file. Unit: bytes.
+        :param str db_instance_storage_type: The storage type.
+        :param str engine: The engine of the database.
+        :param str engine_version: The version of the database engine.
+        :param str id: The ID of the cross-region data backup file.
+        :param int instance_id: The ID of the instance. This parameter is used to determine whether the instance that generates the cross-region data backup file is a primary or secondary instance.
+        :param str recovery_begin_time: The start time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param str recovery_end_time: The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param Sequence[str] restore_regions: An array that consists of the regions to which the cross-region data backup file can be restored.
+        """
+        pulumi.set(__self__, "backup_end_time", backup_end_time)
+        pulumi.set(__self__, "backup_method", backup_method)
+        pulumi.set(__self__, "backup_set_scale", backup_set_scale)
+        pulumi.set(__self__, "backup_set_status", backup_set_status)
+        pulumi.set(__self__, "backup_start_time", backup_start_time)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "consistent_time", consistent_time)
+        pulumi.set(__self__, "cross_backup_download_link", cross_backup_download_link)
+        pulumi.set(__self__, "cross_backup_id", cross_backup_id)
+        pulumi.set(__self__, "cross_backup_region", cross_backup_region)
+        pulumi.set(__self__, "cross_backup_set_file", cross_backup_set_file)
+        pulumi.set(__self__, "cross_backup_set_location", cross_backup_set_location)
+        pulumi.set(__self__, "cross_backup_set_size", cross_backup_set_size)
+        pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "recovery_begin_time", recovery_begin_time)
+        pulumi.set(__self__, "recovery_end_time", recovery_end_time)
+        pulumi.set(__self__, "restore_regions", restore_regions)
+
+    @property
+    @pulumi.getter(name="backupEndTime")
+    def backup_end_time(self) -> str:
+        """
+        The time when the cross-region data backup file was generated.
+        """
+        return pulumi.get(self, "backup_end_time")
+
+    @property
+    @pulumi.getter(name="backupMethod")
+    def backup_method(self) -> str:
+        """
+        The method that is used to generate the cross-region data backup file. Valid values:
+        `L` - logical backup.
+        `P` - physical backup.
+        """
+        return pulumi.get(self, "backup_method")
+
+    @property
+    @pulumi.getter(name="backupSetScale")
+    def backup_set_scale(self) -> str:
+        """
+        The level at which the cross-region data backup file is generated.
+        `0` - instance-level backup.
+        `1` - database-level backup.
+        """
+        return pulumi.get(self, "backup_set_scale")
+
+    @property
+    @pulumi.getter(name="backupSetStatus")
+    def backup_set_status(self) -> int:
+        """
+        TThe status of the cross-region data backup. Valid values:
+        `0` - The cross-region data backup is successful.
+        `1` - The cross-region data backup failed.
+        """
+        return pulumi.get(self, "backup_set_status")
+
+    @property
+    @pulumi.getter(name="backupStartTime")
+    def backup_start_time(self) -> str:
+        """
+        The time when the cross-region data backup started.
+        """
+        return pulumi.get(self, "backup_start_time")
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> str:
+        """
+        The type of the cross-region data backup. Valid values:F: full data backup
+        `F` - full data backup.
+        `I` - incremental data backup.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @property
+    @pulumi.getter
+    def category(self) -> str:
+        """
+        The RDS edition of the instance. Valid values:
+        `Basic` - Basic Edition.
+        `HighAvailability` - High-availability Edition.
+        `Finance` - Enterprise Edition. This edition is supported only by the China site (aliyun.com).
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="consistentTime")
+    def consistent_time(self) -> str:
+        """
+        The point in time that is indicated by the data in the cross-region data backup file.
+        """
+        return pulumi.get(self, "consistent_time")
+
+    @property
+    @pulumi.getter(name="crossBackupDownloadLink")
+    def cross_backup_download_link(self) -> str:
+        """
+        The external URL from which you can download the cross-region data backup file.
+        """
+        return pulumi.get(self, "cross_backup_download_link")
+
+    @property
+    @pulumi.getter(name="crossBackupId")
+    def cross_backup_id(self) -> str:
+        """
+        The ID of the cross-region data backup file.
+        """
+        return pulumi.get(self, "cross_backup_id")
+
+    @property
+    @pulumi.getter(name="crossBackupRegion")
+    def cross_backup_region(self) -> str:
+        """
+        The ID of the destination region where the cross-region data backup file of the instance is stored.
+        """
+        return pulumi.get(self, "cross_backup_region")
+
+    @property
+    @pulumi.getter(name="crossBackupSetFile")
+    def cross_backup_set_file(self) -> str:
+        """
+        The name of the compressed package that contains the cross-region data backup file.
+        """
+        return pulumi.get(self, "cross_backup_set_file")
+
+    @property
+    @pulumi.getter(name="crossBackupSetLocation")
+    def cross_backup_set_location(self) -> str:
+        """
+        The location where the cross-region data backup file is stored.
+        """
+        return pulumi.get(self, "cross_backup_set_location")
+
+    @property
+    @pulumi.getter(name="crossBackupSetSize")
+    def cross_backup_set_size(self) -> int:
+        """
+        The size of the cross-region data backup file. Unit: bytes.
+        """
+        return pulumi.get(self, "cross_backup_set_size")
+
+    @property
+    @pulumi.getter(name="dbInstanceStorageType")
+    def db_instance_storage_type(self) -> str:
+        """
+        The storage type.
+        """
+        return pulumi.get(self, "db_instance_storage_type")
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        """
+        The engine of the database.
+        """
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> str:
+        """
+        The version of the database engine.
+        """
+        return pulumi.get(self, "engine_version")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the cross-region data backup file.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> int:
+        """
+        The ID of the instance. This parameter is used to determine whether the instance that generates the cross-region data backup file is a primary or secondary instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="recoveryBeginTime")
+    def recovery_begin_time(self) -> str:
+        """
+        The start time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "recovery_begin_time")
+
+    @property
+    @pulumi.getter(name="recoveryEndTime")
+    def recovery_end_time(self) -> str:
+        """
+        The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "recovery_end_time")
+
+    @property
+    @pulumi.getter(name="restoreRegions")
+    def restore_regions(self) -> Sequence[str]:
+        """
+        An array that consists of the regions to which the cross-region data backup file can be restored.
+        """
+        return pulumi.get(self, "restore_regions")
+
+
+@pulumi.output_type
+class GetCrossRegionsRegionResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: ID of the region.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the region.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetInstanceClassInfosInfoResult(dict):
+    def __init__(__self__, *,
+                 class_code: Optional[str] = None,
+                 class_group: Optional[str] = None,
+                 cpu: Optional[str] = None,
+                 instruction_set_arch: Optional[str] = None,
+                 max_connections: Optional[str] = None,
+                 max_iombps: Optional[str] = None,
+                 max_iops: Optional[str] = None,
+                 memory_class: Optional[str] = None,
+                 reference_price: Optional[str] = None):
+        """
+        :param str class_code: The code of the instance type.
+        :param str class_group: The instance family of the instance.
+        :param str cpu: The number of cores that are supported by the instance type. Unit: cores.
+        :param str instruction_set_arch: The architecture of the instance type.
+        :param str max_connections: The maximum number of connections that are supported by the instance type. Unit: connections.
+        :param str max_iombps: The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
+        :param str max_iops: The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
+        :param str memory_class: The memory capacity that is supported by the instance type. Unit: GB.
+        :param str reference_price: The fee that you must pay for the instance type. Unit: cent (USD).
+        """
+        if class_code is not None:
+            pulumi.set(__self__, "class_code", class_code)
+        if class_group is not None:
+            pulumi.set(__self__, "class_group", class_group)
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if instruction_set_arch is not None:
+            pulumi.set(__self__, "instruction_set_arch", instruction_set_arch)
+        if max_connections is not None:
+            pulumi.set(__self__, "max_connections", max_connections)
+        if max_iombps is not None:
+            pulumi.set(__self__, "max_iombps", max_iombps)
+        if max_iops is not None:
+            pulumi.set(__self__, "max_iops", max_iops)
+        if memory_class is not None:
+            pulumi.set(__self__, "memory_class", memory_class)
+        if reference_price is not None:
+            pulumi.set(__self__, "reference_price", reference_price)
+
+    @property
+    @pulumi.getter(name="classCode")
+    def class_code(self) -> Optional[str]:
+        """
+        The code of the instance type.
+        """
+        return pulumi.get(self, "class_code")
+
+    @property
+    @pulumi.getter(name="classGroup")
+    def class_group(self) -> Optional[str]:
+        """
+        The instance family of the instance.
+        """
+        return pulumi.get(self, "class_group")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[str]:
+        """
+        The number of cores that are supported by the instance type. Unit: cores.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="instructionSetArch")
+    def instruction_set_arch(self) -> Optional[str]:
+        """
+        The architecture of the instance type.
+        """
+        return pulumi.get(self, "instruction_set_arch")
+
+    @property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> Optional[str]:
+        """
+        The maximum number of connections that are supported by the instance type. Unit: connections.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @property
+    @pulumi.getter(name="maxIombps")
+    def max_iombps(self) -> Optional[str]:
+        """
+        The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "max_iombps")
+
+    @property
+    @pulumi.getter(name="maxIops")
+    def max_iops(self) -> Optional[str]:
+        """
+        The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
+        """
+        return pulumi.get(self, "max_iops")
+
+    @property
+    @pulumi.getter(name="memoryClass")
+    def memory_class(self) -> Optional[str]:
+        """
+        The memory capacity that is supported by the instance type. Unit: GB.
+        """
+        return pulumi.get(self, "memory_class")
+
+    @property
+    @pulumi.getter(name="referencePrice")
+    def reference_price(self) -> Optional[str]:
+        """
+        The fee that you must pay for the instance type. Unit: cent (USD).
+        """
+        return pulumi.get(self, "reference_price")
 
 
 @pulumi.output_type

@@ -17,7 +17,8 @@ type ClusterDbClusterIpArray struct {
 	// The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
 	// **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
 	ModifyMode *string `pulumi:"modifyMode"`
-	// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
+	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps []string `pulumi:"securityIps"`
 }
 
@@ -39,7 +40,8 @@ type ClusterDbClusterIpArrayArgs struct {
 	// The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
 	// **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
 	ModifyMode pulumi.StringPtrInput `pulumi:"modifyMode"`
-	// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
+	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps pulumi.StringArrayInput `pulumi:"securityIps"`
 }
 
@@ -106,7 +108,8 @@ func (o ClusterDbClusterIpArrayOutput) ModifyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDbClusterIpArray) *string { return v.ModifyMode }).(pulumi.StringPtrOutput)
 }
 
-// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
+// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 func (o ClusterDbClusterIpArrayOutput) SecurityIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterDbClusterIpArray) []string { return v.SecurityIps }).(pulumi.StringArrayOutput)
 }
@@ -229,6 +232,112 @@ func (o ClusterParameterArrayOutput) Index(i pulumi.IntInput) ClusterParameterOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterParameter {
 		return vs[0].([]ClusterParameter)[vs[1].(int)]
 	}).(ClusterParameterOutput)
+}
+
+type ParameterGroupParameter struct {
+	// The name of a parameter in the parameter template.
+	ParamName string `pulumi:"paramName"`
+	// The value of a parameter in the parameter template.
+	ParamValue string `pulumi:"paramValue"`
+}
+
+// ParameterGroupParameterInput is an input type that accepts ParameterGroupParameterArgs and ParameterGroupParameterOutput values.
+// You can construct a concrete instance of `ParameterGroupParameterInput` via:
+//
+//	ParameterGroupParameterArgs{...}
+type ParameterGroupParameterInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterOutput() ParameterGroupParameterOutput
+	ToParameterGroupParameterOutputWithContext(context.Context) ParameterGroupParameterOutput
+}
+
+type ParameterGroupParameterArgs struct {
+	// The name of a parameter in the parameter template.
+	ParamName pulumi.StringInput `pulumi:"paramName"`
+	// The value of a parameter in the parameter template.
+	ParamValue pulumi.StringInput `pulumi:"paramValue"`
+}
+
+func (ParameterGroupParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameter)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterArgs) ToParameterGroupParameterOutput() ParameterGroupParameterOutput {
+	return i.ToParameterGroupParameterOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterArgs) ToParameterGroupParameterOutputWithContext(ctx context.Context) ParameterGroupParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterOutput)
+}
+
+// ParameterGroupParameterArrayInput is an input type that accepts ParameterGroupParameterArray and ParameterGroupParameterArrayOutput values.
+// You can construct a concrete instance of `ParameterGroupParameterArrayInput` via:
+//
+//	ParameterGroupParameterArray{ ParameterGroupParameterArgs{...} }
+type ParameterGroupParameterArrayInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterArrayOutput() ParameterGroupParameterArrayOutput
+	ToParameterGroupParameterArrayOutputWithContext(context.Context) ParameterGroupParameterArrayOutput
+}
+
+type ParameterGroupParameterArray []ParameterGroupParameterInput
+
+func (ParameterGroupParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameter)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterArray) ToParameterGroupParameterArrayOutput() ParameterGroupParameterArrayOutput {
+	return i.ToParameterGroupParameterArrayOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterArray) ToParameterGroupParameterArrayOutputWithContext(ctx context.Context) ParameterGroupParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterArrayOutput)
+}
+
+type ParameterGroupParameterOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameter)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterOutput) ToParameterGroupParameterOutput() ParameterGroupParameterOutput {
+	return o
+}
+
+func (o ParameterGroupParameterOutput) ToParameterGroupParameterOutputWithContext(ctx context.Context) ParameterGroupParameterOutput {
+	return o
+}
+
+// The name of a parameter in the parameter template.
+func (o ParameterGroupParameterOutput) ParamName() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameter) string { return v.ParamName }).(pulumi.StringOutput)
+}
+
+// The value of a parameter in the parameter template.
+func (o ParameterGroupParameterOutput) ParamValue() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameter) string { return v.ParamValue }).(pulumi.StringOutput)
+}
+
+type ParameterGroupParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameter)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterArrayOutput) ToParameterGroupParameterArrayOutput() ParameterGroupParameterArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArrayOutput) ToParameterGroupParameterArrayOutputWithContext(ctx context.Context) ParameterGroupParameterArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) ParameterGroupParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterGroupParameter {
+		return vs[0].([]ParameterGroupParameter)[vs[1].(int)]
+	}).(ParameterGroupParameterOutput)
 }
 
 type GetAccountsAccount struct {
@@ -482,6 +591,8 @@ func (o GetAccountsAccountDatabasePrivilegeArrayOutput) Index(i pulumi.IntInput)
 type GetClustersCluster struct {
 	// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
 	ChargeType string `pulumi:"chargeType"`
+	// PolarDB cluster connection string.
+	ConnectionString string `pulumi:"connectionString"`
 	// The createTime of the db_nodes.
 	CreateTime string `pulumi:"createTime"`
 	// The dbNodeClass of the db_nodes.
@@ -510,6 +621,8 @@ type GetClustersCluster struct {
 	LockMode string `pulumi:"lockMode"`
 	// The DBClusterNetworkType of the PolarDB cluster.
 	NetworkType string `pulumi:"networkType"`
+	// PolarDB cluster connection port.
+	Port string `pulumi:"port"`
 	// The regionId of the db_nodes.
 	RegionId string `pulumi:"regionId"`
 	// status of the cluster.
@@ -536,6 +649,8 @@ type GetClustersClusterInput interface {
 type GetClustersClusterArgs struct {
 	// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
+	// PolarDB cluster connection string.
+	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
 	// The createTime of the db_nodes.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The dbNodeClass of the db_nodes.
@@ -564,6 +679,8 @@ type GetClustersClusterArgs struct {
 	LockMode pulumi.StringInput `pulumi:"lockMode"`
 	// The DBClusterNetworkType of the PolarDB cluster.
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// PolarDB cluster connection port.
+	Port pulumi.StringInput `pulumi:"port"`
 	// The regionId of the db_nodes.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// status of the cluster.
@@ -630,6 +747,11 @@ func (o GetClustersClusterOutput) ToGetClustersClusterOutputWithContext(ctx cont
 // Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
 func (o GetClustersClusterOutput) ChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ChargeType }).(pulumi.StringOutput)
+}
+
+// PolarDB cluster connection string.
+func (o GetClustersClusterOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ConnectionString }).(pulumi.StringOutput)
 }
 
 // The createTime of the db_nodes.
@@ -700,6 +822,11 @@ func (o GetClustersClusterOutput) LockMode() pulumi.StringOutput {
 // The DBClusterNetworkType of the PolarDB cluster.
 func (o GetClustersClusterOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// PolarDB cluster connection port.
+func (o GetClustersClusterOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Port }).(pulumi.StringOutput)
 }
 
 // The regionId of the db_nodes.
@@ -2054,6 +2181,184 @@ func (o GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput) Index(i 
 	}).(GetNodeClassesClassSupportedEngineAvailableResourceOutput)
 }
 
+type GetParameterGroupsGroup struct {
+	// The time when the parameter template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	CreateTime string `pulumi:"createTime"`
+	// The type of the database engine.
+	DbType string `pulumi:"dbType"`
+	// The version number of the database engine.
+	DbVersion string `pulumi:"dbVersion"`
+	// Indicates whether to restart the cluster when this parameter template is applied.
+	ForceRestart string `pulumi:"forceRestart"`
+	// The ID of the Parameter Group.
+	Id string `pulumi:"id"`
+	// The number of parameters in the parameter template.
+	ParameterCounts int `pulumi:"parameterCounts"`
+	// The description of the parameter template.
+	ParameterGroupDesc string `pulumi:"parameterGroupDesc"`
+	// The ID of the Parameter Group.
+	ParameterGroupId string `pulumi:"parameterGroupId"`
+	// The name of the parameter template.
+	ParameterGroupName string `pulumi:"parameterGroupName"`
+	// The type of the parameter template.
+	ParameterGroupType string `pulumi:"parameterGroupType"`
+}
+
+// GetParameterGroupsGroupInput is an input type that accepts GetParameterGroupsGroupArgs and GetParameterGroupsGroupOutput values.
+// You can construct a concrete instance of `GetParameterGroupsGroupInput` via:
+//
+//	GetParameterGroupsGroupArgs{...}
+type GetParameterGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetParameterGroupsGroupOutput() GetParameterGroupsGroupOutput
+	ToGetParameterGroupsGroupOutputWithContext(context.Context) GetParameterGroupsGroupOutput
+}
+
+type GetParameterGroupsGroupArgs struct {
+	// The time when the parameter template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The type of the database engine.
+	DbType pulumi.StringInput `pulumi:"dbType"`
+	// The version number of the database engine.
+	DbVersion pulumi.StringInput `pulumi:"dbVersion"`
+	// Indicates whether to restart the cluster when this parameter template is applied.
+	ForceRestart pulumi.StringInput `pulumi:"forceRestart"`
+	// The ID of the Parameter Group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The number of parameters in the parameter template.
+	ParameterCounts pulumi.IntInput `pulumi:"parameterCounts"`
+	// The description of the parameter template.
+	ParameterGroupDesc pulumi.StringInput `pulumi:"parameterGroupDesc"`
+	// The ID of the Parameter Group.
+	ParameterGroupId pulumi.StringInput `pulumi:"parameterGroupId"`
+	// The name of the parameter template.
+	ParameterGroupName pulumi.StringInput `pulumi:"parameterGroupName"`
+	// The type of the parameter template.
+	ParameterGroupType pulumi.StringInput `pulumi:"parameterGroupType"`
+}
+
+func (GetParameterGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetParameterGroupsGroup)(nil)).Elem()
+}
+
+func (i GetParameterGroupsGroupArgs) ToGetParameterGroupsGroupOutput() GetParameterGroupsGroupOutput {
+	return i.ToGetParameterGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetParameterGroupsGroupArgs) ToGetParameterGroupsGroupOutputWithContext(ctx context.Context) GetParameterGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetParameterGroupsGroupOutput)
+}
+
+// GetParameterGroupsGroupArrayInput is an input type that accepts GetParameterGroupsGroupArray and GetParameterGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetParameterGroupsGroupArrayInput` via:
+//
+//	GetParameterGroupsGroupArray{ GetParameterGroupsGroupArgs{...} }
+type GetParameterGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetParameterGroupsGroupArrayOutput() GetParameterGroupsGroupArrayOutput
+	ToGetParameterGroupsGroupArrayOutputWithContext(context.Context) GetParameterGroupsGroupArrayOutput
+}
+
+type GetParameterGroupsGroupArray []GetParameterGroupsGroupInput
+
+func (GetParameterGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetParameterGroupsGroup)(nil)).Elem()
+}
+
+func (i GetParameterGroupsGroupArray) ToGetParameterGroupsGroupArrayOutput() GetParameterGroupsGroupArrayOutput {
+	return i.ToGetParameterGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetParameterGroupsGroupArray) ToGetParameterGroupsGroupArrayOutputWithContext(ctx context.Context) GetParameterGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetParameterGroupsGroupArrayOutput)
+}
+
+type GetParameterGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetParameterGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetParameterGroupsGroup)(nil)).Elem()
+}
+
+func (o GetParameterGroupsGroupOutput) ToGetParameterGroupsGroupOutput() GetParameterGroupsGroupOutput {
+	return o
+}
+
+func (o GetParameterGroupsGroupOutput) ToGetParameterGroupsGroupOutputWithContext(ctx context.Context) GetParameterGroupsGroupOutput {
+	return o
+}
+
+// The time when the parameter template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o GetParameterGroupsGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParameterGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The type of the database engine.
+func (o GetParameterGroupsGroupOutput) DbType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParameterGroupsGroup) string { return v.DbType }).(pulumi.StringOutput)
+}
+
+// The version number of the database engine.
+func (o GetParameterGroupsGroupOutput) DbVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParameterGroupsGroup) string { return v.DbVersion }).(pulumi.StringOutput)
+}
+
+// Indicates whether to restart the cluster when this parameter template is applied.
+func (o GetParameterGroupsGroupOutput) ForceRestart() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParameterGroupsGroup) string { return v.ForceRestart }).(pulumi.StringOutput)
+}
+
+// The ID of the Parameter Group.
+func (o GetParameterGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParameterGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The number of parameters in the parameter template.
+func (o GetParameterGroupsGroupOutput) ParameterCounts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetParameterGroupsGroup) int { return v.ParameterCounts }).(pulumi.IntOutput)
+}
+
+// The description of the parameter template.
+func (o GetParameterGroupsGroupOutput) ParameterGroupDesc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParameterGroupsGroup) string { return v.ParameterGroupDesc }).(pulumi.StringOutput)
+}
+
+// The ID of the Parameter Group.
+func (o GetParameterGroupsGroupOutput) ParameterGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParameterGroupsGroup) string { return v.ParameterGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the parameter template.
+func (o GetParameterGroupsGroupOutput) ParameterGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParameterGroupsGroup) string { return v.ParameterGroupName }).(pulumi.StringOutput)
+}
+
+// The type of the parameter template.
+func (o GetParameterGroupsGroupOutput) ParameterGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParameterGroupsGroup) string { return v.ParameterGroupType }).(pulumi.StringOutput)
+}
+
+type GetParameterGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetParameterGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetParameterGroupsGroup)(nil)).Elem()
+}
+
+func (o GetParameterGroupsGroupArrayOutput) ToGetParameterGroupsGroupArrayOutput() GetParameterGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetParameterGroupsGroupArrayOutput) ToGetParameterGroupsGroupArrayOutputWithContext(ctx context.Context) GetParameterGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetParameterGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetParameterGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetParameterGroupsGroup {
+		return vs[0].([]GetParameterGroupsGroup)[vs[1].(int)]
+	}).(GetParameterGroupsGroupOutput)
+}
+
 type GetZonesZone struct {
 	// ID of the zone.
 	Id string `pulumi:"id"`
@@ -2165,6 +2470,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDbClusterIpArrayArrayInput)(nil)).Elem(), ClusterDbClusterIpArrayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterParameterInput)(nil)).Elem(), ClusterParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterParameterArrayInput)(nil)).Elem(), ClusterParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParameterGroupParameterInput)(nil)).Elem(), ParameterGroupParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ParameterGroupParameterArrayInput)(nil)).Elem(), ParameterGroupParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountDatabasePrivilegeInput)(nil)).Elem(), GetAccountsAccountDatabasePrivilegeArgs{})
@@ -2191,12 +2498,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeClassesClassSupportedEngineArrayInput)(nil)).Elem(), GetNodeClassesClassSupportedEngineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeClassesClassSupportedEngineAvailableResourceInput)(nil)).Elem(), GetNodeClassesClassSupportedEngineAvailableResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeClassesClassSupportedEngineAvailableResourceArrayInput)(nil)).Elem(), GetNodeClassesClassSupportedEngineAvailableResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetParameterGroupsGroupInput)(nil)).Elem(), GetParameterGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetParameterGroupsGroupArrayInput)(nil)).Elem(), GetParameterGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(ClusterDbClusterIpArrayOutput{})
 	pulumi.RegisterOutputType(ClusterDbClusterIpArrayArrayOutput{})
 	pulumi.RegisterOutputType(ClusterParameterOutput{})
 	pulumi.RegisterOutputType(ClusterParameterArrayOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountDatabasePrivilegeOutput{})
@@ -2223,6 +2534,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNodeClassesClassSupportedEngineArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeClassesClassSupportedEngineAvailableResourceOutput{})
 	pulumi.RegisterOutputType(GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetParameterGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetParameterGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

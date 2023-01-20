@@ -38,7 +38,7 @@ import (
 //			if param := cfg.Get("creation"); param != "" {
 //				creation = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef(creation),
 //			}, nil)
 //			if err != nil {
@@ -54,7 +54,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -123,6 +123,8 @@ type Cluster struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
+	// (Available in 1.196.0+) The connection port of the ADB cluster.
+	Port pulumi.StringOutput `pulumi:"port"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus   pulumi.StringOutput `pulumi:"renewalStatus"`
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -207,6 +209,8 @@ type clusterState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period *int `pulumi:"period"`
+	// (Available in 1.196.0+) The connection port of the ADB cluster.
+	Port *string `pulumi:"port"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus   *string `pulumi:"renewalStatus"`
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -257,6 +261,8 @@ type ClusterState struct {
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period pulumi.IntPtrInput
+	// (Available in 1.196.0+) The connection port of the ADB cluster.
+	Port pulumi.StringPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus   pulumi.StringPtrInput
 	ResourceGroupId pulumi.StringPtrInput
@@ -541,6 +547,11 @@ func (o ClusterOutput) PaymentType() pulumi.StringOutput {
 // The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 func (o ClusterOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// (Available in 1.196.0+) The connection port of the ADB cluster.
+func (o ClusterOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
 
 // Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.

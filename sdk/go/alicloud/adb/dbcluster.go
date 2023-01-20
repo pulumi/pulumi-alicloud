@@ -45,7 +45,7 @@ import (
 //			if param := cfg.Get("creation"); param != "" {
 //				creation = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef(creation),
 //			}, nil)
 //			if err != nil {
@@ -61,7 +61,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -113,7 +113,7 @@ type DBCluster struct {
 	AutoRenewPeriod pulumi.IntOutput `pulumi:"autoRenewPeriod"`
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
 	ComputeResource pulumi.StringPtrOutput `pulumi:"computeResource"`
-	// The endpoint of the cluster.
+	// The connection string of the cluster.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory pulumi.StringOutput `pulumi:"dbClusterCategory"`
@@ -146,6 +146,8 @@ type DBCluster struct {
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	Period      pulumi.IntPtrOutput `pulumi:"period"`
+	// (Available in 1.196.0+) The connection port of the ADB cluster.
+	Port pulumi.StringOutput `pulumi:"port"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The ID of the resource group.
@@ -205,7 +207,7 @@ type dbclusterState struct {
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
 	ComputeResource *string `pulumi:"computeResource"`
-	// The endpoint of the cluster.
+	// The connection string of the cluster.
 	ConnectionString *string `pulumi:"connectionString"`
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory *string `pulumi:"dbClusterCategory"`
@@ -238,6 +240,8 @@ type dbclusterState struct {
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
+	// (Available in 1.196.0+) The connection port of the ADB cluster.
+	Port *string `pulumi:"port"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of the resource group.
@@ -263,7 +267,7 @@ type DBClusterState struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
 	ComputeResource pulumi.StringPtrInput
-	// The endpoint of the cluster.
+	// The connection string of the cluster.
 	ConnectionString pulumi.StringPtrInput
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory pulumi.StringPtrInput
@@ -296,6 +300,8 @@ type DBClusterState struct {
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
+	// (Available in 1.196.0+) The connection port of the ADB cluster.
+	Port pulumi.StringPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of the resource group.
@@ -526,7 +532,7 @@ func (o DBClusterOutput) ComputeResource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.ComputeResource }).(pulumi.StringPtrOutput)
 }
 
-// The endpoint of the cluster.
+// The connection string of the cluster.
 func (o DBClusterOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
 }
@@ -602,6 +608,11 @@ func (o DBClusterOutput) PaymentType() pulumi.StringOutput {
 
 func (o DBClusterOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// (Available in 1.196.0+) The connection port of the ADB cluster.
+func (o DBClusterOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
 
 // Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.

@@ -20,10 +20,6 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The search method. Valid values:
-     * * `fuzzy_match`: fuzzy match. This is the default value.
-     * * `pre_match`: prefix match.
-     * * `suf_match`: suffix match.
-     * * `full_match`: exact match
      * 
      */
     @Import(name="domainSearchType")
@@ -31,10 +27,6 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The search method. Valid values:
-     * * `fuzzy_match`: fuzzy match. This is the default value.
-     * * `pre_match`: prefix match.
-     * * `suf_match`: suffix match.
-     * * `full_match`: exact match
      * 
      */
     public Optional<Output<String>> domainSearchType() {
@@ -95,8 +87,6 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     @Import(name="tags")
@@ -104,8 +94,6 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -143,10 +131,6 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param domainSearchType The search method. Valid values:
-         * * `fuzzy_match`: fuzzy match. This is the default value.
-         * * `pre_match`: prefix match.
-         * * `suf_match`: suffix match.
-         * * `full_match`: exact match
          * 
          * @return builder
          * 
@@ -158,10 +142,6 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param domainSearchType The search method. Valid values:
-         * * `fuzzy_match`: fuzzy match. This is the default value.
-         * * `pre_match`: prefix match.
-         * * `suf_match`: suffix match.
-         * * `full_match`: exact match
          * 
          * @return builder
          * 
@@ -254,8 +234,6 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
-         * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-         * * `Value`: It can be up to 128 characters in length. It can be a null string.
          * 
          * @return builder
          * 
@@ -267,8 +245,6 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
-         * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-         * * `Value`: It can be up to 128 characters in length. It can be a null string.
          * 
          * @return builder
          * 

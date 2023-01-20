@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetEipAddresses.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetEipAddresses.InvokeAsync(new AliCloud.Ecs.GetEipAddressesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "eip-bp1jvx5ki6c********",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstEipAddressId = example.Apply(example =&gt; example.Addresses?[0]?.Id);
-        ///     }
+        ///             "eip-bp1jvx5ki6c********",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstEipAddressId")]
-        ///     public Output&lt;string&gt; FirstEipAddressId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEipAddressId"] = example.Apply(getEipAddressesResult =&gt; getEipAddressesResult.Addresses[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEipAddressesResult> InvokeAsync(GetEipAddressesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEipAddressesResult>("alicloud:ecs/getEipAddresses:getEipAddresses", args ?? new GetEipAddressesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEipAddressesResult>("alicloud:ecs/getEipAddresses:getEipAddresses", args ?? new GetEipAddressesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Eip Addresses of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetEipAddresses.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetEipAddresses.InvokeAsync(new AliCloud.Ecs.GetEipAddressesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "eip-bp1jvx5ki6c********",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstEipAddressId = example.Apply(example =&gt; example.Addresses?[0]?.Id);
-        ///     }
+        ///             "eip-bp1jvx5ki6c********",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstEipAddressId")]
-        ///     public Output&lt;string&gt; FirstEipAddressId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEipAddressId"] = example.Apply(getEipAddressesResult =&gt; getEipAddressesResult.Addresses[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEipAddressesResult> Invoke(GetEipAddressesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEipAddressesResult>("alicloud:ecs/getEipAddresses:getEipAddresses", args ?? new GetEipAddressesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEipAddressesResult>("alicloud:ecs/getEipAddresses:getEipAddresses", args ?? new GetEipAddressesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEipAddressesArgs : Pulumi.InvokeArgs
+    public sealed class GetEipAddressesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the EIP.
@@ -218,9 +216,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEipAddressesArgs()
         {
         }
+        public static new GetEipAddressesArgs Empty => new GetEipAddressesArgs();
     }
 
-    public sealed class GetEipAddressesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEipAddressesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the EIP.
@@ -345,6 +344,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEipAddressesInvokeArgs()
         {
         }
+        public static new GetEipAddressesInvokeArgs Empty => new GetEipAddressesInvokeArgs();
     }
 
 

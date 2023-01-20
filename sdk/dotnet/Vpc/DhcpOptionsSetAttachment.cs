@@ -21,33 +21,33 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = "test",
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var exampleDhcpOptionsSet = new AliCloud.Vpc.DhcpOptionsSet("exampleDhcpOptionsSet", new AliCloud.Vpc.DhcpOptionsSetArgs
-    ///         {
-    ///             DhcpOptionsSetName = "example_value",
-    ///             DhcpOptionsSetDescription = "example_value",
-    ///             DomainName = "example.com",
-    ///             DomainNameServers = "100.100.2.136",
-    ///         });
-    ///         var exampleDhcpOptionsSetAttachment = new AliCloud.Vpc.DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment", new AliCloud.Vpc.DhcpOptionsSetAttachmentArgs
-    ///         {
-    ///             VpcId = exampleNetwork.Id,
-    ///             DhcpOptionsSetId = exampleDhcpOptionsSet.Id,
-    ///         });
-    ///     }
+    ///         VpcName = "test",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
     /// 
-    /// }
+    ///     var exampleDhcpOptionsSet = new AliCloud.Vpc.DhcpOptionsSet("exampleDhcpOptionsSet", new()
+    ///     {
+    ///         DhcpOptionsSetName = "example_value",
+    ///         DhcpOptionsSetDescription = "example_value",
+    ///         DomainName = "example.com",
+    ///         DomainNameServers = "100.100.2.136",
+    ///     });
+    /// 
+    ///     var exampleDhcpOptionsSetAttachment = new AliCloud.Vpc.DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         DhcpOptionsSetId = exampleDhcpOptionsSet.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment")]
-    public partial class DhcpOptionsSetAttachment : Pulumi.CustomResource
+    public partial class DhcpOptionsSetAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the DHCP options set.
@@ -73,6 +73,9 @@ namespace Pulumi.AliCloud.Vpc
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -126,7 +129,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class DhcpOptionsSetAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class DhcpOptionsSetAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the DHCP options set.
@@ -149,9 +152,10 @@ namespace Pulumi.AliCloud.Vpc
         public DhcpOptionsSetAttachmentArgs()
         {
         }
+        public static new DhcpOptionsSetAttachmentArgs Empty => new DhcpOptionsSetAttachmentArgs();
     }
 
-    public sealed class DhcpOptionsSetAttachmentState : Pulumi.ResourceArgs
+    public sealed class DhcpOptionsSetAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the DHCP options set.
@@ -165,6 +169,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        /// <summary>
+        /// The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -177,5 +184,6 @@ namespace Pulumi.AliCloud.Vpc
         public DhcpOptionsSetAttachmentState()
         {
         }
+        public static new DhcpOptionsSetAttachmentState Empty => new DhcpOptionsSetAttachmentState();
     }
 }

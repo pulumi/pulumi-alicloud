@@ -711,9 +711,9 @@ func (o DispatchRuleNotifyRuleNotifyObjectArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type PrometheusAlertRuleAnnotation struct {
-	// The name of the annotation.
+	// The name of the label.
 	Name *string `pulumi:"name"`
-	// The value of the annotation.
+	// The value of the label.
 	Value *string `pulumi:"value"`
 }
 
@@ -729,9 +729,9 @@ type PrometheusAlertRuleAnnotationInput interface {
 }
 
 type PrometheusAlertRuleAnnotationArgs struct {
-	// The name of the annotation.
+	// The name of the label.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The value of the annotation.
+	// The value of the label.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -786,12 +786,12 @@ func (o PrometheusAlertRuleAnnotationOutput) ToPrometheusAlertRuleAnnotationOutp
 	return o
 }
 
-// The name of the annotation.
+// The name of the label.
 func (o PrometheusAlertRuleAnnotationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrometheusAlertRuleAnnotation) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The value of the annotation.
+// The value of the label.
 func (o PrometheusAlertRuleAnnotationOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrometheusAlertRuleAnnotation) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -817,9 +817,9 @@ func (o PrometheusAlertRuleAnnotationArrayOutput) Index(i pulumi.IntInput) Prome
 }
 
 type PrometheusAlertRuleLabel struct {
-	// The name of the annotation.
+	// The name of the label.
 	Name *string `pulumi:"name"`
-	// The value of the annotation.
+	// The value of the label.
 	Value *string `pulumi:"value"`
 }
 
@@ -835,9 +835,9 @@ type PrometheusAlertRuleLabelInput interface {
 }
 
 type PrometheusAlertRuleLabelArgs struct {
-	// The name of the annotation.
+	// The name of the label.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The value of the annotation.
+	// The value of the label.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -892,12 +892,12 @@ func (o PrometheusAlertRuleLabelOutput) ToPrometheusAlertRuleLabelOutputWithCont
 	return o
 }
 
-// The name of the annotation.
+// The name of the label.
 func (o PrometheusAlertRuleLabelOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrometheusAlertRuleLabel) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The value of the annotation.
+// The value of the label.
 func (o PrometheusAlertRuleLabelOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrometheusAlertRuleLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2062,13 +2062,13 @@ type GetPrometheusAlertRulesRule struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
 	DispatchRuleId string `pulumi:"dispatchRuleId"`
-	// -The duration of the alert.
+	// The duration of the alert.
 	Duration string `pulumi:"duration"`
 	// The alert rule expression that follows the PromQL syntax..
 	Expression string `pulumi:"expression"`
 	// The ID of the Prometheus Alert Rule.
 	Id string `pulumi:"id"`
-	// -The labels of the resource.
+	// The labels of the resource.
 	Labels []GetPrometheusAlertRulesRuleLabel `pulumi:"labels"`
 	// The message of the alert notification.
 	Message string `pulumi:"message"`
@@ -2079,8 +2079,6 @@ type GetPrometheusAlertRulesRule struct {
 	// The name of the resource.
 	PrometheusAlertRuleName string `pulumi:"prometheusAlertRuleName"`
 	// The status of the resource. Valid values: `0`, `1`.
-	// * `1`: open.
-	// * `0`: off.
 	Status int `pulumi:"status"`
 	// The type of the alert rule.
 	Type string `pulumi:"type"`
@@ -2104,13 +2102,13 @@ type GetPrometheusAlertRulesRuleArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
 	DispatchRuleId pulumi.StringInput `pulumi:"dispatchRuleId"`
-	// -The duration of the alert.
+	// The duration of the alert.
 	Duration pulumi.StringInput `pulumi:"duration"`
 	// The alert rule expression that follows the PromQL syntax..
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// The ID of the Prometheus Alert Rule.
 	Id pulumi.StringInput `pulumi:"id"`
-	// -The labels of the resource.
+	// The labels of the resource.
 	Labels GetPrometheusAlertRulesRuleLabelArrayInput `pulumi:"labels"`
 	// The message of the alert notification.
 	Message pulumi.StringInput `pulumi:"message"`
@@ -2121,8 +2119,6 @@ type GetPrometheusAlertRulesRuleArgs struct {
 	// The name of the resource.
 	PrometheusAlertRuleName pulumi.StringInput `pulumi:"prometheusAlertRuleName"`
 	// The status of the resource. Valid values: `0`, `1`.
-	// * `1`: open.
-	// * `0`: off.
 	Status pulumi.IntInput `pulumi:"status"`
 	// The type of the alert rule.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -2194,7 +2190,7 @@ func (o GetPrometheusAlertRulesRuleOutput) DispatchRuleId() pulumi.StringOutput 
 	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.DispatchRuleId }).(pulumi.StringOutput)
 }
 
-// -The duration of the alert.
+// The duration of the alert.
 func (o GetPrometheusAlertRulesRuleOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.Duration }).(pulumi.StringOutput)
 }
@@ -2209,7 +2205,7 @@ func (o GetPrometheusAlertRulesRuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesRule) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// -The labels of the resource.
+// The labels of the resource.
 func (o GetPrometheusAlertRulesRuleOutput) Labels() GetPrometheusAlertRulesRuleLabelArrayOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesRule) []GetPrometheusAlertRulesRuleLabel { return v.Labels }).(GetPrometheusAlertRulesRuleLabelArrayOutput)
 }
@@ -2235,8 +2231,6 @@ func (o GetPrometheusAlertRulesRuleOutput) PrometheusAlertRuleName() pulumi.Stri
 }
 
 // The status of the resource. Valid values: `0`, `1`.
-// * `1`: open.
-// * `0`: off.
 func (o GetPrometheusAlertRulesRuleOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesRule) int { return v.Status }).(pulumi.IntOutput)
 }

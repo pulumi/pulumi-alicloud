@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ServiceMesh.Inputs
 {
 
-    public sealed class UserPermissionPermissionGetArgs : Pulumi.ResourceArgs
+    public sealed class UserPermissionPermissionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the grant object is a RAM role.
@@ -48,5 +48,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public UserPermissionPermissionGetArgs()
         {
         }
+        public static new UserPermissionPermissionGetArgs Empty => new UserPermissionPermissionGetArgs();
     }
 }

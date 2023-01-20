@@ -19,21 +19,19 @@ namespace Pulumi.AliCloud
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.MscSubWebhook("example", new()
     ///     {
-    ///         var example = new AliCloud.MscSubWebhook("example", new AliCloud.MscSubWebhookArgs
-    ///         {
-    ///             ServerUrl = "example_value",
-    ///             WebhookName = "example_value",
-    ///         });
-    ///     }
+    ///         ServerUrl = "example_value",
+    ///         WebhookName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +43,7 @@ namespace Pulumi.AliCloud
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:index/mscSubWebhook:MscSubWebhook")]
-    public partial class MscSubWebhook : Pulumi.CustomResource
+    public partial class MscSubWebhook : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
@@ -103,7 +101,7 @@ namespace Pulumi.AliCloud
         }
     }
 
-    public sealed class MscSubWebhookArgs : Pulumi.ResourceArgs
+    public sealed class MscSubWebhookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
@@ -120,9 +118,10 @@ namespace Pulumi.AliCloud
         public MscSubWebhookArgs()
         {
         }
+        public static new MscSubWebhookArgs Empty => new MscSubWebhookArgs();
     }
 
-    public sealed class MscSubWebhookState : Pulumi.ResourceArgs
+    public sealed class MscSubWebhookState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
@@ -139,5 +138,6 @@ namespace Pulumi.AliCloud
         public MscSubWebhookState()
         {
         }
+        public static new MscSubWebhookState Empty => new MscSubWebhookState();
     }
 }

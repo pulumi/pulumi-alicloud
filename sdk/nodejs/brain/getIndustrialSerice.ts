@@ -17,18 +17,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.brain.getIndustrialSerice({
+ * const open = alicloud.brain.getIndustrialSerice({
  *     enable: "On",
- * }));
+ * });
  * ```
  */
 export function getIndustrialSerice(args?: GetIndustrialSericeArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialSericeResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:brain/getIndustrialSerice:getIndustrialSerice", {
         "enable": args.enable,
     }, opts);
@@ -58,9 +55,26 @@ export interface GetIndustrialSericeResult {
      */
     readonly status: string;
 }
-
+/**
+ * Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
+ *
+ * > **NOTE:** Available in v1.115.0+
+ *
+ * > **NOTE:** The Brain Industrial service is not support in the international site.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.brain.getIndustrialSerice({
+ *     enable: "On",
+ * });
+ * ```
+ */
 export function getIndustrialSericeOutput(args?: GetIndustrialSericeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialSericeResult> {
-    return pulumi.output(args).apply(a => getIndustrialSerice(a, opts))
+    return pulumi.output(args).apply((a: any) => getIndustrialSerice(a, opts))
 }
 
 /**

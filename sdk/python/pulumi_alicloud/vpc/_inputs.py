@@ -106,12 +106,12 @@ class NetworkAclEgressAclEntryArgs:
                  port: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: The description of egress entries.
+        :param pulumi.Input[str] description: The description of the network acl instance.
         :param pulumi.Input[str] destination_cidr_ip: The destination cidr ip of egress entries.
-        :param pulumi.Input[str] network_acl_entry_name: The entry name of egress entries.
-        :param pulumi.Input[str] policy: The policy of egress entries. Valid values `accept` and `drop`.
-        :param pulumi.Input[str] port: The port of egress entries.
-        :param pulumi.Input[str] protocol: The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        :param pulumi.Input[str] network_acl_entry_name: The entry name of ingress entries.
+        :param pulumi.Input[str] policy: The policy of ingress entries. Valid values `accept` and `drop`.
+        :param pulumi.Input[str] port: The port of ingress entries.
+        :param pulumi.Input[str] protocol: The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -130,7 +130,7 @@ class NetworkAclEgressAclEntryArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of egress entries.
+        The description of the network acl instance.
         """
         return pulumi.get(self, "description")
 
@@ -154,7 +154,7 @@ class NetworkAclEgressAclEntryArgs:
     @pulumi.getter(name="networkAclEntryName")
     def network_acl_entry_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The entry name of egress entries.
+        The entry name of ingress entries.
         """
         return pulumi.get(self, "network_acl_entry_name")
 
@@ -166,7 +166,7 @@ class NetworkAclEgressAclEntryArgs:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The policy of egress entries. Valid values `accept` and `drop`.
+        The policy of ingress entries. Valid values `accept` and `drop`.
         """
         return pulumi.get(self, "policy")
 
@@ -178,7 +178,7 @@ class NetworkAclEgressAclEntryArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        The port of egress entries.
+        The port of ingress entries.
         """
         return pulumi.get(self, "port")
 
@@ -190,7 +190,7 @@ class NetworkAclEgressAclEntryArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
         """
         return pulumi.get(self, "protocol")
 
@@ -210,13 +210,13 @@ class NetworkAclEntriesEgressArgs:
                  port: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: The description of the egress entry.
+        :param pulumi.Input[str] description: The description of the ingress entry.
         :param pulumi.Input[str] destination_cidr_ip: The destination ip of the egress entry.
-        :param pulumi.Input[str] entry_type: The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
-        :param pulumi.Input[str] name: The name of the egress entry.
-        :param pulumi.Input[str] policy: The policy of the egress entry. It must be `accept` or `drop`.
-        :param pulumi.Input[str] port: The port of the egress entry.
-        :param pulumi.Input[str] protocol: The protocol of the egress entry.
+        :param pulumi.Input[str] entry_type: The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+        :param pulumi.Input[str] name: The name of the ingress entry.
+        :param pulumi.Input[str] policy: The policy of the ingress entry. It must be `accept` or `drop`.
+        :param pulumi.Input[str] port: The port of the ingress entry.
+        :param pulumi.Input[str] protocol: The protocol of the ingress entry.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -237,7 +237,7 @@ class NetworkAclEntriesEgressArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the egress entry.
+        The description of the ingress entry.
         """
         return pulumi.get(self, "description")
 
@@ -261,7 +261,7 @@ class NetworkAclEntriesEgressArgs:
     @pulumi.getter(name="entryType")
     def entry_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+        The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
         """
         return pulumi.get(self, "entry_type")
 
@@ -273,7 +273,7 @@ class NetworkAclEntriesEgressArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the egress entry.
+        The name of the ingress entry.
         """
         return pulumi.get(self, "name")
 
@@ -285,7 +285,7 @@ class NetworkAclEntriesEgressArgs:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The policy of the egress entry. It must be `accept` or `drop`.
+        The policy of the ingress entry. It must be `accept` or `drop`.
         """
         return pulumi.get(self, "policy")
 
@@ -297,7 +297,7 @@ class NetworkAclEntriesEgressArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        The port of the egress entry.
+        The port of the ingress entry.
         """
         return pulumi.get(self, "port")
 
@@ -309,7 +309,7 @@ class NetworkAclEntriesEgressArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol of the egress entry.
+        The protocol of the ingress entry.
         """
         return pulumi.get(self, "protocol")
 
@@ -329,12 +329,12 @@ class NetworkAclEntriesIngressArgs:
                  protocol: Optional[pulumi.Input[str]] = None,
                  source_cidr_ip: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: The description of the egress entry.
-        :param pulumi.Input[str] entry_type: The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
-        :param pulumi.Input[str] name: The name of the egress entry.
-        :param pulumi.Input[str] policy: The policy of the egress entry. It must be `accept` or `drop`.
-        :param pulumi.Input[str] port: The port of the egress entry.
-        :param pulumi.Input[str] protocol: The protocol of the egress entry.
+        :param pulumi.Input[str] description: The description of the ingress entry.
+        :param pulumi.Input[str] entry_type: The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+        :param pulumi.Input[str] name: The name of the ingress entry.
+        :param pulumi.Input[str] policy: The policy of the ingress entry. It must be `accept` or `drop`.
+        :param pulumi.Input[str] port: The port of the ingress entry.
+        :param pulumi.Input[str] protocol: The protocol of the ingress entry.
         :param pulumi.Input[str] source_cidr_ip: The source ip of the ingress entry.
         """
         if description is not None:
@@ -356,7 +356,7 @@ class NetworkAclEntriesIngressArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the egress entry.
+        The description of the ingress entry.
         """
         return pulumi.get(self, "description")
 
@@ -368,7 +368,7 @@ class NetworkAclEntriesIngressArgs:
     @pulumi.getter(name="entryType")
     def entry_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+        The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
         """
         return pulumi.get(self, "entry_type")
 
@@ -380,7 +380,7 @@ class NetworkAclEntriesIngressArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the egress entry.
+        The name of the ingress entry.
         """
         return pulumi.get(self, "name")
 
@@ -392,7 +392,7 @@ class NetworkAclEntriesIngressArgs:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The policy of the egress entry. It must be `accept` or `drop`.
+        The policy of the ingress entry. It must be `accept` or `drop`.
         """
         return pulumi.get(self, "policy")
 
@@ -404,7 +404,7 @@ class NetworkAclEntriesIngressArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        The port of the egress entry.
+        The port of the ingress entry.
         """
         return pulumi.get(self, "port")
 
@@ -416,7 +416,7 @@ class NetworkAclEntriesIngressArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol of the egress entry.
+        The protocol of the ingress entry.
         """
         return pulumi.get(self, "protocol")
 
@@ -447,11 +447,11 @@ class NetworkAclIngressAclEntryArgs:
                  protocol: Optional[pulumi.Input[str]] = None,
                  source_cidr_ip: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: The description of egress entries.
-        :param pulumi.Input[str] network_acl_entry_name: The entry name of egress entries.
-        :param pulumi.Input[str] policy: The policy of egress entries. Valid values `accept` and `drop`.
-        :param pulumi.Input[str] port: The port of egress entries.
-        :param pulumi.Input[str] protocol: The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        :param pulumi.Input[str] description: The description of the network acl instance.
+        :param pulumi.Input[str] network_acl_entry_name: The entry name of ingress entries.
+        :param pulumi.Input[str] policy: The policy of ingress entries. Valid values `accept` and `drop`.
+        :param pulumi.Input[str] port: The port of ingress entries.
+        :param pulumi.Input[str] protocol: The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
         :param pulumi.Input[str] source_cidr_ip: The source cidr ip of ingress entries.
         """
         if description is not None:
@@ -471,7 +471,7 @@ class NetworkAclIngressAclEntryArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of egress entries.
+        The description of the network acl instance.
         """
         return pulumi.get(self, "description")
 
@@ -483,7 +483,7 @@ class NetworkAclIngressAclEntryArgs:
     @pulumi.getter(name="networkAclEntryName")
     def network_acl_entry_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The entry name of egress entries.
+        The entry name of ingress entries.
         """
         return pulumi.get(self, "network_acl_entry_name")
 
@@ -495,7 +495,7 @@ class NetworkAclIngressAclEntryArgs:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The policy of egress entries. Valid values `accept` and `drop`.
+        The policy of ingress entries. Valid values `accept` and `drop`.
         """
         return pulumi.get(self, "policy")
 
@@ -507,7 +507,7 @@ class NetworkAclIngressAclEntryArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        The port of egress entries.
+        The port of ingress entries.
         """
         return pulumi.get(self, "port")
 
@@ -519,7 +519,7 @@ class NetworkAclIngressAclEntryArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
         """
         return pulumi.get(self, "protocol")
 
@@ -582,26 +582,27 @@ class NetworkAclResourceArgs:
 @pulumi.input_type
 class PrefixListEntryArgs:
     def __init__(__self__, *,
-                 cidr: pulumi.Input[str],
+                 cidr: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cidr: The CIDR address block of the prefix list.
         :param pulumi.Input[str] description: The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         """
-        pulumi.set(__self__, "cidr", cidr)
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
         if description is not None:
             pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
-    def cidr(self) -> pulumi.Input[str]:
+    def cidr(self) -> Optional[pulumi.Input[str]]:
         """
         The CIDR address block of the prefix list.
         """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: pulumi.Input[str]):
+    def cidr(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cidr", value)
 
     @property

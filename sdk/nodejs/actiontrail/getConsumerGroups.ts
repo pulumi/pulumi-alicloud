@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const consumerGroupsDs = pulumi.output(alicloud.actiontrail.getConsumerGroups({
+ * const consumerGroupsDs = alicloud.actiontrail.getConsumerGroups({
  *     consumerIdRegex: "CID-alikafkaGroupDatasourceName",
  *     instanceId: "xxx",
  *     outputFile: "consumerGroups.txt",
- * }));
- *
- * export const firstGroupName = consumerGroupsDs.consumerIds[0];
+ * });
+ * export const firstGroupName = consumerGroupsDs.then(consumerGroupsDs => consumerGroupsDs.consumerIds?.[0]);
  * ```
  */
 export function getConsumerGroups(args: GetConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetConsumerGroupsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", {
         "consumerIdRegex": args.consumerIdRegex,
         "ids": args.ids,
@@ -83,9 +80,27 @@ export interface GetConsumerGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in 1.56.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const consumerGroupsDs = alicloud.actiontrail.getConsumerGroups({
+ *     consumerIdRegex: "CID-alikafkaGroupDatasourceName",
+ *     instanceId: "xxx",
+ *     outputFile: "consumerGroups.txt",
+ * });
+ * export const firstGroupName = consumerGroupsDs.then(consumerGroupsDs => consumerGroupsDs.consumerIds?.[0]);
+ * ```
+ */
 export function getConsumerGroupsOutput(args: GetConsumerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsumerGroupsResult> {
-    return pulumi.output(args).apply(a => getConsumerGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getConsumerGroups(a, opts))
 }
 
 /**

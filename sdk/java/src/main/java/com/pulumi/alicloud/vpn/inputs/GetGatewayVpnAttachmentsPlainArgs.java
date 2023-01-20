@@ -83,16 +83,24 @@ public final class GetGatewayVpnAttachmentsPlainArgs extends com.pulumi.resource
     }
 
     /**
-     * The ID of the VPN gateway.
+     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+     * 
+     * @deprecated
+     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
      * 
      */
+    @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
     @Import(name="vpnGatewayId")
     private @Nullable String vpnGatewayId;
 
     /**
-     * @return The ID of the VPN gateway.
+     * @return The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+     * 
+     * @deprecated
+     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
      * 
      */
+    @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
     public Optional<String> vpnGatewayId() {
         return Optional.ofNullable(this.vpnGatewayId);
     }
@@ -186,11 +194,15 @@ public final class GetGatewayVpnAttachmentsPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param vpnGatewayId The ID of the VPN gateway.
+         * @param vpnGatewayId The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+         * 
          */
+        @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
         public Builder vpnGatewayId(@Nullable String vpnGatewayId) {
             $.vpnGatewayId = vpnGatewayId;
             return this;

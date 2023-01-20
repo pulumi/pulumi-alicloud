@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -29,7 +30,7 @@ import * as utilities from "../utilities";
  * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
  *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?[0]?.id),
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
  * });
  * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
  *     engine: "MySQL",

@@ -50,14 +50,14 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The endpoint of the cluster.
+     * The connection string of the cluster.
      * 
      */
     @Import(name="connectionString")
     private @Nullable Output<String> connectionString;
 
     /**
-     * @return The endpoint of the cluster.
+     * @return The connection string of the cluster.
      * 
      */
     public Optional<Output<String>> connectionString() {
@@ -283,6 +283,21 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) The connection port of the ADB cluster.
+     * 
+     */
+    public Optional<Output<String>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
+    /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      * 
      */
@@ -426,6 +441,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
         this.payType = $.payType;
         this.paymentType = $.paymentType;
         this.period = $.period;
+        this.port = $.port;
         this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
         this.securityIps = $.securityIps;
@@ -497,7 +513,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString The endpoint of the cluster.
+         * @param connectionString The connection string of the cluster.
          * 
          * @return builder
          * 
@@ -508,7 +524,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString The endpoint of the cluster.
+         * @param connectionString The connection string of the cluster.
          * 
          * @return builder
          * 
@@ -813,6 +829,27 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder period(Integer period) {
             return period(Output.of(period));
+        }
+
+        /**
+         * @param port (Available in 1.196.0+) The connection port of the ADB cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<String> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port (Available in 1.196.0+) The connection port of the ADB cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(String port) {
+            return port(Output.of(port));
         }
 
         /**

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultAcl = new alicloud.alb.Acl("defaultAcl", {
  *     aclName: "example_value",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     aclEntries: [{
  *         description: "description",
  *         entry: "10.0.0.0/24",
@@ -37,20 +37,20 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const default1 = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.zones?[0]?.id,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
  * }));
  * const default2 = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.zones?[1]?.id,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[1]?.id,
  * }));
  * const defaultLoadBalancer = new alicloud.alb.LoadBalancer("defaultLoadBalancer", {
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
  *     addressType: "Internet",
  *     addressAllocatedMode: "Fixed",
  *     loadBalancerName: "example_value",
  *     loadBalancerEdition: "Standard",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     loadBalancerBillingConfig: {
  *         payType: "PayAsYouGo",
  *     },
@@ -59,12 +59,12 @@ import * as utilities from "../utilities";
  *     },
  *     zoneMappings: [
  *         {
- *             vswitchId: default1.then(default1 => default1.ids?[0]),
- *             zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *             vswitchId: default1.then(default1 => default1.ids?.[0]),
+ *             zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *         },
  *         {
- *             vswitchId: default2.then(default2 => default2.ids?[0]),
- *             zoneId: defaultZones.then(defaultZones => defaultZones.zones?[1]?.id),
+ *             vswitchId: default2.then(default2 => default2.ids?.[0]),
+ *             zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[1]?.id),
  *         },
  *     ],
  *     modificationProtectionConfig: {
@@ -73,9 +73,9 @@ import * as utilities from "../utilities";
  * });
  * const defaultServerGroup = new alicloud.alb.ServerGroup("defaultServerGroup", {
  *     protocol: "HTTP",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.vpcs?[0]?.id),
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.vpcs?.[0]?.id),
  *     serverGroupName: "example_value",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     healthCheckConfig: {
  *         healthCheckEnabled: false,
  *     },

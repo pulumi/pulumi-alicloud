@@ -17,40 +17,41 @@ namespace Pulumi.AliCloud.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var key = new AliCloud.Kms.Key("key", new()
         ///     {
-        ///         var key = new AliCloud.Kms.Key("key", new AliCloud.Kms.KeyArgs
-        ///         {
-        ///             Description = "example key",
-        ///             IsEnabled = true,
-        ///         });
-        ///         // Encrypt plaintext 'example'
-        ///         var encrypted = new AliCloud.Kms.Ciphertext("encrypted", new AliCloud.Kms.CiphertextArgs
-        ///         {
-        ///             KeyId = key.Id,
-        ///             Plaintext = "example",
-        ///         });
-        ///         var plaintext = AliCloud.Kms.GetPlaintext.Invoke(new AliCloud.Kms.GetPlaintextInvokeArgs
-        ///         {
-        ///             CiphertextBlob = encrypted.CiphertextBlob,
-        ///         });
-        ///         this.Decrypted = plaintext.Apply(plaintext =&gt; plaintext.Plaintext);
-        ///     }
+        ///         Description = "example key",
+        ///         IsEnabled = true,
+        ///     });
         /// 
-        ///     [Output("decrypted")]
-        ///     public Output&lt;string&gt; Decrypted { get; set; }
-        /// }
+        ///     // Encrypt plaintext 'example'
+        ///     var encrypted = new AliCloud.Kms.Ciphertext("encrypted", new()
+        ///     {
+        ///         KeyId = key.Id,
+        ///         Plaintext = "example",
+        ///     });
+        /// 
+        ///     var plaintext = AliCloud.Kms.GetPlaintext.Invoke(new()
+        ///     {
+        ///         CiphertextBlob = encrypted.CiphertextBlob,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["decrypted"] = plaintext.Apply(getPlaintextResult =&gt; getPlaintextResult.Plaintext),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPlaintextResult> InvokeAsync(GetPlaintextArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? new GetPlaintextArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? new GetPlaintextArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -58,44 +59,45 @@ namespace Pulumi.AliCloud.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var key = new AliCloud.Kms.Key("key", new()
         ///     {
-        ///         var key = new AliCloud.Kms.Key("key", new AliCloud.Kms.KeyArgs
-        ///         {
-        ///             Description = "example key",
-        ///             IsEnabled = true,
-        ///         });
-        ///         // Encrypt plaintext 'example'
-        ///         var encrypted = new AliCloud.Kms.Ciphertext("encrypted", new AliCloud.Kms.CiphertextArgs
-        ///         {
-        ///             KeyId = key.Id,
-        ///             Plaintext = "example",
-        ///         });
-        ///         var plaintext = AliCloud.Kms.GetPlaintext.Invoke(new AliCloud.Kms.GetPlaintextInvokeArgs
-        ///         {
-        ///             CiphertextBlob = encrypted.CiphertextBlob,
-        ///         });
-        ///         this.Decrypted = plaintext.Apply(plaintext =&gt; plaintext.Plaintext);
-        ///     }
+        ///         Description = "example key",
+        ///         IsEnabled = true,
+        ///     });
         /// 
-        ///     [Output("decrypted")]
-        ///     public Output&lt;string&gt; Decrypted { get; set; }
-        /// }
+        ///     // Encrypt plaintext 'example'
+        ///     var encrypted = new AliCloud.Kms.Ciphertext("encrypted", new()
+        ///     {
+        ///         KeyId = key.Id,
+        ///         Plaintext = "example",
+        ///     });
+        /// 
+        ///     var plaintext = AliCloud.Kms.GetPlaintext.Invoke(new()
+        ///     {
+        ///         CiphertextBlob = encrypted.CiphertextBlob,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["decrypted"] = plaintext.Apply(getPlaintextResult =&gt; getPlaintextResult.Plaintext),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPlaintextResult> Invoke(GetPlaintextInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? new GetPlaintextInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? new GetPlaintextInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPlaintextArgs : Pulumi.InvokeArgs
+    public sealed class GetPlaintextArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ciphertext to be decrypted.
@@ -107,7 +109,6 @@ namespace Pulumi.AliCloud.Kms
         private Dictionary<string, string>? _encryptionContext;
 
         /// <summary>
-        /// -
         /// (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         public Dictionary<string, string> EncryptionContext
@@ -119,9 +120,10 @@ namespace Pulumi.AliCloud.Kms
         public GetPlaintextArgs()
         {
         }
+        public static new GetPlaintextArgs Empty => new GetPlaintextArgs();
     }
 
-    public sealed class GetPlaintextInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPlaintextInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ciphertext to be decrypted.
@@ -133,7 +135,6 @@ namespace Pulumi.AliCloud.Kms
         private InputMap<string>? _encryptionContext;
 
         /// <summary>
-        /// -
         /// (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         public InputMap<string> EncryptionContext
@@ -145,6 +146,7 @@ namespace Pulumi.AliCloud.Kms
         public GetPlaintextInvokeArgs()
         {
         }
+        public static new GetPlaintextInvokeArgs Empty => new GetPlaintextInvokeArgs();
     }
 
 

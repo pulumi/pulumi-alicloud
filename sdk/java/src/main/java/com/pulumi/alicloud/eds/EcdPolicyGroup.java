@@ -19,9 +19,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Elastic Desktop Service(EDS) Policy Group resource.
+ * Provides a Elastic Desktop Service (ECD) Policy Group resource.
  * 
- * For information about Elastic Desktop Service(EDS) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
+ * For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
  * 
  * &gt; **NOTE:** Available in v1.130.0+.
  * 
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Elastic Desktop Service(EDS) Policy Group can be imported using the id, e.g.
+ * Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example &lt;id&gt;
@@ -240,6 +240,20 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> recordingEndTime() {
         return Codegen.optional(this.recordingEndTime);
+    }
+    /**
+     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     * 
+     */
+    @Export(name="recordingExpires", type=Integer.class, parameters={})
+    private Output<Integer> recordingExpires;
+
+    /**
+     * @return The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     * 
+     */
+    public Output<Integer> recordingExpires() {
+        return this.recordingExpires;
     }
     /**
      * The fps of recording. Valid values: `2`, `5`, `10`, `15`.

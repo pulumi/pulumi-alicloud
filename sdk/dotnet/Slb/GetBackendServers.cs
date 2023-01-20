@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sampleDs = AliCloud.Slb.GetBackendServers.Invoke(new()
         ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetBackendServers.InvokeAsync(new AliCloud.Slb.GetBackendServersArgs
-        ///         {
-        ///             LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
-        ///         }));
-        ///         this.FirstSlbBackendServerId = sampleDs.Apply(sampleDs =&gt; sampleDs.BackendServers?[0]?.Id);
-        ///     }
+        ///         LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
+        ///     });
         /// 
-        ///     [Output("firstSlbBackendServerId")]
-        ///     public Output&lt;string&gt; FirstSlbBackendServerId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbBackendServerId"] = sampleDs.Apply(getBackendServersResult =&gt; getBackendServersResult.BackendServers[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackendServersResult> InvokeAsync(GetBackendServersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServersResult>("alicloud:slb/getBackendServers:getBackendServers", args ?? new GetBackendServersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackendServersResult>("alicloud:slb/getBackendServers:getBackendServers", args ?? new GetBackendServersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the server load balancer backend servers related to a server load balancer..
@@ -55,33 +54,32 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sampleDs = AliCloud.Slb.GetBackendServers.Invoke(new()
         ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetBackendServers.InvokeAsync(new AliCloud.Slb.GetBackendServersArgs
-        ///         {
-        ///             LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
-        ///         }));
-        ///         this.FirstSlbBackendServerId = sampleDs.Apply(sampleDs =&gt; sampleDs.BackendServers?[0]?.Id);
-        ///     }
+        ///         LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
+        ///     });
         /// 
-        ///     [Output("firstSlbBackendServerId")]
-        ///     public Output&lt;string&gt; FirstSlbBackendServerId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbBackendServerId"] = sampleDs.Apply(getBackendServersResult =&gt; getBackendServersResult.BackendServers[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackendServersResult> Invoke(GetBackendServersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackendServersResult>("alicloud:slb/getBackendServers:getBackendServers", args ?? new GetBackendServersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackendServersResult>("alicloud:slb/getBackendServers:getBackendServers", args ?? new GetBackendServersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBackendServersArgs : Pulumi.InvokeArgs
+    public sealed class GetBackendServersArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -107,9 +105,10 @@ namespace Pulumi.AliCloud.Slb
         public GetBackendServersArgs()
         {
         }
+        public static new GetBackendServersArgs Empty => new GetBackendServersArgs();
     }
 
-    public sealed class GetBackendServersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBackendServersInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -135,6 +134,7 @@ namespace Pulumi.AliCloud.Slb
         public GetBackendServersInvokeArgs()
         {
         }
+        public static new GetBackendServersInvokeArgs Empty => new GetBackendServersInvokeArgs();
     }
 
 

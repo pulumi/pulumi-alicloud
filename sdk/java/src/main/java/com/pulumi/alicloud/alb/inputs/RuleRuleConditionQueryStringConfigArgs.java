@@ -17,14 +17,14 @@ public final class RuleRuleConditionQueryStringConfigArgs extends com.pulumi.res
     public static final RuleRuleConditionQueryStringConfigArgs Empty = new RuleRuleConditionQueryStringConfigArgs();
 
     /**
-     * The query string.
+     * The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<RuleRuleConditionQueryStringConfigValueArgs>> values;
 
     /**
-     * @return The query string.
+     * @return The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
      * 
      */
     public Optional<Output<List<RuleRuleConditionQueryStringConfigValueArgs>>> values() {
@@ -56,7 +56,7 @@ public final class RuleRuleConditionQueryStringConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param values The query string.
+         * @param values The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class RuleRuleConditionQueryStringConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param values The query string.
+         * @param values The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class RuleRuleConditionQueryStringConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param values The query string.
+         * @param values The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
          * 
          * @return builder
          * 

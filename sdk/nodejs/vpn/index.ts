@@ -5,30 +5,81 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./connection";
-export * from "./customerGateway";
-export * from "./gateway";
-export * from "./gatewayVpnAttachment";
-export * from "./getConnections";
-export * from "./getCustomerGateways";
-export * from "./getGatewayVpnAttachments";
-export * from "./getGateways";
-export * from "./ipsecServer";
-export * from "./pbrRouteEntry";
-export * from "./routeEntry";
-export * from "./sslVpnClientCert";
-export * from "./sslVpnServer";
+export { ConnectionArgs, ConnectionState } from "./connection";
+export type Connection = import("./connection").Connection;
+export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
-// Import resources to register:
-import { Connection } from "./connection";
-import { CustomerGateway } from "./customerGateway";
-import { Gateway } from "./gateway";
-import { GatewayVpnAttachment } from "./gatewayVpnAttachment";
-import { IpsecServer } from "./ipsecServer";
-import { PbrRouteEntry } from "./pbrRouteEntry";
-import { RouteEntry } from "./routeEntry";
-import { SslVpnClientCert } from "./sslVpnClientCert";
-import { SslVpnServer } from "./sslVpnServer";
+export { CustomerGatewayArgs, CustomerGatewayState } from "./customerGateway";
+export type CustomerGateway = import("./customerGateway").CustomerGateway;
+export const CustomerGateway: typeof import("./customerGateway").CustomerGateway = null as any;
+utilities.lazyLoad(exports, ["CustomerGateway"], () => require("./customerGateway"));
+
+export { GatewayArgs, GatewayState } from "./gateway";
+export type Gateway = import("./gateway").Gateway;
+export const Gateway: typeof import("./gateway").Gateway = null as any;
+utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+
+export { GatewayVcoRouteArgs, GatewayVcoRouteState } from "./gatewayVcoRoute";
+export type GatewayVcoRoute = import("./gatewayVcoRoute").GatewayVcoRoute;
+export const GatewayVcoRoute: typeof import("./gatewayVcoRoute").GatewayVcoRoute = null as any;
+utilities.lazyLoad(exports, ["GatewayVcoRoute"], () => require("./gatewayVcoRoute"));
+
+export { GatewayVpnAttachmentArgs, GatewayVpnAttachmentState } from "./gatewayVpnAttachment";
+export type GatewayVpnAttachment = import("./gatewayVpnAttachment").GatewayVpnAttachment;
+export const GatewayVpnAttachment: typeof import("./gatewayVpnAttachment").GatewayVpnAttachment = null as any;
+utilities.lazyLoad(exports, ["GatewayVpnAttachment"], () => require("./gatewayVpnAttachment"));
+
+export { GetConnectionsArgs, GetConnectionsResult, GetConnectionsOutputArgs } from "./getConnections";
+export const getConnections: typeof import("./getConnections").getConnections = null as any;
+export const getConnectionsOutput: typeof import("./getConnections").getConnectionsOutput = null as any;
+utilities.lazyLoad(exports, ["getConnections","getConnectionsOutput"], () => require("./getConnections"));
+
+export { GetCustomerGatewaysArgs, GetCustomerGatewaysResult, GetCustomerGatewaysOutputArgs } from "./getCustomerGateways";
+export const getCustomerGateways: typeof import("./getCustomerGateways").getCustomerGateways = null as any;
+export const getCustomerGatewaysOutput: typeof import("./getCustomerGateways").getCustomerGatewaysOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomerGateways","getCustomerGatewaysOutput"], () => require("./getCustomerGateways"));
+
+export { GetGatewayVcoRoutesArgs, GetGatewayVcoRoutesResult, GetGatewayVcoRoutesOutputArgs } from "./getGatewayVcoRoutes";
+export const getGatewayVcoRoutes: typeof import("./getGatewayVcoRoutes").getGatewayVcoRoutes = null as any;
+export const getGatewayVcoRoutesOutput: typeof import("./getGatewayVcoRoutes").getGatewayVcoRoutesOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayVcoRoutes","getGatewayVcoRoutesOutput"], () => require("./getGatewayVcoRoutes"));
+
+export { GetGatewayVpnAttachmentsArgs, GetGatewayVpnAttachmentsResult, GetGatewayVpnAttachmentsOutputArgs } from "./getGatewayVpnAttachments";
+export const getGatewayVpnAttachments: typeof import("./getGatewayVpnAttachments").getGatewayVpnAttachments = null as any;
+export const getGatewayVpnAttachmentsOutput: typeof import("./getGatewayVpnAttachments").getGatewayVpnAttachmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayVpnAttachments","getGatewayVpnAttachmentsOutput"], () => require("./getGatewayVpnAttachments"));
+
+export { GetGatewaysArgs, GetGatewaysResult, GetGatewaysOutputArgs } from "./getGateways";
+export const getGateways: typeof import("./getGateways").getGateways = null as any;
+export const getGatewaysOutput: typeof import("./getGateways").getGatewaysOutput = null as any;
+utilities.lazyLoad(exports, ["getGateways","getGatewaysOutput"], () => require("./getGateways"));
+
+export { IpsecServerArgs, IpsecServerState } from "./ipsecServer";
+export type IpsecServer = import("./ipsecServer").IpsecServer;
+export const IpsecServer: typeof import("./ipsecServer").IpsecServer = null as any;
+utilities.lazyLoad(exports, ["IpsecServer"], () => require("./ipsecServer"));
+
+export { PbrRouteEntryArgs, PbrRouteEntryState } from "./pbrRouteEntry";
+export type PbrRouteEntry = import("./pbrRouteEntry").PbrRouteEntry;
+export const PbrRouteEntry: typeof import("./pbrRouteEntry").PbrRouteEntry = null as any;
+utilities.lazyLoad(exports, ["PbrRouteEntry"], () => require("./pbrRouteEntry"));
+
+export { RouteEntryArgs, RouteEntryState } from "./routeEntry";
+export type RouteEntry = import("./routeEntry").RouteEntry;
+export const RouteEntry: typeof import("./routeEntry").RouteEntry = null as any;
+utilities.lazyLoad(exports, ["RouteEntry"], () => require("./routeEntry"));
+
+export { SslVpnClientCertArgs, SslVpnClientCertState } from "./sslVpnClientCert";
+export type SslVpnClientCert = import("./sslVpnClientCert").SslVpnClientCert;
+export const SslVpnClientCert: typeof import("./sslVpnClientCert").SslVpnClientCert = null as any;
+utilities.lazyLoad(exports, ["SslVpnClientCert"], () => require("./sslVpnClientCert"));
+
+export { SslVpnServerArgs, SslVpnServerState } from "./sslVpnServer";
+export type SslVpnServer = import("./sslVpnServer").SslVpnServer;
+export const SslVpnServer: typeof import("./sslVpnServer").SslVpnServer = null as any;
+utilities.lazyLoad(exports, ["SslVpnServer"], () => require("./sslVpnServer"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -40,6 +91,8 @@ const _module = {
                 return new CustomerGateway(name, <any>undefined, { urn })
             case "alicloud:vpn/gateway:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
+            case "alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute":
+                return new GatewayVcoRoute(name, <any>undefined, { urn })
             case "alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment":
                 return new GatewayVpnAttachment(name, <any>undefined, { urn })
             case "alicloud:vpn/ipsecServer:IpsecServer":
@@ -60,6 +113,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "vpn/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/customerGateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/gateway", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpn/gatewayVcoRoute", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/gatewayVpnAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/ipsecServer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/pbrRouteEntry", _module)

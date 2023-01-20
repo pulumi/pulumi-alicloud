@@ -34,6 +34,20 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="ipv6AddressCount")
+    private @Nullable Output<Integer> ipv6AddressCount;
+
+    public Optional<Output<Integer>> ipv6AddressCount() {
+        return Optional.ofNullable(this.ipv6AddressCount);
+    }
+
+    @Import(name="ipv6Addresses")
+    private @Nullable Output<List<String>> ipv6Addresses;
+
+    public Optional<Output<List<String>>> ipv6Addresses() {
+        return Optional.ofNullable(this.ipv6Addresses);
+    }
+
     /**
      * (Available in 1.54.0+) The MAC address of an ENI.
      * 
@@ -262,6 +276,8 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
 
     private NetworkInterfaceState(NetworkInterfaceState $) {
         this.description = $.description;
+        this.ipv6AddressCount = $.ipv6AddressCount;
+        this.ipv6Addresses = $.ipv6Addresses;
         this.mac = $.mac;
         this.name = $.name;
         this.networkInterfaceName = $.networkInterfaceName;
@@ -317,6 +333,28 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder ipv6AddressCount(@Nullable Output<Integer> ipv6AddressCount) {
+            $.ipv6AddressCount = ipv6AddressCount;
+            return this;
+        }
+
+        public Builder ipv6AddressCount(Integer ipv6AddressCount) {
+            return ipv6AddressCount(Output.of(ipv6AddressCount));
+        }
+
+        public Builder ipv6Addresses(@Nullable Output<List<String>> ipv6Addresses) {
+            $.ipv6Addresses = ipv6Addresses;
+            return this;
+        }
+
+        public Builder ipv6Addresses(List<String> ipv6Addresses) {
+            return ipv6Addresses(Output.of(ipv6Addresses));
+        }
+
+        public Builder ipv6Addresses(String... ipv6Addresses) {
+            return ipv6Addresses(List.of(ipv6Addresses));
         }
 
         /**

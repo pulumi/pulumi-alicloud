@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Eds
     public static class GetZones
     {
         /// <summary>
-        /// This data source provides the available zones with the Elastic Desktop Service(EDS) of the current Alibaba Cloud user.
+        /// This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.174.0+.
         /// 
@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.Eds.GetZones.InvokeAsync());
-        ///         this.AlicloudEcdZones = @default.Apply(@default =&gt; @default.Zones?[0]?.ZoneId);
-        ///     }
+        ///     var @default = AliCloud.Eds.GetZones.Invoke();
         /// 
-        ///     [Output("alicloudEcdZones")]
-        ///     public Output&lt;string&gt; AlicloudEcdZones { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEcdZones"] = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:eds/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:eds/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the available zones with the Elastic Desktop Service(EDS) of the current Alibaba Cloud user.
+        /// This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.174.0+.
         /// 
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.Eds.GetZones.InvokeAsync());
-        ///         this.AlicloudEcdZones = @default.Apply(@default =&gt; @default.Zones?[0]?.ZoneId);
-        ///     }
+        ///     var @default = AliCloud.Eds.GetZones.Invoke();
         /// 
-        ///     [Output("alicloudEcdZones")]
-        ///     public Output&lt;string&gt; AlicloudEcdZones { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEcdZones"] = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:eds/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:eds/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -87,9 +85,10 @@ namespace Pulumi.AliCloud.Eds
         public GetZonesArgs()
         {
         }
+        public static new GetZonesArgs Empty => new GetZonesArgs();
     }
 
-    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -97,6 +96,7 @@ namespace Pulumi.AliCloud.Eds
         public GetZonesInvokeArgs()
         {
         }
+        public static new GetZonesInvokeArgs Empty => new GetZonesInvokeArgs();
     }
 
 

@@ -64,7 +64,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -115,7 +115,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -166,7 +166,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -217,7 +217,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -268,7 +268,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -319,7 +319,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1330,7 +1330,7 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.Listener;
      * import com.pulumi.alicloud.slb.ListenerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetListenersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1394,7 +1394,7 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.Listener;
      * import com.pulumi.alicloud.slb.ListenerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetListenersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1458,7 +1458,7 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.Listener;
      * import com.pulumi.alicloud.slb.ListenerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetListenersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1522,7 +1522,7 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.Listener;
      * import com.pulumi.alicloud.slb.ListenerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetListenersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1581,7 +1581,7 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.LoadBalancer;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1620,7 +1620,7 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.LoadBalancer;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1659,7 +1659,7 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.LoadBalancer;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1698,7 +1698,7 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.LoadBalancer;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1737,7 +1737,7 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.LoadBalancer;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1776,7 +1776,7 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.LoadBalancer;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1818,9 +1818,9 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -1950,9 +1950,9 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -2082,9 +2082,9 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -2214,9 +2214,9 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -2344,7 +2344,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -2358,7 +2358,7 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.Rule;
      * import com.pulumi.alicloud.slb.RuleArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2441,7 +2441,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -2455,7 +2455,7 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.Rule;
      * import com.pulumi.alicloud.slb.RuleArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2538,7 +2538,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -2552,7 +2552,7 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.Rule;
      * import com.pulumi.alicloud.slb.RuleArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2635,7 +2635,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -2649,7 +2649,7 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.Rule;
      * import com.pulumi.alicloud.slb.RuleArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2948,7 +2948,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -2958,7 +2958,7 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ServerGroup;
      * import com.pulumi.alicloud.slb.ServerGroupArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetServerGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3024,7 +3024,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -3034,7 +3034,7 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ServerGroup;
      * import com.pulumi.alicloud.slb.ServerGroupArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetServerGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3100,7 +3100,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -3110,7 +3110,7 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ServerGroup;
      * import com.pulumi.alicloud.slb.ServerGroupArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetServerGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3176,7 +3176,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -3186,7 +3186,7 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ServerGroup;
      * import com.pulumi.alicloud.slb.ServerGroupArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetServerGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3548,7 +3548,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3588,7 +3588,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3628,7 +3628,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3668,7 +3668,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3708,7 +3708,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3748,7 +3748,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

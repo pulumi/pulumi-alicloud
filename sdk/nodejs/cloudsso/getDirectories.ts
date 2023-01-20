@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -23,20 +24,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.cloudsso.getDirectories({
  *     ids: ["example_id"],
  * });
- * export const cloudSsoDirectoryId1 = ids.then(ids => ids.directories?[0]?.id);
+ * export const cloudSsoDirectoryId1 = ids.then(ids => ids.directories?.[0]?.id);
  * const nameRegex = alicloud.cloudsso.getDirectories({
  *     nameRegex: "^my-Directory",
  * });
- * export const cloudSsoDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?[0]?.id);
+ * export const cloudSsoDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?.[0]?.id);
  * ```
  */
 export function getDirectories(args?: GetDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetDirectoriesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudsso/getDirectories:getDirectories", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -79,9 +77,33 @@ export interface GetDirectoriesResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.135.0+.
+ *
+ * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudsso.getDirectories({
+ *     ids: ["example_id"],
+ * });
+ * export const cloudSsoDirectoryId1 = ids.then(ids => ids.directories?.[0]?.id);
+ * const nameRegex = alicloud.cloudsso.getDirectories({
+ *     nameRegex: "^my-Directory",
+ * });
+ * export const cloudSsoDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?.[0]?.id);
+ * ```
+ */
 export function getDirectoriesOutput(args?: GetDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoriesResult> {
-    return pulumi.output(args).apply(a => getDirectories(a, opts))
+    return pulumi.output(args).apply((a: any) => getDirectories(a, opts))
 }
 
 /**

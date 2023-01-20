@@ -23,44 +23,42 @@ namespace Pulumi.AliCloud.Mse
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Mse.GetZnodes.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Mse.GetZnodes.InvokeAsync(new AliCloud.Mse.GetZnodesArgs
+        ///         ClusterId = "example_value",
+        ///         Path = "/",
+        ///         Ids = new[]
         ///         {
-        ///             ClusterId = "example_value",
-        ///             Path = "/",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.MseZnodeId1 = ids.Apply(ids =&gt; ids.Znodes?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Mse.GetZnodes.InvokeAsync(new AliCloud.Mse.GetZnodesArgs
-        ///         {
-        ///             Path = "/",
-        ///             ClusterId = "example_value",
-        ///             NameRegex = "^my-Znode",
-        ///         }));
-        ///         this.MseZnodeId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Znodes?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("mseZnodeId1")]
-        ///     public Output&lt;string&gt; MseZnodeId1 { get; set; }
-        ///     [Output("mseZnodeId2")]
-        ///     public Output&lt;string&gt; MseZnodeId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Mse.GetZnodes.Invoke(new()
+        ///     {
+        ///         Path = "/",
+        ///         ClusterId = "example_value",
+        ///         NameRegex = "^my-Znode",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mseZnodeId1"] = ids.Apply(getZnodesResult =&gt; getZnodesResult.Znodes[0]?.Id),
+        ///         ["mseZnodeId2"] = nameRegex.Apply(getZnodesResult =&gt; getZnodesResult.Znodes[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZnodesResult> InvokeAsync(GetZnodesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZnodesResult>("alicloud:mse/getZnodes:getZnodes", args ?? new GetZnodesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZnodesResult>("alicloud:mse/getZnodes:getZnodes", args ?? new GetZnodesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mse Znodes of the current Alibaba Cloud user.
@@ -74,48 +72,46 @@ namespace Pulumi.AliCloud.Mse
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Mse.GetZnodes.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Mse.GetZnodes.InvokeAsync(new AliCloud.Mse.GetZnodesArgs
+        ///         ClusterId = "example_value",
+        ///         Path = "/",
+        ///         Ids = new[]
         ///         {
-        ///             ClusterId = "example_value",
-        ///             Path = "/",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.MseZnodeId1 = ids.Apply(ids =&gt; ids.Znodes?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Mse.GetZnodes.InvokeAsync(new AliCloud.Mse.GetZnodesArgs
-        ///         {
-        ///             Path = "/",
-        ///             ClusterId = "example_value",
-        ///             NameRegex = "^my-Znode",
-        ///         }));
-        ///         this.MseZnodeId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Znodes?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("mseZnodeId1")]
-        ///     public Output&lt;string&gt; MseZnodeId1 { get; set; }
-        ///     [Output("mseZnodeId2")]
-        ///     public Output&lt;string&gt; MseZnodeId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Mse.GetZnodes.Invoke(new()
+        ///     {
+        ///         Path = "/",
+        ///         ClusterId = "example_value",
+        ///         NameRegex = "^my-Znode",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mseZnodeId1"] = ids.Apply(getZnodesResult =&gt; getZnodesResult.Znodes[0]?.Id),
+        ///         ["mseZnodeId2"] = nameRegex.Apply(getZnodesResult =&gt; getZnodesResult.Znodes[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZnodesResult> Invoke(GetZnodesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZnodesResult>("alicloud:mse/getZnodes:getZnodes", args ?? new GetZnodesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZnodesResult>("alicloud:mse/getZnodes:getZnodes", args ?? new GetZnodesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetZnodesArgs : Pulumi.InvokeArgs
+    public sealed class GetZnodesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The language type of the returned information. Valid values: `zh` or `en`.
@@ -159,9 +155,10 @@ namespace Pulumi.AliCloud.Mse
         public GetZnodesArgs()
         {
         }
+        public static new GetZnodesArgs Empty => new GetZnodesArgs();
     }
 
-    public sealed class GetZnodesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZnodesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The language type of the returned information. Valid values: `zh` or `en`.
@@ -205,6 +202,7 @@ namespace Pulumi.AliCloud.Mse
         public GetZnodesInvokeArgs()
         {
         }
+        public static new GetZnodesInvokeArgs Empty => new GetZnodesInvokeArgs();
     }
 
 

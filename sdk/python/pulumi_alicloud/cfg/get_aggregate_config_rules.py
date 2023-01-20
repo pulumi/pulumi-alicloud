@@ -70,7 +70,6 @@ class GetAggregateConfigRulesResult:
     def aggregator_id(self) -> str:
         """
         The ID of Aggregator.
-        * `compliance` -The Compliance information.
         """
         return pulumi.get(self, "aggregator_id")
 

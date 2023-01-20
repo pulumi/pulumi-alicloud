@@ -3,6 +3,9 @@
 
 package com.pulumi.alicloud.maxcompute.inputs;
 
+import com.pulumi.alicloud.maxcompute.inputs.ProjectIpWhiteListArgs;
+import com.pulumi.alicloud.maxcompute.inputs.ProjectPropertiesArgs;
+import com.pulumi.alicloud.maxcompute.inputs.ProjectSecurityPropertiesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,44 +19,89 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectState Empty = new ProjectState();
 
     /**
-     * It has been deprecated from provider version 1.110.0 and `project_name` instead.
+     * Comments of project
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="comment")
+    private @Nullable Output<String> comment;
 
     /**
-     * @return It has been deprecated from provider version 1.110.0 and `project_name` instead.
+     * @return Comments of project
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Optional<Output<String>> comment() {
+        return Optional.ofNullable(this.comment);
     }
 
     /**
-     * The type of payment, only `PayAsYouGo` supported currently.
+     * Default Computing Resource Group
      * 
      */
-    @Import(name="orderType")
-    private @Nullable Output<String> orderType;
+    @Import(name="defaultQuota")
+    private @Nullable Output<String> defaultQuota;
 
     /**
-     * @return The type of payment, only `PayAsYouGo` supported currently.
+     * @return Default Computing Resource Group
      * 
      */
-    public Optional<Output<String>> orderType() {
-        return Optional.ofNullable(this.orderType);
+    public Optional<Output<String>> defaultQuota() {
+        return Optional.ofNullable(this.defaultQuota);
     }
 
     /**
-     * The name of the maxcompute project.
+     * IP whitelistSee the following `Block IpWhiteList`.
+     * 
+     */
+    @Import(name="ipWhiteList")
+    private @Nullable Output<ProjectIpWhiteListArgs> ipWhiteList;
+
+    /**
+     * @return IP whitelistSee the following `Block IpWhiteList`.
+     * 
+     */
+    public Optional<Output<ProjectIpWhiteListArgs>> ipWhiteList() {
+        return Optional.ofNullable(this.ipWhiteList);
+    }
+
+    /**
+     * Project owner
+     * 
+     */
+    @Import(name="owner")
+    private @Nullable Output<String> owner;
+
+    /**
+     * @return Project owner
+     * 
+     */
+    public Optional<Output<String>> owner() {
+        return Optional.ofNullable(this.owner);
+    }
+
+    /**
+     * Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+     * 
+     */
+    @Import(name="productType")
+    private @Nullable Output<String> productType;
+
+    /**
+     * @return Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+     * 
+     */
+    public Optional<Output<String>> productType() {
+        return Optional.ofNullable(this.productType);
+    }
+
+    /**
+     * The name of the project
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return The name of the maxcompute project.
+     * @return The name of the project
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -61,27 +109,78 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of resource Specification, only `OdpsStandard` supported currently.
+     * Project base attributesSee the following `Block Properties`.
      * 
      */
-    @Import(name="specificationType")
-    private @Nullable Output<String> specificationType;
+    @Import(name="properties")
+    private @Nullable Output<ProjectPropertiesArgs> properties;
 
     /**
-     * @return The type of resource Specification, only `OdpsStandard` supported currently.
+     * @return Project base attributesSee the following `Block Properties`.
      * 
      */
-    public Optional<Output<String>> specificationType() {
-        return Optional.ofNullable(this.specificationType);
+    public Optional<Output<ProjectPropertiesArgs>> properties() {
+        return Optional.ofNullable(this.properties);
+    }
+
+    /**
+     * Security-related attributesSee the following `Block SecurityProperties`.
+     * 
+     */
+    @Import(name="securityProperties")
+    private @Nullable Output<ProjectSecurityPropertiesArgs> securityProperties;
+
+    /**
+     * @return Security-related attributesSee the following `Block SecurityProperties`.
+     * 
+     */
+    public Optional<Output<ProjectSecurityPropertiesArgs>> securityProperties() {
+        return Optional.ofNullable(this.securityProperties);
+    }
+
+    /**
+     * The status of the resource
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the resource
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * Life cycle type.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Life cycle type.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private ProjectState() {}
 
     private ProjectState(ProjectState $) {
-        this.name = $.name;
-        this.orderType = $.orderType;
+        this.comment = $.comment;
+        this.defaultQuota = $.defaultQuota;
+        this.ipWhiteList = $.ipWhiteList;
+        this.owner = $.owner;
+        this.productType = $.productType;
         this.projectName = $.projectName;
-        this.specificationType = $.specificationType;
+        this.properties = $.properties;
+        this.securityProperties = $.securityProperties;
+        this.status = $.status;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -103,49 +202,112 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name It has been deprecated from provider version 1.110.0 and `project_name` instead.
+         * @param comment Comments of project
          * 
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
+        public Builder comment(@Nullable Output<String> comment) {
+            $.comment = comment;
             return this;
         }
 
         /**
-         * @param name It has been deprecated from provider version 1.110.0 and `project_name` instead.
+         * @param comment Comments of project
          * 
          * @return builder
          * 
          */
-        public Builder name(String name) {
-            return name(Output.of(name));
+        public Builder comment(String comment) {
+            return comment(Output.of(comment));
         }
 
         /**
-         * @param orderType The type of payment, only `PayAsYouGo` supported currently.
+         * @param defaultQuota Default Computing Resource Group
          * 
          * @return builder
          * 
          */
-        public Builder orderType(@Nullable Output<String> orderType) {
-            $.orderType = orderType;
+        public Builder defaultQuota(@Nullable Output<String> defaultQuota) {
+            $.defaultQuota = defaultQuota;
             return this;
         }
 
         /**
-         * @param orderType The type of payment, only `PayAsYouGo` supported currently.
+         * @param defaultQuota Default Computing Resource Group
          * 
          * @return builder
          * 
          */
-        public Builder orderType(String orderType) {
-            return orderType(Output.of(orderType));
+        public Builder defaultQuota(String defaultQuota) {
+            return defaultQuota(Output.of(defaultQuota));
         }
 
         /**
-         * @param projectName The name of the maxcompute project.
+         * @param ipWhiteList IP whitelistSee the following `Block IpWhiteList`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipWhiteList(@Nullable Output<ProjectIpWhiteListArgs> ipWhiteList) {
+            $.ipWhiteList = ipWhiteList;
+            return this;
+        }
+
+        /**
+         * @param ipWhiteList IP whitelistSee the following `Block IpWhiteList`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipWhiteList(ProjectIpWhiteListArgs ipWhiteList) {
+            return ipWhiteList(Output.of(ipWhiteList));
+        }
+
+        /**
+         * @param owner Project owner
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(@Nullable Output<String> owner) {
+            $.owner = owner;
+            return this;
+        }
+
+        /**
+         * @param owner Project owner
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(String owner) {
+            return owner(Output.of(owner));
+        }
+
+        /**
+         * @param productType Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder productType(@Nullable Output<String> productType) {
+            $.productType = productType;
+            return this;
+        }
+
+        /**
+         * @param productType Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder productType(String productType) {
+            return productType(Output.of(productType));
+        }
+
+        /**
+         * @param projectName The name of the project
          * 
          * @return builder
          * 
@@ -156,7 +318,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The name of the maxcompute project.
+         * @param projectName The name of the project
          * 
          * @return builder
          * 
@@ -166,24 +328,87 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param specificationType The type of resource Specification, only `OdpsStandard` supported currently.
+         * @param properties Project base attributesSee the following `Block Properties`.
          * 
          * @return builder
          * 
          */
-        public Builder specificationType(@Nullable Output<String> specificationType) {
-            $.specificationType = specificationType;
+        public Builder properties(@Nullable Output<ProjectPropertiesArgs> properties) {
+            $.properties = properties;
             return this;
         }
 
         /**
-         * @param specificationType The type of resource Specification, only `OdpsStandard` supported currently.
+         * @param properties Project base attributesSee the following `Block Properties`.
          * 
          * @return builder
          * 
          */
-        public Builder specificationType(String specificationType) {
-            return specificationType(Output.of(specificationType));
+        public Builder properties(ProjectPropertiesArgs properties) {
+            return properties(Output.of(properties));
+        }
+
+        /**
+         * @param securityProperties Security-related attributesSee the following `Block SecurityProperties`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProperties(@Nullable Output<ProjectSecurityPropertiesArgs> securityProperties) {
+            $.securityProperties = securityProperties;
+            return this;
+        }
+
+        /**
+         * @param securityProperties Security-related attributesSee the following `Block SecurityProperties`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProperties(ProjectSecurityPropertiesArgs securityProperties) {
+            return securityProperties(Output.of(securityProperties));
+        }
+
+        /**
+         * @param status The status of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param type Life cycle type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Life cycle type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public ProjectState build() {

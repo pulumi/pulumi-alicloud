@@ -22,44 +22,44 @@ namespace Pulumi.AliCloud.Cen
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a cen vbr HealrhCheck resource and use it.
+    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
     ///     {
-    ///         // Create a cen vbr HealrhCheck resource and use it.
-    ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///             CenInstanceName = "test_name",
-    ///         });
-    ///         var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment("defaultInstanceAttachment", new AliCloud.Cen.InstanceAttachmentArgs
-    ///         {
-    ///             InstanceId = defaultInstance.Id,
-    ///             ChildInstanceId = "vbr-xxxxx",
-    ///             ChildInstanceType = "VBR",
-    ///             ChildInstanceRegionId = "cn-hangzhou",
-    ///         });
-    ///         var defaultVbrHealthCheck = new AliCloud.Cen.VbrHealthCheck("defaultVbrHealthCheck", new AliCloud.Cen.VbrHealthCheckArgs
-    ///         {
-    ///             CenId = defaultInstance.Id,
-    ///             HealthCheckSourceIp = "192.168.1.2",
-    ///             HealthCheckTargetIp = "10.0.0.2",
-    ///             VbrInstanceId = "vbr-xxxxx",
-    ///             VbrInstanceRegionId = "cn-hangzhou",
-    ///             HealthCheckInterval = 2,
-    ///             HealthyThreshold = 8,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 defaultInstanceAttachment,
-    ///             },
-    ///         });
-    ///     }
+    ///         CenInstanceName = "test_name",
+    ///     });
     /// 
-    /// }
+    ///     var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment("defaultInstanceAttachment", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         ChildInstanceId = "vbr-xxxxx",
+    ///         ChildInstanceType = "VBR",
+    ///         ChildInstanceRegionId = "cn-hangzhou",
+    ///     });
+    /// 
+    ///     var defaultVbrHealthCheck = new AliCloud.Cen.VbrHealthCheck("defaultVbrHealthCheck", new()
+    ///     {
+    ///         CenId = defaultInstance.Id,
+    ///         HealthCheckSourceIp = "192.168.1.2",
+    ///         HealthCheckTargetIp = "10.0.0.2",
+    ///         VbrInstanceId = "vbr-xxxxx",
+    ///         VbrInstanceRegionId = "cn-hangzhou",
+    ///         HealthCheckInterval = 2,
+    ///         HealthyThreshold = 8,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             defaultInstanceAttachment,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/vbrHealthCheck:VbrHealthCheck")]
-    public partial class VbrHealthCheck : Pulumi.CustomResource
+    public partial class VbrHealthCheck : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the CEN instance.
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class VbrHealthCheckArgs : Pulumi.ResourceArgs
+    public sealed class VbrHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CEN instance.
@@ -218,9 +218,10 @@ namespace Pulumi.AliCloud.Cen
         public VbrHealthCheckArgs()
         {
         }
+        public static new VbrHealthCheckArgs Empty => new VbrHealthCheckArgs();
     }
 
-    public sealed class VbrHealthCheckState : Pulumi.ResourceArgs
+    public sealed class VbrHealthCheckState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CEN instance.
@@ -273,5 +274,6 @@ namespace Pulumi.AliCloud.Cen
         public VbrHealthCheckState()
         {
         }
+        public static new VbrHealthCheckState Empty => new VbrHealthCheckState();
     }
 }

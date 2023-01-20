@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// Number of active instances in scaling group.
         /// </summary>
         public readonly int ActiveCapacity;
+        /// <summary>
+        /// Active scaling configuration for scaling group.
+        /// </summary>
         public readonly string ActiveScalingConfiguration;
         /// <summary>
         /// Default cooldown time of scaling group.
@@ -72,7 +75,6 @@ namespace Pulumi.AliCloud.Ess.Outputs
         public readonly string ModificationTime;
         /// <summary>
         /// Name of the scaling group.
-        /// * `active_scaling_configuration` -Active scaling configuration for scaling group.
         /// </summary>
         public readonly string Name;
         /// <summary>

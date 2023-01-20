@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dns.Inputs
 {
 
-    public sealed class AccessStrategyFailoverAddrPoolArgs : Pulumi.ResourceArgs
+    public sealed class AccessStrategyFailoverAddrPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the address pool in the primary address pool group.
+        /// The ID of the address pool in the secondary address pool group.
         /// </summary>
         [Input("addrPoolId")]
         public Input<string>? AddrPoolId { get; set; }
 
         /// <summary>
-        /// The weight of the address pool in the primary address pool group.
+        /// The weight of the address pool in the secondary address pool group.
         /// </summary>
         [Input("lbaWeight")]
         public Input<int>? LbaWeight { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Dns.Inputs
         public AccessStrategyFailoverAddrPoolArgs()
         {
         }
+        public static new AccessStrategyFailoverAddrPoolArgs Empty => new AccessStrategyFailoverAddrPoolArgs();
     }
 }

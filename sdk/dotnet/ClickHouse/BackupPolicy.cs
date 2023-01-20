@@ -23,59 +23,56 @@ namespace Pulumi.AliCloud.ClickHouse
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultRegions = AliCloud.ClickHouse.GetRegions.Invoke(new()
     ///     {
-    ///         var defaultRegions = Output.Create(AliCloud.ClickHouse.GetRegions.InvokeAsync(new AliCloud.ClickHouse.GetRegionsArgs
-    ///         {
-    ///             Current = true,
-    ///         }));
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultRegions).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultRegions = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultRegions.Regions?[0]?.ZoneIds?[0]?.ZoneId,
-    ///             }));
-    ///         });
-    ///         var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new AliCloud.ClickHouse.DbClusterArgs
-    ///         {
-    ///             DbClusterVersion = "20.3.10.75",
-    ///             Status = "Running",
-    ///             Category = "Basic",
-    ///             DbClusterClass = "S8",
-    ///             DbClusterNetworkType = "vpc",
-    ///             DbClusterDescription = @var.Name,
-    ///             DbNodeGroupCount = 1,
-    ///             PaymentType = "PayAsYouGo",
-    ///             DbNodeStorage = "500",
-    ///             StorageType = "cloud_essd",
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Vswitches?[0]?.Id),
-    ///         });
-    ///         var example = new AliCloud.ClickHouse.BackupPolicy("example", new AliCloud.ClickHouse.BackupPolicyArgs
-    ///         {
-    ///             DbClusterId = defaultDbCluster.Id,
-    ///             PreferredBackupPeriods = 
-    ///             {
-    ///                 "Monday",
-    ///                 "Friday",
-    ///             },
-    ///             PreferredBackupTime = "00:00Z-01:00Z",
-    ///             BackupRetentionPeriod = 7,
-    ///         });
-    ///     }
+    ///         Current = true,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId),
+    ///     });
+    /// 
+    ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
+    ///     {
+    ///         DbClusterVersion = "20.3.10.75",
+    ///         Status = "Running",
+    ///         Category = "Basic",
+    ///         DbClusterClass = "S8",
+    ///         DbClusterNetworkType = "vpc",
+    ///         DbClusterDescription = @var.Name,
+    ///         DbNodeGroupCount = 1,
+    ///         PaymentType = "PayAsYouGo",
+    ///         DbNodeStorage = "500",
+    ///         StorageType = "cloud_essd",
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
+    ///     });
+    /// 
+    ///     var example = new AliCloud.ClickHouse.BackupPolicy("example", new()
+    ///     {
+    ///         DbClusterId = defaultDbCluster.Id,
+    ///         PreferredBackupPeriods = new[]
+    ///         {
+    ///             "Monday",
+    ///             "Friday",
+    ///         },
+    ///         PreferredBackupTime = "00:00Z-01:00Z",
+    ///         BackupRetentionPeriod = 7,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -87,7 +84,7 @@ namespace Pulumi.AliCloud.ClickHouse
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:clickhouse/backupPolicy:BackupPolicy")]
-    public partial class BackupPolicy : Pulumi.CustomResource
+    public partial class BackupPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Data backup days. Valid values: `7` to `730`.
@@ -163,7 +160,7 @@ namespace Pulumi.AliCloud.ClickHouse
         }
     }
 
-    public sealed class BackupPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackupPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Data backup days. Valid values: `7` to `730`.
@@ -198,9 +195,10 @@ namespace Pulumi.AliCloud.ClickHouse
         public BackupPolicyArgs()
         {
         }
+        public static new BackupPolicyArgs Empty => new BackupPolicyArgs();
     }
 
-    public sealed class BackupPolicyState : Pulumi.ResourceArgs
+    public sealed class BackupPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Data backup days. Valid values: `7` to `730`.
@@ -241,5 +239,6 @@ namespace Pulumi.AliCloud.ClickHouse
         public BackupPolicyState()
         {
         }
+        public static new BackupPolicyState Empty => new BackupPolicyState();
     }
 }

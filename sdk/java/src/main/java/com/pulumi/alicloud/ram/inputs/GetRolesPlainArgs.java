@@ -16,14 +16,14 @@ public final class GetRolesPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRolesPlainArgs Empty = new GetRolesPlainArgs();
 
     /**
-     * - A list of ram role IDs.
+     * A list of ram role IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return - A list of ram role IDs.
+     * @return A list of ram role IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -111,7 +111,7 @@ public final class GetRolesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids - A list of ram role IDs.
+         * @param ids A list of ram role IDs.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class GetRolesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids - A list of ram role IDs.
+         * @param ids A list of ram role IDs.
          * 
          * @return builder
          * 

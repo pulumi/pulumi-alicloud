@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.CloudFirewall.GetAddressBooks.InvokeAsync());
-        ///         this.CloudFirewallAddressBookId1 = ids.Apply(ids =&gt; ids.Books?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.CloudFirewall.GetAddressBooks.Invoke();
         /// 
-        ///     [Output("cloudFirewallAddressBookId1")]
-        ///     public Output&lt;string&gt; CloudFirewallAddressBookId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudFirewallAddressBookId1"] = ids.Apply(getAddressBooksResult =&gt; getAddressBooksResult.Books[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAddressBooksResult> InvokeAsync(GetAddressBooksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressBooksResult>("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", args ?? new GetAddressBooksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAddressBooksResult>("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", args ?? new GetAddressBooksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.CloudFirewall.GetAddressBooks.InvokeAsync());
-        ///         this.CloudFirewallAddressBookId1 = ids.Apply(ids =&gt; ids.Books?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.CloudFirewall.GetAddressBooks.Invoke();
         /// 
-        ///     [Output("cloudFirewallAddressBookId1")]
-        ///     public Output&lt;string&gt; CloudFirewallAddressBookId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudFirewallAddressBookId1"] = ids.Apply(getAddressBooksResult =&gt; getAddressBooksResult.Books[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAddressBooksResult> Invoke(GetAddressBooksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAddressBooksResult>("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", args ?? new GetAddressBooksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAddressBooksResult>("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", args ?? new GetAddressBooksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAddressBooksArgs : Pulumi.InvokeArgs
+    public sealed class GetAddressBooksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of the Address Book.
@@ -111,9 +109,10 @@ namespace Pulumi.AliCloud.CloudFirewall
         public GetAddressBooksArgs()
         {
         }
+        public static new GetAddressBooksArgs Empty => new GetAddressBooksArgs();
     }
 
-    public sealed class GetAddressBooksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAddressBooksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of the Address Book.
@@ -145,6 +144,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public GetAddressBooksInvokeArgs()
         {
         }
+        public static new GetAddressBooksInvokeArgs Empty => new GetAddressBooksInvokeArgs();
     }
 
 

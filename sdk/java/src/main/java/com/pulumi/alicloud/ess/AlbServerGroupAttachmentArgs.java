@@ -50,14 +50,14 @@ public final class AlbServerGroupAttachmentArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * - The port will be used for Alb Server Group backend server.
+     * The port will be used for Alb Server Group backend server.
      * 
      */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
     /**
-     * @return - The port will be used for Alb Server Group backend server.
+     * @return The port will be used for Alb Server Group backend server.
      * 
      */
     public Output<Integer> port() {
@@ -167,7 +167,7 @@ public final class AlbServerGroupAttachmentArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param port - The port will be used for Alb Server Group backend server.
+         * @param port The port will be used for Alb Server Group backend server.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class AlbServerGroupAttachmentArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param port - The port will be used for Alb Server Group backend server.
+         * @param port The port will be used for Alb Server Group backend server.
          * 
          * @return builder
          * 

@@ -41,14 +41,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/loadBalancer:LoadBalancer")
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
-     * The Access Logging Configuration Structure.
+     * The Access Logging Configuration Structure. See the following `Block access_log_config`.
      * 
      */
     @Export(name="accessLogConfig", type=LoadBalancerAccessLogConfig.class, parameters={})
     private Output</* @Nullable */ LoadBalancerAccessLogConfig> accessLogConfig;
 
     /**
-     * @return The Access Logging Configuration Structure.
+     * @return The Access Logging Configuration Structure. See the following `Block access_log_config`.
      * 
      */
     public Output<Optional<LoadBalancerAccessLogConfig>> accessLogConfig() {
@@ -56,8 +56,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     }
     /**
      * The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-     * *`Fixed`: The ALB instance uses a fixed IP address.
-     * *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
      * 
      */
     @Export(name="addressAllocatedMode", type=String.class, parameters={})
@@ -65,22 +63,34 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-     * *`Fixed`: The ALB instance uses a fixed IP address.
-     * *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
      * 
      */
     public Output<Optional<String>> addressAllocatedMode() {
         return Codegen.optional(this.addressAllocatedMode);
     }
     /**
-     * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+     * The IP version. Valid values: `Ipv4`, `DualStack`.
+     * 
+     */
+    @Export(name="addressIpVersion", type=String.class, parameters={})
+    private Output<String> addressIpVersion;
+
+    /**
+     * @return The IP version. Valid values: `Ipv4`, `DualStack`.
+     * 
+     */
+    public Output<String> addressIpVersion() {
+        return this.addressIpVersion;
+    }
+    /**
+     * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
      * 
      */
     @Export(name="addressType", type=String.class, parameters={})
     private Output<String> addressType;
 
     /**
-     * @return The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+     * @return The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
      * 
      */
     public Output<String> addressType() {
@@ -129,28 +139,28 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The configuration of the billing method.
+     * The configuration of the billing method. See the following `Block load_balancer_billing_config`.
      * 
      */
     @Export(name="loadBalancerBillingConfig", type=LoadBalancerLoadBalancerBillingConfig.class, parameters={})
     private Output<LoadBalancerLoadBalancerBillingConfig> loadBalancerBillingConfig;
 
     /**
-     * @return The configuration of the billing method.
+     * @return The configuration of the billing method. See the following `Block load_balancer_billing_config`.
      * 
      */
     public Output<LoadBalancerLoadBalancerBillingConfig> loadBalancerBillingConfig() {
         return this.loadBalancerBillingConfig;
     }
     /**
-     * The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+     * The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
      * 
      */
     @Export(name="loadBalancerEdition", type=String.class, parameters={})
     private Output<String> loadBalancerEdition;
 
     /**
-     * @return The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+     * @return The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
      * 
      */
     public Output<String> loadBalancerEdition() {
@@ -171,14 +181,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.loadBalancerName;
     }
     /**
-     * Modify the Protection Configuration.
+     * Modify the Protection Configuration. See the following `Block modification_protection_config`.
      * 
      */
     @Export(name="modificationProtectionConfig", type=LoadBalancerModificationProtectionConfig.class, parameters={})
     private Output<LoadBalancerModificationProtectionConfig> modificationProtectionConfig;
 
     /**
-     * @return Modify the Protection Configuration.
+     * @return Modify the Protection Configuration. See the following `Block modification_protection_config`.
      * 
      */
     public Output<LoadBalancerModificationProtectionConfig> modificationProtectionConfig() {
@@ -241,14 +251,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * The zones and vSwitches. You must specify at least two zones.
+     * The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
      * 
      */
     @Export(name="zoneMappings", type=List.class, parameters={LoadBalancerZoneMapping.class})
     private Output<List<LoadBalancerZoneMapping>> zoneMappings;
 
     /**
-     * @return The zones and vSwitches. You must specify at least two zones.
+     * @return The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
      * 
      */
     public Output<List<LoadBalancerZoneMapping>> zoneMappings() {

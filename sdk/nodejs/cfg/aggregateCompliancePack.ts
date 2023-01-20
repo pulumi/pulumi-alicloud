@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -44,12 +45,12 @@ import * as utilities from "../utilities";
  *     resourceTypesScopes: ["ACS::ECS::Instance"],
  *     riskLevel: 1,
  *     description: name,
- *     excludeResourceIdsScope: defaultInstances.then(defaultInstances => defaultInstances.ids?[0]),
+ *     excludeResourceIdsScope: defaultInstances.then(defaultInstances => defaultInstances.ids?.[0]),
  *     inputParameters: {
  *         cpuCount: "4",
  *     },
  *     regionIdsScope: "cn-hangzhou",
- *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?[0]),
+ *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
  *     tagKeyScope: "tFTest",
  *     tagValueScope: "forTF 123",
  * });

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class ScalingConfigurationDataDiskGetArgs : Pulumi.ResourceArgs
+    public sealed class ScalingConfigurationDataDiskGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoSnapshotPolicyId")]
         public Input<string>? AutoSnapshotPolicyId { get; set; }
@@ -48,5 +48,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public ScalingConfigurationDataDiskGetArgs()
         {
         }
+        public static new ScalingConfigurationDataDiskGetArgs Empty => new ScalingConfigurationDataDiskGetArgs();
     }
 }

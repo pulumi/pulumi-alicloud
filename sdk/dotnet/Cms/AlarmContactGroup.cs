@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Cms.AlarmContactGroup("example", new()
     ///     {
-    ///         var example = new AliCloud.Cms.AlarmContactGroup("example", new AliCloud.Cms.AlarmContactGroupArgs
-    ///         {
-    ///             AlarmContactGroupName = "tf-test",
-    ///         });
-    ///     }
+    ///         AlarmContactGroupName = "tf-test",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/alarmContactGroup:AlarmContactGroup")]
-    public partial class AlarmContactGroup : Pulumi.CustomResource
+    public partial class AlarmContactGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the alarm group.
@@ -116,7 +114,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class AlarmContactGroupArgs : Pulumi.ResourceArgs
+    public sealed class AlarmContactGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the alarm group.
@@ -151,9 +149,10 @@ namespace Pulumi.AliCloud.Cms
         public AlarmContactGroupArgs()
         {
         }
+        public static new AlarmContactGroupArgs Empty => new AlarmContactGroupArgs();
     }
 
-    public sealed class AlarmContactGroupState : Pulumi.ResourceArgs
+    public sealed class AlarmContactGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the alarm group.
@@ -188,5 +187,6 @@ namespace Pulumi.AliCloud.Cms
         public AlarmContactGroupState()
         {
         }
+        public static new AlarmContactGroupState Empty => new AlarmContactGroupState();
     }
 }

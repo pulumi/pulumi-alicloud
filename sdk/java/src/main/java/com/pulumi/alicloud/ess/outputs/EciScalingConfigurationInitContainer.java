@@ -28,12 +28,13 @@ public final class EciScalingConfigurationInitContainer {
      */
     private @Nullable List<String> commands;
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     private @Nullable Double cpu;
     /**
      * @return The structure of environmentVars.
+     * See Block_environment_var_in_init_container below for details.
      * See Block_environment_var_in_container below for details.
      * 
      */
@@ -54,22 +55,24 @@ public final class EciScalingConfigurationInitContainer {
      */
     private @Nullable String imagePullPolicy;
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     private @Nullable Double memory;
     /**
-     * @return The name of the mounted volume.
+     * @return The name of the volume.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The structure of port. See Block_port_in_container below for details.
+     * @return The structure of port. See Block_port_in_init_container below
+     * for details.
      * 
      */
     private @Nullable List<EciScalingConfigurationInitContainerPort> ports;
     /**
      * @return The structure of volumeMounts.
+     * See Block_volume_mount_in_init_container below for details.
      * See Block_volume_mount_in_container below for details.
      * 
      */
@@ -96,7 +99,7 @@ public final class EciScalingConfigurationInitContainer {
         return this.commands == null ? List.of() : this.commands;
     }
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     public Optional<Double> cpu() {
@@ -104,6 +107,7 @@ public final class EciScalingConfigurationInitContainer {
     }
     /**
      * @return The structure of environmentVars.
+     * See Block_environment_var_in_init_container below for details.
      * See Block_environment_var_in_container below for details.
      * 
      */
@@ -132,21 +136,22 @@ public final class EciScalingConfigurationInitContainer {
         return Optional.ofNullable(this.imagePullPolicy);
     }
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     public Optional<Double> memory() {
         return Optional.ofNullable(this.memory);
     }
     /**
-     * @return The name of the mounted volume.
+     * @return The name of the volume.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The structure of port. See Block_port_in_container below for details.
+     * @return The structure of port. See Block_port_in_init_container below
+     * for details.
      * 
      */
     public List<EciScalingConfigurationInitContainerPort> ports() {
@@ -154,6 +159,7 @@ public final class EciScalingConfigurationInitContainer {
     }
     /**
      * @return The structure of volumeMounts.
+     * See Block_volume_mount_in_init_container below for details.
      * See Block_volume_mount_in_container below for details.
      * 
      */

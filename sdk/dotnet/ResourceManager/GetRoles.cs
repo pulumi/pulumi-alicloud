@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ResourceManager.GetRoles.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetRoles.InvokeAsync(new AliCloud.ResourceManager.GetRolesArgs
-        ///         {
-        ///             NameRegex = "tftest",
-        ///         }));
-        ///         this.FirstRoleId = example.Apply(example =&gt; example.Roles?[0]?.Id);
-        ///     }
+        ///         NameRegex = "tftest",
+        ///     });
         /// 
-        ///     [Output("firstRoleId")]
-        ///     public Output&lt;string&gt; FirstRoleId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRoleId"] = example.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRolesResult> InvokeAsync(GetRolesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("alicloud:resourcemanager/getRoles:getRoles", args ?? new GetRolesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("alicloud:resourcemanager/getRoles:getRoles", args ?? new GetRolesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
@@ -55,36 +54,35 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ResourceManager.GetRoles.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetRoles.InvokeAsync(new AliCloud.ResourceManager.GetRolesArgs
-        ///         {
-        ///             NameRegex = "tftest",
-        ///         }));
-        ///         this.FirstRoleId = example.Apply(example =&gt; example.Roles?[0]?.Id);
-        ///     }
+        ///         NameRegex = "tftest",
+        ///     });
         /// 
-        ///     [Output("firstRoleId")]
-        ///     public Output&lt;string&gt; FirstRoleId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRoleId"] = example.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRolesResult> Invoke(GetRolesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRolesResult>("alicloud:resourcemanager/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("alicloud:resourcemanager/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRolesArgs : Pulumi.InvokeArgs
+    public sealed class GetRolesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// Default to `false`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -113,12 +111,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetRolesArgs()
         {
         }
+        public static new GetRolesArgs Empty => new GetRolesArgs();
     }
 
-    public sealed class GetRolesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRolesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// Default to `false`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -147,6 +146,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetRolesInvokeArgs()
         {
         }
+        public static new GetRolesInvokeArgs Empty => new GetRolesInvokeArgs();
     }
 
 

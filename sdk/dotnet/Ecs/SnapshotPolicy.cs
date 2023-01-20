@@ -13,32 +13,30 @@ namespace Pulumi.AliCloud.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var sp = new AliCloud.Ecs.SnapshotPolicy("sp", new()
     ///     {
-    ///         var sp = new AliCloud.Ecs.SnapshotPolicy("sp", new AliCloud.Ecs.SnapshotPolicyArgs
+    ///         RepeatWeekdays = new[]
     ///         {
-    ///             RepeatWeekdays = 
-    ///             {
-    ///                 "1",
-    ///                 "2",
-    ///                 "3",
-    ///             },
-    ///             RetentionDays = -1,
-    ///             TimePoints = 
-    ///             {
-    ///                 "1",
-    ///                 "22",
-    ///                 "23",
-    ///             },
-    ///         });
-    ///     }
+    ///             "1",
+    ///             "2",
+    ///             "3",
+    ///         },
+    ///         RetentionDays = -1,
+    ///         TimePoints = new[]
+    ///         {
+    ///             "1",
+    ///             "22",
+    ///             "23",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/snapshotPolicy:SnapshotPolicy")]
-    public partial class SnapshotPolicy : Pulumi.CustomResource
+    public partial class SnapshotPolicy : global::Pulumi.CustomResource
     {
         [Output("copiedSnapshotsRetentionDays")]
         public Output<int?> CopiedSnapshotsRetentionDays { get; private set; } = null!;
@@ -141,7 +139,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class SnapshotPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("copiedSnapshotsRetentionDays")]
         public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
@@ -210,9 +208,10 @@ namespace Pulumi.AliCloud.Ecs
         public SnapshotPolicyArgs()
         {
         }
+        public static new SnapshotPolicyArgs Empty => new SnapshotPolicyArgs();
     }
 
-    public sealed class SnapshotPolicyState : Pulumi.ResourceArgs
+    public sealed class SnapshotPolicyState : global::Pulumi.ResourceArgs
     {
         [Input("copiedSnapshotsRetentionDays")]
         public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
@@ -284,5 +283,6 @@ namespace Pulumi.AliCloud.Ecs
         public SnapshotPolicyState()
         {
         }
+        public static new SnapshotPolicyState Empty => new SnapshotPolicyState();
     }
 }

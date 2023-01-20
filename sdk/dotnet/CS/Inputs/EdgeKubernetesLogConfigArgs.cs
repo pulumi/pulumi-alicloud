@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class EdgeKubernetesLogConfigArgs : Pulumi.ResourceArgs
+    public sealed class EdgeKubernetesLogConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Log Service project name, cluster logs will output to this project.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Type of collecting logs, only `SLS` are supported currently.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         public EdgeKubernetesLogConfigArgs()
         {
         }
+        public static new EdgeKubernetesLogConfigArgs Empty => new EdgeKubernetesLogConfigArgs();
     }
 }

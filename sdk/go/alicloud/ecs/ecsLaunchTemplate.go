@@ -64,6 +64,7 @@ import (
 //				InternetMaxBandwidthOut: pulumi.Int(0),
 //				IoOptimized:             pulumi.String("optimized"),
 //				KeyPairName:             pulumi.String("key_pair_name"),
+//				LaunchTemplateName:      pulumi.String("tf_test_name"),
 //				NetworkInterfaces: &ecs.EcsLaunchTemplateNetworkInterfacesArgs{
 //					Description:     pulumi.String("hello1"),
 //					Name:            pulumi.String("eth0"),
@@ -123,7 +124,7 @@ type EcsLaunchTemplate struct {
 	DataDisks EcsLaunchTemplateDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The Deployment Set Id.
 	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether to enable the instance operating system configuration.
 	EnableVmOsConfig pulumi.BoolPtrOutput `pulumi:"enableVmOsConfig"`
@@ -135,7 +136,8 @@ type EcsLaunchTemplate struct {
 	ImageOwnerAlias pulumi.StringPtrOutput `pulumi:"imageOwnerAlias"`
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
-	InstanceName       pulumi.StringPtrOutput `pulumi:"instanceName"`
+	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
 	// Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
@@ -152,7 +154,7 @@ type EcsLaunchTemplate struct {
 	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
 	// The name of Launch Template.
 	LaunchTemplateName pulumi.StringOutput `pulumi:"launchTemplateName"`
-	// The name of the data disk.
+	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -174,24 +176,32 @@ type EcsLaunchTemplate struct {
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
 	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
 	// The ID of security group N to which to assign the instance.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
 	SpotDuration pulumi.StringPtrOutput `pulumi:"spotDuration"`
-	// -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit pulumi.Float64PtrOutput `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
 	// The System Disk.
 	SystemDisk EcsLaunchTemplateSystemDiskOutput `pulumi:"systemDisk"`
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory pulumi.StringOutput `pulumi:"systemDiskCategory"`
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription pulumi.StringOutput `pulumi:"systemDiskDescription"`
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName pulumi.StringOutput `pulumi:"systemDiskName"`
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize pulumi.IntOutput `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to instance, block storage, and elastic network.
@@ -204,12 +214,15 @@ type EcsLaunchTemplate struct {
 	TemplateTags pulumi.MapOutput `pulumi:"templateTags"`
 	// The User Data.
 	UserData pulumi.StringOutput `pulumi:"userData"`
+	// It has been deprecated from version 1.120.0, and use field `userData` instead.
+	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 	Userdata pulumi.StringOutput `pulumi:"userdata"`
 	// The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	VersionDescription pulumi.StringPtrOutput `pulumi:"versionDescription"`
-	VpcId              pulumi.StringOutput    `pulumi:"vpcId"`
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// The ID of the VPC.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The zone ID of the instance.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -250,7 +263,7 @@ type ecsLaunchTemplateState struct {
 	DataDisks []EcsLaunchTemplateDataDisk `pulumi:"dataDisks"`
 	// The Deployment Set Id.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description *string `pulumi:"description"`
 	// Whether to enable the instance operating system configuration.
 	EnableVmOsConfig *bool `pulumi:"enableVmOsConfig"`
@@ -262,7 +275,8 @@ type ecsLaunchTemplateState struct {
 	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	InstanceName       *string `pulumi:"instanceName"`
+	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	InstanceName *string `pulumi:"instanceName"`
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType *string `pulumi:"instanceType"`
 	// Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
@@ -279,7 +293,7 @@ type ecsLaunchTemplateState struct {
 	KeyPairName *string `pulumi:"keyPairName"`
 	// The name of Launch Template.
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
-	// The name of the data disk.
+	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name *string `pulumi:"name"`
@@ -301,24 +315,32 @@ type ecsLaunchTemplateState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The ID of security group N to which to assign the instance.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
 	SpotDuration *string `pulumi:"spotDuration"`
-	// -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The System Disk.
 	SystemDisk *EcsLaunchTemplateSystemDisk `pulumi:"systemDisk"`
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName *string `pulumi:"systemDiskName"`
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to instance, block storage, and elastic network.
@@ -331,12 +353,15 @@ type ecsLaunchTemplateState struct {
 	TemplateTags map[string]interface{} `pulumi:"templateTags"`
 	// The User Data.
 	UserData *string `pulumi:"userData"`
+	// It has been deprecated from version 1.120.0, and use field `userData` instead.
+	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 	Userdata *string `pulumi:"userdata"`
 	// The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	VersionDescription *string `pulumi:"versionDescription"`
-	VpcId              *string `pulumi:"vpcId"`
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// The ID of the VPC.
+	VpcId *string `pulumi:"vpcId"`
+	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
 	ZoneId *string `pulumi:"zoneId"`
@@ -349,7 +374,7 @@ type EcsLaunchTemplateState struct {
 	DataDisks EcsLaunchTemplateDataDiskArrayInput
 	// The Deployment Set Id.
 	DeploymentSetId pulumi.StringPtrInput
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description pulumi.StringPtrInput
 	// Whether to enable the instance operating system configuration.
 	EnableVmOsConfig pulumi.BoolPtrInput
@@ -361,7 +386,8 @@ type EcsLaunchTemplateState struct {
 	ImageOwnerAlias pulumi.StringPtrInput
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
 	InstanceChargeType pulumi.StringPtrInput
-	InstanceName       pulumi.StringPtrInput
+	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	InstanceName pulumi.StringPtrInput
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType pulumi.StringPtrInput
 	// Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
@@ -378,7 +404,7 @@ type EcsLaunchTemplateState struct {
 	KeyPairName pulumi.StringPtrInput
 	// The name of Launch Template.
 	LaunchTemplateName pulumi.StringPtrInput
-	// The name of the data disk.
+	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringPtrInput
@@ -400,24 +426,32 @@ type EcsLaunchTemplateState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId pulumi.StringPtrInput
 	// The ID of security group N to which to assign the instance.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
 	SpotDuration pulumi.StringPtrInput
-	// -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy pulumi.StringPtrInput
 	// The System Disk.
 	SystemDisk EcsLaunchTemplateSystemDiskPtrInput
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory pulumi.StringPtrInput
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription pulumi.StringPtrInput
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName pulumi.StringPtrInput
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to instance, block storage, and elastic network.
@@ -430,12 +464,15 @@ type EcsLaunchTemplateState struct {
 	TemplateTags pulumi.MapInput
 	// The User Data.
 	UserData pulumi.StringPtrInput
+	// It has been deprecated from version 1.120.0, and use field `userData` instead.
+	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 	Userdata pulumi.StringPtrInput
 	// The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	VersionDescription pulumi.StringPtrInput
-	VpcId              pulumi.StringPtrInput
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// The ID of the VPC.
+	VpcId pulumi.StringPtrInput
+	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the instance.
 	ZoneId pulumi.StringPtrInput
@@ -452,7 +489,7 @@ type ecsLaunchTemplateArgs struct {
 	DataDisks []EcsLaunchTemplateDataDisk `pulumi:"dataDisks"`
 	// The Deployment Set Id.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description *string `pulumi:"description"`
 	// Whether to enable the instance operating system configuration.
 	EnableVmOsConfig *bool `pulumi:"enableVmOsConfig"`
@@ -464,7 +501,8 @@ type ecsLaunchTemplateArgs struct {
 	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	InstanceName       *string `pulumi:"instanceName"`
+	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	InstanceName *string `pulumi:"instanceName"`
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType *string `pulumi:"instanceType"`
 	// Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
@@ -481,7 +519,7 @@ type ecsLaunchTemplateArgs struct {
 	KeyPairName *string `pulumi:"keyPairName"`
 	// The name of Launch Template.
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
-	// The name of the data disk.
+	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name *string `pulumi:"name"`
@@ -503,24 +541,32 @@ type ecsLaunchTemplateArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The ID of security group N to which to assign the instance.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
 	SpotDuration *string `pulumi:"spotDuration"`
-	// -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The System Disk.
 	SystemDisk *EcsLaunchTemplateSystemDisk `pulumi:"systemDisk"`
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName *string `pulumi:"systemDiskName"`
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to instance, block storage, and elastic network.
@@ -533,12 +579,15 @@ type ecsLaunchTemplateArgs struct {
 	TemplateTags map[string]interface{} `pulumi:"templateTags"`
 	// The User Data.
 	UserData *string `pulumi:"userData"`
+	// It has been deprecated from version 1.120.0, and use field `userData` instead.
+	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 	Userdata *string `pulumi:"userdata"`
 	// The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	VersionDescription *string `pulumi:"versionDescription"`
-	VpcId              *string `pulumi:"vpcId"`
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// The ID of the VPC.
+	VpcId *string `pulumi:"vpcId"`
+	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
 	ZoneId *string `pulumi:"zoneId"`
@@ -552,7 +601,7 @@ type EcsLaunchTemplateArgs struct {
 	DataDisks EcsLaunchTemplateDataDiskArrayInput
 	// The Deployment Set Id.
 	DeploymentSetId pulumi.StringPtrInput
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description pulumi.StringPtrInput
 	// Whether to enable the instance operating system configuration.
 	EnableVmOsConfig pulumi.BoolPtrInput
@@ -564,7 +613,8 @@ type EcsLaunchTemplateArgs struct {
 	ImageOwnerAlias pulumi.StringPtrInput
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
 	InstanceChargeType pulumi.StringPtrInput
-	InstanceName       pulumi.StringPtrInput
+	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	InstanceName pulumi.StringPtrInput
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType pulumi.StringPtrInput
 	// Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
@@ -581,7 +631,7 @@ type EcsLaunchTemplateArgs struct {
 	KeyPairName pulumi.StringPtrInput
 	// The name of Launch Template.
 	LaunchTemplateName pulumi.StringPtrInput
-	// The name of the data disk.
+	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringPtrInput
@@ -603,24 +653,32 @@ type EcsLaunchTemplateArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId pulumi.StringPtrInput
 	// The ID of security group N to which to assign the instance.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
 	SpotDuration pulumi.StringPtrInput
-	// -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy pulumi.StringPtrInput
 	// The System Disk.
 	SystemDisk EcsLaunchTemplateSystemDiskPtrInput
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory pulumi.StringPtrInput
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription pulumi.StringPtrInput
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName pulumi.StringPtrInput
+	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to instance, block storage, and elastic network.
@@ -633,12 +691,15 @@ type EcsLaunchTemplateArgs struct {
 	TemplateTags pulumi.MapInput
 	// The User Data.
 	UserData pulumi.StringPtrInput
+	// It has been deprecated from version 1.120.0, and use field `userData` instead.
+	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 	Userdata pulumi.StringPtrInput
 	// The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	VersionDescription pulumi.StringPtrInput
-	VpcId              pulumi.StringPtrInput
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// The ID of the VPC.
+	VpcId pulumi.StringPtrInput
+	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the instance.
 	ZoneId pulumi.StringPtrInput
@@ -746,7 +807,7 @@ func (o EcsLaunchTemplateOutput) DeploymentSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.DeploymentSetId }).(pulumi.StringPtrOutput)
 }
 
-// The description of the data disk.
+// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 func (o EcsLaunchTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -776,6 +837,7 @@ func (o EcsLaunchTemplateOutput) InstanceChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
 }
 
+// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 func (o EcsLaunchTemplateOutput) InstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
 }
@@ -817,7 +879,7 @@ func (o EcsLaunchTemplateOutput) LaunchTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.LaunchTemplateName }).(pulumi.StringOutput)
 }
 
-// The name of the data disk.
+// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 func (o EcsLaunchTemplateOutput) Name() pulumi.StringOutput {
@@ -866,7 +928,7 @@ func (o EcsLaunchTemplateOutput) SecurityEnhancementStrategy() pulumi.StringPtrO
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringPtrOutput)
 }
 
-// The security group ID must be one in the same VPC.
+// The security group ID.
 func (o EcsLaunchTemplateOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
@@ -881,7 +943,7 @@ func (o EcsLaunchTemplateOutput) SpotDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.SpotDuration }).(pulumi.StringPtrOutput)
 }
 
-// -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+// Sets the maximum hourly instance price. Supports up to three decimal places.
 func (o EcsLaunchTemplateOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.Float64PtrOutput { return v.SpotPriceLimit }).(pulumi.Float64PtrOutput)
 }
@@ -896,21 +958,29 @@ func (o EcsLaunchTemplateOutput) SystemDisk() EcsLaunchTemplateSystemDiskOutput 
 	return o.ApplyT(func(v *EcsLaunchTemplate) EcsLaunchTemplateSystemDiskOutput { return v.SystemDisk }).(EcsLaunchTemplateSystemDiskOutput)
 }
 
+// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+//
 // Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 func (o EcsLaunchTemplateOutput) SystemDiskCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.SystemDiskCategory }).(pulumi.StringOutput)
 }
 
+// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+//
 // Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 func (o EcsLaunchTemplateOutput) SystemDiskDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.SystemDiskDescription }).(pulumi.StringOutput)
 }
 
+// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+//
 // Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 func (o EcsLaunchTemplateOutput) SystemDiskName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.SystemDiskName }).(pulumi.StringOutput)
 }
 
+// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+//
 // Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 func (o EcsLaunchTemplateOutput) SystemDiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.IntOutput { return v.SystemDiskSize }).(pulumi.IntOutput)
@@ -938,6 +1008,8 @@ func (o EcsLaunchTemplateOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.UserData }).(pulumi.StringOutput)
 }
 
+// It has been deprecated from version 1.120.0, and use field `userData` instead.
+//
 // Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 func (o EcsLaunchTemplateOutput) Userdata() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.Userdata }).(pulumi.StringOutput)
@@ -948,11 +1020,12 @@ func (o EcsLaunchTemplateOutput) VersionDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.VersionDescription }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the VPC.
 func (o EcsLaunchTemplateOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 func (o EcsLaunchTemplateOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

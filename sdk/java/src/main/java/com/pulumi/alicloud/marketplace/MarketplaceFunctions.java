@@ -190,8 +190,6 @@ public final class MarketplaceFunctions {
      * 
      * &gt; **NOTE:** Available in 1.64.0+
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetProductsResult> getProducts() {
         return getProducts(GetProductsArgs.Empty, InvokeOptions.Empty);
@@ -200,8 +198,6 @@ public final class MarketplaceFunctions {
      * This data source provides the Market product items of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in 1.64.0+
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetProductsResult> getProductsPlain() {
@@ -212,8 +208,6 @@ public final class MarketplaceFunctions {
      * 
      * &gt; **NOTE:** Available in 1.64.0+
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetProductsResult> getProducts(GetProductsArgs args) {
         return getProducts(args, InvokeOptions.Empty);
@@ -222,8 +216,6 @@ public final class MarketplaceFunctions {
      * This data source provides the Market product items of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in 1.64.0+
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetProductsResult> getProductsPlain(GetProductsPlainArgs args) {
@@ -234,8 +226,6 @@ public final class MarketplaceFunctions {
      * 
      * &gt; **NOTE:** Available in 1.64.0+
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetProductsResult> getProducts(GetProductsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:marketplace/getProducts:getProducts", TypeShape.of(GetProductsResult.class), args, Utilities.withVersion(options));
@@ -244,8 +234,6 @@ public final class MarketplaceFunctions {
      * This data source provides the Market product items of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in 1.64.0+
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetProductsResult> getProductsPlain(GetProductsPlainArgs args, InvokeOptions options) {

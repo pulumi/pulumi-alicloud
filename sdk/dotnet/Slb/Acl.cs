@@ -37,36 +37,18 @@ namespace Pulumi.AliCloud.Slb
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var acl = new AliCloud.Slb.Acl("acl", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "terraformslbaclconfig";
-    ///         var ipVersion = config.Get("ipVersion") ?? "ipv4";
-    ///         var @default = new AliCloud.Slb.Acl("default", new AliCloud.Slb.AclArgs
-    ///         {
-    ///             IpVersion = ipVersion,
-    ///             EntryLists = 
-    ///             {
-    ///                 new AliCloud.Slb.Inputs.AclEntryListArgs
-    ///                 {
-    ///                     Entry = "10.10.10.0/24",
-    ///                     Comment = "first",
-    ///                 },
-    ///                 new AliCloud.Slb.Inputs.AclEntryListArgs
-    ///                 {
-    ///                     Entry = "168.10.10.0/24",
-    ///                     Comment = "second",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         IpVersion = "ipv4",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Entry Block
     /// 
@@ -84,7 +66,7 @@ namespace Pulumi.AliCloud.Slb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/acl:Acl")]
-    public partial class Acl : Pulumi.CustomResource
+    public partial class Acl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
@@ -160,7 +142,7 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
-    public sealed class AclArgs : Pulumi.ResourceArgs
+    public sealed class AclArgs : global::Pulumi.ResourceArgs
     {
         [Input("entryLists")]
         private InputList<Inputs.AclEntryListArgs>? _entryLists;
@@ -208,9 +190,10 @@ namespace Pulumi.AliCloud.Slb
         public AclArgs()
         {
         }
+        public static new AclArgs Empty => new AclArgs();
     }
 
-    public sealed class AclState : Pulumi.ResourceArgs
+    public sealed class AclState : global::Pulumi.ResourceArgs
     {
         [Input("entryLists")]
         private InputList<Inputs.AclEntryListGetArgs>? _entryLists;
@@ -258,5 +241,6 @@ namespace Pulumi.AliCloud.Slb
         public AclState()
         {
         }
+        public static new AclState Empty => new AclState();
     }
 }

@@ -15,17 +15,16 @@ namespace Pulumi.AliCloud.Ram
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a RAM Role Policy attachment.
+    ///     var role = new AliCloud.Ram.Role("role", new()
     ///     {
-    ///         // Create a RAM Role Policy attachment.
-    ///         var role = new AliCloud.Ram.Role("role", new AliCloud.Ram.RoleArgs
-    ///         {
-    ///             Document = @"    {
+    ///         Document = @"    {
     ///       ""Statement"": [
     ///         {
     ///           ""Action"": ""sts:AssumeRole"",
@@ -41,12 +40,13 @@ namespace Pulumi.AliCloud.Ram
     ///       ""Version"": ""1""
     ///     }
     /// ",
-    ///             Description = "this is a role test.",
-    ///             Force = true,
-    ///         });
-    ///         var policy = new AliCloud.Ram.Policy("policy", new AliCloud.Ram.PolicyArgs
-    ///         {
-    ///             Document = @"  {
+    ///         Description = "this is a role test.",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var policy = new AliCloud.Ram.Policy("policy", new()
+    ///     {
+    ///         Document = @"  {
     ///     ""Statement"": [
     ///       {
     ///         ""Action"": [
@@ -63,18 +63,18 @@ namespace Pulumi.AliCloud.Ram
     ///       ""Version"": ""1""
     ///   }
     /// ",
-    ///             Description = "this is a policy test",
-    ///             Force = true,
-    ///         });
-    ///         var attach = new AliCloud.Ram.RolePolicyAttachment("attach", new AliCloud.Ram.RolePolicyAttachmentArgs
-    ///         {
-    ///             PolicyName = policy.Name,
-    ///             PolicyType = policy.Type,
-    ///             RoleName = role.Name,
-    ///         });
-    ///     }
+    ///         Description = "this is a policy test",
+    ///         Force = true,
+    ///     });
     /// 
-    /// }
+    ///     var attach = new AliCloud.Ram.RolePolicyAttachment("attach", new()
+    ///     {
+    ///         PolicyName = policy.Name,
+    ///         PolicyType = policy.Type,
+    ///         RoleName = role.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/rolePolicyAttachment:RolePolicyAttachment")]
-    public partial class RolePolicyAttachment : Pulumi.CustomResource
+    public partial class RolePolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class RolePolicyAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class RolePolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -173,9 +173,10 @@ namespace Pulumi.AliCloud.Ram
         public RolePolicyAttachmentArgs()
         {
         }
+        public static new RolePolicyAttachmentArgs Empty => new RolePolicyAttachmentArgs();
     }
 
-    public sealed class RolePolicyAttachmentState : Pulumi.ResourceArgs
+    public sealed class RolePolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -198,5 +199,6 @@ namespace Pulumi.AliCloud.Ram
         public RolePolicyAttachmentState()
         {
         }
+        public static new RolePolicyAttachmentState Empty => new RolePolicyAttachmentState();
     }
 }

@@ -23,42 +23,40 @@ namespace Pulumi.AliCloud.BastionHost
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.BastionHost.GetHostShareKeys.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.BastionHost.GetHostShareKeys.InvokeAsync(new AliCloud.BastionHost.GetHostShareKeysArgs
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.BastionhostHostShareKeyId1 = ids.Apply(ids =&gt; ids.Keys?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetHostShareKeys.InvokeAsync(new AliCloud.BastionHost.GetHostShareKeysArgs
-        ///         {
-        ///             InstanceId = "example_value",
-        ///             NameRegex = "^my-HostShareKey",
-        ///         }));
-        ///         this.BastionhostHostShareKeyId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Keys?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("bastionhostHostShareKeyId1")]
-        ///     public Output&lt;string&gt; BastionhostHostShareKeyId1 { get; set; }
-        ///     [Output("bastionhostHostShareKeyId2")]
-        ///     public Output&lt;string&gt; BastionhostHostShareKeyId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.BastionHost.GetHostShareKeys.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///         NameRegex = "^my-HostShareKey",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostHostShareKeyId1"] = ids.Apply(getHostShareKeysResult =&gt; getHostShareKeysResult.Keys[0]?.Id),
+        ///         ["bastionhostHostShareKeyId2"] = nameRegex.Apply(getHostShareKeysResult =&gt; getHostShareKeysResult.Keys[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostShareKeysResult> InvokeAsync(GetHostShareKeysArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostShareKeysResult>("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", args ?? new GetHostShareKeysArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostShareKeysResult>("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", args ?? new GetHostShareKeysArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
@@ -72,46 +70,44 @@ namespace Pulumi.AliCloud.BastionHost
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.BastionHost.GetHostShareKeys.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.BastionHost.GetHostShareKeys.InvokeAsync(new AliCloud.BastionHost.GetHostShareKeysArgs
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.BastionhostHostShareKeyId1 = ids.Apply(ids =&gt; ids.Keys?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetHostShareKeys.InvokeAsync(new AliCloud.BastionHost.GetHostShareKeysArgs
-        ///         {
-        ///             InstanceId = "example_value",
-        ///             NameRegex = "^my-HostShareKey",
-        ///         }));
-        ///         this.BastionhostHostShareKeyId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Keys?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("bastionhostHostShareKeyId1")]
-        ///     public Output&lt;string&gt; BastionhostHostShareKeyId1 { get; set; }
-        ///     [Output("bastionhostHostShareKeyId2")]
-        ///     public Output&lt;string&gt; BastionhostHostShareKeyId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.BastionHost.GetHostShareKeys.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///         NameRegex = "^my-HostShareKey",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostHostShareKeyId1"] = ids.Apply(getHostShareKeysResult =&gt; getHostShareKeysResult.Keys[0]?.Id),
+        ///         ["bastionhostHostShareKeyId2"] = nameRegex.Apply(getHostShareKeysResult =&gt; getHostShareKeysResult.Keys[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostShareKeysResult> Invoke(GetHostShareKeysInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostShareKeysResult>("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", args ?? new GetHostShareKeysInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostShareKeysResult>("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", args ?? new GetHostShareKeysInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHostShareKeysArgs : Pulumi.InvokeArgs
+    public sealed class GetHostShareKeysArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -149,9 +145,10 @@ namespace Pulumi.AliCloud.BastionHost
         public GetHostShareKeysArgs()
         {
         }
+        public static new GetHostShareKeysArgs Empty => new GetHostShareKeysArgs();
     }
 
-    public sealed class GetHostShareKeysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHostShareKeysInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -189,6 +186,7 @@ namespace Pulumi.AliCloud.BastionHost
         public GetHostShareKeysInvokeArgs()
         {
         }
+        public static new GetHostShareKeysInvokeArgs Empty => new GetHostShareKeysInvokeArgs();
     }
 
 

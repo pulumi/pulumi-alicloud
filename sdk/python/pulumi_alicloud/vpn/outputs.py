@@ -24,7 +24,10 @@ __all__ = [
     'GetConnectionsConnectionResult',
     'GetConnectionsConnectionIkeConfigResult',
     'GetConnectionsConnectionIpsecConfigResult',
+    'GetConnectionsConnectionVcoHealthCheckResult',
+    'GetConnectionsConnectionVpnBgpConfigResult',
     'GetCustomerGatewaysGatewayResult',
+    'GetGatewayVcoRoutesRouteResult',
     'GetGatewayVpnAttachmentsAttachmentResult',
     'GetGatewayVpnAttachmentsAttachmentBgpConfigResult',
     'GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult',
@@ -62,7 +65,7 @@ class ConnectionBgpConfig(dict):
                  local_bgp_ip: Optional[str] = None,
                  tunnel_cidr: Optional[str] = None):
         """
-        :param bool enable: Whether to enable BGP.
+        :param bool enable: Whether to enable Health Check.
         :param str local_asn: The ASN on the Alibaba Cloud side.
         :param str local_bgp_ip: The BGP IP address on the Alibaba Cloud side.
         :param str tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
@@ -80,7 +83,7 @@ class ConnectionBgpConfig(dict):
     @pulumi.getter
     def enable(self) -> Optional[bool]:
         """
-        Whether to enable BGP.
+        Whether to enable Health Check.
         """
         return pulumi.get(self, "enable")
 
@@ -119,7 +122,7 @@ class ConnectionHealthCheckConfig(dict):
                  sip: Optional[str] = None):
         """
         :param str dip: The destination IP address.
-        :param bool enable: Whether to enable BGP.
+        :param bool enable: Whether to enable Health Check.
         :param int interval: The interval between two consecutive health checks. Unit: seconds.
         :param int retry: The maximum number of health check retries.
         :param str sip: The source IP address.
@@ -147,7 +150,7 @@ class ConnectionHealthCheckConfig(dict):
     @pulumi.getter
     def enable(self) -> Optional[bool]:
         """
-        Whether to enable BGP.
+        Whether to enable Health Check.
         """
         return pulumi.get(self, "enable")
 
@@ -429,7 +432,7 @@ class GatewayVpnAttachmentBgpConfig(dict):
                  local_bgp_ip: Optional[str] = None,
                  tunnel_cidr: Optional[str] = None):
         """
-        :param bool enable: Whether to enable BGP.
+        :param bool enable: Specifies whether to enable health checks.
         :param int local_asn: The ASN on the Alibaba Cloud side.
         :param str local_bgp_ip: The BGP IP address on the Alibaba Cloud side.
         :param str tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
@@ -447,7 +450,7 @@ class GatewayVpnAttachmentBgpConfig(dict):
     @pulumi.getter
     def enable(self) -> Optional[bool]:
         """
-        Whether to enable BGP.
+        Specifies whether to enable health checks.
         """
         return pulumi.get(self, "enable")
 
@@ -487,7 +490,7 @@ class GatewayVpnAttachmentHealthCheckConfig(dict):
                  sip: Optional[str] = None):
         """
         :param str dip: The destination IP address that is used for health checks.
-        :param bool enable: Whether to enable BGP.
+        :param bool enable: Specifies whether to enable health checks.
         :param int interval: The interval between two consecutive health checks. Unit: seconds.
         :param str policy: Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
         :param int retry: The maximum number of health check retries.
@@ -518,7 +521,7 @@ class GatewayVpnAttachmentHealthCheckConfig(dict):
     @pulumi.getter
     def enable(self) -> Optional[bool]:
         """
-        Whether to enable BGP.
+        Specifies whether to enable health checks.
         """
         return pulumi.get(self, "enable")
 
@@ -1004,17 +1007,20 @@ class GetConnectionsConnectionResult(dict):
                  status: str,
                  vpn_gateway_id: str,
                  ike_configs: Optional[Sequence['outputs.GetConnectionsConnectionIkeConfigResult']] = None,
-                 ipsec_configs: Optional[Sequence['outputs.GetConnectionsConnectionIpsecConfigResult']] = None):
+                 ipsec_configs: Optional[Sequence['outputs.GetConnectionsConnectionIpsecConfigResult']] = None,
+                 vco_health_checks: Optional[Sequence['outputs.GetConnectionsConnectionVcoHealthCheckResult']] = None,
+                 vpn_bgp_configs: Optional[Sequence['outputs.GetConnectionsConnectionVpnBgpConfigResult']] = None):
         """
         :param str customer_gateway_id: Use the VPN customer gateway ID as the search key.
         :param str id: ID of the VPN connection.
         :param str local_subnet: The local subnet of the VPN connection.
         :param str name: The name of the VPN connection.
         :param str remote_subnet: The remote subnet of the VPN connection.
-        :param str status: The status of the VPN connection, valid value:ike_sa_not_established, ike_sa_established, ipsec_sa_not_established, ipsec_sa_established.
+        :param str status: The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
         :param str vpn_gateway_id: Use the VPN gateway ID as the search key.
         :param Sequence['GetConnectionsConnectionIkeConfigArgs'] ike_configs: The configurations of phase-one negotiation.
         :param Sequence['GetConnectionsConnectionIpsecConfigArgs'] ipsec_configs: The configurations of phase-two negotiation.
+        :param Sequence['GetConnectionsConnectionVpnBgpConfigArgs'] vpn_bgp_configs: The configuration information for BGP.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
@@ -1029,6 +1035,10 @@ class GetConnectionsConnectionResult(dict):
             pulumi.set(__self__, "ike_configs", ike_configs)
         if ipsec_configs is not None:
             pulumi.set(__self__, "ipsec_configs", ipsec_configs)
+        if vco_health_checks is not None:
+            pulumi.set(__self__, "vco_health_checks", vco_health_checks)
+        if vpn_bgp_configs is not None:
+            pulumi.set(__self__, "vpn_bgp_configs", vpn_bgp_configs)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1084,7 +1094,7 @@ class GetConnectionsConnectionResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the VPN connection, valid value:ike_sa_not_established, ike_sa_established, ipsec_sa_not_established, ipsec_sa_established.
+        The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
         """
         return pulumi.get(self, "status")
 
@@ -1111,6 +1121,19 @@ class GetConnectionsConnectionResult(dict):
         The configurations of phase-two negotiation.
         """
         return pulumi.get(self, "ipsec_configs")
+
+    @property
+    @pulumi.getter(name="vcoHealthChecks")
+    def vco_health_checks(self) -> Optional[Sequence['outputs.GetConnectionsConnectionVcoHealthCheckResult']]:
+        return pulumi.get(self, "vco_health_checks")
+
+    @property
+    @pulumi.getter(name="vpnBgpConfigs")
+    def vpn_bgp_configs(self) -> Optional[Sequence['outputs.GetConnectionsConnectionVpnBgpConfigResult']]:
+        """
+        The configuration information for BGP.
+        """
+        return pulumi.get(self, "vpn_bgp_configs")
 
 
 @pulumi.output_type
@@ -1284,25 +1307,206 @@ class GetConnectionsConnectionIpsecConfigResult(dict):
 
 
 @pulumi.output_type
+class GetConnectionsConnectionVcoHealthCheckResult(dict):
+    def __init__(__self__, *,
+                 dip: Optional[str] = None,
+                 enable: Optional[str] = None,
+                 interval: Optional[int] = None,
+                 retry: Optional[int] = None,
+                 sip: Optional[str] = None,
+                 status: Optional[str] = None):
+        """
+        :param str dip: The destination ip address.
+        :param str enable: The health check on status. Valid values: `true`, `false`.
+        :param int interval: The time interval between health checks.
+        :param int retry: The number of retries for health checks issued.
+        :param str sip: The source ip address.
+        :param str status: The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+        """
+        if dip is not None:
+            pulumi.set(__self__, "dip", dip)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if retry is not None:
+            pulumi.set(__self__, "retry", retry)
+        if sip is not None:
+            pulumi.set(__self__, "sip", sip)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def dip(self) -> Optional[str]:
+        """
+        The destination ip address.
+        """
+        return pulumi.get(self, "dip")
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[str]:
+        """
+        The health check on status. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[int]:
+        """
+        The time interval between health checks.
+        """
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter
+    def retry(self) -> Optional[int]:
+        """
+        The number of retries for health checks issued.
+        """
+        return pulumi.get(self, "retry")
+
+    @property
+    @pulumi.getter
+    def sip(self) -> Optional[str]:
+        """
+        The source ip address.
+        """
+        return pulumi.get(self, "sip")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetConnectionsConnectionVpnBgpConfigResult(dict):
+    def __init__(__self__, *,
+                 auth_key: Optional[str] = None,
+                 local_asn: Optional[int] = None,
+                 local_bgp_ip: Optional[str] = None,
+                 peer_asn: Optional[int] = None,
+                 peer_bgp_ip: Optional[str] = None,
+                 status: Optional[str] = None,
+                 tunnel_cidr: Optional[str] = None):
+        """
+        :param str auth_key: The authentication keys for BGP routing protocols.
+        :param int local_asn: The ali cloud side autonomous system.
+        :param str local_bgp_ip: The ali cloud side BGP address.
+        :param int peer_asn: The counterpart autonomous system number.
+        :param str peer_bgp_ip: The BGP address on the other side.
+        :param str status: The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+        :param str tunnel_cidr: The ipsec tunnel segments.
+        """
+        if auth_key is not None:
+            pulumi.set(__self__, "auth_key", auth_key)
+        if local_asn is not None:
+            pulumi.set(__self__, "local_asn", local_asn)
+        if local_bgp_ip is not None:
+            pulumi.set(__self__, "local_bgp_ip", local_bgp_ip)
+        if peer_asn is not None:
+            pulumi.set(__self__, "peer_asn", peer_asn)
+        if peer_bgp_ip is not None:
+            pulumi.set(__self__, "peer_bgp_ip", peer_bgp_ip)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tunnel_cidr is not None:
+            pulumi.set(__self__, "tunnel_cidr", tunnel_cidr)
+
+    @property
+    @pulumi.getter(name="authKey")
+    def auth_key(self) -> Optional[str]:
+        """
+        The authentication keys for BGP routing protocols.
+        """
+        return pulumi.get(self, "auth_key")
+
+    @property
+    @pulumi.getter(name="localAsn")
+    def local_asn(self) -> Optional[int]:
+        """
+        The ali cloud side autonomous system.
+        """
+        return pulumi.get(self, "local_asn")
+
+    @property
+    @pulumi.getter(name="localBgpIp")
+    def local_bgp_ip(self) -> Optional[str]:
+        """
+        The ali cloud side BGP address.
+        """
+        return pulumi.get(self, "local_bgp_ip")
+
+    @property
+    @pulumi.getter(name="peerAsn")
+    def peer_asn(self) -> Optional[int]:
+        """
+        The counterpart autonomous system number.
+        """
+        return pulumi.get(self, "peer_asn")
+
+    @property
+    @pulumi.getter(name="peerBgpIp")
+    def peer_bgp_ip(self) -> Optional[str]:
+        """
+        The BGP address on the other side.
+        """
+        return pulumi.get(self, "peer_bgp_ip")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="tunnelCidr")
+    def tunnel_cidr(self) -> Optional[str]:
+        """
+        The ipsec tunnel segments.
+        """
+        return pulumi.get(self, "tunnel_cidr")
+
+
+@pulumi.output_type
 class GetCustomerGatewaysGatewayResult(dict):
     def __init__(__self__, *,
+                 asn: int,
                  create_time: str,
                  description: str,
                  id: str,
                  ip_address: str,
                  name: str):
         """
+        :param int asn: The autonomous system number of the local data center gateway device of the VPN customer gateway.
         :param str create_time: The creation time of the VPN customer gateway.
         :param str description: The description of the VPN customer gateway.
         :param str id: ID of the VPN customer gateway .
         :param str ip_address: The ip address of the VPN customer gateway.
         :param str name: The name of the VPN customer gateway.
         """
+        pulumi.set(__self__, "asn", asn)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def asn(self) -> int:
+        """
+        The autonomous system number of the local data center gateway device of the VPN customer gateway.
+        """
+        return pulumi.get(self, "asn")
 
     @property
     @pulumi.getter(name="createTime")
@@ -1346,6 +1550,112 @@ class GetCustomerGatewaysGatewayResult(dict):
 
 
 @pulumi.output_type
+class GetGatewayVcoRoutesRouteResult(dict):
+    def __init__(__self__, *,
+                 as_path: str,
+                 create_time: str,
+                 id: str,
+                 next_hop: str,
+                 route_dest: str,
+                 source: str,
+                 status: str,
+                 vpn_connection_id: str,
+                 weight: int):
+        """
+        :param str as_path: List of autonomous system numbers through which BGP routing entries pass.
+        :param str create_time: The creation time of the VPN destination route.
+        :param str id: The ID of the Vpn Gateway Vco Routes.
+        :param str next_hop: The next hop of the destination route.
+        :param str route_dest: The destination network segment of the destination route.
+        :param str source: The source CIDR block of the destination route.
+        :param str status: The status of the vpn route entry.
+        :param str vpn_connection_id: The id of the vpn connection.
+        :param int weight: The weight value of the destination route.
+        """
+        pulumi.set(__self__, "as_path", as_path)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "next_hop", next_hop)
+        pulumi.set(__self__, "route_dest", route_dest)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpn_connection_id", vpn_connection_id)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="asPath")
+    def as_path(self) -> str:
+        """
+        List of autonomous system numbers through which BGP routing entries pass.
+        """
+        return pulumi.get(self, "as_path")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the VPN destination route.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Vpn Gateway Vco Routes.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> str:
+        """
+        The next hop of the destination route.
+        """
+        return pulumi.get(self, "next_hop")
+
+    @property
+    @pulumi.getter(name="routeDest")
+    def route_dest(self) -> str:
+        """
+        The destination network segment of the destination route.
+        """
+        return pulumi.get(self, "route_dest")
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        """
+        The source CIDR block of the destination route.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the vpn route entry.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpnConnectionId")
+    def vpn_connection_id(self) -> str:
+        """
+        The id of the vpn connection.
+        """
+        return pulumi.get(self, "vpn_connection_id")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        """
+        The weight value of the destination route.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
 class GetGatewayVpnAttachmentsAttachmentResult(dict):
     def __init__(__self__, *,
                  bgp_configs: Sequence['outputs.GetGatewayVpnAttachmentsAttachmentBgpConfigResult'],
@@ -1356,6 +1666,7 @@ class GetGatewayVpnAttachmentsAttachmentResult(dict):
                  health_check_configs: Sequence['outputs.GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult'],
                  id: str,
                  ike_configs: Sequence['outputs.GetGatewayVpnAttachmentsAttachmentIkeConfigResult'],
+                 internet_ip: str,
                  ipsec_configs: Sequence['outputs.GetGatewayVpnAttachmentsAttachmentIpsecConfigResult'],
                  local_subnet: str,
                  network_type: str,
@@ -1372,6 +1683,7 @@ class GetGatewayVpnAttachmentsAttachmentResult(dict):
         :param Sequence['GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArgs'] health_check_configs: The health check configurations.
         :param str id: The ID of the Vpn Attachment.
         :param Sequence['GetGatewayVpnAttachmentsAttachmentIkeConfigArgs'] ike_configs: Configuration negotiated in the second stage.
+        :param str internet_ip: The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
         :param Sequence['GetGatewayVpnAttachmentsAttachmentIpsecConfigArgs'] ipsec_configs: The configuration of Phase 2 negotiations.
         :param str local_subnet: The CIDR block of the virtual private cloud (VPC).
         :param str network_type: The network type.
@@ -1388,6 +1700,7 @@ class GetGatewayVpnAttachmentsAttachmentResult(dict):
         pulumi.set(__self__, "health_check_configs", health_check_configs)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ike_configs", ike_configs)
+        pulumi.set(__self__, "internet_ip", internet_ip)
         pulumi.set(__self__, "ipsec_configs", ipsec_configs)
         pulumi.set(__self__, "local_subnet", local_subnet)
         pulumi.set(__self__, "network_type", network_type)
@@ -1459,6 +1772,14 @@ class GetGatewayVpnAttachmentsAttachmentResult(dict):
         Configuration negotiated in the second stage.
         """
         return pulumi.get(self, "ike_configs")
+
+    @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> str:
+        """
+        The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+        """
+        return pulumi.get(self, "internet_ip")
 
     @property
     @pulumi.getter(name="ipsecConfigs")
@@ -1580,6 +1901,7 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
                  status: str):
         """
         :param str dip: The destination IP address.
+        :param bool enable: Specifies whether to enable health checks.
         :param int interval: The interval between two consecutive health checks. Unit: seconds.
         :param str policy: Whether to revoke the published route when the health check fails.
         :param int retry: The maximum number of health check retries.
@@ -1605,6 +1927,9 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
     @property
     @pulumi.getter
     def enable(self) -> bool:
+        """
+        Specifies whether to enable health checks.
+        """
         return pulumi.get(self, "enable")
 
     @property
@@ -1667,7 +1992,7 @@ class GetGatewayVpnAttachmentsAttachmentIkeConfigResult(dict):
         :param str ike_mode: The IKE negotiation mode.
         :param str ike_pfs: The DH group.
         :param str ike_version: The version of the IKE protocol.
-        :param str local_id: The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+        :param str local_id: The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
         :param str psk: The pre-shared key.
         :param str remote_id: The identifier of the peer. The default value is the IP address of the VPN gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
         """
@@ -1733,7 +2058,7 @@ class GetGatewayVpnAttachmentsAttachmentIkeConfigResult(dict):
     @pulumi.getter(name="localId")
     def local_id(self) -> str:
         """
-        The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+        The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
         """
         return pulumi.get(self, "local_id")
 
@@ -1808,6 +2133,7 @@ class GetGatewayVpnAttachmentsAttachmentIpsecConfigResult(dict):
 @pulumi.output_type
 class GetGatewaysGatewayResult(dict):
     def __init__(__self__, *,
+                 auto_propagate: str,
                  business_status: str,
                  create_time: str,
                  description: str,
@@ -1818,11 +2144,13 @@ class GetGatewaysGatewayResult(dict):
                  instance_charge_type: str,
                  internet_ip: str,
                  name: str,
+                 network_type: str,
                  specification: str,
                  ssl_connections: int,
                  status: str,
                  vpc_id: str):
         """
+        :param str auto_propagate: Whether to automatically propagate BGP routes to the VPC. Valid values: `true`, `false`.
         :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
         :param str create_time: The creation time of the VPN gateway.
         :param str description: The description of the VPN
@@ -1833,11 +2161,13 @@ class GetGatewaysGatewayResult(dict):
         :param str instance_charge_type: The charge type of the VPN gateway.
         :param str internet_ip: The internet ip of the VPN.
         :param str name: The name of the VPN.
+        :param str network_type: The network type of the VPN gateway.
         :param str specification: The Specification of the VPN
         :param int ssl_connections: Total count of ssl vpn connections.
         :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
         :param str vpc_id: Use the VPC ID as the search key.
         """
+        pulumi.set(__self__, "auto_propagate", auto_propagate)
         pulumi.set(__self__, "business_status", business_status)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
@@ -1848,10 +2178,19 @@ class GetGatewaysGatewayResult(dict):
         pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         pulumi.set(__self__, "internet_ip", internet_ip)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_type", network_type)
         pulumi.set(__self__, "specification", specification)
         pulumi.set(__self__, "ssl_connections", ssl_connections)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="autoPropagate")
+    def auto_propagate(self) -> str:
+        """
+        Whether to automatically propagate BGP routes to the VPC. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_propagate")
 
     @property
     @pulumi.getter(name="businessStatus")
@@ -1932,6 +2271,14 @@ class GetGatewaysGatewayResult(dict):
         The name of the VPN.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        The network type of the VPN gateway.
+        """
+        return pulumi.get(self, "network_type")
 
     @property
     @pulumi.getter

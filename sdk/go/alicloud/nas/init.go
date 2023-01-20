@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MountTarget{}
 	case "alicloud:nas/recycleBin:RecycleBin":
 		r = &RecycleBin{}
+	case "alicloud:nas/smbAclAttachment:SmbAclAttachment":
+		r = &SmbAclAttachment{}
 	case "alicloud:nas/snapshot:Snapshot":
 		r = &Snapshot{}
 	default:
@@ -97,6 +99,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"nas/recycleBin",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"nas/smbAclAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

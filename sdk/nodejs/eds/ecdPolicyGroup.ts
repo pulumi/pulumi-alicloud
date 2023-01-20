@@ -2,13 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Elastic Desktop Service(EDS) Policy Group resource.
+ * Provides a Elastic Desktop Service (ECD) Policy Group resource.
  *
- * For information about Elastic Desktop Service(EDS) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
+ * For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
  *
  * > **NOTE:** Available in v1.130.0+.
  *
@@ -20,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("default", {
+ * const _default = new alicloud.eds.EcdPolicyGroup("default", {
  *     authorizeAccessPolicyRules: [{
  *         cidrIp: "1.2.3.45/24",
  *         description: "my-description1",
@@ -44,7 +45,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Elastic Desktop Service(EDS) Policy Group can be imported using the id, e.g.
+ * Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
  *
  * ```sh
  *  $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example <id>
@@ -123,6 +124,10 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
      */
     public readonly recordingEndTime!: pulumi.Output<string | undefined>;
     /**
+     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     */
+    public readonly recordingExpires!: pulumi.Output<number>;
+    /**
      * The fps of recording. Valid values: `2`, `5`, `10`, `15`.
      */
     public readonly recordingFps!: pulumi.Output<number>;
@@ -179,6 +184,7 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
             resourceInputs["policyGroupName"] = state ? state.policyGroupName : undefined;
             resourceInputs["recording"] = state ? state.recording : undefined;
             resourceInputs["recordingEndTime"] = state ? state.recordingEndTime : undefined;
+            resourceInputs["recordingExpires"] = state ? state.recordingExpires : undefined;
             resourceInputs["recordingFps"] = state ? state.recordingFps : undefined;
             resourceInputs["recordingStartTime"] = state ? state.recordingStartTime : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -200,6 +206,7 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
             resourceInputs["policyGroupName"] = args ? args.policyGroupName : undefined;
             resourceInputs["recording"] = args ? args.recording : undefined;
             resourceInputs["recordingEndTime"] = args ? args.recordingEndTime : undefined;
+            resourceInputs["recordingExpires"] = args ? args.recordingExpires : undefined;
             resourceInputs["recordingFps"] = args ? args.recordingFps : undefined;
             resourceInputs["recordingStartTime"] = args ? args.recordingStartTime : undefined;
             resourceInputs["usbRedirect"] = args ? args.usbRedirect : undefined;
@@ -262,6 +269,10 @@ export interface EcdPolicyGroupState {
      * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      */
     recordingEndTime?: pulumi.Input<string>;
+    /**
+     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     */
+    recordingExpires?: pulumi.Input<number>;
     /**
      * The fps of recording. Valid values: `2`, `5`, `10`, `15`.
      */
@@ -344,6 +355,10 @@ export interface EcdPolicyGroupArgs {
      * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      */
     recordingEndTime?: pulumi.Input<string>;
+    /**
+     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     */
+    recordingExpires?: pulumi.Input<number>;
     /**
      * The fps of recording. Valid values: `2`, `5`, `10`, `15`.
      */

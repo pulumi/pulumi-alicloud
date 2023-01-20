@@ -97,7 +97,7 @@ type GroupMetricRule struct {
 	EffectiveInterval pulumi.StringPtrOutput `pulumi:"effectiveInterval"`
 	// The subject of the alert notification email.                                         .
 	EmailSubject pulumi.StringOutput `pulumi:"emailSubject"`
-	// Alarm level. See the block for escalations.
+	// Alarm level. See the following `Block escalations`.
 	Escalations GroupMetricRuleEscalationsOutput `pulumi:"escalations"`
 	// The ID of the application group.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
@@ -112,13 +112,15 @@ type GroupMetricRule struct {
 	// The time period during which the alert rule is ineffective.
 	NoEffectiveInterval pulumi.StringPtrOutput `pulumi:"noEffectiveInterval"`
 	// The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period pulumi.IntOutput `pulumi:"period"`
 	// The ID of the alert rule.
 	RuleId pulumi.StringOutput `pulumi:"ruleId"`
 	// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
 	SilenceTime pulumi.IntPtrOutput `pulumi:"silenceTime"`
 	// The status of Group Metric Rule.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The information about the resource for which alerts are triggered. See the following `Block targets`.
+	Targets GroupMetricRuleTargetArrayOutput `pulumi:"targets"`
 	// The callback URL.
 	Webhook pulumi.StringPtrOutput `pulumi:"webhook"`
 }
@@ -183,7 +185,7 @@ type groupMetricRuleState struct {
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// The subject of the alert notification email.                                         .
 	EmailSubject *string `pulumi:"emailSubject"`
-	// Alarm level. See the block for escalations.
+	// Alarm level. See the following `Block escalations`.
 	Escalations *GroupMetricRuleEscalations `pulumi:"escalations"`
 	// The ID of the application group.
 	GroupId *string `pulumi:"groupId"`
@@ -205,6 +207,8 @@ type groupMetricRuleState struct {
 	SilenceTime *int `pulumi:"silenceTime"`
 	// The status of Group Metric Rule.
 	Status *string `pulumi:"status"`
+	// The information about the resource for which alerts are triggered. See the following `Block targets`.
+	Targets []GroupMetricRuleTarget `pulumi:"targets"`
 	// The callback URL.
 	Webhook *string `pulumi:"webhook"`
 }
@@ -220,7 +224,7 @@ type GroupMetricRuleState struct {
 	EffectiveInterval pulumi.StringPtrInput
 	// The subject of the alert notification email.                                         .
 	EmailSubject pulumi.StringPtrInput
-	// Alarm level. See the block for escalations.
+	// Alarm level. See the following `Block escalations`.
 	Escalations GroupMetricRuleEscalationsPtrInput
 	// The ID of the application group.
 	GroupId pulumi.StringPtrInput
@@ -242,6 +246,8 @@ type GroupMetricRuleState struct {
 	SilenceTime pulumi.IntPtrInput
 	// The status of Group Metric Rule.
 	Status pulumi.StringPtrInput
+	// The information about the resource for which alerts are triggered. See the following `Block targets`.
+	Targets GroupMetricRuleTargetArrayInput
 	// The callback URL.
 	Webhook pulumi.StringPtrInput
 }
@@ -261,7 +267,7 @@ type groupMetricRuleArgs struct {
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// The subject of the alert notification email.                                         .
 	EmailSubject *string `pulumi:"emailSubject"`
-	// Alarm level. See the block for escalations.
+	// Alarm level. See the following `Block escalations`.
 	Escalations GroupMetricRuleEscalations `pulumi:"escalations"`
 	// The ID of the application group.
 	GroupId string `pulumi:"groupId"`
@@ -281,6 +287,8 @@ type groupMetricRuleArgs struct {
 	RuleId string `pulumi:"ruleId"`
 	// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
 	SilenceTime *int `pulumi:"silenceTime"`
+	// The information about the resource for which alerts are triggered. See the following `Block targets`.
+	Targets []GroupMetricRuleTarget `pulumi:"targets"`
 	// The callback URL.
 	Webhook *string `pulumi:"webhook"`
 }
@@ -297,7 +305,7 @@ type GroupMetricRuleArgs struct {
 	EffectiveInterval pulumi.StringPtrInput
 	// The subject of the alert notification email.                                         .
 	EmailSubject pulumi.StringPtrInput
-	// Alarm level. See the block for escalations.
+	// Alarm level. See the following `Block escalations`.
 	Escalations GroupMetricRuleEscalationsInput
 	// The ID of the application group.
 	GroupId pulumi.StringInput
@@ -317,6 +325,8 @@ type GroupMetricRuleArgs struct {
 	RuleId pulumi.StringInput
 	// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
 	SilenceTime pulumi.IntPtrInput
+	// The information about the resource for which alerts are triggered. See the following `Block targets`.
+	Targets GroupMetricRuleTargetArrayInput
 	// The callback URL.
 	Webhook pulumi.StringPtrInput
 }
@@ -433,7 +443,7 @@ func (o GroupMetricRuleOutput) EmailSubject() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.EmailSubject }).(pulumi.StringOutput)
 }
 
-// Alarm level. See the block for escalations.
+// Alarm level. See the following `Block escalations`.
 func (o GroupMetricRuleOutput) Escalations() GroupMetricRuleEscalationsOutput {
 	return o.ApplyT(func(v *GroupMetricRule) GroupMetricRuleEscalationsOutput { return v.Escalations }).(GroupMetricRuleEscalationsOutput)
 }
@@ -469,8 +479,8 @@ func (o GroupMetricRuleOutput) NoEffectiveInterval() pulumi.StringPtrOutput {
 }
 
 // The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
-func (o GroupMetricRuleOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GroupMetricRule) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+func (o GroupMetricRuleOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
 }
 
 // The ID of the alert rule.
@@ -486,6 +496,11 @@ func (o GroupMetricRuleOutput) SilenceTime() pulumi.IntPtrOutput {
 // The status of Group Metric Rule.
 func (o GroupMetricRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The information about the resource for which alerts are triggered. See the following `Block targets`.
+func (o GroupMetricRuleOutput) Targets() GroupMetricRuleTargetArrayOutput {
+	return o.ApplyT(func(v *GroupMetricRule) GroupMetricRuleTargetArrayOutput { return v.Targets }).(GroupMetricRuleTargetArrayOutput)
 }
 
 // The callback URL.

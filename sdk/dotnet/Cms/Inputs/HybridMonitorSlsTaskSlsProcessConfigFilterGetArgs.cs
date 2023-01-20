@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class HybridMonitorSlsTaskSlsProcessConfigFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class HybridMonitorSlsTaskSlsProcessConfigFilterGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("filters")]
         private InputList<Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterFilterGetArgs>? _filters;
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public HybridMonitorSlsTaskSlsProcessConfigFilterGetArgs()
         {
         }
+        public static new HybridMonitorSlsTaskSlsProcessConfigFilterGetArgs Empty => new HybridMonitorSlsTaskSlsProcessConfigFilterGetArgs();
     }
 }

@@ -51,7 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -60,7 +60,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
@@ -90,7 +90,7 @@ import (
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("Test"),
 //				},
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -115,6 +115,10 @@ type EcsNetworkInterface struct {
 
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+	Ipv6AddressCount pulumi.IntOutput `pulumi:"ipv6AddressCount"`
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	Ipv6Addresses pulumi.StringArrayOutput `pulumi:"ipv6Addresses"`
 	// The MAC address of the ENI.
 	Mac pulumi.StringOutput `pulumi:"mac"`
 	// Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
@@ -193,6 +197,10 @@ func GetEcsNetworkInterface(ctx *pulumi.Context,
 type ecsNetworkInterfaceState struct {
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
+	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
 	// The MAC address of the ENI.
 	Mac *string `pulumi:"mac"`
 	// Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
@@ -240,6 +248,10 @@ type ecsNetworkInterfaceState struct {
 type EcsNetworkInterfaceState struct {
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
+	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+	Ipv6AddressCount pulumi.IntPtrInput
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	Ipv6Addresses pulumi.StringArrayInput
 	// The MAC address of the ENI.
 	Mac pulumi.StringPtrInput
 	// Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
@@ -291,6 +303,10 @@ func (EcsNetworkInterfaceState) ElementType() reflect.Type {
 type ecsNetworkInterfaceArgs struct {
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
+	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
 	// Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
@@ -335,6 +351,10 @@ type ecsNetworkInterfaceArgs struct {
 type EcsNetworkInterfaceArgs struct {
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
+	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+	Ipv6AddressCount pulumi.IntPtrInput
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	Ipv6Addresses pulumi.StringArrayInput
 	// Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
@@ -465,6 +485,16 @@ func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfaceOutputWithContext(ctx co
 // The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 func (o EcsNetworkInterfaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+func (o EcsNetworkInterfaceOutput) Ipv6AddressCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.IntOutput { return v.Ipv6AddressCount }).(pulumi.IntOutput)
+}
+
+// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+func (o EcsNetworkInterfaceOutput) Ipv6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringArrayOutput { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
 }
 
 // The MAC address of the ENI.

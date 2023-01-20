@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc.Inputs
 {
 
-    public sealed class NetworkAclResourceGetArgs : Pulumi.ResourceArgs
+    public sealed class NetworkAclResourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the associated resource.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public NetworkAclResourceGetArgs()
         {
         }
+        public static new NetworkAclResourceGetArgs Empty => new NetworkAclResourceGetArgs();
     }
 }

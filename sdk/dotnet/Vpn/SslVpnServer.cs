@@ -15,34 +15,33 @@ namespace Pulumi.AliCloud.Vpn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fooGateway = new AliCloud.Vpn.Gateway("fooGateway", new()
     ///     {
-    ///         var fooGateway = new AliCloud.Vpn.Gateway("fooGateway", new AliCloud.Vpn.GatewayArgs
-    ///         {
-    ///             VpcId = "vpc-fake-id",
-    ///             Bandwidth = 10,
-    ///             EnableSsl = true,
-    ///             InstanceChargeType = "PostPaid",
-    ///             Description = "test_create_description",
-    ///         });
-    ///         var fooSslVpnServer = new AliCloud.Vpn.SslVpnServer("fooSslVpnServer", new AliCloud.Vpn.SslVpnServerArgs
-    ///         {
-    ///             VpnGatewayId = fooGateway.Id,
-    ///             ClientIpPool = "192.168.0.0/16",
-    ///             LocalSubnet = "172.16.0.0/21",
-    ///             Protocol = "UDP",
-    ///             Cipher = "AES-128-CBC",
-    ///             Port = 1194,
-    ///             Compress = false,
-    ///         });
-    ///     }
+    ///         VpcId = "vpc-fake-id",
+    ///         Bandwidth = 10,
+    ///         EnableSsl = true,
+    ///         InstanceChargeType = "PostPaid",
+    ///         Description = "test_create_description",
+    ///     });
     /// 
-    /// }
+    ///     var fooSslVpnServer = new AliCloud.Vpn.SslVpnServer("fooSslVpnServer", new()
+    ///     {
+    ///         VpnGatewayId = fooGateway.Id,
+    ///         ClientIpPool = "192.168.0.0/16",
+    ///         LocalSubnet = "172.16.0.0/21",
+    ///         Protocol = "UDP",
+    ///         Cipher = "AES-128-CBC",
+    ///         Port = 1194,
+    ///         Compress = false,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +53,7 @@ namespace Pulumi.AliCloud.Vpn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/sslVpnServer:SslVpnServer")]
-    public partial class SslVpnServer : Pulumi.CustomResource
+    public partial class SslVpnServer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
@@ -169,7 +168,7 @@ namespace Pulumi.AliCloud.Vpn
         }
     }
 
-    public sealed class SslVpnServerArgs : Pulumi.ResourceArgs
+    public sealed class SslVpnServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
@@ -225,9 +224,10 @@ namespace Pulumi.AliCloud.Vpn
         public SslVpnServerArgs()
         {
         }
+        public static new SslVpnServerArgs Empty => new SslVpnServerArgs();
     }
 
-    public sealed class SslVpnServerState : Pulumi.ResourceArgs
+    public sealed class SslVpnServerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
@@ -301,5 +301,6 @@ namespace Pulumi.AliCloud.Vpn
         public SslVpnServerState()
         {
         }
+        public static new SslVpnServerState Empty => new SslVpnServerState();
     }
 }

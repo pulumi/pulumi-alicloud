@@ -19,29 +19,28 @@ namespace Pulumi.AliCloud.ApiGateway
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dataApigatway = AliCloud.ApiGateway.GetGroups.Invoke(new()
         ///     {
-        ///         var dataApigatway = Output.Create(AliCloud.ApiGateway.GetGroups.InvokeAsync(new AliCloud.ApiGateway.GetGroupsArgs
-        ///         {
-        ///             OutputFile = "outgroups",
-        ///         }));
-        ///         this.FirstGroupId = dataApigatway.Apply(dataApigatway =&gt; dataApigatway.Groups?[0]?.Id);
-        ///     }
+        ///         OutputFile = "outgroups",
+        ///     });
         /// 
-        ///     [Output("firstGroupId")]
-        ///     public Output&lt;string&gt; FirstGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupId"] = dataApigatway.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:apigateway/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:apigateway/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the api groups of the current Alibaba Cloud user.
@@ -51,33 +50,32 @@ namespace Pulumi.AliCloud.ApiGateway
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dataApigatway = AliCloud.ApiGateway.GetGroups.Invoke(new()
         ///     {
-        ///         var dataApigatway = Output.Create(AliCloud.ApiGateway.GetGroups.InvokeAsync(new AliCloud.ApiGateway.GetGroupsArgs
-        ///         {
-        ///             OutputFile = "outgroups",
-        ///         }));
-        ///         this.FirstGroupId = dataApigatway.Apply(dataApigatway =&gt; dataApigatway.Groups?[0]?.Id);
-        ///     }
+        ///         OutputFile = "outgroups",
+        ///     });
         /// 
-        ///     [Output("firstGroupId")]
-        ///     public Output&lt;string&gt; FirstGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupId"] = dataApigatway.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:apigateway/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:apigateway/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -103,9 +101,10 @@ namespace Pulumi.AliCloud.ApiGateway
         public GetGroupsArgs()
         {
         }
+        public static new GetGroupsArgs Empty => new GetGroupsArgs();
     }
 
-    public sealed class GetGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -131,6 +130,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public GetGroupsInvokeArgs()
         {
         }
+        public static new GetGroupsInvokeArgs Empty => new GetGroupsInvokeArgs();
     }
 
 

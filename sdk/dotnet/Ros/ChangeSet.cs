@@ -21,24 +21,22 @@ namespace Pulumi.AliCloud.Ros
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ros.ChangeSet("example", new()
     ///     {
-    ///         var example = new AliCloud.Ros.ChangeSet("example", new AliCloud.Ros.ChangeSetArgs
-    ///         {
-    ///             ChangeSetName = "example_value",
-    ///             ChangeSetType = "CREATE",
-    ///             Description = "Test From Terraform",
-    ///             StackName = "tf-testacc",
-    ///             TemplateBody = "{\"ROSTemplateFormatVersion\":\"2015-09-01\"}",
-    ///         });
-    ///     }
+    ///         ChangeSetName = "example_value",
+    ///         ChangeSetType = "CREATE",
+    ///         Description = "Test From Terraform",
+    ///         StackName = "tf-testacc",
+    ///         TemplateBody = "{\"ROSTemplateFormatVersion\":\"2015-09-01\"}",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.Ros
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ros/changeSet:ChangeSet")]
-    public partial class ChangeSet : Pulumi.CustomResource
+    public partial class ChangeSet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -210,7 +208,7 @@ namespace Pulumi.AliCloud.Ros
         }
     }
 
-    public sealed class ChangeSetArgs : Pulumi.ResourceArgs
+    public sealed class ChangeSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -335,9 +333,10 @@ namespace Pulumi.AliCloud.Ros
         public ChangeSetArgs()
         {
         }
+        public static new ChangeSetArgs Empty => new ChangeSetArgs();
     }
 
-    public sealed class ChangeSetState : Pulumi.ResourceArgs
+    public sealed class ChangeSetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -468,5 +467,6 @@ namespace Pulumi.AliCloud.Ros
         public ChangeSetState()
         {
         }
+        public static new ChangeSetState Empty => new ChangeSetState();
     }
 }

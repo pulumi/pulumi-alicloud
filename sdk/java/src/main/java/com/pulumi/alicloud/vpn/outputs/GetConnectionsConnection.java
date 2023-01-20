@@ -5,6 +5,8 @@ package com.pulumi.alicloud.vpn.outputs;
 
 import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnectionIkeConfig;
 import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnectionIpsecConfig;
+import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnectionVcoHealthCheck;
+import com.pulumi.alicloud.vpn.outputs.GetConnectionsConnectionVpnBgpConfig;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -52,10 +54,16 @@ public final class GetConnectionsConnection {
      */
     private String remoteSubnet;
     /**
-     * @return The status of the VPN connection, valid value:ike_sa_not_established, ike_sa_established, ipsec_sa_not_established, ipsec_sa_established.
+     * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
      * 
      */
     private String status;
+    private @Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks;
+    /**
+     * @return The configuration information for BGP.
+     * 
+     */
+    private @Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs;
     /**
      * @return Use the VPN gateway ID as the search key.
      * 
@@ -119,11 +127,21 @@ public final class GetConnectionsConnection {
         return this.remoteSubnet;
     }
     /**
-     * @return The status of the VPN connection, valid value:ike_sa_not_established, ike_sa_established, ipsec_sa_not_established, ipsec_sa_established.
+     * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
      * 
      */
     public String status() {
         return this.status;
+    }
+    public List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks() {
+        return this.vcoHealthChecks == null ? List.of() : this.vcoHealthChecks;
+    }
+    /**
+     * @return The configuration information for BGP.
+     * 
+     */
+    public List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs() {
+        return this.vpnBgpConfigs == null ? List.of() : this.vpnBgpConfigs;
     }
     /**
      * @return Use the VPN gateway ID as the search key.
@@ -152,6 +170,8 @@ public final class GetConnectionsConnection {
         private String name;
         private String remoteSubnet;
         private String status;
+        private @Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks;
+        private @Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs;
         private String vpnGatewayId;
         public Builder() {}
         public Builder(GetConnectionsConnection defaults) {
@@ -166,6 +186,8 @@ public final class GetConnectionsConnection {
     	      this.name = defaults.name;
     	      this.remoteSubnet = defaults.remoteSubnet;
     	      this.status = defaults.status;
+    	      this.vcoHealthChecks = defaults.vcoHealthChecks;
+    	      this.vpnBgpConfigs = defaults.vpnBgpConfigs;
     	      this.vpnGatewayId = defaults.vpnGatewayId;
         }
 
@@ -226,6 +248,22 @@ public final class GetConnectionsConnection {
             return this;
         }
         @CustomType.Setter
+        public Builder vcoHealthChecks(@Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks) {
+            this.vcoHealthChecks = vcoHealthChecks;
+            return this;
+        }
+        public Builder vcoHealthChecks(GetConnectionsConnectionVcoHealthCheck... vcoHealthChecks) {
+            return vcoHealthChecks(List.of(vcoHealthChecks));
+        }
+        @CustomType.Setter
+        public Builder vpnBgpConfigs(@Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs) {
+            this.vpnBgpConfigs = vpnBgpConfigs;
+            return this;
+        }
+        public Builder vpnBgpConfigs(GetConnectionsConnectionVpnBgpConfig... vpnBgpConfigs) {
+            return vpnBgpConfigs(List.of(vpnBgpConfigs));
+        }
+        @CustomType.Setter
         public Builder vpnGatewayId(String vpnGatewayId) {
             this.vpnGatewayId = Objects.requireNonNull(vpnGatewayId);
             return this;
@@ -242,6 +280,8 @@ public final class GetConnectionsConnection {
             o.name = name;
             o.remoteSubnet = remoteSubnet;
             o.status = status;
+            o.vcoHealthChecks = vcoHealthChecks;
+            o.vpnBgpConfigs = vpnBgpConfigs;
             o.vpnGatewayId = vpnGatewayId;
             return o;
         }

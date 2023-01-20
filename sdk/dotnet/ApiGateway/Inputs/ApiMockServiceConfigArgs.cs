@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ApiGateway.Inputs
 {
 
-    public sealed class ApiMockServiceConfigArgs : Pulumi.ResourceArgs
+    public sealed class ApiMockServiceConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("aoneName")]
         public Input<string>? AoneName { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public ApiMockServiceConfigArgs()
         {
         }
+        public static new ApiMockServiceConfigArgs Empty => new ApiMockServiceConfigArgs();
     }
 }

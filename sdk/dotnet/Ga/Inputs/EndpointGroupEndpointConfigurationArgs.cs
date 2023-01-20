@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ga.Inputs
 {
 
-    public sealed class EndpointGroupEndpointConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class EndpointGroupEndpointConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public EndpointGroupEndpointConfigurationArgs()
         {
         }
+        public static new EndpointGroupEndpointConfigurationArgs Empty => new EndpointGroupEndpointConfigurationArgs();
     }
 }

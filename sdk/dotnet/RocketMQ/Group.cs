@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.RocketMQ
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "onsInstanceName";
+    ///     var groupName = config.Get("groupName") ?? "GID-onsGroupDatasourceName";
+    ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "onsInstanceName";
-    ///         var groupName = config.Get("groupName") ?? "GID-onsGroupDatasourceName";
-    ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
-    ///         {
-    ///             Remark = "default_ons_instance_remark",
-    ///         });
-    ///         var defaultGroup = new AliCloud.RocketMQ.Group("defaultGroup", new AliCloud.RocketMQ.GroupArgs
-    ///         {
-    ///             GroupName = groupName,
-    ///             InstanceId = defaultInstance.Id,
-    ///             Remark = "dafault_ons_group_remark",
-    ///         });
-    ///     }
+    ///         Remark = "default_ons_instance_remark",
+    ///     });
     /// 
-    /// }
+    ///     var defaultGroup = new AliCloud.RocketMQ.Group("defaultGroup", new()
+    ///     {
+    ///         GroupName = groupName,
+    ///         InstanceId = defaultInstance.Id,
+    ///         Remark = "dafault_ons_group_remark",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +54,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/group:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Replaced by `group_name` after version 1.98.0.
@@ -145,7 +144,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Replaced by `group_name` after version 1.98.0.
@@ -200,9 +199,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 
-    public sealed class GroupState : Pulumi.ResourceArgs
+    public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Replaced by `group_name` after version 1.98.0.
@@ -257,5 +257,6 @@ namespace Pulumi.AliCloud.RocketMQ
         public GroupState()
         {
         }
+        public static new GroupState Empty => new GroupState();
     }
 }

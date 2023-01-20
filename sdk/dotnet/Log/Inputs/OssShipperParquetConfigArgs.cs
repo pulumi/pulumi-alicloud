@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class OssShipperParquetConfigArgs : Pulumi.ResourceArgs
+    public sealed class OssShipperParquetConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public OssShipperParquetConfigArgs()
         {
         }
+        public static new OssShipperParquetConfigArgs Empty => new OssShipperParquetConfigArgs();
     }
 }

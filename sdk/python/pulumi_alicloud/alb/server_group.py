@@ -22,6 +22,7 @@ class ServerGroupArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_group_name: Optional[pulumi.Input[str]] = None,
+                 server_group_type: Optional[pulumi.Input[str]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
                  sticky_session_config: Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -34,8 +35,10 @@ class ServerGroupArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`.
         :param pulumi.Input[str] server_group_name: The name of the resource.
+        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: The backend server.
         :param pulumi.Input['ServerGroupStickySessionConfigArgs'] sticky_session_config: The configuration of the sticky session.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC that you want to access.
         """
         if dry_run is not None:
@@ -50,6 +53,8 @@ class ServerGroupArgs:
             pulumi.set(__self__, "scheduler", scheduler)
         if server_group_name is not None:
             pulumi.set(__self__, "server_group_name", server_group_name)
+        if server_group_type is not None:
+            pulumi.set(__self__, "server_group_type", server_group_type)
         if servers is not None:
             pulumi.set(__self__, "servers", servers)
         if sticky_session_config is not None:
@@ -132,6 +137,18 @@ class ServerGroupArgs:
         pulumi.set(self, "server_group_name", value)
 
     @property
+    @pulumi.getter(name="serverGroupType")
+    def server_group_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the server group. Valid values:
+        """
+        return pulumi.get(self, "server_group_type")
+
+    @server_group_type.setter
+    def server_group_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_group_type", value)
+
+    @property
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
         """
@@ -158,6 +175,9 @@ class ServerGroupArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -186,6 +206,7 @@ class _ServerGroupState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_group_name: Optional[pulumi.Input[str]] = None,
+                 server_group_type: Optional[pulumi.Input[str]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  sticky_session_config: Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']] = None,
@@ -199,9 +220,11 @@ class _ServerGroupState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`.
         :param pulumi.Input[str] server_group_name: The name of the resource.
+        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: The backend server.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input['ServerGroupStickySessionConfigArgs'] sticky_session_config: The configuration of the sticky session.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC that you want to access.
         """
         if dry_run is not None:
@@ -216,6 +239,8 @@ class _ServerGroupState:
             pulumi.set(__self__, "scheduler", scheduler)
         if server_group_name is not None:
             pulumi.set(__self__, "server_group_name", server_group_name)
+        if server_group_type is not None:
+            pulumi.set(__self__, "server_group_type", server_group_type)
         if servers is not None:
             pulumi.set(__self__, "servers", servers)
         if status is not None:
@@ -300,6 +325,18 @@ class _ServerGroupState:
         pulumi.set(self, "server_group_name", value)
 
     @property
+    @pulumi.getter(name="serverGroupType")
+    def server_group_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the server group. Valid values:
+        """
+        return pulumi.get(self, "server_group_type")
+
+    @server_group_type.setter
+    def server_group_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_group_type", value)
+
+    @property
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
         """
@@ -338,6 +375,9 @@ class _ServerGroupState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -368,6 +408,7 @@ class ServerGroup(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_group_name: Optional[pulumi.Input[str]] = None,
+                 server_group_type: Optional[pulumi.Input[str]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]]] = None,
                  sticky_session_config: Optional[pulumi.Input[pulumi.InputType['ServerGroupStickySessionConfigArgs']]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -479,8 +520,10 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`.
         :param pulumi.Input[str] server_group_name: The name of the resource.
+        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: The backend server.
         :param pulumi.Input[pulumi.InputType['ServerGroupStickySessionConfigArgs']] sticky_session_config: The configuration of the sticky session.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC that you want to access.
         """
         ...
@@ -608,6 +651,7 @@ class ServerGroup(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_group_name: Optional[pulumi.Input[str]] = None,
+                 server_group_type: Optional[pulumi.Input[str]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]]] = None,
                  sticky_session_config: Optional[pulumi.Input[pulumi.InputType['ServerGroupStickySessionConfigArgs']]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -627,6 +671,7 @@ class ServerGroup(pulumi.CustomResource):
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["scheduler"] = scheduler
             __props__.__dict__["server_group_name"] = server_group_name
+            __props__.__dict__["server_group_type"] = server_group_type
             __props__.__dict__["servers"] = servers
             __props__.__dict__["sticky_session_config"] = sticky_session_config
             __props__.__dict__["tags"] = tags
@@ -648,6 +693,7 @@ class ServerGroup(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             scheduler: Optional[pulumi.Input[str]] = None,
             server_group_name: Optional[pulumi.Input[str]] = None,
+            server_group_type: Optional[pulumi.Input[str]] = None,
             servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             sticky_session_config: Optional[pulumi.Input[pulumi.InputType['ServerGroupStickySessionConfigArgs']]] = None,
@@ -666,9 +712,11 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`.
         :param pulumi.Input[str] server_group_name: The name of the resource.
+        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: The backend server.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[pulumi.InputType['ServerGroupStickySessionConfigArgs']] sticky_session_config: The configuration of the sticky session.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC that you want to access.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -681,6 +729,7 @@ class ServerGroup(pulumi.CustomResource):
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["scheduler"] = scheduler
         __props__.__dict__["server_group_name"] = server_group_name
+        __props__.__dict__["server_group_type"] = server_group_type
         __props__.__dict__["servers"] = servers
         __props__.__dict__["status"] = status
         __props__.__dict__["sticky_session_config"] = sticky_session_config
@@ -737,6 +786,14 @@ class ServerGroup(pulumi.CustomResource):
         return pulumi.get(self, "server_group_name")
 
     @property
+    @pulumi.getter(name="serverGroupType")
+    def server_group_type(self) -> pulumi.Output[str]:
+        """
+        The type of the server group. Valid values:
+        """
+        return pulumi.get(self, "server_group_type")
+
+    @property
     @pulumi.getter
     def servers(self) -> pulumi.Output[Optional[Sequence['outputs.ServerGroupServer']]]:
         """
@@ -763,6 +820,9 @@ class ServerGroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @property

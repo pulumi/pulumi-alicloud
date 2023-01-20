@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult> DedicatedHostCountGroupByHostTypes;
         /// <summary>
-        /// -The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        /// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         /// </summary>
         public readonly string DedicatedHostGroupDesc;
         /// <summary>

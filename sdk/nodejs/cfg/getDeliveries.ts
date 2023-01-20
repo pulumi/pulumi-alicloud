@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const ids = alicloud.cfg.getDeliveries({
  *     ids: ["example_id"],
  * });
- * export const configDeliveryId1 = ids.then(ids => ids.deliveries?[0]?.id);
+ * export const configDeliveryId1 = ids.then(ids => ids.deliveries?.[0]?.id);
  * ```
  */
 export function getDeliveries(args?: GetDeliveriesArgs, opts?: pulumi.InvokeOptions): Promise<GetDeliveriesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getDeliveries:getDeliveries", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -73,9 +71,27 @@ export interface GetDeliveriesResult {
     readonly outputFile?: string;
     readonly status?: number;
 }
-
+/**
+ * This data source provides the Config Deliveries of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.171.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cfg.getDeliveries({
+ *     ids: ["example_id"],
+ * });
+ * export const configDeliveryId1 = ids.then(ids => ids.deliveries?.[0]?.id);
+ * ```
+ */
 export function getDeliveriesOutput(args?: GetDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeliveriesResult> {
-    return pulumi.output(args).apply(a => getDeliveries(a, opts))
+    return pulumi.output(args).apply((a: any) => getDeliveries(a, opts))
 }
 
 /**

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstGaBandwidthPackageId = example.then(example => example.packages?[0]?.id);
+ * export const firstGaBandwidthPackageId = example.then(example => example.packages?.[0]?.id);
  * ```
  */
 export function getBandwidthPackages(args?: GetBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthPackagesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getBandwidthPackages:getBandwidthPackages", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -86,9 +84,28 @@ export interface GetBandwidthPackagesResult {
     readonly status?: string;
     readonly type?: string;
 }
-
+/**
+ * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.112.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ga.getBandwidthPackages({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstGaBandwidthPackageId = example.then(example => example.packages?.[0]?.id);
+ * ```
+ */
 export function getBandwidthPackagesOutput(args?: GetBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthPackagesResult> {
-    return pulumi.output(args).apply(a => getBandwidthPackages(a, opts))
+    return pulumi.output(args).apply((a: any) => getBandwidthPackages(a, opts))
 }
 
 /**

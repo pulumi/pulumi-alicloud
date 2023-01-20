@@ -21,55 +21,51 @@ namespace Pulumi.AliCloud.Eds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultZones = Output.Create(AliCloud.Eds.GetZones.InvokeAsync());
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Ids?[0],
-    ///             }));
-    ///         });
-    ///         var defaultAdConnectorDirectory = new AliCloud.Eds.AdConnectorDirectory("defaultAdConnectorDirectory", new AliCloud.Eds.AdConnectorDirectoryArgs
-    ///         {
-    ///             DirectoryName = @var.Name,
-    ///             DesktopAccessType = "INTERNET",
-    ///             DnsAddresses = 
-    ///             {
-    ///                 "127.0.0.2",
-    ///             },
-    ///             DomainName = "corp.example.com",
-    ///             DomainPassword = "YourPassword1234",
-    ///             DomainUserName = "sAMAccountName",
-    ///             EnableAdminAccess = false,
-    ///             MfaEnabled = false,
-    ///             Specification = 1,
-    ///             SubDomainDnsAddresses = 
-    ///             {
-    ///                 "127.0.0.3",
-    ///             },
-    ///             SubDomainName = "child.example.com",
-    ///             VswitchIds = 
-    ///             {
-    ///                 defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             },
-    ///         });
-    ///     }
+    ///     var defaultZones = AliCloud.Eds.GetZones.Invoke();
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultAdConnectorDirectory = new AliCloud.Eds.AdConnectorDirectory("defaultAdConnectorDirectory", new()
+    ///     {
+    ///         DirectoryName = @var.Name,
+    ///         DesktopAccessType = "INTERNET",
+    ///         DnsAddresses = new[]
+    ///         {
+    ///             "127.0.0.2",
+    ///         },
+    ///         DomainName = "corp.example.com",
+    ///         DomainPassword = "YourPassword1234",
+    ///         DomainUserName = "sAMAccountName",
+    ///         EnableAdminAccess = false,
+    ///         MfaEnabled = false,
+    ///         Specification = 1,
+    ///         SubDomainDnsAddresses = new[]
+    ///         {
+    ///             "127.0.0.3",
+    ///         },
+    ///         SubDomainName = "child.example.com",
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -81,7 +77,7 @@ namespace Pulumi.AliCloud.Eds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/adConnectorDirectory:AdConnectorDirectory")]
-    public partial class AdConnectorDirectory : Pulumi.CustomResource
+    public partial class AdConnectorDirectory : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
@@ -184,6 +180,10 @@ namespace Pulumi.AliCloud.Eds
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "domainPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Eds
         }
     }
 
-    public sealed class AdConnectorDirectoryArgs : Pulumi.ResourceArgs
+    public sealed class AdConnectorDirectoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
@@ -237,11 +237,21 @@ namespace Pulumi.AliCloud.Eds
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
 
+        [Input("domainPassword", required: true)]
+        private Input<string>? _domainPassword;
+
         /// <summary>
         /// The user password of the domain administrator. The maximum number of English characters is 64.
         /// </summary>
-        [Input("domainPassword", required: true)]
-        public Input<string> DomainPassword { get; set; } = null!;
+        public Input<string>? DomainPassword
+        {
+            get => _domainPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _domainPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The username of the domain administrator. The maximum number of English characters is 64.
@@ -300,9 +310,10 @@ namespace Pulumi.AliCloud.Eds
         public AdConnectorDirectoryArgs()
         {
         }
+        public static new AdConnectorDirectoryArgs Empty => new AdConnectorDirectoryArgs();
     }
 
-    public sealed class AdConnectorDirectoryState : Pulumi.ResourceArgs
+    public sealed class AdConnectorDirectoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
@@ -334,11 +345,21 @@ namespace Pulumi.AliCloud.Eds
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
 
+        [Input("domainPassword")]
+        private Input<string>? _domainPassword;
+
         /// <summary>
         /// The user password of the domain administrator. The maximum number of English characters is 64.
         /// </summary>
-        [Input("domainPassword")]
-        public Input<string>? DomainPassword { get; set; }
+        public Input<string>? DomainPassword
+        {
+            get => _domainPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _domainPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The username of the domain administrator. The maximum number of English characters is 64.
@@ -403,5 +424,6 @@ namespace Pulumi.AliCloud.Eds
         public AdConnectorDirectoryState()
         {
         }
+        public static new AdConnectorDirectoryState Empty => new AdConnectorDirectoryState();
     }
 }

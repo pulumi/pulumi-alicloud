@@ -5,22 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./eventBus";
-export * from "./eventSource";
-export * from "./getEventBuses";
-export * from "./getEventSources";
-export * from "./getRules";
-export * from "./getService";
-export * from "./rule";
-export * from "./serviceLinkedRole";
-export * from "./slr";
+export { EventBusArgs, EventBusState } from "./eventBus";
+export type EventBus = import("./eventBus").EventBus;
+export const EventBus: typeof import("./eventBus").EventBus = null as any;
+utilities.lazyLoad(exports, ["EventBus"], () => require("./eventBus"));
 
-// Import resources to register:
-import { EventBus } from "./eventBus";
-import { EventSource } from "./eventSource";
-import { Rule } from "./rule";
-import { ServiceLinkedRole } from "./serviceLinkedRole";
-import { Slr } from "./slr";
+export { EventSourceArgs, EventSourceState } from "./eventSource";
+export type EventSource = import("./eventSource").EventSource;
+export const EventSource: typeof import("./eventSource").EventSource = null as any;
+utilities.lazyLoad(exports, ["EventSource"], () => require("./eventSource"));
+
+export { GetEventBusesArgs, GetEventBusesResult, GetEventBusesOutputArgs } from "./getEventBuses";
+export const getEventBuses: typeof import("./getEventBuses").getEventBuses = null as any;
+export const getEventBusesOutput: typeof import("./getEventBuses").getEventBusesOutput = null as any;
+utilities.lazyLoad(exports, ["getEventBuses","getEventBusesOutput"], () => require("./getEventBuses"));
+
+export { GetEventSourcesArgs, GetEventSourcesResult, GetEventSourcesOutputArgs } from "./getEventSources";
+export const getEventSources: typeof import("./getEventSources").getEventSources = null as any;
+export const getEventSourcesOutput: typeof import("./getEventSources").getEventSourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getEventSources","getEventSourcesOutput"], () => require("./getEventSources"));
+
+export { GetRulesArgs, GetRulesResult, GetRulesOutputArgs } from "./getRules";
+export const getRules: typeof import("./getRules").getRules = null as any;
+export const getRulesOutput: typeof import("./getRules").getRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getRules","getRulesOutput"], () => require("./getRules"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { RuleArgs, RuleState } from "./rule";
+export type Rule = import("./rule").Rule;
+export const Rule: typeof import("./rule").Rule = null as any;
+utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
+
+export { ServiceLinkedRoleArgs, ServiceLinkedRoleState } from "./serviceLinkedRole";
+export type ServiceLinkedRole = import("./serviceLinkedRole").ServiceLinkedRole;
+export const ServiceLinkedRole: typeof import("./serviceLinkedRole").ServiceLinkedRole = null as any;
+utilities.lazyLoad(exports, ["ServiceLinkedRole"], () => require("./serviceLinkedRole"));
+
+export { SlrArgs, SlrState } from "./slr";
+export type Slr = import("./slr").Slr;
+export const Slr: typeof import("./slr").Slr = null as any;
+utilities.lazyLoad(exports, ["Slr"], () => require("./slr"));
+
 
 const _module = {
     version: utilities.getVersion(),

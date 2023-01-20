@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class AlertSeverityConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class AlertSeverityConfigurationArgs : global::Pulumi.ResourceArgs
     {
         [Input("evalCondition", required: true)]
         private InputMap<string>? _evalCondition;
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public AlertSeverityConfigurationArgs()
         {
         }
+        public static new AlertSeverityConfigurationArgs Empty => new AlertSeverityConfigurationArgs();
     }
 }

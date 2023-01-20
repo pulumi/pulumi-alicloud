@@ -786,6 +786,84 @@ class Rule(pulumi.CustomResource):
 
         > **NOTE:** Only rule's virtual server group can be modified.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        slb_rule_name = config.get("slbRuleName")
+        if slb_rule_name is None:
+            slb_rule_name = "forSlbRule"
+        rule_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        rule_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        rule_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        rule_network = alicloud.vpc.Network("ruleNetwork",
+            vpc_name=slb_rule_name,
+            cidr_block="172.16.0.0/16")
+        rule_switch = alicloud.vpc.Switch("ruleSwitch",
+            vpc_id=rule_network.id,
+            cidr_block="172.16.0.0/16",
+            zone_id=rule_zones.zones[0].id,
+            vswitch_name=slb_rule_name)
+        rule_security_group = alicloud.ecs.SecurityGroup("ruleSecurityGroup", vpc_id=rule_network.id)
+        rule_instance = alicloud.ecs.Instance("ruleInstance",
+            image_id=rule_images.images[0].id,
+            instance_type=rule_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [rule_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=rule_zones.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=rule_switch.id,
+            instance_name=slb_rule_name)
+        rule_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("ruleApplicationLoadBalancer",
+            load_balancer_name=slb_rule_name,
+            vswitch_id=rule_switch.id,
+            instance_charge_type="PayByCLCU")
+        rule_listener = alicloud.slb.Listener("ruleListener",
+            load_balancer_id=rule_application_load_balancer.id,
+            backend_port=22,
+            frontend_port=22,
+            protocol="http",
+            bandwidth=5,
+            health_check_connect_port=20)
+        rule_server_group = alicloud.slb.ServerGroup("ruleServerGroup", load_balancer_id=rule_application_load_balancer.id)
+        rule_server_group_server_attachment = alicloud.slb.ServerGroupServerAttachment("ruleServerGroupServerAttachment",
+            server_group_id=rule_server_group.id,
+            server_id=rule_instance.id,
+            port=80,
+            weight=100)
+        rule_rule = alicloud.slb.Rule("ruleRule",
+            load_balancer_id=rule_application_load_balancer.id,
+            frontend_port=rule_listener.frontend_port,
+            domain="*.aliyun.com",
+            url="/image",
+            server_group_id=rule_server_group.id,
+            cookie="23ffsa",
+            cookie_timeout=100,
+            health_check_http_code="http_2xx",
+            health_check_interval=10,
+            health_check_uri="/test",
+            health_check_connect_port=80,
+            health_check_timeout=30,
+            healthy_threshold=3,
+            unhealthy_threshold=5,
+            sticky_session="on",
+            sticky_session_type="server",
+            listener_sync="off",
+            scheduler="rr",
+            health_check_domain="test",
+            health_check="on")
+        ```
+
         ## Import
 
         Load balancer forwarding rule can be imported using the id, e.g.
@@ -842,6 +920,84 @@ class Rule(pulumi.CustomResource):
         > **NOTE:** Rule only be created in the `HTTP` or `HTTPS` listener.
 
         > **NOTE:** Only rule's virtual server group can be modified.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        slb_rule_name = config.get("slbRuleName")
+        if slb_rule_name is None:
+            slb_rule_name = "forSlbRule"
+        rule_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        rule_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        rule_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        rule_network = alicloud.vpc.Network("ruleNetwork",
+            vpc_name=slb_rule_name,
+            cidr_block="172.16.0.0/16")
+        rule_switch = alicloud.vpc.Switch("ruleSwitch",
+            vpc_id=rule_network.id,
+            cidr_block="172.16.0.0/16",
+            zone_id=rule_zones.zones[0].id,
+            vswitch_name=slb_rule_name)
+        rule_security_group = alicloud.ecs.SecurityGroup("ruleSecurityGroup", vpc_id=rule_network.id)
+        rule_instance = alicloud.ecs.Instance("ruleInstance",
+            image_id=rule_images.images[0].id,
+            instance_type=rule_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [rule_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=rule_zones.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=rule_switch.id,
+            instance_name=slb_rule_name)
+        rule_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("ruleApplicationLoadBalancer",
+            load_balancer_name=slb_rule_name,
+            vswitch_id=rule_switch.id,
+            instance_charge_type="PayByCLCU")
+        rule_listener = alicloud.slb.Listener("ruleListener",
+            load_balancer_id=rule_application_load_balancer.id,
+            backend_port=22,
+            frontend_port=22,
+            protocol="http",
+            bandwidth=5,
+            health_check_connect_port=20)
+        rule_server_group = alicloud.slb.ServerGroup("ruleServerGroup", load_balancer_id=rule_application_load_balancer.id)
+        rule_server_group_server_attachment = alicloud.slb.ServerGroupServerAttachment("ruleServerGroupServerAttachment",
+            server_group_id=rule_server_group.id,
+            server_id=rule_instance.id,
+            port=80,
+            weight=100)
+        rule_rule = alicloud.slb.Rule("ruleRule",
+            load_balancer_id=rule_application_load_balancer.id,
+            frontend_port=rule_listener.frontend_port,
+            domain="*.aliyun.com",
+            url="/image",
+            server_group_id=rule_server_group.id,
+            cookie="23ffsa",
+            cookie_timeout=100,
+            health_check_http_code="http_2xx",
+            health_check_interval=10,
+            health_check_uri="/test",
+            health_check_connect_port=80,
+            health_check_timeout=30,
+            healthy_threshold=3,
+            unhealthy_threshold=5,
+            sticky_session="on",
+            sticky_session_type="server",
+            listener_sync="off",
+            scheduler="rr",
+            health_check_domain="test",
+            health_check="on")
+        ```
 
         ## Import
 

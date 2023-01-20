@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetBgpGroups.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetBgpGroups.InvokeAsync(new AliCloud.Vpc.GetBgpGroupsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.VpcBgpGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetBgpGroups.InvokeAsync(new AliCloud.Vpc.GetBgpGroupsArgs
-        ///         {
-        ///             NameRegex = "^my-BgpGroup",
-        ///         }));
-        ///         this.VpcBgpGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcBgpGroupId1")]
-        ///     public Output&lt;string&gt; VpcBgpGroupId1 { get; set; }
-        ///     [Output("vpcBgpGroupId2")]
-        ///     public Output&lt;string&gt; VpcBgpGroupId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetBgpGroups.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-BgpGroup",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcBgpGroupId1"] = ids.Apply(getBgpGroupsResult =&gt; getBgpGroupsResult.Groups[0]?.Id),
+        ///         ["vpcBgpGroupId2"] = nameRegex.Apply(getBgpGroupsResult =&gt; getBgpGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBgpGroupsResult> InvokeAsync(GetBgpGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBgpGroupsResult>("alicloud:vpc/getBgpGroups:getBgpGroups", args ?? new GetBgpGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBgpGroupsResult>("alicloud:vpc/getBgpGroups:getBgpGroups", args ?? new GetBgpGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetBgpGroups.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetBgpGroups.InvokeAsync(new AliCloud.Vpc.GetBgpGroupsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.VpcBgpGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetBgpGroups.InvokeAsync(new AliCloud.Vpc.GetBgpGroupsArgs
-        ///         {
-        ///             NameRegex = "^my-BgpGroup",
-        ///         }));
-        ///         this.VpcBgpGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcBgpGroupId1")]
-        ///     public Output&lt;string&gt; VpcBgpGroupId1 { get; set; }
-        ///     [Output("vpcBgpGroupId2")]
-        ///     public Output&lt;string&gt; VpcBgpGroupId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetBgpGroups.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-BgpGroup",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcBgpGroupId1"] = ids.Apply(getBgpGroupsResult =&gt; getBgpGroupsResult.Groups[0]?.Id),
+        ///         ["vpcBgpGroupId2"] = nameRegex.Apply(getBgpGroupsResult =&gt; getBgpGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBgpGroupsResult> Invoke(GetBgpGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBgpGroupsResult>("alicloud:vpc/getBgpGroups:getBgpGroups", args ?? new GetBgpGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBgpGroupsResult>("alicloud:vpc/getBgpGroups:getBgpGroups", args ?? new GetBgpGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBgpGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetBgpGroupsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -143,9 +139,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetBgpGroupsArgs()
         {
         }
+        public static new GetBgpGroupsArgs Empty => new GetBgpGroupsArgs();
     }
 
-    public sealed class GetBgpGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBgpGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -183,6 +180,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetBgpGroupsInvokeArgs()
         {
         }
+        public static new GetBgpGroupsInvokeArgs Empty => new GetBgpGroupsInvokeArgs();
     }
 
 

@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Iot
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Iot.GetDeviceGroups.InvokeAsync());
-        ///         this.IotDeviceGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Iot.GetDeviceGroups.Invoke();
         /// 
-        ///     [Output("iotDeviceGroupId1")]
-        ///     public Output&lt;string&gt; IotDeviceGroupId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["iotDeviceGroupId1"] = ids.Apply(getDeviceGroupsResult =&gt; getDeviceGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDeviceGroupsResult> InvokeAsync(GetDeviceGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeviceGroupsResult>("alicloud:iot/getDeviceGroups:getDeviceGroups", args ?? new GetDeviceGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeviceGroupsResult>("alicloud:iot/getDeviceGroups:getDeviceGroups", args ?? new GetDeviceGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Iot Device Groups of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Iot
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Iot.GetDeviceGroups.InvokeAsync());
-        ///         this.IotDeviceGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Iot.GetDeviceGroups.Invoke();
         /// 
-        ///     [Output("iotDeviceGroupId1")]
-        ///     public Output&lt;string&gt; IotDeviceGroupId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["iotDeviceGroupId1"] = ids.Apply(getDeviceGroupsResult =&gt; getDeviceGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDeviceGroupsResult> Invoke(GetDeviceGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeviceGroupsResult>("alicloud:iot/getDeviceGroups:getDeviceGroups", args ?? new GetDeviceGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeviceGroupsResult>("alicloud:iot/getDeviceGroups:getDeviceGroups", args ?? new GetDeviceGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDeviceGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetDeviceGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -129,9 +127,10 @@ namespace Pulumi.AliCloud.Iot
         public GetDeviceGroupsArgs()
         {
         }
+        public static new GetDeviceGroupsArgs Empty => new GetDeviceGroupsArgs();
     }
 
-    public sealed class GetDeviceGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDeviceGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -181,6 +180,7 @@ namespace Pulumi.AliCloud.Iot
         public GetDeviceGroupsInvokeArgs()
         {
         }
+        public static new GetDeviceGroupsInvokeArgs Empty => new GetDeviceGroupsInvokeArgs();
     }
 
 

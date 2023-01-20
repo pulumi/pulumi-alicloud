@@ -19,15 +19,19 @@ namespace Pulumi.AliCloud.Vpn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/gateway:Gateway")]
-    public partial class Gateway : Pulumi.CustomResource
+    public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to pay automatically. Default value: `true`. Valid values:
-        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        /// `true`: Enable automatic payment, automatic payment order.
         /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+        /// </summary>
+        [Output("autoPropagate")]
+        public Output<bool?> AutoPropagate { get; private set; } = null!;
 
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
@@ -74,6 +78,14 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The network type of the VPN gateway. Value:
+        /// - public (default): Public VPN gateway.
+        /// - private: Private VPN gateway.
+        /// </summary>
+        [Output("networkType")]
+        public Output<string> NetworkType { get; private set; } = null!;
 
         /// <summary>
         /// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
@@ -156,15 +168,19 @@ namespace Pulumi.AliCloud.Vpn
         }
     }
 
-    public sealed class GatewayArgs : Pulumi.ResourceArgs
+    public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to pay automatically. Default value: `true`. Valid values:
-        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        /// `true`: Enable automatic payment, automatic payment order.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
+
+        /// <summary>
+        /// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+        /// </summary>
+        [Input("autoPropagate")]
+        public Input<bool>? AutoPropagate { get; set; }
 
         [Input("bandwidth", required: true)]
         public Input<int> Bandwidth { get; set; } = null!;
@@ -199,6 +215,14 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The network type of the VPN gateway. Value:
+        /// - public (default): Public VPN gateway.
+        /// - private: Private VPN gateway.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
 
         /// <summary>
         /// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
@@ -240,17 +264,22 @@ namespace Pulumi.AliCloud.Vpn
         public GatewayArgs()
         {
         }
+        public static new GatewayArgs Empty => new GatewayArgs();
     }
 
-    public sealed class GatewayState : Pulumi.ResourceArgs
+    public sealed class GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to pay automatically. Default value: `true`. Valid values:
-        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        /// `true`: Enable automatic payment, automatic payment order.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
+
+        /// <summary>
+        /// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+        /// </summary>
+        [Input("autoPropagate")]
+        public Input<bool>? AutoPropagate { get; set; }
 
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -299,6 +328,14 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The network type of the VPN gateway. Value:
+        /// - public (default): Public VPN gateway.
+        /// - private: Private VPN gateway.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
         /// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         /// </summary>
         [Input("period")]
@@ -344,5 +381,6 @@ namespace Pulumi.AliCloud.Vpn
         public GatewayState()
         {
         }
+        public static new GatewayState Empty => new GatewayState();
     }
 }

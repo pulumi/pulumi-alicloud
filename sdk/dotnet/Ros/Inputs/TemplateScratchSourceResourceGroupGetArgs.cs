@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ros.Inputs
 {
 
-    public sealed class TemplateScratchSourceResourceGroupGetArgs : Pulumi.ResourceArgs
+    public sealed class TemplateScratchSourceResourceGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Source Resource Group.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Ros.Inputs
         public TemplateScratchSourceResourceGroupGetArgs()
         {
         }
+        public static new TemplateScratchSourceResourceGroupGetArgs Empty => new TemplateScratchSourceResourceGroupGetArgs();
     }
 }

@@ -35,14 +35,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/networkAcl:NetworkAcl")
 public class NetworkAcl extends com.pulumi.resources.CustomResource {
     /**
-     * The description of egress entries.
+     * The description of the network acl instance.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of egress entries.
+     * @return The description of the network acl instance.
      * 
      */
     public Output<Optional<String>> description() {
@@ -109,18 +109,22 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return this.networkAclName;
     }
     /**
-     * The associated resources.
+     * The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
+     * 
+     * @deprecated
+     * Field &#39;resources&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_network_acl_attachment&#39;.
      * 
      */
+    @Deprecated /* Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'. */
     @Export(name="resources", type=List.class, parameters={NetworkAclResource.class})
-    private Output</* @Nullable */ List<NetworkAclResource>> resources;
+    private Output<List<NetworkAclResource>> resources;
 
     /**
-     * @return The associated resources.
+     * @return The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
      * 
      */
-    public Output<Optional<List<NetworkAclResource>>> resources() {
-        return Codegen.optional(this.resources);
+    public Output<List<NetworkAclResource>> resources() {
+        return this.resources;
     }
     /**
      * (Available in 1.122.0+) The status of the network acl.

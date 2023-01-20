@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -28,16 +29,13 @@ import * as utilities from "../utilities";
  * const defaultSystemGroups = alicloud.videosurveillance.getSystemGroupsOutput({
  *     ids: [defaultSystemGroup.id],
  * });
- * export const vsGroup = defaultSystemGroups.apply(defaultSystemGroups => defaultSystemGroups.ids?[0]);
+ * export const vsGroup = defaultSystemGroups.apply(defaultSystemGroups => defaultSystemGroups.ids?.[0]);
  * ```
  */
 export function getSystemGroups(args?: GetSystemGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSystemGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:videosurveillance/getSystemGroups:getSystemGroups", {
         "ids": args.ids,
         "inProtocol": args.inProtocol,
@@ -92,9 +90,34 @@ export interface GetSystemGroupsResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultSystemGroup = new alicloud.videosurveillance.SystemGroup("defaultSystemGroup", {
+ *     groupName: "groupname",
+ *     inProtocol: "rtmp",
+ *     outProtocol: "flv",
+ *     playDomain: "your_plan_domain",
+ *     pushDomain: "your_push_domain",
+ * });
+ * const defaultSystemGroups = alicloud.videosurveillance.getSystemGroupsOutput({
+ *     ids: [defaultSystemGroup.id],
+ * });
+ * export const vsGroup = defaultSystemGroups.apply(defaultSystemGroups => defaultSystemGroups.ids?.[0]);
+ * ```
+ */
 export function getSystemGroupsOutput(args?: GetSystemGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSystemGroupsResult> {
-    return pulumi.output(args).apply(a => getSystemGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getSystemGroups(a, opts))
 }
 
 /**

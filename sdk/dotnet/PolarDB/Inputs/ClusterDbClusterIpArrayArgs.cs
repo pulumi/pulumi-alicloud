@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PolarDB.Inputs
 {
 
-    public sealed class ClusterDbClusterIpArrayArgs : Pulumi.ResourceArgs
+    public sealed class ClusterDbClusterIpArrayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
@@ -30,7 +30,8 @@ namespace Pulumi.AliCloud.PolarDB.Inputs
         private InputList<string>? _securityIps;
 
         /// <summary>
-        /// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        /// This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+        /// Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         /// </summary>
         public InputList<string> SecurityIps
         {
@@ -41,5 +42,6 @@ namespace Pulumi.AliCloud.PolarDB.Inputs
         public ClusterDbClusterIpArrayArgs()
         {
         }
+        public static new ClusterDbClusterIpArrayArgs Empty => new ClusterDbClusterIpArrayArgs();
     }
 }

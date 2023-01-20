@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.eci;
 
+import com.pulumi.alicloud.eci.inputs.ContainerGroupAcrRegistryInfoArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupDnsConfigArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupEciSecurityContextArgs;
@@ -27,6 +28,21 @@ import javax.annotation.Nullable;
 public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ContainerGroupArgs Empty = new ContainerGroupArgs();
+
+    /**
+     * The ACR enterprise edition example properties.
+     * 
+     */
+    @Import(name="acrRegistryInfos")
+    private @Nullable Output<List<ContainerGroupAcrRegistryInfoArgs>> acrRegistryInfos;
+
+    /**
+     * @return The ACR enterprise edition example properties.
+     * 
+     */
+    public Optional<Output<List<ContainerGroupAcrRegistryInfoArgs>>> acrRegistryInfos() {
+        return Optional.ofNullable(this.acrRegistryInfos);
+    }
 
     /**
      * Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
@@ -89,14 +105,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      * 
      */
     @Import(name="cpu")
     private @Nullable Output<Double> cpu;
 
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     public Optional<Output<Double>> cpu() {
@@ -239,14 +255,14 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The amount of memory resources allocated to the container.
+     * The amount of memory resources allocated to the container group.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<Double> memory;
 
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     public Optional<Output<Double>> memory() {
@@ -395,6 +411,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     private ContainerGroupArgs() {}
 
     private ContainerGroupArgs(ContainerGroupArgs $) {
+        this.acrRegistryInfos = $.acrRegistryInfos;
         this.autoCreateEip = $.autoCreateEip;
         this.autoMatchImageCache = $.autoMatchImageCache;
         this.containerGroupName = $.containerGroupName;
@@ -437,6 +454,37 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(ContainerGroupArgs defaults) {
             $ = new ContainerGroupArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acrRegistryInfos The ACR enterprise edition example properties.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrRegistryInfos(@Nullable Output<List<ContainerGroupAcrRegistryInfoArgs>> acrRegistryInfos) {
+            $.acrRegistryInfos = acrRegistryInfos;
+            return this;
+        }
+
+        /**
+         * @param acrRegistryInfos The ACR enterprise edition example properties.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrRegistryInfos(List<ContainerGroupAcrRegistryInfoArgs> acrRegistryInfos) {
+            return acrRegistryInfos(Output.of(acrRegistryInfos));
+        }
+
+        /**
+         * @param acrRegistryInfos The ACR enterprise edition example properties.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrRegistryInfos(ContainerGroupAcrRegistryInfoArgs... acrRegistryInfos) {
+            return acrRegistryInfos(List.of(acrRegistryInfos));
         }
 
         /**
@@ -534,7 +582,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container.
+         * @param cpu The amount of CPU resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -545,7 +593,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container.
+         * @param cpu The amount of CPU resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -774,7 +822,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container.
+         * @param memory The amount of memory resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -785,7 +833,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container.
+         * @param memory The amount of memory resources allocated to the container group.
          * 
          * @return builder
          * 

@@ -42,6 +42,8 @@ import (
 //				return err
 //			}
 //			ctx.Export("vpnGatewayVpnAttachmentId2", nameRegex.Attachments[0].Id)
+//			ctx.Export("localId", data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Ike_config[0].Local_id)
+//			ctx.Export("internetIp", data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Internet_ip)
 //			return nil
 //		})
 //	}
@@ -67,7 +69,9 @@ type GetGatewayVpnAttachmentsArgs struct {
 	PageSize   *int    `pulumi:"pageSize"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
-	// The ID of the VPN gateway.
+	// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
+	//
+	// Deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
 	VpnGatewayId *string `pulumi:"vpnGatewayId"`
 }
 
@@ -75,15 +79,16 @@ type GetGatewayVpnAttachmentsArgs struct {
 type GetGatewayVpnAttachmentsResult struct {
 	Attachments []GetGatewayVpnAttachmentsAttachment `pulumi:"attachments"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string   `pulumi:"id"`
-	Ids          []string `pulumi:"ids"`
-	NameRegex    *string  `pulumi:"nameRegex"`
-	Names        []string `pulumi:"names"`
-	OutputFile   *string  `pulumi:"outputFile"`
-	PageNumber   *int     `pulumi:"pageNumber"`
-	PageSize     *int     `pulumi:"pageSize"`
-	Status       *string  `pulumi:"status"`
-	VpnGatewayId *string  `pulumi:"vpnGatewayId"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	NameRegex  *string  `pulumi:"nameRegex"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	Status     *string  `pulumi:"status"`
+	// Deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
+	VpnGatewayId *string `pulumi:"vpnGatewayId"`
 }
 
 func GetGatewayVpnAttachmentsOutput(ctx *pulumi.Context, args GetGatewayVpnAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetGatewayVpnAttachmentsResultOutput {
@@ -110,7 +115,9 @@ type GetGatewayVpnAttachmentsOutputArgs struct {
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The ID of the VPN gateway.
+	// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
+	//
+	// Deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
 	VpnGatewayId pulumi.StringPtrInput `pulumi:"vpnGatewayId"`
 }
 
@@ -170,6 +177,7 @@ func (o GetGatewayVpnAttachmentsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
 func (o GetGatewayVpnAttachmentsResultOutput) VpnGatewayId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) *string { return v.VpnGatewayId }).(pulumi.StringPtrOutput)
 }

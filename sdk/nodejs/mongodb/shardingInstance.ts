@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -201,7 +202,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             if ((!args || args.shardLists === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shardLists'");
             }
-            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
             resourceInputs["backupTime"] = args ? args.backupTime : undefined;
@@ -229,6 +230,8 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["retentionPeriod"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ShardingInstance.__pulumiType, name, resourceInputs, opts);
     }
 }

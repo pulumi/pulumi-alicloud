@@ -27,7 +27,6 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -36,8 +35,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := providers.Newalicloud(ctx, "hz", &providers.alicloudArgs{
-//				Region: "cn-hangzhou",
+//			_, err := alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
 //			})
 //			if err != nil {
 //				return err
@@ -47,7 +46,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
@@ -80,7 +79,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       vpc.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			}, pulumi.Provider(alicloud.Hz))
 //			if err != nil {
@@ -95,8 +94,8 @@ import (
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
 //				VswitchId:               defaultSwitch.ID(),
-//				ImageId:                 pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:                 *pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:            *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),

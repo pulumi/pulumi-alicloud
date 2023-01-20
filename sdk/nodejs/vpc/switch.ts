@@ -78,7 +78,7 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly vswitchName!: pulumi.Output<string>;
     /**
-     * The AZ for the switch.
+     * The AZ for the switch. **Note:** Required for a VPC switch.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -168,7 +168,7 @@ export interface SwitchState {
      */
     vswitchName?: pulumi.Input<string>;
     /**
-     * The AZ for the switch.
+     * The AZ for the switch. **Note:** Required for a VPC switch.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -210,7 +210,7 @@ export interface SwitchArgs {
      */
     vswitchName?: pulumi.Input<string>;
     /**
-     * The AZ for the switch.
+     * The AZ for the switch. **Note:** Required for a VPC switch.
      */
     zoneId?: pulumi.Input<string>;
 }

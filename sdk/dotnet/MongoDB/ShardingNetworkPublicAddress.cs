@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress")]
-    public partial class ShardingNetworkPublicAddress : Pulumi.CustomResource
+    public partial class ShardingNetworkPublicAddress : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the instance.
@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
     }
 
-    public sealed class ShardingNetworkPublicAddressArgs : Pulumi.ResourceArgs
+    public sealed class ShardingNetworkPublicAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the instance.
@@ -108,9 +108,10 @@ namespace Pulumi.AliCloud.MongoDB
         public ShardingNetworkPublicAddressArgs()
         {
         }
+        public static new ShardingNetworkPublicAddressArgs Empty => new ShardingNetworkPublicAddressArgs();
     }
 
-    public sealed class ShardingNetworkPublicAddressState : Pulumi.ResourceArgs
+    public sealed class ShardingNetworkPublicAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the instance.
@@ -139,5 +140,6 @@ namespace Pulumi.AliCloud.MongoDB
         public ShardingNetworkPublicAddressState()
         {
         }
+        public static new ShardingNetworkPublicAddressState Empty => new ShardingNetworkPublicAddressState();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,27 +15,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Filter security groups and print the results into a file
- * const secGroupsDs = pulumi.output(alicloud.ecs.getSecurityGroups({
+ * const secGroupsDs = alicloud.ecs.getSecurityGroups({
  *     nameRegex: "^web-",
  *     outputFile: "web_access.json",
- * }));
+ * });
  * // In conjunction with a VPC
- * const primaryVpcDs = new alicloud.vpc.Network("primary_vpc_ds", {});
- * const primarySecGroupsDs = primaryVpcDs.id.apply(id => alicloud.ecs.getSecurityGroups({
- *     vpcId: id,
- * }));
- *
- * export const firstGroupId = primarySecGroupsDs.groups[0].id;
+ * const primaryVpcDs = new alicloud.vpc.Network("primaryVpcDs", {});
+ * const primarySecGroupsDs = alicloud.ecs.getSecurityGroupsOutput({
+ *     vpcId: primaryVpcDs.id,
+ * });
+ * export const firstGroupId = primarySecGroupsDs.apply(primarySecGroupsDs => primarySecGroupsDs.groups?.[0]?.id);
  * ```
  */
 export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getSecurityGroups:getSecurityGroups", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -74,12 +70,12 @@ export interface GetSecurityGroupsArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const taggedSecurityGroups = pulumi.output(alicloud.ecs.getSecurityGroups({
+     * const taggedSecurityGroups = alicloud.ecs.getSecurityGroups({
      *     tags: {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }));
+     * });
      * ```
      */
     tags?: {[key: string]: any};
@@ -128,9 +124,29 @@ export interface GetSecurityGroupsResult {
      */
     readonly vpcId?: string;
 }
-
+/**
+ * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const secGroupsDs = alicloud.ecs.getSecurityGroups({
+ *     nameRegex: "^web-",
+ *     outputFile: "web_access.json",
+ * });
+ * // In conjunction with a VPC
+ * const primaryVpcDs = new alicloud.vpc.Network("primaryVpcDs", {});
+ * const primarySecGroupsDs = alicloud.ecs.getSecurityGroupsOutput({
+ *     vpcId: primaryVpcDs.id,
+ * });
+ * export const firstGroupId = primarySecGroupsDs.apply(primarySecGroupsDs => primarySecGroupsDs.groups?.[0]?.id);
+ * ```
+ */
 export function getSecurityGroupsOutput(args?: GetSecurityGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupsResult> {
-    return pulumi.output(args).apply(a => getSecurityGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecurityGroups(a, opts))
 }
 
 /**
@@ -159,12 +175,12 @@ export interface GetSecurityGroupsOutputArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const taggedSecurityGroups = pulumi.output(alicloud.ecs.getSecurityGroups({
+     * const taggedSecurityGroups = alicloud.ecs.getSecurityGroups({
      *     tags: {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }));
+     * });
      * ```
      */
     tags?: pulumi.Input<{[key: string]: any}>;

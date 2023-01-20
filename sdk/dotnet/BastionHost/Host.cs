@@ -21,25 +21,23 @@ namespace Pulumi.AliCloud.BastionHost
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.BastionHost.Host("example", new()
     ///     {
-    ///         var example = new AliCloud.BastionHost.Host("example", new AliCloud.BastionHost.HostArgs
-    ///         {
-    ///             ActiveAddressType = "Private",
-    ///             HostName = "example_value",
-    ///             HostPrivateAddress = "172.16.0.10",
-    ///             InstanceId = "bastionhost-cn-tl3xxxxxxx",
-    ///             OsType = "Linux",
-    ///             Source = "Local",
-    ///         });
-    ///     }
+    ///         ActiveAddressType = "Private",
+    ///         HostName = "example_value",
+    ///         HostPrivateAddress = "172.16.0.10",
+    ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
+    ///         OsType = "Linux",
+    ///         Source = "Local",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +49,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/host:Host")]
-    public partial class Host : Pulumi.CustomResource
+    public partial class Host : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
@@ -108,10 +106,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string> OsType { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the new create a host of source. Valid values: 
-        /// * `Local`: localhost
-        /// * `Ecs`:ECS instance
-        /// * `Rds`:RDS exclusive cluster host.
+        /// Specify the new create a host of source. Valid values:
         /// </summary>
         [Output("source")]
         public Output<string> Source { get; private set; } = null!;
@@ -166,7 +161,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
     }
 
-    public sealed class HostArgs : Pulumi.ResourceArgs
+    public sealed class HostArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
@@ -217,10 +212,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string> OsType { get; set; } = null!;
 
         /// <summary>
-        /// Specify the new create a host of source. Valid values: 
-        /// * `Local`: localhost
-        /// * `Ecs`:ECS instance
-        /// * `Rds`:RDS exclusive cluster host.
+        /// Specify the new create a host of source. Valid values:
         /// </summary>
         [Input("source", required: true)]
         public Input<string> Source { get; set; } = null!;
@@ -234,9 +226,10 @@ namespace Pulumi.AliCloud.BastionHost
         public HostArgs()
         {
         }
+        public static new HostArgs Empty => new HostArgs();
     }
 
-    public sealed class HostState : Pulumi.ResourceArgs
+    public sealed class HostState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
@@ -293,10 +286,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? OsType { get; set; }
 
         /// <summary>
-        /// Specify the new create a host of source. Valid values: 
-        /// * `Local`: localhost
-        /// * `Ecs`:ECS instance
-        /// * `Rds`:RDS exclusive cluster host.
+        /// Specify the new create a host of source. Valid values:
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
@@ -310,5 +300,6 @@ namespace Pulumi.AliCloud.BastionHost
         public HostState()
         {
         }
+        public static new HostState Empty => new HostState();
     }
 }

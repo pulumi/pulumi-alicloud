@@ -24,31 +24,28 @@ namespace Pulumi.AliCloud.RocketMQ
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultQos = new AliCloud.RocketMQ.Qos("defaultQos", new AliCloud.RocketMQ.QosArgs
-    ///         {
-    ///         });
-    ///         var defaultQosCar = new AliCloud.RocketMQ.QosCar("defaultQosCar", new AliCloud.RocketMQ.QosCarArgs
-    ///         {
-    ///             QosId = defaultQos.Id,
-    ///             Description = "tf-testSagQosCarDescription",
-    ///             Priority = 1,
-    ///             LimitType = "Absolute",
-    ///             MinBandwidthAbs = 10,
-    ///             MaxBandwidthAbs = 20,
-    ///             MinBandwidthPercent = 10,
-    ///             MaxBandwidthPercent = 20,
-    ///             PercentSourceType = "InternetUpBandwidth",
-    ///         });
-    ///     }
+    ///     var defaultQos = new AliCloud.RocketMQ.Qos("defaultQos");
     /// 
-    /// }
+    ///     var defaultQosCar = new AliCloud.RocketMQ.QosCar("defaultQosCar", new()
+    ///     {
+    ///         QosId = defaultQos.Id,
+    ///         Description = "tf-testSagQosCarDescription",
+    ///         Priority = 1,
+    ///         LimitType = "Absolute",
+    ///         MinBandwidthAbs = 10,
+    ///         MaxBandwidthAbs = 20,
+    ///         MinBandwidthPercent = 10,
+    ///         MaxBandwidthPercent = 20,
+    ///         PercentSourceType = "InternetUpBandwidth",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +57,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/qosCar:QosCar")]
-    public partial class QosCar : Pulumi.CustomResource
+    public partial class QosCar : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the QoS speed limiting rule.
@@ -166,7 +163,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
-    public sealed class QosCarArgs : Pulumi.ResourceArgs
+    public sealed class QosCarArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the QoS speed limiting rule.
@@ -231,9 +228,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public QosCarArgs()
         {
         }
+        public static new QosCarArgs Empty => new QosCarArgs();
     }
 
-    public sealed class QosCarState : Pulumi.ResourceArgs
+    public sealed class QosCarState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the QoS speed limiting rule.
@@ -298,5 +296,6 @@ namespace Pulumi.AliCloud.RocketMQ
         public QosCarState()
         {
         }
+        public static new QosCarState Empty => new QosCarState();
     }
 }

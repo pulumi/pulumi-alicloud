@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -67,7 +68,6 @@ export class ImageCache extends pulumi.CustomResource {
 
     /**
      * The ID of the container group job that is used to create the image cache.
-     * * `status` -The status of the image cache.
      */
     public /*out*/ readonly containerGroupId!: pulumi.Output<string>;
     /**
@@ -102,6 +102,9 @@ export class ImageCache extends pulumi.CustomResource {
      * The ID of the security group. You do not need to specify the same security group as the container group.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
+    /**
+     * The status of the image cache.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
@@ -175,7 +178,6 @@ export class ImageCache extends pulumi.CustomResource {
 export interface ImageCacheState {
     /**
      * The ID of the container group job that is used to create the image cache.
-     * * `status` -The status of the image cache.
      */
     containerGroupId?: pulumi.Input<string>;
     /**
@@ -210,6 +212,9 @@ export interface ImageCacheState {
      * The ID of the security group. You do not need to specify the same security group as the container group.
      */
     securityGroupId?: pulumi.Input<string>;
+    /**
+     * The status of the image cache.
+     */
     status?: pulumi.Input<string>;
     /**
      * The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.

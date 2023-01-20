@@ -85,6 +85,7 @@ class _ResourceGroupState:
         :param pulumi.Input[str] account_id: The ID of the Alibaba Cloud account to which the resource group belongs.
         :param pulumi.Input[str] display_name: The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceGroupRegionStatusArgs']]] region_statuses: The status of the resource group in all regions.
         :param pulumi.Input[str] resource_group_name: The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
         :param pulumi.Input[str] status: The status of the regional resource group.
         """
@@ -143,6 +144,9 @@ class _ResourceGroupState:
     @property
     @pulumi.getter(name="regionStatuses")
     def region_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupRegionStatusArgs']]]]:
+        """
+        The status of the resource group in all regions.
+        """
         return pulumi.get(self, "region_statuses")
 
     @region_statuses.setter
@@ -313,6 +317,7 @@ class ResourceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The ID of the Alibaba Cloud account to which the resource group belongs.
         :param pulumi.Input[str] display_name: The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupRegionStatusArgs']]]] region_statuses: The status of the resource group in all regions.
         :param pulumi.Input[str] resource_group_name: The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
         :param pulumi.Input[str] status: The status of the regional resource group.
         """
@@ -355,6 +360,9 @@ class ResourceGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="regionStatuses")
     def region_statuses(self) -> pulumi.Output[Sequence['outputs.ResourceGroupRegionStatus']]:
+        """
+        The status of the resource group in all regions.
+        """
         return pulumi.get(self, "region_statuses")
 
     @property

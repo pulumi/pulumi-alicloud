@@ -21,6 +21,7 @@ __all__ = [
     'AlertSchedule',
     'AlertSeverityConfiguration',
     'EtlEtlSink',
+    'OssExportConfigColumn',
     'OssShipperParquetConfig',
     'StoreEncryptConf',
     'StoreEncryptConfUserCmkInfo',
@@ -787,6 +788,35 @@ class EtlEtlSink(dict):
     def type(self) -> Optional[str]:
         """
         ETL sinks type, the default value is AliyunLOG.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class OssExportConfigColumn(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str):
+        """
+        :param str name: The name of the key.
+        :param str type: Type of configuration name.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the key.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of configuration name.
         """
         return pulumi.get(self, "type")
 

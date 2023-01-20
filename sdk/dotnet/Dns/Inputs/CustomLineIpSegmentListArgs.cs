@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dns.Inputs
 {
 
-    public sealed class CustomLineIpSegmentListArgs : Pulumi.ResourceArgs
+    public sealed class CustomLineIpSegmentListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The end IP address of the CIDR block.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Dns.Inputs
         public CustomLineIpSegmentListArgs()
         {
         }
+        public static new CustomLineIpSegmentListArgs Empty => new CustomLineIpSegmentListArgs();
     }
 }

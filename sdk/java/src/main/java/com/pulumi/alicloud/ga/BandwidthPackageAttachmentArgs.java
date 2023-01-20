@@ -29,14 +29,14 @@ public final class BandwidthPackageAttachmentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The ID of the bandwidth plan to disassociate.
+     * The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
      * 
      */
     @Import(name="bandwidthPackageId", required=true)
     private Output<String> bandwidthPackageId;
 
     /**
-     * @return The ID of the bandwidth plan to disassociate.
+     * @return The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
      * 
      */
     public Output<String> bandwidthPackageId() {
@@ -90,7 +90,7 @@ public final class BandwidthPackageAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param bandwidthPackageId The ID of the bandwidth plan to disassociate.
+         * @param bandwidthPackageId The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class BandwidthPackageAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param bandwidthPackageId The ID of the bandwidth plan to disassociate.
+         * @param bandwidthPackageId The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
          * 
          * @return builder
          * 

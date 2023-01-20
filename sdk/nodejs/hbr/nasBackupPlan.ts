@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     schedule: "I|1602673264|PT2H",
  *     backupType: "COMPLETE",
  *     vaultId: defaultVault.id,
- *     createTime: defaultFileSystems.apply(defaultFileSystems => defaultFileSystems.systems?[0]?.createTime),
+ *     createTime: defaultFileSystems.apply(defaultFileSystems => defaultFileSystems.systems?.[0]?.createTime),
  *     retention: "2",
  *     paths: ["/"],
  * }, {
@@ -93,6 +93,18 @@ export class NasBackupPlan extends pulumi.CustomResource {
      */
     public readonly createTime!: pulumi.Output<string>;
     /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    public readonly crossAccountRoleName!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    public readonly crossAccountType!: pulumi.Output<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    public readonly crossAccountUserId!: pulumi.Output<number | undefined>;
+    /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     public readonly disabled!: pulumi.Output<boolean>;
@@ -104,6 +116,9 @@ export class NasBackupPlan extends pulumi.CustomResource {
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     public readonly nasBackupPlanName!: pulumi.Output<string>;
+    /**
+     * This parameter specifies whether to use Windows VSS to define a backup path.
+     */
     public readonly options!: pulumi.Output<string | undefined>;
     /**
      * List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
@@ -137,6 +152,9 @@ export class NasBackupPlan extends pulumi.CustomResource {
             const state = argsOrState as NasBackupPlanState | undefined;
             resourceInputs["backupType"] = state ? state.backupType : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["crossAccountRoleName"] = state ? state.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = state ? state.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = state ? state.crossAccountUserId : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
             resourceInputs["nasBackupPlanName"] = state ? state.nasBackupPlanName : undefined;
@@ -170,6 +188,9 @@ export class NasBackupPlan extends pulumi.CustomResource {
             }
             resourceInputs["backupType"] = args ? args.backupType : undefined;
             resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["crossAccountRoleName"] = args ? args.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = args ? args.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = args ? args.crossAccountUserId : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
             resourceInputs["nasBackupPlanName"] = args ? args.nasBackupPlanName : undefined;
@@ -199,6 +220,18 @@ export interface NasBackupPlanState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
+    /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     disabled?: pulumi.Input<boolean>;
@@ -210,6 +243,9 @@ export interface NasBackupPlanState {
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     nasBackupPlanName?: pulumi.Input<string>;
+    /**
+     * This parameter specifies whether to use Windows VSS to define a backup path.
+     */
     options?: pulumi.Input<string>;
     /**
      * List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
@@ -244,6 +280,18 @@ export interface NasBackupPlanArgs {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
+    /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     disabled?: pulumi.Input<boolean>;
@@ -255,6 +303,9 @@ export interface NasBackupPlanArgs {
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     nasBackupPlanName: pulumi.Input<string>;
+    /**
+     * This parameter specifies whether to use Windows VSS to define a backup path.
+     */
     options?: pulumi.Input<string>;
     /**
      * List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.

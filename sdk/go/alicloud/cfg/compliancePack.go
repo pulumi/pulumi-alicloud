@@ -63,11 +63,11 @@ import (
 //				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
 //				TagKeyScope:             pulumi.String("tfTest"),
 //				TagValueScope:           pulumi.String("tfTest 123"),
-//				ResourceGroupIdsScope:   pulumi.String(defaultResourceGroups.Ids[0]),
-//				ExcludeResourceIdsScope: pulumi.String(defaultInstances.Instances[0].Id),
+//				ResourceGroupIdsScope:   *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ExcludeResourceIdsScope: *pulumi.String(defaultInstances.Instances[0].Id),
 //				RegionIdsScope:          pulumi.String("cn-hangzhou"),
 //				InputParameters: pulumi.AnyMap{
-//					"vpcIds": pulumi.String(defaultInstances.Instances[0].VpcId),
+//					"vpcIds": *pulumi.String(defaultInstances.Instances[0].VpcId),
 //				},
 //			})
 //			if err != nil {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class GetKubernetesAddonsAddonInputArgs : Pulumi.ResourceArgs
+    public sealed class GetKubernetesAddonsAddonInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The current custom configuration of the addon. **Note:** Available in v1.166.0+
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public GetKubernetesAddonsAddonInputArgs()
         {
         }
+        public static new GetKubernetesAddonsAddonInputArgs Empty => new GetKubernetesAddonsAddonInputArgs();
     }
 }

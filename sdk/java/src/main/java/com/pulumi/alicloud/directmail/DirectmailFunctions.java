@@ -38,7 +38,7 @@ public final class DirectmailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.directmail.DirectmailFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -92,7 +92,7 @@ public final class DirectmailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.directmail.DirectmailFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -146,7 +146,7 @@ public final class DirectmailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.directmail.DirectmailFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -200,7 +200,7 @@ public final class DirectmailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.directmail.DirectmailFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -254,7 +254,7 @@ public final class DirectmailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.directmail.DirectmailFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -308,7 +308,7 @@ public final class DirectmailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.directmail.DirectmailFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

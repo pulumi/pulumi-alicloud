@@ -17,18 +17,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.expressconnect.getPhysicalConnectionService({
+ * const open = alicloud.expressconnect.getPhysicalConnectionService({
  *     enable: "On",
- * }));
+ * });
  * ```
  */
 export function getPhysicalConnectionService(args?: GetPhysicalConnectionServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetPhysicalConnectionServiceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", {
         "enable": args.enable,
     }, opts);
@@ -58,9 +55,26 @@ export interface GetPhysicalConnectionServiceResult {
      */
     readonly status: string;
 }
-
+/**
+ * Using this data source can enable outbound traffic for an Express Connect circuit automatically. If the service has been opened, it will return opened.
+ *
+ * For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
+ *
+ * > **NOTE:** Available in v1.132.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.expressconnect.getPhysicalConnectionService({
+ *     enable: "On",
+ * });
+ * ```
+ */
 export function getPhysicalConnectionServiceOutput(args?: GetPhysicalConnectionServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPhysicalConnectionServiceResult> {
-    return pulumi.output(args).apply(a => getPhysicalConnectionService(a, opts))
+    return pulumi.output(args).apply((a: any) => getPhysicalConnectionService(a, opts))
 }
 
 /**

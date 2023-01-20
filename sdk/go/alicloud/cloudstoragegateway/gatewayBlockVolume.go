@@ -62,15 +62,6 @@ type GatewayBlockVolume struct {
 	// The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The status of volume. Valid values:
-	// - `0`: Normal condition.
-	// - `1`: Failed to create volume.
-	// - `2`: Failed to delete volume.
-	// - `3`: Failed to enable target.
-	// - `4`: Failed to disable target.
-	// - `5`: Database error.
-	// - `6`: Failed to enable cache.
-	// - `7`: Failed to disable cache.
-	// - `8`: System error.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -151,15 +142,6 @@ type gatewayBlockVolumeState struct {
 	// The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
 	Size *int `pulumi:"size"`
 	// The status of volume. Valid values:
-	// - `0`: Normal condition.
-	// - `1`: Failed to create volume.
-	// - `2`: Failed to delete volume.
-	// - `3`: Failed to enable target.
-	// - `4`: Failed to disable target.
-	// - `5`: Database error.
-	// - `6`: Failed to enable cache.
-	// - `7`: Failed to disable cache.
-	// - `8`: System error.
 	Status *string `pulumi:"status"`
 }
 
@@ -197,15 +179,6 @@ type GatewayBlockVolumeState struct {
 	// The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
 	Size pulumi.IntPtrInput
 	// The status of volume. Valid values:
-	// - `0`: Normal condition.
-	// - `1`: Failed to create volume.
-	// - `2`: Failed to delete volume.
-	// - `3`: Failed to enable target.
-	// - `4`: Failed to disable target.
-	// - `5`: Database error.
-	// - `6`: Failed to enable cache.
-	// - `7`: Failed to disable cache.
-	// - `8`: System error.
 	Status pulumi.StringPtrInput
 }
 
@@ -448,15 +421,6 @@ func (o GatewayBlockVolumeOutput) Size() pulumi.IntOutput {
 }
 
 // The status of volume. Valid values:
-// - `0`: Normal condition.
-// - `1`: Failed to create volume.
-// - `2`: Failed to delete volume.
-// - `3`: Failed to enable target.
-// - `4`: Failed to disable target.
-// - `5`: Database error.
-// - `6`: Failed to enable cache.
-// - `7`: Failed to disable cache.
-// - `8`: System error.
 func (o GatewayBlockVolumeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayBlockVolume) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

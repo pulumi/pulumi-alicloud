@@ -13,13 +13,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const basic = new alicloud.ecs.KeyPair("basic", {
- *     keyName: "terraform-test-key-pair",
- * });
+ * const basic = new alicloud.ecs.KeyPair("basic", {keyName: "terraform-test-key-pair"});
  * // Using name prefix to build key pair
- * const prefix = new alicloud.ecs.KeyPair("prefix", {
- *     keyNamePrefix: "terraform-test-key-pair-prefix",
- * });
+ * const prefix = new alicloud.ecs.KeyPair("prefix", {keyNamePrefix: "terraform-test-key-pair-prefix"});
  * // Import an existing public key to build a alicloud key pair
  * const publickey = new alicloud.ecs.KeyPair("publickey", {
  *     keyName: "my_public_key",

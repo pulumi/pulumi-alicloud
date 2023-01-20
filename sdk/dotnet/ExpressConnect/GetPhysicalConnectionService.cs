@@ -23,26 +23,24 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var open = AliCloud.ExpressConnect.GetPhysicalConnectionService.Invoke(new()
         ///     {
-        ///         var open = Output.Create(AliCloud.ExpressConnect.GetPhysicalConnectionService.InvokeAsync(new AliCloud.ExpressConnect.GetPhysicalConnectionServiceArgs
-        ///         {
-        ///             Enable = "On",
-        ///         }));
-        ///     }
+        ///         Enable = "On",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPhysicalConnectionServiceResult> InvokeAsync(GetPhysicalConnectionServiceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPhysicalConnectionServiceResult>("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args ?? new GetPhysicalConnectionServiceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPhysicalConnectionServiceResult>("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args ?? new GetPhysicalConnectionServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Using this data source can enable outbound traffic for an Express Connect circuit automatically. If the service has been opened, it will return opened.
@@ -56,30 +54,28 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var open = AliCloud.ExpressConnect.GetPhysicalConnectionService.Invoke(new()
         ///     {
-        ///         var open = Output.Create(AliCloud.ExpressConnect.GetPhysicalConnectionService.InvokeAsync(new AliCloud.ExpressConnect.GetPhysicalConnectionServiceArgs
-        ///         {
-        ///             Enable = "On",
-        ///         }));
-        ///     }
+        ///         Enable = "On",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPhysicalConnectionServiceResult> Invoke(GetPhysicalConnectionServiceInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPhysicalConnectionServiceResult>("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args ?? new GetPhysicalConnectionServiceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPhysicalConnectionServiceResult>("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args ?? new GetPhysicalConnectionServiceInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPhysicalConnectionServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetPhysicalConnectionServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
@@ -90,9 +86,10 @@ namespace Pulumi.AliCloud.ExpressConnect
         public GetPhysicalConnectionServiceArgs()
         {
         }
+        public static new GetPhysicalConnectionServiceArgs Empty => new GetPhysicalConnectionServiceArgs();
     }
 
-    public sealed class GetPhysicalConnectionServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPhysicalConnectionServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
@@ -103,6 +100,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public GetPhysicalConnectionServiceInvokeArgs()
         {
         }
+        public static new GetPhysicalConnectionServiceInvokeArgs Empty => new GetPhysicalConnectionServiceInvokeArgs();
     }
 
 

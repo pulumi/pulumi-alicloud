@@ -592,7 +592,7 @@ class AdConnectorDirectory(pulumi.CustomResource):
             __props__.__dict__["domain_name"] = domain_name
             if domain_password is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_password'")
-            __props__.__dict__["domain_password"] = domain_password
+            __props__.__dict__["domain_password"] = None if domain_password is None else pulumi.Output.secret(domain_password)
             if domain_user_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_user_name'")
             __props__.__dict__["domain_user_name"] = domain_user_name
@@ -605,6 +605,8 @@ class AdConnectorDirectory(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vswitch_ids'")
             __props__.__dict__["vswitch_ids"] = vswitch_ids
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["domainPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AdConnectorDirectory, __self__).__init__(
             'alicloud:eds/adConnectorDirectory:AdConnectorDirectory',
             resource_name,

@@ -2,15 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getDomainRecords:getDomainRecords", {
         "domainName": args.domainName,
         "hostRecordRegex": args.hostRecordRegex,
@@ -59,9 +57,8 @@ export interface GetDomainRecordsResult {
     readonly urls: string[];
     readonly valueRegex?: string;
 }
-
 export function getDomainRecordsOutput(args: GetDomainRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainRecordsResult> {
-    return pulumi.output(args).apply(a => getDomainRecords(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomainRecords(a, opts))
 }
 
 /**

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -27,7 +28,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
@@ -38,15 +39,12 @@ import * as utilities from "../utilities";
  * const sampleDs = alicloud.slb.getServerGroupsOutput({
  *     loadBalancerId: defaultApplicationLoadBalancer.id,
  * });
- * export const firstSlbServerGroupId = sampleDs.apply(sampleDs => sampleDs.slbServerGroups?[0]?.id);
+ * export const firstSlbServerGroupId = sampleDs.apply(sampleDs => sampleDs.slbServerGroups?.[0]?.id);
  * ```
  */
 export function getServerGroups(args: GetServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getServerGroups:getServerGroups", {
         "ids": args.ids,
         "loadBalancerId": args.loadBalancerId,
@@ -98,9 +96,44 @@ export interface GetServerGroupsResult {
      */
     readonly slbServerGroups: outputs.slb.GetServerGroupsSlbServerGroup[];
 }
-
+/**
+ * This data source provides the VServer groups related to a server load balancer.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "slbservergroups";
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/16",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ *     loadBalancerName: name,
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultApplicationLoadBalancer.id});
+ * const sampleDs = alicloud.slb.getServerGroupsOutput({
+ *     loadBalancerId: defaultApplicationLoadBalancer.id,
+ * });
+ * export const firstSlbServerGroupId = sampleDs.apply(sampleDs => sampleDs.slbServerGroups?.[0]?.id);
+ * ```
+ */
 export function getServerGroupsOutput(args: GetServerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupsResult> {
-    return pulumi.output(args).apply(a => getServerGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getServerGroups(a, opts))
 }
 
 /**

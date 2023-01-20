@@ -51,9 +51,9 @@ import (
 //			}
 //			_, err = eds.NewBundle(ctx, "defaultBundle", &eds.BundleArgs{
 //				Description: pulumi.Any(_var.Name),
-//				DesktopType: pulumi.String(defaultDesktopTypes.Ids[0]),
+//				DesktopType: *pulumi.String(defaultDesktopTypes.Ids[0]),
 //				BundleName:  pulumi.Any(_var.Name),
-//				ImageId:     pulumi.String(defaultImages.Ids[0]),
+//				ImageId:     *pulumi.String(defaultImages.Ids[0]),
 //				UserDiskSizeGibs: pulumi.IntArray{
 //					pulumi.Int(70),
 //				},

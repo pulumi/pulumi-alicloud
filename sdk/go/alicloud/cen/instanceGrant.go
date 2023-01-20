@@ -24,8 +24,8 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -34,16 +34,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := providers.Newalicloud(ctx, "account1", &providers.alicloudArgs{
-//				AccessKey: "access123",
-//				SecretKey: "secret123",
+//			_, err := alicloud.NewProvider(ctx, "account1", &alicloud.ProviderArgs{
+//				AccessKey: pulumi.String("access123"),
+//				SecretKey: pulumi.String("secret123"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = providers.Newalicloud(ctx, "account2", &providers.alicloudArgs{
-//				AccessKey: "access456",
-//				SecretKey: "secret456",
+//			_, err = alicloud.NewProvider(ctx, "account2", &alicloud.ProviderArgs{
+//				AccessKey: pulumi.String("access456"),
+//				SecretKey: pulumi.String("secret456"),
 //			})
 //			if err != nil {
 //				return err

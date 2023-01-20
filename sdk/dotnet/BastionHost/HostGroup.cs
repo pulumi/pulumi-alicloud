@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.BastionHost
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.BastionHost.HostGroup("example", new()
     ///     {
-    ///         var example = new AliCloud.BastionHost.HostGroup("example", new AliCloud.BastionHost.HostGroupArgs
-    ///         {
-    ///             HostGroupName = "example_value",
-    ///             InstanceId = "bastionhost-cn-tl3xxxxxxx",
-    ///         });
-    ///     }
+    ///         HostGroupName = "example_value",
+    ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/hostGroup:HostGroup")]
-    public partial class HostGroup : Pulumi.CustomResource
+    public partial class HostGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specify the New Host Group of Notes, Supports up to 500 Characters.
@@ -117,7 +115,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
     }
 
-    public sealed class HostGroupArgs : Pulumi.ResourceArgs
+    public sealed class HostGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the New Host Group of Notes, Supports up to 500 Characters.
@@ -140,9 +138,10 @@ namespace Pulumi.AliCloud.BastionHost
         public HostGroupArgs()
         {
         }
+        public static new HostGroupArgs Empty => new HostGroupArgs();
     }
 
-    public sealed class HostGroupState : Pulumi.ResourceArgs
+    public sealed class HostGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the New Host Group of Notes, Supports up to 500 Characters.
@@ -171,5 +170,6 @@ namespace Pulumi.AliCloud.BastionHost
         public HostGroupState()
         {
         }
+        public static new HostGroupState Empty => new HostGroupState();
     }
 }

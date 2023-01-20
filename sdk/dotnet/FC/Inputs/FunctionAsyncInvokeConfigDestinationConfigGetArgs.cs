@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC.Inputs
 {
 
-    public sealed class FunctionAsyncInvokeConfigDestinationConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class FunctionAsyncInvokeConfigDestinationConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.FC.Inputs
         public FunctionAsyncInvokeConfigDestinationConfigGetArgs()
         {
         }
+        public static new FunctionAsyncInvokeConfigDestinationConfigGetArgs Empty => new FunctionAsyncInvokeConfigDestinationConfigGetArgs();
     }
 }

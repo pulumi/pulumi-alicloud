@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -24,15 +25,12 @@ import * as utilities from "../utilities";
  *     start: "1657505665",
  *     end: "1657520065",
  * });
- * export const cmsMetricRuleTemplateId1 = _default.then(_default => _default.datas?[0]);
+ * export const cmsMetricRuleTemplateId1 = _default.then(_default => _default.datas?.[0]);
  * ```
  */
 export function getHybridMonitorDatas(args: GetHybridMonitorDatasArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridMonitorDatasResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", {
         "end": args.end,
         "namespace": args.namespace,
@@ -86,9 +84,30 @@ export interface GetHybridMonitorDatasResult {
     readonly promSql: string;
     readonly start: string;
 }
-
+/**
+ * This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.177.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cms.getHybridMonitorDatas({
+ *     namespace: "example_value",
+ *     promSql: "AliyunEcs_cpu_total",
+ *     start: "1657505665",
+ *     end: "1657520065",
+ * });
+ * export const cmsMetricRuleTemplateId1 = _default.then(_default => _default.datas?.[0]);
+ * ```
+ */
 export function getHybridMonitorDatasOutput(args: GetHybridMonitorDatasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridMonitorDatasResult> {
-    return pulumi.output(args).apply(a => getHybridMonitorDatas(a, opts))
+    return pulumi.output(args).apply((a: any) => getHybridMonitorDatas(a, opts))
 }
 
 /**

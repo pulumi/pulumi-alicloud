@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess
 {
     [AliCloudResourceType("alicloud:ess/schedule:Schedule")]
-    public partial class Schedule : Pulumi.CustomResource
+    public partial class Schedule : global::Pulumi.CustomResource
     {
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
-    public sealed class ScheduleArgs : Pulumi.ResourceArgs
+    public sealed class ScheduleArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -139,9 +139,10 @@ namespace Pulumi.AliCloud.Ess
         public ScheduleArgs()
         {
         }
+        public static new ScheduleArgs Empty => new ScheduleArgs();
     }
 
-    public sealed class ScheduleState : Pulumi.ResourceArgs
+    public sealed class ScheduleState : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -185,5 +186,6 @@ namespace Pulumi.AliCloud.Ess
         public ScheduleState()
         {
         }
+        public static new ScheduleState Empty => new ScheduleState();
     }
 }

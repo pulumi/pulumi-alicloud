@@ -185,6 +185,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maximum retry timeout of the request.
+     * 
+     */
+    @Import(name="maxRetryTimeout", json=true)
+    private @Nullable Output<Integer> maxRetryTimeout;
+
+    /**
+     * @return The maximum retry timeout of the request.
+     * 
+     */
+    public Optional<Output<Integer>> maxRetryTimeout() {
+        return Optional.ofNullable(this.maxRetryTimeout);
+    }
+
+    /**
      * @deprecated
      * Field &#39;mns_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;mns&#39; which in nested endpoints instead.
      * 
@@ -374,6 +389,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.endpoints = $.endpoints;
         this.fc = $.fc;
         this.logEndpoint = $.logEndpoint;
+        this.maxRetryTimeout = $.maxRetryTimeout;
         this.mnsEndpoint = $.mnsEndpoint;
         this.otsInstanceName = $.otsInstanceName;
         this.profile = $.profile;
@@ -629,6 +645,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead. */
         public Builder logEndpoint(String logEndpoint) {
             return logEndpoint(Output.of(logEndpoint));
+        }
+
+        /**
+         * @param maxRetryTimeout The maximum retry timeout of the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxRetryTimeout(@Nullable Output<Integer> maxRetryTimeout) {
+            $.maxRetryTimeout = maxRetryTimeout;
+            return this;
+        }
+
+        /**
+         * @param maxRetryTimeout The maximum retry timeout of the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxRetryTimeout(Integer maxRetryTimeout) {
+            return maxRetryTimeout(Output.of(maxRetryTimeout));
         }
 
         /**

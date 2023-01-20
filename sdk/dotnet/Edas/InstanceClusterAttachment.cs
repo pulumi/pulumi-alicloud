@@ -19,25 +19,23 @@ namespace Pulumi.AliCloud.Edas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Edas.InstanceClusterAttachment("default", new()
     ///     {
-    ///         var @default = new AliCloud.Edas.InstanceClusterAttachment("default", new AliCloud.Edas.InstanceClusterAttachmentArgs
-    ///         {
-    ///             ClusterId = @var.Cluster_id,
-    ///             InstanceIds = @var.Instance_ids,
-    ///         });
-    ///     }
+    ///         ClusterId = @var.Cluster_id,
+    ///         InstanceIds = @var.Instance_ids,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment")]
-    public partial class InstanceClusterAttachment : Pulumi.CustomResource
+    public partial class InstanceClusterAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the cluster that you want to create the application.
@@ -113,7 +111,7 @@ namespace Pulumi.AliCloud.Edas
         }
     }
 
-    public sealed class InstanceClusterAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class InstanceClusterAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the cluster that you want to create the application.
@@ -136,9 +134,10 @@ namespace Pulumi.AliCloud.Edas
         public InstanceClusterAttachmentArgs()
         {
         }
+        public static new InstanceClusterAttachmentArgs Empty => new InstanceClusterAttachmentArgs();
     }
 
-    public sealed class InstanceClusterAttachmentState : Pulumi.ResourceArgs
+    public sealed class InstanceClusterAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the cluster that you want to create the application.
@@ -197,5 +196,6 @@ namespace Pulumi.AliCloud.Edas
         public InstanceClusterAttachmentState()
         {
         }
+        public static new InstanceClusterAttachmentState Empty => new InstanceClusterAttachmentState();
     }
 }

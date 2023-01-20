@@ -75,8 +75,6 @@ type GetEcsDisksArgs struct {
 	// The disk type.
 	DiskType *string `pulumi:"diskType"`
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun *bool `pulumi:"dryRun"`
 	// Whether the disk implements an automatic snapshot policy.
 	EnableAutoSnapshot *bool `pulumi:"enableAutoSnapshot"`
@@ -192,8 +190,6 @@ type GetEcsDisksOutputArgs struct {
 	// The disk type.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
 	// Whether the disk implements an automatic snapshot policy.
 	EnableAutoSnapshot pulumi.BoolPtrInput `pulumi:"enableAutoSnapshot"`

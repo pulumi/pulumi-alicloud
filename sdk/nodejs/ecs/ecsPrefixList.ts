@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -20,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEcsPrefixList = new alicloud.ecs.EcsPrefixList("default", {
+ * const _default = new alicloud.ecs.EcsPrefixList("default", {
  *     addressFamily: "IPv4",
  *     description: "description",
  *     entries: [{
@@ -73,7 +74,7 @@ export class EcsPrefixList extends pulumi.CustomResource {
      */
     public readonly addressFamily!: pulumi.Output<string>;
     /**
-     * The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+     * The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -141,7 +142,7 @@ export interface EcsPrefixListState {
      */
     addressFamily?: pulumi.Input<string>;
     /**
-     * The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+     * The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**
@@ -167,7 +168,7 @@ export interface EcsPrefixListArgs {
      */
     addressFamily: pulumi.Input<string>;
     /**
-     * The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+     * The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**

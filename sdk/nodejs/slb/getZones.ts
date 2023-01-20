@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,19 +17,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const zonesIds = pulumi.output(alicloud.slb.getZones({
+ * const zonesIds = alicloud.slb.getZones({
  *     availableSlbAddressIpVersion: "ipv4",
  *     availableSlbAddressType: "vpc",
- * }));
+ * });
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getZones:getZones", {
         "availableSlbAddressIpVersion": args.availableSlbAddressIpVersion,
         "availableSlbAddressType": args.availableSlbAddressType,
@@ -103,9 +101,25 @@ export interface GetZonesResult {
      */
     readonly zones: outputs.slb.GetZonesZone[];
 }
-
+/**
+ * This data source provides availability zones for SLB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+ *
+ * > **NOTE:** Available in v1.73.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const zonesIds = alicloud.slb.getZones({
+ *     availableSlbAddressIpVersion: "ipv4",
+ *     availableSlbAddressType: "vpc",
+ * });
+ * ```
+ */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(args).apply(a => getZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getZones(a, opts))
 }
 
 /**

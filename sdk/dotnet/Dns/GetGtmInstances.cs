@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Dns
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Dns.GetGtmInstances.InvokeAsync());
-        ///         this.AlidnsGtmInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Dns.GetGtmInstances.Invoke();
         /// 
-        ///     [Output("alidnsGtmInstanceId1")]
-        ///     public Output&lt;string&gt; AlidnsGtmInstanceId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alidnsGtmInstanceId1"] = ids.Apply(getGtmInstancesResult =&gt; getGtmInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGtmInstancesResult> InvokeAsync(GetGtmInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGtmInstancesResult>("alicloud:dns/getGtmInstances:getGtmInstances", args ?? new GetGtmInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGtmInstancesResult>("alicloud:dns/getGtmInstances:getGtmInstances", args ?? new GetGtmInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Alidns Gtm Instances of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Dns
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Dns.GetGtmInstances.InvokeAsync());
-        ///         this.AlidnsGtmInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Dns.GetGtmInstances.Invoke();
         /// 
-        ///     [Output("alidnsGtmInstanceId1")]
-        ///     public Output&lt;string&gt; AlidnsGtmInstanceId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alidnsGtmInstanceId1"] = ids.Apply(getGtmInstancesResult =&gt; getGtmInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGtmInstancesResult> Invoke(GetGtmInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGtmInstancesResult>("alicloud:dns/getGtmInstances:getGtmInstances", args ?? new GetGtmInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGtmInstancesResult>("alicloud:dns/getGtmInstances:getGtmInstances", args ?? new GetGtmInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGtmInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetGtmInstancesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -108,9 +106,10 @@ namespace Pulumi.AliCloud.Dns
         public GetGtmInstancesArgs()
         {
         }
+        public static new GetGtmInstancesArgs Empty => new GetGtmInstancesArgs();
     }
 
-    public sealed class GetGtmInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGtmInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -139,6 +138,7 @@ namespace Pulumi.AliCloud.Dns
         public GetGtmInstancesInvokeArgs()
         {
         }
+        public static new GetGtmInstancesInvokeArgs Empty => new GetGtmInstancesInvokeArgs();
     }
 
 

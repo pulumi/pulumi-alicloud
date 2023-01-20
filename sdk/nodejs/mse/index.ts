@@ -5,20 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./cluster";
-export * from "./engineNamespace";
-export * from "./gateway";
-export * from "./getClusters";
-export * from "./getEngineNamespaces";
-export * from "./getGateways";
-export * from "./getZnodes";
-export * from "./znode";
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
-// Import resources to register:
-import { Cluster } from "./cluster";
-import { EngineNamespace } from "./engineNamespace";
-import { Gateway } from "./gateway";
-import { Znode } from "./znode";
+export { EngineNamespaceArgs, EngineNamespaceState } from "./engineNamespace";
+export type EngineNamespace = import("./engineNamespace").EngineNamespace;
+export const EngineNamespace: typeof import("./engineNamespace").EngineNamespace = null as any;
+utilities.lazyLoad(exports, ["EngineNamespace"], () => require("./engineNamespace"));
+
+export { GatewayArgs, GatewayState } from "./gateway";
+export type Gateway = import("./gateway").Gateway;
+export const Gateway: typeof import("./gateway").Gateway = null as any;
+utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+
+export { GetClustersArgs, GetClustersResult, GetClustersOutputArgs } from "./getClusters";
+export const getClusters: typeof import("./getClusters").getClusters = null as any;
+export const getClustersOutput: typeof import("./getClusters").getClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getClusters","getClustersOutput"], () => require("./getClusters"));
+
+export { GetEngineNamespacesArgs, GetEngineNamespacesResult, GetEngineNamespacesOutputArgs } from "./getEngineNamespaces";
+export const getEngineNamespaces: typeof import("./getEngineNamespaces").getEngineNamespaces = null as any;
+export const getEngineNamespacesOutput: typeof import("./getEngineNamespaces").getEngineNamespacesOutput = null as any;
+utilities.lazyLoad(exports, ["getEngineNamespaces","getEngineNamespacesOutput"], () => require("./getEngineNamespaces"));
+
+export { GetGatewaysArgs, GetGatewaysResult, GetGatewaysOutputArgs } from "./getGateways";
+export const getGateways: typeof import("./getGateways").getGateways = null as any;
+export const getGatewaysOutput: typeof import("./getGateways").getGatewaysOutput = null as any;
+utilities.lazyLoad(exports, ["getGateways","getGatewaysOutput"], () => require("./getGateways"));
+
+export { GetZnodesArgs, GetZnodesResult, GetZnodesOutputArgs } from "./getZnodes";
+export const getZnodes: typeof import("./getZnodes").getZnodes = null as any;
+export const getZnodesOutput: typeof import("./getZnodes").getZnodesOutput = null as any;
+utilities.lazyLoad(exports, ["getZnodes","getZnodesOutput"], () => require("./getZnodes"));
+
+export { ZnodeArgs, ZnodeState } from "./znode";
+export type Znode = import("./znode").Znode;
+export const Znode: typeof import("./znode").Znode = null as any;
+utilities.lazyLoad(exports, ["Znode"], () => require("./znode"));
+
 
 const _module = {
     version: utilities.getVersion(),

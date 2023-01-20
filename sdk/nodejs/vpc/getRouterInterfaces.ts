@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -15,21 +16,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const routerInterfacesDs = pulumi.output(alicloud.vpc.getRouterInterfaces({
+ * const routerInterfacesDs = alicloud.vpc.getRouterInterfaces({
  *     nameRegex: "^testenv",
  *     status: "Active",
- * }));
- *
- * export const firstRouterInterfaceId = routerInterfacesDs.interfaces[0].id;
+ * });
+ * export const firstRouterInterfaceId = routerInterfacesDs.then(routerInterfacesDs => routerInterfacesDs.interfaces?.[0]?.id);
  * ```
  */
 export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterInterfacesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -139,9 +136,25 @@ export interface GetRouterInterfacesResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+ * that connect VPCs together.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const routerInterfacesDs = alicloud.vpc.getRouterInterfaces({
+ *     nameRegex: "^testenv",
+ *     status: "Active",
+ * });
+ * export const firstRouterInterfaceId = routerInterfacesDs.then(routerInterfacesDs => routerInterfacesDs.interfaces?.[0]?.id);
+ * ```
+ */
 export function getRouterInterfacesOutput(args?: GetRouterInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterInterfacesResult> {
-    return pulumi.output(args).apply(a => getRouterInterfaces(a, opts))
+    return pulumi.output(args).apply((a: any) => getRouterInterfaces(a, opts))
 }
 
 /**

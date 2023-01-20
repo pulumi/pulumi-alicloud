@@ -57,24 +57,26 @@ type Key struct {
 	pulumi.CustomResourceState
 
 	// The Alicloud Resource Name (ARN) of the key.
-	// * `creationDate` -The date and time when the CMK was created. The time is displayed in UTC.
-	// * `creator` -The creator of the CMK.
-	// * `deleteDate` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// Specifies whether to enable automatic key rotation. Valid values:
 	// - Enabled
 	// - Disabled (default value)
 	//   **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	AutomaticRotation pulumi.StringPtrOutput `pulumi:"automaticRotation"`
-	CreationDate      pulumi.StringOutput    `pulumi:"creationDate"`
-	Creator           pulumi.StringOutput    `pulumi:"creator"`
-	DeleteDate        pulumi.StringOutput    `pulumi:"deleteDate"`
+	// The date and time when the CMK was created. The time is displayed in UTC.
+	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
+	// The creator of the CMK.
+	Creator pulumi.StringOutput `pulumi:"creator"`
+	// The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+	DeleteDate pulumi.StringOutput `pulumi:"deleteDate"`
 	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays pulumi.IntOutput `pulumi:"deletionWindowInDays"`
 	// The description of the CMK. The description can be 0 to 8,192 characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The instance ID of the exclusive KMS instance.
+	DkmsInstanceId pulumi.StringPtrOutput `pulumi:"dkmsInstanceId"`
 	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
 	//
 	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
@@ -103,10 +105,11 @@ type Key struct {
 	//   **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
 	//   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
 	//   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
-	Origin pulumi.StringPtrOutput `pulumi:"origin"`
+	Origin pulumi.StringOutput `pulumi:"origin"`
 	// The number of days before the CMK is deleted.
 	// During this period, the CMK is in the PendingDeletion state.
-	// After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+	// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+	// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays pulumi.IntOutput `pulumi:"pendingWindowInDays"`
 	// The ID of the current primary key version of the symmetric CMK.
 	PrimaryKeyVersion pulumi.StringOutput `pulumi:"primaryKeyVersion"`
@@ -160,24 +163,26 @@ func GetKey(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Key resources.
 type keyState struct {
 	// The Alicloud Resource Name (ARN) of the key.
-	// * `creationDate` -The date and time when the CMK was created. The time is displayed in UTC.
-	// * `creator` -The creator of the CMK.
-	// * `deleteDate` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
 	Arn *string `pulumi:"arn"`
 	// Specifies whether to enable automatic key rotation. Valid values:
 	// - Enabled
 	// - Disabled (default value)
 	//   **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	AutomaticRotation *string `pulumi:"automaticRotation"`
-	CreationDate      *string `pulumi:"creationDate"`
-	Creator           *string `pulumi:"creator"`
-	DeleteDate        *string `pulumi:"deleteDate"`
+	// The date and time when the CMK was created. The time is displayed in UTC.
+	CreationDate *string `pulumi:"creationDate"`
+	// The creator of the CMK.
+	Creator *string `pulumi:"creator"`
+	// The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+	DeleteDate *string `pulumi:"deleteDate"`
 	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays *int `pulumi:"deletionWindowInDays"`
 	// The description of the CMK. The description can be 0 to 8,192 characters in length.
 	Description *string `pulumi:"description"`
+	// The instance ID of the exclusive KMS instance.
+	DkmsInstanceId *string `pulumi:"dkmsInstanceId"`
 	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
 	//
 	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
@@ -209,7 +214,8 @@ type keyState struct {
 	Origin *string `pulumi:"origin"`
 	// The number of days before the CMK is deleted.
 	// During this period, the CMK is in the PendingDeletion state.
-	// After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+	// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+	// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays *int `pulumi:"pendingWindowInDays"`
 	// The ID of the current primary key version of the symmetric CMK.
 	PrimaryKeyVersion *string `pulumi:"primaryKeyVersion"`
@@ -235,24 +241,26 @@ type keyState struct {
 
 type KeyState struct {
 	// The Alicloud Resource Name (ARN) of the key.
-	// * `creationDate` -The date and time when the CMK was created. The time is displayed in UTC.
-	// * `creator` -The creator of the CMK.
-	// * `deleteDate` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
 	Arn pulumi.StringPtrInput
 	// Specifies whether to enable automatic key rotation. Valid values:
 	// - Enabled
 	// - Disabled (default value)
 	//   **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	AutomaticRotation pulumi.StringPtrInput
-	CreationDate      pulumi.StringPtrInput
-	Creator           pulumi.StringPtrInput
-	DeleteDate        pulumi.StringPtrInput
+	// The date and time when the CMK was created. The time is displayed in UTC.
+	CreationDate pulumi.StringPtrInput
+	// The creator of the CMK.
+	Creator pulumi.StringPtrInput
+	// The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+	DeleteDate pulumi.StringPtrInput
 	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays pulumi.IntPtrInput
 	// The description of the CMK. The description can be 0 to 8,192 characters in length.
 	Description pulumi.StringPtrInput
+	// The instance ID of the exclusive KMS instance.
+	DkmsInstanceId pulumi.StringPtrInput
 	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
 	//
 	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
@@ -284,7 +292,8 @@ type KeyState struct {
 	Origin pulumi.StringPtrInput
 	// The number of days before the CMK is deleted.
 	// During this period, the CMK is in the PendingDeletion state.
-	// After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+	// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+	// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays pulumi.IntPtrInput
 	// The ID of the current primary key version of the symmetric CMK.
 	PrimaryKeyVersion pulumi.StringPtrInput
@@ -324,6 +333,8 @@ type keyArgs struct {
 	DeletionWindowInDays *int `pulumi:"deletionWindowInDays"`
 	// The description of the CMK. The description can be 0 to 8,192 characters in length.
 	Description *string `pulumi:"description"`
+	// The instance ID of the exclusive KMS instance.
+	DkmsInstanceId *string `pulumi:"dkmsInstanceId"`
 	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
 	//
 	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
@@ -349,7 +360,8 @@ type keyArgs struct {
 	Origin *string `pulumi:"origin"`
 	// The number of days before the CMK is deleted.
 	// During this period, the CMK is in the PendingDeletion state.
-	// After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+	// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+	// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays *int `pulumi:"pendingWindowInDays"`
 	// The protection level of the CMK. Valid values:
 	// - SOFTWARE (default value)
@@ -384,6 +396,8 @@ type KeyArgs struct {
 	DeletionWindowInDays pulumi.IntPtrInput
 	// The description of the CMK. The description can be 0 to 8,192 characters in length.
 	Description pulumi.StringPtrInput
+	// The instance ID of the exclusive KMS instance.
+	DkmsInstanceId pulumi.StringPtrInput
 	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
 	//
 	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
@@ -409,7 +423,8 @@ type KeyArgs struct {
 	Origin pulumi.StringPtrInput
 	// The number of days before the CMK is deleted.
 	// During this period, the CMK is in the PendingDeletion state.
-	// After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+	// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+	// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays pulumi.IntPtrInput
 	// The protection level of the CMK. Valid values:
 	// - SOFTWARE (default value)
@@ -519,9 +534,6 @@ func (o KeyOutput) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 }
 
 // The Alicloud Resource Name (ARN) of the key.
-// * `creationDate` -The date and time when the CMK was created. The time is displayed in UTC.
-// * `creator` -The creator of the CMK.
-// * `deleteDate` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
 func (o KeyOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
 }
@@ -534,14 +546,17 @@ func (o KeyOutput) AutomaticRotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.AutomaticRotation }).(pulumi.StringPtrOutput)
 }
 
+// The date and time when the CMK was created. The time is displayed in UTC.
 func (o KeyOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.CreationDate }).(pulumi.StringOutput)
 }
 
+// The creator of the CMK.
 func (o KeyOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
 
+// The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
 func (o KeyOutput) DeleteDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.DeleteDate }).(pulumi.StringOutput)
 }
@@ -556,6 +571,11 @@ func (o KeyOutput) DeletionWindowInDays() pulumi.IntOutput {
 // The description of the CMK. The description can be 0 to 8,192 characters in length.
 func (o KeyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The instance ID of the exclusive KMS instance.
+func (o KeyOutput) DkmsInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.DkmsInstanceId }).(pulumi.StringPtrOutput)
 }
 
 // Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
@@ -607,13 +627,14 @@ func (o KeyOutput) NextRotationDate() pulumi.StringOutput {
 //     **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
 //     you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
 //     For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
-func (o KeyOutput) Origin() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.Origin }).(pulumi.StringPtrOutput)
+func (o KeyOutput) Origin() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Origin }).(pulumi.StringOutput)
 }
 
 // The number of days before the CMK is deleted.
 // During this period, the CMK is in the PendingDeletion state.
-// After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 func (o KeyOutput) PendingWindowInDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *Key) pulumi.IntOutput { return v.PendingWindowInDays }).(pulumi.IntOutput)
 }

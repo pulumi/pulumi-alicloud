@@ -13,76 +13,76 @@ namespace Pulumi.AliCloud.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var images = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         var images = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             Owners = "system",
-    ///         }));
-    ///         var instances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync());
-    ///         var template = new AliCloud.Ecs.LaunchTemplate("template", new AliCloud.Ecs.LaunchTemplateArgs
-    ///         {
-    ///             Description = "test1",
-    ///             ImageId = images.Apply(images =&gt; images.Images?[0]?.Id),
-    ///             HostName = "tf-test-host",
-    ///             InstanceChargeType = "PrePaid",
-    ///             InstanceName = "tf-instance-name",
-    ///             InstanceType = instances.Apply(instances =&gt; instances.Instances?[0]?.InstanceType),
-    ///             InternetChargeType = "PayByBandwidth",
-    ///             InternetMaxBandwidthIn = 5,
-    ///             InternetMaxBandwidthOut = 0,
-    ///             IoOptimized = "none",
-    ///             KeyPairName = "test-key-pair",
-    ///             RamRoleName = "xxxxx",
-    ///             NetworkType = "vpc",
-    ///             SecurityEnhancementStrategy = "Active",
-    ///             SpotPriceLimit = 5,
-    ///             SpotStrategy = "SpotWithPriceLimit",
-    ///             SecurityGroupId = "sg-zxcvj0lasdf102350asdf9a",
-    ///             SystemDiskCategory = "cloud_ssd",
-    ///             SystemDiskDescription = "test disk",
-    ///             SystemDiskName = "hello",
-    ///             SystemDiskSize = 40,
-    ///             ResourceGroupId = "rg-zkdfjahg9zxncv0",
-    ///             Userdata = "xxxxxxxxxxxxxx",
-    ///             VswitchId = "sw-ljkngaksdjfj0nnasdf",
-    ///             VpcId = "vpc-asdfnbg0as8dfk1nb2",
-    ///             ZoneId = "beijing-a",
-    ///             Tags = 
-    ///             {
-    ///                 { "tag1", "hello" },
-    ///                 { "tag2", "world" },
-    ///             },
-    ///             NetworkInterfaces = new AliCloud.Ecs.Inputs.LaunchTemplateNetworkInterfacesArgs
-    ///             {
-    ///                 Name = "eth0",
-    ///                 Description = "hello1",
-    ///                 PrimaryIp = "10.0.0.2",
-    ///                 SecurityGroupId = "xxxx",
-    ///                 VswitchId = "xxxxxxx",
-    ///             },
-    ///             DataDisks = 
-    ///             {
-    ///                 new AliCloud.Ecs.Inputs.LaunchTemplateDataDiskArgs
-    ///                 {
-    ///                     Name = "disk1",
-    ///                     Description = "test1",
-    ///                 },
-    ///                 new AliCloud.Ecs.Inputs.LaunchTemplateDataDiskArgs
-    ///                 {
-    ///                     Name = "disk2",
-    ///                     Description = "test2",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Owners = "system",
+    ///     });
     /// 
-    /// }
+    ///     var instances = AliCloud.Ecs.GetInstances.Invoke();
+    /// 
+    ///     var template = new AliCloud.Ecs.LaunchTemplate("template", new()
+    ///     {
+    ///         Description = "test1",
+    ///         ImageId = images.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         HostName = "tf-test-host",
+    ///         InstanceChargeType = "PrePaid",
+    ///         InstanceName = "tf-instance-name",
+    ///         InstanceType = instances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.InstanceType),
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         InternetMaxBandwidthIn = 5,
+    ///         InternetMaxBandwidthOut = 0,
+    ///         IoOptimized = "none",
+    ///         KeyPairName = "test-key-pair",
+    ///         RamRoleName = "xxxxx",
+    ///         NetworkType = "vpc",
+    ///         SecurityEnhancementStrategy = "Active",
+    ///         SpotPriceLimit = 5,
+    ///         SpotStrategy = "SpotWithPriceLimit",
+    ///         SecurityGroupId = "sg-zxcvj0lasdf102350asdf9a",
+    ///         SystemDiskCategory = "cloud_ssd",
+    ///         SystemDiskDescription = "test disk",
+    ///         SystemDiskName = "hello",
+    ///         SystemDiskSize = 40,
+    ///         ResourceGroupId = "rg-zkdfjahg9zxncv0",
+    ///         Userdata = "xxxxxxxxxxxxxx",
+    ///         VswitchId = "sw-ljkngaksdjfj0nnasdf",
+    ///         VpcId = "vpc-asdfnbg0as8dfk1nb2",
+    ///         ZoneId = "beijing-a",
+    ///         Tags = 
+    ///         {
+    ///             { "tag1", "hello" },
+    ///             { "tag2", "world" },
+    ///         },
+    ///         NetworkInterfaces = new AliCloud.Ecs.Inputs.LaunchTemplateNetworkInterfacesArgs
+    ///         {
+    ///             Name = "eth0",
+    ///             Description = "hello1",
+    ///             PrimaryIp = "10.0.0.2",
+    ///             SecurityGroupId = "xxxx",
+    ///             VswitchId = "xxxxxxx",
+    ///         },
+    ///         DataDisks = new[]
+    ///         {
+    ///             new AliCloud.Ecs.Inputs.LaunchTemplateDataDiskArgs
+    ///             {
+    ///                 Name = "disk1",
+    ///                 Description = "test1",
+    ///             },
+    ///             new AliCloud.Ecs.Inputs.LaunchTemplateDataDiskArgs
+    ///             {
+    ///                 Name = "disk2",
+    ///                 Description = "test2",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/launchTemplate:LaunchTemplate")]
-    public partial class LaunchTemplate : Pulumi.CustomResource
+    public partial class LaunchTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SpotDuration { get; private set; } = null!;
 
         /// <summary>
-        /// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        /// Sets the maximum hourly instance price. Supports up to three decimal places.
         /// </summary>
         [Output("spotPriceLimit")]
         public Output<double?> SpotPriceLimit { get; private set; } = null!;
@@ -378,7 +378,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class LaunchTemplateArgs : Pulumi.ResourceArgs
+    public sealed class LaunchTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
@@ -542,7 +542,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotDuration { get; set; }
 
         /// <summary>
-        /// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        /// Sets the maximum hourly instance price. Supports up to three decimal places.
         /// </summary>
         [Input("spotPriceLimit")]
         public Input<double>? SpotPriceLimit { get; set; }
@@ -643,9 +643,10 @@ namespace Pulumi.AliCloud.Ecs
         public LaunchTemplateArgs()
         {
         }
+        public static new LaunchTemplateArgs Empty => new LaunchTemplateArgs();
     }
 
-    public sealed class LaunchTemplateState : Pulumi.ResourceArgs
+    public sealed class LaunchTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
@@ -809,7 +810,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotDuration { get; set; }
 
         /// <summary>
-        /// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        /// Sets the maximum hourly instance price. Supports up to three decimal places.
         /// </summary>
         [Input("spotPriceLimit")]
         public Input<double>? SpotPriceLimit { get; set; }
@@ -910,5 +911,6 @@ namespace Pulumi.AliCloud.Ecs
         public LaunchTemplateState()
         {
         }
+        public static new LaunchTemplateState Empty => new LaunchTemplateState();
     }
 }

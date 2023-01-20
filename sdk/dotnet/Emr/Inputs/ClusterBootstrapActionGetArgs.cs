@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Emr.Inputs
 {
 
-    public sealed class ClusterBootstrapActionGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterBootstrapActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// bootstrap action args, e.g. "--a=b".
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public Input<string>? ExecutionTarget { get; set; }
 
         /// <summary>
-        /// bootstrap action name.
+        /// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -51,5 +51,6 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public ClusterBootstrapActionGetArgs()
         {
         }
+        public static new ClusterBootstrapActionGetArgs Empty => new ClusterBootstrapActionGetArgs();
     }
 }

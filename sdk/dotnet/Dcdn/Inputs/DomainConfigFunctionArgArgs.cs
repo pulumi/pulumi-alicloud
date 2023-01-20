@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dcdn.Inputs
 {
 
-    public sealed class DomainConfigFunctionArgArgs : Pulumi.ResourceArgs
+    public sealed class DomainConfigFunctionArgArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of arg.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Dcdn.Inputs
         public DomainConfigFunctionArgArgs()
         {
         }
+        public static new DomainConfigFunctionArgArgs Empty => new DomainConfigFunctionArgArgs();
     }
 }

@@ -23,34 +23,33 @@ namespace Pulumi.AliCloud.Ga
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ga.GetEndpointGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ga.GetEndpointGroups.InvokeAsync(new AliCloud.Ga.GetEndpointGroupsArgs
+        ///         AcceleratorId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             AcceleratorId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstGaEndpointGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstGaEndpointGroupId")]
-        ///     public Output&lt;string&gt; FirstGaEndpointGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGaEndpointGroupId"] = example.Apply(getEndpointGroupsResult =&gt; getEndpointGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndpointGroupsResult> InvokeAsync(GetEndpointGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointGroupsResult>("alicloud:ga/getEndpointGroups:getEndpointGroups", args ?? new GetEndpointGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointGroupsResult>("alicloud:ga/getEndpointGroups:getEndpointGroups", args ?? new GetEndpointGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
@@ -64,38 +63,37 @@ namespace Pulumi.AliCloud.Ga
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ga.GetEndpointGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ga.GetEndpointGroups.InvokeAsync(new AliCloud.Ga.GetEndpointGroupsArgs
+        ///         AcceleratorId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             AcceleratorId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstGaEndpointGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstGaEndpointGroupId")]
-        ///     public Output&lt;string&gt; FirstGaEndpointGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGaEndpointGroupId"] = example.Apply(getEndpointGroupsResult =&gt; getEndpointGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEndpointGroupsResult> Invoke(GetEndpointGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEndpointGroupsResult>("alicloud:ga/getEndpointGroups:getEndpointGroups", args ?? new GetEndpointGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEndpointGroupsResult>("alicloud:ga/getEndpointGroups:getEndpointGroups", args ?? new GetEndpointGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEndpointGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Global Accelerator instance to which the endpoint group will be added.
@@ -145,9 +143,10 @@ namespace Pulumi.AliCloud.Ga
         public GetEndpointGroupsArgs()
         {
         }
+        public static new GetEndpointGroupsArgs Empty => new GetEndpointGroupsArgs();
     }
 
-    public sealed class GetEndpointGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Global Accelerator instance to which the endpoint group will be added.
@@ -197,6 +196,7 @@ namespace Pulumi.AliCloud.Ga
         public GetEndpointGroupsInvokeArgs()
         {
         }
+        public static new GetEndpointGroupsInvokeArgs Empty => new GetEndpointGroupsInvokeArgs();
     }
 
 

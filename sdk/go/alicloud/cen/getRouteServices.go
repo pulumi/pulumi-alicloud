@@ -55,9 +55,9 @@ func GetRouteServices(ctx *pulumi.Context, args *GetRouteServicesArgs, opts ...p
 type GetRouteServicesArgs struct {
 	// The region of the network instances that access the cloud services.
 	AccessRegionId *string `pulumi:"accessRegionId"`
-	// -(Required, ForceNew) The ID of the CEN instance.
+	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
-	// -(Optional, ForceNew) The domain name or IP address of the cloud service.
+	// The domain name or IP address of the cloud service.
 	Host *string `pulumi:"host"`
 	// The region of the cloud service.
 	HostRegionId *string `pulumi:"hostRegionId"`
@@ -108,9 +108,9 @@ func GetRouteServicesOutput(ctx *pulumi.Context, args GetRouteServicesOutputArgs
 type GetRouteServicesOutputArgs struct {
 	// The region of the network instances that access the cloud services.
 	AccessRegionId pulumi.StringPtrInput `pulumi:"accessRegionId"`
-	// -(Required, ForceNew) The ID of the CEN instance.
+	// The ID of the CEN instance.
 	CenId pulumi.StringInput `pulumi:"cenId"`
-	// -(Optional, ForceNew) The domain name or IP address of the cloud service.
+	// The domain name or IP address of the cloud service.
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// The region of the cloud service.
 	HostRegionId pulumi.StringPtrInput `pulumi:"hostRegionId"`

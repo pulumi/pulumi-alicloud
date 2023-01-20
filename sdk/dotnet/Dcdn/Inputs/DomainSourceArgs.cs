@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dcdn.Inputs
 {
 
-    public sealed class DomainSourceArgs : Pulumi.ResourceArgs
+    public sealed class DomainSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The origin address.
@@ -48,5 +48,6 @@ namespace Pulumi.AliCloud.Dcdn.Inputs
         public DomainSourceArgs()
         {
         }
+        public static new DomainSourceArgs Empty => new DomainSourceArgs();
     }
 }

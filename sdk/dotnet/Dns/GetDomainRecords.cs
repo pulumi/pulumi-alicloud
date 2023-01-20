@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.Dns
     public static class GetDomainRecords
     {
         public static Task<GetDomainRecordsResult> InvokeAsync(GetDomainRecordsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsArgs(), options.WithDefaults());
 
         public static Output<GetDomainRecordsResult> Invoke(GetDomainRecordsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDomainRecordsArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainRecordsArgs : global::Pulumi.InvokeArgs
     {
         [Input("domainName", required: true)]
         public string DomainName { get; set; } = null!;
@@ -56,9 +56,10 @@ namespace Pulumi.AliCloud.Dns
         public GetDomainRecordsArgs()
         {
         }
+        public static new GetDomainRecordsArgs Empty => new GetDomainRecordsArgs();
     }
 
-    public sealed class GetDomainRecordsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainRecordsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
@@ -95,6 +96,7 @@ namespace Pulumi.AliCloud.Dns
         public GetDomainRecordsInvokeArgs()
         {
         }
+        public static new GetDomainRecordsInvokeArgs Empty => new GetDomainRecordsInvokeArgs();
     }
 
 

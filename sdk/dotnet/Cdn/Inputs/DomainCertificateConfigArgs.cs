@@ -10,13 +10,31 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn.Inputs
 {
 
-    public sealed class DomainCertificateConfigArgs : Pulumi.ResourceArgs
+    public sealed class DomainCertificateConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        private Input<string>? _privateKey;
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("serverCertificate")]
-        public Input<string>? ServerCertificate { get; set; }
+        private Input<string>? _serverCertificate;
+        public Input<string>? ServerCertificate
+        {
+            get => _serverCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serverCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("serverCertificateStatus")]
         public Input<string>? ServerCertificateStatus { get; set; }
@@ -24,5 +42,6 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         public DomainCertificateConfigArgs()
         {
         }
+        public static new DomainCertificateConfigArgs Empty => new DomainCertificateConfigArgs();
     }
 }

@@ -259,15 +259,6 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
 
     /**
      * The status of volume. Valid values:
-     * - `0`: Normal condition.
-     * - `1`: Failed to create volume.
-     * - `2`: Failed to delete volume.
-     * - `3`: Failed to enable target.
-     * - `4`: Failed to disable target.
-     * - `5`: Database error.
-     * - `6`: Failed to enable cache.
-     * - `7`: Failed to disable cache.
-     * - `8`: System error.
      * 
      */
     @Import(name="status")
@@ -275,15 +266,6 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
 
     /**
      * @return The status of volume. Valid values:
-     * - `0`: Normal condition.
-     * - `1`: Failed to create volume.
-     * - `2`: Failed to delete volume.
-     * - `3`: Failed to enable target.
-     * - `4`: Failed to disable target.
-     * - `5`: Database error.
-     * - `6`: Failed to enable cache.
-     * - `7`: Failed to disable cache.
-     * - `8`: System error.
      * 
      */
     public Optional<Output<String>> status() {
@@ -668,15 +650,6 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
 
         /**
          * @param status The status of volume. Valid values:
-         * - `0`: Normal condition.
-         * - `1`: Failed to create volume.
-         * - `2`: Failed to delete volume.
-         * - `3`: Failed to enable target.
-         * - `4`: Failed to disable target.
-         * - `5`: Database error.
-         * - `6`: Failed to enable cache.
-         * - `7`: Failed to disable cache.
-         * - `8`: System error.
          * 
          * @return builder
          * 
@@ -688,15 +661,6 @@ public final class GatewayBlockVolumeState extends com.pulumi.resources.Resource
 
         /**
          * @param status The status of volume. Valid values:
-         * - `0`: Normal condition.
-         * - `1`: Failed to create volume.
-         * - `2`: Failed to delete volume.
-         * - `3`: Failed to enable target.
-         * - `4`: Failed to disable target.
-         * - `5`: Database error.
-         * - `6`: Failed to enable cache.
-         * - `7`: Failed to disable cache.
-         * - `8`: System error.
          * 
          * @return builder
          * 

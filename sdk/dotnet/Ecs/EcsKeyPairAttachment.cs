@@ -21,24 +21,22 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ecs.EcsKeyPairAttachment("example", new()
     ///     {
-    ///         var example = new AliCloud.Ecs.EcsKeyPairAttachment("example", new AliCloud.Ecs.EcsKeyPairAttachmentArgs
+    ///         KeyPairName = "key_pair_name",
+    ///         InstanceIds = new[]
     ///         {
-    ///             KeyPairName = "key_pair_name",
-    ///             InstanceIds = 
-    ///             {
-    ///                 i_gw80pxxxxxxxxxx,
-    ///             },
-    ///         });
-    ///     }
+    ///             i_gw80pxxxxxxxxxx,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment")]
-    public partial class EcsKeyPairAttachment : Pulumi.CustomResource
+    public partial class EcsKeyPairAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
@@ -117,7 +115,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsKeyPairAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class EcsKeyPairAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
@@ -149,9 +147,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsKeyPairAttachmentArgs()
         {
         }
+        public static new EcsKeyPairAttachmentArgs Empty => new EcsKeyPairAttachmentArgs();
     }
 
-    public sealed class EcsKeyPairAttachmentState : Pulumi.ResourceArgs
+    public sealed class EcsKeyPairAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
@@ -183,5 +182,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsKeyPairAttachmentState()
         {
         }
+        public static new EcsKeyPairAttachmentState Empty => new EcsKeyPairAttachmentState();
     }
 }

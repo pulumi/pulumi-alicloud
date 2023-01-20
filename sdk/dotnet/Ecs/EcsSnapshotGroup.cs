@@ -26,106 +26,106 @@ namespace Pulumi.AliCloud.Ecs
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
-    ///         {
-    ///             NameRegex = "default",
-    ///         }));
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "Instance",
-    ///             AvailableDiskCategory = "cloud_essd",
-    ///         }));
-    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-    ///         {
-    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
-    ///             CpuCoreCount = 2,
-    ///             MemorySize = 4,
-    ///             SystemDiskCategory = "cloud_essd",
-    ///         })));
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Zones?[0]?.Id,
-    ///             }));
-    ///         });
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             Description = "New security group",
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///         });
-    ///         var defaultDisk = new List&lt;AliCloud.Ecs.Disk&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             defaultDisk.Add(new AliCloud.Ecs.Disk($"defaultDisk-{range.Value}", new AliCloud.Ecs.DiskArgs
-    ///             {
-    ///                 DiskName = @var.Name,
-    ///                 ZoneId = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.AvailabilityZones?[0]),
-    ///                 Category = "cloud_essd",
-    ///                 Size = 20,
-    ///             }));
-    ///         }
-    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             Owners = "system",
-    ///         }));
-    ///         var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new AliCloud.Ecs.InstanceArgs
-    ///         {
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             InstanceName = @var.Name,
-    ///             HostName = "tf-testAcc",
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
-    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
-    ///             SecurityGroups = 
-    ///             {
-    ///                 defaultSecurityGroup.Id,
-    ///             },
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///         });
-    ///         var defaultDiskAttachment = new List&lt;AliCloud.Ecs.DiskAttachment&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             defaultDiskAttachment.Add(new AliCloud.Ecs.DiskAttachment($"defaultDiskAttachment-{range.Value}", new AliCloud.Ecs.DiskAttachmentArgs
-    ///             {
-    ///                 DiskId = defaultDisk.Select(__item =&gt; __item.Id).ToList()[range.Value],
-    ///                 InstanceId = defaultInstance.Id,
-    ///             }));
-    ///         }
-    ///         var example = new AliCloud.Ecs.EcsSnapshotGroup("example", new AliCloud.Ecs.EcsSnapshotGroupArgs
-    ///         {
-    ///             Description = "example_value",
-    ///             DiskIds = 
-    ///             {
-    ///                 defaultDiskAttachment[0].DiskId,
-    ///                 defaultDiskAttachment[1].DiskId,
-    ///             },
-    ///             SnapshotGroupName = "example_value",
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///             InstanceId = defaultDiskAttachment[0].InstanceId,
-    ///             InstantAccess = true,
-    ///             InstantAccessRetentionDays = 1,
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "Acceptance-test" },
-    ///             },
-    ///         });
-    ///     }
+    ///         NameRegex = "default",
+    ///     });
     /// 
-    /// }
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "Instance",
+    ///         AvailableDiskCategory = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 2,
+    ///         MemorySize = 4,
+    ///         SystemDiskCategory = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         Description = "New security group",
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultDisk = new List&lt;AliCloud.Ecs.Disk&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultDisk.Add(new AliCloud.Ecs.Disk($"defaultDisk-{range.Value}", new()
+    ///         {
+    ///             DiskName = @var.Name,
+    ///             ZoneId = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+    ///             Category = "cloud_essd",
+    ///             Size = 20,
+    ///         }));
+    ///     }
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceName = @var.Name,
+    ///         HostName = "tf-testAcc",
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultDiskAttachment = new List&lt;AliCloud.Ecs.DiskAttachment&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultDiskAttachment.Add(new AliCloud.Ecs.DiskAttachment($"defaultDiskAttachment-{range.Value}", new()
+    ///         {
+    ///             DiskId = defaultDisk.Select(__item =&gt; __item.Id).ToList()[range.Value],
+    ///             InstanceId = defaultInstance.Id,
+    ///         }));
+    ///     }
+    ///     var example = new AliCloud.Ecs.EcsSnapshotGroup("example", new()
+    ///     {
+    ///         Description = "example_value",
+    ///         DiskIds = new[]
+    ///         {
+    ///             defaultDiskAttachment[0].DiskId,
+    ///             defaultDiskAttachment[1].DiskId,
+    ///         },
+    ///         SnapshotGroupName = "example_value",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         InstanceId = defaultDiskAttachment[0].InstanceId,
+    ///         InstantAccess = true,
+    ///         InstantAccessRetentionDays = 1,
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "Acceptance-test" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup")]
-    public partial class EcsSnapshotGroup : Pulumi.CustomResource
+    public partial class EcsSnapshotGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsSnapshotGroupArgs : Pulumi.ResourceArgs
+    public sealed class EcsSnapshotGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -320,9 +320,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsSnapshotGroupArgs()
         {
         }
+        public static new EcsSnapshotGroupArgs Empty => new EcsSnapshotGroupArgs();
     }
 
-    public sealed class EcsSnapshotGroupState : Pulumi.ResourceArgs
+    public sealed class EcsSnapshotGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -405,5 +406,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsSnapshotGroupState()
         {
         }
+        public static new EcsSnapshotGroupState Empty => new EcsSnapshotGroupState();
     }
 }

@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new()
     ///     {
-    ///         var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new AliCloud.CloudStorageGateway.StorageBundleArgs
-    ///         {
-    ///             StorageBundleName = "example_value",
-    ///         });
-    ///     }
+    ///         StorageBundleName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudstoragegateway/storageBundle:StorageBundle")]
-    public partial class StorageBundle : Pulumi.CustomResource
+    public partial class StorageBundle : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of storage bundle.
@@ -104,7 +102,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         }
     }
 
-    public sealed class StorageBundleArgs : Pulumi.ResourceArgs
+    public sealed class StorageBundleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of storage bundle.
@@ -121,9 +119,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public StorageBundleArgs()
         {
         }
+        public static new StorageBundleArgs Empty => new StorageBundleArgs();
     }
 
-    public sealed class StorageBundleState : Pulumi.ResourceArgs
+    public sealed class StorageBundleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of storage bundle.
@@ -140,5 +139,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public StorageBundleState()
         {
         }
+        public static new StorageBundleState Empty => new StorageBundleState();
     }
 }

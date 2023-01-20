@@ -69,6 +69,9 @@ class GetServiceMeshesResult:
     @property
     @pulumi.getter
     def meshes(self) -> Sequence['outputs.GetServiceMeshesMeshResult']:
+        """
+        A list of Service Mesh Service Meshes. Each element contains the following attributes:
+        """
         return pulumi.get(self, "meshes")
 
     @property
@@ -79,6 +82,9 @@ class GetServiceMeshesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Service Mesh names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -89,6 +95,9 @@ class GetServiceMeshesResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -139,7 +148,7 @@ def get_service_meshes(enable_details: Optional[bool] = None,
 
     :param Sequence[str] ids: A list of Service Mesh IDs.
     :param str name_regex: A regex string to filter results by Service Mesh name.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `running` or `initial`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -193,6 +202,6 @@ def get_service_meshes_output(enable_details: Optional[pulumi.Input[Optional[boo
 
     :param Sequence[str] ids: A list of Service Mesh IDs.
     :param str name_regex: A regex string to filter results by Service Mesh name.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `running` or `initial`.
     """
     ...

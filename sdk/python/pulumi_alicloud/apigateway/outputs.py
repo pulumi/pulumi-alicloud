@@ -22,6 +22,9 @@ __all__ = [
     'GetAppsAppResult',
     'GetBackendsBackendResult',
     'GetGroupsGroupResult',
+    'GetLogConfigsConfigResult',
+    'GetModelsModelResult',
+    'GetPluginsPluginResult',
 ]
 
 @pulumi.output_type
@@ -49,10 +52,10 @@ class ApiConstantParameter(dict):
                  value: str,
                  description: Optional[str] = None):
         """
-        :param str in_: System parameter location; values: 'HEAD' and 'QUERY'.
-        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        :param str in_: Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+        :param str name: The name of the api gateway api. Defaults to null.
         :param str value: Constant parameter value.
-        :param str description: The description of Constant parameter.
+        :param str description: The description of the api. Defaults to null.
         """
         pulumi.set(__self__, "in_", in_)
         pulumi.set(__self__, "name", name)
@@ -64,7 +67,7 @@ class ApiConstantParameter(dict):
     @pulumi.getter(name="in")
     def in_(self) -> str:
         """
-        System parameter location; values: 'HEAD' and 'QUERY'.
+        Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
         """
         return pulumi.get(self, "in_")
 
@@ -72,7 +75,7 @@ class ApiConstantParameter(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        The name of the api gateway api. Defaults to null.
         """
         return pulumi.get(self, "name")
 
@@ -88,7 +91,7 @@ class ApiConstantParameter(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of Constant parameter.
+        The description of the api. Defaults to null.
         """
         return pulumi.get(self, "description")
 
@@ -204,8 +207,8 @@ class ApiHttpServiceConfig(dict):
                  aone_name: Optional[str] = None):
         """
         :param str address: The address of backend service.
-        :param str method: The http method of backend service.
-        :param str path: The path of backend service.
+        :param str method: The method of the api, including 'GET','POST','PUT' etc.
+        :param str path: The request path of the api.
         :param int timeout: Backend service time-out time; unit: millisecond.
         """
         pulumi.set(__self__, "address", address)
@@ -227,7 +230,7 @@ class ApiHttpServiceConfig(dict):
     @pulumi.getter
     def method(self) -> str:
         """
-        The http method of backend service.
+        The method of the api, including 'GET','POST','PUT' etc.
         """
         return pulumi.get(self, "method")
 
@@ -235,7 +238,7 @@ class ApiHttpServiceConfig(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        The path of backend service.
+        The request path of the api.
         """
         return pulumi.get(self, "path")
 
@@ -279,9 +282,9 @@ class ApiHttpVpcServiceConfig(dict):
                  timeout: int,
                  aone_name: Optional[str] = None):
         """
-        :param str method: The http method of backend service.
-        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
-        :param str path: The path of backend service.
+        :param str method: The method of the api, including 'GET','POST','PUT' etc.
+        :param str name: The name of the api gateway api. Defaults to null.
+        :param str path: The request path of the api.
         :param int timeout: Backend service time-out time; unit: millisecond.
         """
         pulumi.set(__self__, "method", method)
@@ -295,7 +298,7 @@ class ApiHttpVpcServiceConfig(dict):
     @pulumi.getter
     def method(self) -> str:
         """
-        The http method of backend service.
+        The method of the api, including 'GET','POST','PUT' etc.
         """
         return pulumi.get(self, "method")
 
@@ -303,7 +306,7 @@ class ApiHttpVpcServiceConfig(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        The name of the api gateway api. Defaults to null.
         """
         return pulumi.get(self, "name")
 
@@ -311,7 +314,7 @@ class ApiHttpVpcServiceConfig(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        The path of backend service.
+        The request path of the api.
         """
         return pulumi.get(self, "path")
 
@@ -398,9 +401,9 @@ class ApiRequestConfig(dict):
                  protocol: str,
                  body_format: Optional[str] = None):
         """
-        :param str method: The http method of backend service.
+        :param str method: The method of the api, including 'GET','POST','PUT' etc.
         :param str mode: The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
-        :param str path: The path of backend service.
+        :param str path: The request path of the api.
         :param str protocol: The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
         :param str body_format: The body format of the api, which support the values of 'STREAM' and 'FORM'.
         """
@@ -415,7 +418,7 @@ class ApiRequestConfig(dict):
     @pulumi.getter
     def method(self) -> str:
         """
-        The http method of backend service.
+        The method of the api, including 'GET','POST','PUT' etc.
         """
         return pulumi.get(self, "method")
 
@@ -431,7 +434,7 @@ class ApiRequestConfig(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        The path of backend service.
+        The request path of the api.
         """
         return pulumi.get(self, "path")
 
@@ -487,14 +490,14 @@ class ApiRequestParameter(dict):
                  default_value: Optional[str] = None,
                  description: Optional[str] = None):
         """
-        :param str in_: System parameter location; values: 'HEAD' and 'QUERY'.
+        :param str in_: Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
         :param str in_service: Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        :param str name: The name of the api gateway api. Defaults to null.
         :param str name_service: Backend service's parameter name.
         :param str required: Parameter required or not; values: REQUIRED and OPTIONAL.
         :param str type: Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
         :param str default_value: The default value of the parameter.
-        :param str description: The description of Constant parameter.
+        :param str description: The description of the api. Defaults to null.
         """
         pulumi.set(__self__, "in_", in_)
         pulumi.set(__self__, "in_service", in_service)
@@ -511,7 +514,7 @@ class ApiRequestParameter(dict):
     @pulumi.getter(name="in")
     def in_(self) -> str:
         """
-        System parameter location; values: 'HEAD' and 'QUERY'.
+        Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
         """
         return pulumi.get(self, "in_")
 
@@ -527,7 +530,7 @@ class ApiRequestParameter(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        The name of the api gateway api. Defaults to null.
         """
         return pulumi.get(self, "name")
 
@@ -567,7 +570,7 @@ class ApiRequestParameter(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of Constant parameter.
+        The description of the api. Defaults to null.
         """
         return pulumi.get(self, "description")
 
@@ -598,8 +601,8 @@ class ApiSystemParameter(dict):
                  name: str,
                  name_service: str):
         """
-        :param str in_: System parameter location; values: 'HEAD' and 'QUERY'.
-        :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        :param str in_: Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+        :param str name: The name of the api gateway api. Defaults to null.
         :param str name_service: Backend service's parameter name.
         """
         pulumi.set(__self__, "in_", in_)
@@ -610,7 +613,7 @@ class ApiSystemParameter(dict):
     @pulumi.getter(name="in")
     def in_(self) -> str:
         """
-        System parameter location; values: 'HEAD' and 'QUERY'.
+        Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
         """
         return pulumi.get(self, "in_")
 
@@ -618,7 +621,7 @@ class ApiSystemParameter(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        The name of the api gateway api. Defaults to null.
         """
         return pulumi.get(self, "name")
 
@@ -980,5 +983,279 @@ class GetGroupsGroupResult(dict):
         Upper QPS limit of the API group; default value: 500, which can be increased by submitting an application.
         """
         return pulumi.get(self, "traffic_limit")
+
+
+@pulumi.output_type
+class GetLogConfigsConfigResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 log_type: str,
+                 region_id: str,
+                 sls_log_store: str,
+                 sls_project: str):
+        """
+        :param str id: The ID of the Log Config.
+        :param str log_type: The type the of log.
+        :param str region_id: The region ID of the Log Config.
+        :param str sls_log_store: The name of the Log Store.
+        :param str sls_project: The name of the Project.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "log_type", log_type)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "sls_log_store", sls_log_store)
+        pulumi.set(__self__, "sls_project", sls_project)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Log Config.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="logType")
+    def log_type(self) -> str:
+        """
+        The type the of log.
+        """
+        return pulumi.get(self, "log_type")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The region ID of the Log Config.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="slsLogStore")
+    def sls_log_store(self) -> str:
+        """
+        The name of the Log Store.
+        """
+        return pulumi.get(self, "sls_log_store")
+
+    @property
+    @pulumi.getter(name="slsProject")
+    def sls_project(self) -> str:
+        """
+        The name of the Project.
+        """
+        return pulumi.get(self, "sls_project")
+
+
+@pulumi.output_type
+class GetModelsModelResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 description: str,
+                 group_id: str,
+                 id: str,
+                 model_id: str,
+                 model_name: str,
+                 model_ref: str,
+                 modified_time: str,
+                 schema: str):
+        """
+        :param str create_time: The creation time of the model.
+        :param str description: The description of the model.
+        :param str group_id: The ID of the api group.
+        :param str id: The ID of the Api Gateway Model.
+        :param str model_id: The id of the model.
+        :param str model_name: The name of the Model.
+        :param str model_ref: The reference of the model.
+        :param str modified_time: The modified time of the model.
+        :param str schema: The schema of the model.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "model_id", model_id)
+        pulumi.set(__self__, "model_name", model_name)
+        pulumi.set(__self__, "model_ref", model_ref)
+        pulumi.set(__self__, "modified_time", modified_time)
+        pulumi.set(__self__, "schema", schema)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the model.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the model.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        """
+        The ID of the api group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Api Gateway Model.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="modelId")
+    def model_id(self) -> str:
+        """
+        The id of the model.
+        """
+        return pulumi.get(self, "model_id")
+
+    @property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> str:
+        """
+        The name of the Model.
+        """
+        return pulumi.get(self, "model_name")
+
+    @property
+    @pulumi.getter(name="modelRef")
+    def model_ref(self) -> str:
+        """
+        The reference of the model.
+        """
+        return pulumi.get(self, "model_ref")
+
+    @property
+    @pulumi.getter(name="modifiedTime")
+    def modified_time(self) -> str:
+        """
+        The modified time of the model.
+        """
+        return pulumi.get(self, "modified_time")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        The schema of the model.
+        """
+        return pulumi.get(self, "schema")
+
+
+@pulumi.output_type
+class GetPluginsPluginResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 modified_time: str,
+                 plugin_data: str,
+                 plugin_id: str,
+                 plugin_name: str,
+                 plugin_type: str,
+                 tags: Mapping[str, Any]):
+        """
+        :param str create_time: The CreateTime of the resource.
+        :param str description: The description of the plug-in, which cannot exceed 200 characters.
+        :param str id: The ID of the Plugin.
+        :param str modified_time: The ModifiedTime of the resource.
+        :param str plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
+        :param str plugin_id: The first ID of the resource.
+        :param str plugin_name: The name of the plug-in that you want to create.
+        :param str plugin_type: The type of the plug-in.
+        :param Mapping[str, Any] tags: The tag of the resource.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modified_time", modified_time)
+        pulumi.set(__self__, "plugin_data", plugin_data)
+        pulumi.set(__self__, "plugin_id", plugin_id)
+        pulumi.set(__self__, "plugin_name", plugin_name)
+        pulumi.set(__self__, "plugin_type", plugin_type)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The CreateTime of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the plug-in, which cannot exceed 200 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Plugin.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="modifiedTime")
+    def modified_time(self) -> str:
+        """
+        The ModifiedTime of the resource.
+        """
+        return pulumi.get(self, "modified_time")
+
+    @property
+    @pulumi.getter(name="pluginData")
+    def plugin_data(self) -> str:
+        """
+        The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
+        """
+        return pulumi.get(self, "plugin_data")
+
+    @property
+    @pulumi.getter(name="pluginId")
+    def plugin_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "plugin_id")
+
+    @property
+    @pulumi.getter(name="pluginName")
+    def plugin_name(self) -> str:
+        """
+        The name of the plug-in that you want to create.
+        """
+        return pulumi.get(self, "plugin_name")
+
+    @property
+    @pulumi.getter(name="pluginType")
+    def plugin_type(self) -> str:
+        """
+        The type of the plug-in.
+        """
+        return pulumi.get(self, "plugin_type")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 
 

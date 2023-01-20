@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,24 +17,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const resourcesZones = alicloud.getZones({
- *     availableResourceCreation: "PolarDB",
- * });
- * const resourcesNodeClasses = resourcesZones.then(resourcesZones => alicloud.polardb.getNodeClasses({
- *     zoneId: resourcesZones.zones?[0]?.id,
+ * const resources = alicloud.polardb.getNodeClasses({
  *     payType: "PostPaid",
  *     dbType: "MySQL",
  *     dbVersion: "5.6",
- * }));
- * export const polardbNodeClasses = resourcesNodeClasses.then(resourcesNodeClasses => resourcesNodeClasses.classes);
+ * });
+ * export const polardbNodeClasses = resources.then(resources => resources.classes);
+ * export const polardbAvailableZoneId = resources.then(resources => resources.classes?.[0]?.zoneId);
  * ```
  */
 export function getNodeClasses(args: GetNodeClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeClassesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:polardb/getNodeClasses:getNodeClasses", {
         "dbNodeClass": args.dbNodeClass,
         "dbType": args.dbType,
@@ -102,9 +97,28 @@ export interface GetNodeClassesResult {
      */
     readonly zoneId?: string;
 }
-
+/**
+ * This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.81.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const resources = alicloud.polardb.getNodeClasses({
+ *     payType: "PostPaid",
+ *     dbType: "MySQL",
+ *     dbVersion: "5.6",
+ * });
+ * export const polardbNodeClasses = resources.then(resources => resources.classes);
+ * export const polardbAvailableZoneId = resources.then(resources => resources.classes?.[0]?.zoneId);
+ * ```
+ */
 export function getNodeClassesOutput(args: GetNodeClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeClassesResult> {
-    return pulumi.output(args).apply(a => getNodeClasses(a, opts))
+    return pulumi.output(args).apply((a: any) => getNodeClasses(a, opts))
 }
 
 /**

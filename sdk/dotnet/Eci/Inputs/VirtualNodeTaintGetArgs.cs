@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class VirtualNodeTaintGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualNodeTaintGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public VirtualNodeTaintGetArgs()
         {
         }
+        public static new VirtualNodeTaintGetArgs Empty => new VirtualNodeTaintGetArgs();
     }
 }

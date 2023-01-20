@@ -59,14 +59,14 @@ public final class ClusterConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster service configuration modification name, e.g. ’HDFS’.
+     * Custom configuration service name, e.g. ’HDFS’.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return Cluster service configuration modification name, e.g. ’HDFS’.
+     * @return Custom configuration service name, e.g. ’HDFS’.
      * 
      */
     public Output<String> serviceName() {
@@ -164,7 +164,7 @@ public final class ClusterConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Cluster service configuration modification name, e.g. ’HDFS’.
+         * @param serviceName Custom configuration service name, e.g. ’HDFS’.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class ClusterConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Cluster service configuration modification name, e.g. ’HDFS’.
+         * @param serviceName Custom configuration service name, e.g. ’HDFS’.
          * 
          * @return builder
          * 

@@ -19,29 +19,27 @@ namespace Pulumi.AliCloud.Edas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Edas.SlbAttachment("default", new()
     ///     {
-    ///         var @default = new AliCloud.Edas.SlbAttachment("default", new AliCloud.Edas.SlbAttachmentArgs
-    ///         {
-    ///             AppId = @var.App_id,
-    ///             SlbId = @var.Slb_id,
-    ///             SlbIp = @var.Slb_ip,
-    ///             Type = @var.Type,
-    ///             ListenerPort = @var.Listener_port,
-    ///             VserverGroupId = @var.Vserver_group_id,
-    ///         });
-    ///     }
+    ///         AppId = @var.App_id,
+    ///         SlbId = @var.Slb_id,
+    ///         SlbIp = @var.Slb_ip,
+    ///         Type = @var.Type,
+    ///         ListenerPort = @var.Listener_port,
+    ///         VserverGroupId = @var.Vserver_group_id,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:edas/slbAttachment:SlbAttachment")]
-    public partial class SlbAttachment : Pulumi.CustomResource
+    public partial class SlbAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the application to which you want to bind an SLB instance.
@@ -135,7 +133,7 @@ namespace Pulumi.AliCloud.Edas
         }
     }
 
-    public sealed class SlbAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class SlbAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the application to which you want to bind an SLB instance.
@@ -176,9 +174,10 @@ namespace Pulumi.AliCloud.Edas
         public SlbAttachmentArgs()
         {
         }
+        public static new SlbAttachmentArgs Empty => new SlbAttachmentArgs();
     }
 
-    public sealed class SlbAttachmentState : Pulumi.ResourceArgs
+    public sealed class SlbAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the application to which you want to bind an SLB instance.
@@ -231,5 +230,6 @@ namespace Pulumi.AliCloud.Edas
         public SlbAttachmentState()
         {
         }
+        public static new SlbAttachmentState Empty => new SlbAttachmentState();
     }
 }

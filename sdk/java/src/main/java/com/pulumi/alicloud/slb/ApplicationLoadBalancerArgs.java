@@ -68,14 +68,14 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+     * Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+     * @return Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -98,24 +98,16 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
-     * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.124. Use &#39;payment_type&#39; replaces it.
+     * Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it. */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
-     * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.124. Use &#39;payment_type&#39; replaces it.
+     * @return Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it. */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
@@ -144,8 +136,8 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
 
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
-     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-     * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+     * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
      * 
      */
     @Import(name="loadBalancerSpec")
@@ -153,8 +145,8 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
 
     /**
      * @return The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
-     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-     * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+     * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
      * 
      */
     public Optional<Output<String>> loadBalancerSpec() {
@@ -252,14 +244,14 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The Id of resource group which the SLB belongs.
+     * The id of resource group which the SLB belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the SLB belongs.
+     * @return The id of resource group which the SLB belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -335,14 +327,14 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+     * The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+     * @return The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -461,7 +453,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param bandwidth Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+         * @param bandwidth Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
          * 
          * @return builder
          * 
@@ -472,7 +464,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param bandwidth Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+         * @param bandwidth Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
          * 
          * @return builder
          * 
@@ -503,30 +495,22 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
+         * @param instanceChargeType Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.124. Use &#39;payment_type&#39; replaces it.
-         * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it. */
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
         }
 
         /**
-         * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
+         * @param instanceChargeType Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.124. Use &#39;payment_type&#39; replaces it.
-         * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it. */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
@@ -563,8 +547,8 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
 
         /**
          * @param loadBalancerSpec The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
-         * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-         * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+         * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+         * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
          * 
          * @return builder
          * 
@@ -576,8 +560,8 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
 
         /**
          * @param loadBalancerSpec The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
-         * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-         * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+         * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+         * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
          * 
          * @return builder
          * 
@@ -709,7 +693,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the SLB belongs.
+         * @param resourceGroupId The id of resource group which the SLB belongs.
          * 
          * @return builder
          * 
@@ -720,7 +704,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the SLB belongs.
+         * @param resourceGroupId The id of resource group which the SLB belongs.
          * 
          * @return builder
          * 
@@ -822,7 +806,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vswitchId The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+         * @param vswitchId The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
          * 
          * @return builder
          * 
@@ -833,7 +817,7 @@ public final class ApplicationLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vswitchId The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+         * @param vswitchId The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
          * 
          * @return builder
          * 

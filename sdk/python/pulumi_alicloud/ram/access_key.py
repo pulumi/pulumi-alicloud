@@ -97,6 +97,10 @@ class _AccessKeyState:
         Input properties used for looking up and filtering AccessKey resources.
         :param pulumi.Input[str] key_fingerprint: The fingerprint of the PGP key used to encrypt the secret
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
+        :param pulumi.Input[str] secret: (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+               If you use this, please protect your backend state file judiciously.
+               Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+               at the cost of preventing the use of the secret key in automation.
         :param pulumi.Input[str] secret_file: The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
         :param pulumi.Input[str] status: Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
         :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
@@ -152,6 +156,12 @@ class _AccessKeyState:
     @property
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        If you use this, please protect your backend state file judiciously.
+        Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+        at the cost of preventing the use of the secret key in automation.
+        """
         return pulumi.get(self, "secret")
 
     @secret.setter
@@ -341,6 +351,8 @@ class AccessKey(pulumi.CustomResource):
             __props__.__dict__["encrypted_secret"] = None
             __props__.__dict__["key_fingerprint"] = None
             __props__.__dict__["secret"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AccessKey, __self__).__init__(
             'alicloud:ram/accessKey:AccessKey',
             resource_name,
@@ -367,6 +379,10 @@ class AccessKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_fingerprint: The fingerprint of the PGP key used to encrypt the secret
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
+        :param pulumi.Input[str] secret: (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+               If you use this, please protect your backend state file judiciously.
+               Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+               at the cost of preventing the use of the secret key in automation.
         :param pulumi.Input[str] secret_file: The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
         :param pulumi.Input[str] status: Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
         :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
@@ -408,6 +424,12 @@ class AccessKey(pulumi.CustomResource):
     @property
     @pulumi.getter
     def secret(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        If you use this, please protect your backend state file judiciously.
+        Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+        at the cost of preventing the use of the secret key in automation.
+        """
         return pulumi.get(self, "secret")
 
     @property

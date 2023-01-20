@@ -17,18 +17,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.cr.getService({
+ * const open = alicloud.cr.getService({
  *     enable: "On",
  *     password: "1111aaaa",
- * }));
+ * });
  * ```
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cr/getService:getService", {
         "enable": args.enable,
         "password": args.password,
@@ -64,9 +61,27 @@ export interface GetServiceResult {
      */
     readonly status: string;
 }
-
+/**
+ * Using this data source can open Container Registry (CR) service automatically. If the service has been opened, it will return opened.
+ *
+ * For information about Container Registry (CR) and how to use it, see [What is Container Registry (CR)](https://www.alibabacloud.com/help/en/doc-detail/142759.htm).
+ *
+ * > **NOTE:** Available in v1.116.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.cr.getService({
+ *     enable: "On",
+ *     password: "1111aaaa",
+ * });
+ * ```
+ */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply(a => getService(a, opts))
+    return pulumi.output(args).apply((a: any) => getService(a, opts))
 }
 
 /**

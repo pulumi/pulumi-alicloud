@@ -26,23 +26,21 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ecs.EipAddress("example", new()
     ///     {
-    ///         var example = new AliCloud.Ecs.EipAddress("example", new AliCloud.Ecs.EipAddressArgs
-    ///         {
-    ///             AddressName = "tf-testAcc1234",
-    ///             InternetChargeType = "PayByBandwidth",
-    ///             Isp = "BGP",
-    ///             PaymentType = "PayAsYouGo",
-    ///         });
-    ///     }
+    ///         AddressName = "tf-testAcc1234",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         Isp = "BGP",
+    ///         PaymentType = "PayAsYouGo",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/eipAddress:EipAddress")]
-    public partial class EipAddress : Pulumi.CustomResource
+    public partial class EipAddress : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The activity id.
@@ -142,10 +140,22 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        /// </summary>
+        [Output("publicIpAddressPoolId")]
+        public Output<string?> PublicIpAddressPoolId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the resource group.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        /// </summary>
+        [Output("securityProtectionTypes")]
+        public Output<ImmutableArray<string>> SecurityProtectionTypes { get; private set; } = null!;
 
         /// <summary>
         /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
@@ -203,7 +213,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EipAddressArgs : Pulumi.ResourceArgs
+    public sealed class EipAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The activity id.
@@ -285,10 +295,28 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        /// </summary>
+        [Input("publicIpAddressPoolId")]
+        public Input<string>? PublicIpAddressPoolId { get; set; }
+
+        /// <summary>
         /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("securityProtectionTypes")]
+        private InputList<string>? _securityProtectionTypes;
+
+        /// <summary>
+        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        /// </summary>
+        public InputList<string> SecurityProtectionTypes
+        {
+            get => _securityProtectionTypes ?? (_securityProtectionTypes = new InputList<string>());
+            set => _securityProtectionTypes = value;
+        }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -305,9 +333,10 @@ namespace Pulumi.AliCloud.Ecs
         public EipAddressArgs()
         {
         }
+        public static new EipAddressArgs Empty => new EipAddressArgs();
     }
 
-    public sealed class EipAddressState : Pulumi.ResourceArgs
+    public sealed class EipAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The activity id.
@@ -395,10 +424,28 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        /// </summary>
+        [Input("publicIpAddressPoolId")]
+        public Input<string>? PublicIpAddressPoolId { get; set; }
+
+        /// <summary>
         /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("securityProtectionTypes")]
+        private InputList<string>? _securityProtectionTypes;
+
+        /// <summary>
+        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        /// </summary>
+        public InputList<string> SecurityProtectionTypes
+        {
+            get => _securityProtectionTypes ?? (_securityProtectionTypes = new InputList<string>());
+            set => _securityProtectionTypes = value;
+        }
 
         /// <summary>
         /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
@@ -421,5 +468,6 @@ namespace Pulumi.AliCloud.Ecs
         public EipAddressState()
         {
         }
+        public static new EipAddressState Empty => new EipAddressState();
     }
 }

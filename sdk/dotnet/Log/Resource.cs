@@ -21,23 +21,21 @@ namespace Pulumi.AliCloud.Log
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Log.Resource("example", new()
     ///     {
-    ///         var example = new AliCloud.Log.Resource("example", new AliCloud.Log.ResourceArgs
-    ///         {
-    ///             Description = "user tf test resource desc",
-    ///             ExtInfo = "{}",
-    ///             Schema = "{\"schema\":[{\"column\":\"col1\",\"desc\":\"col1 desc\",\"ext_info\":{},\"required\":true,\"type\":\"string\"},{\"column\":\"col2\",\"desc\":\"col2 desc\",\"ext_info\":\"optional\",\"required\":true,\"type\":\"string\"}]}",
-    ///             Type = "userdefine",
-    ///         });
-    ///     }
+    ///         Description = "user tf test resource desc",
+    ///         ExtInfo = "{}",
+    ///         Schema = "{\"schema\":[{\"column\":\"col1\",\"desc\":\"col1 desc\",\"ext_info\":{},\"required\":true,\"type\":\"string\"},{\"column\":\"col2\",\"desc\":\"col2 desc\",\"ext_info\":\"optional\",\"required\":true,\"type\":\"string\"}]}",
+    ///         Type = "userdefine",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/resource:Resource")]
-    public partial class Resource : Pulumi.CustomResource
+    public partial class Resource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The meta store's description.
@@ -125,7 +123,7 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class ResourceArgs : Pulumi.ResourceArgs
+    public sealed class ResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The meta store's description.
@@ -160,9 +158,10 @@ namespace Pulumi.AliCloud.Log
         public ResourceArgs()
         {
         }
+        public static new ResourceArgs Empty => new ResourceArgs();
     }
 
-    public sealed class ResourceState : Pulumi.ResourceArgs
+    public sealed class ResourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The meta store's description.
@@ -197,5 +196,6 @@ namespace Pulumi.AliCloud.Log
         public ResourceState()
         {
         }
+        public static new ResourceState Empty => new ResourceState();
     }
 }

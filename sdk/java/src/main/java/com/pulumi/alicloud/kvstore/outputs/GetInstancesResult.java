@@ -36,11 +36,14 @@ public final class GetInstancesResult {
      * 
      */
     private List<String> ids;
+    /**
+     * @return (Optional) Type of the applied ApsaraDB for instance.
+     * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     * 
+     */
     private @Nullable String instanceClass;
     /**
      * @return (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
-     * * `instance_class`- (Optional) Type of the applied ApsaraDB for instance.
-     *   For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
      * 
      */
     private @Nullable String instanceType;
@@ -127,13 +130,16 @@ public final class GetInstancesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return (Optional) Type of the applied ApsaraDB for instance.
+     * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     * 
+     */
     public Optional<String> instanceClass() {
         return Optional.ofNullable(this.instanceClass);
     }
     /**
      * @return (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
-     * * `instance_class`- (Optional) Type of the applied ApsaraDB for instance.
-     *   For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
      * 
      */
     public Optional<String> instanceType() {

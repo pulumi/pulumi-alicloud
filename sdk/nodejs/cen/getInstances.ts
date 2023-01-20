@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,16 +19,13 @@ import * as utilities from "../utilities";
  *     ids: ["cen-id1"],
  *     nameRegex: "^foo",
  * });
- * export const firstCenInstanceId = cenInstancesDs.then(cenInstancesDs => cenInstancesDs.instances?[0]?.id);
+ * export const firstCenInstanceId = cenInstancesDs.then(cenInstancesDs => cenInstancesDs.instances?.[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getInstances:getInstances", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -91,9 +89,24 @@ export interface GetInstancesResult {
      */
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides CEN instances available to the user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const cenInstancesDs = alicloud.cen.getInstances({
+ *     ids: ["cen-id1"],
+ *     nameRegex: "^foo",
+ * });
+ * export const firstCenInstanceId = cenInstancesDs.then(cenInstancesDs => cenInstancesDs.instances?.[0]?.id);
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**

@@ -396,7 +396,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
             __props__ = ShardingNetworkPrivateAddressArgs.__new__(ShardingNetworkPrivateAddressArgs)
 
             __props__.__dict__["account_name"] = account_name
-            __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             if db_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_instance_id'")
             __props__.__dict__["db_instance_id"] = db_instance_id
@@ -407,6 +407,8 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["network_addresses"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ShardingNetworkPrivateAddress, __self__).__init__(
             'alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress',
             resource_name,

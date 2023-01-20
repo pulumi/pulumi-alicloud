@@ -21,6 +21,7 @@ class ScalingGroupArgs:
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  group_deletion_protection: Optional[pulumi.Input[bool]] = None,
                  group_type: Optional[pulumi.Input[str]] = None,
+                 health_check_type: Optional[pulumi.Input[str]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -46,6 +47,7 @@ class ScalingGroupArgs:
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         :param pulumi.Input[str] group_type: Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+        :param pulumi.Input[str] health_check_type: Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
         :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         :param pulumi.Input[str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
@@ -84,6 +86,8 @@ class ScalingGroupArgs:
             pulumi.set(__self__, "group_deletion_protection", group_deletion_protection)
         if group_type is not None:
             pulumi.set(__self__, "group_type", group_type)
+        if health_check_type is not None:
+            pulumi.set(__self__, "health_check_type", health_check_type)
         if launch_template_id is not None:
             pulumi.set(__self__, "launch_template_id", launch_template_id)
         if launch_template_version is not None:
@@ -201,6 +205,18 @@ class ScalingGroupArgs:
     @group_type.setter
     def group_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "group_type", value)
+
+    @property
+    @pulumi.getter(name="healthCheckType")
+    def health_check_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+        """
+        return pulumi.get(self, "health_check_type")
+
+    @health_check_type.setter
+    def health_check_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_type", value)
 
     @property
     @pulumi.getter(name="launchTemplateId")
@@ -390,6 +406,7 @@ class _ScalingGroupState:
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  group_deletion_protection: Optional[pulumi.Input[bool]] = None,
                  group_type: Optional[pulumi.Input[str]] = None,
+                 health_check_type: Optional[pulumi.Input[str]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -415,6 +432,7 @@ class _ScalingGroupState:
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         :param pulumi.Input[str] group_type: Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+        :param pulumi.Input[str] health_check_type: Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
         :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         :param pulumi.Input[str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
@@ -453,6 +471,8 @@ class _ScalingGroupState:
             pulumi.set(__self__, "group_deletion_protection", group_deletion_protection)
         if group_type is not None:
             pulumi.set(__self__, "group_type", group_type)
+        if health_check_type is not None:
+            pulumi.set(__self__, "health_check_type", health_check_type)
         if launch_template_id is not None:
             pulumi.set(__self__, "launch_template_id", launch_template_id)
         if launch_template_version is not None:
@@ -550,6 +570,18 @@ class _ScalingGroupState:
     @group_type.setter
     def group_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "group_type", value)
+
+    @property
+    @pulumi.getter(name="healthCheckType")
+    def health_check_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+        """
+        return pulumi.get(self, "health_check_type")
+
+    @health_check_type.setter
+    def health_check_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_type", value)
 
     @property
     @pulumi.getter(name="launchTemplateId")
@@ -765,6 +797,7 @@ class ScalingGroup(pulumi.CustomResource):
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  group_deletion_protection: Optional[pulumi.Input[bool]] = None,
                  group_type: Optional[pulumi.Input[str]] = None,
+                 health_check_type: Optional[pulumi.Input[str]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -800,6 +833,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         :param pulumi.Input[str] group_type: Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+        :param pulumi.Input[str] health_check_type: Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
         :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         :param pulumi.Input[str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
@@ -863,6 +897,7 @@ class ScalingGroup(pulumi.CustomResource):
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  group_deletion_protection: Optional[pulumi.Input[bool]] = None,
                  group_type: Optional[pulumi.Input[str]] = None,
+                 health_check_type: Optional[pulumi.Input[str]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -893,6 +928,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__.__dict__["desired_capacity"] = desired_capacity
             __props__.__dict__["group_deletion_protection"] = group_deletion_protection
             __props__.__dict__["group_type"] = group_type
+            __props__.__dict__["health_check_type"] = health_check_type
             __props__.__dict__["launch_template_id"] = launch_template_id
             __props__.__dict__["launch_template_version"] = launch_template_version
             __props__.__dict__["loadbalancer_ids"] = loadbalancer_ids
@@ -931,6 +967,7 @@ class ScalingGroup(pulumi.CustomResource):
             desired_capacity: Optional[pulumi.Input[int]] = None,
             group_deletion_protection: Optional[pulumi.Input[bool]] = None,
             group_type: Optional[pulumi.Input[str]] = None,
+            health_check_type: Optional[pulumi.Input[str]] = None,
             launch_template_id: Optional[pulumi.Input[str]] = None,
             launch_template_version: Optional[pulumi.Input[str]] = None,
             loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -961,6 +998,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         :param pulumi.Input[str] group_type: Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+        :param pulumi.Input[str] health_check_type: Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
         :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         :param pulumi.Input[str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
@@ -998,6 +1036,7 @@ class ScalingGroup(pulumi.CustomResource):
         __props__.__dict__["desired_capacity"] = desired_capacity
         __props__.__dict__["group_deletion_protection"] = group_deletion_protection
         __props__.__dict__["group_type"] = group_type
+        __props__.__dict__["health_check_type"] = health_check_type
         __props__.__dict__["launch_template_id"] = launch_template_id
         __props__.__dict__["launch_template_version"] = launch_template_version
         __props__.__dict__["loadbalancer_ids"] = loadbalancer_ids
@@ -1057,6 +1096,14 @@ class ScalingGroup(pulumi.CustomResource):
         Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
         """
         return pulumi.get(self, "group_type")
+
+    @property
+    @pulumi.getter(name="healthCheckType")
+    def health_check_type(self) -> pulumi.Output[str]:
+        """
+        Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+        """
+        return pulumi.get(self, "health_check_type")
 
     @property
     @pulumi.getter(name="launchTemplateId")

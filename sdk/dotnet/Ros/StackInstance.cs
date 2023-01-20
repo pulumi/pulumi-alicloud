@@ -21,51 +21,51 @@ namespace Pulumi.AliCloud.Ros
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleRegions = Output.Create(AliCloud.Ros.GetRegions.InvokeAsync());
-    ///         var exampleStackGroup = new AliCloud.Ros.StackGroup("exampleStackGroup", new AliCloud.Ros.StackGroupArgs
-    ///         {
-    ///             StackGroupName = @var.Name,
-    ///             TemplateBody = "{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}",
-    ///             Description = "test for stack groups",
-    ///             Parameters = 
-    ///             {
-    ///                 new AliCloud.Ros.Inputs.StackGroupParameterArgs
-    ///                 {
-    ///                     ParameterKey = "VpcName",
-    ///                     ParameterValue = "VpcName",
-    ///                 },
-    ///                 new AliCloud.Ros.Inputs.StackGroupParameterArgs
-    ///                 {
-    ///                     ParameterKey = "InstanceType",
-    ///                     ParameterValue = "InstanceType",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var exampleStackInstance = new AliCloud.Ros.StackInstance("exampleStackInstance", new AliCloud.Ros.StackInstanceArgs
-    ///         {
-    ///             StackGroupName = exampleStackGroup.StackGroupName,
-    ///             StackInstanceAccountId = "example_value",
-    ///             StackInstanceRegionId = exampleRegions.Apply(exampleRegions =&gt; exampleRegions.Regions?[0]?.RegionId),
-    ///             OperationPreferences = "{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}",
-    ///             ParameterOverrides = 
-    ///             {
-    ///                 new AliCloud.Ros.Inputs.StackInstanceParameterOverrideArgs
-    ///                 {
-    ///                     ParameterValue = "VpcName",
-    ///                     ParameterKey = "VpcName",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var exampleRegions = AliCloud.Ros.GetRegions.Invoke();
     /// 
-    /// }
+    ///     var exampleStackGroup = new AliCloud.Ros.StackGroup("exampleStackGroup", new()
+    ///     {
+    ///         StackGroupName = @var.Name,
+    ///         TemplateBody = "{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}",
+    ///         Description = "test for stack groups",
+    ///         Parameters = new[]
+    ///         {
+    ///             new AliCloud.Ros.Inputs.StackGroupParameterArgs
+    ///             {
+    ///                 ParameterKey = "VpcName",
+    ///                 ParameterValue = "VpcName",
+    ///             },
+    ///             new AliCloud.Ros.Inputs.StackGroupParameterArgs
+    ///             {
+    ///                 ParameterKey = "InstanceType",
+    ///                 ParameterValue = "InstanceType",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleStackInstance = new AliCloud.Ros.StackInstance("exampleStackInstance", new()
+    ///     {
+    ///         StackGroupName = exampleStackGroup.StackGroupName,
+    ///         StackInstanceAccountId = "example_value",
+    ///         StackInstanceRegionId = exampleRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.RegionId),
+    ///         OperationPreferences = "{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}",
+    ///         ParameterOverrides = new[]
+    ///         {
+    ///             new AliCloud.Ros.Inputs.StackInstanceParameterOverrideArgs
+    ///             {
+    ///                 ParameterValue = "VpcName",
+    ///                 ParameterKey = "VpcName",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Ros
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ros/stackInstance:StackInstance")]
-    public partial class StackInstance : Pulumi.CustomResource
+    public partial class StackInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The operation description.
@@ -122,12 +122,7 @@ namespace Pulumi.AliCloud.Ros
         public Output<string> StackInstanceRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
-        /// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-        /// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-        /// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-        /// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-        /// * The create or update operation is not complete.
+        /// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -161,6 +156,10 @@ namespace Pulumi.AliCloud.Ros
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "parameterOverrides",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -182,7 +181,7 @@ namespace Pulumi.AliCloud.Ros
         }
     }
 
-    public sealed class StackInstanceArgs : Pulumi.ResourceArgs
+    public sealed class StackInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The operation description.
@@ -205,7 +204,11 @@ namespace Pulumi.AliCloud.Ros
         public InputList<Inputs.StackInstanceParameterOverrideArgs> ParameterOverrides
         {
             get => _parameterOverrides ?? (_parameterOverrides = new InputList<Inputs.StackInstanceParameterOverrideArgs>());
-            set => _parameterOverrides = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.StackInstanceParameterOverrideArgs>());
+                _parameterOverrides = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -241,9 +244,10 @@ namespace Pulumi.AliCloud.Ros
         public StackInstanceArgs()
         {
         }
+        public static new StackInstanceArgs Empty => new StackInstanceArgs();
     }
 
-    public sealed class StackInstanceState : Pulumi.ResourceArgs
+    public sealed class StackInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The operation description.
@@ -266,7 +270,11 @@ namespace Pulumi.AliCloud.Ros
         public InputList<Inputs.StackInstanceParameterOverrideGetArgs> ParameterOverrides
         {
             get => _parameterOverrides ?? (_parameterOverrides = new InputList<Inputs.StackInstanceParameterOverrideGetArgs>());
-            set => _parameterOverrides = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.StackInstanceParameterOverrideGetArgs>());
+                _parameterOverrides = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -294,12 +302,7 @@ namespace Pulumi.AliCloud.Ros
         public Input<string>? StackInstanceRegionId { get; set; }
 
         /// <summary>
-        /// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
-        /// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-        /// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-        /// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-        /// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-        /// * The create or update operation is not complete.
+        /// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -313,5 +316,6 @@ namespace Pulumi.AliCloud.Ros
         public StackInstanceState()
         {
         }
+        public static new StackInstanceState Empty => new StackInstanceState();
     }
 }

@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Elastic Desktop Service(EDS) User resource.
+ * Provides a Elastic Desktop Service (ECD) User resource.
  *
- * For information about Elastic Desktop Service(EDS) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
+ * For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
  *
  * > **NOTE:** Available in v1.142.0+.
  *
@@ -110,11 +110,13 @@ export class User extends pulumi.CustomResource {
             }
             resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["endUserId"] = args ? args.endUserId : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["phone"] = args ? args.phone : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,20 +22,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.ecs.getEcsDeploymentSets({
  *     ids: ["example_id"],
  * });
- * export const ecsDeploymentSetId1 = ids.then(ids => ids.sets?[0]?.id);
+ * export const ecsDeploymentSetId1 = ids.then(ids => ids.sets?.[0]?.id);
  * const nameRegex = alicloud.ecs.getEcsDeploymentSets({
  *     nameRegex: "^my-DeploymentSet",
  * });
- * export const ecsDeploymentSetId2 = nameRegex.then(nameRegex => nameRegex.sets?[0]?.id);
+ * export const ecsDeploymentSetId2 = nameRegex.then(nameRegex => nameRegex.sets?.[0]?.id);
  * ```
  */
 export function getEcsDeploymentSets(args?: GetEcsDeploymentSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDeploymentSetsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", {
         "deploymentSetName": args.deploymentSetName,
         "ids": args.ids,
@@ -83,9 +81,31 @@ export interface GetEcsDeploymentSetsResult {
     readonly sets: outputs.ecs.GetEcsDeploymentSetsSet[];
     readonly strategy?: string;
 }
-
+/**
+ * This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.140.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ecs.getEcsDeploymentSets({
+ *     ids: ["example_id"],
+ * });
+ * export const ecsDeploymentSetId1 = ids.then(ids => ids.sets?.[0]?.id);
+ * const nameRegex = alicloud.ecs.getEcsDeploymentSets({
+ *     nameRegex: "^my-DeploymentSet",
+ * });
+ * export const ecsDeploymentSetId2 = nameRegex.then(nameRegex => nameRegex.sets?.[0]?.id);
+ * ```
+ */
 export function getEcsDeploymentSetsOutput(args?: GetEcsDeploymentSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDeploymentSetsResult> {
-    return pulumi.output(args).apply(a => getEcsDeploymentSets(a, opts))
+    return pulumi.output(args).apply((a: any) => getEcsDeploymentSets(a, opts))
 }
 
 /**

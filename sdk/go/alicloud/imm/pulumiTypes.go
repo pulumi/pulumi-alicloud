@@ -23,7 +23,7 @@ type GetProjectsProject struct {
 	Id string `pulumi:"id"`
 	// The modification time of project.
 	ModifyTime string `pulumi:"modifyTime"`
-	// -The name of project.
+	// The name of project.
 	Project string `pulumi:"project"`
 	// The service role authorized to the Intelligent Media Management service to access other cloud resources.
 	ServiceRole string `pulumi:"serviceRole"`
@@ -55,7 +55,7 @@ type GetProjectsProjectArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The modification time of project.
 	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
-	// -The name of project.
+	// The name of project.
 	Project pulumi.StringInput `pulumi:"project"`
 	// The service role authorized to the Intelligent Media Management service to access other cloud resources.
 	ServiceRole pulumi.StringInput `pulumi:"serviceRole"`
@@ -144,7 +144,7 @@ func (o GetProjectsProjectOutput) ModifyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.ModifyTime }).(pulumi.StringOutput)
 }
 
-// -The name of project.
+// The name of project.
 func (o GetProjectsProjectOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Project }).(pulumi.StringOutput)
 }

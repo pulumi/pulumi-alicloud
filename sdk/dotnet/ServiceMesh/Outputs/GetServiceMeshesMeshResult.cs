@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string SidecarVersion;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `running` or `initial`.
         /// </summary>
         public readonly string Status;
         /// <summary>

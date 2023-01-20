@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -62,70 +62,71 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbbackendservertest&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var slbBackendServerName = config.get(&#34;slbBackendServerName&#34;).orElse(&#34;slbbackendservertest&#34;);
+ *         final var backendServerZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var backendServerInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(backendServerZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var backendServerImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
  *             .mostRecent(true)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
+ *         var backendServerNetwork = new Network(&#34;backendServerNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(slbBackendServerName)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(defaultNetwork.id())
+ *         var backendServerSwitch = new Switch(&#34;backendServerSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(backendServerNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(name)
+ *             .zoneId(backendServerZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(slbBackendServerName)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(defaultNetwork.id())
+ *         var backendServerSecurityGroup = new SecurityGroup(&#34;backendServerSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(backendServerNetwork.id())
  *             .build());
  * 
  *         for (var i = 0; i &lt; &#34;2&#34;; i++) {
- *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
- *                 .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *                 .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *                 .instanceName(name)
- *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
+ *             new Instance(&#34;backendServerInstance-&#34; + i, InstanceArgs.builder()            
+ *                 .imageId(backendServerImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *                 .instanceType(backendServerInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *                 .instanceName(slbBackendServerName)
+ *                 .securityGroups(backendServerSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
  *                 .internetChargeType(&#34;PayByTraffic&#34;)
  *                 .internetMaxBandwidthOut(&#34;10&#34;)
- *                 .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                 .availabilityZone(backendServerZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *                 .instanceChargeType(&#34;PostPaid&#34;)
  *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *                 .vswitchId(defaultSwitch.id())
+ *                 .vswitchId(backendServerSwitch.id())
  *                 .build());
  * 
  *         
  * }
- *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
- *             .loadBalancerName(name)
- *             .vswitchId(defaultSwitch.id())
+ *         var backendServerApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;backendServerApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName(slbBackendServerName)
+ *             .vswitchId(backendServerSwitch.id())
+ *             .instanceChargeType(&#34;PayByCLCU&#34;)
  *             .build());
  * 
- *         var defaultBackendServer = new BackendServer(&#34;defaultBackendServer&#34;, BackendServerArgs.builder()        
- *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+ *         var backendServerBackendServer = new BackendServer(&#34;backendServerBackendServer&#34;, BackendServerArgs.builder()        
+ *             .loadBalancerId(backendServerApplicationLoadBalancer.id())
  *             .backendServers(            
  *                 BackendServerBackendServerArgs.builder()
- *                     .serverId(defaultInstance[0].id())
+ *                     .serverId(backendServerInstance[0].id())
  *                     .weight(100)
  *                     .build(),
  *                 BackendServerBackendServerArgs.builder()
- *                     .serverId(defaultInstance[1].id())
+ *                     .serverId(backendServerInstance[1].id())
  *                     .weight(100)
  *                     .build())
  *             .build());

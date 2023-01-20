@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -38,16 +39,13 @@ import * as utilities from "../utilities";
  *         key2: "value2",
  *     },
  * });
- * export const vodDomain = defaultDomains.apply(defaultDomains => defaultDomains.domains?[0]);
+ * export const vodDomain = defaultDomains.apply(defaultDomains => defaultDomains.domains?.[0]);
  * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vod/getDomains:getDomains", {
         "domainSearchType": args.domainSearchType,
         "ids": args.ids,
@@ -64,10 +62,6 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
 export interface GetDomainsArgs {
     /**
      * The search method. Valid values:
-     * * `fuzzyMatch`: fuzzy match. This is the default value.
-     * * `preMatch`: prefix match.
-     * * `sufMatch`: suffix match.
-     * * `fullMatch`: exact match
      */
     domainSearchType?: string;
     /**
@@ -85,8 +79,6 @@ export interface GetDomainsArgs {
     status?: string;
     /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
     tags?: {[key: string]: any};
 }
@@ -108,9 +100,44 @@ export interface GetDomainsResult {
     readonly status?: string;
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides the Vod Domains of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultDomain = new alicloud.vod.Domain("defaultDomain", {
+ *     domainName: "your_domain_name",
+ *     scope: "domestic",
+ *     sources: [{
+ *         sourceType: "domain",
+ *         sourceContent: "your_source_content",
+ *         sourcePort: "80",
+ *     }],
+ *     tags: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ * });
+ * const defaultDomains = alicloud.vod.getDomainsOutput({
+ *     ids: [defaultDomain.id],
+ *     tags: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ * });
+ * export const vodDomain = defaultDomains.apply(defaultDomains => defaultDomains.domains?.[0]);
+ * ```
+ */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
-    return pulumi.output(args).apply(a => getDomains(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomains(a, opts))
 }
 
 /**
@@ -119,10 +146,6 @@ export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.Invo
 export interface GetDomainsOutputArgs {
     /**
      * The search method. Valid values:
-     * * `fuzzyMatch`: fuzzy match. This is the default value.
-     * * `preMatch`: prefix match.
-     * * `sufMatch`: suffix match.
-     * * `fullMatch`: exact match
      */
     domainSearchType?: pulumi.Input<string>;
     /**
@@ -140,8 +163,6 @@ export interface GetDomainsOutputArgs {
     status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

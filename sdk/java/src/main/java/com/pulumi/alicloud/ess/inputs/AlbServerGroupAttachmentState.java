@@ -50,14 +50,14 @@ public final class AlbServerGroupAttachmentState extends com.pulumi.resources.Re
     }
 
     /**
-     * - The port will be used for Alb Server Group backend server.
+     * The port will be used for Alb Server Group backend server.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return - The port will be used for Alb Server Group backend server.
+     * @return The port will be used for Alb Server Group backend server.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -167,7 +167,7 @@ public final class AlbServerGroupAttachmentState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param port - The port will be used for Alb Server Group backend server.
+         * @param port The port will be used for Alb Server Group backend server.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class AlbServerGroupAttachmentState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param port - The port will be used for Alb Server Group backend server.
+         * @param port The port will be used for Alb Server Group backend server.
          * 
          * @return builder
          * 

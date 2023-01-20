@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class AlertNotificationListGetArgs : Pulumi.ResourceArgs
+    public sealed class AlertNotificationListGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Notice content of alarm.
@@ -57,5 +57,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public AlertNotificationListGetArgs()
         {
         }
+        public static new AlertNotificationListGetArgs Empty => new AlertNotificationListGetArgs();
     }
 }

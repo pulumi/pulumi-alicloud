@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -17,18 +18,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const cassandra = pulumi.output(alicloud.cassandra.getClusters({
+ * const cassandra = alicloud.cassandra.getClusters({
  *     nameRegex: "tf_testAccCassandra",
- * }));
+ * });
  * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cassandra/getClusters:getClusters", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -83,9 +81,25 @@ export interface GetClustersResult {
      */
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
+ * Filters support regular expression for the cluster name, ids or tags.
+ *
+ * > **NOTE:**  Available in 1.88.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const cassandra = alicloud.cassandra.getClusters({
+ *     nameRegex: "tf_testAccCassandra",
+ * });
+ * ```
+ */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
-    return pulumi.output(args).apply(a => getClusters(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusters(a, opts))
 }
 
 /**

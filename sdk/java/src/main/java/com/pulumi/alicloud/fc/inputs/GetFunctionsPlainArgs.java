@@ -16,14 +16,14 @@ public final class GetFunctionsPlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetFunctionsPlainArgs Empty = new GetFunctionsPlainArgs();
 
     /**
-     * - A list of functions ids.
+     * A list of functions ids.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return - A list of functions ids.
+     * @return A list of functions ids.
      * 
      */
     public Optional<List<String>> ids() {
@@ -95,7 +95,7 @@ public final class GetFunctionsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param ids - A list of functions ids.
+         * @param ids A list of functions ids.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class GetFunctionsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param ids - A list of functions ids.
+         * @param ids A list of functions ids.
          * 
          * @return builder
          * 

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -62,7 +63,7 @@ import * as utilities from "../utilities";
  * OTS tunnel can be imported using id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ots/tunnel:Tunnel foo "<instance_name>:<table_name>:<tunnel_name>"
+ *  $ pulumi import alicloud:ots/tunnel:Tunnel foo <instance_name>:<table_name>:<tunnel_name>
  * ```
  */
 export class Tunnel extends pulumi.CustomResource {

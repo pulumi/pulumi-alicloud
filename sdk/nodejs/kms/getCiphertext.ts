@@ -22,11 +22,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCiphertext(args: GetCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetCiphertextResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getCiphertext:getCiphertext", {
         "encryptionContext": args.encryptionContext,
         "keyId": args.keyId,
@@ -39,7 +36,6 @@ export function getCiphertext(args: GetCiphertextArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetCiphertextArgs {
     /**
-     * -
      * (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     encryptionContext?: {[key: string]: string};
@@ -69,9 +65,25 @@ export interface GetCiphertextResult {
     readonly keyId: string;
     readonly plaintext: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const key = new alicloud.kms.Key("key", {
+ *     description: "example key",
+ *     isEnabled: true,
+ * });
+ * const encrypted = alicloud.kms.getCiphertextOutput({
+ *     keyId: key.id,
+ *     plaintext: "example",
+ * });
+ * ```
+ */
 export function getCiphertextOutput(args: GetCiphertextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCiphertextResult> {
-    return pulumi.output(args).apply(a => getCiphertext(a, opts))
+    return pulumi.output(args).apply((a: any) => getCiphertext(a, opts))
 }
 
 /**
@@ -79,7 +91,6 @@ export function getCiphertextOutput(args: GetCiphertextOutputArgs, opts?: pulumi
  */
 export interface GetCiphertextOutputArgs {
     /**
-     * -
      * (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

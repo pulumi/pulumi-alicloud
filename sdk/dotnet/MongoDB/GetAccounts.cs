@@ -23,30 +23,29 @@ namespace Pulumi.AliCloud.MongoDB
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.MongoDB.GetAccounts.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.MongoDB.GetAccounts.InvokeAsync(new AliCloud.MongoDB.GetAccountsArgs
-        ///         {
-        ///             InstanceId = "example_value",
-        ///             AccountName = "root",
-        ///         }));
-        ///         this.MongodbAccountId1 = example.Apply(example =&gt; example.Accounts?[0]?.Id);
-        ///     }
+        ///         InstanceId = "example_value",
+        ///         AccountName = "root",
+        ///     });
         /// 
-        ///     [Output("mongodbAccountId1")]
-        ///     public Output&lt;string&gt; MongodbAccountId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbAccountId1"] = example.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:mongodb/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:mongodb/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
@@ -60,34 +59,33 @@ namespace Pulumi.AliCloud.MongoDB
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.MongoDB.GetAccounts.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.MongoDB.GetAccounts.InvokeAsync(new AliCloud.MongoDB.GetAccountsArgs
-        ///         {
-        ///             InstanceId = "example_value",
-        ///             AccountName = "root",
-        ///         }));
-        ///         this.MongodbAccountId1 = example.Apply(example =&gt; example.Accounts?[0]?.Id);
-        ///     }
+        ///         InstanceId = "example_value",
+        ///         AccountName = "root",
+        ///     });
         /// 
-        ///     [Output("mongodbAccountId1")]
-        ///     public Output&lt;string&gt; MongodbAccountId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbAccountId1"] = example.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:mongodb/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:mongodb/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAccountsArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the account.
@@ -107,9 +105,10 @@ namespace Pulumi.AliCloud.MongoDB
         public GetAccountsArgs()
         {
         }
+        public static new GetAccountsArgs Empty => new GetAccountsArgs();
     }
 
-    public sealed class GetAccountsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the account.
@@ -129,6 +128,7 @@ namespace Pulumi.AliCloud.MongoDB
         public GetAccountsInvokeArgs()
         {
         }
+        public static new GetAccountsInvokeArgs Empty => new GetAccountsInvokeArgs();
     }
 
 

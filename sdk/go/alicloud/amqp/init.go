@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Instance{}
 	case "alicloud:amqp/queue:Queue":
 		r = &Queue{}
+	case "alicloud:amqp/staticAccount:StaticAccount":
+		r = &StaticAccount{}
 	case "alicloud:amqp/virtualHost:VirtualHost":
 		r = &VirtualHost{}
 	default:
@@ -62,6 +64,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"amqp/queue",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"amqp/staticAccount",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -21,85 +21,87 @@ namespace Pulumi.AliCloud.Dns
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testacc";
-    ///         var domainName = config.Get("domainName") ?? "your_domain_name";
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
-    ///         var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new AliCloud.Cms.AlarmContactGroupArgs
-    ///         {
-    ///             AlarmContactGroupName = name,
-    ///         });
-    ///         var defaultGtmInstance = new AliCloud.Dns.GtmInstance("defaultGtmInstance", new AliCloud.Dns.GtmInstanceArgs
-    ///         {
-    ///             InstanceName = name,
-    ///             PaymentType = "Subscription",
-    ///             Period = 1,
-    ///             RenewalStatus = "ManualRenewal",
-    ///             PackageEdition = "ultimate",
-    ///             HealthCheckTaskCount = 100,
-    ///             SmsNotificationCount = 1000,
-    ///             PublicCnameMode = "SYSTEM_ASSIGN",
-    ///             Ttl = 60,
-    ///             CnameType = "PUBLIC",
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///             AlertGroups = 
-    ///             {
-    ///                 defaultAlarmContactGroup.AlarmContactGroupName,
-    ///             },
-    ///             PublicUserDomainName = domainName,
-    ///             AlertConfigs = 
-    ///             {
-    ///                 new AliCloud.Dns.Inputs.GtmInstanceAlertConfigArgs
-    ///                 {
-    ///                     SmsNotice = true,
-    ///                     NoticeType = "ADDR_ALERT",
-    ///                     EmailNotice = true,
-    ///                     DingtalkNotice = true,
-    ///                 },
-    ///             },
-    ///         });
-    ///         var defaultAddressPool = new AliCloud.Dns.AddressPool("defaultAddressPool", new AliCloud.Dns.AddressPoolArgs
-    ///         {
-    ///             AddressPoolName = name,
-    ///             InstanceId = defaultGtmInstance.Id,
-    ///             LbaStrategy = "RATIO",
-    ///             Type = "IPV4",
-    ///             Addresses = 
-    ///             {
-    ///                 new AliCloud.Dns.Inputs.AddressPoolAddressArgs
-    ///                 {
-    ///                     AttributeInfo = "{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}",
-    ///                     Remark = "address_remark",
-    ///                     Address = "1.1.1.1",
-    ///                     Mode = "SMART",
-    ///                     LbaWeight = 1,
-    ///                 },
-    ///             },
-    ///         });
-    ///         var defaultMonitorConfig = new AliCloud.Dns.MonitorConfig("defaultMonitorConfig", new AliCloud.Dns.MonitorConfigArgs
-    ///         {
-    ///             AddrPoolId = defaultAddressPool.Id,
-    ///             EvaluationCount = 1,
-    ///             Interval = 60,
-    ///             Timeout = 5000,
-    ///             ProtocolType = "TCP",
-    ///             MonitorExtendInfo = "{\"failureRate\"=50,\"port\"=80}",
-    ///             IspCityNodes = 
-    ///             {
-    ///                 { "cityCode", "503" },
-    ///                 { "ispCode", "465" },
-    ///             },
-    ///         });
-    ///     }
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testacc";
+    ///     var domainName = config.Get("domainName") ?? "your_domain_name";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    /// }
+    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+    ///     {
+    ///         AlarmContactGroupName = name,
+    ///     });
+    /// 
+    ///     var defaultGtmInstance = new AliCloud.Dns.GtmInstance("defaultGtmInstance", new()
+    ///     {
+    ///         InstanceName = name,
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         PackageEdition = "ultimate",
+    ///         HealthCheckTaskCount = 100,
+    ///         SmsNotificationCount = 1000,
+    ///         PublicCnameMode = "SYSTEM_ASSIGN",
+    ///         Ttl = 60,
+    ///         CnameType = "PUBLIC",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         AlertGroups = new[]
+    ///         {
+    ///             defaultAlarmContactGroup.AlarmContactGroupName,
+    ///         },
+    ///         PublicUserDomainName = domainName,
+    ///         AlertConfigs = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.GtmInstanceAlertConfigArgs
+    ///             {
+    ///                 SmsNotice = true,
+    ///                 NoticeType = "ADDR_ALERT",
+    ///                 EmailNotice = true,
+    ///                 DingtalkNotice = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultAddressPool = new AliCloud.Dns.AddressPool("defaultAddressPool", new()
+    ///     {
+    ///         AddressPoolName = name,
+    ///         InstanceId = defaultGtmInstance.Id,
+    ///         LbaStrategy = "RATIO",
+    ///         Type = "IPV4",
+    ///         Addresses = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.AddressPoolAddressArgs
+    ///             {
+    ///                 AttributeInfo = "{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}",
+    ///                 Remark = "address_remark",
+    ///                 Address = "1.1.1.1",
+    ///                 Mode = "SMART",
+    ///                 LbaWeight = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultMonitorConfig = new AliCloud.Dns.MonitorConfig("defaultMonitorConfig", new()
+    ///     {
+    ///         AddrPoolId = defaultAddressPool.Id,
+    ///         EvaluationCount = 1,
+    ///         Interval = 60,
+    ///         Timeout = 5000,
+    ///         ProtocolType = "TCP",
+    ///         MonitorExtendInfo = "{\"failureRate\"=50,\"port\"=80}",
+    ///         IspCityNodes = 
+    ///         {
+    ///             { "cityCode", "503" },
+    ///             { "ispCode", "465" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -111,7 +113,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/monitorConfig:MonitorConfig")]
-    public partial class MonitorConfig : Pulumi.CustomResource
+    public partial class MonitorConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the address pool.
@@ -205,7 +207,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class MonitorConfigArgs : Pulumi.ResourceArgs
+    public sealed class MonitorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the address pool.
@@ -264,9 +266,10 @@ namespace Pulumi.AliCloud.Dns
         public MonitorConfigArgs()
         {
         }
+        public static new MonitorConfigArgs Empty => new MonitorConfigArgs();
     }
 
-    public sealed class MonitorConfigState : Pulumi.ResourceArgs
+    public sealed class MonitorConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the address pool.
@@ -325,5 +328,6 @@ namespace Pulumi.AliCloud.Dns
         public MonitorConfigState()
         {
         }
+        public static new MonitorConfigState Empty => new MonitorConfigState();
     }
 }

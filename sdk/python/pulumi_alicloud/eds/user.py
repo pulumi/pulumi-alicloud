@@ -197,9 +197,9 @@ class User(pulumi.CustomResource):
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Elastic Desktop Service(EDS) User resource.
+        Provides a Elastic Desktop Service (ECD) User resource.
 
-        For information about Elastic Desktop Service(EDS) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
+        For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
 
         > **NOTE:** Available in v1.142.0+.
 
@@ -239,9 +239,9 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Elastic Desktop Service(EDS) User resource.
+        Provides a Elastic Desktop Service (ECD) User resource.
 
-        For information about Elastic Desktop Service(EDS) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
+        For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
 
         > **NOTE:** Available in v1.142.0+.
 
@@ -301,9 +301,11 @@ class User(pulumi.CustomResource):
             if end_user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'end_user_id'")
             __props__.__dict__["end_user_id"] = end_user_id
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["phone"] = phone
             __props__.__dict__["status"] = status
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'alicloud:eds/user:User',
             resource_name,

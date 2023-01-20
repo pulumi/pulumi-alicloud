@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.Oos
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tftestacc";
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
-    ///         var defaultApplication = new AliCloud.Oos.Application("defaultApplication", new AliCloud.Oos.ApplicationArgs
-    ///         {
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///             ApplicationName = name,
-    ///             Description = name,
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///             },
-    ///         });
-    ///     }
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tftestacc";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    /// }
+    ///     var defaultApplication = new AliCloud.Oos.Application("defaultApplication", new()
+    ///     {
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ApplicationName = name,
+    ///         Description = name,
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +54,7 @@ namespace Pulumi.AliCloud.Oos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/application:Application")]
-    public partial class Application : Pulumi.CustomResource
+    public partial class Application : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the application.
@@ -125,7 +124,7 @@ namespace Pulumi.AliCloud.Oos
         }
     }
 
-    public sealed class ApplicationArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the application.
@@ -160,9 +159,10 @@ namespace Pulumi.AliCloud.Oos
         public ApplicationArgs()
         {
         }
+        public static new ApplicationArgs Empty => new ApplicationArgs();
     }
 
-    public sealed class ApplicationState : Pulumi.ResourceArgs
+    public sealed class ApplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the application.
@@ -197,5 +197,6 @@ namespace Pulumi.AliCloud.Oos
         public ApplicationState()
         {
         }
+        public static new ApplicationState Empty => new ApplicationState();
     }
 }

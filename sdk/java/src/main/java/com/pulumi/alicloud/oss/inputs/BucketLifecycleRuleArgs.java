@@ -38,14 +38,14 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Specifies the accelerate status of a bucket.
+     * Specifies lifecycle rule status.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Specifies the accelerate status of a bucket.
+     * @return Specifies lifecycle rule status.
      * 
      */
     public Output<Boolean> enabled() {
@@ -205,7 +205,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Specifies the accelerate status of a bucket.
+         * @param enabled Specifies lifecycle rule status.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Specifies the accelerate status of a bucket.
+         * @param enabled Specifies lifecycle rule status.
          * 
          * @return builder
          * 

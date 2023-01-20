@@ -10,10 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Yundun
 {
     [AliCloudResourceType("alicloud:yundun/bastionHostInstance:BastionHostInstance")]
-    public partial class BastionHostInstance : Pulumi.CustomResource
+    public partial class BastionHostInstance : global::Pulumi.CustomResource
     {
         [Output("adAuthServers")]
         public Output<ImmutableArray<Outputs.BastionHostInstanceAdAuthServer>> AdAuthServers { get; private set; } = null!;
+
+        [Output("bandwidth")]
+        public Output<string> Bandwidth { get; private set; } = null!;
 
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -30,11 +33,26 @@ namespace Pulumi.AliCloud.Yundun
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
+        [Output("planCode")]
+        public Output<string> PlanCode { get; private set; } = null!;
+
+        [Output("renewPeriod")]
+        public Output<int?> RenewPeriod { get; private set; } = null!;
+
+        [Output("renewalPeriodUnit")]
+        public Output<string> RenewalPeriodUnit { get; private set; } = null!;
+
+        [Output("renewalStatus")]
+        public Output<string> RenewalStatus { get; private set; } = null!;
+
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
+
+        [Output("storage")]
+        public Output<string> Storage { get; private set; } = null!;
 
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -86,7 +104,7 @@ namespace Pulumi.AliCloud.Yundun
         }
     }
 
-    public sealed class BastionHostInstanceArgs : Pulumi.ResourceArgs
+    public sealed class BastionHostInstanceArgs : global::Pulumi.ResourceArgs
     {
         [Input("adAuthServers")]
         private InputList<Inputs.BastionHostInstanceAdAuthServerArgs>? _adAuthServers;
@@ -95,6 +113,9 @@ namespace Pulumi.AliCloud.Yundun
             get => _adAuthServers ?? (_adAuthServers = new InputList<Inputs.BastionHostInstanceAdAuthServerArgs>());
             set => _adAuthServers = value;
         }
+
+        [Input("bandwidth", required: true)]
+        public Input<string> Bandwidth { get; set; } = null!;
 
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
@@ -116,6 +137,18 @@ namespace Pulumi.AliCloud.Yundun
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        [Input("planCode", required: true)]
+        public Input<string> PlanCode { get; set; } = null!;
+
+        [Input("renewPeriod")]
+        public Input<int>? RenewPeriod { get; set; }
+
+        [Input("renewalPeriodUnit")]
+        public Input<string>? RenewalPeriodUnit { get; set; }
+
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
+
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -126,6 +159,9 @@ namespace Pulumi.AliCloud.Yundun
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
+
+        [Input("storage", required: true)]
+        public Input<string> Storage { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -141,9 +177,10 @@ namespace Pulumi.AliCloud.Yundun
         public BastionHostInstanceArgs()
         {
         }
+        public static new BastionHostInstanceArgs Empty => new BastionHostInstanceArgs();
     }
 
-    public sealed class BastionHostInstanceState : Pulumi.ResourceArgs
+    public sealed class BastionHostInstanceState : global::Pulumi.ResourceArgs
     {
         [Input("adAuthServers")]
         private InputList<Inputs.BastionHostInstanceAdAuthServerGetArgs>? _adAuthServers;
@@ -152,6 +189,9 @@ namespace Pulumi.AliCloud.Yundun
             get => _adAuthServers ?? (_adAuthServers = new InputList<Inputs.BastionHostInstanceAdAuthServerGetArgs>());
             set => _adAuthServers = value;
         }
+
+        [Input("bandwidth")]
+        public Input<string>? Bandwidth { get; set; }
 
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -173,6 +213,18 @@ namespace Pulumi.AliCloud.Yundun
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        [Input("planCode")]
+        public Input<string>? PlanCode { get; set; }
+
+        [Input("renewPeriod")]
+        public Input<int>? RenewPeriod { get; set; }
+
+        [Input("renewalPeriodUnit")]
+        public Input<string>? RenewalPeriodUnit { get; set; }
+
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
+
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -183,6 +235,9 @@ namespace Pulumi.AliCloud.Yundun
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
+
+        [Input("storage")]
+        public Input<string>? Storage { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -198,5 +253,6 @@ namespace Pulumi.AliCloud.Yundun
         public BastionHostInstanceState()
         {
         }
+        public static new BastionHostInstanceState Empty => new BastionHostInstanceState();
     }
 }

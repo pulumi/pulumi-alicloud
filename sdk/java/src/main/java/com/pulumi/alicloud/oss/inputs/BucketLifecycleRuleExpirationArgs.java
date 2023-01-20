@@ -18,14 +18,14 @@ public final class BucketLifecycleRuleExpirationArgs extends com.pulumi.resource
     public static final BucketLifecycleRuleExpirationArgs Empty = new BucketLifecycleRuleExpirationArgs();
 
     /**
-     * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+     * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
      * 
      */
     @Import(name="createdBeforeDate")
     private @Nullable Output<String> createdBeforeDate;
 
     /**
-     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
      * 
      */
     public Optional<Output<String>> createdBeforeDate() {
@@ -48,14 +48,14 @@ public final class BucketLifecycleRuleExpirationArgs extends com.pulumi.resource
     }
 
     /**
-     * Specifies the number of days noncurrent object versions transition.
+     * Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     @Import(name="days")
     private @Nullable Output<Integer> days;
 
     /**
-     * @return Specifies the number of days noncurrent object versions transition.
+     * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     public Optional<Output<Integer>> days() {
@@ -105,7 +105,7 @@ public final class BucketLifecycleRuleExpirationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param createdBeforeDate Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+         * @param createdBeforeDate Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class BucketLifecycleRuleExpirationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param createdBeforeDate Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+         * @param createdBeforeDate Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class BucketLifecycleRuleExpirationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param days Specifies the number of days noncurrent object versions transition.
+         * @param days Specifies the number of days after object creation when the specific rule action takes effect.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class BucketLifecycleRuleExpirationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param days Specifies the number of days noncurrent object versions transition.
+         * @param days Specifies the number of days after object creation when the specific rule action takes effect.
          * 
          * @return builder
          * 

@@ -32,9 +32,6 @@ public final class HanaBackupPlanArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The backup type. Valid values:
-     * - `COMPLETE`: full backup.
-     * - `INCREMENTAL`: incremental backup.
-     * - `DIFFERENTIAL`: differential backup.
      * 
      */
     @Import(name="backupType", required=true)
@@ -42,9 +39,6 @@ public final class HanaBackupPlanArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The backup type. Valid values:
-     * - `COMPLETE`: full backup.
-     * - `INCREMENTAL`: incremental backup.
-     * - `DIFFERENTIAL`: differential backup.
      * 
      */
     public Output<String> backupType() {
@@ -211,9 +205,6 @@ public final class HanaBackupPlanArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param backupType The backup type. Valid values:
-         * - `COMPLETE`: full backup.
-         * - `INCREMENTAL`: incremental backup.
-         * - `DIFFERENTIAL`: differential backup.
          * 
          * @return builder
          * 
@@ -225,9 +216,6 @@ public final class HanaBackupPlanArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param backupType The backup type. Valid values:
-         * - `COMPLETE`: full backup.
-         * - `INCREMENTAL`: incremental backup.
-         * - `DIFFERENTIAL`: differential backup.
          * 
          * @return builder
          * 

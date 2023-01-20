@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -20,20 +21,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAcls = alicloud_sag_acls_default.id.apply(id => alicloud.sag.getAcls({
- *     ids: [id],
+ * const defaultAcls = alicloud.sag.getAcls({
+ *     ids: [alicloud_sag_acls["default"].id],
  *     nameRegex: "^tf-testAcc.*",
- * }));
- * const defaultAcl = new alicloud.rocketmq.Acl("default", {});
+ * });
+ * const defaultAcl = new alicloud.rocketmq.Acl("defaultAcl", {});
  * ```
  */
 export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sag/getAcls:getAcls", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -79,9 +77,30 @@ export interface GetAclsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides Sag Acls available to the user.
+ *
+ * > **NOTE:** Available in 1.60.0+
+ *
+ * > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultAcls = alicloud.sag.getAcls({
+ *     ids: [alicloud_sag_acls["default"].id],
+ *     nameRegex: "^tf-testAcc.*",
+ * });
+ * const defaultAcl = new alicloud.rocketmq.Acl("defaultAcl", {});
+ * ```
+ */
 export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclsResult> {
-    return pulumi.output(args).apply(a => getAcls(a, opts))
+    return pulumi.output(args).apply((a: any) => getAcls(a, opts))
 }
 
 /**

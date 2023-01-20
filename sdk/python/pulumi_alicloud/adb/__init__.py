@@ -10,7 +10,11 @@ from .backup_policy import *
 from .cluster import *
 from .connection import *
 from .db_cluster import *
+from .db_cluster_lake_version import *
 from .get_clusters import *
+from .get_db_cluster_lake_versions import *
 from .get_db_clusters import *
+from .get_resource_groups import *
 from .get_zones import *
+from .resource_group import *
 from . import outputs

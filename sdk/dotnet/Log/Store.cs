@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/store:Store")]
-    public partial class Store : Pulumi.CustomResource
+    public partial class Store : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Log
         public Output<bool?> EnableWebTracking { get; private set; } = null!;
 
         /// <summary>
-        /// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        /// Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         /// </summary>
         [Output("encryptConf")]
         public Output<Outputs.StoreEncryptConf?> EncryptConf { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class StoreArgs : Pulumi.ResourceArgs
+    public sealed class StoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Log
         public Input<bool>? EnableWebTracking { get; set; }
 
         /// <summary>
-        /// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        /// Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         /// </summary>
         [Input("encryptConf")]
         public Input<Inputs.StoreEncryptConfArgs>? EncryptConf { get; set; }
@@ -196,9 +196,10 @@ namespace Pulumi.AliCloud.Log
         public StoreArgs()
         {
         }
+        public static new StoreArgs Empty => new StoreArgs();
     }
 
-    public sealed class StoreState : Pulumi.ResourceArgs
+    public sealed class StoreState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
@@ -219,7 +220,7 @@ namespace Pulumi.AliCloud.Log
         public Input<bool>? EnableWebTracking { get; set; }
 
         /// <summary>
-        /// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        /// Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         /// </summary>
         [Input("encryptConf")]
         public Input<Inputs.StoreEncryptConfGetArgs>? EncryptConf { get; set; }
@@ -275,5 +276,6 @@ namespace Pulumi.AliCloud.Log
         public StoreState()
         {
         }
+        public static new StoreState Empty => new StoreState();
     }
 }

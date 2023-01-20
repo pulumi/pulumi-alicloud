@@ -23,40 +23,40 @@ namespace Pulumi.AliCloud.Ecs
         /// The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var securityGroupId = config.RequireObject&lt;dynamic&gt;("securityGroupId");
+        ///     var groupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
         ///     {
-        ///         var config = new Config();
-        ///         var securityGroupId = config.RequireObject&lt;dynamic&gt;("securityGroupId");
-        ///         var groupsDs = Output.Create(AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs
-        ///         {
-        ///             NameRegex = "api",
-        ///         }));
-        ///         var ingressRulesDs = groupsDs.Apply(groupsDs =&gt; Output.Create(AliCloud.Ecs.GetSecurityGroupRules.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupRulesArgs
-        ///         {
-        ///             Direction = "ingress",
-        ///             GroupId = groupsDs.Groups?[0]?.Id,
-        ///             IpProtocol = "tcp",
-        ///             NicType = "internet",
-        ///         })));
-        ///         // Pass port_range to the backend service
-        ///         var backend = new AliCloud.Ecs.Instance("backend", new AliCloud.Ecs.InstanceArgs
-        ///         {
-        ///             UserData = ingressRulesDs.Apply(ingressRulesDs =&gt; $"config_service.sh --portrange={ingressRulesDs.Rules?[0]?.PortRange}"),
-        ///         });
-        ///     }
+        ///         NameRegex = "api",
+        ///     });
         /// 
-        /// }
+        ///     var ingressRulesDs = AliCloud.Ecs.GetSecurityGroupRules.Invoke(new()
+        ///     {
+        ///         Direction = "ingress",
+        ///         GroupId = groupsDs.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Groups[0]?.Id),
+        ///         IpProtocol = "tcp",
+        ///         NicType = "internet",
+        ///     });
+        /// 
+        ///     // Pass port_range to the backend service
+        ///     var backend = new AliCloud.Ecs.Instance("backend", new()
+        ///     {
+        ///         UserData = $"config_service.sh --portrange={ingressRulesDs.Apply(getSecurityGroupRulesResult =&gt; getSecurityGroupRulesResult.Rules[0]?.PortRange)}",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecurityGroupRulesResult> InvokeAsync(GetSecurityGroupRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupRulesResult>("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", args ?? new GetSecurityGroupRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupRulesResult>("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", args ?? new GetSecurityGroupRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
@@ -70,44 +70,44 @@ namespace Pulumi.AliCloud.Ecs
         /// The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var securityGroupId = config.RequireObject&lt;dynamic&gt;("securityGroupId");
+        ///     var groupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
         ///     {
-        ///         var config = new Config();
-        ///         var securityGroupId = config.RequireObject&lt;dynamic&gt;("securityGroupId");
-        ///         var groupsDs = Output.Create(AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs
-        ///         {
-        ///             NameRegex = "api",
-        ///         }));
-        ///         var ingressRulesDs = groupsDs.Apply(groupsDs =&gt; Output.Create(AliCloud.Ecs.GetSecurityGroupRules.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupRulesArgs
-        ///         {
-        ///             Direction = "ingress",
-        ///             GroupId = groupsDs.Groups?[0]?.Id,
-        ///             IpProtocol = "tcp",
-        ///             NicType = "internet",
-        ///         })));
-        ///         // Pass port_range to the backend service
-        ///         var backend = new AliCloud.Ecs.Instance("backend", new AliCloud.Ecs.InstanceArgs
-        ///         {
-        ///             UserData = ingressRulesDs.Apply(ingressRulesDs =&gt; $"config_service.sh --portrange={ingressRulesDs.Rules?[0]?.PortRange}"),
-        ///         });
-        ///     }
+        ///         NameRegex = "api",
+        ///     });
         /// 
-        /// }
+        ///     var ingressRulesDs = AliCloud.Ecs.GetSecurityGroupRules.Invoke(new()
+        ///     {
+        ///         Direction = "ingress",
+        ///         GroupId = groupsDs.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Groups[0]?.Id),
+        ///         IpProtocol = "tcp",
+        ///         NicType = "internet",
+        ///     });
+        /// 
+        ///     // Pass port_range to the backend service
+        ///     var backend = new AliCloud.Ecs.Instance("backend", new()
+        ///     {
+        ///         UserData = $"config_service.sh --portrange={ingressRulesDs.Apply(getSecurityGroupRulesResult =&gt; getSecurityGroupRulesResult.Rules[0]?.PortRange)}",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSecurityGroupRulesResult> Invoke(GetSecurityGroupRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecurityGroupRulesResult>("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", args ?? new GetSecurityGroupRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecurityGroupRulesResult>("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", args ?? new GetSecurityGroupRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSecurityGroupRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetSecurityGroupRulesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Authorization direction. Valid values are: `ingress` or `egress`.
@@ -145,9 +145,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetSecurityGroupRulesArgs()
         {
         }
+        public static new GetSecurityGroupRulesArgs Empty => new GetSecurityGroupRulesArgs();
     }
 
-    public sealed class GetSecurityGroupRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecurityGroupRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Authorization direction. Valid values are: `ingress` or `egress`.
@@ -185,6 +186,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetSecurityGroupRulesInvokeArgs()
         {
         }
+        public static new GetSecurityGroupRulesInvokeArgs Empty => new GetSecurityGroupRulesInvokeArgs();
     }
 
 

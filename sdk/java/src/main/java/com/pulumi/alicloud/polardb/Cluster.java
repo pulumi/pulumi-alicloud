@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -170,30 +170,30 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.collectorStatus;
     }
     /**
-     * (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only &#34;127.0.0.1&#34; is configured, it will also be an empty string.
+     * (Available in 1.81.0+) PolarDB cluster connection string.
      * 
      */
     @Export(name="connectionString", type=String.class, parameters={})
     private Output<String> connectionString;
 
     /**
-     * @return (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only &#34;127.0.0.1&#34; is configured, it will also be an empty string.
+     * @return (Available in 1.81.0+) PolarDB cluster connection string.
      * 
      */
     public Output<String> connectionString() {
         return this.connectionString;
     }
     /**
-     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
      * 
      */
     @Export(name="creationCategory", type=String.class, parameters={})
     private Output<String> creationCategory;
 
     /**
-     * @return The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     * @return The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
      * 
      */
     public Output<String> creationCategory() {
@@ -310,14 +310,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", type=String.class, parameters={})
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return The description of cluster.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
@@ -432,6 +432,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
+     * (Available in 1.196.0+) PolarDB cluster connection port.
+     * 
+     */
+    @Export(name="port", type=String.class, parameters={})
+    private Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) PolarDB cluster connection port.
+     * 
+     */
+    public Output<String> port() {
+        return this.port;
+    }
+    /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      * 
      */
@@ -476,14 +490,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.securityGroupIds;
     }
     /**
-     * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+     * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
      * 
      */
     @Export(name="securityIps", type=List.class, parameters={String.class})
     private Output<List<String>> securityIps;
 
     /**
-     * @return List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * @return This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+     * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
      * 
      */
     public Output<List<String>> securityIps() {
@@ -552,20 +568,34 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tdeStatus);
     }
     /**
+     * The id of the VPC.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output<String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Output<String> vpcId() {
+        return this.vpcId;
+    }
+    /**
      * The virtual switch ID to launch DB instances in one VPC.
      * &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
      * 
      */
     @Export(name="vswitchId", type=String.class, parameters={})
-    private Output<String> vswitchId;
+    private Output</* @Nullable */ String> vswitchId;
 
     /**
      * @return The virtual switch ID to launch DB instances in one VPC.
      * &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
      * 
      */
-    public Output<String> vswitchId() {
-        return this.vswitchId;
+    public Output<Optional<String>> vswitchId() {
+        return Codegen.optional(this.vswitchId);
     }
     /**
      * The Zone to launch the DB cluster. it supports multiple zone.

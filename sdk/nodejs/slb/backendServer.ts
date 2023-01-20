@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -17,60 +18,61 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "slbbackendservertest";
- * const defaultZones = alicloud.getZones({
+ * const slbBackendServerName = config.get("slbBackendServerName") || "slbbackendservertest";
+ * const backendServerZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?[0]?.id,
+ * const backendServerInstanceTypes = backendServerZones.then(backendServerZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: backendServerZones.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
- * const defaultImages = alicloud.ecs.getImages({
+ * const backendServerImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
+ * const backendServerNetwork = new alicloud.vpc.Network("backendServerNetwork", {
+ *     vpcName: slbBackendServerName,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
+ * const backendServerSwitch = new alicloud.vpc.Switch("backendServerSwitch", {
+ *     vpcId: backendServerNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
- *     vswitchName: name,
+ *     zoneId: backendServerZones.then(backendServerZones => backendServerZones.zones?.[0]?.id),
+ *     vswitchName: slbBackendServerName,
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultInstance: alicloud.ecs.Instance[];
+ * const backendServerSecurityGroup = new alicloud.ecs.SecurityGroup("backendServerSecurityGroup", {vpcId: backendServerNetwork.id});
+ * const backendServerInstance: alicloud.ecs.Instance[] = [];
  * for (const range = {value: 0}; range.value < "2"; range.value++) {
- *     defaultInstance.push(new alicloud.ecs.Instance(`defaultInstance-${range.value}`, {
- *         imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
- *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
- *         instanceName: name,
- *         securityGroups: [defaultSecurityGroup].map(__item => __item.id),
+ *     backendServerInstance.push(new alicloud.ecs.Instance(`backendServerInstance-${range.value}`, {
+ *         imageId: backendServerImages.then(backendServerImages => backendServerImages.images?.[0]?.id),
+ *         instanceType: backendServerInstanceTypes.then(backendServerInstanceTypes => backendServerInstanceTypes.instanceTypes?.[0]?.id),
+ *         instanceName: slbBackendServerName,
+ *         securityGroups: [backendServerSecurityGroup].map(__item => __item.id),
  *         internetChargeType: "PayByTraffic",
  *         internetMaxBandwidthOut: 10,
- *         availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *         availabilityZone: backendServerZones.then(backendServerZones => backendServerZones.zones?.[0]?.id),
  *         instanceChargeType: "PostPaid",
  *         systemDiskCategory: "cloud_efficiency",
- *         vswitchId: defaultSwitch.id,
+ *         vswitchId: backendServerSwitch.id,
  *     }));
  * }
- * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
- *     loadBalancerName: name,
- *     vswitchId: defaultSwitch.id,
+ * const backendServerApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("backendServerApplicationLoadBalancer", {
+ *     loadBalancerName: slbBackendServerName,
+ *     vswitchId: backendServerSwitch.id,
+ *     instanceChargeType: "PayByCLCU",
  * });
- * const defaultBackendServer = new alicloud.slb.BackendServer("defaultBackendServer", {
- *     loadBalancerId: defaultApplicationLoadBalancer.id,
+ * const backendServerBackendServer = new alicloud.slb.BackendServer("backendServerBackendServer", {
+ *     loadBalancerId: backendServerApplicationLoadBalancer.id,
  *     backendServers: [
  *         {
- *             serverId: defaultInstance[0].id,
+ *             serverId: backendServerInstance[0].id,
  *             weight: 100,
  *         },
  *         {
- *             serverId: defaultInstance[1].id,
+ *             serverId: backendServerInstance[1].id,
  *             weight: 100,
  *         },
  *     ],

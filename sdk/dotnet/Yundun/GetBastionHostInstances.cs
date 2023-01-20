@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.Yundun
     public static class GetBastionHostInstances
     {
         public static Task<GetBastionHostInstancesResult> InvokeAsync(GetBastionHostInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBastionHostInstancesResult>("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args ?? new GetBastionHostInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBastionHostInstancesResult>("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args ?? new GetBastionHostInstancesArgs(), options.WithDefaults());
 
         public static Output<GetBastionHostInstancesResult> Invoke(GetBastionHostInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBastionHostInstancesResult>("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args ?? new GetBastionHostInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBastionHostInstancesResult>("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args ?? new GetBastionHostInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBastionHostInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetBastionHostInstancesArgs : global::Pulumi.InvokeArgs
     {
         [Input("descriptionRegex")]
         public string? DescriptionRegex { get; set; }
@@ -46,9 +46,10 @@ namespace Pulumi.AliCloud.Yundun
         public GetBastionHostInstancesArgs()
         {
         }
+        public static new GetBastionHostInstancesArgs Empty => new GetBastionHostInstancesArgs();
     }
 
-    public sealed class GetBastionHostInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBastionHostInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("descriptionRegex")]
         public Input<string>? DescriptionRegex { get; set; }
@@ -75,6 +76,7 @@ namespace Pulumi.AliCloud.Yundun
         public GetBastionHostInstancesInvokeArgs()
         {
         }
+        public static new GetBastionHostInstancesInvokeArgs Empty => new GetBastionHostInstancesInvokeArgs();
     }
 
 

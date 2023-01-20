@@ -70,14 +70,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The description of the data disk.
+     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the data disk.
+     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     public Optional<Output<String>> description() {
@@ -159,9 +159,17 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.instanceChargeType);
     }
 
+    /**
+     * The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * 
+     */
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
+    /**
+     * @return The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * 
+     */
     public Optional<Output<String>> instanceName() {
         return Optional.ofNullable(this.instanceName);
     }
@@ -276,7 +284,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the data disk.
+     * It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
@@ -287,7 +295,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the data disk.
+     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
@@ -423,14 +431,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The security group ID must be one in the same VPC.
+     * The security group ID.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The security group ID must be one in the same VPC.
+     * @return The security group ID.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -468,14 +476,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+     * Sets the maximum hourly instance price. Supports up to three decimal places.
      * 
      */
     @Import(name="spotPriceLimit")
     private @Nullable Output<Double> spotPriceLimit;
 
     /**
-     * @return -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+     * @return Sets the maximum hourly instance price. Supports up to three decimal places.
      * 
      */
     public Optional<Output<Double>> spotPriceLimit() {
@@ -513,6 +521,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
      * @deprecated
      * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -522,6 +532,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> systemDiskCategory;
 
     /**
+     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
      * @deprecated
      * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -532,6 +544,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
      * @deprecated
      * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -541,6 +555,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> systemDiskDescription;
 
     /**
+     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
      * @deprecated
      * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -551,6 +567,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
      * @deprecated
      * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -560,6 +578,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> systemDiskName;
 
     /**
+     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
      * @deprecated
      * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -570,6 +590,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
      * @deprecated
      * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -579,6 +601,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Integer> systemDiskSize;
 
     /**
+     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
      * @deprecated
      * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -653,6 +677,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * It has been deprecated from version 1.120.0, and use field `user_data` instead.
+     * 
      * @deprecated
      * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
      * 
@@ -662,6 +688,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> userdata;
 
     /**
+     * @return It has been deprecated from version 1.120.0, and use field `user_data` instead.
+     * 
      * @deprecated
      * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
      * 
@@ -686,22 +714,30 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.versionDescription);
     }
 
+    /**
+     * The ID of the VPC.
+     * 
+     */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
     public Optional<Output<String>> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
 
     /**
-     * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * @return When creating a VPC-Connected instance, you must specify its VSwitch ID.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -865,7 +901,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the data disk.
+         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
          * 
          * @return builder
          * 
@@ -876,7 +912,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the data disk.
+         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
          * 
          * @return builder
          * 
@@ -990,11 +1026,23 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
             return instanceChargeType(Output.of(instanceChargeType));
         }
 
+        /**
+         * @param instanceName The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceName(@Nullable Output<String> instanceName) {
             $.instanceName = instanceName;
             return this;
         }
 
+        /**
+         * @param instanceName The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceName(String instanceName) {
             return instanceName(Output.of(instanceName));
         }
@@ -1151,7 +1199,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the data disk.
+         * @param name It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
          * 
          * @return builder
          * 
@@ -1166,7 +1214,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the data disk.
+         * @param name It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
          * 
          * @return builder
          * 
@@ -1352,7 +1400,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param securityGroupId The security group ID must be one in the same VPC.
+         * @param securityGroupId The security group ID.
          * 
          * @return builder
          * 
@@ -1363,7 +1411,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param securityGroupId The security group ID must be one in the same VPC.
+         * @param securityGroupId The security group ID.
          * 
          * @return builder
          * 
@@ -1425,7 +1473,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spotPriceLimit -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+         * @param spotPriceLimit Sets the maximum hourly instance price. Supports up to three decimal places.
          * 
          * @return builder
          * 
@@ -1436,7 +1484,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spotPriceLimit -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+         * @param spotPriceLimit Sets the maximum hourly instance price. Supports up to three decimal places.
          * 
          * @return builder
          * 
@@ -1488,6 +1536,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param systemDiskCategory It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -1501,6 +1551,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param systemDiskCategory It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -1513,6 +1565,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param systemDiskDescription It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -1526,6 +1580,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param systemDiskDescription It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -1538,6 +1594,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param systemDiskName It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -1551,6 +1609,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param systemDiskName It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -1563,6 +1623,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param systemDiskSize It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -1576,6 +1638,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param systemDiskSize It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -1676,6 +1740,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param userdata It has been deprecated from version 1.120.0, and use field `user_data` instead.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -1689,6 +1755,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param userdata It has been deprecated from version 1.120.0, and use field `user_data` instead.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -1721,17 +1789,29 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
             return versionDescription(Output.of(versionDescription));
         }
 
+        /**
+         * @param vpcId The ID of the VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(@Nullable Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId The ID of the VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }
 
         /**
-         * @param vswitchId The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+         * @param vswitchId When creating a VPC-Connected instance, you must specify its VSwitch ID.
          * 
          * @return builder
          * 
@@ -1742,7 +1822,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vswitchId The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+         * @param vswitchId When creating a VPC-Connected instance, you must specify its VSwitch ID.
          * 
          * @return builder
          * 

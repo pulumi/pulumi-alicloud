@@ -21,31 +21,29 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ecs.EcsPrefixList("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ecs.EcsPrefixList("default", new AliCloud.Ecs.EcsPrefixListArgs
+    ///         AddressFamily = "IPv4",
+    ///         Description = "description",
+    ///         Entries = new[]
     ///         {
-    ///             AddressFamily = "IPv4",
-    ///             Description = "description",
-    ///             Entries = 
+    ///             new AliCloud.Ecs.Inputs.EcsPrefixListEntryArgs
     ///             {
-    ///                 new AliCloud.Ecs.Inputs.EcsPrefixListEntryArgs
-    ///                 {
-    ///                     Cidr = "192.168.0.0/24",
-    ///                     Description = "description",
-    ///                 },
+    ///                 Cidr = "192.168.0.0/24",
+    ///                 Description = "description",
     ///             },
-    ///             MaxEntries = 2,
-    ///             PrefixListName = "tftest",
-    ///         });
-    ///     }
+    ///         },
+    ///         MaxEntries = 2,
+    ///         PrefixListName = "tftest",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsPrefixList:EcsPrefixList")]
-    public partial class EcsPrefixList : Pulumi.CustomResource
+    public partial class EcsPrefixList : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The IP address family. Valid values: `IPv4`,`IPv6`.
@@ -66,7 +64,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AddressFamily { get; private set; } = null!;
 
         /// <summary>
-        /// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+        /// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -133,7 +131,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsPrefixListArgs : Pulumi.ResourceArgs
+    public sealed class EcsPrefixListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address family. Valid values: `IPv4`,`IPv6`.
@@ -142,7 +140,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> AddressFamily { get; set; } = null!;
 
         /// <summary>
-        /// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+        /// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -174,9 +172,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsPrefixListArgs()
         {
         }
+        public static new EcsPrefixListArgs Empty => new EcsPrefixListArgs();
     }
 
-    public sealed class EcsPrefixListState : Pulumi.ResourceArgs
+    public sealed class EcsPrefixListState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address family. Valid values: `IPv4`,`IPv6`.
@@ -185,7 +184,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AddressFamily { get; set; }
 
         /// <summary>
-        /// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+        /// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -217,5 +216,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsPrefixListState()
         {
         }
+        public static new EcsPrefixListState Empty => new EcsPrefixListState();
     }
 }

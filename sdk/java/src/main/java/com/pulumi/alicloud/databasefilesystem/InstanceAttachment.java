@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
  * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
@@ -143,9 +143,17 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
     public Output<String> instanceId() {
         return this.instanceId;
     }
+    /**
+     * The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+     * 
+     */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
+    /**
+     * @return The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }

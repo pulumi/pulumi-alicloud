@@ -34,9 +34,6 @@ class GetImagesImageResult(dict):
         :param str image_id: The ID of the image.
         :param str image_name: The name of the resource.
         :param str image_type: The type of the image. Valid values: `app`, `custom`, `system`.
-               * `system`: operating system (OS) image.
-               * `app`: application image.
-               * `custom`: custom image.
         :param str platform: The platform of Plan supported.
         """
         pulumi.set(__self__, "description", description)
@@ -83,9 +80,6 @@ class GetImagesImageResult(dict):
     def image_type(self) -> str:
         """
         The type of the image. Valid values: `app`, `custom`, `system`.
-        * `system`: operating system (OS) image.
-        * `app`: application image.
-        * `custom`: custom image.
         """
         return pulumi.get(self, "image_type")
 

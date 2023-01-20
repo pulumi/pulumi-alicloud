@@ -27,20 +27,18 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.ResourceManager.ResourceDirectory("example", new()
     ///     {
-    ///         var example = new AliCloud.ResourceManager.ResourceDirectory("example", new AliCloud.ResourceManager.ResourceDirectoryArgs
-    ///         {
-    ///             Status = "Enabled",
-    ///         });
-    ///     }
+    ///         Status = "Enabled",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +50,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/resourceDirectory:ResourceDirectory")]
-    public partial class ResourceDirectory : Pulumi.CustomResource
+    public partial class ResourceDirectory : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the master account.
@@ -122,7 +120,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class ResourceDirectoryArgs : Pulumi.ResourceArgs
+    public sealed class ResourceDirectoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The status of control policy. Valid values:`Enabled` and `Disabled`.
@@ -133,9 +131,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public ResourceDirectoryArgs()
         {
         }
+        public static new ResourceDirectoryArgs Empty => new ResourceDirectoryArgs();
     }
 
-    public sealed class ResourceDirectoryState : Pulumi.ResourceArgs
+    public sealed class ResourceDirectoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the master account.
@@ -164,5 +163,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public ResourceDirectoryState()
         {
         }
+        public static new ResourceDirectoryState Empty => new ResourceDirectoryState();
     }
 }

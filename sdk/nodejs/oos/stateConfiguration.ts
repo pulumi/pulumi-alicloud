@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     description: _var.name,
  *     scheduleType: "rate",
  *     scheduleExpression: "1 hour",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?[0]),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
  *     targets: "{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}",
  *     parameters: "{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}",
  *     tags: {

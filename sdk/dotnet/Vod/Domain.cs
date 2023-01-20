@@ -21,35 +21,33 @@ namespace Pulumi.AliCloud.Vod
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Vod.Domain("default", new()
     ///     {
-    ///         var @default = new AliCloud.Vod.Domain("default", new AliCloud.Vod.DomainArgs
+    ///         DomainName = "your_domain_name",
+    ///         Scope = "domestic",
+    ///         Sources = new[]
     ///         {
-    ///             DomainName = "your_domain_name",
-    ///             Scope = "domestic",
-    ///             Sources = 
+    ///             new AliCloud.Vod.Inputs.DomainSourceArgs
     ///             {
-    ///                 new AliCloud.Vod.Inputs.DomainSourceArgs
-    ///                 {
-    ///                     SourceContent = "your_source_content",
-    ///                     SourcePort = "80",
-    ///                     SourceType = "domain",
-    ///                 },
+    ///                 SourceContent = "your_source_content",
+    ///                 SourcePort = "80",
+    ///                 SourceType = "domain",
     ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "key1", "value1" },
-    ///                 { "key2", "value2" },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "key1", "value1" },
+    ///             { "key2", "value2" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +59,7 @@ namespace Pulumi.AliCloud.Vod
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vod/domain:Domain")]
-    public partial class Domain : Pulumi.CustomResource
+    public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
@@ -137,8 +135,6 @@ namespace Pulumi.AliCloud.Vod
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        /// * `Value`: It can be up to 128 characters in length. It can be a null string.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -199,7 +195,7 @@ namespace Pulumi.AliCloud.Vod
         }
     }
 
-    public sealed class DomainArgs : Pulumi.ResourceArgs
+    public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URL that is used for health checks.
@@ -236,8 +232,6 @@ namespace Pulumi.AliCloud.Vod
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        /// * `Value`: It can be up to 128 characters in length. It can be a null string.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -254,9 +248,10 @@ namespace Pulumi.AliCloud.Vod
         public DomainArgs()
         {
         }
+        public static new DomainArgs Empty => new DomainArgs();
     }
 
-    public sealed class DomainState : Pulumi.ResourceArgs
+    public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
@@ -341,8 +336,6 @@ namespace Pulumi.AliCloud.Vod
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        /// * `Value`: It can be up to 128 characters in length. It can be a null string.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -365,5 +358,6 @@ namespace Pulumi.AliCloud.Vod
         public DomainState()
         {
         }
+        public static new DomainState Empty => new DomainState();
     }
 }

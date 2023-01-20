@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.Pvtz
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Pvtz.GetResolverZones.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Pvtz.GetResolverZones.InvokeAsync(new AliCloud.Pvtz.GetResolverZonesArgs
-        ///         {
-        ///             Status = "NORMAL",
-        ///         }));
-        ///         this.FirstZonesId = @default.Apply(@default =&gt; @default.Zones?[0]?.ZoneId);
-        ///     }
+        ///         Status = "NORMAL",
+        ///     });
         /// 
-        ///     [Output("firstZonesId")]
-        ///     public Output&lt;string&gt; FirstZonesId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstZonesId"] = @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult).Apply(@default =&gt; @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult.Zones[0]?.ZoneId)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResolverZonesResult> InvokeAsync(GetResolverZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResolverZonesResult>("alicloud:pvtz/getResolverZones:getResolverZones", args ?? new GetResolverZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetResolverZonesResult>("alicloud:pvtz/getResolverZones:getResolverZones", args ?? new GetResolverZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.Pvtz
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Pvtz.GetResolverZones.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Pvtz.GetResolverZones.InvokeAsync(new AliCloud.Pvtz.GetResolverZonesArgs
-        ///         {
-        ///             Status = "NORMAL",
-        ///         }));
-        ///         this.FirstZonesId = @default.Apply(@default =&gt; @default.Zones?[0]?.ZoneId);
-        ///     }
+        ///         Status = "NORMAL",
+        ///     });
         /// 
-        ///     [Output("firstZonesId")]
-        ///     public Output&lt;string&gt; FirstZonesId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstZonesId"] = @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult).Apply(@default =&gt; @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult.Zones[0]?.ZoneId)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResolverZonesResult> Invoke(GetResolverZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResolverZonesResult>("alicloud:pvtz/getResolverZones:getResolverZones", args ?? new GetResolverZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetResolverZonesResult>("alicloud:pvtz/getResolverZones:getResolverZones", args ?? new GetResolverZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetResolverZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetResolverZonesArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -99,9 +97,10 @@ namespace Pulumi.AliCloud.Pvtz
         public GetResolverZonesArgs()
         {
         }
+        public static new GetResolverZonesArgs Empty => new GetResolverZonesArgs();
     }
 
-    public sealed class GetResolverZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetResolverZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -115,6 +114,7 @@ namespace Pulumi.AliCloud.Pvtz
         public GetResolverZonesInvokeArgs()
         {
         }
+        public static new GetResolverZonesInvokeArgs Empty => new GetResolverZonesInvokeArgs();
     }
 
 

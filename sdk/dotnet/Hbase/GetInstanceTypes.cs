@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Hbase
         /// &gt; **NOTE:** Available in v1.106.0+.
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Hbase
         /// &gt; **NOTE:** Available in v1.106.0+.
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceTypesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.
@@ -79,9 +79,10 @@ namespace Pulumi.AliCloud.Hbase
         public GetInstanceTypesArgs()
         {
         }
+        public static new GetInstanceTypesArgs Empty => new GetInstanceTypesArgs();
     }
 
-    public sealed class GetInstanceTypesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.
@@ -131,6 +132,7 @@ namespace Pulumi.AliCloud.Hbase
         public GetInstanceTypesInvokeArgs()
         {
         }
+        public static new GetInstanceTypesInvokeArgs Empty => new GetInstanceTypesInvokeArgs();
     }
 
 

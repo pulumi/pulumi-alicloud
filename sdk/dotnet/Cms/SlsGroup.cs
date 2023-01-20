@@ -21,32 +21,31 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @this = Output.Create(AliCloud.GetAccount.InvokeAsync());
-    ///         var @default = new AliCloud.Cms.SlsGroup("default", new AliCloud.Cms.SlsGroupArgs
-    ///         {
-    ///             SlsGroupConfigs = 
-    ///             {
-    ///                 new AliCloud.Cms.Inputs.SlsGroupSlsGroupConfigArgs
-    ///                 {
-    ///                     SlsUserId = @this.Apply(@this =&gt; @this.Id),
-    ///                     SlsLogstore = "Logstore-ECS",
-    ///                     SlsProject = "aliyun-project",
-    ///                     SlsRegion = "cn-hangzhou",
-    ///                 },
-    ///             },
-    ///             SlsGroupDescription = @var.Name,
-    ///             SlsGroupName = @var.Name,
-    ///         });
-    ///     }
+    ///     var @this = AliCloud.GetAccount.Invoke();
     /// 
-    /// }
+    ///     var @default = new AliCloud.Cms.SlsGroup("default", new()
+    ///     {
+    ///         SlsGroupConfigs = new[]
+    ///         {
+    ///             new AliCloud.Cms.Inputs.SlsGroupSlsGroupConfigArgs
+    ///             {
+    ///                 SlsUserId = @this.Apply(getAccountResult =&gt; getAccountResult).Apply(@this =&gt; @this.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///                 SlsLogstore = "Logstore-ECS",
+    ///                 SlsProject = "aliyun-project",
+    ///                 SlsRegion = "cn-hangzhou",
+    ///             },
+    ///         },
+    ///         SlsGroupDescription = @var.Name,
+    ///         SlsGroupName = @var.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +57,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/slsGroup:SlsGroup")]
-    public partial class SlsGroup : Pulumi.CustomResource
+    public partial class SlsGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Config of the Sls Group. You can specify up to 25 Config. See the following `Block sls_group_config`.
@@ -122,7 +121,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class SlsGroupArgs : Pulumi.ResourceArgs
+    public sealed class SlsGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("slsGroupConfigs", required: true)]
         private InputList<Inputs.SlsGroupSlsGroupConfigArgs>? _slsGroupConfigs;
@@ -151,9 +150,10 @@ namespace Pulumi.AliCloud.Cms
         public SlsGroupArgs()
         {
         }
+        public static new SlsGroupArgs Empty => new SlsGroupArgs();
     }
 
-    public sealed class SlsGroupState : Pulumi.ResourceArgs
+    public sealed class SlsGroupState : global::Pulumi.ResourceArgs
     {
         [Input("slsGroupConfigs")]
         private InputList<Inputs.SlsGroupSlsGroupConfigGetArgs>? _slsGroupConfigs;
@@ -182,5 +182,6 @@ namespace Pulumi.AliCloud.Cms
         public SlsGroupState()
         {
         }
+        public static new SlsGroupState Empty => new SlsGroupState();
     }
 }

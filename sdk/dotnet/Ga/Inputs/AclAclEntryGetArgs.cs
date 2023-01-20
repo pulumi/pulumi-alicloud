@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ga.Inputs
 {
 
-    public sealed class AclAclEntryGetArgs : Pulumi.ResourceArgs
+    public sealed class AclAclEntryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP entry that you want to add to the ACL.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public AclAclEntryGetArgs()
         {
         }
+        public static new AclAclEntryGetArgs Empty => new AclAclEntryGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ga.Inputs
 {
 
-    public sealed class ForwardingRuleRuleActionForwardGroupConfigArgs : Pulumi.ResourceArgs
+    public sealed class ForwardingRuleRuleActionForwardGroupConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("serverGroupTuples", required: true)]
         private InputList<Inputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs>? _serverGroupTuples;
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public ForwardingRuleRuleActionForwardGroupConfigArgs()
         {
         }
+        public static new ForwardingRuleRuleActionForwardGroupConfigArgs Empty => new ForwardingRuleRuleActionForwardGroupConfigArgs();
     }
 }

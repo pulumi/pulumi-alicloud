@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const ids = alicloud.hbr.getOssBackupPlans({
  *     nameRegex: "^my-OssBackupPlan",
  * });
- * export const hbrOssBackupPlanId = ids.then(ids => ids.plans?[0]?.id);
+ * export const hbrOssBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
  * ```
  */
 export function getOssBackupPlans(args?: GetOssBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetOssBackupPlansResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", {
         "bucket": args.bucket,
         "ids": args.ids,
@@ -79,9 +77,27 @@ export interface GetOssBackupPlansResult {
     readonly plans: outputs.hbr.GetOssBackupPlansPlan[];
     readonly vaultId?: string;
 }
-
+/**
+ * This data source provides the Hbr OssBackupPlans of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.131.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.hbr.getOssBackupPlans({
+ *     nameRegex: "^my-OssBackupPlan",
+ * });
+ * export const hbrOssBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
+ * ```
+ */
 export function getOssBackupPlansOutput(args?: GetOssBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOssBackupPlansResult> {
-    return pulumi.output(args).apply(a => getOssBackupPlans(a, opts))
+    return pulumi.output(args).apply((a: any) => getOssBackupPlans(a, opts))
 }
 
 /**

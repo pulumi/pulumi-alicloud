@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class BucketTransferAcceleration {
     /**
-     * @return Specifies the accelerate status of a bucket.
+     * @return Specifies lifecycle rule status.
      * 
      */
     private Boolean enabled;
 
     private BucketTransferAcceleration() {}
     /**
-     * @return Specifies the accelerate status of a bucket.
+     * @return Specifies lifecycle rule status.
      * 
      */
     public Boolean enabled() {

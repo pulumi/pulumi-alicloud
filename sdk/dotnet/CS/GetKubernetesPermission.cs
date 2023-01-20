@@ -21,33 +21,33 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
         ///     {
-        ///         var usersDs = Output.Create(AliCloud.Ram.GetUsers.InvokeAsync(new AliCloud.Ram.GetUsersArgs
-        ///         {
-        ///             NameRegex = "your_user_name",
-        ///         }));
-        ///         var @default = usersDs.Apply(usersDs =&gt; Output.Create(AliCloud.CS.GetKubernetesPermission.InvokeAsync(new AliCloud.CS.GetKubernetesPermissionArgs
-        ///         {
-        ///             Uid = usersDs.Users?[0]?.Id,
-        ///         })));
-        ///         this.Permissions = @default.Apply(@default =&gt; @default.Permissions);
-        ///     }
+        ///         NameRegex = "your_user_name",
+        ///     });
         /// 
-        ///     [Output("permissions")]
-        ///     public Output&lt;string&gt; Permissions { get; set; }
-        /// }
+        ///     var @default = AliCloud.CS.GetKubernetesPermission.Invoke(new()
+        ///     {
+        ///         Uid = usersDs.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["permissions"] = @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult).Apply(@default =&gt; @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesPermissionResult> InvokeAsync(GetKubernetesPermissionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesPermissionResult>("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args ?? new GetKubernetesPermissionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesPermissionResult>("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args ?? new GetKubernetesPermissionArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Ram user permissions.
@@ -59,37 +59,37 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
         ///     {
-        ///         var usersDs = Output.Create(AliCloud.Ram.GetUsers.InvokeAsync(new AliCloud.Ram.GetUsersArgs
-        ///         {
-        ///             NameRegex = "your_user_name",
-        ///         }));
-        ///         var @default = usersDs.Apply(usersDs =&gt; Output.Create(AliCloud.CS.GetKubernetesPermission.InvokeAsync(new AliCloud.CS.GetKubernetesPermissionArgs
-        ///         {
-        ///             Uid = usersDs.Users?[0]?.Id,
-        ///         })));
-        ///         this.Permissions = @default.Apply(@default =&gt; @default.Permissions);
-        ///     }
+        ///         NameRegex = "your_user_name",
+        ///     });
         /// 
-        ///     [Output("permissions")]
-        ///     public Output&lt;string&gt; Permissions { get; set; }
-        /// }
+        ///     var @default = AliCloud.CS.GetKubernetesPermission.Invoke(new()
+        ///     {
+        ///         Uid = usersDs.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["permissions"] = @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult).Apply(@default =&gt; @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubernetesPermissionResult> Invoke(GetKubernetesPermissionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKubernetesPermissionResult>("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args ?? new GetKubernetesPermissionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesPermissionResult>("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args ?? new GetKubernetesPermissionInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetKubernetesPermissionArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesPermissionArgs : global::Pulumi.InvokeArgs
     {
         [Input("permissions")]
         private List<Inputs.GetKubernetesPermissionPermissionArgs>? _permissions;
@@ -112,9 +112,10 @@ namespace Pulumi.AliCloud.CS
         public GetKubernetesPermissionArgs()
         {
         }
+        public static new GetKubernetesPermissionArgs Empty => new GetKubernetesPermissionArgs();
     }
 
-    public sealed class GetKubernetesPermissionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesPermissionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("permissions")]
         private InputList<Inputs.GetKubernetesPermissionPermissionInputArgs>? _permissions;
@@ -137,6 +138,7 @@ namespace Pulumi.AliCloud.CS
         public GetKubernetesPermissionInvokeArgs()
         {
         }
+        public static new GetKubernetesPermissionInvokeArgs Empty => new GetKubernetesPermissionInvokeArgs();
     }
 
 

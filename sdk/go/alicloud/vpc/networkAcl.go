@@ -27,7 +27,7 @@ import (
 type NetworkAcl struct {
 	pulumi.CustomResourceState
 
-	// The description of egress entries.
+	// The description of the network acl instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
 	EgressAclEntries NetworkAclEgressAclEntryArrayOutput `pulumi:"egressAclEntries"`
@@ -39,7 +39,9 @@ type NetworkAcl struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the network acl.
 	NetworkAclName pulumi.StringOutput `pulumi:"networkAclName"`
-	// The associated resources.
+	// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
+	//
+	// Deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
 	Resources NetworkAclResourceArrayOutput `pulumi:"resources"`
 	// (Available in 1.122.0+) The status of the network acl.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -79,7 +81,7 @@ func GetNetworkAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkAcl resources.
 type networkAclState struct {
-	// The description of egress entries.
+	// The description of the network acl instance.
 	Description *string `pulumi:"description"`
 	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
 	EgressAclEntries []NetworkAclEgressAclEntry `pulumi:"egressAclEntries"`
@@ -91,7 +93,9 @@ type networkAclState struct {
 	Name *string `pulumi:"name"`
 	// The name of the network acl.
 	NetworkAclName *string `pulumi:"networkAclName"`
-	// The associated resources.
+	// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
+	//
+	// Deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
 	Resources []NetworkAclResource `pulumi:"resources"`
 	// (Available in 1.122.0+) The status of the network acl.
 	Status *string `pulumi:"status"`
@@ -100,7 +104,7 @@ type networkAclState struct {
 }
 
 type NetworkAclState struct {
-	// The description of egress entries.
+	// The description of the network acl instance.
 	Description pulumi.StringPtrInput
 	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
 	EgressAclEntries NetworkAclEgressAclEntryArrayInput
@@ -112,7 +116,9 @@ type NetworkAclState struct {
 	Name pulumi.StringPtrInput
 	// The name of the network acl.
 	NetworkAclName pulumi.StringPtrInput
-	// The associated resources.
+	// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
+	//
+	// Deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
 	Resources NetworkAclResourceArrayInput
 	// (Available in 1.122.0+) The status of the network acl.
 	Status pulumi.StringPtrInput
@@ -125,7 +131,7 @@ func (NetworkAclState) ElementType() reflect.Type {
 }
 
 type networkAclArgs struct {
-	// The description of egress entries.
+	// The description of the network acl instance.
 	Description *string `pulumi:"description"`
 	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
 	EgressAclEntries []NetworkAclEgressAclEntry `pulumi:"egressAclEntries"`
@@ -137,7 +143,9 @@ type networkAclArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the network acl.
 	NetworkAclName *string `pulumi:"networkAclName"`
-	// The associated resources.
+	// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
+	//
+	// Deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
 	Resources []NetworkAclResource `pulumi:"resources"`
 	// The vpcId of the network acl, the field can't be changed.
 	VpcId string `pulumi:"vpcId"`
@@ -145,7 +153,7 @@ type networkAclArgs struct {
 
 // The set of arguments for constructing a NetworkAcl resource.
 type NetworkAclArgs struct {
-	// The description of egress entries.
+	// The description of the network acl instance.
 	Description pulumi.StringPtrInput
 	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
 	EgressAclEntries NetworkAclEgressAclEntryArrayInput
@@ -157,7 +165,9 @@ type NetworkAclArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the network acl.
 	NetworkAclName pulumi.StringPtrInput
-	// The associated resources.
+	// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
+	//
+	// Deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
 	Resources NetworkAclResourceArrayInput
 	// The vpcId of the network acl, the field can't be changed.
 	VpcId pulumi.StringInput
@@ -250,7 +260,7 @@ func (o NetworkAclOutput) ToNetworkAclOutputWithContext(ctx context.Context) Net
 	return o
 }
 
-// The description of egress entries.
+// The description of the network acl instance.
 func (o NetworkAclOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -277,7 +287,9 @@ func (o NetworkAclOutput) NetworkAclName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.NetworkAclName }).(pulumi.StringOutput)
 }
 
-// The associated resources.
+// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
+//
+// Deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
 func (o NetworkAclOutput) Resources() NetworkAclResourceArrayOutput {
 	return o.ApplyT(func(v *NetworkAcl) NetworkAclResourceArrayOutput { return v.Resources }).(NetworkAclResourceArrayOutput)
 }

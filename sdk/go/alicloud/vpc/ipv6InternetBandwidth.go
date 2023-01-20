@@ -49,8 +49,8 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewIpv6InternetBandwidth(ctx, "exampleIpv6InternetBandwidth", &vpc.Ipv6InternetBandwidthArgs{
-//				Ipv6AddressId:      pulumi.String(exampleIpv6Addresses.Addresses[0].Id),
-//				Ipv6GatewayId:      pulumi.String(exampleIpv6Addresses.Addresses[0].Ipv6GatewayId),
+//				Ipv6AddressId:      *pulumi.String(exampleIpv6Addresses.Addresses[0].Id),
+//				Ipv6GatewayId:      *pulumi.String(exampleIpv6Addresses.Addresses[0].Ipv6GatewayId),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
 //				Bandwidth:          pulumi.Int(20),
 //			})

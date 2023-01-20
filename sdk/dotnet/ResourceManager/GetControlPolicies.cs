@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.ResourceManager
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ResourceManager.GetControlPolicies.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetControlPolicies.InvokeAsync(new AliCloud.ResourceManager.GetControlPoliciesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstResourceManagerControlPolicyId = example.Apply(example =&gt; example.Policies?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstResourceManagerControlPolicyId")]
-        ///     public Output&lt;string&gt; FirstResourceManagerControlPolicyId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstResourceManagerControlPolicyId"] = example.Apply(getControlPoliciesResult =&gt; getControlPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetControlPoliciesResult> InvokeAsync(GetControlPoliciesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetControlPoliciesResult>("alicloud:resourcemanager/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetControlPoliciesResult>("alicloud:resourcemanager/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.ResourceManager
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ResourceManager.GetControlPolicies.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetControlPolicies.InvokeAsync(new AliCloud.ResourceManager.GetControlPoliciesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstResourceManagerControlPolicyId = example.Apply(example =&gt; example.Policies?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstResourceManagerControlPolicyId")]
-        ///     public Output&lt;string&gt; FirstResourceManagerControlPolicyId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstResourceManagerControlPolicyId"] = example.Apply(getControlPoliciesResult =&gt; getControlPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetControlPoliciesResult> Invoke(GetControlPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetControlPoliciesResult>("alicloud:resourcemanager/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetControlPoliciesResult>("alicloud:resourcemanager/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetControlPoliciesArgs : Pulumi.InvokeArgs
+    public sealed class GetControlPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -137,9 +135,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetControlPoliciesArgs()
         {
         }
+        public static new GetControlPoliciesArgs Empty => new GetControlPoliciesArgs();
     }
 
-    public sealed class GetControlPoliciesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetControlPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -183,6 +182,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetControlPoliciesInvokeArgs()
         {
         }
+        public static new GetControlPoliciesInvokeArgs Empty => new GetControlPoliciesInvokeArgs();
     }
 
 

@@ -19,11 +19,11 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         public readonly string Address;
         public readonly string? AoneName;
         /// <summary>
-        /// The http method of backend service.
+        /// The method of the api, including 'GET','POST','PUT' etc.
         /// </summary>
         public readonly string Method;
         /// <summary>
-        /// The path of backend service.
+        /// The request path of the api.
         /// </summary>
         public readonly string Path;
         /// <summary>

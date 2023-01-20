@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class ScalingGroupVServerGroupsVserverGroupArgs : Pulumi.ResourceArgs
+    public sealed class ScalingGroupVServerGroupsVserverGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("loadbalancerId", required: true)]
         public Input<string> LoadbalancerId { get; set; } = null!;
@@ -26,5 +26,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public ScalingGroupVServerGroupsVserverGroupArgs()
         {
         }
+        public static new ScalingGroupVServerGroupsVserverGroupArgs Empty => new ScalingGroupVServerGroupsVserverGroupArgs();
     }
 }

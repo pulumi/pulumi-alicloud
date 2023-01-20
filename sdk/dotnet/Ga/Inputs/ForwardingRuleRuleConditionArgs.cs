@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ga.Inputs
 {
 
-    public sealed class ForwardingRuleRuleConditionArgs : Pulumi.ResourceArgs
+    public sealed class ForwardingRuleRuleConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("hostConfigs")]
         private InputList<Inputs.ForwardingRuleRuleConditionHostConfigArgs>? _hostConfigs;
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public ForwardingRuleRuleConditionArgs()
         {
         }
+        public static new ForwardingRuleRuleConditionArgs Empty => new ForwardingRuleRuleConditionArgs();
     }
 }

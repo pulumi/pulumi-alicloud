@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.83.0+.
  *
+ * > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -23,6 +25,12 @@ import * as utilities from "../utilities";
  *     folderId: f1.id,
  * });
  * ```
+ * ### Deleting `alicloud.resourcemanager.Account` or removing it from your configuration
+ *
+ * Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
+ * but may not destroy the account. If there are some dependent resource in the account,
+ * the deleting account will enter a silence period of 45 days. After the silence period ends,
+ * the system automatically starts to delete the member. [See More Details](https://www.alibabacloud.com/help/en/resource-management/latest/delete-resource-account).
  *
  * ## Import
  *
@@ -60,6 +68,12 @@ export class Account extends pulumi.CustomResource {
         return obj['__pulumiType'] === Account.__pulumiType;
     }
 
+    /**
+     * The IDs of the check items that you can choose to ignore for the member deletion. 
+     * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+     * to get check ids and set them.
+     */
+    public readonly abandonAbleCheckIds!: pulumi.Output<string[] | undefined>;
     /**
      * The name prefix of account.
      */
@@ -118,6 +132,7 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
+            resourceInputs["abandonAbleCheckIds"] = state ? state.abandonAbleCheckIds : undefined;
             resourceInputs["accountNamePrefix"] = state ? state.accountNamePrefix : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["folderId"] = state ? state.folderId : undefined;
@@ -134,6 +149,7 @@ export class Account extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["abandonAbleCheckIds"] = args ? args.abandonAbleCheckIds : undefined;
             resourceInputs["accountNamePrefix"] = args ? args.accountNamePrefix : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["folderId"] = args ? args.folderId : undefined;
@@ -155,6 +171,12 @@ export class Account extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Account resources.
  */
 export interface AccountState {
+    /**
+     * The IDs of the check items that you can choose to ignore for the member deletion. 
+     * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+     * to get check ids and set them.
+     */
+    abandonAbleCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name prefix of account.
      */
@@ -205,6 +227,12 @@ export interface AccountState {
  * The set of arguments for constructing a Account resource.
  */
 export interface AccountArgs {
+    /**
+     * The IDs of the check items that you can choose to ignore for the member deletion. 
+     * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+     * to get check ids and set them.
+     */
+    abandonAbleCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name prefix of account.
      */

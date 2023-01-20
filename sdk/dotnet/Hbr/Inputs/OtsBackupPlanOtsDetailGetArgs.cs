@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Hbr.Inputs
 {
 
-    public sealed class OtsBackupPlanOtsDetailGetArgs : Pulumi.ResourceArgs
+    public sealed class OtsBackupPlanOtsDetailGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("tableNames")]
         private InputList<string>? _tableNames;
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         public OtsBackupPlanOtsDetailGetArgs()
         {
         }
+        public static new OtsBackupPlanOtsDetailGetArgs Empty => new OtsBackupPlanOtsDetailGetArgs();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,15 +23,12 @@ import * as utilities from "../utilities";
  *     project: "the_project_name",
  *     ids: ["the_store_name"],
  * });
- * export const firstLogStoreId = example.then(example => example.stores?[0]?.id);
+ * export const firstLogStoreId = example.then(example => example.stores?.[0]?.id);
  * ```
  */
 export function getStores(args: GetStoresArgs, opts?: pulumi.InvokeOptions): Promise<GetStoresResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:log/getStores:getStores", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -70,9 +68,28 @@ export interface GetStoresResult {
     readonly project: string;
     readonly stores: outputs.log.GetStoresStore[];
 }
-
+/**
+ * This data source provides the Log Stores of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.126.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.log.getStores({
+ *     project: "the_project_name",
+ *     ids: ["the_store_name"],
+ * });
+ * export const firstLogStoreId = example.then(example => example.stores?.[0]?.id);
+ * ```
+ */
 export function getStoresOutput(args: GetStoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStoresResult> {
-    return pulumi.output(args).apply(a => getStores(a, opts))
+    return pulumi.output(args).apply((a: any) => getStores(a, opts))
 }
 
 /**

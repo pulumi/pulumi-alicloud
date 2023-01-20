@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class StoreEncryptConfGetArgs : Pulumi.ResourceArgs
+    public sealed class StoreEncryptConfGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// enable encryption. Default `false`
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public StoreEncryptConfGetArgs()
         {
         }
+        public static new StoreEncryptConfGetArgs Empty => new StoreEncryptConfGetArgs();
     }
 }

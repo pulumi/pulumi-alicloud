@@ -23,30 +23,29 @@ namespace Pulumi.AliCloud.ClickHouse
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var default1 = AliCloud.ClickHouse.GetRegions.Invoke(new()
         ///     {
-        ///         var default1 = Output.Create(AliCloud.ClickHouse.GetRegions.InvokeAsync(new AliCloud.ClickHouse.GetRegionsArgs
-        ///         {
-        ///             Current = true,
-        ///         }));
-        ///         var default2 = Output.Create(AliCloud.ClickHouse.GetRegions.InvokeAsync(new AliCloud.ClickHouse.GetRegionsArgs
-        ///         {
-        ///             RegionId = "cn-hangzhou",
-        ///         }));
-        ///     }
+        ///         Current = true,
+        ///     });
         /// 
-        /// }
+        ///     var default2 = AliCloud.ClickHouse.GetRegions.Invoke(new()
+        ///     {
+        ///         RegionId = "cn-hangzhou",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:clickhouse/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:clickhouse/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Click House Accounts of the current Alibaba Cloud user.
@@ -60,34 +59,33 @@ namespace Pulumi.AliCloud.ClickHouse
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var default1 = AliCloud.ClickHouse.GetRegions.Invoke(new()
         ///     {
-        ///         var default1 = Output.Create(AliCloud.ClickHouse.GetRegions.InvokeAsync(new AliCloud.ClickHouse.GetRegionsArgs
-        ///         {
-        ///             Current = true,
-        ///         }));
-        ///         var default2 = Output.Create(AliCloud.ClickHouse.GetRegions.InvokeAsync(new AliCloud.ClickHouse.GetRegionsArgs
-        ///         {
-        ///             RegionId = "cn-hangzhou",
-        ///         }));
-        ///     }
+        ///         Current = true,
+        ///     });
         /// 
-        /// }
+        ///     var default2 = AliCloud.ClickHouse.GetRegions.Invoke(new()
+        ///     {
+        ///         RegionId = "cn-hangzhou",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("alicloud:clickhouse/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("alicloud:clickhouse/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRegionsArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Set to true to match only the region configured in the provider. Default value: `true`.
@@ -107,9 +105,10 @@ namespace Pulumi.AliCloud.ClickHouse
         public GetRegionsArgs()
         {
         }
+        public static new GetRegionsArgs Empty => new GetRegionsArgs();
     }
 
-    public sealed class GetRegionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Set to true to match only the region configured in the provider. Default value: `true`.
@@ -129,6 +128,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public GetRegionsInvokeArgs()
         {
         }
+        public static new GetRegionsInvokeArgs Empty => new GetRegionsInvokeArgs();
     }
 
 

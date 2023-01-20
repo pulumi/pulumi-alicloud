@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Mse
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Mse.GetEngineNamespaces.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Mse.GetEngineNamespaces.InvokeAsync(new AliCloud.Mse.GetEngineNamespacesArgs
+        ///         ClusterId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             ClusterId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.MseEngineNamespaceId1 = ids.Apply(ids =&gt; ids.Namespaces?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("mseEngineNamespaceId1")]
-        ///     public Output&lt;string&gt; MseEngineNamespaceId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mseEngineNamespaceId1"] = ids.Apply(getEngineNamespacesResult =&gt; getEngineNamespacesResult.Namespaces[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEngineNamespacesResult> InvokeAsync(GetEngineNamespacesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEngineNamespacesResult>("alicloud:mse/getEngineNamespaces:getEngineNamespaces", args ?? new GetEngineNamespacesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEngineNamespacesResult>("alicloud:mse/getEngineNamespaces:getEngineNamespaces", args ?? new GetEngineNamespacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Mse
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Mse.GetEngineNamespaces.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Mse.GetEngineNamespaces.InvokeAsync(new AliCloud.Mse.GetEngineNamespacesArgs
+        ///         ClusterId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             ClusterId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.MseEngineNamespaceId1 = ids.Apply(ids =&gt; ids.Namespaces?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("mseEngineNamespaceId1")]
-        ///     public Output&lt;string&gt; MseEngineNamespaceId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mseEngineNamespaceId1"] = ids.Apply(getEngineNamespacesResult =&gt; getEngineNamespacesResult.Namespaces[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEngineNamespacesResult> Invoke(GetEngineNamespacesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEngineNamespacesResult>("alicloud:mse/getEngineNamespaces:getEngineNamespaces", args ?? new GetEngineNamespacesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEngineNamespacesResult>("alicloud:mse/getEngineNamespaces:getEngineNamespaces", args ?? new GetEngineNamespacesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEngineNamespacesArgs : Pulumi.InvokeArgs
+    public sealed class GetEngineNamespacesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The language type of the returned information. Valid values: `zh`, `en`.
@@ -125,9 +123,10 @@ namespace Pulumi.AliCloud.Mse
         public GetEngineNamespacesArgs()
         {
         }
+        public static new GetEngineNamespacesArgs Empty => new GetEngineNamespacesArgs();
     }
 
-    public sealed class GetEngineNamespacesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEngineNamespacesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The language type of the returned information. Valid values: `zh`, `en`.
@@ -159,6 +158,7 @@ namespace Pulumi.AliCloud.Mse
         public GetEngineNamespacesInvokeArgs()
         {
         }
+        public static new GetEngineNamespacesInvokeArgs Empty => new GetEngineNamespacesInvokeArgs();
     }
 
 

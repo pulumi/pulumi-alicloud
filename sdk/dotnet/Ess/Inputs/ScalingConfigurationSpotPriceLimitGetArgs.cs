@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class ScalingConfigurationSpotPriceLimitGetArgs : Pulumi.ResourceArgs
+    public sealed class ScalingConfigurationSpotPriceLimitGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource type of an ECS instance.
@@ -24,5 +24,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public ScalingConfigurationSpotPriceLimitGetArgs()
         {
         }
+        public static new ScalingConfigurationSpotPriceLimitGetArgs Empty => new ScalingConfigurationSpotPriceLimitGetArgs();
     }
 }

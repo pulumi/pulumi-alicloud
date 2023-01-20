@@ -103,6 +103,8 @@ type PhysicalConnection struct {
 	// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
 	// * 10GBase-T: Gigabit Electrical Port
 	// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+	// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+	// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
 	PortType pulumi.StringPtrOutput `pulumi:"portType"`
 	// Redundant Physical Connection to Which the ID.
 	RedundantPhysicalConnectionId pulumi.StringPtrOutput `pulumi:"redundantPhysicalConnectionId"`
@@ -176,6 +178,8 @@ type physicalConnectionState struct {
 	// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
 	// * 10GBase-T: Gigabit Electrical Port
 	// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+	// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+	// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
 	PortType *string `pulumi:"portType"`
 	// Redundant Physical Connection to Which the ID.
 	RedundantPhysicalConnectionId *string `pulumi:"redundantPhysicalConnectionId"`
@@ -212,6 +216,8 @@ type PhysicalConnectionState struct {
 	// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
 	// * 10GBase-T: Gigabit Electrical Port
 	// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+	// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+	// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
 	PortType pulumi.StringPtrInput
 	// Redundant Physical Connection to Which the ID.
 	RedundantPhysicalConnectionId pulumi.StringPtrInput
@@ -252,6 +258,8 @@ type physicalConnectionArgs struct {
 	// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
 	// * 10GBase-T: Gigabit Electrical Port
 	// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+	// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+	// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
 	PortType *string `pulumi:"portType"`
 	// Redundant Physical Connection to Which the ID.
 	RedundantPhysicalConnectionId *string `pulumi:"redundantPhysicalConnectionId"`
@@ -289,6 +297,8 @@ type PhysicalConnectionArgs struct {
 	// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
 	// * 10GBase-T: Gigabit Electrical Port
 	// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+	// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+	// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
 	PortType pulumi.StringPtrInput
 	// Redundant Physical Connection to Which the ID.
 	RedundantPhysicalConnectionId pulumi.StringPtrInput
@@ -432,6 +442,8 @@ func (o PhysicalConnectionOutput) PhysicalConnectionName() pulumi.StringPtrOutpu
 // * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
 // * 10GBase-T: Gigabit Electrical Port
 // * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
 func (o PhysicalConnectionOutput) PortType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.PortType }).(pulumi.StringPtrOutput)
 }

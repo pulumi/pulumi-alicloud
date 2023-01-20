@@ -57,7 +57,7 @@ import (
 //				GatewayClass:           pulumi.String("Standard"),
 //				Type:                   pulumi.String("File"),
 //				PaymentType:            pulumi.String("PayAsYouGo"),
-//				VswitchId:              pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:              *pulumi.String(defaultSwitches.Ids[0]),
 //				ReleaseAfterExpiration: pulumi.Bool(false),
 //				PublicNetworkBandwidth: pulumi.Int(40),
 //				StorageBundleId:        example.ID(),
@@ -117,6 +117,13 @@ func NewGatewaySmbUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource GatewaySmbUser
 	err := ctx.RegisterResource("alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser", name, args, &resource, opts...)
 	if err != nil {

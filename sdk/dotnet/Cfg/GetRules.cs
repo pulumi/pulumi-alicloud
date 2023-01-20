@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cfg.GetRules.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetRules.InvokeAsync(new AliCloud.Cfg.GetRulesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "cr-ed4bad756057********",
-        ///             },
-        ///             NameRegex = "tftest",
-        ///         }));
-        ///         this.FirstConfigRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
-        ///     }
+        ///             "cr-ed4bad756057********",
+        ///         },
+        ///         NameRegex = "tftest",
+        ///     });
         /// 
-        ///     [Output("firstConfigRuleId")]
-        ///     public Output&lt;string&gt; FirstConfigRuleId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigRuleId"] = example.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:cfg/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:cfg/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Config Rules of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cfg.GetRules.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetRules.InvokeAsync(new AliCloud.Cfg.GetRulesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "cr-ed4bad756057********",
-        ///             },
-        ///             NameRegex = "tftest",
-        ///         }));
-        ///         this.FirstConfigRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
-        ///     }
+        ///             "cr-ed4bad756057********",
+        ///         },
+        ///         NameRegex = "tftest",
+        ///     });
         /// 
-        ///     [Output("firstConfigRuleId")]
-        ///     public Output&lt;string&gt; FirstConfigRuleId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigRuleId"] = example.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:cfg/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:cfg/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetRulesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
@@ -149,9 +147,10 @@ namespace Pulumi.AliCloud.Cfg
         public GetRulesArgs()
         {
         }
+        public static new GetRulesArgs Empty => new GetRulesArgs();
     }
 
-    public sealed class GetRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
@@ -207,12 +206,16 @@ namespace Pulumi.AliCloud.Cfg
         public GetRulesInvokeArgs()
         {
         }
+        public static new GetRulesInvokeArgs Empty => new GetRulesInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetRulesResult
     {
+        /// <summary>
+        /// The state of the Config Rule.
+        /// </summary>
         public readonly string? ConfigRuleState;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -229,7 +232,13 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The risk level of the Config Rule.
+        /// </summary>
         public readonly int? RiskLevel;
+        /// <summary>
+        /// The name of the Config Rule.
+        /// </summary>
         public readonly string? RuleName;
         /// <summary>
         /// A list of Config Rules. Each element contains the following attributes:

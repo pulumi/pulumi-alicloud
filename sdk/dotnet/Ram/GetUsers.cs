@@ -19,33 +19,32 @@ namespace Pulumi.AliCloud.Ram
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
         ///     {
-        ///         var usersDs = Output.Create(AliCloud.Ram.GetUsers.InvokeAsync(new AliCloud.Ram.GetUsersArgs
-        ///         {
-        ///             GroupName = "group1",
-        ///             NameRegex = "^user",
-        ///             OutputFile = "users.txt",
-        ///             PolicyName = "AliyunACSDefaultAccess",
-        ///             PolicyType = "Custom",
-        ///         }));
-        ///         this.FirstUserId = usersDs.Apply(usersDs =&gt; usersDs.Users?[0]?.Id);
-        ///     }
+        ///         GroupName = "group1",
+        ///         NameRegex = "^user",
+        ///         OutputFile = "users.txt",
+        ///         PolicyName = "AliyunACSDefaultAccess",
+        ///         PolicyType = "Custom",
+        ///     });
         /// 
-        ///     [Output("firstUserId")]
-        ///     public Output&lt;string&gt; FirstUserId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstUserId"] = usersDs.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
@@ -55,37 +54,36 @@ namespace Pulumi.AliCloud.Ram
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
         ///     {
-        ///         var usersDs = Output.Create(AliCloud.Ram.GetUsers.InvokeAsync(new AliCloud.Ram.GetUsersArgs
-        ///         {
-        ///             GroupName = "group1",
-        ///             NameRegex = "^user",
-        ///             OutputFile = "users.txt",
-        ///             PolicyName = "AliyunACSDefaultAccess",
-        ///             PolicyType = "Custom",
-        ///         }));
-        ///         this.FirstUserId = usersDs.Apply(usersDs =&gt; usersDs.Users?[0]?.Id);
-        ///     }
+        ///         GroupName = "group1",
+        ///         NameRegex = "^user",
+        ///         OutputFile = "users.txt",
+        ///         PolicyName = "AliyunACSDefaultAccess",
+        ///         PolicyType = "Custom",
+        ///     });
         /// 
-        ///     [Output("firstUserId")]
-        ///     public Output&lt;string&gt; FirstUserId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstUserId"] = usersDs.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetUsersArgs : Pulumi.InvokeArgs
+    public sealed class GetUsersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter results by a specific group name. Returned users are in the specified group.
@@ -97,7 +95,7 @@ namespace Pulumi.AliCloud.Ram
         private List<string>? _ids;
 
         /// <summary>
-        /// - A list of ram user IDs.
+        /// A list of ram user IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -129,9 +127,10 @@ namespace Pulumi.AliCloud.Ram
         public GetUsersArgs()
         {
         }
+        public static new GetUsersArgs Empty => new GetUsersArgs();
     }
 
-    public sealed class GetUsersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter results by a specific group name. Returned users are in the specified group.
@@ -143,7 +142,7 @@ namespace Pulumi.AliCloud.Ram
         private InputList<string>? _ids;
 
         /// <summary>
-        /// - A list of ram user IDs.
+        /// A list of ram user IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -175,6 +174,7 @@ namespace Pulumi.AliCloud.Ram
         public GetUsersInvokeArgs()
         {
         }
+        public static new GetUsersInvokeArgs Empty => new GetUsersInvokeArgs();
     }
 
 

@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.cfg.Aggregator;
  * import com.pulumi.alicloud.cfg.AggregatorArgs;
  * import com.pulumi.alicloud.cfg.inputs.AggregatorAggregatorAccountArgs;

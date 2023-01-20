@@ -104,7 +104,7 @@ def get_real_time_log_deliveries(domain: Optional[str] = None,
 
 
     :param str domain: Real-Time Log Service Domain.
-    :param str status: -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+    :param str status: The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
     """
     __args__ = dict()
     __args__['domain'] = domain
@@ -145,6 +145,6 @@ def get_real_time_log_deliveries_output(domain: Optional[pulumi.Input[str]] = No
 
 
     :param str domain: Real-Time Log Service Domain.
-    :param str status: -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+    :param str status: The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
     """
     ...

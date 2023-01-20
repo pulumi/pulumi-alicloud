@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ess
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment")]
-    public partial class AlbServerGroupAttachment : Pulumi.CustomResource
+    public partial class AlbServerGroupAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID of Alb Server Group.
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> ForceAttach { get; private set; } = null!;
 
         /// <summary>
-        /// - The port will be used for Alb Server Group backend server.
+        /// The port will be used for Alb Server Group backend server.
         /// </summary>
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
-    public sealed class AlbServerGroupAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class AlbServerGroupAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of Alb Server Group.
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? ForceAttach { get; set; }
 
         /// <summary>
-        /// - The port will be used for Alb Server Group backend server.
+        /// The port will be used for Alb Server Group backend server.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
@@ -144,9 +144,10 @@ namespace Pulumi.AliCloud.Ess
         public AlbServerGroupAttachmentArgs()
         {
         }
+        public static new AlbServerGroupAttachmentArgs Empty => new AlbServerGroupAttachmentArgs();
     }
 
-    public sealed class AlbServerGroupAttachmentState : Pulumi.ResourceArgs
+    public sealed class AlbServerGroupAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of Alb Server Group.
@@ -162,7 +163,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? ForceAttach { get; set; }
 
         /// <summary>
-        /// - The port will be used for Alb Server Group backend server.
+        /// The port will be used for Alb Server Group backend server.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -182,5 +183,6 @@ namespace Pulumi.AliCloud.Ess
         public AlbServerGroupAttachmentState()
         {
         }
+        public static new AlbServerGroupAttachmentState Empty => new AlbServerGroupAttachmentState();
     }
 }

@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myInstances = AliCloud.CS.GetRegistryEnterpriseInstances.Invoke(new()
         ///     {
-        ///         var myInstances = Output.Create(AliCloud.CS.GetRegistryEnterpriseInstances.InvokeAsync(new AliCloud.CS.GetRegistryEnterpriseInstancesArgs
-        ///         {
-        ///             NameRegex = "my-instances",
-        ///             OutputFile = "my-instances-json",
-        ///         }));
-        ///         this.Output = myInstances.Apply(myInstances =&gt; myInstances.Instances);
-        ///     }
+        ///         NameRegex = "my-instances",
+        ///         OutputFile = "my-instances-json",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myInstances.Apply(getRegistryEnterpriseInstancesResult =&gt; getRegistryEnterpriseInstancesResult.Instances),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryEnterpriseInstancesResult> InvokeAsync(GetRegistryEnterpriseInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseInstancesResult>("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", args ?? new GetRegistryEnterpriseInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseInstancesResult>("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", args ?? new GetRegistryEnterpriseInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
@@ -56,34 +55,33 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myInstances = AliCloud.CS.GetRegistryEnterpriseInstances.Invoke(new()
         ///     {
-        ///         var myInstances = Output.Create(AliCloud.CS.GetRegistryEnterpriseInstances.InvokeAsync(new AliCloud.CS.GetRegistryEnterpriseInstancesArgs
-        ///         {
-        ///             NameRegex = "my-instances",
-        ///             OutputFile = "my-instances-json",
-        ///         }));
-        ///         this.Output = myInstances.Apply(myInstances =&gt; myInstances.Instances);
-        ///     }
+        ///         NameRegex = "my-instances",
+        ///         OutputFile = "my-instances-json",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myInstances.Apply(getRegistryEnterpriseInstancesResult =&gt; getRegistryEnterpriseInstancesResult.Instances),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegistryEnterpriseInstancesResult> Invoke(GetRegistryEnterpriseInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseInstancesResult>("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", args ?? new GetRegistryEnterpriseInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseInstancesResult>("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", args ?? new GetRegistryEnterpriseInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRegistryEnterpriseInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryEnterpriseInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `true`. Set it to true can output instance authorization token.
@@ -115,9 +113,10 @@ namespace Pulumi.AliCloud.CS
         public GetRegistryEnterpriseInstancesArgs()
         {
         }
+        public static new GetRegistryEnterpriseInstancesArgs Empty => new GetRegistryEnterpriseInstancesArgs();
     }
 
-    public sealed class GetRegistryEnterpriseInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryEnterpriseInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `true`. Set it to true can output instance authorization token.
@@ -149,6 +148,7 @@ namespace Pulumi.AliCloud.CS
         public GetRegistryEnterpriseInstancesInvokeArgs()
         {
         }
+        public static new GetRegistryEnterpriseInstancesInvokeArgs Empty => new GetRegistryEnterpriseInstancesInvokeArgs();
     }
 
 

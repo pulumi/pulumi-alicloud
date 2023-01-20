@@ -21,22 +21,20 @@ namespace Pulumi.AliCloud.Sae
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Sae.Namespace("example", new()
     ///     {
-    ///         var example = new AliCloud.Sae.Namespace("example", new AliCloud.Sae.NamespaceArgs
-    ///         {
-    ///             NamespaceDescription = "your_description",
-    ///             NamespaceId = "cn-hangzhou:yourname",
-    ///             NamespaceName = "example_value",
-    ///         });
-    ///     }
+    ///         NamespaceDescription = "your_description",
+    ///         NamespaceId = "cn-hangzhou:yourname",
+    ///         NamespaceName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.Sae
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sae/namespace:Namespace")]
-    public partial class Namespace : Pulumi.CustomResource
+    public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Description of Namespace.
@@ -112,7 +110,7 @@ namespace Pulumi.AliCloud.Sae
         }
     }
 
-    public sealed class NamespaceArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Description of Namespace.
@@ -135,9 +133,10 @@ namespace Pulumi.AliCloud.Sae
         public NamespaceArgs()
         {
         }
+        public static new NamespaceArgs Empty => new NamespaceArgs();
     }
 
-    public sealed class NamespaceState : Pulumi.ResourceArgs
+    public sealed class NamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Description of Namespace.
@@ -160,5 +159,6 @@ namespace Pulumi.AliCloud.Sae
         public NamespaceState()
         {
         }
+        public static new NamespaceState Empty => new NamespaceState();
     }
 }

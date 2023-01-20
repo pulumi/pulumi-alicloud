@@ -173,9 +173,6 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
     }
     /**
      * The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-     * - `INTERNET`: connects clients to cloud desktops only over the Internet.
-     * - `VPC`: connects clients to cloud desktops only over a VPC.
-     * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
      * 
      */
     @Export(name="desktopAccessType", type=String.class, parameters={})
@@ -183,9 +180,6 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-     * - `INTERNET`: connects clients to cloud desktops only over the Internet.
-     * - `VPC`: connects clients to cloud desktops only over a VPC.
-     * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
      * 
      */
     public Output<String> desktopAccessType() {
@@ -406,6 +400,9 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "domainPassword"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

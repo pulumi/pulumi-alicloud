@@ -15,6 +15,7 @@ __all__ = ['RouteTableArgs', 'RouteTable']
 class RouteTableArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[str],
+                 associate_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  route_table_name: Optional[pulumi.Input[str]] = None,
@@ -22,12 +23,15 @@ class RouteTableArgs:
         """
         The set of arguments for constructing a RouteTable resource.
         :param pulumi.Input[str] vpc_id: The vpc_id of the route table, the field can't be changed.
+        :param pulumi.Input[str] associate_type: The type of routing table created. Valid values are `VSwitch` and `Gateway`
         :param pulumi.Input[str] description: The description of the route table instance.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
         :param pulumi.Input[str] route_table_name: The name of the route table.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
+        if associate_type is not None:
+            pulumi.set(__self__, "associate_type", associate_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -51,6 +55,18 @@ class RouteTableArgs:
     @vpc_id.setter
     def vpc_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="associateType")
+    def associate_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of routing table created. Valid values are `VSwitch` and `Gateway`
+        """
+        return pulumi.get(self, "associate_type")
+
+    @associate_type.setter
+    def associate_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "associate_type", value)
 
     @property
     @pulumi.getter
@@ -104,6 +120,7 @@ class RouteTableArgs:
 @pulumi.input_type
 class _RouteTableState:
     def __init__(__self__, *,
+                 associate_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  route_table_name: Optional[pulumi.Input[str]] = None,
@@ -112,6 +129,7 @@ class _RouteTableState:
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouteTable resources.
+        :param pulumi.Input[str] associate_type: The type of routing table created. Valid values are `VSwitch` and `Gateway`
         :param pulumi.Input[str] description: The description of the route table instance.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
         :param pulumi.Input[str] route_table_name: The name of the route table.
@@ -119,6 +137,8 @@ class _RouteTableState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The vpc_id of the route table, the field can't be changed.
         """
+        if associate_type is not None:
+            pulumi.set(__self__, "associate_type", associate_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -134,6 +154,18 @@ class _RouteTableState:
             pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="associateType")
+    def associate_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of routing table created. Valid values are `VSwitch` and `Gateway`
+        """
+        return pulumi.get(self, "associate_type")
+
+    @associate_type.setter
+    def associate_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "associate_type", value)
 
     @property
     @pulumi.getter
@@ -213,6 +245,7 @@ class RouteTable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 associate_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  route_table_name: Optional[pulumi.Input[str]] = None,
@@ -247,6 +280,7 @@ class RouteTable(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] associate_type: The type of routing table created. Valid values are `VSwitch` and `Gateway`
         :param pulumi.Input[str] description: The description of the route table instance.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
         :param pulumi.Input[str] route_table_name: The name of the route table.
@@ -300,6 +334,7 @@ class RouteTable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 associate_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  route_table_name: Optional[pulumi.Input[str]] = None,
@@ -314,6 +349,7 @@ class RouteTable(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RouteTableArgs.__new__(RouteTableArgs)
 
+            __props__.__dict__["associate_type"] = associate_type
             __props__.__dict__["description"] = description
             if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.""", DeprecationWarning)
@@ -335,6 +371,7 @@ class RouteTable(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            associate_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             route_table_name: Optional[pulumi.Input[str]] = None,
@@ -348,6 +385,7 @@ class RouteTable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] associate_type: The type of routing table created. Valid values are `VSwitch` and `Gateway`
         :param pulumi.Input[str] description: The description of the route table instance.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
         :param pulumi.Input[str] route_table_name: The name of the route table.
@@ -359,6 +397,7 @@ class RouteTable(pulumi.CustomResource):
 
         __props__ = _RouteTableState.__new__(_RouteTableState)
 
+        __props__.__dict__["associate_type"] = associate_type
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["route_table_name"] = route_table_name
@@ -366,6 +405,14 @@ class RouteTable(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
         return RouteTable(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="associateType")
+    def associate_type(self) -> pulumi.Output[str]:
+        """
+        The type of routing table created. Valid values are `VSwitch` and `Gateway`
+        """
+        return pulumi.get(self, "associate_type")
 
     @property
     @pulumi.getter

@@ -29,8 +29,6 @@ class DomainArgs:
         :param pulumi.Input[str] check_url: The URL that is used for health checks.
         :param pulumi.Input[str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-               * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-               * `Value`: It can be up to 128 characters in length. It can be a null string.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
         """
         pulumi.set(__self__, "domain_name", domain_name)
@@ -97,8 +95,6 @@ class DomainArgs:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
-        * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        * `Value`: It can be up to 128 characters in length. It can be a null string.
         """
         return pulumi.get(self, "tags")
 
@@ -152,8 +148,6 @@ class _DomainState:
         :param pulumi.Input[str] ssl_pub: The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
         :param pulumi.Input[str] status: The status of the domain name for CDN. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-               * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-               * `Value`: It can be up to 128 characters in length. It can be a null string.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
         :param pulumi.Input[str] weight: The weight of the origin server.
         """
@@ -337,8 +331,6 @@ class _DomainState:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
-        * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        * `Value`: It can be up to 128 characters in length. It can be a null string.
         """
         return pulumi.get(self, "tags")
 
@@ -427,8 +419,6 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-               * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-               * `Value`: It can be up to 128 characters in length. It can be a null string.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
         """
         ...
@@ -568,8 +558,6 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_pub: The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
         :param pulumi.Input[str] status: The status of the domain name for CDN. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-               * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-               * `Value`: It can be up to 128 characters in length. It can be a null string.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
         :param pulumi.Input[str] weight: The weight of the origin server.
         """
@@ -695,8 +683,6 @@ class Domain(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
-        * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        * `Value`: It can be up to 128 characters in length. It can be a null string.
         """
         return pulumi.get(self, "tags")
 

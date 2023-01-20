@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,20 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const dataApigatwayApis = pulumi.output(alicloud.apigateway.getApis({
+ * const dataApigatwayApis = alicloud.apigateway.getApis({
  *     outputFile: "output_ApiGatawayApis",
- * }));
- *
- * export const firstApiId = alicloud_api_gateway_apis_data_apigatway.apis.0.id;
+ * });
+ * export const firstApiId = data.alicloud_api_gateway_apis.data_apigatway.apis[0].id;
  * ```
  */
 export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promise<GetApisResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:apigateway/getApis:getApis", {
         "apiId": args.apiId,
         "groupId": args.groupId,
@@ -93,9 +90,23 @@ export interface GetApisResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the apis of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dataApigatwayApis = alicloud.apigateway.getApis({
+ *     outputFile: "output_ApiGatawayApis",
+ * });
+ * export const firstApiId = data.alicloud_api_gateway_apis.data_apigatway.apis[0].id;
+ * ```
+ */
 export function getApisOutput(args?: GetApisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApisResult> {
-    return pulumi.output(args).apply(a => getApis(a, opts))
+    return pulumi.output(args).apply((a: any) => getApis(a, opts))
 }
 
 /**

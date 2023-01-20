@@ -844,7 +844,7 @@ public final class CrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -885,7 +885,7 @@ public final class CrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -926,7 +926,7 @@ public final class CrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -967,7 +967,7 @@ public final class CrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1008,7 +1008,7 @@ public final class CrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1049,7 +1049,7 @@ public final class CrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1338,7 +1338,7 @@ public final class CrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cr.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1380,7 +1380,7 @@ public final class CrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cr.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1422,7 +1422,7 @@ public final class CrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cr.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1464,7 +1464,7 @@ public final class CrFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cr.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

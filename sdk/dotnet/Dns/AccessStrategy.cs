@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/accessStrategy:AccessStrategy")]
-    public partial class AccessStrategy : Pulumi.CustomResource
+    public partial class AccessStrategy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class AccessStrategyArgs : Pulumi.ResourceArgs
+    public sealed class AccessStrategyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
@@ -310,9 +310,10 @@ namespace Pulumi.AliCloud.Dns
         public AccessStrategyArgs()
         {
         }
+        public static new AccessStrategyArgs Empty => new AccessStrategyArgs();
     }
 
-    public sealed class AccessStrategyState : Pulumi.ResourceArgs
+    public sealed class AccessStrategyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
@@ -443,5 +444,6 @@ namespace Pulumi.AliCloud.Dns
         public AccessStrategyState()
         {
         }
+        public static new AccessStrategyState Empty => new AccessStrategyState();
     }
 }

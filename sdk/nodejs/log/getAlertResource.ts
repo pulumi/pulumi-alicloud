@@ -17,22 +17,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleUser = pulumi.output(alicloud.log.getAlertResource({
+ * const exampleUser = alicloud.log.getAlertResource({
  *     lang: "cn",
  *     type: "user",
- * }));
- * const exampleProject = pulumi.output(alicloud.log.getAlertResource({
+ * });
+ * const exampleProject = alicloud.log.getAlertResource({
  *     project: "test-alert-tf",
  *     type: "project",
- * }));
+ * });
  * ```
  */
 export function getAlertResource(args: GetAlertResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertResourceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:log/getAlertResource:getAlertResource", {
         "lang": args.lang,
         "project": args.project,
@@ -70,9 +67,31 @@ export interface GetAlertResourceResult {
     readonly project?: string;
     readonly type: string;
 }
-
+/**
+ * Using this data source can init SLS Alert resources automatically.
+ *
+ * For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
+ *
+ * > **NOTE:** Available in v1.161.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleUser = alicloud.log.getAlertResource({
+ *     lang: "cn",
+ *     type: "user",
+ * });
+ * const exampleProject = alicloud.log.getAlertResource({
+ *     project: "test-alert-tf",
+ *     type: "project",
+ * });
+ * ```
+ */
 export function getAlertResourceOutput(args: GetAlertResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertResourceResult> {
-    return pulumi.output(args).apply(a => getAlertResource(a, opts))
+    return pulumi.output(args).apply((a: any) => getAlertResource(a, opts))
 }
 
 /**

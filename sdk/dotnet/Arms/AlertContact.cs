@@ -21,23 +21,21 @@ namespace Pulumi.AliCloud.Arms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Arms.AlertContact("example", new()
     ///     {
-    ///         var example = new AliCloud.Arms.AlertContact("example", new AliCloud.Arms.AlertContactArgs
-    ///         {
-    ///             AlertContactName = "example_value",
-    ///             DingRobotWebhookUrl = "https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
-    ///             Email = "someone@example.com",
-    ///             PhoneNum = "1381111****",
-    ///         });
-    ///     }
+    ///         AlertContactName = "example_value",
+    ///         DingRobotWebhookUrl = "https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
+    ///         Email = "someone@example.com",
+    ///         PhoneNum = "1381111****",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.Arms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:arms/alertContact:AlertContact")]
-    public partial class AlertContact : Pulumi.CustomResource
+    public partial class AlertContact : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the alert contact.
@@ -125,7 +123,7 @@ namespace Pulumi.AliCloud.Arms
         }
     }
 
-    public sealed class AlertContactArgs : Pulumi.ResourceArgs
+    public sealed class AlertContactArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the alert contact.
@@ -160,9 +158,10 @@ namespace Pulumi.AliCloud.Arms
         public AlertContactArgs()
         {
         }
+        public static new AlertContactArgs Empty => new AlertContactArgs();
     }
 
-    public sealed class AlertContactState : Pulumi.ResourceArgs
+    public sealed class AlertContactState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the alert contact.
@@ -197,5 +196,6 @@ namespace Pulumi.AliCloud.Arms
         public AlertContactState()
         {
         }
+        public static new AlertContactState Empty => new AlertContactState();
     }
 }

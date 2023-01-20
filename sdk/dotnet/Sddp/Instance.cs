@@ -23,27 +23,25 @@ namespace Pulumi.AliCloud.Sddp
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Sddp.Instance("default", new()
     ///     {
-    ///         var @default = new AliCloud.Sddp.Instance("default", new AliCloud.Sddp.InstanceArgs
-    ///         {
-    ///             Dataphin = "yes",
-    ///             PaymentType = "Subscription",
-    ///             Period = 1,
-    ///             SdCbool = "yes",
-    ///             Sdc = "3",
-    ///             SddpVersion = "version_company",
-    ///             UdCbool = "yes",
-    ///             Udc = "2000",
-    ///         });
-    ///     }
+    ///         Dataphin = "yes",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         SdCbool = "yes",
+    ///         Sdc = "3",
+    ///         SddpVersion = "version_company",
+    ///         UdCbool = "yes",
+    ///         Udc = "2000",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.AliCloud.Sddp
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sddp/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the required RAM authorization is configured.
@@ -105,6 +103,9 @@ namespace Pulumi.AliCloud.Sddp
         [Output("ossBucketSet")]
         public Output<bool> OssBucketSet { get; private set; } = null!;
 
+        /// <summary>
+        /// The OSS storage capacity.
+        /// </summary>
         [Output("ossSize")]
         public Output<string> OssSize { get; private set; } = null!;
 
@@ -126,6 +127,9 @@ namespace Pulumi.AliCloud.Sddp
         [Output("rdsSet")]
         public Output<bool> RdsSet { get; private set; } = null!;
 
+        /// <summary>
+        /// The remaining days of the protection period of the assets in the current login account.
+        /// </summary>
         [Output("remainDays")]
         public Output<string> RemainDays { get; private set; } = null!;
 
@@ -221,7 +225,7 @@ namespace Pulumi.AliCloud.Sddp
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dataphin. Valid values: `yes`,`no`.
@@ -246,6 +250,12 @@ namespace Pulumi.AliCloud.Sddp
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
+
+        /// <summary>
+        /// The OSS storage capacity.
+        /// </summary>
+        [Input("ossSize")]
+        public Input<string>? OssSize { get; set; }
 
         /// <summary>
         /// The payment type of the resource. Valid values: `Subscription`.
@@ -304,9 +314,10 @@ namespace Pulumi.AliCloud.Sddp
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the required RAM authorization is configured.
@@ -356,6 +367,9 @@ namespace Pulumi.AliCloud.Sddp
         [Input("ossBucketSet")]
         public Input<bool>? OssBucketSet { get; set; }
 
+        /// <summary>
+        /// The OSS storage capacity.
+        /// </summary>
         [Input("ossSize")]
         public Input<string>? OssSize { get; set; }
 
@@ -377,6 +391,9 @@ namespace Pulumi.AliCloud.Sddp
         [Input("rdsSet")]
         public Input<bool>? RdsSet { get; set; }
 
+        /// <summary>
+        /// The remaining days of the protection period of the assets in the current login account.
+        /// </summary>
         [Input("remainDays")]
         public Input<string>? RemainDays { get; set; }
 
@@ -431,5 +448,6 @@ namespace Pulumi.AliCloud.Sddp
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

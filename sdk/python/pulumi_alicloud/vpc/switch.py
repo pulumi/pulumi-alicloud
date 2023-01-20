@@ -31,7 +31,7 @@ class SwitchArgs:
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_name: The name of the switch. Defaults to null.
-        :param pulumi.Input[str] zone_id: The AZ for the switch.
+        :param pulumi.Input[str] zone_id: The AZ for the switch. **Note:** Required for a VPC switch.
         """
         pulumi.set(__self__, "cidr_block", cidr_block)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -142,7 +142,7 @@ class SwitchArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The AZ for the switch.
+        The AZ for the switch. **Note:** Required for a VPC switch.
         """
         return pulumi.get(self, "zone_id")
 
@@ -173,7 +173,7 @@ class _SwitchState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vswitch_name: The name of the switch. Defaults to null.
-        :param pulumi.Input[str] zone_id: The AZ for the switch.
+        :param pulumi.Input[str] zone_id: The AZ for the switch. **Note:** Required for a VPC switch.
         """
         if availability_zone is not None:
             warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
@@ -300,7 +300,7 @@ class _SwitchState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The AZ for the switch.
+        The AZ for the switch. **Note:** Required for a VPC switch.
         """
         return pulumi.get(self, "zone_id")
 
@@ -341,7 +341,7 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vswitch_name: The name of the switch. Defaults to null.
-        :param pulumi.Input[str] zone_id: The AZ for the switch.
+        :param pulumi.Input[str] zone_id: The AZ for the switch. **Note:** Required for a VPC switch.
         """
         ...
     @overload
@@ -443,7 +443,7 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vswitch_name: The name of the switch. Defaults to null.
-        :param pulumi.Input[str] zone_id: The AZ for the switch.
+        :param pulumi.Input[str] zone_id: The AZ for the switch. **Note:** Required for a VPC switch.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -528,7 +528,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The AZ for the switch.
+        The AZ for the switch. **Note:** Required for a VPC switch.
         """
         return pulumi.get(self, "zone_id")
 

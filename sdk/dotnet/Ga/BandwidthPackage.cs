@@ -23,25 +23,23 @@ namespace Pulumi.AliCloud.Ga
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ga.BandwidthPackage("example", new()
     ///     {
-    ///         var example = new AliCloud.Ga.BandwidthPackage("example", new AliCloud.Ga.BandwidthPackageArgs
-    ///         {
-    ///             AutoPay = true,
-    ///             Bandwidth = 20,
-    ///             BandwidthType = "Basic",
-    ///             Duration = "1",
-    ///             Ratio = 30,
-    ///             Type = "Basic",
-    ///         });
-    ///     }
+    ///         AutoPay = true,
+    ///         Bandwidth = 20,
+    ///         BandwidthType = "Basic",
+    ///         Duration = "1",
+    ///         Ratio = 30,
+    ///         Type = "Basic",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +51,7 @@ namespace Pulumi.AliCloud.Ga
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/bandwidthPackage:BandwidthPackage")]
-    public partial class BandwidthPackage : Pulumi.CustomResource
+    public partial class BandwidthPackage : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to pay automatically. Valid values:
@@ -103,13 +101,13 @@ namespace Pulumi.AliCloud.Ga
         /// Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
         /// </summary>
         [Output("cbnGeographicRegionIda")]
-        public Output<string?> CbnGeographicRegionIda { get; private set; } = null!;
+        public Output<string> CbnGeographicRegionIda { get; private set; } = null!;
 
         /// <summary>
         /// Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
         /// </summary>
         [Output("cbnGeographicRegionIdb")]
-        public Output<string?> CbnGeographicRegionIdb { get; private set; } = null!;
+        public Output<string> CbnGeographicRegionIdb { get; private set; } = null!;
 
         /// <summary>
         /// The description of bandwidth package.
@@ -137,9 +135,6 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Whether to renew a bandwidth packet. automatically or not. Valid values:
-        /// - `AutoRenewal`: Enable auto renewal.
-        /// - `Normal`: Disable auto renewal.
-        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
@@ -200,7 +195,7 @@ namespace Pulumi.AliCloud.Ga
         }
     }
 
-    public sealed class BandwidthPackageArgs : Pulumi.ResourceArgs
+    public sealed class BandwidthPackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to pay automatically. Valid values:
@@ -284,9 +279,6 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Whether to renew a bandwidth packet. automatically or not. Valid values:
-        /// - `AutoRenewal`: Enable auto renewal.
-        /// - `Normal`: Disable auto renewal.
-        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -300,9 +292,10 @@ namespace Pulumi.AliCloud.Ga
         public BandwidthPackageArgs()
         {
         }
+        public static new BandwidthPackageArgs Empty => new BandwidthPackageArgs();
     }
 
-    public sealed class BandwidthPackageState : Pulumi.ResourceArgs
+    public sealed class BandwidthPackageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to pay automatically. Valid values:
@@ -386,9 +379,6 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Whether to renew a bandwidth packet. automatically or not. Valid values:
-        /// - `AutoRenewal`: Enable auto renewal.
-        /// - `Normal`: Disable auto renewal.
-        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -408,5 +398,6 @@ namespace Pulumi.AliCloud.Ga
         public BandwidthPackageState()
         {
         }
+        public static new BandwidthPackageState Empty => new BandwidthPackageState();
     }
 }

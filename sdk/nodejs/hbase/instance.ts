@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,7 +26,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstance = new alicloud.hbase.Instance("default", {
+ * const _default = new alicloud.hbase.Instance("default", {
  *     coldStorageSize: 0,
  *     coreDiskSize: 400,
  *     coreDiskType: "cloud_efficiency",
@@ -178,6 +179,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly uiProxyConnAddrs!: pulumi.Output<outputs.hbase.InstanceUiProxyConnAddr[]>;
     /**
+     * The id of the VPC.
+     */
+    public readonly vpcId!: pulumi.Output<string | undefined>;
+    /**
      * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
@@ -227,6 +232,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["slbConnAddrs"] = state ? state.slbConnAddrs : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["uiProxyConnAddrs"] = state ? state.uiProxyConnAddrs : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zkConnAddrs"] = state ? state.zkConnAddrs : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -258,10 +264,11 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
             resourceInputs["masterInstanceType"] = args ? args.masterInstanceType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["payType"] = args ? args.payType : undefined;
             resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["masterInstanceQuantity"] = undefined /*out*/;
@@ -270,6 +277,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zkConnAddrs"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -378,6 +387,10 @@ export interface InstanceState {
      */
     uiProxyConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceUiProxyConnAddr>[]>;
     /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
      * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      */
     vswitchId?: pulumi.Input<string>;
@@ -482,6 +495,10 @@ export interface InstanceArgs {
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      */

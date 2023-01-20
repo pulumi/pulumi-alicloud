@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("Gpdb"),
 //			}, nil)
 //			if err != nil {
@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String("vpc-123456"),
@@ -115,6 +115,8 @@ type ElasticInstance struct {
 	PaymentDurationUnit pulumi.StringPtrOutput `pulumi:"paymentDurationUnit"`
 	// Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
+	// (Available in 1.196.0+) The connection port of the instance.
+	Port pulumi.StringOutput `pulumi:"port"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists pulumi.StringArrayOutput `pulumi:"securityIpLists"`
 	// The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
@@ -211,6 +213,8 @@ type elasticInstanceState struct {
 	PaymentDurationUnit *string `pulumi:"paymentDurationUnit"`
 	// Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
+	// (Available in 1.196.0+) The connection port of the instance.
+	Port *string `pulumi:"port"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
@@ -258,6 +262,8 @@ type ElasticInstanceState struct {
 	PaymentDurationUnit pulumi.StringPtrInput
 	// Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
+	// (Available in 1.196.0+) The connection port of the instance.
+	Port pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists pulumi.StringArrayInput
 	// The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
@@ -516,6 +522,11 @@ func (o ElasticInstanceOutput) PaymentDurationUnit() pulumi.StringPtrOutput {
 // Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
 func (o ElasticInstanceOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticInstance) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+// (Available in 1.196.0+) The connection port of the instance.
+func (o ElasticInstanceOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
 
 // List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).

@@ -23,26 +23,24 @@ namespace Pulumi.AliCloud.RocketMQ
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.RocketMQ.DnatEntry("default", new()
     ///     {
-    ///         var @default = new AliCloud.RocketMQ.DnatEntry("default", new AliCloud.RocketMQ.DnatEntryArgs
-    ///         {
-    ///             ExternalIp = "1.0.0.2",
-    ///             ExternalPort = "1",
-    ///             InternalIp = "10.0.0.2",
-    ///             InternalPort = "20",
-    ///             IpProtocol = "tcp",
-    ///             SagId = "sag-3rb1t3iagy3w0zgwy9",
-    ///             Type = "Intranet",
-    ///         });
-    ///     }
+    ///         ExternalIp = "1.0.0.2",
+    ///         ExternalPort = "1",
+    ///         InternalIp = "10.0.0.2",
+    ///         InternalPort = "20",
+    ///         IpProtocol = "tcp",
+    ///         SagId = "sag-3rb1t3iagy3w0zgwy9",
+    ///         Type = "Intranet",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/dnatEntry:DnatEntry")]
-    public partial class DnatEntry : Pulumi.CustomResource
+    public partial class DnatEntry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The external public IP address.when "type" is "Internet",automatically identify the external ip.
@@ -142,7 +140,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
-    public sealed class DnatEntryArgs : Pulumi.ResourceArgs
+    public sealed class DnatEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The external public IP address.when "type" is "Internet",automatically identify the external ip.
@@ -189,9 +187,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public DnatEntryArgs()
         {
         }
+        public static new DnatEntryArgs Empty => new DnatEntryArgs();
     }
 
-    public sealed class DnatEntryState : Pulumi.ResourceArgs
+    public sealed class DnatEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The external public IP address.when "type" is "Internet",automatically identify the external ip.
@@ -238,5 +237,6 @@ namespace Pulumi.AliCloud.RocketMQ
         public DnatEntryState()
         {
         }
+        public static new DnatEntryState Empty => new DnatEntryState();
     }
 }

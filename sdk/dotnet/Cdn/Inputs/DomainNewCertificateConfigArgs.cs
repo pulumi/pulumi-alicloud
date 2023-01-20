@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn.Inputs
 {
 
-    public sealed class DomainNewCertificateConfigArgs : Pulumi.ResourceArgs
+    public sealed class DomainNewCertificateConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The SSL certificate name.
@@ -30,17 +30,37 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         [Input("forceSet")]
         public Input<string>? ForceSet { get; set; }
 
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// The SSL private key. This is required if `server_certificate_status` is `on`
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("serverCertificate")]
+        private Input<string>? _serverCertificate;
 
         /// <summary>
         /// The SSL server certificate string. This is required if `server_certificate_status` is `on`
         /// </summary>
-        [Input("serverCertificate")]
-        public Input<string>? ServerCertificate { get; set; }
+        public Input<string>? ServerCertificate
+        {
+            get => _serverCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serverCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
@@ -51,5 +71,6 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         public DomainNewCertificateConfigArgs()
         {
         }
+        public static new DomainNewCertificateConfigArgs Empty => new DomainNewCertificateConfigArgs();
     }
 }

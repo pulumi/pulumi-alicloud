@@ -17,52 +17,6 @@ namespace Pulumi.AliCloud.Gpdb
     /// &gt; **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
     ///  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "Gpdb";
-    ///         var name = config.Get("name") ?? "gpdbConnectionBasic";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var defaultInstance = new AliCloud.Gpdb.Instance("defaultInstance", new AliCloud.Gpdb.InstanceArgs
-    ///         {
-    ///             VswitchId = defaultSwitch.Id,
-    ///             Engine = "gpdb",
-    ///             EngineVersion = "4.3",
-    ///             InstanceClass = "gpdb.group.segsdx2",
-    ///             InstanceGroupCount = "2",
-    ///             Description = name,
-    ///         });
-    ///         var defaultConnection = new AliCloud.Gpdb.Connection("defaultConnection", new AliCloud.Gpdb.ConnectionArgs
-    ///         {
-    ///             InstanceId = defaultInstance.Id,
-    ///             ConnectionPrefix = "testAbc",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// AnalyticDB for PostgreSQL's connection can be imported using the id, e.g.
@@ -72,7 +26,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:gpdb/connection:Connection")]
-    public partial class Connection : Pulumi.CustomResource
+    public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + '-tf'.
@@ -148,7 +102,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
     }
 
-    public sealed class ConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + '-tf'.
@@ -171,9 +125,10 @@ namespace Pulumi.AliCloud.Gpdb
         public ConnectionArgs()
         {
         }
+        public static new ConnectionArgs Empty => new ConnectionArgs();
     }
 
-    public sealed class ConnectionState : Pulumi.ResourceArgs
+    public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + '-tf'.
@@ -208,5 +163,6 @@ namespace Pulumi.AliCloud.Gpdb
         public ConnectionState()
         {
         }
+        public static new ConnectionState Empty => new ConnectionState();
     }
 }

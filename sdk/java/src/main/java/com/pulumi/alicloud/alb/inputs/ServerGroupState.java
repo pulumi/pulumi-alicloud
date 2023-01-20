@@ -113,6 +113,21 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The type of the server group. Valid values:
+     * 
+     */
+    @Import(name="serverGroupType")
+    private @Nullable Output<String> serverGroupType;
+
+    /**
+     * @return The type of the server group. Valid values:
+     * 
+     */
+    public Optional<Output<String>> serverGroupType() {
+        return Optional.ofNullable(this.serverGroupType);
+    }
+
+    /**
      * The backend server.
      * 
      */
@@ -157,9 +172,17 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.stickySessionConfig);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -188,6 +211,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         this.resourceGroupId = $.resourceGroupId;
         this.scheduler = $.scheduler;
         this.serverGroupName = $.serverGroupName;
+        this.serverGroupType = $.serverGroupType;
         this.servers = $.servers;
         this.status = $.status;
         this.stickySessionConfig = $.stickySessionConfig;
@@ -340,6 +364,27 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param serverGroupType The type of the server group. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverGroupType(@Nullable Output<String> serverGroupType) {
+            $.serverGroupType = serverGroupType;
+            return this;
+        }
+
+        /**
+         * @param serverGroupType The type of the server group. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverGroupType(String serverGroupType) {
+            return serverGroupType(Output.of(serverGroupType));
+        }
+
+        /**
          * @param servers The backend server.
          * 
          * @return builder
@@ -412,11 +457,23 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
             return stickySessionConfig(Output.of(stickySessionConfig));
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }

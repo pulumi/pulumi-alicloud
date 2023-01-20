@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Oos
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Oos.GetStateConfigurations.InvokeAsync());
-        ///         this.OosStateConfigurationId1 = ids.Apply(ids =&gt; ids.Configurations?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Oos.GetStateConfigurations.Invoke();
         /// 
-        ///     [Output("oosStateConfigurationId1")]
-        ///     public Output&lt;string&gt; OosStateConfigurationId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oosStateConfigurationId1"] = ids.Apply(getStateConfigurationsResult =&gt; getStateConfigurationsResult.Configurations[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetStateConfigurationsResult> InvokeAsync(GetStateConfigurationsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStateConfigurationsResult>("alicloud:oos/getStateConfigurations:getStateConfigurations", args ?? new GetStateConfigurationsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetStateConfigurationsResult>("alicloud:oos/getStateConfigurations:getStateConfigurations", args ?? new GetStateConfigurationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Oos State Configurations of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Oos
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Oos.GetStateConfigurations.InvokeAsync());
-        ///         this.OosStateConfigurationId1 = ids.Apply(ids =&gt; ids.Configurations?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Oos.GetStateConfigurations.Invoke();
         /// 
-        ///     [Output("oosStateConfigurationId1")]
-        ///     public Output&lt;string&gt; OosStateConfigurationId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oosStateConfigurationId1"] = ids.Apply(getStateConfigurationsResult =&gt; getStateConfigurationsResult.Configurations[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetStateConfigurationsResult> Invoke(GetStateConfigurationsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStateConfigurationsResult>("alicloud:oos/getStateConfigurations:getStateConfigurations", args ?? new GetStateConfigurationsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetStateConfigurationsResult>("alicloud:oos/getStateConfigurations:getStateConfigurations", args ?? new GetStateConfigurationsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetStateConfigurationsArgs : Pulumi.InvokeArgs
+    public sealed class GetStateConfigurationsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -117,9 +115,10 @@ namespace Pulumi.AliCloud.Oos
         public GetStateConfigurationsArgs()
         {
         }
+        public static new GetStateConfigurationsArgs Empty => new GetStateConfigurationsArgs();
     }
 
-    public sealed class GetStateConfigurationsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetStateConfigurationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -157,6 +156,7 @@ namespace Pulumi.AliCloud.Oos
         public GetStateConfigurationsInvokeArgs()
         {
         }
+        public static new GetStateConfigurationsInvokeArgs Empty => new GetStateConfigurationsInvokeArgs();
     }
 
 

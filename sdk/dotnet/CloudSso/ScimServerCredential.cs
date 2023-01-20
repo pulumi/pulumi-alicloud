@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudsso/scimServerCredential:ScimServerCredential")]
-    public partial class ScimServerCredential : Pulumi.CustomResource
+    public partial class ScimServerCredential : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The CredentialId of the resource.
@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.CloudSso
         }
     }
 
-    public sealed class ScimServerCredentialArgs : Pulumi.ResourceArgs
+    public sealed class ScimServerCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Directory.
@@ -108,9 +108,10 @@ namespace Pulumi.AliCloud.CloudSso
         public ScimServerCredentialArgs()
         {
         }
+        public static new ScimServerCredentialArgs Empty => new ScimServerCredentialArgs();
     }
 
-    public sealed class ScimServerCredentialState : Pulumi.ResourceArgs
+    public sealed class ScimServerCredentialState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CredentialId of the resource.
@@ -133,5 +134,6 @@ namespace Pulumi.AliCloud.CloudSso
         public ScimServerCredentialState()
         {
         }
+        public static new ScimServerCredentialState Empty => new ScimServerCredentialState();
     }
 }

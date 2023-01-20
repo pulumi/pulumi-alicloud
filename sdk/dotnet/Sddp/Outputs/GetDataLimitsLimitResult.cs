@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Sddp.Outputs
         /// </summary>
         public readonly string DataLimitId;
         /// <summary>
-        /// -The type of the database.
+        /// The type of the database.
         /// </summary>
         public readonly string EngineType;
         /// <summary>

@@ -21,31 +21,29 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Vpc.PrefixList("default", new()
     ///     {
-    ///         var @default = new AliCloud.Vpc.PrefixList("default", new AliCloud.Vpc.PrefixListArgs
+    ///         Entrys = new[]
     ///         {
-    ///             Entrys = 
+    ///             new AliCloud.Vpc.Inputs.PrefixListEntryArgs
     ///             {
-    ///                 new AliCloud.Vpc.Inputs.PrefixListEntryArgs
-    ///                 {
-    ///                     Cidr = "192.168.0.0/16",
-    ///                     Description = "description",
-    ///                 },
+    ///                 Cidr = "192.168.0.0/16",
+    ///                 Description = "description",
     ///             },
-    ///             IpVersion = "IPV4",
-    ///             MaxEntries = 50,
-    ///             PrefixListName = @var.Name,
-    ///             PrefixListDescription = "description",
-    ///         });
-    ///     }
+    ///         },
+    ///         IpVersion = "IPV4",
+    ///         MaxEntries = 50,
+    ///         PrefixListName = @var.Name,
+    ///         PrefixListDescription = "description",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/prefixList:PrefixList")]
-    public partial class PrefixList : Pulumi.CustomResource
+    public partial class PrefixList : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The CIDR address block list of the prefix list. See the following `Block entrys`.
@@ -89,6 +87,12 @@ namespace Pulumi.AliCloud.Vpc
         [Output("prefixListName")]
         public Output<string?> PrefixListName { get; private set; } = null!;
 
+        /// <summary>
+        /// (Available in v1.196.0+) The status of the Prefix List.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a PrefixList resource with the given unique name, arguments, and options.
@@ -97,7 +101,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public PrefixList(string name, PrefixListArgs args, CustomResourceOptions? options = null)
+        public PrefixList(string name, PrefixListArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:vpc/prefixList:PrefixList", name, args ?? new PrefixListArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -133,9 +137,9 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class PrefixListArgs : Pulumi.ResourceArgs
+    public sealed class PrefixListArgs : global::Pulumi.ResourceArgs
     {
-        [Input("entrys", required: true)]
+        [Input("entrys")]
         private InputList<Inputs.PrefixListEntryArgs>? _entrys;
 
         /// <summary>
@@ -174,9 +178,10 @@ namespace Pulumi.AliCloud.Vpc
         public PrefixListArgs()
         {
         }
+        public static new PrefixListArgs Empty => new PrefixListArgs();
     }
 
-    public sealed class PrefixListState : Pulumi.ResourceArgs
+    public sealed class PrefixListState : global::Pulumi.ResourceArgs
     {
         [Input("entrys")]
         private InputList<Inputs.PrefixListEntryGetArgs>? _entrys;
@@ -214,8 +219,15 @@ namespace Pulumi.AliCloud.Vpc
         [Input("prefixListName")]
         public Input<string>? PrefixListName { get; set; }
 
+        /// <summary>
+        /// (Available in v1.196.0+) The status of the Prefix List.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
         public PrefixListState()
         {
         }
+        public static new PrefixListState Empty => new PrefixListState();
     }
 }

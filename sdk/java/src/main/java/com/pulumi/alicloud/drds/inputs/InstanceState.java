@@ -16,6 +16,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
+     * (Available in 1.196.0+) The connection string of the DRDS instance.
+     * 
+     */
+    @Import(name="connectionString")
+    private @Nullable Output<String> connectionString;
+
+    /**
+     * @return (Available in 1.196.0+) The connection string of the DRDS instance.
+     * 
+     */
+    public Optional<Output<String>> connectionString() {
+        return Optional.ofNullable(this.connectionString);
+    }
+
+    /**
      * Description of the DRDS instance, This description can have a string of 2 to 256 characters.
      * 
      */
@@ -67,6 +82,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available in 1.196.0+) The connection port of the DRDS instance.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) The connection port of the DRDS instance.
+     * 
+     */
+    public Optional<Output<String>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
+    /**
      * User-defined DRDS instance specification. Value range:
      * - `drds.sn1.4c8g` for DRDS instance Starter version;
      * - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -95,6 +125,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> specification() {
         return Optional.ofNullable(this.specification);
+    }
+
+    /**
+     * The id of the VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
     }
 
     /**
@@ -130,10 +175,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
+        this.connectionString = $.connectionString;
         this.description = $.description;
         this.instanceChargeType = $.instanceChargeType;
         this.instanceSeries = $.instanceSeries;
+        this.port = $.port;
         this.specification = $.specification;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
     }
@@ -154,6 +202,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceState defaults) {
             $ = new InstanceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param connectionString (Available in 1.196.0+) The connection string of the DRDS instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionString(@Nullable Output<String> connectionString) {
+            $.connectionString = connectionString;
+            return this;
+        }
+
+        /**
+         * @param connectionString (Available in 1.196.0+) The connection string of the DRDS instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionString(String connectionString) {
+            return connectionString(Output.of(connectionString));
         }
 
         /**
@@ -226,6 +295,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param port (Available in 1.196.0+) The connection port of the DRDS instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<String> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port (Available in 1.196.0+) The connection port of the DRDS instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(String port) {
+            return port(Output.of(port));
+        }
+
+        /**
          * @param specification User-defined DRDS instance specification. Value range:
          * - `drds.sn1.4c8g` for DRDS instance Starter version;
          * - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -260,6 +350,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder specification(String specification) {
             return specification(Output.of(specification));
+        }
+
+        /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         /**

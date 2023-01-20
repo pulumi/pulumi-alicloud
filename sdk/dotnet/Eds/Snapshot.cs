@@ -21,70 +21,72 @@ namespace Pulumi.AliCloud.Eds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "example_value";
+    ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "example_value";
-    ///         var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new AliCloud.Eds.SimpleOfficeSiteArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///             DesktopAccessType = "Internet",
-    ///             OfficeSiteName = name,
-    ///             EnableInternetAccess = false,
-    ///         });
-    ///         var defaultBundles = Output.Create(AliCloud.Eds.GetBundles.InvokeAsync(new AliCloud.Eds.GetBundlesArgs
-    ///         {
-    ///             BundleType = "SYSTEM",
-    ///         }));
-    ///         var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new AliCloud.Eds.EcdPolicyGroupArgs
-    ///         {
-    ///             PolicyGroupName = name,
-    ///             Clipboard = "readwrite",
-    ///             LocalDrive = "read",
-    ///             AuthorizeAccessPolicyRules = 
-    ///             {
-    ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
-    ///                 {
-    ///                     Description = "example_value",
-    ///                     CidrIp = "1.2.3.4/24",
-    ///                 },
-    ///             },
-    ///             AuthorizeSecurityPolicyRules = 
-    ///             {
-    ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
-    ///                 {
-    ///                     Type = "inflow",
-    ///                     Policy = "accept",
-    ///                     Description = "example_value",
-    ///                     PortRange = "80/80",
-    ///                     IpProtocol = "TCP",
-    ///                     Priority = "1",
-    ///                     CidrIp = "0.0.0.0/0",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new AliCloud.Eds.DesktopArgs
-    ///         {
-    ///             OfficeSiteId = defaultSimpleOfficeSite.Id,
-    ///             PolicyGroupId = defaultEcdPolicyGroup.Id,
-    ///             BundleId = defaultBundles.Apply(defaultBundles =&gt; defaultBundles.Bundles?[0]?.Id),
-    ///             DesktopName = name,
-    ///         });
-    ///         var defaultSnapshot = new AliCloud.Eds.Snapshot("defaultSnapshot", new AliCloud.Eds.SnapshotArgs
-    ///         {
-    ///             Description = name,
-    ///             DesktopId = defaultDesktop.Id,
-    ///             SnapshotName = name,
-    ///             SourceDiskType = "SYSTEM",
-    ///         });
-    ///     }
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         DesktopAccessType = "Internet",
+    ///         OfficeSiteName = name,
+    ///         EnableInternetAccess = false,
+    ///     });
     /// 
-    /// }
+    ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
+    ///     {
+    ///         BundleType = "SYSTEM",
+    ///     });
+    /// 
+    ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new()
+    ///     {
+    ///         PolicyGroupName = name,
+    ///         Clipboard = "readwrite",
+    ///         LocalDrive = "read",
+    ///         AuthorizeAccessPolicyRules = new[]
+    ///         {
+    ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
+    ///             {
+    ///                 Description = "example_value",
+    ///                 CidrIp = "1.2.3.4/24",
+    ///             },
+    ///         },
+    ///         AuthorizeSecurityPolicyRules = new[]
+    ///         {
+    ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
+    ///             {
+    ///                 Type = "inflow",
+    ///                 Policy = "accept",
+    ///                 Description = "example_value",
+    ///                 PortRange = "80/80",
+    ///                 IpProtocol = "TCP",
+    ///                 Priority = "1",
+    ///                 CidrIp = "0.0.0.0/0",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new()
+    ///     {
+    ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+    ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
+    ///         BundleId = defaultBundles.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id),
+    ///         DesktopName = name,
+    ///     });
+    /// 
+    ///     var defaultSnapshot = new AliCloud.Eds.Snapshot("defaultSnapshot", new()
+    ///     {
+    ///         Description = name,
+    ///         DesktopId = defaultDesktop.Id,
+    ///         SnapshotName = name,
+    ///         SourceDiskType = "SYSTEM",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -96,7 +98,7 @@ namespace Pulumi.AliCloud.Eds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/snapshot:Snapshot")]
-    public partial class Snapshot : Pulumi.CustomResource
+    public partial class Snapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the Snapshot.
@@ -172,7 +174,7 @@ namespace Pulumi.AliCloud.Eds
         }
     }
 
-    public sealed class SnapshotArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the Snapshot.
@@ -201,9 +203,10 @@ namespace Pulumi.AliCloud.Eds
         public SnapshotArgs()
         {
         }
+        public static new SnapshotArgs Empty => new SnapshotArgs();
     }
 
-    public sealed class SnapshotState : Pulumi.ResourceArgs
+    public sealed class SnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the Snapshot.
@@ -238,5 +241,6 @@ namespace Pulumi.AliCloud.Eds
         public SnapshotState()
         {
         }
+        public static new SnapshotState Empty => new SnapshotState();
     }
 }

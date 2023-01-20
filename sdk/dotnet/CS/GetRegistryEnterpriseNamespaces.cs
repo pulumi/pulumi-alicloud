@@ -21,31 +21,30 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myNamespaces = AliCloud.CS.GetRegistryEnterpriseNamespaces.Invoke(new()
         ///     {
-        ///         var myNamespaces = Output.Create(AliCloud.CS.GetRegistryEnterpriseNamespaces.InvokeAsync(new AliCloud.CS.GetRegistryEnterpriseNamespacesArgs
-        ///         {
-        ///             InstanceId = "cri-xxx",
-        ///             NameRegex = "my-namespace",
-        ///             OutputFile = "my-namespace-json",
-        ///         }));
-        ///         this.Output = myNamespaces.Apply(myNamespaces =&gt; myNamespaces.Namespaces);
-        ///     }
+        ///         InstanceId = "cri-xxx",
+        ///         NameRegex = "my-namespace",
+        ///         OutputFile = "my-namespace-json",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myNamespaces.Apply(getRegistryEnterpriseNamespacesResult =&gt; getRegistryEnterpriseNamespacesResult.Namespaces),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryEnterpriseNamespacesResult> InvokeAsync(GetRegistryEnterpriseNamespacesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseNamespacesResult>("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", args ?? new GetRegistryEnterpriseNamespacesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseNamespacesResult>("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", args ?? new GetRegistryEnterpriseNamespacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list Container Registry Enterprise Edition namespaces on Alibaba Cloud.
@@ -57,35 +56,34 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myNamespaces = AliCloud.CS.GetRegistryEnterpriseNamespaces.Invoke(new()
         ///     {
-        ///         var myNamespaces = Output.Create(AliCloud.CS.GetRegistryEnterpriseNamespaces.InvokeAsync(new AliCloud.CS.GetRegistryEnterpriseNamespacesArgs
-        ///         {
-        ///             InstanceId = "cri-xxx",
-        ///             NameRegex = "my-namespace",
-        ///             OutputFile = "my-namespace-json",
-        ///         }));
-        ///         this.Output = myNamespaces.Apply(myNamespaces =&gt; myNamespaces.Namespaces);
-        ///     }
+        ///         InstanceId = "cri-xxx",
+        ///         NameRegex = "my-namespace",
+        ///         OutputFile = "my-namespace-json",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myNamespaces.Apply(getRegistryEnterpriseNamespacesResult =&gt; getRegistryEnterpriseNamespacesResult.Namespaces),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegistryEnterpriseNamespacesResult> Invoke(GetRegistryEnterpriseNamespacesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseNamespacesResult>("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", args ?? new GetRegistryEnterpriseNamespacesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseNamespacesResult>("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", args ?? new GetRegistryEnterpriseNamespacesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRegistryEnterpriseNamespacesArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryEnterpriseNamespacesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -117,9 +115,10 @@ namespace Pulumi.AliCloud.CS
         public GetRegistryEnterpriseNamespacesArgs()
         {
         }
+        public static new GetRegistryEnterpriseNamespacesArgs Empty => new GetRegistryEnterpriseNamespacesArgs();
     }
 
-    public sealed class GetRegistryEnterpriseNamespacesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryEnterpriseNamespacesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -151,6 +150,7 @@ namespace Pulumi.AliCloud.CS
         public GetRegistryEnterpriseNamespacesInvokeArgs()
         {
         }
+        public static new GetRegistryEnterpriseNamespacesInvokeArgs Empty => new GetRegistryEnterpriseNamespacesInvokeArgs();
     }
 
 

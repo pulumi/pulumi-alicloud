@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,22 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const myInstances = pulumi.output(alicloud.cs.getRegistryEnterpriseInstances({
+ * const myInstances = alicloud.cs.getRegistryEnterpriseInstances({
  *     nameRegex: "my-instances",
  *     outputFile: "my-instances-json",
- * }));
- *
- * export const output = myInstances.instances;
+ * });
+ * export const output = myInstances.then(myInstances => myInstances.instances);
  * ```
  */
 export function getRegistryEnterpriseInstances(args?: GetRegistryEnterpriseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -83,9 +79,26 @@ export interface GetRegistryEnterpriseInstancesResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.86.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const myInstances = alicloud.cs.getRegistryEnterpriseInstances({
+ *     nameRegex: "my-instances",
+ *     outputFile: "my-instances-json",
+ * });
+ * export const output = myInstances.then(myInstances => myInstances.instances);
+ * ```
+ */
 export function getRegistryEnterpriseInstancesOutput(args?: GetRegistryEnterpriseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseInstancesResult> {
-    return pulumi.output(args).apply(a => getRegistryEnterpriseInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegistryEnterpriseInstances(a, opts))
 }
 
 /**

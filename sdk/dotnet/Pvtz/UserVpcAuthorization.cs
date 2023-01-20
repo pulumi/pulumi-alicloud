@@ -19,22 +19,20 @@ namespace Pulumi.AliCloud.Pvtz
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Pvtz.UserVpcAuthorization("example", new()
     ///     {
-    ///         var example = new AliCloud.Pvtz.UserVpcAuthorization("example", new AliCloud.Pvtz.UserVpcAuthorizationArgs
-    ///         {
-    ///             AuthChannel = "RESOURCE_DIRECTORY",
-    ///             AuthType = "NORMAL",
-    ///             AuthorizedUserId = "example_value",
-    ///         });
-    ///     }
+    ///         AuthChannel = "RESOURCE_DIRECTORY",
+    ///         AuthType = "NORMAL",
+    ///         AuthorizedUserId = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization")]
-    public partial class UserVpcAuthorization : Pulumi.CustomResource
+    public partial class UserVpcAuthorization : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
@@ -110,7 +108,7 @@ namespace Pulumi.AliCloud.Pvtz
         }
     }
 
-    public sealed class UserVpcAuthorizationArgs : Pulumi.ResourceArgs
+    public sealed class UserVpcAuthorizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
@@ -133,9 +131,10 @@ namespace Pulumi.AliCloud.Pvtz
         public UserVpcAuthorizationArgs()
         {
         }
+        public static new UserVpcAuthorizationArgs Empty => new UserVpcAuthorizationArgs();
     }
 
-    public sealed class UserVpcAuthorizationState : Pulumi.ResourceArgs
+    public sealed class UserVpcAuthorizationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
@@ -158,5 +157,6 @@ namespace Pulumi.AliCloud.Pvtz
         public UserVpcAuthorizationState()
         {
         }
+        public static new UserVpcAuthorizationState Empty => new UserVpcAuthorizationState();
     }
 }

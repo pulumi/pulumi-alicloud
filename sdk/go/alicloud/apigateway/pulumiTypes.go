@@ -11,11 +11,11 @@ import (
 )
 
 type ApiConstantParameter struct {
-	// The description of Constant parameter.
+	// The description of the api. Defaults to null.
 	Description *string `pulumi:"description"`
-	// System parameter location; values: 'HEAD' and 'QUERY'.
+	// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	In string `pulumi:"in"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name string `pulumi:"name"`
 	// Constant parameter value.
 	Value string `pulumi:"value"`
@@ -33,11 +33,11 @@ type ApiConstantParameterInput interface {
 }
 
 type ApiConstantParameterArgs struct {
-	// The description of Constant parameter.
+	// The description of the api. Defaults to null.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// System parameter location; values: 'HEAD' and 'QUERY'.
+	// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	In pulumi.StringInput `pulumi:"in"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Constant parameter value.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -94,17 +94,17 @@ func (o ApiConstantParameterOutput) ToApiConstantParameterOutputWithContext(ctx 
 	return o
 }
 
-// The description of Constant parameter.
+// The description of the api. Defaults to null.
 func (o ApiConstantParameterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiConstantParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// System parameter location; values: 'HEAD' and 'QUERY'.
+// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
 func (o ApiConstantParameterOutput) In() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiConstantParameter) string { return v.In }).(pulumi.StringOutput)
 }
 
-// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+// The name of the api gateway api. Defaults to null.
 func (o ApiConstantParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiConstantParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -351,9 +351,9 @@ type ApiHttpServiceConfig struct {
 	// The address of backend service.
 	Address  string  `pulumi:"address"`
 	AoneName *string `pulumi:"aoneName"`
-	// The http method of backend service.
+	// The method of the api, including 'GET','POST','PUT' etc.
 	Method string `pulumi:"method"`
-	// The path of backend service.
+	// The request path of the api.
 	Path string `pulumi:"path"`
 	// Backend service time-out time; unit: millisecond.
 	Timeout int `pulumi:"timeout"`
@@ -374,9 +374,9 @@ type ApiHttpServiceConfigArgs struct {
 	// The address of backend service.
 	Address  pulumi.StringInput    `pulumi:"address"`
 	AoneName pulumi.StringPtrInput `pulumi:"aoneName"`
-	// The http method of backend service.
+	// The method of the api, including 'GET','POST','PUT' etc.
 	Method pulumi.StringInput `pulumi:"method"`
-	// The path of backend service.
+	// The request path of the api.
 	Path pulumi.StringInput `pulumi:"path"`
 	// Backend service time-out time; unit: millisecond.
 	Timeout pulumi.IntInput `pulumi:"timeout"`
@@ -468,12 +468,12 @@ func (o ApiHttpServiceConfigOutput) AoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiHttpServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
 
-// The http method of backend service.
+// The method of the api, including 'GET','POST','PUT' etc.
 func (o ApiHttpServiceConfigOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Method }).(pulumi.StringOutput)
 }
 
-// The path of backend service.
+// The request path of the api.
 func (o ApiHttpServiceConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -526,7 +526,7 @@ func (o ApiHttpServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The http method of backend service.
+// The method of the api, including 'GET','POST','PUT' etc.
 func (o ApiHttpServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpServiceConfig) *string {
 		if v == nil {
@@ -536,7 +536,7 @@ func (o ApiHttpServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path of backend service.
+// The request path of the api.
 func (o ApiHttpServiceConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpServiceConfig) *string {
 		if v == nil {
@@ -558,11 +558,11 @@ func (o ApiHttpServiceConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
 
 type ApiHttpVpcServiceConfig struct {
 	AoneName *string `pulumi:"aoneName"`
-	// The http method of backend service.
+	// The method of the api, including 'GET','POST','PUT' etc.
 	Method string `pulumi:"method"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name string `pulumi:"name"`
-	// The path of backend service.
+	// The request path of the api.
 	Path string `pulumi:"path"`
 	// Backend service time-out time; unit: millisecond.
 	Timeout int `pulumi:"timeout"`
@@ -581,11 +581,11 @@ type ApiHttpVpcServiceConfigInput interface {
 
 type ApiHttpVpcServiceConfigArgs struct {
 	AoneName pulumi.StringPtrInput `pulumi:"aoneName"`
-	// The http method of backend service.
+	// The method of the api, including 'GET','POST','PUT' etc.
 	Method pulumi.StringInput `pulumi:"method"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The path of backend service.
+	// The request path of the api.
 	Path pulumi.StringInput `pulumi:"path"`
 	// Backend service time-out time; unit: millisecond.
 	Timeout pulumi.IntInput `pulumi:"timeout"`
@@ -672,17 +672,17 @@ func (o ApiHttpVpcServiceConfigOutput) AoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
 
-// The http method of backend service.
+// The method of the api, including 'GET','POST','PUT' etc.
 func (o ApiHttpVpcServiceConfigOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Method }).(pulumi.StringOutput)
 }
 
-// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+// The name of the api gateway api. Defaults to null.
 func (o ApiHttpVpcServiceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The path of backend service.
+// The request path of the api.
 func (o ApiHttpVpcServiceConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -725,7 +725,7 @@ func (o ApiHttpVpcServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The http method of backend service.
+// The method of the api, including 'GET','POST','PUT' etc.
 func (o ApiHttpVpcServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
 		if v == nil {
@@ -735,7 +735,7 @@ func (o ApiHttpVpcServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+// The name of the api gateway api. Defaults to null.
 func (o ApiHttpVpcServiceConfigPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
 		if v == nil {
@@ -745,7 +745,7 @@ func (o ApiHttpVpcServiceConfigPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path of backend service.
+// The request path of the api.
 func (o ApiHttpVpcServiceConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
 		if v == nil {
@@ -920,11 +920,11 @@ func (o ApiMockServiceConfigPtrOutput) Result() pulumi.StringPtrOutput {
 type ApiRequestConfig struct {
 	// The body format of the api, which support the values of 'STREAM' and 'FORM'.
 	BodyFormat *string `pulumi:"bodyFormat"`
-	// The http method of backend service.
+	// The method of the api, including 'GET','POST','PUT' etc.
 	Method string `pulumi:"method"`
 	// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
 	Mode string `pulumi:"mode"`
-	// The path of backend service.
+	// The request path of the api.
 	Path string `pulumi:"path"`
 	// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
 	Protocol string `pulumi:"protocol"`
@@ -944,11 +944,11 @@ type ApiRequestConfigInput interface {
 type ApiRequestConfigArgs struct {
 	// The body format of the api, which support the values of 'STREAM' and 'FORM'.
 	BodyFormat pulumi.StringPtrInput `pulumi:"bodyFormat"`
-	// The http method of backend service.
+	// The method of the api, including 'GET','POST','PUT' etc.
 	Method pulumi.StringInput `pulumi:"method"`
 	// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
 	Mode pulumi.StringInput `pulumi:"mode"`
-	// The path of backend service.
+	// The request path of the api.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
@@ -1036,7 +1036,7 @@ func (o ApiRequestConfigOutput) BodyFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiRequestConfig) *string { return v.BodyFormat }).(pulumi.StringPtrOutput)
 }
 
-// The http method of backend service.
+// The method of the api, including 'GET','POST','PUT' etc.
 func (o ApiRequestConfigOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestConfig) string { return v.Method }).(pulumi.StringOutput)
 }
@@ -1046,7 +1046,7 @@ func (o ApiRequestConfigOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestConfig) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The path of backend service.
+// The request path of the api.
 func (o ApiRequestConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestConfig) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -1090,7 +1090,7 @@ func (o ApiRequestConfigPtrOutput) BodyFormat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The http method of backend service.
+// The method of the api, including 'GET','POST','PUT' etc.
 func (o ApiRequestConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiRequestConfig) *string {
 		if v == nil {
@@ -1110,7 +1110,7 @@ func (o ApiRequestConfigPtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path of backend service.
+// The request path of the api.
 func (o ApiRequestConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiRequestConfig) *string {
 		if v == nil {
@@ -1133,13 +1133,13 @@ func (o ApiRequestConfigPtrOutput) Protocol() pulumi.StringPtrOutput {
 type ApiRequestParameter struct {
 	// The default value of the parameter.
 	DefaultValue *string `pulumi:"defaultValue"`
-	// The description of Constant parameter.
+	// The description of the api. Defaults to null.
 	Description *string `pulumi:"description"`
-	// System parameter location; values: 'HEAD' and 'QUERY'.
+	// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	In string `pulumi:"in"`
 	// Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	InService string `pulumi:"inService"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name string `pulumi:"name"`
 	// Backend service's parameter name.
 	NameService string `pulumi:"nameService"`
@@ -1163,13 +1163,13 @@ type ApiRequestParameterInput interface {
 type ApiRequestParameterArgs struct {
 	// The default value of the parameter.
 	DefaultValue pulumi.StringPtrInput `pulumi:"defaultValue"`
-	// The description of Constant parameter.
+	// The description of the api. Defaults to null.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// System parameter location; values: 'HEAD' and 'QUERY'.
+	// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	In pulumi.StringInput `pulumi:"in"`
 	// Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	InService pulumi.StringInput `pulumi:"inService"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Backend service's parameter name.
 	NameService pulumi.StringInput `pulumi:"nameService"`
@@ -1235,12 +1235,12 @@ func (o ApiRequestParameterOutput) DefaultValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiRequestParameter) *string { return v.DefaultValue }).(pulumi.StringPtrOutput)
 }
 
-// The description of Constant parameter.
+// The description of the api. Defaults to null.
 func (o ApiRequestParameterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiRequestParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// System parameter location; values: 'HEAD' and 'QUERY'.
+// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
 func (o ApiRequestParameterOutput) In() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestParameter) string { return v.In }).(pulumi.StringOutput)
 }
@@ -1250,7 +1250,7 @@ func (o ApiRequestParameterOutput) InService() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestParameter) string { return v.InService }).(pulumi.StringOutput)
 }
 
-// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+// The name of the api gateway api. Defaults to null.
 func (o ApiRequestParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1291,9 +1291,9 @@ func (o ApiRequestParameterArrayOutput) Index(i pulumi.IntInput) ApiRequestParam
 }
 
 type ApiSystemParameter struct {
-	// System parameter location; values: 'HEAD' and 'QUERY'.
+	// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	In string `pulumi:"in"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name string `pulumi:"name"`
 	// Backend service's parameter name.
 	NameService string `pulumi:"nameService"`
@@ -1311,9 +1311,9 @@ type ApiSystemParameterInput interface {
 }
 
 type ApiSystemParameterArgs struct {
-	// System parameter location; values: 'HEAD' and 'QUERY'.
+	// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
 	In pulumi.StringInput `pulumi:"in"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Backend service's parameter name.
 	NameService pulumi.StringInput `pulumi:"nameService"`
@@ -1370,12 +1370,12 @@ func (o ApiSystemParameterOutput) ToApiSystemParameterOutputWithContext(ctx cont
 	return o
 }
 
-// System parameter location; values: 'HEAD' and 'QUERY'.
+// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
 func (o ApiSystemParameterOutput) In() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiSystemParameter) string { return v.In }).(pulumi.StringOutput)
 }
 
-// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+// The name of the api gateway api. Defaults to null.
 func (o ApiSystemParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiSystemParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2027,6 +2027,477 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 	}).(GetGroupsGroupOutput)
 }
 
+type GetLogConfigsConfig struct {
+	// The ID of the Log Config.
+	Id string `pulumi:"id"`
+	// The type the of log.
+	LogType string `pulumi:"logType"`
+	// The region ID of the Log Config.
+	RegionId string `pulumi:"regionId"`
+	// The name of the Log Store.
+	SlsLogStore string `pulumi:"slsLogStore"`
+	// The name of the Project.
+	SlsProject string `pulumi:"slsProject"`
+}
+
+// GetLogConfigsConfigInput is an input type that accepts GetLogConfigsConfigArgs and GetLogConfigsConfigOutput values.
+// You can construct a concrete instance of `GetLogConfigsConfigInput` via:
+//
+//	GetLogConfigsConfigArgs{...}
+type GetLogConfigsConfigInput interface {
+	pulumi.Input
+
+	ToGetLogConfigsConfigOutput() GetLogConfigsConfigOutput
+	ToGetLogConfigsConfigOutputWithContext(context.Context) GetLogConfigsConfigOutput
+}
+
+type GetLogConfigsConfigArgs struct {
+	// The ID of the Log Config.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The type the of log.
+	LogType pulumi.StringInput `pulumi:"logType"`
+	// The region ID of the Log Config.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The name of the Log Store.
+	SlsLogStore pulumi.StringInput `pulumi:"slsLogStore"`
+	// The name of the Project.
+	SlsProject pulumi.StringInput `pulumi:"slsProject"`
+}
+
+func (GetLogConfigsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLogConfigsConfig)(nil)).Elem()
+}
+
+func (i GetLogConfigsConfigArgs) ToGetLogConfigsConfigOutput() GetLogConfigsConfigOutput {
+	return i.ToGetLogConfigsConfigOutputWithContext(context.Background())
+}
+
+func (i GetLogConfigsConfigArgs) ToGetLogConfigsConfigOutputWithContext(ctx context.Context) GetLogConfigsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLogConfigsConfigOutput)
+}
+
+// GetLogConfigsConfigArrayInput is an input type that accepts GetLogConfigsConfigArray and GetLogConfigsConfigArrayOutput values.
+// You can construct a concrete instance of `GetLogConfigsConfigArrayInput` via:
+//
+//	GetLogConfigsConfigArray{ GetLogConfigsConfigArgs{...} }
+type GetLogConfigsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetLogConfigsConfigArrayOutput() GetLogConfigsConfigArrayOutput
+	ToGetLogConfigsConfigArrayOutputWithContext(context.Context) GetLogConfigsConfigArrayOutput
+}
+
+type GetLogConfigsConfigArray []GetLogConfigsConfigInput
+
+func (GetLogConfigsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLogConfigsConfig)(nil)).Elem()
+}
+
+func (i GetLogConfigsConfigArray) ToGetLogConfigsConfigArrayOutput() GetLogConfigsConfigArrayOutput {
+	return i.ToGetLogConfigsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetLogConfigsConfigArray) ToGetLogConfigsConfigArrayOutputWithContext(ctx context.Context) GetLogConfigsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLogConfigsConfigArrayOutput)
+}
+
+type GetLogConfigsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetLogConfigsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLogConfigsConfig)(nil)).Elem()
+}
+
+func (o GetLogConfigsConfigOutput) ToGetLogConfigsConfigOutput() GetLogConfigsConfigOutput {
+	return o
+}
+
+func (o GetLogConfigsConfigOutput) ToGetLogConfigsConfigOutputWithContext(ctx context.Context) GetLogConfigsConfigOutput {
+	return o
+}
+
+// The ID of the Log Config.
+func (o GetLogConfigsConfigOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogConfigsConfig) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The type the of log.
+func (o GetLogConfigsConfigOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogConfigsConfig) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+// The region ID of the Log Config.
+func (o GetLogConfigsConfigOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogConfigsConfig) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The name of the Log Store.
+func (o GetLogConfigsConfigOutput) SlsLogStore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogConfigsConfig) string { return v.SlsLogStore }).(pulumi.StringOutput)
+}
+
+// The name of the Project.
+func (o GetLogConfigsConfigOutput) SlsProject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogConfigsConfig) string { return v.SlsProject }).(pulumi.StringOutput)
+}
+
+type GetLogConfigsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLogConfigsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLogConfigsConfig)(nil)).Elem()
+}
+
+func (o GetLogConfigsConfigArrayOutput) ToGetLogConfigsConfigArrayOutput() GetLogConfigsConfigArrayOutput {
+	return o
+}
+
+func (o GetLogConfigsConfigArrayOutput) ToGetLogConfigsConfigArrayOutputWithContext(ctx context.Context) GetLogConfigsConfigArrayOutput {
+	return o
+}
+
+func (o GetLogConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetLogConfigsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLogConfigsConfig {
+		return vs[0].([]GetLogConfigsConfig)[vs[1].(int)]
+	}).(GetLogConfigsConfigOutput)
+}
+
+type GetModelsModel struct {
+	// The creation time of the model.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the model.
+	Description string `pulumi:"description"`
+	// The ID of the api group.
+	GroupId string `pulumi:"groupId"`
+	// The ID of the Api Gateway Model.
+	Id string `pulumi:"id"`
+	// The id of the model.
+	ModelId string `pulumi:"modelId"`
+	// The name of the Model.
+	ModelName string `pulumi:"modelName"`
+	// The reference of the model.
+	ModelRef string `pulumi:"modelRef"`
+	// The modified time of the model.
+	ModifiedTime string `pulumi:"modifiedTime"`
+	// The schema of the model.
+	Schema string `pulumi:"schema"`
+}
+
+// GetModelsModelInput is an input type that accepts GetModelsModelArgs and GetModelsModelOutput values.
+// You can construct a concrete instance of `GetModelsModelInput` via:
+//
+//	GetModelsModelArgs{...}
+type GetModelsModelInput interface {
+	pulumi.Input
+
+	ToGetModelsModelOutput() GetModelsModelOutput
+	ToGetModelsModelOutputWithContext(context.Context) GetModelsModelOutput
+}
+
+type GetModelsModelArgs struct {
+	// The creation time of the model.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the model.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the api group.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The ID of the Api Gateway Model.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The id of the model.
+	ModelId pulumi.StringInput `pulumi:"modelId"`
+	// The name of the Model.
+	ModelName pulumi.StringInput `pulumi:"modelName"`
+	// The reference of the model.
+	ModelRef pulumi.StringInput `pulumi:"modelRef"`
+	// The modified time of the model.
+	ModifiedTime pulumi.StringInput `pulumi:"modifiedTime"`
+	// The schema of the model.
+	Schema pulumi.StringInput `pulumi:"schema"`
+}
+
+func (GetModelsModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetModelsModel)(nil)).Elem()
+}
+
+func (i GetModelsModelArgs) ToGetModelsModelOutput() GetModelsModelOutput {
+	return i.ToGetModelsModelOutputWithContext(context.Background())
+}
+
+func (i GetModelsModelArgs) ToGetModelsModelOutputWithContext(ctx context.Context) GetModelsModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetModelsModelOutput)
+}
+
+// GetModelsModelArrayInput is an input type that accepts GetModelsModelArray and GetModelsModelArrayOutput values.
+// You can construct a concrete instance of `GetModelsModelArrayInput` via:
+//
+//	GetModelsModelArray{ GetModelsModelArgs{...} }
+type GetModelsModelArrayInput interface {
+	pulumi.Input
+
+	ToGetModelsModelArrayOutput() GetModelsModelArrayOutput
+	ToGetModelsModelArrayOutputWithContext(context.Context) GetModelsModelArrayOutput
+}
+
+type GetModelsModelArray []GetModelsModelInput
+
+func (GetModelsModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetModelsModel)(nil)).Elem()
+}
+
+func (i GetModelsModelArray) ToGetModelsModelArrayOutput() GetModelsModelArrayOutput {
+	return i.ToGetModelsModelArrayOutputWithContext(context.Background())
+}
+
+func (i GetModelsModelArray) ToGetModelsModelArrayOutputWithContext(ctx context.Context) GetModelsModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetModelsModelArrayOutput)
+}
+
+type GetModelsModelOutput struct{ *pulumi.OutputState }
+
+func (GetModelsModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetModelsModel)(nil)).Elem()
+}
+
+func (o GetModelsModelOutput) ToGetModelsModelOutput() GetModelsModelOutput {
+	return o
+}
+
+func (o GetModelsModelOutput) ToGetModelsModelOutputWithContext(ctx context.Context) GetModelsModelOutput {
+	return o
+}
+
+// The creation time of the model.
+func (o GetModelsModelOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModelsModel) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the model.
+func (o GetModelsModelOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModelsModel) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the api group.
+func (o GetModelsModelOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModelsModel) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the Api Gateway Model.
+func (o GetModelsModelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModelsModel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The id of the model.
+func (o GetModelsModelOutput) ModelId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModelsModel) string { return v.ModelId }).(pulumi.StringOutput)
+}
+
+// The name of the Model.
+func (o GetModelsModelOutput) ModelName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModelsModel) string { return v.ModelName }).(pulumi.StringOutput)
+}
+
+// The reference of the model.
+func (o GetModelsModelOutput) ModelRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModelsModel) string { return v.ModelRef }).(pulumi.StringOutput)
+}
+
+// The modified time of the model.
+func (o GetModelsModelOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModelsModel) string { return v.ModifiedTime }).(pulumi.StringOutput)
+}
+
+// The schema of the model.
+func (o GetModelsModelOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModelsModel) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+type GetModelsModelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetModelsModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetModelsModel)(nil)).Elem()
+}
+
+func (o GetModelsModelArrayOutput) ToGetModelsModelArrayOutput() GetModelsModelArrayOutput {
+	return o
+}
+
+func (o GetModelsModelArrayOutput) ToGetModelsModelArrayOutputWithContext(ctx context.Context) GetModelsModelArrayOutput {
+	return o
+}
+
+func (o GetModelsModelArrayOutput) Index(i pulumi.IntInput) GetModelsModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetModelsModel {
+		return vs[0].([]GetModelsModel)[vs[1].(int)]
+	}).(GetModelsModelOutput)
+}
+
+type GetPluginsPlugin struct {
+	// The CreateTime of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the plug-in, which cannot exceed 200 characters.
+	Description string `pulumi:"description"`
+	// The ID of the Plugin.
+	Id string `pulumi:"id"`
+	// The ModifiedTime of the resource.
+	ModifiedTime string `pulumi:"modifiedTime"`
+	// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
+	PluginData string `pulumi:"pluginData"`
+	// The first ID of the resource.
+	PluginId string `pulumi:"pluginId"`
+	// The name of the plug-in that you want to create.
+	PluginName string `pulumi:"pluginName"`
+	// The type of the plug-in.
+	PluginType string `pulumi:"pluginType"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// GetPluginsPluginInput is an input type that accepts GetPluginsPluginArgs and GetPluginsPluginOutput values.
+// You can construct a concrete instance of `GetPluginsPluginInput` via:
+//
+//	GetPluginsPluginArgs{...}
+type GetPluginsPluginInput interface {
+	pulumi.Input
+
+	ToGetPluginsPluginOutput() GetPluginsPluginOutput
+	ToGetPluginsPluginOutputWithContext(context.Context) GetPluginsPluginOutput
+}
+
+type GetPluginsPluginArgs struct {
+	// The CreateTime of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the plug-in, which cannot exceed 200 characters.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Plugin.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ModifiedTime of the resource.
+	ModifiedTime pulumi.StringInput `pulumi:"modifiedTime"`
+	// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
+	PluginData pulumi.StringInput `pulumi:"pluginData"`
+	// The first ID of the resource.
+	PluginId pulumi.StringInput `pulumi:"pluginId"`
+	// The name of the plug-in that you want to create.
+	PluginName pulumi.StringInput `pulumi:"pluginName"`
+	// The type of the plug-in.
+	PluginType pulumi.StringInput `pulumi:"pluginType"`
+	// The tag of the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetPluginsPluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPluginsPlugin)(nil)).Elem()
+}
+
+func (i GetPluginsPluginArgs) ToGetPluginsPluginOutput() GetPluginsPluginOutput {
+	return i.ToGetPluginsPluginOutputWithContext(context.Background())
+}
+
+func (i GetPluginsPluginArgs) ToGetPluginsPluginOutputWithContext(ctx context.Context) GetPluginsPluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPluginsPluginOutput)
+}
+
+// GetPluginsPluginArrayInput is an input type that accepts GetPluginsPluginArray and GetPluginsPluginArrayOutput values.
+// You can construct a concrete instance of `GetPluginsPluginArrayInput` via:
+//
+//	GetPluginsPluginArray{ GetPluginsPluginArgs{...} }
+type GetPluginsPluginArrayInput interface {
+	pulumi.Input
+
+	ToGetPluginsPluginArrayOutput() GetPluginsPluginArrayOutput
+	ToGetPluginsPluginArrayOutputWithContext(context.Context) GetPluginsPluginArrayOutput
+}
+
+type GetPluginsPluginArray []GetPluginsPluginInput
+
+func (GetPluginsPluginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPluginsPlugin)(nil)).Elem()
+}
+
+func (i GetPluginsPluginArray) ToGetPluginsPluginArrayOutput() GetPluginsPluginArrayOutput {
+	return i.ToGetPluginsPluginArrayOutputWithContext(context.Background())
+}
+
+func (i GetPluginsPluginArray) ToGetPluginsPluginArrayOutputWithContext(ctx context.Context) GetPluginsPluginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPluginsPluginArrayOutput)
+}
+
+type GetPluginsPluginOutput struct{ *pulumi.OutputState }
+
+func (GetPluginsPluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPluginsPlugin)(nil)).Elem()
+}
+
+func (o GetPluginsPluginOutput) ToGetPluginsPluginOutput() GetPluginsPluginOutput {
+	return o
+}
+
+func (o GetPluginsPluginOutput) ToGetPluginsPluginOutputWithContext(ctx context.Context) GetPluginsPluginOutput {
+	return o
+}
+
+// The CreateTime of the resource.
+func (o GetPluginsPluginOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the plug-in, which cannot exceed 200 characters.
+func (o GetPluginsPluginOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Plugin.
+func (o GetPluginsPluginOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ModifiedTime of the resource.
+func (o GetPluginsPluginOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.ModifiedTime }).(pulumi.StringOutput)
+}
+
+// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
+func (o GetPluginsPluginOutput) PluginData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.PluginData }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetPluginsPluginOutput) PluginId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.PluginId }).(pulumi.StringOutput)
+}
+
+// The name of the plug-in that you want to create.
+func (o GetPluginsPluginOutput) PluginName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.PluginName }).(pulumi.StringOutput)
+}
+
+// The type of the plug-in.
+func (o GetPluginsPluginOutput) PluginType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) string { return v.PluginType }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetPluginsPluginOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetPluginsPluginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPluginsPluginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPluginsPlugin)(nil)).Elem()
+}
+
+func (o GetPluginsPluginArrayOutput) ToGetPluginsPluginArrayOutput() GetPluginsPluginArrayOutput {
+	return o
+}
+
+func (o GetPluginsPluginArrayOutput) ToGetPluginsPluginArrayOutputWithContext(ctx context.Context) GetPluginsPluginArrayOutput {
+	return o
+}
+
+func (o GetPluginsPluginArrayOutput) Index(i pulumi.IntInput) GetPluginsPluginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPluginsPlugin {
+		return vs[0].([]GetPluginsPlugin)[vs[1].(int)]
+	}).(GetPluginsPluginOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiConstantParameterInput)(nil)).Elem(), ApiConstantParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiConstantParameterArrayInput)(nil)).Elem(), ApiConstantParameterArray{})
@@ -2052,6 +2523,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendsBackendArrayInput)(nil)).Elem(), GetBackendsBackendArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLogConfigsConfigInput)(nil)).Elem(), GetLogConfigsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLogConfigsConfigArrayInput)(nil)).Elem(), GetLogConfigsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetModelsModelInput)(nil)).Elem(), GetModelsModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetModelsModelArrayInput)(nil)).Elem(), GetModelsModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginInput)(nil)).Elem(), GetPluginsPluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginArrayInput)(nil)).Elem(), GetPluginsPluginArray{})
 	pulumi.RegisterOutputType(ApiConstantParameterOutput{})
 	pulumi.RegisterOutputType(ApiConstantParameterArrayOutput{})
 	pulumi.RegisterOutputType(ApiFcServiceConfigOutput{})
@@ -2076,4 +2553,10 @@ func init() {
 	pulumi.RegisterOutputType(GetBackendsBackendArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetLogConfigsConfigOutput{})
+	pulumi.RegisterOutputType(GetLogConfigsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetModelsModelOutput{})
+	pulumi.RegisterOutputType(GetModelsModelArrayOutput{})
+	pulumi.RegisterOutputType(GetPluginsPluginOutput{})
+	pulumi.RegisterOutputType(GetPluginsPluginArrayOutput{})
 }

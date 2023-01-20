@@ -48,7 +48,7 @@ import (
 //			if param := cfg.Get("password"); param != "" {
 //				password = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -63,18 +63,18 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:     defaultNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-//				TopicQuota: pulumi.Int(50),
-//				DiskType:   pulumi.Int(1),
-//				DiskSize:   pulumi.Int(500),
-//				DeployType: pulumi.Int(5),
-//				IoMax:      pulumi.Int(20),
-//				VswitchId:  defaultSwitch.ID(),
+//				PartitionNum: pulumi.Int(50),
+//				DiskType:     pulumi.Int(1),
+//				DiskSize:     pulumi.Int(500),
+//				DeployType:   pulumi.Int(5),
+//				IoMax:        pulumi.Int(20),
+//				VswitchId:    defaultSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -132,6 +132,13 @@ func NewSaslUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource SaslUser
 	err := ctx.RegisterResource("alicloud:alikafka/saslUser:SaslUser", name, args, &resource, opts...)
 	if err != nil {

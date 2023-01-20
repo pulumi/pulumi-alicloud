@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,11 +13,8 @@ import * as utilities from "../utilities";
  */
 export function getSecretParameters(args?: GetSecretParametersArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretParametersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oos/getSecretParameters:getSecretParameters", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -83,9 +81,13 @@ export interface GetSecretParametersResult {
     readonly sortOrder?: string;
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.147.0+.
+ */
 export function getSecretParametersOutput(args?: GetSecretParametersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretParametersResult> {
-    return pulumi.output(args).apply(a => getSecretParameters(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecretParameters(a, opts))
 }
 
 /**

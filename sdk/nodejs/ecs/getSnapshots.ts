@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,10 +13,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const snapshots = pulumi.output(alicloud.ecs.getSnapshots({
+ * const snapshots = alicloud.ecs.getSnapshots({
  *     ids: ["s-123456890abcdef"],
  *     nameRegex: "tf-testAcc-snapshot",
- * }));
+ * });
  * ```
  * ## Argument Reference
  *
@@ -48,11 +49,8 @@ import * as utilities from "../utilities";
  */
 export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getSnapshots:getSnapshots", {
         "category": args.category,
         "dryRun": args.dryRun,
@@ -164,9 +162,49 @@ export interface GetSnapshotsResult {
      */
     readonly usage?: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const snapshots = alicloud.ecs.getSnapshots({
+ *     ids: ["s-123456890abcdef"],
+ *     nameRegex: "tf-testAcc-snapshot",
+ * });
+ * ```
+ * ## Argument Reference
+ *
+ * The following arguments are supported:
+ *
+ * * `instanceId` - (Optional) The specified instance ID.
+ * * `diskId` - (Optional) The specified disk ID.
+ * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
+ * * `ids` - (Optional)  A list of snapshot IDs.
+ * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
+ * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
+ *   * progressing: The snapshots are being created.
+ *   * accomplished: The snapshots are ready to use.
+ *   * failed: The snapshot creation failed.
+ *   * all: All status.
+ * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
+ *   * auto: Auto snapshots.
+ *   * user: Manual snapshots.
+ *   * all: Auto and manual snapshots.
+ * * `sourceDiskType` - (Optional) The type of source disk:
+ *   * System: The snapshots are created for system disks.
+ *   * Data: The snapshots are created for data disks.
+ * * `usage` - (Optional) The usage of the snapshot:
+ *   * image: The snapshots are used to create custom images.
+ *   * disk: The snapshots are used to CreateDisk.
+ *   * mage_disk: The snapshots are used to create custom images and data disks.
+ *   * none: The snapshots are not used yet.
+ * * `tags` - (Optional) A map of tags assigned to snapshots.
+ * * `outputFile` - (Optional) The name of output file that saves the filter results.
+ */
 export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
-    return pulumi.output(args).apply(a => getSnapshots(a, opts))
+    return pulumi.output(args).apply((a: any) => getSnapshots(a, opts))
 }
 
 /**

@@ -21,62 +21,59 @@ namespace Pulumi.AliCloud.MongoDB
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultZones = Output.Create(AliCloud.MongoDB.GetZones.InvokeAsync());
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Zones?[0]?.Id,
-    ///             }));
-    ///         });
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
-    ///         var example = new AliCloud.MongoDB.ServerlessInstance("example", new AliCloud.MongoDB.ServerlessInstanceArgs
-    ///         {
-    ///             AccountPassword = "Abc12345",
-    ///             DbInstanceDescription = "example_value",
-    ///             DbInstanceStorage = 5,
-    ///             StorageEngine = "WiredTiger",
-    ///             CapacityUnit = 100,
-    ///             Engine = "MongoDB",
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///             EngineVersion = "4.2",
-    ///             Period = 1,
-    ///             PeriodPriceType = "Month",
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "MongodbServerlessInstance" },
-    ///                 { "For", "TF" },
-    ///             },
-    ///             SecurityIpGroups = 
-    ///             {
-    ///                 new AliCloud.MongoDB.Inputs.ServerlessInstanceSecurityIpGroupArgs
-    ///                 {
-    ///                     SecurityIpGroupAttribute = "example_value",
-    ///                     SecurityIpGroupName = "example_value",
-    ///                     SecurityIpList = "192.168.0.1",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var example = new AliCloud.MongoDB.ServerlessInstance("example", new()
+    ///     {
+    ///         AccountPassword = "Abc12345",
+    ///         DbInstanceDescription = "example_value",
+    ///         DbInstanceStorage = 5,
+    ///         StorageEngine = "WiredTiger",
+    ///         CapacityUnit = 100,
+    ///         Engine = "MongoDB",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         EngineVersion = "4.2",
+    ///         Period = 1,
+    ///         PeriodPriceType = "Month",
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "MongodbServerlessInstance" },
+    ///             { "For", "TF" },
+    ///         },
+    ///         SecurityIpGroups = new[]
+    ///         {
+    ///             new AliCloud.MongoDB.Inputs.ServerlessInstanceSecurityIpGroupArgs
+    ///             {
+    ///                 SecurityIpGroupAttribute = "example_value",
+    ///                 SecurityIpGroupName = "example_value",
+    ///                 SecurityIpList = "192.168.0.1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -88,7 +85,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mongodb/serverlessInstance:ServerlessInstance")]
-    public partial class ServerlessInstance : Pulumi.CustomResource
+    public partial class ServerlessInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The password of the database logon account.
@@ -229,6 +226,10 @@ namespace Pulumi.AliCloud.MongoDB
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -250,15 +251,25 @@ namespace Pulumi.AliCloud.MongoDB
         }
     }
 
-    public sealed class ServerlessInstanceArgs : Pulumi.ResourceArgs
+    public sealed class ServerlessInstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accountPassword", required: true)]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// The password of the database logon account.
         /// * The password length is `8` to `32` bits.
         /// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
         /// </summary>
-        [Input("accountPassword", required: true)]
-        public Input<string> AccountPassword { get; set; } = null!;
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Set whether the instance is automatically renewed.
@@ -377,17 +388,28 @@ namespace Pulumi.AliCloud.MongoDB
         public ServerlessInstanceArgs()
         {
         }
+        public static new ServerlessInstanceArgs Empty => new ServerlessInstanceArgs();
     }
 
-    public sealed class ServerlessInstanceState : Pulumi.ResourceArgs
+    public sealed class ServerlessInstanceState : global::Pulumi.ResourceArgs
     {
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// The password of the database logon account.
         /// * The password length is `8` to `32` bits.
         /// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Set whether the instance is automatically renewed.
@@ -512,5 +534,6 @@ namespace Pulumi.AliCloud.MongoDB
         public ServerlessInstanceState()
         {
         }
+        public static new ServerlessInstanceState Empty => new ServerlessInstanceState();
     }
 }

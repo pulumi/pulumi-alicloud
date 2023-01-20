@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -173,6 +174,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of partitions.
+     * 
+     */
+    @Import(name="partitionNum")
+    private @Nullable Output<Integer> partitionNum;
+
+    /**
+     * @return The number of partitions.
+     * 
+     */
+    public Optional<Output<Integer>> partitionNum() {
+        return Optional.ofNullable(this.partitionNum);
+    }
+
+    /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      * 
      */
@@ -185,6 +201,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> securityGroup() {
         return Optional.ofNullable(this.securityGroup);
+    }
+
+    /**
+     * The zones among which you want to deploy the instance.
+     * 
+     */
+    @Import(name="selectedZones")
+    private @Nullable Output<List<String>> selectedZones;
+
+    /**
+     * @return The zones among which you want to deploy the instance.
+     * 
+     */
+    public Optional<Output<List<String>>> selectedZones() {
+        return Optional.ofNullable(this.selectedZones);
     }
 
     /**
@@ -256,29 +287,39 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+     * The max num of topic can be creation of the instance.
+     * It has been deprecated from version 1.194.0 and using `partition_num` instead.
+     * 
+     * @deprecated
+     * Attribute &#39;topic_quota&#39; has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
      * 
      */
+    @Deprecated /* Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
     @Import(name="topicQuota")
     private @Nullable Output<Integer> topicQuota;
 
     /**
-     * @return The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+     * @return The max num of topic can be creation of the instance.
+     * It has been deprecated from version 1.194.0 and using `partition_num` instead.
+     * 
+     * @deprecated
+     * Attribute &#39;topic_quota&#39; has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
      * 
      */
+    @Deprecated /* Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
     public Optional<Output<Integer>> topicQuota() {
         return Optional.ofNullable(this.topicQuota);
     }
 
     /**
-     * The ID of attaching VPC to instance.
+     * The VPC ID of the instance.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of attaching VPC to instance.
+     * @return The VPC ID of the instance.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -301,14 +342,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Zone to launch the kafka instance.
+     * The zone ID of the instance.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the kafka instance.
+     * @return The zone ID of the instance.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -328,7 +369,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.paidType = $.paidType;
+        this.partitionNum = $.partitionNum;
         this.securityGroup = $.securityGroup;
+        this.selectedZones = $.selectedZones;
         this.serviceVersion = $.serviceVersion;
         this.specType = $.specType;
         this.status = $.status;
@@ -572,6 +615,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param partitionNum The number of partitions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partitionNum(@Nullable Output<Integer> partitionNum) {
+            $.partitionNum = partitionNum;
+            return this;
+        }
+
+        /**
+         * @param partitionNum The number of partitions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partitionNum(Integer partitionNum) {
+            return partitionNum(Output.of(partitionNum));
+        }
+
+        /**
          * @param securityGroup The ID of security group for this instance. If the security group is empty, system will create a default one.
          * 
          * @return builder
@@ -590,6 +654,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder securityGroup(String securityGroup) {
             return securityGroup(Output.of(securityGroup));
+        }
+
+        /**
+         * @param selectedZones The zones among which you want to deploy the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectedZones(@Nullable Output<List<String>> selectedZones) {
+            $.selectedZones = selectedZones;
+            return this;
+        }
+
+        /**
+         * @param selectedZones The zones among which you want to deploy the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectedZones(List<String> selectedZones) {
+            return selectedZones(Output.of(selectedZones));
+        }
+
+        /**
+         * @param selectedZones The zones among which you want to deploy the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectedZones(String... selectedZones) {
+            return selectedZones(List.of(selectedZones));
         }
 
         /**
@@ -685,28 +780,38 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topicQuota The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+         * @param topicQuota The max num of topic can be creation of the instance.
+         * It has been deprecated from version 1.194.0 and using `partition_num` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Attribute &#39;topic_quota&#39; has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+         * 
          */
+        @Deprecated /* Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
         public Builder topicQuota(@Nullable Output<Integer> topicQuota) {
             $.topicQuota = topicQuota;
             return this;
         }
 
         /**
-         * @param topicQuota The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+         * @param topicQuota The max num of topic can be creation of the instance.
+         * It has been deprecated from version 1.194.0 and using `partition_num` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Attribute &#39;topic_quota&#39; has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+         * 
          */
+        @Deprecated /* Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
         public Builder topicQuota(Integer topicQuota) {
             return topicQuota(Output.of(topicQuota));
         }
 
         /**
-         * @param vpcId The ID of attaching VPC to instance.
+         * @param vpcId The VPC ID of the instance.
          * 
          * @return builder
          * 
@@ -717,7 +822,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of attaching VPC to instance.
+         * @param vpcId The VPC ID of the instance.
          * 
          * @return builder
          * 
@@ -748,7 +853,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the kafka instance.
+         * @param zoneId The zone ID of the instance.
          * 
          * @return builder
          * 
@@ -759,7 +864,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the kafka instance.
+         * @param zoneId The zone ID of the instance.
          * 
          * @return builder
          * 

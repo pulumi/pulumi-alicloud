@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,15 +23,12 @@ import * as utilities from "../utilities";
  *     appId: "example_id",
  *     nameRegex: "^my-GreyTagRoute",
  * });
- * export const saeGreyTagRoutesId = nameRegex.then(nameRegex => nameRegex.routes?[0]?.id);
+ * export const saeGreyTagRoutesId = nameRegex.then(nameRegex => nameRegex.routes?.[0]?.id);
  * ```
  */
 export function getGreyTagRoutes(args: GetGreyTagRoutesArgs, opts?: pulumi.InvokeOptions): Promise<GetGreyTagRoutesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", {
         "appId": args.appId,
         "ids": args.ids,
@@ -73,9 +71,28 @@ export interface GetGreyTagRoutesResult {
     readonly outputFile?: string;
     readonly routes: outputs.sae.GetGreyTagRoutesRoute[];
 }
-
+/**
+ * This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.160.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const nameRegex = alicloud.sae.getGreyTagRoutes({
+ *     appId: "example_id",
+ *     nameRegex: "^my-GreyTagRoute",
+ * });
+ * export const saeGreyTagRoutesId = nameRegex.then(nameRegex => nameRegex.routes?.[0]?.id);
+ * ```
+ */
 export function getGreyTagRoutesOutput(args: GetGreyTagRoutesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGreyTagRoutesResult> {
-    return pulumi.output(args).apply(a => getGreyTagRoutes(a, opts))
+    return pulumi.output(args).apply((a: any) => getGreyTagRoutes(a, opts))
 }
 
 /**

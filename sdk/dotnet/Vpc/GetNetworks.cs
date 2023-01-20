@@ -19,31 +19,30 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var vpcsDs = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
-        ///         var vpcsDs = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/12",
-        ///             NameRegex = "^foo",
-        ///             Status = "Available",
-        ///         }));
-        ///         this.FirstVpcId = vpcsDs.Apply(vpcsDs =&gt; vpcsDs.Vpcs?[0]?.Id);
-        ///     }
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         NameRegex = "^foo",
+        ///         Status = "Available",
+        ///     });
         /// 
-        ///     [Output("firstVpcId")]
-        ///     public Output&lt;string&gt; FirstVpcId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstVpcId"] = vpcsDs.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworksResult> InvokeAsync(GetNetworksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? new GetNetworksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? new GetNetworksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides VPCs available to the user.
@@ -53,35 +52,34 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var vpcsDs = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
-        ///         var vpcsDs = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/12",
-        ///             NameRegex = "^foo",
-        ///             Status = "Available",
-        ///         }));
-        ///         this.FirstVpcId = vpcsDs.Apply(vpcsDs =&gt; vpcsDs.Vpcs?[0]?.Id);
-        ///     }
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         NameRegex = "^foo",
+        ///         Status = "Available",
+        ///     });
         /// 
-        ///     [Output("firstVpcId")]
-        ///     public Output&lt;string&gt; FirstVpcId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstVpcId"] = vpcsDs.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworksResult> Invoke(GetNetworksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? new GetNetworksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? new GetNetworksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNetworksArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
@@ -102,7 +100,7 @@ namespace Pulumi.AliCloud.Vpc
         public bool? DryRun { get; set; }
 
         /// <summary>
-        /// -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `route_table_id`.
+        /// Default to `true`. Set it to true can output the `route_table_id`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -185,9 +183,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetNetworksArgs()
         {
         }
+        public static new GetNetworksArgs Empty => new GetNetworksArgs();
     }
 
-    public sealed class GetNetworksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
@@ -208,7 +207,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `route_table_id`.
+        /// Default to `true`. Set it to true can output the `route_table_id`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -291,6 +290,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetNetworksInvokeArgs()
         {
         }
+        public static new GetNetworksInvokeArgs Empty => new GetNetworksInvokeArgs();
     }
 
 

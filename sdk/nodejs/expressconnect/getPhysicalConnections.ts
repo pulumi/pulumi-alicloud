@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,20 +22,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.expressconnect.getPhysicalConnections({
  *     ids: ["pc-2345678"],
  * });
- * export const expressConnectPhysicalConnectionId1 = ids.then(ids => ids.connections?[0]?.id);
+ * export const expressConnectPhysicalConnectionId1 = ids.then(ids => ids.connections?.[0]?.id);
  * const nameRegex = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^my-PhysicalConnection",
  * });
- * export const expressConnectPhysicalConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections?[0]?.id);
+ * export const expressConnectPhysicalConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id);
  * ```
  */
 export function getPhysicalConnections(args?: GetPhysicalConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPhysicalConnectionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", {
         "ids": args.ids,
         "includeReservationData": args.includeReservationData,
@@ -83,9 +81,31 @@ export interface GetPhysicalConnectionsResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.132.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.expressconnect.getPhysicalConnections({
+ *     ids: ["pc-2345678"],
+ * });
+ * export const expressConnectPhysicalConnectionId1 = ids.then(ids => ids.connections?.[0]?.id);
+ * const nameRegex = alicloud.expressconnect.getPhysicalConnections({
+ *     nameRegex: "^my-PhysicalConnection",
+ * });
+ * export const expressConnectPhysicalConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id);
+ * ```
+ */
 export function getPhysicalConnectionsOutput(args?: GetPhysicalConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPhysicalConnectionsResult> {
-    return pulumi.output(args).apply(a => getPhysicalConnections(a, opts))
+    return pulumi.output(args).apply((a: any) => getPhysicalConnections(a, opts))
 }
 
 /**

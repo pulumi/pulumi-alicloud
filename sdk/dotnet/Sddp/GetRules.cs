@@ -23,40 +23,40 @@ namespace Pulumi.AliCloud.Sddp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultRule = new AliCloud.Sddp.Rule("defaultRule", new()
         ///     {
-        ///         var defaultRule = new AliCloud.Sddp.Rule("defaultRule", new AliCloud.Sddp.RuleArgs
-        ///         {
-        ///             Category = 0,
-        ///             Content = "content",
-        ///             RuleName = "rule_name",
-        ///             RiskLevelId = "4",
-        ///             ProductCode = "ODPS",
-        ///         });
-        ///         var defaultRules = AliCloud.Sddp.GetRules.Invoke(new AliCloud.Sddp.GetRulesInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultRule.Id,
-        ///             },
-        ///         });
-        ///         this.SddpRuleId = defaultRules.Apply(defaultRules =&gt; defaultRules.Id);
-        ///     }
+        ///         Category = 0,
+        ///         Content = "content",
+        ///         RuleName = "rule_name",
+        ///         RiskLevelId = "4",
+        ///         ProductCode = "ODPS",
+        ///     });
         /// 
-        ///     [Output("sddpRuleId")]
-        ///     public Output&lt;string&gt; SddpRuleId { get; set; }
-        /// }
+        ///     var defaultRules = AliCloud.Sddp.GetRules.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultRule.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["sddpRuleId"] = defaultRules.Apply(getRulesResult =&gt; getRulesResult.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:sddp/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:sddp/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Sddp Rules of the current Alibaba Cloud user.
@@ -70,44 +70,44 @@ namespace Pulumi.AliCloud.Sddp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultRule = new AliCloud.Sddp.Rule("defaultRule", new()
         ///     {
-        ///         var defaultRule = new AliCloud.Sddp.Rule("defaultRule", new AliCloud.Sddp.RuleArgs
-        ///         {
-        ///             Category = 0,
-        ///             Content = "content",
-        ///             RuleName = "rule_name",
-        ///             RiskLevelId = "4",
-        ///             ProductCode = "ODPS",
-        ///         });
-        ///         var defaultRules = AliCloud.Sddp.GetRules.Invoke(new AliCloud.Sddp.GetRulesInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultRule.Id,
-        ///             },
-        ///         });
-        ///         this.SddpRuleId = defaultRules.Apply(defaultRules =&gt; defaultRules.Id);
-        ///     }
+        ///         Category = 0,
+        ///         Content = "content",
+        ///         RuleName = "rule_name",
+        ///         RiskLevelId = "4",
+        ///         ProductCode = "ODPS",
+        ///     });
         /// 
-        ///     [Output("sddpRuleId")]
-        ///     public Output&lt;string&gt; SddpRuleId { get; set; }
-        /// }
+        ///     var defaultRules = AliCloud.Sddp.GetRules.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultRule.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["sddpRuleId"] = defaultRules.Apply(getRulesResult =&gt; getRulesResult.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:sddp/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:sddp/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetRulesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Sensitive Data Identification Rules for the Type of.
@@ -190,9 +190,10 @@ namespace Pulumi.AliCloud.Sddp
         public GetRulesArgs()
         {
         }
+        public static new GetRulesArgs Empty => new GetRulesArgs();
     }
 
-    public sealed class GetRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Sensitive Data Identification Rules for the Type of.
@@ -275,6 +276,7 @@ namespace Pulumi.AliCloud.Sddp
         public GetRulesInvokeArgs()
         {
         }
+        public static new GetRulesInvokeArgs Empty => new GetRulesInvokeArgs();
     }
 
 

@@ -89,6 +89,12 @@ export class AccessKey extends pulumi.CustomResource {
      * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
      */
     public readonly pgpKey!: pulumi.Output<string | undefined>;
+    /**
+     * (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+     * If you use this, please protect your backend state file judiciously.
+     * Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
+     * at the cost of preventing the use of the secret key in automation.
+     */
     public /*out*/ readonly secret!: pulumi.Output<string>;
     /**
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
@@ -134,6 +140,8 @@ export class AccessKey extends pulumi.CustomResource {
             resourceInputs["secret"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AccessKey.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -151,6 +159,12 @@ export interface AccessKeyState {
      * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
      */
     pgpKey?: pulumi.Input<string>;
+    /**
+     * (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+     * If you use this, please protect your backend state file judiciously.
+     * Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
+     * at the cost of preventing the use of the secret key in automation.
+     */
     secret?: pulumi.Input<string>;
     /**
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.

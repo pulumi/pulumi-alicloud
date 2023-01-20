@@ -20,30 +20,29 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var routerInterfacesDs = AliCloud.Vpc.GetRouterInterfaces.Invoke(new()
         ///     {
-        ///         var routerInterfacesDs = Output.Create(AliCloud.Vpc.GetRouterInterfaces.InvokeAsync(new AliCloud.Vpc.GetRouterInterfacesArgs
-        ///         {
-        ///             NameRegex = "^testenv",
-        ///             Status = "Active",
-        ///         }));
-        ///         this.FirstRouterInterfaceId = routerInterfacesDs.Apply(routerInterfacesDs =&gt; routerInterfacesDs.Interfaces?[0]?.Id);
-        ///     }
+        ///         NameRegex = "^testenv",
+        ///         Status = "Active",
+        ///     });
         /// 
-        ///     [Output("firstRouterInterfaceId")]
-        ///     public Output&lt;string&gt; FirstRouterInterfaceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRouterInterfaceId"] = routerInterfacesDs.Apply(getRouterInterfacesResult =&gt; getRouterInterfacesResult.Interfaces[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouterInterfacesResult> InvokeAsync(GetRouterInterfacesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
@@ -54,34 +53,33 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var routerInterfacesDs = AliCloud.Vpc.GetRouterInterfaces.Invoke(new()
         ///     {
-        ///         var routerInterfacesDs = Output.Create(AliCloud.Vpc.GetRouterInterfaces.InvokeAsync(new AliCloud.Vpc.GetRouterInterfacesArgs
-        ///         {
-        ///             NameRegex = "^testenv",
-        ///             Status = "Active",
-        ///         }));
-        ///         this.FirstRouterInterfaceId = routerInterfacesDs.Apply(routerInterfacesDs =&gt; routerInterfacesDs.Interfaces?[0]?.Id);
-        ///     }
+        ///         NameRegex = "^testenv",
+        ///         Status = "Active",
+        ///     });
         /// 
-        ///     [Output("firstRouterInterfaceId")]
-        ///     public Output&lt;string&gt; FirstRouterInterfaceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRouterInterfaceId"] = routerInterfacesDs.Apply(getRouterInterfacesResult =&gt; getRouterInterfacesResult.Interfaces[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouterInterfacesResult> Invoke(GetRouterInterfacesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRouterInterfacesArgs : Pulumi.InvokeArgs
+    public sealed class GetRouterInterfacesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -150,9 +148,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetRouterInterfacesArgs()
         {
         }
+        public static new GetRouterInterfacesArgs Empty => new GetRouterInterfacesArgs();
     }
 
-    public sealed class GetRouterInterfacesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRouterInterfacesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -221,6 +220,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetRouterInterfacesInvokeArgs()
         {
         }
+        public static new GetRouterInterfacesInvokeArgs Empty => new GetRouterInterfacesInvokeArgs();
     }
 
 

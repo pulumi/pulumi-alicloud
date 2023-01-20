@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.AliKafka
     /// <summary>
     /// Provides an ALIKAFKA instance resource.
     /// 
+    /// For information about ALIKAFKA instance and how to use it, see [What is ALIKAFKA instance](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-startinstance).
+    /// 
     /// &gt; **NOTE:** Available in 1.59.0+
     /// 
     /// &gt; **NOTE:** Creation or modification may took about 10-40 minutes.
@@ -26,46 +28,48 @@ namespace Pulumi.AliCloud.AliKafka
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var instanceName = config.Get("instanceName") ?? "alikafkaInstanceName";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var instanceName = config.Get("instanceName") ?? "alikafkaInstanceName";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///         });
-    ///         var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new AliCloud.AliKafka.InstanceArgs
-    ///         {
-    ///             TopicQuota = 50,
-    ///             DiskType = 1,
-    ///             DiskSize = 500,
-    ///             DeployType = 4,
-    ///             IoMax = 20,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             SecurityGroup = defaultSecurityGroup.Id,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
+    ///     {
+    ///         PartitionNum = 50,
+    ///         DiskType = 1,
+    ///         DiskSize = 500,
+    ///         DeployType = 4,
+    ///         IoMax = 20,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityGroup = defaultSecurityGroup.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +81,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
@@ -142,10 +146,22 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string?> PaidType { get; private set; } = null!;
 
         /// <summary>
+        /// The number of partitions.
+        /// </summary>
+        [Output("partitionNum")]
+        public Output<int?> PartitionNum { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of security group for this instance. If the security group is empty, system will create a default one.
         /// </summary>
         [Output("securityGroup")]
         public Output<string> SecurityGroup { get; private set; } = null!;
+
+        /// <summary>
+        /// The zones among which you want to deploy the instance.
+        /// </summary>
+        [Output("selectedZones")]
+        public Output<ImmutableArray<string>> SelectedZones { get; private set; } = null!;
 
         /// <summary>
         /// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
@@ -176,13 +192,14 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+        /// The max num of topic can be creation of the instance. 
+        /// It has been deprecated from version 1.194.0 and using `partition_num` instead.
         /// </summary>
         [Output("topicQuota")]
         public Output<int> TopicQuota { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of attaching VPC to instance.
+        /// The VPC ID of the instance.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -194,7 +211,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone to launch the kafka instance.
+        /// The zone ID of the instance.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -243,7 +260,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
@@ -302,10 +319,28 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? PaidType { get; set; }
 
         /// <summary>
+        /// The number of partitions.
+        /// </summary>
+        [Input("partitionNum")]
+        public Input<int>? PartitionNum { get; set; }
+
+        /// <summary>
         /// The ID of security group for this instance. If the security group is empty, system will create a default one.
         /// </summary>
         [Input("securityGroup")]
         public Input<string>? SecurityGroup { get; set; }
+
+        [Input("selectedZones")]
+        private InputList<string>? _selectedZones;
+
+        /// <summary>
+        /// The zones among which you want to deploy the instance.
+        /// </summary>
+        public InputList<string> SelectedZones
+        {
+            get => _selectedZones ?? (_selectedZones = new InputList<string>());
+            set => _selectedZones = value;
+        }
 
         /// <summary>
         /// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
@@ -332,10 +367,17 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+        /// The max num of topic can be creation of the instance. 
+        /// It has been deprecated from version 1.194.0 and using `partition_num` instead.
         /// </summary>
-        [Input("topicQuota", required: true)]
-        public Input<int> TopicQuota { get; set; } = null!;
+        [Input("topicQuota")]
+        public Input<int>? TopicQuota { get; set; }
+
+        /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The ID of attaching vswitch to instance.
@@ -343,12 +385,19 @@ namespace Pulumi.AliCloud.AliKafka
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
+        /// <summary>
+        /// The zone ID of the instance.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
@@ -413,10 +462,28 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? PaidType { get; set; }
 
         /// <summary>
+        /// The number of partitions.
+        /// </summary>
+        [Input("partitionNum")]
+        public Input<int>? PartitionNum { get; set; }
+
+        /// <summary>
         /// The ID of security group for this instance. If the security group is empty, system will create a default one.
         /// </summary>
         [Input("securityGroup")]
         public Input<string>? SecurityGroup { get; set; }
+
+        [Input("selectedZones")]
+        private InputList<string>? _selectedZones;
+
+        /// <summary>
+        /// The zones among which you want to deploy the instance.
+        /// </summary>
+        public InputList<string> SelectedZones
+        {
+            get => _selectedZones ?? (_selectedZones = new InputList<string>());
+            set => _selectedZones = value;
+        }
 
         /// <summary>
         /// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
@@ -453,13 +520,14 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+        /// The max num of topic can be creation of the instance. 
+        /// It has been deprecated from version 1.194.0 and using `partition_num` instead.
         /// </summary>
         [Input("topicQuota")]
         public Input<int>? TopicQuota { get; set; }
 
         /// <summary>
-        /// The ID of attaching VPC to instance.
+        /// The VPC ID of the instance.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -471,7 +539,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The Zone to launch the kafka instance.
+        /// The zone ID of the instance.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -479,5 +547,6 @@ namespace Pulumi.AliCloud.AliKafka
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

@@ -5,12 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getAcls";
-export * from "./getSmartagFlowLogs";
-export * from "./smartagFlowLog";
+export { GetAclsArgs, GetAclsResult, GetAclsOutputArgs } from "./getAcls";
+export const getAcls: typeof import("./getAcls").getAcls = null as any;
+export const getAclsOutput: typeof import("./getAcls").getAclsOutput = null as any;
+utilities.lazyLoad(exports, ["getAcls","getAclsOutput"], () => require("./getAcls"));
 
-// Import resources to register:
-import { SmartagFlowLog } from "./smartagFlowLog";
+export { GetSmartagFlowLogsArgs, GetSmartagFlowLogsResult, GetSmartagFlowLogsOutputArgs } from "./getSmartagFlowLogs";
+export const getSmartagFlowLogs: typeof import("./getSmartagFlowLogs").getSmartagFlowLogs = null as any;
+export const getSmartagFlowLogsOutput: typeof import("./getSmartagFlowLogs").getSmartagFlowLogsOutput = null as any;
+utilities.lazyLoad(exports, ["getSmartagFlowLogs","getSmartagFlowLogsOutput"], () => require("./getSmartagFlowLogs"));
+
+export { SmartagFlowLogArgs, SmartagFlowLogState } from "./smartagFlowLog";
+export type SmartagFlowLog = import("./smartagFlowLog").SmartagFlowLog;
+export const SmartagFlowLog: typeof import("./smartagFlowLog").SmartagFlowLog = null as any;
+utilities.lazyLoad(exports, ["SmartagFlowLog"], () => require("./smartagFlowLog"));
+
 
 const _module = {
     version: utilities.getVersion(),

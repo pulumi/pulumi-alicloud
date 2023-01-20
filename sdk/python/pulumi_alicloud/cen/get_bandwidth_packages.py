@@ -64,7 +64,6 @@ class GetBandwidthPackagesResult:
     def ids(self) -> Sequence[str]:
         """
         A list of specific CEN Bandwidth Package IDs.
-        * `names` (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
         """
         return pulumi.get(self, "ids")
 
@@ -89,6 +88,9 @@ class GetBandwidthPackagesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -153,7 +155,7 @@ def get_bandwidth_packages(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: Limit search to a list of specific CEN Bandwidth Package IDs.
-    :param bool include_reservation_data: -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+    :param bool include_reservation_data: Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
     :param str instance_id: ID of a CEN instance.
     :param str name_regex: A regex string to filter CEN Bandwidth Package by name.
     :param str status: Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
@@ -204,7 +206,7 @@ def get_bandwidth_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
 
     :param Sequence[str] ids: Limit search to a list of specific CEN Bandwidth Package IDs.
-    :param bool include_reservation_data: -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+    :param bool include_reservation_data: Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
     :param str instance_id: ID of a CEN instance.
     :param str name_regex: A regex string to filter CEN Bandwidth Package by name.
     :param str status: Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.

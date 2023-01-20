@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -66,7 +66,7 @@ import (
 //			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
 //				VpcId:     fooNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/21"),
-//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -86,10 +86,10 @@ import (
 //				return err
 //			}
 //			fooInstance, err := ecs.NewInstance(ctx, "fooInstance", &ecs.InstanceArgs{
-//				AvailabilityZone:        pulumi.String(defaultZones.Zones[0].Id),
+//				AvailabilityZone:        *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchId:               fooSwitch.ID(),
-//				ImageId:                 pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:                 *pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:            *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),

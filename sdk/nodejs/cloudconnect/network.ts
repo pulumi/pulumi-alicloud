@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetwork = new alicloud.cloudconnect.Network("default", {
+ * const _default = new alicloud.cloudconnect.Network("default", {
  *     cidrBlock: "192.168.0.0/24",
  *     description: "tf-testAccCloudConnectNetworkDescription",
  *     isDefault: true,

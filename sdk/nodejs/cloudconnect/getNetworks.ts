@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetworks = alicloud_cloud_connect_networks_default.id.apply(id => alicloud.cloudconnect.getNetworks({
- *     ids: [id],
+ * const defaultNetworks = alicloud.cloudconnect.getNetworks({
+ *     ids: [alicloud_cloud_connect_networks["default"].id],
  *     nameRegex: "^tf-testAcc.*",
- * }));
- * const defaultNetwork = new alicloud.cloudconnect.Network("default", {
+ * });
+ * const defaultNetwork = new alicloud.cloudconnect.Network("defaultNetwork", {
  *     cidrBlock: "192.168.0.0/24",
  *     description: "tf-testAccCloudConnectNetworkDescription",
  *     isDefault: true,
@@ -31,11 +32,8 @@ import * as utilities from "../utilities";
  */
 export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworksResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudconnect/getNetworks:getNetworks", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -81,9 +79,32 @@ export interface GetNetworksResult {
     readonly networks: outputs.cloudconnect.GetNetworksNetwork[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides Cloud Connect Networks available to the user.
+ *
+ * > **NOTE:** Available in 1.59.0+
+ *
+ * > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultNetworks = alicloud.cloudconnect.getNetworks({
+ *     ids: [alicloud_cloud_connect_networks["default"].id],
+ *     nameRegex: "^tf-testAcc.*",
+ * });
+ * const defaultNetwork = new alicloud.cloudconnect.Network("defaultNetwork", {
+ *     cidrBlock: "192.168.0.0/24",
+ *     description: "tf-testAccCloudConnectNetworkDescription",
+ *     isDefault: true,
+ * });
+ * ```
+ */
 export function getNetworksOutput(args?: GetNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworksResult> {
-    return pulumi.output(args).apply(a => getNetworks(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetworks(a, opts))
 }
 
 /**

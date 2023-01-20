@@ -27,8 +27,10 @@ __all__ = [
     'LaunchTemplateDataDisk',
     'LaunchTemplateNetworkInterfaces',
     'LaunchTemplateSystemDisk',
+    'ReservedInstanceOperationLock',
     'GetActivationsActivationResult',
     'GetAutoSnapshotPoliciesPolicyResult',
+    'GetCapacityReservationsReservationResult',
     'GetCommandsCommandResult',
     'GetDedicatedHostsHostResult',
     'GetDedicatedHostsHostCapacityResult',
@@ -71,6 +73,8 @@ __all__ = [
     'GetEipAddressesEipResult',
     'GetEipsAddressResult',
     'GetEipsEipResult',
+    'GetElasticityAssurancesAssuranceResult',
+    'GetElasticityAssurancesAssuranceAllocatedResourceResult',
     'GetHpcClustersClusterResult',
     'GetImagesImageResult',
     'GetImagesImageDiskDeviceMappingResult',
@@ -417,7 +421,7 @@ class EcsInstanceSetNetworkInterface(dict):
                  primary_ip_address: Optional[str] = None,
                  vswitch_id: Optional[str] = None):
         """
-        :param str security_group_id: -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+        :param str security_group_id: The ID of the security group to which to assign secondary ENI.
         :param str description: The description of ENI.
         :param str network_interface_name: The name of ENI.
         :param str primary_ip_address: The primary private IP address of ENI.
@@ -437,7 +441,7 @@ class EcsInstanceSetNetworkInterface(dict):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> str:
         """
-        -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+        The ID of the security group to which to assign secondary ENI.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -507,13 +511,13 @@ class EcsLaunchTemplateDataDisk(dict):
                  size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
         """
-        :param str category: The category of the disk.
-        :param bool delete_with_instance: Indicates whether the data disk is released with the instance.
-        :param str description: The description of the data disk.
+        :param str category: The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+        :param bool delete_with_instance: Specifies whether to release the system disk when the instance is released. Default to `true`.
+        :param str description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param bool encrypted: Encrypted the data in this disk.
-        :param str name: The name of the data disk.
-        :param str performance_level: The performance level of the ESSD used as the data disk.
-        :param int size: The size of the data disk.
+        :param str name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        :param str performance_level: The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+        :param int size: Size of the system disk, measured in GB. Value range: [20, 500].
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         if category is not None:
@@ -537,7 +541,7 @@ class EcsLaunchTemplateDataDisk(dict):
     @pulumi.getter
     def category(self) -> Optional[str]:
         """
-        The category of the disk.
+        The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
         """
         return pulumi.get(self, "category")
 
@@ -545,7 +549,7 @@ class EcsLaunchTemplateDataDisk(dict):
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[bool]:
         """
-        Indicates whether the data disk is released with the instance.
+        Specifies whether to release the system disk when the instance is released. Default to `true`.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -553,7 +557,7 @@ class EcsLaunchTemplateDataDisk(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -569,7 +573,7 @@ class EcsLaunchTemplateDataDisk(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the data disk.
+        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -577,7 +581,7 @@ class EcsLaunchTemplateDataDisk(dict):
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[str]:
         """
-        The performance level of the ESSD used as the data disk.
+        The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -585,7 +589,7 @@ class EcsLaunchTemplateDataDisk(dict):
     @pulumi.getter
     def size(self) -> Optional[int]:
         """
-        The size of the data disk.
+        Size of the system disk, measured in GB. Value range: [20, 500].
         """
         return pulumi.get(self, "size")
 
@@ -628,11 +632,11 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
                  security_group_id: Optional[str] = None,
                  vswitch_id: Optional[str] = None):
         """
-        :param str description: The description of the data disk.
-        :param str name: The name of the data disk.
+        :param str description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        :param str name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         :param str primary_ip: The primary private IP address of the ENI.
-        :param str security_group_id: The security group ID must be one in the same VPC.
-        :param str vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        :param str security_group_id: The security group ID.
+        :param str vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -649,7 +653,7 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -657,7 +661,7 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the data disk.
+        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -673,7 +677,7 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[str]:
         """
-        The security group ID must be one in the same VPC.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -681,7 +685,7 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[str]:
         """
-        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        When creating a VPC-Connected instance, you must specify its VSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -716,13 +720,13 @@ class EcsLaunchTemplateSystemDisk(dict):
                  performance_level: Optional[str] = None,
                  size: Optional[int] = None):
         """
-        :param str category: The category of the disk.
-        :param bool delete_with_instance: Indicates whether the data disk is released with the instance.
-        :param str description: The description of the data disk.
+        :param str category: The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+        :param bool delete_with_instance: Specifies whether to release the system disk when the instance is released. Default to `true`.
+        :param str description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param str iops: The Iops.
-        :param str name: The name of the data disk.
-        :param str performance_level: The performance level of the ESSD used as the data disk.
-        :param int size: The size of the data disk.
+        :param str name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        :param str performance_level: The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+        :param int size: Size of the system disk, measured in GB. Value range: [20, 500].
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -743,7 +747,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def category(self) -> Optional[str]:
         """
-        The category of the disk.
+        The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
         """
         return pulumi.get(self, "category")
 
@@ -751,7 +755,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[bool]:
         """
-        Indicates whether the data disk is released with the instance.
+        Specifies whether to release the system disk when the instance is released. Default to `true`.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -759,7 +763,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -775,7 +779,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the data disk.
+        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -783,7 +787,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[str]:
         """
-        The performance level of the ESSD used as the data disk.
+        The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -791,7 +795,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def size(self) -> Optional[int]:
         """
-        The size of the data disk.
+        Size of the system disk, measured in GB. Value range: [20, 500].
         """
         return pulumi.get(self, "size")
 
@@ -1034,6 +1038,7 @@ class InstanceDataDisk(dict):
                  category: Optional[str] = None,
                  delete_with_instance: Optional[bool] = None,
                  description: Optional[str] = None,
+                 device: Optional[str] = None,
                  encrypted: Optional[bool] = None,
                  kms_key_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -1048,23 +1053,13 @@ class InstanceDataDisk(dict):
                - ephemeral_ssd: [5, 800]
         :param str auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param str category: The category of the disk:
-               - `cloud`: The general cloud disk.
-               - `cloud_efficiency`: The efficiency cloud disk.
-               - `cloud_ssd`: The SSD cloud disk.
-               - `cloud_essd`: The ESSD cloud disk.
-               - `ephemeral_ssd`: The local SSD disk.
-               Default to `cloud_efficiency`.
         :param bool delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
         :param str description: The description of the data disk.
-        :param bool encrypted: -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+        :param str device: The mount point of the data disk.
+        :param bool encrypted: Encrypted the data in this disk. Default value: `false`.
         :param str kms_key_id: The KMS key ID corresponding to the Nth data disk.
         :param str name: The name of the data disk.
         :param str performance_level: The performance level of the ESSD used as data disk:
-               - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-               - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-               - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-               - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-               Default to `PL1`.
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         pulumi.set(__self__, "size", size)
@@ -1076,6 +1071,8 @@ class InstanceDataDisk(dict):
             pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if kms_key_id is not None:
@@ -1113,12 +1110,6 @@ class InstanceDataDisk(dict):
     def category(self) -> Optional[str]:
         """
         The category of the disk:
-        - `cloud`: The general cloud disk.
-        - `cloud_efficiency`: The efficiency cloud disk.
-        - `cloud_ssd`: The SSD cloud disk.
-        - `cloud_essd`: The ESSD cloud disk.
-        - `ephemeral_ssd`: The local SSD disk.
-        Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
 
@@ -1140,9 +1131,17 @@ class InstanceDataDisk(dict):
 
     @property
     @pulumi.getter
+    def device(self) -> Optional[str]:
+        """
+        The mount point of the data disk.
+        """
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter
     def encrypted(self) -> Optional[bool]:
         """
-        -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+        Encrypted the data in this disk. Default value: `false`.
         """
         return pulumi.get(self, "encrypted")
 
@@ -1167,11 +1166,6 @@ class InstanceDataDisk(dict):
     def performance_level(self) -> Optional[str]:
         """
         The performance level of the ESSD used as data disk:
-        - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-        Default to `PL1`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -1275,7 +1269,7 @@ class LaunchTemplateDataDisk(dict):
                - cloud_essd: ESSD cloud Disks.
         :param bool delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
         :param str description: The description of the data disk.
-        :param bool encrypted: -(Optional, Bool) Encrypted the data in this disk.
+        :param bool encrypted: Encrypted the data in this disk.
         :param str name: The name of the data disk.
         :param int size: The size of the data disk.
                - cloud：[5, 2000]
@@ -1335,7 +1329,7 @@ class LaunchTemplateDataDisk(dict):
     @pulumi.getter
     def encrypted(self) -> Optional[bool]:
         """
-        -(Optional, Bool) Encrypted the data in this disk.
+        Encrypted the data in this disk.
         """
         return pulumi.get(self, "encrypted")
 
@@ -1582,6 +1576,42 @@ class LaunchTemplateSystemDisk(dict):
         - ephemeral_ssd: [5, 800]
         """
         return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class ReservedInstanceOperationLock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lockReason":
+            suggest = "lock_reason"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReservedInstanceOperationLock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReservedInstanceOperationLock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReservedInstanceOperationLock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 lock_reason: Optional[str] = None):
+        """
+        :param str lock_reason: The reason why the reserved instance was locked.
+        """
+        if lock_reason is not None:
+            pulumi.set(__self__, "lock_reason", lock_reason)
+
+    @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> Optional[str]:
+        """
+        The reason why the reserved instance was locked.
+        """
+        return pulumi.get(self, "lock_reason")
 
 
 @pulumi.output_type
@@ -1860,6 +1890,212 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
         The number of extended volumes on which this policy is enabled.
         """
         return pulumi.get(self, "volume_nums")
+
+
+@pulumi.output_type
+class GetCapacityReservationsReservationResult(dict):
+    def __init__(__self__, *,
+                 capacity_reservation_id: str,
+                 capacity_reservation_name: str,
+                 description: str,
+                 end_time: str,
+                 end_time_type: str,
+                 id: str,
+                 instance_amount: str,
+                 instance_type: str,
+                 match_criteria: str,
+                 payment_type: str,
+                 platform: str,
+                 resource_group_id: str,
+                 start_time: str,
+                 start_time_type: str,
+                 status: str,
+                 time_slot: str,
+                 zone_ids: Sequence[str],
+                 tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param str capacity_reservation_id: Capacity Reservation id
+        :param str capacity_reservation_name: Capacity reservation service name.
+        :param str description: description of the capacity reservation instance
+        :param str end_time: end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+        :param str end_time_type: Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
+        :param str id: The ID of the Capacity Reservation.
+        :param str instance_amount: The total number of instances that need to be reserved within the capacity reservation
+        :param str instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
+        :param str match_criteria: The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+        :param str payment_type: The payment type of the resource. value range `PostPaid`, `PrePaid`.
+        :param str platform: platform of the capacity reservation , value range `windows`, `linux`, `all`.
+        :param str resource_group_id: The resource group id.
+        :param str start_time: time of the capacity reservation which become active
+        :param str start_time_type: The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
+        :param str status: The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+        :param str time_slot: This parameter is under test and is not yet open for use.
+        :param Sequence[str] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+        :param Mapping[str, Any] tags: The tag of the resource.
+        """
+        pulumi.set(__self__, "capacity_reservation_id", capacity_reservation_id)
+        pulumi.set(__self__, "capacity_reservation_name", capacity_reservation_name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "end_time_type", end_time_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_amount", instance_amount)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "match_criteria", match_criteria)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "platform", platform)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "start_time_type", start_time_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "time_slot", time_slot)
+        pulumi.set(__self__, "zone_ids", zone_ids)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="capacityReservationId")
+    def capacity_reservation_id(self) -> str:
+        """
+        Capacity Reservation id
+        """
+        return pulumi.get(self, "capacity_reservation_id")
+
+    @property
+    @pulumi.getter(name="capacityReservationName")
+    def capacity_reservation_name(self) -> str:
+        """
+        Capacity reservation service name.
+        """
+        return pulumi.get(self, "capacity_reservation_name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        description of the capacity reservation instance
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="endTimeType")
+    def end_time_type(self) -> str:
+        """
+        Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
+        """
+        return pulumi.get(self, "end_time_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Capacity Reservation.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceAmount")
+    def instance_amount(self) -> str:
+        """
+        The total number of instances that need to be reserved within the capacity reservation
+        """
+        return pulumi.get(self, "instance_amount")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        Instance type. Currently, you can only set the capacity reservation service for one instance type.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="matchCriteria")
+    def match_criteria(self) -> str:
+        """
+        The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+        """
+        return pulumi.get(self, "match_criteria")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the resource. value range `PostPaid`, `PrePaid`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def platform(self) -> str:
+        """
+        platform of the capacity reservation , value range `windows`, `linux`, `all`.
+        """
+        return pulumi.get(self, "platform")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The resource group id.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        time of the capacity reservation which become active
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="startTimeType")
+    def start_time_type(self) -> str:
+        """
+        The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
+        """
+        return pulumi.get(self, "start_time_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="timeSlot")
+    def time_slot(self) -> str:
+        """
+        This parameter is under test and is not yet open for use.
+        """
+        return pulumi.get(self, "time_slot")
+
+    @property
+    @pulumi.getter(name="zoneIds")
+    def zone_ids(self) -> Sequence[str]:
+        """
+        The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+        """
+        return pulumi.get(self, "zone_ids")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type
@@ -7347,6 +7583,241 @@ class GetEipsEipResult(dict):
 
 
 @pulumi.output_type
+class GetElasticityAssurancesAssuranceResult(dict):
+    def __init__(__self__, *,
+                 allocated_resources: Sequence['outputs.GetElasticityAssurancesAssuranceAllocatedResourceResult'],
+                 description: str,
+                 elasticity_assurance_id: str,
+                 end_time: str,
+                 id: str,
+                 instance_charge_type: str,
+                 private_pool_options_id: str,
+                 private_pool_options_match_criteria: str,
+                 private_pool_options_name: str,
+                 resource_group_id: str,
+                 start_time: str,
+                 start_time_type: str,
+                 status: str,
+                 total_assurance_times: str,
+                 used_assurance_times: int,
+                 tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param Sequence['GetElasticityAssurancesAssuranceAllocatedResourceArgs'] allocated_resources: Details of resource allocation.
+        :param str description: Description of flexible guarantee service.
+        :param str elasticity_assurance_id: The first ID of the resource
+        :param str end_time: Flexible guarantee service failure time.
+        :param str id: ID of flexible guarantee service.
+        :param str instance_charge_type: The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
+        :param str private_pool_options_id: The ID of the elasticity assurance.
+        :param str private_pool_options_match_criteria: The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+        :param str private_pool_options_name: The name of the elasticity assurance.
+        :param str resource_group_id: The ID of the resource group.
+        :param str start_time: Flexible guarantee service effective time.
+        :param str start_time_type: Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
+        :param str status: The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+        :param str total_assurance_times: The total number of flexible guarantee services.
+        :param int used_assurance_times: This parameter is not yet available.
+        :param Mapping[str, Any] tags: The tag key-value pair information bound by the elastic guarantee service.
+        """
+        pulumi.set(__self__, "allocated_resources", allocated_resources)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "elasticity_assurance_id", elasticity_assurance_id)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        pulumi.set(__self__, "private_pool_options_id", private_pool_options_id)
+        pulumi.set(__self__, "private_pool_options_match_criteria", private_pool_options_match_criteria)
+        pulumi.set(__self__, "private_pool_options_name", private_pool_options_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "start_time_type", start_time_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "total_assurance_times", total_assurance_times)
+        pulumi.set(__self__, "used_assurance_times", used_assurance_times)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="allocatedResources")
+    def allocated_resources(self) -> Sequence['outputs.GetElasticityAssurancesAssuranceAllocatedResourceResult']:
+        """
+        Details of resource allocation.
+        """
+        return pulumi.get(self, "allocated_resources")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of flexible guarantee service.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="elasticityAssuranceId")
+    def elasticity_assurance_id(self) -> str:
+        """
+        The first ID of the resource
+        """
+        return pulumi.get(self, "elasticity_assurance_id")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        Flexible guarantee service failure time.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of flexible guarantee service.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> str:
+        """
+        The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @property
+    @pulumi.getter(name="privatePoolOptionsId")
+    def private_pool_options_id(self) -> str:
+        """
+        The ID of the elasticity assurance.
+        """
+        return pulumi.get(self, "private_pool_options_id")
+
+    @property
+    @pulumi.getter(name="privatePoolOptionsMatchCriteria")
+    def private_pool_options_match_criteria(self) -> str:
+        """
+        The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+        """
+        return pulumi.get(self, "private_pool_options_match_criteria")
+
+    @property
+    @pulumi.getter(name="privatePoolOptionsName")
+    def private_pool_options_name(self) -> str:
+        """
+        The name of the elasticity assurance.
+        """
+        return pulumi.get(self, "private_pool_options_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Flexible guarantee service effective time.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="startTimeType")
+    def start_time_type(self) -> str:
+        """
+        Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
+        """
+        return pulumi.get(self, "start_time_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="totalAssuranceTimes")
+    def total_assurance_times(self) -> str:
+        """
+        The total number of flexible guarantee services.
+        """
+        return pulumi.get(self, "total_assurance_times")
+
+    @property
+    @pulumi.getter(name="usedAssuranceTimes")
+    def used_assurance_times(self) -> int:
+        """
+        This parameter is not yet available.
+        """
+        return pulumi.get(self, "used_assurance_times")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        The tag key-value pair information bound by the elastic guarantee service.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetElasticityAssurancesAssuranceAllocatedResourceResult(dict):
+    def __init__(__self__, *,
+                 instance_type: str,
+                 total_amount: int,
+                 used_amount: int,
+                 zone_id: str):
+        """
+        :param str instance_type: Instance type.
+        :param int total_amount: The total number of instances that need to be reserved within an instance type.
+        :param int used_amount: The number of instances that have been used.
+        :param str zone_id: The zone ID.
+        """
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "total_amount", total_amount)
+        pulumi.set(__self__, "used_amount", used_amount)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        Instance type.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="totalAmount")
+    def total_amount(self) -> int:
+        """
+        The total number of instances that need to be reserved within an instance type.
+        """
+        return pulumi.get(self, "total_amount")
+
+    @property
+    @pulumi.getter(name="usedAmount")
+    def used_amount(self) -> int:
+        """
+        The number of instances that have been used.
+        """
+        return pulumi.get(self, "used_amount")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
 class GetHpcClustersClusterResult(dict):
     def __init__(__self__, *,
                  description: str,
@@ -7441,16 +7912,8 @@ class GetImagesImageResult(dict):
         :param str product_code: Product code of the image on the image market.
         :param str progress: Progress of image creation, presented in percentages.
         :param int size: Size of the created disk.
-        :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-               * `Creating`: The image is being created.
-               * `Waiting`: The image is waiting to be processed.
-               * `Available`: The image is available.
-               * `UnAvailable`: The image is unavailable.
-               * `CreateFailed`: The image failed to be created.
-               * `Deprecated`: The image is discontinued.
-        :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
-               * `instance`: The image is already in use and running on an ECS instance.
-               * `none`: The image is not in use.
+        :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+        :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "architecture", architecture)
@@ -7636,13 +8099,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-        * `Creating`: The image is being created.
-        * `Waiting`: The image is waiting to be processed.
-        * `Available`: The image is available.
-        * `UnAvailable`: The image is unavailable.
-        * `CreateFailed`: The image failed to be created.
-        * `Deprecated`: The image is discontinued.
+        The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -7650,9 +8107,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def usage(self) -> str:
         """
-        Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
-        * `instance`: The image is already in use and running on an ECS instance.
-        * `none`: The image is not in use.
+        Specifies whether to check the validity of the request without actually making the request. Valid values:
         """
         return pulumi.get(self, "usage")
 
@@ -7712,7 +8167,7 @@ class GetInstanceTypeFamiliesFamilyResult(dict):
                  id: str,
                  zone_ids: Sequence[str]):
         """
-        :param str generation: The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+        :param str generation: The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
         :param str id: ID of the instance type family.
         :param Sequence[str] zone_ids: A list of Zone to launch the instance.
         """
@@ -7724,7 +8179,7 @@ class GetInstanceTypeFamiliesFamilyResult(dict):
     @pulumi.getter
     def generation(self) -> str:
         """
-        The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+        The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
         """
         return pulumi.get(self, "generation")
 

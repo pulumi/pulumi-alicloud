@@ -21,33 +21,32 @@ namespace Pulumi.AliCloud.Edas
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var applications = AliCloud.Edas.GetApplications.Invoke(new()
         ///     {
-        ///         var applications = Output.Create(AliCloud.Edas.GetApplications.InvokeAsync(new AliCloud.Edas.GetApplicationsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "xxx",
-        ///             },
-        ///             OutputFile = "application.txt",
-        ///         }));
-        ///         this.FirstApplicationName = applications.Apply(applications =&gt; applications.Applications?[0]?.AppName);
-        ///     }
+        ///             "xxx",
+        ///         },
+        ///         OutputFile = "application.txt",
+        ///     });
         /// 
-        ///     [Output("firstApplicationName")]
-        ///     public Output&lt;string&gt; FirstApplicationName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstApplicationName"] = applications.Apply(getApplicationsResult =&gt; getApplicationsResult.Applications[0]?.AppName),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationsResult> InvokeAsync(GetApplicationsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationsResult>("alicloud:edas/getApplications:getApplications", args ?? new GetApplicationsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationsResult>("alicloud:edas/getApplications:getApplications", args ?? new GetApplicationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of EDAS application in an Alibaba Cloud account according to the specified filters.
@@ -59,37 +58,36 @@ namespace Pulumi.AliCloud.Edas
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var applications = AliCloud.Edas.GetApplications.Invoke(new()
         ///     {
-        ///         var applications = Output.Create(AliCloud.Edas.GetApplications.InvokeAsync(new AliCloud.Edas.GetApplicationsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "xxx",
-        ///             },
-        ///             OutputFile = "application.txt",
-        ///         }));
-        ///         this.FirstApplicationName = applications.Apply(applications =&gt; applications.Applications?[0]?.AppName);
-        ///     }
+        ///             "xxx",
+        ///         },
+        ///         OutputFile = "application.txt",
+        ///     });
         /// 
-        ///     [Output("firstApplicationName")]
-        ///     public Output&lt;string&gt; FirstApplicationName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstApplicationName"] = applications.Apply(getApplicationsResult =&gt; getApplicationsResult.Applications[0]?.AppName),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetApplicationsResult> Invoke(GetApplicationsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:edas/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:edas/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetApplicationsArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -115,9 +113,10 @@ namespace Pulumi.AliCloud.Edas
         public GetApplicationsArgs()
         {
         }
+        public static new GetApplicationsArgs Empty => new GetApplicationsArgs();
     }
 
-    public sealed class GetApplicationsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -143,6 +142,7 @@ namespace Pulumi.AliCloud.Edas
         public GetApplicationsInvokeArgs()
         {
         }
+        public static new GetApplicationsInvokeArgs Empty => new GetApplicationsInvokeArgs();
     }
 
 

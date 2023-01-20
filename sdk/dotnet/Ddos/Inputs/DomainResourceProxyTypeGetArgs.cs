@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ddos.Inputs
 {
 
-    public sealed class DomainResourceProxyTypeGetArgs : Pulumi.ResourceArgs
+    public sealed class DomainResourceProxyTypeGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("proxyPorts")]
         private InputList<int>? _proxyPorts;
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Ddos.Inputs
         public DomainResourceProxyTypeGetArgs()
         {
         }
+        public static new DomainResourceProxyTypeGetArgs Empty => new DomainResourceProxyTypeGetArgs();
     }
 }

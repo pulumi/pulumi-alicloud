@@ -27,11 +27,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPlaintext(args: GetPlaintextArgs, opts?: pulumi.InvokeOptions): Promise<GetPlaintextResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getPlaintext:getPlaintext", {
         "ciphertextBlob": args.ciphertextBlob,
         "encryptionContext": args.encryptionContext,
@@ -47,7 +44,6 @@ export interface GetPlaintextArgs {
      */
     ciphertextBlob: string;
     /**
-     * -
      * (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     encryptionContext?: {[key: string]: string};
@@ -72,9 +68,30 @@ export interface GetPlaintextResult {
      */
     readonly plaintext: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const key = new alicloud.kms.Key("key", {
+ *     description: "example key",
+ *     isEnabled: true,
+ * });
+ * // Encrypt plaintext 'example'
+ * const encrypted = new alicloud.kms.Ciphertext("encrypted", {
+ *     keyId: key.id,
+ *     plaintext: "example",
+ * });
+ * const plaintext = alicloud.kms.getPlaintextOutput({
+ *     ciphertextBlob: encrypted.ciphertextBlob,
+ * });
+ * export const decrypted = plaintext.apply(plaintext => plaintext.plaintext);
+ * ```
+ */
 export function getPlaintextOutput(args: GetPlaintextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlaintextResult> {
-    return pulumi.output(args).apply(a => getPlaintext(a, opts))
+    return pulumi.output(args).apply((a: any) => getPlaintext(a, opts))
 }
 
 /**
@@ -86,7 +103,6 @@ export interface GetPlaintextOutputArgs {
      */
     ciphertextBlob: pulumi.Input<string>;
     /**
-     * -
      * (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

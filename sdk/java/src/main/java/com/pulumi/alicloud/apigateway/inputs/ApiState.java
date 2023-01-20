@@ -71,14 +71,14 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of Constant parameter.
+     * The description of the api. Defaults to null.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of Constant parameter.
+     * @return The description of the api. Defaults to null.
      * 
      */
     public Optional<Output<String>> description() {
@@ -176,14 +176,14 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * The name of the api gateway api. Defaults to null.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * @return The name of the api gateway api. Defaults to null.
      * 
      */
     public Optional<Output<String>> name() {
@@ -378,7 +378,7 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of Constant parameter.
+         * @param description The description of the api. Defaults to null.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of Constant parameter.
+         * @param description The description of the api. Defaults to null.
          * 
          * @return builder
          * 
@@ -525,7 +525,7 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+         * @param name The name of the api gateway api. Defaults to null.
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+         * @param name The name of the api gateway api. Defaults to null.
          * 
          * @return builder
          * 

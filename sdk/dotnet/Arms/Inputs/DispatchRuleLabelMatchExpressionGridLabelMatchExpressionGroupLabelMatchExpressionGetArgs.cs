@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Arms.Inputs
 {
 
-    public sealed class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionGetArgs : Pulumi.ResourceArgs
+    public sealed class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key of the tag of the dispatch rule. Valud values:
@@ -43,5 +43,6 @@ namespace Pulumi.AliCloud.Arms.Inputs
         public DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionGetArgs()
         {
         }
+        public static new DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionGetArgs Empty => new DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionGetArgs();
     }
 }

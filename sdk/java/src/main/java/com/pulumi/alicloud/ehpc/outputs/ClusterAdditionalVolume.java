@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterAdditionalVolume {
     /**
-     * @return The queue of the nodes to which the additional file system is attached.
+     * @return The queue to which the compute nodes are added.
      * 
      */
     private @Nullable String jobQueue;
@@ -29,7 +29,7 @@ public final class ClusterAdditionalVolume {
      */
     private @Nullable String location;
     /**
-     * @return The remote directory to which the additional file system is mounted.
+     * @return The remote directory to which the file system is mounted.
      * 
      */
     private @Nullable String remoteDirectory;
@@ -39,7 +39,7 @@ public final class ClusterAdditionalVolume {
      */
     private @Nullable List<ClusterAdditionalVolumeRole> roles;
     /**
-     * @return The ID of the additional file system.
+     * @return The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      * 
      */
     private @Nullable String volumeId;
@@ -49,24 +49,26 @@ public final class ClusterAdditionalVolume {
      */
     private @Nullable String volumeMountOption;
     /**
-     * @return The mount target of the additional file system.
+     * @return The mount target of the file system. Take note of the following information:
+     * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+     * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      * 
      */
     private @Nullable String volumeMountpoint;
     /**
-     * @return The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+     * @return The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      * 
      */
     private @Nullable String volumeProtocol;
     /**
-     * @return The type of the additional shared storage. Only NAS file systems are supported.
+     * @return The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      * 
      */
     private @Nullable String volumeType;
 
     private ClusterAdditionalVolume() {}
     /**
-     * @return The queue of the nodes to which the additional file system is attached.
+     * @return The queue to which the compute nodes are added.
      * 
      */
     public Optional<String> jobQueue() {
@@ -87,7 +89,7 @@ public final class ClusterAdditionalVolume {
         return Optional.ofNullable(this.location);
     }
     /**
-     * @return The remote directory to which the additional file system is mounted.
+     * @return The remote directory to which the file system is mounted.
      * 
      */
     public Optional<String> remoteDirectory() {
@@ -101,7 +103,7 @@ public final class ClusterAdditionalVolume {
         return this.roles == null ? List.of() : this.roles;
     }
     /**
-     * @return The ID of the additional file system.
+     * @return The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      * 
      */
     public Optional<String> volumeId() {
@@ -115,21 +117,23 @@ public final class ClusterAdditionalVolume {
         return Optional.ofNullable(this.volumeMountOption);
     }
     /**
-     * @return The mount target of the additional file system.
+     * @return The mount target of the file system. Take note of the following information:
+     * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+     * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      * 
      */
     public Optional<String> volumeMountpoint() {
         return Optional.ofNullable(this.volumeMountpoint);
     }
     /**
-     * @return The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+     * @return The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      * 
      */
     public Optional<String> volumeProtocol() {
         return Optional.ofNullable(this.volumeProtocol);
     }
     /**
-     * @return The type of the additional shared storage. Only NAS file systems are supported.
+     * @return The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      * 
      */
     public Optional<String> volumeType() {

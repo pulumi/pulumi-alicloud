@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class RuleRuleActionForwardGroupConfigServerGroupTupleArgs : Pulumi.ResourceArgs
+    public sealed class RuleRuleActionForwardGroupConfigServerGroupTupleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the destination server group to which requests are forwarded.
@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// The Weight of server group.
+        /// The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public RuleRuleActionForwardGroupConfigServerGroupTupleArgs()
         {
         }
+        public static new RuleRuleActionForwardGroupConfigServerGroupTupleArgs Empty => new RuleRuleActionForwardGroupConfigServerGroupTupleArgs();
     }
 }

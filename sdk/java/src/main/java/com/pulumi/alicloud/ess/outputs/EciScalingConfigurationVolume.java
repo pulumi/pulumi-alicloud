@@ -50,7 +50,7 @@ public final class EciScalingConfigurationVolume {
      */
     private @Nullable String flexVolumeOptions;
     /**
-     * @return The name of the mounted volume.
+     * @return The name of the volume.
      * 
      */
     private @Nullable String name;
@@ -125,7 +125,7 @@ public final class EciScalingConfigurationVolume {
         return Optional.ofNullable(this.flexVolumeOptions);
     }
     /**
-     * @return The name of the mounted volume.
+     * @return The name of the volume.
      * 
      */
     public Optional<String> name() {

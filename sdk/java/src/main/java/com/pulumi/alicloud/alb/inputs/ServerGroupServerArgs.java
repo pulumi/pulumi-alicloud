@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -32,14 +33,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The port that is used by the server. Valid values: `1` to `65535`.
+     * The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port that is used by the server. Valid values: `1` to `65535`.
+     * @return The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -47,29 +48,50 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the ECS instance, ENI instance or ECI instance.
+     * Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
      * 
      */
-    @Import(name="serverId")
-    private @Nullable Output<String> serverId;
+    @Import(name="remoteIpEnabled")
+    private @Nullable Output<Boolean> remoteIpEnabled;
 
     /**
-     * @return The ID of the ECS instance, ENI instance or ECI instance.
+     * @return Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
      * 
      */
-    public Optional<Output<String>> serverId() {
-        return Optional.ofNullable(this.serverId);
+    public Optional<Output<Boolean>> remoteIpEnabled() {
+        return Optional.ofNullable(this.remoteIpEnabled);
     }
 
     /**
-     * The IP address of the ENI instance when it is in the inclusive ENI mode.
+     * The ID of the backend server.
+     * - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
+     * - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
+     * - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+     * 
+     */
+    @Import(name="serverId", required=true)
+    private Output<String> serverId;
+
+    /**
+     * @return The ID of the backend server.
+     * - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
+     * - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
+     * - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+     * 
+     */
+    public Output<String> serverId() {
+        return this.serverId;
+    }
+
+    /**
+     * The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
      * 
      */
     @Import(name="serverIp")
     private @Nullable Output<String> serverIp;
 
     /**
-     * @return The IP address of the ENI instance when it is in the inclusive ENI mode.
+     * @return The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
      * 
      */
     public Optional<Output<String>> serverIp() {
@@ -77,18 +99,28 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+     * The type of the server. The type of the server. Valid values:
+     * - Ecs: an ECS instance.
+     * - Eni: an ENI.
+     * - Eci: an elastic container instance.
+     * - Ip(Available in v1.194.0+): an IP address.
+     * - fc(Available in v1.194.0+): a function.
      * 
      */
-    @Import(name="serverType")
-    private @Nullable Output<String> serverType;
+    @Import(name="serverType", required=true)
+    private Output<String> serverType;
 
     /**
-     * @return The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+     * @return The type of the server. The type of the server. Valid values:
+     * - Ecs: an ECS instance.
+     * - Eni: an ENI.
+     * - Eci: an elastic container instance.
+     * - Ip(Available in v1.194.0+): an IP address.
+     * - fc(Available in v1.194.0+): a function.
      * 
      */
-    public Optional<Output<String>> serverType() {
-        return Optional.ofNullable(this.serverType);
+    public Output<String> serverType() {
+        return this.serverType;
     }
 
     /**
@@ -108,7 +140,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-     * requests are forwarded to the server.
+     * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
      * 
      */
     @Import(name="weight")
@@ -116,7 +148,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-     * requests are forwarded to the server.
+     * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
      * 
      */
     public Optional<Output<Integer>> weight() {
@@ -128,6 +160,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     private ServerGroupServerArgs(ServerGroupServerArgs $) {
         this.description = $.description;
         this.port = $.port;
+        this.remoteIpEnabled = $.remoteIpEnabled;
         this.serverId = $.serverId;
         this.serverIp = $.serverIp;
         this.serverType = $.serverType;
@@ -175,7 +208,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param port The port that is used by the server. Valid values: `1` to `65535`.
+         * @param port The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
          * 
          * @return builder
          * 
@@ -186,7 +219,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param port The port that is used by the server. Valid values: `1` to `65535`.
+         * @param port The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
          * 
          * @return builder
          * 
@@ -196,18 +229,45 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverId The ID of the ECS instance, ENI instance or ECI instance.
+         * @param remoteIpEnabled Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
          * 
          * @return builder
          * 
          */
-        public Builder serverId(@Nullable Output<String> serverId) {
+        public Builder remoteIpEnabled(@Nullable Output<Boolean> remoteIpEnabled) {
+            $.remoteIpEnabled = remoteIpEnabled;
+            return this;
+        }
+
+        /**
+         * @param remoteIpEnabled Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteIpEnabled(Boolean remoteIpEnabled) {
+            return remoteIpEnabled(Output.of(remoteIpEnabled));
+        }
+
+        /**
+         * @param serverId The ID of the backend server.
+         * - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
+         * - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
+         * - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverId(Output<String> serverId) {
             $.serverId = serverId;
             return this;
         }
 
         /**
-         * @param serverId The ID of the ECS instance, ENI instance or ECI instance.
+         * @param serverId The ID of the backend server.
+         * - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
+         * - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
+         * - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
          * 
          * @return builder
          * 
@@ -217,7 +277,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverIp The IP address of the ENI instance when it is in the inclusive ENI mode.
+         * @param serverIp The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
          * 
          * @return builder
          * 
@@ -228,7 +288,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverIp The IP address of the ENI instance when it is in the inclusive ENI mode.
+         * @param serverIp The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
          * 
          * @return builder
          * 
@@ -238,18 +298,28 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverType The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+         * @param serverType The type of the server. The type of the server. Valid values:
+         * - Ecs: an ECS instance.
+         * - Eni: an ENI.
+         * - Eci: an elastic container instance.
+         * - Ip(Available in v1.194.0+): an IP address.
+         * - fc(Available in v1.194.0+): a function.
          * 
          * @return builder
          * 
          */
-        public Builder serverType(@Nullable Output<String> serverType) {
+        public Builder serverType(Output<String> serverType) {
             $.serverType = serverType;
             return this;
         }
 
         /**
-         * @param serverType The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+         * @param serverType The type of the server. The type of the server. Valid values:
+         * - Ecs: an ECS instance.
+         * - Eni: an ENI.
+         * - Eci: an elastic container instance.
+         * - Ip(Available in v1.194.0+): an IP address.
+         * - fc(Available in v1.194.0+): a function.
          * 
          * @return builder
          * 
@@ -281,7 +351,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param weight The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-         * requests are forwarded to the server.
+         * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
          * 
          * @return builder
          * 
@@ -293,7 +363,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param weight The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-         * requests are forwarded to the server.
+         * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
          * 
          * @return builder
          * 
@@ -303,6 +373,8 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ServerGroupServerArgs build() {
+            $.serverId = Objects.requireNonNull($.serverId, "expected parameter 'serverId' to be non-null");
+            $.serverType = Objects.requireNonNull($.serverType, "expected parameter 'serverType' to be non-null");
             return $;
         }
     }

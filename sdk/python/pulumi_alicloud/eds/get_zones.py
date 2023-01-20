@@ -75,7 +75,7 @@ class AwaitableGetZonesResult(GetZonesResult):
 def get_zones(output_file: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
-    This data source provides the available zones with the Elastic Desktop Service(EDS) of the current Alibaba Cloud user.
+    This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.174.0+.
 
@@ -107,7 +107,7 @@ def get_zones(output_file: Optional[str] = None,
 def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
     """
-    This data source provides the available zones with the Elastic Desktop Service(EDS) of the current Alibaba Cloud user.
+    This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.174.0+.
 

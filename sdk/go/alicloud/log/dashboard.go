@@ -49,6 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = log.NewDashboard(ctx, "example", &log.DashboardArgs{
+//				Attribute: pulumi.String("{\"type\":\"grid\"}"),
 //				CharList: pulumi.String(fmt.Sprintf(`  [
 //	    {
 //	      "action": {},
@@ -103,6 +104,8 @@ import (
 type Dashboard struct {
 	pulumi.CustomResourceState
 
+	// Dashboard attribute.
+	Attribute pulumi.StringOutput `pulumi:"attribute"`
 	// Configuration of charts in the dashboard.
 	CharList pulumi.StringOutput `pulumi:"charList"`
 	// The name of the Log Dashboard.
@@ -151,6 +154,8 @@ func GetDashboard(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dashboard resources.
 type dashboardState struct {
+	// Dashboard attribute.
+	Attribute *string `pulumi:"attribute"`
 	// Configuration of charts in the dashboard.
 	CharList *string `pulumi:"charList"`
 	// The name of the Log Dashboard.
@@ -162,6 +167,8 @@ type dashboardState struct {
 }
 
 type DashboardState struct {
+	// Dashboard attribute.
+	Attribute pulumi.StringPtrInput
 	// Configuration of charts in the dashboard.
 	CharList pulumi.StringPtrInput
 	// The name of the Log Dashboard.
@@ -177,6 +184,8 @@ func (DashboardState) ElementType() reflect.Type {
 }
 
 type dashboardArgs struct {
+	// Dashboard attribute.
+	Attribute *string `pulumi:"attribute"`
 	// Configuration of charts in the dashboard.
 	CharList string `pulumi:"charList"`
 	// The name of the Log Dashboard.
@@ -189,6 +198,8 @@ type dashboardArgs struct {
 
 // The set of arguments for constructing a Dashboard resource.
 type DashboardArgs struct {
+	// Dashboard attribute.
+	Attribute pulumi.StringPtrInput
 	// Configuration of charts in the dashboard.
 	CharList pulumi.StringInput
 	// The name of the Log Dashboard.
@@ -284,6 +295,11 @@ func (o DashboardOutput) ToDashboardOutput() DashboardOutput {
 
 func (o DashboardOutput) ToDashboardOutputWithContext(ctx context.Context) DashboardOutput {
 	return o
+}
+
+// Dashboard attribute.
+func (o DashboardOutput) Attribute() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Attribute }).(pulumi.StringOutput)
 }
 
 // Configuration of charts in the dashboard.

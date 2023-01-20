@@ -33,8 +33,6 @@ class AccountArgs:
         :param pulumi.Input[str] allow_databases: The list of databases to which you want to grant permissions. Separate databases with commas (,).
         :param pulumi.Input[str] allow_dictionaries: The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
         :param pulumi.Input[bool] ddl_authority: Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-               -`true`: grants DDL permissions to the database account.
-               -`false`: does not grant DDL permissions to the database account.
         :param pulumi.Input[str] dml_authority: Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
         :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
         :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,).
@@ -134,8 +132,6 @@ class AccountArgs:
     def ddl_authority(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-        -`true`: grants DDL permissions to the database account.
-        -`false`: does not grant DDL permissions to the database account.
         """
         return pulumi.get(self, "ddl_authority")
 
@@ -204,8 +200,6 @@ class _AccountState:
         :param pulumi.Input[str] allow_dictionaries: The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
         :param pulumi.Input[str] db_cluster_id: The db cluster id.
         :param pulumi.Input[bool] ddl_authority: Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-               -`true`: grants DDL permissions to the database account.
-               -`false`: does not grant DDL permissions to the database account.
         :param pulumi.Input[str] dml_authority: Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
         :param pulumi.Input[str] status: The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
         :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
@@ -314,8 +308,6 @@ class _AccountState:
     def ddl_authority(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-        -`true`: grants DDL permissions to the database account.
-        -`false`: does not grant DDL permissions to the database account.
         """
         return pulumi.get(self, "ddl_authority")
 
@@ -461,8 +453,6 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] allow_dictionaries: The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
         :param pulumi.Input[str] db_cluster_id: The db cluster id.
         :param pulumi.Input[bool] ddl_authority: Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-               -`true`: grants DDL permissions to the database account.
-               -`false`: does not grant DDL permissions to the database account.
         :param pulumi.Input[str] dml_authority: Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
         :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
         :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,).
@@ -613,8 +603,6 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] allow_dictionaries: The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
         :param pulumi.Input[str] db_cluster_id: The db cluster id.
         :param pulumi.Input[bool] ddl_authority: Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-               -`true`: grants DDL permissions to the database account.
-               -`false`: does not grant DDL permissions to the database account.
         :param pulumi.Input[str] dml_authority: Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
         :param pulumi.Input[str] status: The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
         :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
@@ -692,8 +680,6 @@ class Account(pulumi.CustomResource):
     def ddl_authority(self) -> pulumi.Output[bool]:
         """
         Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-        -`true`: grants DDL permissions to the database account.
-        -`false`: does not grant DDL permissions to the database account.
         """
         return pulumi.get(self, "ddl_authority")
 

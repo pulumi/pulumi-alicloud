@@ -16,7 +16,7 @@ public final class GetRouteServicesService {
      */
     private String accessRegionId;
     /**
-     * @return -(Required, ForceNew) The ID of the CEN instance.
+     * @return The ID of the CEN instance.
      * 
      */
     private String cenId;
@@ -31,7 +31,7 @@ public final class GetRouteServicesService {
      */
     private String description;
     /**
-     * @return -(Optional, ForceNew) The domain name or IP address of the cloud service.
+     * @return The domain name or IP address of the cloud service.
      * 
      */
     private String host;
@@ -70,7 +70,7 @@ public final class GetRouteServicesService {
         return this.accessRegionId;
     }
     /**
-     * @return -(Required, ForceNew) The ID of the CEN instance.
+     * @return The ID of the CEN instance.
      * 
      */
     public String cenId() {
@@ -91,7 +91,7 @@ public final class GetRouteServicesService {
         return this.description;
     }
     /**
-     * @return -(Optional, ForceNew) The domain name or IP address of the cloud service.
+     * @return The domain name or IP address of the cloud service.
      * 
      */
     public String host() {

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eds
 {
     /// <summary>
-    /// Provides a Elastic Desktop Service(EDS) Policy Group resource.
+    /// Provides a Elastic Desktop Service (ECD) Policy Group resource.
     /// 
-    /// For information about Elastic Desktop Service(EDS) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
+    /// For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
     /// 
     /// &gt; **NOTE:** Available in v1.130.0+.
     /// 
@@ -21,57 +21,55 @@ namespace Pulumi.AliCloud.Eds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Eds.EcdPolicyGroup("default", new()
     ///     {
-    ///         var @default = new AliCloud.Eds.EcdPolicyGroup("default", new AliCloud.Eds.EcdPolicyGroupArgs
+    ///         AuthorizeAccessPolicyRules = new[]
     ///         {
-    ///             AuthorizeAccessPolicyRules = 
+    ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
     ///             {
-    ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
-    ///                 {
-    ///                     CidrIp = "1.2.3.45/24",
-    ///                     Description = "my-description1",
-    ///                 },
+    ///                 CidrIp = "1.2.3.45/24",
+    ///                 Description = "my-description1",
     ///             },
-    ///             AuthorizeSecurityPolicyRules = 
+    ///         },
+    ///         AuthorizeSecurityPolicyRules = new[]
+    ///         {
+    ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
     ///             {
-    ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
-    ///                 {
-    ///                     CidrIp = "1.2.3.4/24",
-    ///                     Description = "my-description",
-    ///                     IpProtocol = "TCP",
-    ///                     Policy = "accept",
-    ///                     PortRange = "80/80",
-    ///                     Priority = "1",
-    ///                     Type = "inflow",
-    ///                 },
+    ///                 CidrIp = "1.2.3.4/24",
+    ///                 Description = "my-description",
+    ///                 IpProtocol = "TCP",
+    ///                 Policy = "accept",
+    ///                 PortRange = "80/80",
+    ///                 Priority = "1",
+    ///                 Type = "inflow",
     ///             },
-    ///             Clipboard = "read",
-    ///             LocalDrive = "read",
-    ///             PolicyGroupName = "my-policy-group",
-    ///             UsbRedirect = "off",
-    ///             Watermark = "off",
-    ///         });
-    ///     }
+    ///         },
+    ///         Clipboard = "read",
+    ///         LocalDrive = "read",
+    ///         PolicyGroupName = "my-policy-group",
+    ///         UsbRedirect = "off",
+    ///         Watermark = "off",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// Elastic Desktop Service(EDS) Policy Group can be imported using the id, e.g.
+    /// Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:eds/ecdPolicyGroup:EcdPolicyGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/ecdPolicyGroup:EcdPolicyGroup")]
-    public partial class EcdPolicyGroup : Pulumi.CustomResource
+    public partial class EcdPolicyGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The rule of authorize access rule.
@@ -138,6 +136,12 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Output("recordingEndTime")]
         public Output<string?> RecordingEndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        /// </summary>
+        [Output("recordingExpires")]
+        public Output<int> RecordingExpires { get; private set; } = null!;
 
         /// <summary>
         /// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
@@ -231,7 +235,7 @@ namespace Pulumi.AliCloud.Eds
         }
     }
 
-    public sealed class EcdPolicyGroupArgs : Pulumi.ResourceArgs
+    public sealed class EcdPolicyGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("authorizeAccessPolicyRules")]
         private InputList<Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs>? _authorizeAccessPolicyRules;
@@ -312,6 +316,12 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? RecordingEndTime { get; set; }
 
         /// <summary>
+        /// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        /// </summary>
+        [Input("recordingExpires")]
+        public Input<int>? RecordingExpires { get; set; }
+
+        /// <summary>
         /// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         /// </summary>
         [Input("recordingFps")]
@@ -356,9 +366,10 @@ namespace Pulumi.AliCloud.Eds
         public EcdPolicyGroupArgs()
         {
         }
+        public static new EcdPolicyGroupArgs Empty => new EcdPolicyGroupArgs();
     }
 
-    public sealed class EcdPolicyGroupState : Pulumi.ResourceArgs
+    public sealed class EcdPolicyGroupState : global::Pulumi.ResourceArgs
     {
         [Input("authorizeAccessPolicyRules")]
         private InputList<Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleGetArgs>? _authorizeAccessPolicyRules;
@@ -439,6 +450,12 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? RecordingEndTime { get; set; }
 
         /// <summary>
+        /// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        /// </summary>
+        [Input("recordingExpires")]
+        public Input<int>? RecordingExpires { get; set; }
+
+        /// <summary>
         /// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         /// </summary>
         [Input("recordingFps")]
@@ -489,5 +506,6 @@ namespace Pulumi.AliCloud.Eds
         public EcdPolicyGroupState()
         {
         }
+        public static new EcdPolicyGroupState Empty => new EcdPolicyGroupState();
     }
 }

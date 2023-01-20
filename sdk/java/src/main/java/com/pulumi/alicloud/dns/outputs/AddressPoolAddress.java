@@ -13,14 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AddressPoolAddress {
     /**
-     * @return The address that you want to add to the address pool.
+     * @return The address lists of the Address Pool. See the following `Block address`.
      * 
      */
     private String address;
     /**
      * @return The source region of the address. expressed as a JSON string. The structure is as follows:
-     * * `LineCodes`: List of home lineCodes.
-     * * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
      * 
      */
     private String attributeInfo;
@@ -42,7 +40,7 @@ public final class AddressPoolAddress {
 
     private AddressPoolAddress() {}
     /**
-     * @return The address that you want to add to the address pool.
+     * @return The address lists of the Address Pool. See the following `Block address`.
      * 
      */
     public String address() {
@@ -50,8 +48,6 @@ public final class AddressPoolAddress {
     }
     /**
      * @return The source region of the address. expressed as a JSON string. The structure is as follows:
-     * * `LineCodes`: List of home lineCodes.
-     * * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
      * 
      */
     public String attributeInfo() {

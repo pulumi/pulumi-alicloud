@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -27,11 +28,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRegistryEnterpriseSyncRules(args: GetRegistryEnterpriseSyncRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseSyncRulesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", {
         "ids": args.ids,
         "instanceId": args.instanceId,
@@ -113,9 +111,29 @@ export interface GetRegistryEnterpriseSyncRulesResult {
      */
     readonly targetInstanceId?: string;
 }
-
+/**
+ * This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.90.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const mySyncRules = alicloud.cs.getRegistryEnterpriseSyncRules({
+ *     instanceId: "cri-xxx",
+ *     namespaceName: "test-namespace",
+ *     repoName: "test-repo",
+ *     targetInstanceId: "cri-yyy",
+ *     nameRegex: "test-rule",
+ * });
+ * export const output = [mySyncRules.then(mySyncRules => mySyncRules.rules)].map(__item => __item?.id);
+ * ```
+ */
 export function getRegistryEnterpriseSyncRulesOutput(args: GetRegistryEnterpriseSyncRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseSyncRulesResult> {
-    return pulumi.output(args).apply(a => getRegistryEnterpriseSyncRules(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegistryEnterpriseSyncRules(a, opts))
 }
 
 /**

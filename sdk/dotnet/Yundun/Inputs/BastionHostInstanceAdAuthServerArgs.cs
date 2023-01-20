@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Yundun.Inputs
 {
 
-    public sealed class BastionHostInstanceAdAuthServerArgs : Pulumi.ResourceArgs
+    public sealed class BastionHostInstanceAdAuthServerArgs : global::Pulumi.ResourceArgs
     {
         [Input("account", required: true)]
         public Input<string> Account { get; set; } = null!;
@@ -37,7 +37,16 @@ namespace Pulumi.AliCloud.Yundun.Inputs
         public Input<string>? NameMapping { get; set; }
 
         [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        private Input<string>? _password;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
@@ -51,5 +60,6 @@ namespace Pulumi.AliCloud.Yundun.Inputs
         public BastionHostInstanceAdAuthServerArgs()
         {
         }
+        public static new BastionHostInstanceAdAuthServerArgs Empty => new BastionHostInstanceAdAuthServerArgs();
     }
 }

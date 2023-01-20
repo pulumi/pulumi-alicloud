@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,24 +15,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const usersDs = pulumi.output(alicloud.ram.getUsers({
+ * const usersDs = alicloud.ram.getUsers({
  *     groupName: "group1",
  *     nameRegex: "^user",
  *     outputFile: "users.txt",
  *     policyName: "AliyunACSDefaultAccess",
  *     policyType: "Custom",
- * }));
- *
- * export const firstUserId = usersDs.users[0].id;
+ * });
+ * export const firstUserId = usersDs.then(usersDs => usersDs.users?.[0]?.id);
  * ```
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ram/getUsers:getUsers", {
         "groupName": args.groupName,
         "ids": args.ids,
@@ -51,7 +48,7 @@ export interface GetUsersArgs {
      */
     groupName?: string;
     /**
-     * - A list of ram user IDs.
+     * A list of ram user IDs.
      */
     ids?: string[];
     /**
@@ -95,9 +92,27 @@ export interface GetUsersResult {
      */
     readonly users: outputs.ram.GetUsersUser[];
 }
-
+/**
+ * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const usersDs = alicloud.ram.getUsers({
+ *     groupName: "group1",
+ *     nameRegex: "^user",
+ *     outputFile: "users.txt",
+ *     policyName: "AliyunACSDefaultAccess",
+ *     policyType: "Custom",
+ * });
+ * export const firstUserId = usersDs.then(usersDs => usersDs.users?.[0]?.id);
+ * ```
+ */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
-    return pulumi.output(args).apply(a => getUsers(a, opts))
+    return pulumi.output(args).apply((a: any) => getUsers(a, opts))
 }
 
 /**
@@ -109,7 +124,7 @@ export interface GetUsersOutputArgs {
      */
     groupName?: pulumi.Input<string>;
     /**
-     * - A list of ram user IDs.
+     * A list of ram user IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**

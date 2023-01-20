@@ -5,20 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./containerGroup";
-export * from "./getContainerGroups";
-export * from "./getImageCaches";
-export * from "./getVirtualNodes";
-export * from "./getZones";
-export * from "./imageCache";
-export * from "./openApiImageCache";
-export * from "./virtualNode";
+export { ContainerGroupArgs, ContainerGroupState } from "./containerGroup";
+export type ContainerGroup = import("./containerGroup").ContainerGroup;
+export const ContainerGroup: typeof import("./containerGroup").ContainerGroup = null as any;
+utilities.lazyLoad(exports, ["ContainerGroup"], () => require("./containerGroup"));
 
-// Import resources to register:
-import { ContainerGroup } from "./containerGroup";
-import { ImageCache } from "./imageCache";
-import { OpenApiImageCache } from "./openApiImageCache";
-import { VirtualNode } from "./virtualNode";
+export { GetContainerGroupsArgs, GetContainerGroupsResult, GetContainerGroupsOutputArgs } from "./getContainerGroups";
+export const getContainerGroups: typeof import("./getContainerGroups").getContainerGroups = null as any;
+export const getContainerGroupsOutput: typeof import("./getContainerGroups").getContainerGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getContainerGroups","getContainerGroupsOutput"], () => require("./getContainerGroups"));
+
+export { GetImageCachesArgs, GetImageCachesResult, GetImageCachesOutputArgs } from "./getImageCaches";
+export const getImageCaches: typeof import("./getImageCaches").getImageCaches = null as any;
+export const getImageCachesOutput: typeof import("./getImageCaches").getImageCachesOutput = null as any;
+utilities.lazyLoad(exports, ["getImageCaches","getImageCachesOutput"], () => require("./getImageCaches"));
+
+export { GetVirtualNodesArgs, GetVirtualNodesResult, GetVirtualNodesOutputArgs } from "./getVirtualNodes";
+export const getVirtualNodes: typeof import("./getVirtualNodes").getVirtualNodes = null as any;
+export const getVirtualNodesOutput: typeof import("./getVirtualNodes").getVirtualNodesOutput = null as any;
+utilities.lazyLoad(exports, ["getVirtualNodes","getVirtualNodesOutput"], () => require("./getVirtualNodes"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
+export { ImageCacheArgs, ImageCacheState } from "./imageCache";
+export type ImageCache = import("./imageCache").ImageCache;
+export const ImageCache: typeof import("./imageCache").ImageCache = null as any;
+utilities.lazyLoad(exports, ["ImageCache"], () => require("./imageCache"));
+
+export { OpenApiImageCacheArgs, OpenApiImageCacheState } from "./openApiImageCache";
+export type OpenApiImageCache = import("./openApiImageCache").OpenApiImageCache;
+export const OpenApiImageCache: typeof import("./openApiImageCache").OpenApiImageCache = null as any;
+utilities.lazyLoad(exports, ["OpenApiImageCache"], () => require("./openApiImageCache"));
+
+export { VirtualNodeArgs, VirtualNodeState } from "./virtualNode";
+export type VirtualNode = import("./virtualNode").VirtualNode;
+export const VirtualNode: typeof import("./virtualNode").VirtualNode = null as any;
+utilities.lazyLoad(exports, ["VirtualNode"], () => require("./virtualNode"));
+
 
 const _module = {
     version: utilities.getVersion(),

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Inputs
 {
 
-    public sealed class ProviderEndpointArgs : Pulumi.ResourceArgs
+    public sealed class ProviderEndpointArgs : global::Pulumi.ResourceArgs
     {
         [Input("acr")]
         public Input<string>? Acr { get; set; }
@@ -42,6 +42,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("bastionhost")]
         public Input<string>? Bastionhost { get; set; }
 
+        [Input("bpstudio")]
+        public Input<string>? Bpstudio { get; set; }
+
         [Input("brainIndustrial")]
         public Input<string>? BrainIndustrial { get; set; }
 
@@ -57,6 +60,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("cbn")]
         public Input<string>? Cbn { get; set; }
 
+        [Input("cbs")]
+        public Input<string>? Cbs { get; set; }
+
         [Input("cddc")]
         public Input<string>? Cddc { get; set; }
 
@@ -71,6 +77,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("cloudauth")]
         public Input<string>? Cloudauth { get; set; }
+
+        [Input("cloudfirewall")]
+        public Input<string>? Cloudfirewall { get; set; }
 
         [Input("cloudfw")]
         public Input<string>? Cloudfw { get; set; }
@@ -92,6 +101,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("cs")]
         public Input<string>? Cs { get; set; }
+
+        [Input("das")]
+        public Input<string>? Das { get; set; }
 
         [Input("datahub")]
         public Input<string>? Datahub { get; set; }
@@ -129,6 +141,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("dmsEnterprise")]
         public Input<string>? DmsEnterprise { get; set; }
 
+        [Input("dmsenterprise")]
+        public Input<string>? Dmsenterprise { get; set; }
+
         [Input("dns")]
         public Input<string>? Dns { get; set; }
 
@@ -143,6 +158,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("eais")]
         public Input<string>? Eais { get; set; }
+
+        [Input("ebs")]
+        public Input<string>? Ebs { get; set; }
 
         [Input("eci")]
         public Input<string>? Eci { get; set; }
@@ -258,6 +276,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("nas")]
         public Input<string>? Nas { get; set; }
 
+        [Input("nlb")]
+        public Input<string>? Nlb { get; set; }
+
         [Input("ons")]
         public Input<string>? Ons { get; set; }
 
@@ -336,6 +357,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("smartag")]
         public Input<string>? Smartag { get; set; }
 
+        [Input("srvcatalog")]
+        public Input<string>? Srvcatalog { get; set; }
+
         [Input("sts")]
         public Input<string>? Sts { get; set; }
 
@@ -351,6 +375,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("vpc")]
         public Input<string>? Vpc { get; set; }
 
+        [Input("vpcpeer")]
+        public Input<string>? Vpcpeer { get; set; }
+
         [Input("vs")]
         public Input<string>? Vs { get; set; }
 
@@ -363,5 +390,6 @@ namespace Pulumi.AliCloud.Inputs
         public ProviderEndpointArgs()
         {
         }
+        public static new ProviderEndpointArgs Empty => new ProviderEndpointArgs();
     }
 }

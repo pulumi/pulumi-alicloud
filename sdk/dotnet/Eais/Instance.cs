@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Eais
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eais/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Eais
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
@@ -142,9 +142,10 @@ namespace Pulumi.AliCloud.Eais
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
@@ -185,5 +186,6 @@ namespace Pulumi.AliCloud.Eais
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

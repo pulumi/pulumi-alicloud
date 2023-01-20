@@ -19,10 +19,8 @@ class HybridMonitorFcTaskArgs:
                  target_user_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HybridMonitorFcTask resource.
-        :param pulumi.Input[str] namespace: The index warehouse where the host belongs.
+        :param pulumi.Input[str] namespace: the namespace of the Alibaba Cloud service.
         :param pulumi.Input[str] yarm_config: The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-               - `namespace`: the namespace of the Alibaba Cloud service.
-               - `metric_list`: the metrics of the Alibaba Cloud service.
         :param pulumi.Input[str] target_user_id: The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
         """
         pulumi.set(__self__, "namespace", namespace)
@@ -34,7 +32,7 @@ class HybridMonitorFcTaskArgs:
     @pulumi.getter
     def namespace(self) -> pulumi.Input[str]:
         """
-        The index warehouse where the host belongs.
+        the namespace of the Alibaba Cloud service.
         """
         return pulumi.get(self, "namespace")
 
@@ -47,8 +45,6 @@ class HybridMonitorFcTaskArgs:
     def yarm_config(self) -> pulumi.Input[str]:
         """
         The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-        - `namespace`: the namespace of the Alibaba Cloud service.
-        - `metric_list`: the metrics of the Alibaba Cloud service.
         """
         return pulumi.get(self, "yarm_config")
 
@@ -79,11 +75,9 @@ class _HybridMonitorFcTaskState:
         """
         Input properties used for looking up and filtering HybridMonitorFcTask resources.
         :param pulumi.Input[str] hybrid_monitor_fc_task_id: The ID of the monitoring task.
-        :param pulumi.Input[str] namespace: The index warehouse where the host belongs.
+        :param pulumi.Input[str] namespace: the namespace of the Alibaba Cloud service.
         :param pulumi.Input[str] target_user_id: The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
         :param pulumi.Input[str] yarm_config: The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-               - `namespace`: the namespace of the Alibaba Cloud service.
-               - `metric_list`: the metrics of the Alibaba Cloud service.
         """
         if hybrid_monitor_fc_task_id is not None:
             pulumi.set(__self__, "hybrid_monitor_fc_task_id", hybrid_monitor_fc_task_id)
@@ -110,7 +104,7 @@ class _HybridMonitorFcTaskState:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        The index warehouse where the host belongs.
+        the namespace of the Alibaba Cloud service.
         """
         return pulumi.get(self, "namespace")
 
@@ -135,8 +129,6 @@ class _HybridMonitorFcTaskState:
     def yarm_config(self) -> Optional[pulumi.Input[str]]:
         """
         The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-        - `namespace`: the namespace of the Alibaba Cloud service.
-        - `metric_list`: the metrics of the Alibaba Cloud service.
         """
         return pulumi.get(self, "yarm_config")
 
@@ -185,11 +177,9 @@ class HybridMonitorFcTask(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] namespace: The index warehouse where the host belongs.
+        :param pulumi.Input[str] namespace: the namespace of the Alibaba Cloud service.
         :param pulumi.Input[str] target_user_id: The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
         :param pulumi.Input[str] yarm_config: The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-               - `namespace`: the namespace of the Alibaba Cloud service.
-               - `metric_list`: the metrics of the Alibaba Cloud service.
         """
         ...
     @overload
@@ -283,11 +273,9 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] hybrid_monitor_fc_task_id: The ID of the monitoring task.
-        :param pulumi.Input[str] namespace: The index warehouse where the host belongs.
+        :param pulumi.Input[str] namespace: the namespace of the Alibaba Cloud service.
         :param pulumi.Input[str] target_user_id: The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
         :param pulumi.Input[str] yarm_config: The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-               - `namespace`: the namespace of the Alibaba Cloud service.
-               - `metric_list`: the metrics of the Alibaba Cloud service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -311,7 +299,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
     @pulumi.getter
     def namespace(self) -> pulumi.Output[str]:
         """
-        The index warehouse where the host belongs.
+        the namespace of the Alibaba Cloud service.
         """
         return pulumi.get(self, "namespace")
 
@@ -328,8 +316,6 @@ class HybridMonitorFcTask(pulumi.CustomResource):
     def yarm_config(self) -> pulumi.Output[str]:
         """
         The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-        - `namespace`: the namespace of the Alibaba Cloud service.
-        - `metric_list`: the metrics of the Alibaba Cloud service.
         """
         return pulumi.get(self, "yarm_config")
 

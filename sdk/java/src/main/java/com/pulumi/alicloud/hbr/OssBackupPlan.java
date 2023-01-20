@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -112,6 +113,48 @@ public class OssBackupPlan extends com.pulumi.resources.CustomResource {
      */
     public Output<String> bucket() {
         return this.bucket;
+    }
+    /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    @Export(name="crossAccountRoleName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> crossAccountRoleName;
+
+    /**
+     * @return The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    public Output<Optional<String>> crossAccountRoleName() {
+        return Codegen.optional(this.crossAccountRoleName);
+    }
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    @Export(name="crossAccountType", type=String.class, parameters={})
+    private Output<String> crossAccountType;
+
+    /**
+     * @return The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    public Output<String> crossAccountType() {
+        return this.crossAccountType;
+    }
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    @Export(name="crossAccountUserId", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> crossAccountUserId;
+
+    /**
+     * @return The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    public Output<Optional<Integer>> crossAccountUserId() {
+        return Codegen.optional(this.crossAccountUserId);
     }
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.

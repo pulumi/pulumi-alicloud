@@ -29,7 +29,7 @@ public final class DatabasegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.databasegateway.DatabasegatewayFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.databasegateway.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -76,7 +76,7 @@ public final class DatabasegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.databasegateway.DatabasegatewayFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.databasegateway.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -123,7 +123,7 @@ public final class DatabasegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.databasegateway.DatabasegatewayFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.databasegateway.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -170,7 +170,7 @@ public final class DatabasegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.databasegateway.DatabasegatewayFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.databasegateway.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -217,7 +217,7 @@ public final class DatabasegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.databasegateway.DatabasegatewayFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.databasegateway.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -264,7 +264,7 @@ public final class DatabasegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.databasegateway.DatabasegatewayFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.databasegateway.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

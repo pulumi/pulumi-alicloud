@@ -19,20 +19,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.cr.getEndpointAclService({
+ * const example = alicloud.cr.getEndpointAclService({
  *     enable: true,
  *     endpointType: "internet",
  *     instanceId: "example_id",
  *     moduleName: "Registry",
- * }));
+ * });
  * ```
  */
 export function getEndpointAclService(args: GetEndpointAclServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointAclServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cr/getEndpointAclService:getEndpointAclService", {
         "enable": args.enable,
         "endpointType": args.endpointType,
@@ -77,9 +74,31 @@ export interface GetEndpointAclServiceResult {
     readonly moduleName?: string;
     readonly status: string;
 }
-
+/**
+ * This data source provides the CR Endpoint Acl Service of the current Alibaba Cloud user.
+ *
+ * For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
+ *
+ * > **NOTE:** Available in v1.139.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cr.getEndpointAclService({
+ *     enable: true,
+ *     endpointType: "internet",
+ *     instanceId: "example_id",
+ *     moduleName: "Registry",
+ * });
+ * ```
+ */
 export function getEndpointAclServiceOutput(args: GetEndpointAclServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointAclServiceResult> {
-    return pulumi.output(args).apply(a => getEndpointAclService(a, opts))
+    return pulumi.output(args).apply((a: any) => getEndpointAclService(a, opts))
 }
 
 /**

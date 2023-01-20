@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.VideoSurveillance.Outputs
         /// </summary>
         public readonly string OutProtocol;
         /// <summary>
-        /// -The domain name of plan streaming used by the group.
+        /// The domain name of plan streaming used by the group.
         /// </summary>
         public readonly string PlayDomain;
         /// <summary>

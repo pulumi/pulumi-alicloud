@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Sddp
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sddp/dataLimit:DataLimit")]
-    public partial class DataLimit : Pulumi.CustomResource
+    public partial class DataLimit : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to enable the log auditing feature. Valid values: `0`, `1`.
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Sddp
         }
     }
 
-    public sealed class DataLimitArgs : Pulumi.ResourceArgs
+    public sealed class DataLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to enable the log auditing feature. Valid values: `0`, `1`.
@@ -196,9 +196,10 @@ namespace Pulumi.AliCloud.Sddp
         public DataLimitArgs()
         {
         }
+        public static new DataLimitArgs Empty => new DataLimitArgs();
     }
 
-    public sealed class DataLimitState : Pulumi.ResourceArgs
+    public sealed class DataLimitState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to enable the log auditing feature. Valid values: `0`, `1`.
@@ -263,5 +264,6 @@ namespace Pulumi.AliCloud.Sddp
         public DataLimitState()
         {
         }
+        public static new DataLimitState Empty => new DataLimitState();
     }
 }

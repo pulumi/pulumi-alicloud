@@ -30,18 +30,18 @@ class InstanceAdAuthServerArgs:
                  name_mapping: Optional[pulumi.Input[str]] = None,
                  standby_server: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] account: The username of the account that is used for the LDAP server.
+        :param pulumi.Input[str] account: The username of the account that is used for the AD server.
         :param pulumi.Input[str] base_dn: The Base distinguished name (DN).
         :param pulumi.Input[str] domain: The domain on the AD server.
         :param pulumi.Input[bool] is_ssl: Specifies whether to support SSL.
-        :param pulumi.Input[str] password: The password of the account that is used for the LDAP server.
-        :param pulumi.Input[int] port: The port that is used to access the LDAP server.
-        :param pulumi.Input[str] server: The address of the LDAP server.
-        :param pulumi.Input[str] email_mapping: The field that is used to indicate the email address of a user on the LDAP server.
+        :param pulumi.Input[str] password: The password of the account that is used for the AD server.
+        :param pulumi.Input[int] port: The port that is used to access the AD server.
+        :param pulumi.Input[str] server: The address of the AD server.
+        :param pulumi.Input[str] email_mapping: The field that is used to indicate the email address of a user on the AD server.
         :param pulumi.Input[str] filter: The condition that is used to filter users.
-        :param pulumi.Input[str] mobile_mapping: The field that is used to indicate the mobile phone number of a user on the LDAP server.
-        :param pulumi.Input[str] name_mapping: The field that is used to indicate the name of a user on the LDAP server.
-        :param pulumi.Input[str] standby_server: The address of the secondary LDAP server.
+        :param pulumi.Input[str] mobile_mapping: The field that is used to indicate the mobile phone number of a user on the AD server.
+        :param pulumi.Input[str] name_mapping: The field that is used to indicate the name of a user on the AD server.
+        :param pulumi.Input[str] standby_server: The address of the secondary AD server.
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "base_dn", base_dn)
@@ -65,7 +65,7 @@ class InstanceAdAuthServerArgs:
     @pulumi.getter
     def account(self) -> pulumi.Input[str]:
         """
-        The username of the account that is used for the LDAP server.
+        The username of the account that is used for the AD server.
         """
         return pulumi.get(self, "account")
 
@@ -113,7 +113,7 @@ class InstanceAdAuthServerArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[str]:
         """
-        The password of the account that is used for the LDAP server.
+        The password of the account that is used for the AD server.
         """
         return pulumi.get(self, "password")
 
@@ -125,7 +125,7 @@ class InstanceAdAuthServerArgs:
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
         """
-        The port that is used to access the LDAP server.
+        The port that is used to access the AD server.
         """
         return pulumi.get(self, "port")
 
@@ -137,7 +137,7 @@ class InstanceAdAuthServerArgs:
     @pulumi.getter
     def server(self) -> pulumi.Input[str]:
         """
-        The address of the LDAP server.
+        The address of the AD server.
         """
         return pulumi.get(self, "server")
 
@@ -149,7 +149,7 @@ class InstanceAdAuthServerArgs:
     @pulumi.getter(name="emailMapping")
     def email_mapping(self) -> Optional[pulumi.Input[str]]:
         """
-        The field that is used to indicate the email address of a user on the LDAP server.
+        The field that is used to indicate the email address of a user on the AD server.
         """
         return pulumi.get(self, "email_mapping")
 
@@ -173,7 +173,7 @@ class InstanceAdAuthServerArgs:
     @pulumi.getter(name="mobileMapping")
     def mobile_mapping(self) -> Optional[pulumi.Input[str]]:
         """
-        The field that is used to indicate the mobile phone number of a user on the LDAP server.
+        The field that is used to indicate the mobile phone number of a user on the AD server.
         """
         return pulumi.get(self, "mobile_mapping")
 
@@ -185,7 +185,7 @@ class InstanceAdAuthServerArgs:
     @pulumi.getter(name="nameMapping")
     def name_mapping(self) -> Optional[pulumi.Input[str]]:
         """
-        The field that is used to indicate the name of a user on the LDAP server.
+        The field that is used to indicate the name of a user on the AD server.
         """
         return pulumi.get(self, "name_mapping")
 
@@ -197,7 +197,7 @@ class InstanceAdAuthServerArgs:
     @pulumi.getter(name="standbyServer")
     def standby_server(self) -> Optional[pulumi.Input[str]]:
         """
-        The address of the secondary LDAP server.
+        The address of the secondary AD server.
         """
         return pulumi.get(self, "standby_server")
 
@@ -222,18 +222,18 @@ class InstanceLdapAuthServerArgs:
                  name_mapping: Optional[pulumi.Input[str]] = None,
                  standby_server: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] account: The username of the account that is used for the LDAP server.
+        :param pulumi.Input[str] account: The username of the account that is used for the AD server.
         :param pulumi.Input[str] base_dn: The Base distinguished name (DN).
-        :param pulumi.Input[str] password: The password of the account that is used for the LDAP server.
-        :param pulumi.Input[int] port: The port that is used to access the LDAP server.
-        :param pulumi.Input[str] server: The address of the LDAP server.
-        :param pulumi.Input[str] email_mapping: The field that is used to indicate the email address of a user on the LDAP server.
+        :param pulumi.Input[str] password: The password of the account that is used for the AD server.
+        :param pulumi.Input[int] port: The port that is used to access the AD server.
+        :param pulumi.Input[str] server: The address of the AD server.
+        :param pulumi.Input[str] email_mapping: The field that is used to indicate the email address of a user on the AD server.
         :param pulumi.Input[str] filter: The condition that is used to filter users.
         :param pulumi.Input[bool] is_ssl: Specifies whether to support SSL.
         :param pulumi.Input[str] login_name_mapping: The field that is used to indicate the logon name of a user on the LDAP server.
-        :param pulumi.Input[str] mobile_mapping: The field that is used to indicate the mobile phone number of a user on the LDAP server.
-        :param pulumi.Input[str] name_mapping: The field that is used to indicate the name of a user on the LDAP server.
-        :param pulumi.Input[str] standby_server: The address of the secondary LDAP server.
+        :param pulumi.Input[str] mobile_mapping: The field that is used to indicate the mobile phone number of a user on the AD server.
+        :param pulumi.Input[str] name_mapping: The field that is used to indicate the name of a user on the AD server.
+        :param pulumi.Input[str] standby_server: The address of the secondary AD server.
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "base_dn", base_dn)
@@ -259,7 +259,7 @@ class InstanceLdapAuthServerArgs:
     @pulumi.getter
     def account(self) -> pulumi.Input[str]:
         """
-        The username of the account that is used for the LDAP server.
+        The username of the account that is used for the AD server.
         """
         return pulumi.get(self, "account")
 
@@ -283,7 +283,7 @@ class InstanceLdapAuthServerArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[str]:
         """
-        The password of the account that is used for the LDAP server.
+        The password of the account that is used for the AD server.
         """
         return pulumi.get(self, "password")
 
@@ -295,7 +295,7 @@ class InstanceLdapAuthServerArgs:
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
         """
-        The port that is used to access the LDAP server.
+        The port that is used to access the AD server.
         """
         return pulumi.get(self, "port")
 
@@ -307,7 +307,7 @@ class InstanceLdapAuthServerArgs:
     @pulumi.getter
     def server(self) -> pulumi.Input[str]:
         """
-        The address of the LDAP server.
+        The address of the AD server.
         """
         return pulumi.get(self, "server")
 
@@ -319,7 +319,7 @@ class InstanceLdapAuthServerArgs:
     @pulumi.getter(name="emailMapping")
     def email_mapping(self) -> Optional[pulumi.Input[str]]:
         """
-        The field that is used to indicate the email address of a user on the LDAP server.
+        The field that is used to indicate the email address of a user on the AD server.
         """
         return pulumi.get(self, "email_mapping")
 
@@ -367,7 +367,7 @@ class InstanceLdapAuthServerArgs:
     @pulumi.getter(name="mobileMapping")
     def mobile_mapping(self) -> Optional[pulumi.Input[str]]:
         """
-        The field that is used to indicate the mobile phone number of a user on the LDAP server.
+        The field that is used to indicate the mobile phone number of a user on the AD server.
         """
         return pulumi.get(self, "mobile_mapping")
 
@@ -379,7 +379,7 @@ class InstanceLdapAuthServerArgs:
     @pulumi.getter(name="nameMapping")
     def name_mapping(self) -> Optional[pulumi.Input[str]]:
         """
-        The field that is used to indicate the name of a user on the LDAP server.
+        The field that is used to indicate the name of a user on the AD server.
         """
         return pulumi.get(self, "name_mapping")
 
@@ -391,7 +391,7 @@ class InstanceLdapAuthServerArgs:
     @pulumi.getter(name="standbyServer")
     def standby_server(self) -> Optional[pulumi.Input[str]]:
         """
-        The address of the secondary LDAP server.
+        The address of the secondary AD server.
         """
         return pulumi.get(self, "standby_server")
 

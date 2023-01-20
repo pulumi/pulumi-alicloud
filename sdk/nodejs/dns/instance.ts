@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const thisInstance = new alicloud.dns.Instance("this", {
+ * const _this = new alicloud.dns.Instance("this", {
  *     dnsSecurity: "no",
  *     domainNumbers: "2",
  *     period: 1,

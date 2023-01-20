@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Emr.Inputs
 {
 
-    public sealed class ClusterConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Custom configuration service config key, e.g. ’dfs.replication’.
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public Input<string> FileName { get; set; } = null!;
 
         /// <summary>
-        /// Cluster service configuration modification name, e.g. ’HDFS’.
+        /// Custom configuration service name, e.g. ’HDFS’.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public ClusterConfigGetArgs()
         {
         }
+        public static new ClusterConfigGetArgs Empty => new ClusterConfigGetArgs();
     }
 }

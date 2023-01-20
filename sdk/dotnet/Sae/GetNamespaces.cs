@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.Sae
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var nameRegex = AliCloud.Sae.GetNamespaces.Invoke(new()
         ///     {
-        ///         var nameRegex = Output.Create(AliCloud.Sae.GetNamespaces.InvokeAsync(new AliCloud.Sae.GetNamespacesArgs
-        ///         {
-        ///             NameRegex = "^my-Namespace",
-        ///         }));
-        ///         this.SaeNamespaceId = nameRegex.Apply(nameRegex =&gt; nameRegex.Namespaces?[0]?.Id);
-        ///     }
+        ///         NameRegex = "^my-Namespace",
+        ///     });
         /// 
-        ///     [Output("saeNamespaceId")]
-        ///     public Output&lt;string&gt; SaeNamespaceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["saeNamespaceId"] = nameRegex.Apply(getNamespacesResult =&gt; getNamespacesResult.Namespaces[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNamespacesResult> InvokeAsync(GetNamespacesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:sae/getNamespaces:getNamespaces", args ?? new GetNamespacesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:sae/getNamespaces:getNamespaces", args ?? new GetNamespacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Sae Namespaces of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.Sae
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var nameRegex = AliCloud.Sae.GetNamespaces.Invoke(new()
         ///     {
-        ///         var nameRegex = Output.Create(AliCloud.Sae.GetNamespaces.InvokeAsync(new AliCloud.Sae.GetNamespacesArgs
-        ///         {
-        ///             NameRegex = "^my-Namespace",
-        ///         }));
-        ///         this.SaeNamespaceId = nameRegex.Apply(nameRegex =&gt; nameRegex.Namespaces?[0]?.Id);
-        ///     }
+        ///         NameRegex = "^my-Namespace",
+        ///     });
         /// 
-        ///     [Output("saeNamespaceId")]
-        ///     public Output&lt;string&gt; SaeNamespaceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["saeNamespaceId"] = nameRegex.Apply(getNamespacesResult =&gt; getNamespacesResult.Namespaces[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNamespacesResult> Invoke(GetNamespacesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:sae/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:sae/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNamespacesArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespacesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -111,9 +109,10 @@ namespace Pulumi.AliCloud.Sae
         public GetNamespacesArgs()
         {
         }
+        public static new GetNamespacesArgs Empty => new GetNamespacesArgs();
     }
 
-    public sealed class GetNamespacesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespacesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -139,6 +138,7 @@ namespace Pulumi.AliCloud.Sae
         public GetNamespacesInvokeArgs()
         {
         }
+        public static new GetNamespacesInvokeArgs Empty => new GetNamespacesInvokeArgs();
     }
 
 

@@ -16,14 +16,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs extends com
     public static final HybridMonitorSlsTaskSlsProcessConfigStatisticArgs Empty = new HybridMonitorSlsTaskSlsProcessConfigStatisticArgs();
 
     /**
-     * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+     * The alias of the aggregation result.
      * 
      */
     @Import(name="alias")
     private @Nullable Output<String> alias;
 
     /**
-     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The alias of the aggregation result.
      * 
      */
     public Optional<Output<String>> alias() {
@@ -80,14 +80,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs extends com
     }
 
     /**
-     * The name of the key that is used to filter logs imported from Log Service.
+     * The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     @Import(name="slsKeyName")
     private @Nullable Output<String> slsKeyName;
 
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     public Optional<Output<String>> slsKeyName() {
@@ -123,7 +123,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs extends com
         }
 
         /**
-         * @param alias The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+         * @param alias The alias of the aggregation result.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs extends com
         }
 
         /**
-         * @param alias The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+         * @param alias The alias of the aggregation result.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs extends com
         }
 
         /**
-         * @param slsKeyName The name of the key that is used to filter logs imported from Log Service.
+         * @param slsKeyName The name of the key that is used to aggregate logs imported from Log Service.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs extends com
         }
 
         /**
-         * @param slsKeyName The name of the key that is used to filter logs imported from Log Service.
+         * @param slsKeyName The name of the key that is used to aggregate logs imported from Log Service.
          * 
          * @return builder
          * 

@@ -23,33 +23,31 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Eds.GetAdConnectorOfficeSites.InvokeAsync());
-        ///         this.EcdAdConnectorOfficeSiteId1 = ids.Apply(ids =&gt; ids.Sites?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Eds.GetAdConnectorOfficeSites.InvokeAsync(new AliCloud.Eds.GetAdConnectorOfficeSitesArgs
-        ///         {
-        ///             NameRegex = "^my-AdConnectorOfficeSite",
-        ///         }));
-        ///         this.EcdAdConnectorOfficeSiteId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Sites?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Eds.GetAdConnectorOfficeSites.Invoke();
         /// 
-        ///     [Output("ecdAdConnectorOfficeSiteId1")]
-        ///     public Output&lt;string&gt; EcdAdConnectorOfficeSiteId1 { get; set; }
-        ///     [Output("ecdAdConnectorOfficeSiteId2")]
-        ///     public Output&lt;string&gt; EcdAdConnectorOfficeSiteId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Eds.GetAdConnectorOfficeSites.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-AdConnectorOfficeSite",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdAdConnectorOfficeSiteId1"] = ids.Apply(getAdConnectorOfficeSitesResult =&gt; getAdConnectorOfficeSitesResult.Sites[0]?.Id),
+        ///         ["ecdAdConnectorOfficeSiteId2"] = nameRegex.Apply(getAdConnectorOfficeSitesResult =&gt; getAdConnectorOfficeSitesResult.Sites[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAdConnectorOfficeSitesResult> InvokeAsync(GetAdConnectorOfficeSitesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAdConnectorOfficeSitesResult>("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args ?? new GetAdConnectorOfficeSitesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdConnectorOfficeSitesResult>("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args ?? new GetAdConnectorOfficeSitesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
@@ -63,37 +61,35 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Eds.GetAdConnectorOfficeSites.InvokeAsync());
-        ///         this.EcdAdConnectorOfficeSiteId1 = ids.Apply(ids =&gt; ids.Sites?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Eds.GetAdConnectorOfficeSites.InvokeAsync(new AliCloud.Eds.GetAdConnectorOfficeSitesArgs
-        ///         {
-        ///             NameRegex = "^my-AdConnectorOfficeSite",
-        ///         }));
-        ///         this.EcdAdConnectorOfficeSiteId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Sites?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Eds.GetAdConnectorOfficeSites.Invoke();
         /// 
-        ///     [Output("ecdAdConnectorOfficeSiteId1")]
-        ///     public Output&lt;string&gt; EcdAdConnectorOfficeSiteId1 { get; set; }
-        ///     [Output("ecdAdConnectorOfficeSiteId2")]
-        ///     public Output&lt;string&gt; EcdAdConnectorOfficeSiteId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Eds.GetAdConnectorOfficeSites.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-AdConnectorOfficeSite",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdAdConnectorOfficeSiteId1"] = ids.Apply(getAdConnectorOfficeSitesResult =&gt; getAdConnectorOfficeSitesResult.Sites[0]?.Id),
+        ///         ["ecdAdConnectorOfficeSiteId2"] = nameRegex.Apply(getAdConnectorOfficeSitesResult =&gt; getAdConnectorOfficeSitesResult.Sites[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAdConnectorOfficeSitesResult> Invoke(GetAdConnectorOfficeSitesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAdConnectorOfficeSitesResult>("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args ?? new GetAdConnectorOfficeSitesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAdConnectorOfficeSitesResult>("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args ?? new GetAdConnectorOfficeSitesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAdConnectorOfficeSitesArgs : Pulumi.InvokeArgs
+    public sealed class GetAdConnectorOfficeSitesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -125,9 +121,10 @@ namespace Pulumi.AliCloud.Eds
         public GetAdConnectorOfficeSitesArgs()
         {
         }
+        public static new GetAdConnectorOfficeSitesArgs Empty => new GetAdConnectorOfficeSitesArgs();
     }
 
-    public sealed class GetAdConnectorOfficeSitesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAdConnectorOfficeSitesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -159,6 +156,7 @@ namespace Pulumi.AliCloud.Eds
         public GetAdConnectorOfficeSitesInvokeArgs()
         {
         }
+        public static new GetAdConnectorOfficeSitesInvokeArgs Empty => new GetAdConnectorOfficeSitesInvokeArgs();
     }
 
 

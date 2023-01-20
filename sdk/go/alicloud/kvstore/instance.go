@@ -179,7 +179,8 @@ type Instance struct {
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity pulumi.IntOutput `pulumi:"capacity"`
 	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
-	Config           pulumi.MapOutput    `pulumi:"config"`
+	Config pulumi.MapOutput `pulumi:"config"`
+	// Intranet connection address of the KVStore instance.
 	ConnectionDomain pulumi.StringOutput `pulumi:"connectionDomain"`
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
@@ -283,7 +284,6 @@ type Instance struct {
 	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
 	SslEnable pulumi.StringPtrOutput `pulumi:"sslEnable"`
 	// The status of KVStore DBInstance.
-	// * `connectionDomain`- Intranet connection address of the KVStore instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -302,6 +302,13 @@ func NewInstance(ctx *pulumi.Context,
 		args = &InstanceArgs{}
 	}
 
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:kvstore/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -347,8 +354,9 @@ type instanceState struct {
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity *int `pulumi:"capacity"`
 	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
-	Config           map[string]interface{} `pulumi:"config"`
-	ConnectionDomain *string                `pulumi:"connectionDomain"`
+	Config map[string]interface{} `pulumi:"config"`
+	// Intranet connection address of the KVStore instance.
+	ConnectionDomain *string `pulumi:"connectionDomain"`
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString *string `pulumi:"connectionString"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -451,7 +459,6 @@ type instanceState struct {
 	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
 	SslEnable *string `pulumi:"sslEnable"`
 	// The status of KVStore DBInstance.
-	// * `connectionDomain`- Intranet connection address of the KVStore instance.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -487,7 +494,8 @@ type InstanceState struct {
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity pulumi.IntPtrInput
 	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
-	Config           pulumi.MapInput
+	Config pulumi.MapInput
+	// Intranet connection address of the KVStore instance.
 	ConnectionDomain pulumi.StringPtrInput
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringPtrInput
@@ -591,7 +599,6 @@ type InstanceState struct {
 	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
 	SslEnable pulumi.StringPtrInput
 	// The status of KVStore DBInstance.
-	// * `connectionDomain`- Intranet connection address of the KVStore instance.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -1008,6 +1015,7 @@ func (o InstanceOutput) Config() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Config }).(pulumi.MapOutput)
 }
 
+// Intranet connection address of the KVStore instance.
 func (o InstanceOutput) ConnectionDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionDomain }).(pulumi.StringOutput)
 }
@@ -1243,7 +1251,6 @@ func (o InstanceOutput) SslEnable() pulumi.StringPtrOutput {
 }
 
 // The status of KVStore DBInstance.
-// * `connectionDomain`- Intranet connection address of the KVStore instance.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

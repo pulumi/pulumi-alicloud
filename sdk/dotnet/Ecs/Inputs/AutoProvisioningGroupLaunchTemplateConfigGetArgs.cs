@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class AutoProvisioningGroupLaunchTemplateConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class AutoProvisioningGroupLaunchTemplateConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public AutoProvisioningGroupLaunchTemplateConfigGetArgs()
         {
         }
+        public static new AutoProvisioningGroupLaunchTemplateConfigGetArgs Empty => new AutoProvisioningGroupLaunchTemplateConfigGetArgs();
     }
 }

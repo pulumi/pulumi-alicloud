@@ -20,26 +20,28 @@ namespace Pulumi.AliCloud.Log
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
     ///     {
-    ///         var defaultProject = new AliCloud.Log.Project("defaultProject", new AliCloud.Log.ProjectArgs
-    ///         {
-    ///             Description = "tf unit test",
-    ///         });
-    ///         var defaultStore = new AliCloud.Log.Store("defaultStore", new AliCloud.Log.StoreArgs
-    ///         {
-    ///             Project = "tf-project",
-    ///             RetentionPeriod = 3000,
-    ///             ShardCount = 1,
-    ///         });
-    ///         var example = new AliCloud.Log.Dashboard("example", new AliCloud.Log.DashboardArgs
-    ///         {
-    ///             CharList = @"  [
+    ///         Description = "tf unit test",
+    ///     });
+    /// 
+    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
+    ///     {
+    ///         Project = "tf-project",
+    ///         RetentionPeriod = 3000,
+    ///         ShardCount = 1,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Log.Dashboard("example", new()
+    ///     {
+    ///         Attribute = "{\"type\":\"grid\"}",
+    ///         CharList = @"  [
     ///     {
     ///       ""action"": {},
     ///       ""title"":""new_title"",
@@ -68,12 +70,11 @@ namespace Pulumi.AliCloud.Log
     ///   ]
     /// 
     /// ",
-    ///             DashboardName = "tf-dashboard",
-    ///             ProjectName = "tf-project",
-    ///         });
-    ///     }
+    ///         DashboardName = "tf-dashboard",
+    ///         ProjectName = "tf-project",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -85,8 +86,14 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/dashboard:Dashboard")]
-    public partial class Dashboard : Pulumi.CustomResource
+    public partial class Dashboard : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Dashboard attribute.
+        /// </summary>
+        [Output("attribute")]
+        public Output<string> Attribute { get; private set; } = null!;
+
         /// <summary>
         /// Configuration of charts in the dashboard.
         /// </summary>
@@ -155,8 +162,14 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class DashboardArgs : Pulumi.ResourceArgs
+    public sealed class DashboardArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Dashboard attribute.
+        /// </summary>
+        [Input("attribute")]
+        public Input<string>? Attribute { get; set; }
+
         /// <summary>
         /// Configuration of charts in the dashboard.
         /// </summary>
@@ -184,10 +197,17 @@ namespace Pulumi.AliCloud.Log
         public DashboardArgs()
         {
         }
+        public static new DashboardArgs Empty => new DashboardArgs();
     }
 
-    public sealed class DashboardState : Pulumi.ResourceArgs
+    public sealed class DashboardState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Dashboard attribute.
+        /// </summary>
+        [Input("attribute")]
+        public Input<string>? Attribute { get; set; }
+
         /// <summary>
         /// Configuration of charts in the dashboard.
         /// </summary>
@@ -215,5 +235,6 @@ namespace Pulumi.AliCloud.Log
         public DashboardState()
         {
         }
+        public static new DashboardState Empty => new DashboardState();
     }
 }

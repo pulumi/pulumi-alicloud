@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -35,15 +36,12 @@ import * as utilities from "../utilities";
  * const sampleDs = alicloud.slb.getListenersOutput({
  *     loadBalancerId: _default.id,
  * });
- * export const firstSlbListenerProtocol = sampleDs.apply(sampleDs => sampleDs.slbListeners?[0]?.protocol);
+ * export const firstSlbListenerProtocol = sampleDs.apply(sampleDs => sampleDs.slbListeners?.[0]?.protocol);
  * ```
  */
 export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getListeners:getListeners", {
         "descriptionRegex": args.descriptionRegex,
         "frontendPort": args.frontendPort,
@@ -100,9 +98,41 @@ export interface GetListenersResult {
      */
     readonly slbListeners: outputs.slb.GetListenersSlbListener[];
 }
-
+/**
+ * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.slb.ApplicationLoadBalancer("default", {loadBalancerName: "tf-testAccSlbListenertcp"});
+ * const tcp = new alicloud.slb.Listener("tcp", {
+ *     loadBalancerId: _default.id,
+ *     backendPort: 22,
+ *     frontendPort: 22,
+ *     protocol: "tcp",
+ *     bandwidth: 10,
+ *     healthCheckType: "tcp",
+ *     persistenceTimeout: 3600,
+ *     healthyThreshold: 8,
+ *     unhealthyThreshold: 8,
+ *     healthCheckTimeout: 8,
+ *     healthCheckInterval: 5,
+ *     healthCheckHttpCode: "http_2xx",
+ *     healthCheckConnectPort: 20,
+ *     healthCheckUri: "/console",
+ *     establishedTimeout: 600,
+ * });
+ * const sampleDs = alicloud.slb.getListenersOutput({
+ *     loadBalancerId: _default.id,
+ * });
+ * export const firstSlbListenerProtocol = sampleDs.apply(sampleDs => sampleDs.slbListeners?.[0]?.protocol);
+ * ```
+ */
 export function getListenersOutput(args: GetListenersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenersResult> {
-    return pulumi.output(args).apply(a => getListeners(a, opts))
+    return pulumi.output(args).apply((a: any) => getListeners(a, opts))
 }
 
 /**

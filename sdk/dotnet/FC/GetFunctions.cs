@@ -19,30 +19,29 @@ namespace Pulumi.AliCloud.FC
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var functionsDs = AliCloud.FC.GetFunctions.Invoke(new()
         ///     {
-        ///         var functionsDs = Output.Create(AliCloud.FC.GetFunctions.InvokeAsync(new AliCloud.FC.GetFunctionsArgs
-        ///         {
-        ///             NameRegex = "sample_fc_function",
-        ///             ServiceName = "sample_service",
-        ///         }));
-        ///         this.FirstFcFunctionName = functionsDs.Apply(functionsDs =&gt; functionsDs.Functions?[0]?.Name);
-        ///     }
+        ///         NameRegex = "sample_fc_function",
+        ///         ServiceName = "sample_service",
+        ///     });
         /// 
-        ///     [Output("firstFcFunctionName")]
-        ///     public Output&lt;string&gt; FirstFcFunctionName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFcFunctionName"] = functionsDs.Apply(getFunctionsResult =&gt; getFunctionsResult.Functions[0]?.Name),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFunctionsResult> InvokeAsync(GetFunctionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionsResult>("alicloud:fc/getFunctions:getFunctions", args ?? new GetFunctionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFunctionsResult>("alicloud:fc/getFunctions:getFunctions", args ?? new GetFunctionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Function Compute functions of the current Alibaba Cloud user.
@@ -52,40 +51,39 @@ namespace Pulumi.AliCloud.FC
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var functionsDs = AliCloud.FC.GetFunctions.Invoke(new()
         ///     {
-        ///         var functionsDs = Output.Create(AliCloud.FC.GetFunctions.InvokeAsync(new AliCloud.FC.GetFunctionsArgs
-        ///         {
-        ///             NameRegex = "sample_fc_function",
-        ///             ServiceName = "sample_service",
-        ///         }));
-        ///         this.FirstFcFunctionName = functionsDs.Apply(functionsDs =&gt; functionsDs.Functions?[0]?.Name);
-        ///     }
+        ///         NameRegex = "sample_fc_function",
+        ///         ServiceName = "sample_service",
+        ///     });
         /// 
-        ///     [Output("firstFcFunctionName")]
-        ///     public Output&lt;string&gt; FirstFcFunctionName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFcFunctionName"] = functionsDs.Apply(getFunctionsResult =&gt; getFunctionsResult.Functions[0]?.Name),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFunctionsResult> Invoke(GetFunctionsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFunctionsResult>("alicloud:fc/getFunctions:getFunctions", args ?? new GetFunctionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFunctionsResult>("alicloud:fc/getFunctions:getFunctions", args ?? new GetFunctionsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetFunctionsArgs : Pulumi.InvokeArgs
+    public sealed class GetFunctionsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
 
         /// <summary>
-        /// - A list of functions ids.
+        /// A list of functions ids.
         /// </summary>
         public List<string> Ids
         {
@@ -111,15 +109,16 @@ namespace Pulumi.AliCloud.FC
         public GetFunctionsArgs()
         {
         }
+        public static new GetFunctionsArgs Empty => new GetFunctionsArgs();
     }
 
-    public sealed class GetFunctionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFunctionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
 
         /// <summary>
-        /// - A list of functions ids.
+        /// A list of functions ids.
         /// </summary>
         public InputList<string> Ids
         {
@@ -145,6 +144,7 @@ namespace Pulumi.AliCloud.FC
         public GetFunctionsInvokeArgs()
         {
         }
+        public static new GetFunctionsInvokeArgs Empty => new GetFunctionsInvokeArgs();
     }
 
 

@@ -24,6 +24,7 @@ class LoadBalancerArgs:
                  zone_mappings: pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]],
                  access_log_config: Optional[pulumi.Input['LoadBalancerAccessLogConfigArgs']] = None,
                  address_allocated_mode: Optional[pulumi.Input[str]] = None,
+                 address_ip_version: Optional[pulumi.Input[str]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  modification_protection_config: Optional[pulumi.Input['LoadBalancerModificationProtectionConfigArgs']] = None,
@@ -31,19 +32,18 @@ class LoadBalancerArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
-        :param pulumi.Input[str] address_type: The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
-        :param pulumi.Input['LoadBalancerLoadBalancerBillingConfigArgs'] load_balancer_billing_config: The configuration of the billing method.
-        :param pulumi.Input[str] load_balancer_edition: The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+        :param pulumi.Input[str] address_type: The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
+        :param pulumi.Input['LoadBalancerLoadBalancerBillingConfigArgs'] load_balancer_billing_config: The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+        :param pulumi.Input[str] load_balancer_edition: The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
         :param pulumi.Input[str] load_balancer_name: The name of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The zones and vSwitches. You must specify at least two zones.
-        :param pulumi.Input['LoadBalancerAccessLogConfigArgs'] access_log_config: The Access Logging Configuration Structure.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
+        :param pulumi.Input['LoadBalancerAccessLogConfigArgs'] access_log_config: The Access Logging Configuration Structure. See the following `Block access_log_config`.
         :param pulumi.Input[str] address_allocated_mode: The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-               *`Fixed`: The ALB instance uses a fixed IP address.
-               *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
+        :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `Ipv4`, `DualStack`.
         :param pulumi.Input[bool] deletion_protection_enabled: The deletion protection enabled. Valid values: `true` and `false`. Default value: `false`.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request. Valid values: `true` and `false`.
-        :param pulumi.Input['LoadBalancerModificationProtectionConfigArgs'] modification_protection_config: Modify the Protection Configuration.
+        :param pulumi.Input['LoadBalancerModificationProtectionConfigArgs'] modification_protection_config: Modify the Protection Configuration. See the following `Block modification_protection_config`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -57,6 +57,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "access_log_config", access_log_config)
         if address_allocated_mode is not None:
             pulumi.set(__self__, "address_allocated_mode", address_allocated_mode)
+        if address_ip_version is not None:
+            pulumi.set(__self__, "address_ip_version", address_ip_version)
         if deletion_protection_enabled is not None:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if dry_run is not None:
@@ -72,7 +74,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="addressType")
     def address_type(self) -> pulumi.Input[str]:
         """
-        The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+        The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
         """
         return pulumi.get(self, "address_type")
 
@@ -84,7 +86,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="loadBalancerBillingConfig")
     def load_balancer_billing_config(self) -> pulumi.Input['LoadBalancerLoadBalancerBillingConfigArgs']:
         """
-        The configuration of the billing method.
+        The configuration of the billing method. See the following `Block load_balancer_billing_config`.
         """
         return pulumi.get(self, "load_balancer_billing_config")
 
@@ -96,7 +98,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="loadBalancerEdition")
     def load_balancer_edition(self) -> pulumi.Input[str]:
         """
-        The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+        The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
         """
         return pulumi.get(self, "load_balancer_edition")
 
@@ -132,7 +134,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]:
         """
-        The zones and vSwitches. You must specify at least two zones.
+        The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
         """
         return pulumi.get(self, "zone_mappings")
 
@@ -144,7 +146,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="accessLogConfig")
     def access_log_config(self) -> Optional[pulumi.Input['LoadBalancerAccessLogConfigArgs']]:
         """
-        The Access Logging Configuration Structure.
+        The Access Logging Configuration Structure. See the following `Block access_log_config`.
         """
         return pulumi.get(self, "access_log_config")
 
@@ -157,14 +159,24 @@ class LoadBalancerArgs:
     def address_allocated_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-        *`Fixed`: The ALB instance uses a fixed IP address.
-        *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
         """
         return pulumi.get(self, "address_allocated_mode")
 
     @address_allocated_mode.setter
     def address_allocated_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address_allocated_mode", value)
+
+    @property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP version. Valid values: `Ipv4`, `DualStack`.
+        """
+        return pulumi.get(self, "address_ip_version")
+
+    @address_ip_version.setter
+    def address_ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_ip_version", value)
 
     @property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -194,7 +206,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="modificationProtectionConfig")
     def modification_protection_config(self) -> Optional[pulumi.Input['LoadBalancerModificationProtectionConfigArgs']]:
         """
-        Modify the Protection Configuration.
+        Modify the Protection Configuration. See the following `Block modification_protection_config`.
         """
         return pulumi.get(self, "modification_protection_config")
 
@@ -232,6 +244,7 @@ class _LoadBalancerState:
     def __init__(__self__, *,
                  access_log_config: Optional[pulumi.Input['LoadBalancerAccessLogConfigArgs']] = None,
                  address_allocated_mode: Optional[pulumi.Input[str]] = None,
+                 address_ip_version: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
@@ -247,28 +260,29 @@ class _LoadBalancerState:
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
-        :param pulumi.Input['LoadBalancerAccessLogConfigArgs'] access_log_config: The Access Logging Configuration Structure.
+        :param pulumi.Input['LoadBalancerAccessLogConfigArgs'] access_log_config: The Access Logging Configuration Structure. See the following `Block access_log_config`.
         :param pulumi.Input[str] address_allocated_mode: The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-               *`Fixed`: The ALB instance uses a fixed IP address.
-               *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
-        :param pulumi.Input[str] address_type: The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+        :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `Ipv4`, `DualStack`.
+        :param pulumi.Input[str] address_type: The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
         :param pulumi.Input[bool] deletion_protection_enabled: The deletion protection enabled. Valid values: `true` and `false`. Default value: `false`.
         :param pulumi.Input[str] dns_name: The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request. Valid values: `true` and `false`.
-        :param pulumi.Input['LoadBalancerLoadBalancerBillingConfigArgs'] load_balancer_billing_config: The configuration of the billing method.
-        :param pulumi.Input[str] load_balancer_edition: The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+        :param pulumi.Input['LoadBalancerLoadBalancerBillingConfigArgs'] load_balancer_billing_config: The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+        :param pulumi.Input[str] load_balancer_edition: The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
         :param pulumi.Input[str] load_balancer_name: The name of the resource.
-        :param pulumi.Input['LoadBalancerModificationProtectionConfigArgs'] modification_protection_config: Modify the Protection Configuration.
+        :param pulumi.Input['LoadBalancerModificationProtectionConfigArgs'] modification_protection_config: Modify the Protection Configuration. See the following `Block modification_protection_config`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The zones and vSwitches. You must specify at least two zones.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
         """
         if access_log_config is not None:
             pulumi.set(__self__, "access_log_config", access_log_config)
         if address_allocated_mode is not None:
             pulumi.set(__self__, "address_allocated_mode", address_allocated_mode)
+        if address_ip_version is not None:
+            pulumi.set(__self__, "address_ip_version", address_ip_version)
         if address_type is not None:
             pulumi.set(__self__, "address_type", address_type)
         if deletion_protection_enabled is not None:
@@ -300,7 +314,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="accessLogConfig")
     def access_log_config(self) -> Optional[pulumi.Input['LoadBalancerAccessLogConfigArgs']]:
         """
-        The Access Logging Configuration Structure.
+        The Access Logging Configuration Structure. See the following `Block access_log_config`.
         """
         return pulumi.get(self, "access_log_config")
 
@@ -313,8 +327,6 @@ class _LoadBalancerState:
     def address_allocated_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-        *`Fixed`: The ALB instance uses a fixed IP address.
-        *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
         """
         return pulumi.get(self, "address_allocated_mode")
 
@@ -323,10 +335,22 @@ class _LoadBalancerState:
         pulumi.set(self, "address_allocated_mode", value)
 
     @property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP version. Valid values: `Ipv4`, `DualStack`.
+        """
+        return pulumi.get(self, "address_ip_version")
+
+    @address_ip_version.setter
+    def address_ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_ip_version", value)
+
+    @property
     @pulumi.getter(name="addressType")
     def address_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+        The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
         """
         return pulumi.get(self, "address_type")
 
@@ -374,7 +398,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="loadBalancerBillingConfig")
     def load_balancer_billing_config(self) -> Optional[pulumi.Input['LoadBalancerLoadBalancerBillingConfigArgs']]:
         """
-        The configuration of the billing method.
+        The configuration of the billing method. See the following `Block load_balancer_billing_config`.
         """
         return pulumi.get(self, "load_balancer_billing_config")
 
@@ -386,7 +410,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="loadBalancerEdition")
     def load_balancer_edition(self) -> Optional[pulumi.Input[str]]:
         """
-        The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+        The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
         """
         return pulumi.get(self, "load_balancer_edition")
 
@@ -410,7 +434,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="modificationProtectionConfig")
     def modification_protection_config(self) -> Optional[pulumi.Input['LoadBalancerModificationProtectionConfigArgs']]:
         """
-        Modify the Protection Configuration.
+        Modify the Protection Configuration. See the following `Block modification_protection_config`.
         """
         return pulumi.get(self, "modification_protection_config")
 
@@ -470,7 +494,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]]:
         """
-        The zones and vSwitches. You must specify at least two zones.
+        The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
         """
         return pulumi.get(self, "zone_mappings")
 
@@ -486,6 +510,7 @@ class LoadBalancer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_log_config: Optional[pulumi.Input[pulumi.InputType['LoadBalancerAccessLogConfigArgs']]] = None,
                  address_allocated_mode: Optional[pulumi.Input[str]] = None,
+                 address_ip_version: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -515,21 +540,20 @@ class LoadBalancer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerAccessLogConfigArgs']] access_log_config: The Access Logging Configuration Structure.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerAccessLogConfigArgs']] access_log_config: The Access Logging Configuration Structure. See the following `Block access_log_config`.
         :param pulumi.Input[str] address_allocated_mode: The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-               *`Fixed`: The ALB instance uses a fixed IP address.
-               *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
-        :param pulumi.Input[str] address_type: The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+        :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `Ipv4`, `DualStack`.
+        :param pulumi.Input[str] address_type: The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
         :param pulumi.Input[bool] deletion_protection_enabled: The deletion protection enabled. Valid values: `true` and `false`. Default value: `false`.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request. Valid values: `true` and `false`.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerLoadBalancerBillingConfigArgs']] load_balancer_billing_config: The configuration of the billing method.
-        :param pulumi.Input[str] load_balancer_edition: The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerLoadBalancerBillingConfigArgs']] load_balancer_billing_config: The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+        :param pulumi.Input[str] load_balancer_edition: The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
         :param pulumi.Input[str] load_balancer_name: The name of the resource.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']] modification_protection_config: Modify the Protection Configuration.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']] modification_protection_config: Modify the Protection Configuration. See the following `Block modification_protection_config`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]] zone_mappings: The zones and vSwitches. You must specify at least two zones.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
         """
         ...
     @overload
@@ -569,6 +593,7 @@ class LoadBalancer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_log_config: Optional[pulumi.Input[pulumi.InputType['LoadBalancerAccessLogConfigArgs']]] = None,
                  address_allocated_mode: Optional[pulumi.Input[str]] = None,
+                 address_ip_version: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -591,6 +616,7 @@ class LoadBalancer(pulumi.CustomResource):
 
             __props__.__dict__["access_log_config"] = access_log_config
             __props__.__dict__["address_allocated_mode"] = address_allocated_mode
+            __props__.__dict__["address_ip_version"] = address_ip_version
             if address_type is None and not opts.urn:
                 raise TypeError("Missing required property 'address_type'")
             __props__.__dict__["address_type"] = address_type
@@ -628,6 +654,7 @@ class LoadBalancer(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_log_config: Optional[pulumi.Input[pulumi.InputType['LoadBalancerAccessLogConfigArgs']]] = None,
             address_allocated_mode: Optional[pulumi.Input[str]] = None,
+            address_ip_version: Optional[pulumi.Input[str]] = None,
             address_type: Optional[pulumi.Input[str]] = None,
             deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
             dns_name: Optional[pulumi.Input[str]] = None,
@@ -648,23 +675,22 @@ class LoadBalancer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerAccessLogConfigArgs']] access_log_config: The Access Logging Configuration Structure.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerAccessLogConfigArgs']] access_log_config: The Access Logging Configuration Structure. See the following `Block access_log_config`.
         :param pulumi.Input[str] address_allocated_mode: The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-               *`Fixed`: The ALB instance uses a fixed IP address.
-               *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
-        :param pulumi.Input[str] address_type: The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+        :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `Ipv4`, `DualStack`.
+        :param pulumi.Input[str] address_type: The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
         :param pulumi.Input[bool] deletion_protection_enabled: The deletion protection enabled. Valid values: `true` and `false`. Default value: `false`.
         :param pulumi.Input[str] dns_name: The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request. Valid values: `true` and `false`.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerLoadBalancerBillingConfigArgs']] load_balancer_billing_config: The configuration of the billing method.
-        :param pulumi.Input[str] load_balancer_edition: The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerLoadBalancerBillingConfigArgs']] load_balancer_billing_config: The configuration of the billing method. See the following `Block load_balancer_billing_config`.
+        :param pulumi.Input[str] load_balancer_edition: The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
         :param pulumi.Input[str] load_balancer_name: The name of the resource.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']] modification_protection_config: Modify the Protection Configuration.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']] modification_protection_config: Modify the Protection Configuration. See the following `Block modification_protection_config`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]] zone_mappings: The zones and vSwitches. You must specify at least two zones.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -672,6 +698,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         __props__.__dict__["access_log_config"] = access_log_config
         __props__.__dict__["address_allocated_mode"] = address_allocated_mode
+        __props__.__dict__["address_ip_version"] = address_ip_version
         __props__.__dict__["address_type"] = address_type
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
         __props__.__dict__["dns_name"] = dns_name
@@ -691,7 +718,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="accessLogConfig")
     def access_log_config(self) -> pulumi.Output[Optional['outputs.LoadBalancerAccessLogConfig']]:
         """
-        The Access Logging Configuration Structure.
+        The Access Logging Configuration Structure. See the following `Block access_log_config`.
         """
         return pulumi.get(self, "access_log_config")
 
@@ -700,16 +727,22 @@ class LoadBalancer(pulumi.CustomResource):
     def address_allocated_mode(self) -> pulumi.Output[Optional[str]]:
         """
         The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-        *`Fixed`: The ALB instance uses a fixed IP address.
-        *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
         """
         return pulumi.get(self, "address_allocated_mode")
+
+    @property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> pulumi.Output[str]:
+        """
+        The IP version. Valid values: `Ipv4`, `DualStack`.
+        """
+        return pulumi.get(self, "address_ip_version")
 
     @property
     @pulumi.getter(name="addressType")
     def address_type(self) -> pulumi.Output[str]:
         """
-        The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+        The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
         """
         return pulumi.get(self, "address_type")
 
@@ -741,7 +774,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancerBillingConfig")
     def load_balancer_billing_config(self) -> pulumi.Output['outputs.LoadBalancerLoadBalancerBillingConfig']:
         """
-        The configuration of the billing method.
+        The configuration of the billing method. See the following `Block load_balancer_billing_config`.
         """
         return pulumi.get(self, "load_balancer_billing_config")
 
@@ -749,7 +782,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancerEdition")
     def load_balancer_edition(self) -> pulumi.Output[str]:
         """
-        The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+        The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
         """
         return pulumi.get(self, "load_balancer_edition")
 
@@ -765,7 +798,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="modificationProtectionConfig")
     def modification_protection_config(self) -> pulumi.Output['outputs.LoadBalancerModificationProtectionConfig']:
         """
-        Modify the Protection Configuration.
+        Modify the Protection Configuration. See the following `Block modification_protection_config`.
         """
         return pulumi.get(self, "modification_protection_config")
 
@@ -805,7 +838,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> pulumi.Output[Sequence['outputs.LoadBalancerZoneMapping']]:
         """
-        The zones and vSwitches. You must specify at least two zones.
+        The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
         """
         return pulumi.get(self, "zone_mappings")
 

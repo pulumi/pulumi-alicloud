@@ -10,34 +10,34 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc.Inputs
 {
 
-    public sealed class NetworkAclIngressAclEntryArgs : Pulumi.ResourceArgs
+    public sealed class NetworkAclIngressAclEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of egress entries.
+        /// The description of the network acl instance.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The entry name of egress entries.
+        /// The entry name of ingress entries.
         /// </summary>
         [Input("networkAclEntryName")]
         public Input<string>? NetworkAclEntryName { get; set; }
 
         /// <summary>
-        /// The policy of egress entries. Valid values `accept` and `drop`.
+        /// The policy of ingress entries. Valid values `accept` and `drop`.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// The port of egress entries.
+        /// The port of ingress entries.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        /// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -51,5 +51,6 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public NetworkAclIngressAclEntryArgs()
         {
         }
+        public static new NetworkAclIngressAclEntryArgs Empty => new NetworkAclIngressAclEntryArgs();
     }
 }

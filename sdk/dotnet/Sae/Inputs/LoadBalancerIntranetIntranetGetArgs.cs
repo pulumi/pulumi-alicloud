@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Sae.Inputs
 {
 
-    public sealed class LoadBalancerIntranetIntranetGetArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerIntranetIntranetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The SSL certificate. `https_cert_id` is required when HTTPS is selected
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public LoadBalancerIntranetIntranetGetArgs()
         {
         }
+        public static new LoadBalancerIntranetIntranetGetArgs Empty => new LoadBalancerIntranetIntranetGetArgs();
     }
 }

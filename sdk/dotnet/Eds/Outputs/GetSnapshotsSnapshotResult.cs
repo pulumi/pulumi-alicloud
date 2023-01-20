@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string SnapshotId;
         /// <summary>
-        /// -The name of the snapshot.
+        /// The name of the snapshot.
         /// </summary>
         public readonly string SnapshotName;
         /// <summary>

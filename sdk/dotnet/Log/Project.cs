@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/project:Project")]
-    public partial class Project : Pulumi.CustomResource
+    public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Description of the log project.
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class ProjectArgs : Pulumi.ResourceArgs
+    public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the log project.
@@ -112,9 +112,10 @@ namespace Pulumi.AliCloud.Log
         public ProjectArgs()
         {
         }
+        public static new ProjectArgs Empty => new ProjectArgs();
     }
 
-    public sealed class ProjectState : Pulumi.ResourceArgs
+    public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the log project.
@@ -143,5 +144,6 @@ namespace Pulumi.AliCloud.Log
         public ProjectState()
         {
         }
+        public static new ProjectState Empty => new ProjectState();
     }
 }

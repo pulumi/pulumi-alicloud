@@ -19,9 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.cms.MonitorGroup("example", {
- *     monitorGroupName: "tf-testaccmonitorgroup",
- * });
+ * const example = new alicloud.cms.MonitorGroup("example", {monitorGroupName: "tf-testaccmonitorgroup"});
  * const default2 = new alicloud.cms.MonitorGroup("default2", {
  *     contactGroups: ["your_contact_groups"],
  *     resourceGroupId: "your_resource_group_id",

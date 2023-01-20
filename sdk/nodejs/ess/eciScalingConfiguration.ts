@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -91,6 +92,12 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
     }
 
     /**
+     * Information about the Container Registry Enterprise Edition instance. The details see
+     * Block `acrRegistryInfo`.See Block acrRegistryInfo below for
+     * details.
+     */
+    public readonly acrRegistryInfos!: pulumi.Output<outputs.ess.EciScalingConfigurationAcrRegistryInfo[] | undefined>;
+    /**
      * Whether active current eci scaling configuration in the specified scaling group. Note that only
      * one configuration can be active. Default to `false`.
      */
@@ -108,7 +115,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly containers!: pulumi.Output<outputs.ess.EciScalingConfigurationContainer[] | undefined>;
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      */
     public readonly cpu!: pulumi.Output<number | undefined>;
     /**
@@ -161,7 +168,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly initContainers!: pulumi.Output<outputs.ess.EciScalingConfigurationInitContainer[] | undefined>;
     /**
-     * The amount of memory resources allocated to the container.
+     * The amount of memory resources allocated to the container group.
      */
     public readonly memory!: pulumi.Output<number | undefined>;
     /**
@@ -227,6 +234,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EciScalingConfigurationState | undefined;
+            resourceInputs["acrRegistryInfos"] = state ? state.acrRegistryInfos : undefined;
             resourceInputs["active"] = state ? state.active : undefined;
             resourceInputs["autoCreateEip"] = state ? state.autoCreateEip : undefined;
             resourceInputs["containerGroupName"] = state ? state.containerGroupName : undefined;
@@ -259,6 +267,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
+            resourceInputs["acrRegistryInfos"] = args ? args.acrRegistryInfos : undefined;
             resourceInputs["active"] = args ? args.active : undefined;
             resourceInputs["autoCreateEip"] = args ? args.autoCreateEip : undefined;
             resourceInputs["containerGroupName"] = args ? args.containerGroupName : undefined;
@@ -297,6 +306,12 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
  */
 export interface EciScalingConfigurationState {
     /**
+     * Information about the Container Registry Enterprise Edition instance. The details see
+     * Block `acrRegistryInfo`.See Block acrRegistryInfo below for
+     * details.
+     */
+    acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationAcrRegistryInfo>[]>;
+    /**
      * Whether active current eci scaling configuration in the specified scaling group. Note that only
      * one configuration can be active. Default to `false`.
      */
@@ -314,7 +329,7 @@ export interface EciScalingConfigurationState {
      */
     containers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainer>[]>;
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      */
     cpu?: pulumi.Input<number>;
     /**
@@ -367,7 +382,7 @@ export interface EciScalingConfigurationState {
      */
     initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[]>;
     /**
-     * The amount of memory resources allocated to the container.
+     * The amount of memory resources allocated to the container group.
      */
     memory?: pulumi.Input<number>;
     /**
@@ -426,6 +441,12 @@ export interface EciScalingConfigurationState {
  */
 export interface EciScalingConfigurationArgs {
     /**
+     * Information about the Container Registry Enterprise Edition instance. The details see
+     * Block `acrRegistryInfo`.See Block acrRegistryInfo below for
+     * details.
+     */
+    acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationAcrRegistryInfo>[]>;
+    /**
      * Whether active current eci scaling configuration in the specified scaling group. Note that only
      * one configuration can be active. Default to `false`.
      */
@@ -443,7 +464,7 @@ export interface EciScalingConfigurationArgs {
      */
     containers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainer>[]>;
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      */
     cpu?: pulumi.Input<number>;
     /**
@@ -496,7 +517,7 @@ export interface EciScalingConfigurationArgs {
      */
     initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[]>;
     /**
-     * The amount of memory resources allocated to the container.
+     * The amount of memory resources allocated to the container group.
      */
     memory?: pulumi.Input<number>;
     /**

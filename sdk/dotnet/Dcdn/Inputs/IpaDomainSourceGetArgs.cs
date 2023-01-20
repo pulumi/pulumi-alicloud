@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dcdn.Inputs
 {
 
-    public sealed class IpaDomainSourceGetArgs : Pulumi.ResourceArgs
+    public sealed class IpaDomainSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of the origin server. You can specify an IP address or a domain name.
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Dcdn.Inputs
         public IpaDomainSourceGetArgs()
         {
         }
+        public static new IpaDomainSourceGetArgs Empty => new IpaDomainSourceGetArgs();
     }
 }

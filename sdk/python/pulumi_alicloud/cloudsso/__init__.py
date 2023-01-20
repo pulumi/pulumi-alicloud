@@ -9,6 +9,7 @@ from .access_configuration import *
 from .access_configuration_provisioning import *
 from .access_management import *
 from .directory import *
+from .get_access_assignments import *
 from .get_access_configurations import *
 from .get_directories import *
 from .get_groups import *

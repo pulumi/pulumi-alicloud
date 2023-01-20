@@ -947,7 +947,7 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
@@ -1030,7 +1030,7 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
@@ -1113,7 +1113,7 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
@@ -1196,7 +1196,7 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
@@ -1475,7 +1475,7 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1516,7 +1516,7 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1557,7 +1557,7 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1598,7 +1598,7 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1639,7 +1639,7 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1680,7 +1680,7 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

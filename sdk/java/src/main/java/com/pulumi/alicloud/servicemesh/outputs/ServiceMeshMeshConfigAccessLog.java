@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfigAccessLog {
     /**
-     * @return Whether to enable Service grid audit.
+     * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The Service grid audit that to the project.
+     * @return The SLS Project of the access logging.
      * 
      */
     private @Nullable String project;
 
     private ServiceMeshMeshConfigAccessLog() {}
     /**
-     * @return Whether to enable Service grid audit.
+     * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The Service grid audit that to the project.
+     * @return The SLS Project of the access logging.
      * 
      */
     public Optional<String> project() {

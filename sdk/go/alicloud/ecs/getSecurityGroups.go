@@ -41,9 +41,9 @@ import (
 //			primarySecGroupsDs := ecs.GetSecurityGroupsOutput(ctx, ecs.GetSecurityGroupsOutputArgs{
 //				VpcId: primaryVpcDs.ID(),
 //			}, nil)
-//			ctx.Export("firstGroupId", primarySecGroupsDs.ApplyT(func(primarySecGroupsDs ecs.GetSecurityGroupsResult) (string, error) {
-//				return primarySecGroupsDs.Groups[0].Id, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("firstGroupId", primarySecGroupsDs.ApplyT(func(primarySecGroupsDs ecs.GetSecurityGroupsResult) (*string, error) {
+//				return &primarySecGroupsDs.Groups[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

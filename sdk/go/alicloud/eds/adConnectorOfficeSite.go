@@ -95,9 +95,6 @@ type AdConnectorOfficeSite struct {
 	// Workspace Corresponds to the Security Office Network of IPv4 Segment.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
 	// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-	// - `INTERNET`: connects clients to cloud desktops only over the Internet.
-	// - `VPC`: connects clients to cloud desktops only over a VPC.
-	// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
 	DesktopAccessType pulumi.StringOutput `pulumi:"desktopAccessType"`
 	// The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
 	DnsAddresses pulumi.StringArrayOutput `pulumi:"dnsAddresses"`
@@ -149,6 +146,13 @@ func NewAdConnectorOfficeSite(ctx *pulumi.Context,
 	if args.DomainName == nil {
 		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
+	if args.DomainPassword != nil {
+		args.DomainPassword = pulumi.ToSecret(args.DomainPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"domainPassword",
+	})
+	opts = append(opts, secrets)
 	var resource AdConnectorOfficeSite
 	err := ctx.RegisterResource("alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite", name, args, &resource, opts...)
 	if err != nil {
@@ -184,9 +188,6 @@ type adConnectorOfficeSiteState struct {
 	// Workspace Corresponds to the Security Office Network of IPv4 Segment.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-	// - `INTERNET`: connects clients to cloud desktops only over the Internet.
-	// - `VPC`: connects clients to cloud desktops only over a VPC.
-	// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
 	DesktopAccessType *string `pulumi:"desktopAccessType"`
 	// The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
 	DnsAddresses []string `pulumi:"dnsAddresses"`
@@ -230,9 +231,6 @@ type AdConnectorOfficeSiteState struct {
 	// Workspace Corresponds to the Security Office Network of IPv4 Segment.
 	CidrBlock pulumi.StringPtrInput
 	// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-	// - `INTERNET`: connects clients to cloud desktops only over the Internet.
-	// - `VPC`: connects clients to cloud desktops only over a VPC.
-	// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
 	DesktopAccessType pulumi.StringPtrInput
 	// The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
 	DnsAddresses pulumi.StringArrayInput
@@ -280,9 +278,6 @@ type adConnectorOfficeSiteArgs struct {
 	// Workspace Corresponds to the Security Office Network of IPv4 Segment.
 	CidrBlock string `pulumi:"cidrBlock"`
 	// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-	// - `INTERNET`: connects clients to cloud desktops only over the Internet.
-	// - `VPC`: connects clients to cloud desktops only over a VPC.
-	// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
 	DesktopAccessType *string `pulumi:"desktopAccessType"`
 	// The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
 	DnsAddresses []string `pulumi:"dnsAddresses"`
@@ -325,9 +320,6 @@ type AdConnectorOfficeSiteArgs struct {
 	// Workspace Corresponds to the Security Office Network of IPv4 Segment.
 	CidrBlock pulumi.StringInput
 	// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-	// - `INTERNET`: connects clients to cloud desktops only over the Internet.
-	// - `VPC`: connects clients to cloud desktops only over a VPC.
-	// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
 	DesktopAccessType pulumi.StringPtrInput
 	// The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
 	DnsAddresses pulumi.StringArrayInput
@@ -473,9 +465,6 @@ func (o AdConnectorOfficeSiteOutput) CidrBlock() pulumi.StringOutput {
 }
 
 // The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-// - `INTERNET`: connects clients to cloud desktops only over the Internet.
-// - `VPC`: connects clients to cloud desktops only over a VPC.
-// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
 func (o AdConnectorOfficeSiteOutput) DesktopAccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdConnectorOfficeSite) pulumi.StringOutput { return v.DesktopAccessType }).(pulumi.StringOutput)
 }

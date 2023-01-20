@@ -11,11 +11,11 @@ import (
 )
 
 type ApplicationScalingRuleScalingRuleMetric struct {
-	// Maximum number of instances applied.
+	// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 	MaxReplicas *int `pulumi:"maxReplicas"`
 	// Indicator rule configuration. See the following `Block metrics`.
 	Metrics []ApplicationScalingRuleScalingRuleMetricMetric `pulumi:"metrics"`
-	// Minimum number of instances applied.
+	// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 	MinReplicas *int `pulumi:"minReplicas"`
 	// Apply shrink rules. See the following `Block scaleDownRules`.
 	ScaleDownRules *ApplicationScalingRuleScalingRuleMetricScaleDownRules `pulumi:"scaleDownRules"`
@@ -35,11 +35,11 @@ type ApplicationScalingRuleScalingRuleMetricInput interface {
 }
 
 type ApplicationScalingRuleScalingRuleMetricArgs struct {
-	// Maximum number of instances applied.
+	// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 	MaxReplicas pulumi.IntPtrInput `pulumi:"maxReplicas"`
 	// Indicator rule configuration. See the following `Block metrics`.
 	Metrics ApplicationScalingRuleScalingRuleMetricMetricArrayInput `pulumi:"metrics"`
-	// Minimum number of instances applied.
+	// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 	MinReplicas pulumi.IntPtrInput `pulumi:"minReplicas"`
 	// Apply shrink rules. See the following `Block scaleDownRules`.
 	ScaleDownRules ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrInput `pulumi:"scaleDownRules"`
@@ -124,7 +124,7 @@ func (o ApplicationScalingRuleScalingRuleMetricOutput) ToApplicationScalingRuleS
 	}).(ApplicationScalingRuleScalingRuleMetricPtrOutput)
 }
 
-// Maximum number of instances applied.
+// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 func (o ApplicationScalingRuleScalingRuleMetricOutput) MaxReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
 }
@@ -136,7 +136,7 @@ func (o ApplicationScalingRuleScalingRuleMetricOutput) Metrics() ApplicationScal
 	}).(ApplicationScalingRuleScalingRuleMetricMetricArrayOutput)
 }
 
-// Minimum number of instances applied.
+// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 func (o ApplicationScalingRuleScalingRuleMetricOutput) MinReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
 }
@@ -179,7 +179,7 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) Elem() ApplicationScal
 	}).(ApplicationScalingRuleScalingRuleMetricOutput)
 }
 
-// Maximum number of instances applied.
+// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) MaxReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *int {
 		if v == nil {
@@ -199,7 +199,7 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) Metrics() ApplicationS
 	}).(ApplicationScalingRuleScalingRuleMetricMetricArrayOutput)
 }
 
-// Minimum number of instances applied.
+// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) MinReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *int {
 		if v == nil {
@@ -901,9 +901,9 @@ func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) Schedules() Application
 type ApplicationScalingRuleScalingRuleTimerSchedule struct {
 	// Trigger point in time. When supporting format: minutes, for example: `08:00`.
 	AtTime *string `pulumi:"atTime"`
-	// Maximum number of instances applied.
+	// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 	MaxReplicas *int `pulumi:"maxReplicas"`
-	// Minimum number of instances applied.
+	// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 	MinReplicas *int `pulumi:"minReplicas"`
 	// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
 	TargetReplicas *int `pulumi:"targetReplicas"`
@@ -923,9 +923,9 @@ type ApplicationScalingRuleScalingRuleTimerScheduleInput interface {
 type ApplicationScalingRuleScalingRuleTimerScheduleArgs struct {
 	// Trigger point in time. When supporting format: minutes, for example: `08:00`.
 	AtTime pulumi.StringPtrInput `pulumi:"atTime"`
-	// Maximum number of instances applied.
+	// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 	MaxReplicas pulumi.IntPtrInput `pulumi:"maxReplicas"`
-	// Minimum number of instances applied.
+	// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 	MinReplicas pulumi.IntPtrInput `pulumi:"minReplicas"`
 	// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
 	TargetReplicas pulumi.IntPtrInput `pulumi:"targetReplicas"`
@@ -987,12 +987,12 @@ func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) AtTime() pulumi.St
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *string { return v.AtTime }).(pulumi.StringPtrOutput)
 }
 
-// Maximum number of instances applied.
+// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) MaxReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
 }
 
-// Minimum number of instances applied.
+// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
 func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) MinReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
 }
@@ -3416,6 +3416,8 @@ func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput) Index
 type GetApplicationsApplication struct {
 	// The ARN of the RAM role required when pulling images across accounts.
 	AcrAssumeRoleArn string `pulumi:"acrAssumeRoleArn"`
+	// The ID of the ACR EE instance.
+	AcrInstanceId string `pulumi:"acrInstanceId"`
 	// Application description information. No more than 1024 characters.
 	AppDescription string `pulumi:"appDescription"`
 	// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
@@ -3532,6 +3534,8 @@ type GetApplicationsApplicationInput interface {
 type GetApplicationsApplicationArgs struct {
 	// The ARN of the RAM role required when pulling images across accounts.
 	AcrAssumeRoleArn pulumi.StringInput `pulumi:"acrAssumeRoleArn"`
+	// The ID of the ACR EE instance.
+	AcrInstanceId pulumi.StringInput `pulumi:"acrInstanceId"`
 	// Application description information. No more than 1024 characters.
 	AppDescription pulumi.StringInput `pulumi:"appDescription"`
 	// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
@@ -3688,6 +3692,11 @@ func (o GetApplicationsApplicationOutput) ToGetApplicationsApplicationOutputWith
 // The ARN of the RAM role required when pulling images across accounts.
 func (o GetApplicationsApplicationOutput) AcrAssumeRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationsApplication) string { return v.AcrAssumeRoleArn }).(pulumi.StringOutput)
+}
+
+// The ID of the ACR EE instance.
+func (o GetApplicationsApplicationOutput) AcrInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.AcrInstanceId }).(pulumi.StringOutput)
 }
 
 // Application description information. No more than 1024 characters.

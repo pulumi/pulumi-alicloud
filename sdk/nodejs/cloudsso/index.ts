@@ -5,30 +5,81 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./accessConfiguration";
-export * from "./accessConfigurationProvisioning";
-export * from "./accessManagement";
-export * from "./directory";
-export * from "./getAccessConfigurations";
-export * from "./getDirectories";
-export * from "./getGroups";
-export * from "./getScimServerCredentials";
-export * from "./getService";
-export * from "./getUsers";
-export * from "./group";
-export * from "./scimServerCredential";
-export * from "./user";
-export * from "./userAttachment";
+export { AccessConfigurationArgs, AccessConfigurationState } from "./accessConfiguration";
+export type AccessConfiguration = import("./accessConfiguration").AccessConfiguration;
+export const AccessConfiguration: typeof import("./accessConfiguration").AccessConfiguration = null as any;
+utilities.lazyLoad(exports, ["AccessConfiguration"], () => require("./accessConfiguration"));
 
-// Import resources to register:
-import { AccessConfiguration } from "./accessConfiguration";
-import { AccessConfigurationProvisioning } from "./accessConfigurationProvisioning";
-import { AccessManagement } from "./accessManagement";
-import { Directory } from "./directory";
-import { Group } from "./group";
-import { ScimServerCredential } from "./scimServerCredential";
-import { User } from "./user";
-import { UserAttachment } from "./userAttachment";
+export { AccessConfigurationProvisioningArgs, AccessConfigurationProvisioningState } from "./accessConfigurationProvisioning";
+export type AccessConfigurationProvisioning = import("./accessConfigurationProvisioning").AccessConfigurationProvisioning;
+export const AccessConfigurationProvisioning: typeof import("./accessConfigurationProvisioning").AccessConfigurationProvisioning = null as any;
+utilities.lazyLoad(exports, ["AccessConfigurationProvisioning"], () => require("./accessConfigurationProvisioning"));
+
+export { AccessManagementArgs, AccessManagementState } from "./accessManagement";
+export type AccessManagement = import("./accessManagement").AccessManagement;
+export const AccessManagement: typeof import("./accessManagement").AccessManagement = null as any;
+utilities.lazyLoad(exports, ["AccessManagement"], () => require("./accessManagement"));
+
+export { DirectoryArgs, DirectoryState } from "./directory";
+export type Directory = import("./directory").Directory;
+export const Directory: typeof import("./directory").Directory = null as any;
+utilities.lazyLoad(exports, ["Directory"], () => require("./directory"));
+
+export { GetAccessAssignmentsArgs, GetAccessAssignmentsResult, GetAccessAssignmentsOutputArgs } from "./getAccessAssignments";
+export const getAccessAssignments: typeof import("./getAccessAssignments").getAccessAssignments = null as any;
+export const getAccessAssignmentsOutput: typeof import("./getAccessAssignments").getAccessAssignmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessAssignments","getAccessAssignmentsOutput"], () => require("./getAccessAssignments"));
+
+export { GetAccessConfigurationsArgs, GetAccessConfigurationsResult, GetAccessConfigurationsOutputArgs } from "./getAccessConfigurations";
+export const getAccessConfigurations: typeof import("./getAccessConfigurations").getAccessConfigurations = null as any;
+export const getAccessConfigurationsOutput: typeof import("./getAccessConfigurations").getAccessConfigurationsOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessConfigurations","getAccessConfigurationsOutput"], () => require("./getAccessConfigurations"));
+
+export { GetDirectoriesArgs, GetDirectoriesResult, GetDirectoriesOutputArgs } from "./getDirectories";
+export const getDirectories: typeof import("./getDirectories").getDirectories = null as any;
+export const getDirectoriesOutput: typeof import("./getDirectories").getDirectoriesOutput = null as any;
+utilities.lazyLoad(exports, ["getDirectories","getDirectoriesOutput"], () => require("./getDirectories"));
+
+export { GetGroupsArgs, GetGroupsResult, GetGroupsOutputArgs } from "./getGroups";
+export const getGroups: typeof import("./getGroups").getGroups = null as any;
+export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
+
+export { GetScimServerCredentialsArgs, GetScimServerCredentialsResult, GetScimServerCredentialsOutputArgs } from "./getScimServerCredentials";
+export const getScimServerCredentials: typeof import("./getScimServerCredentials").getScimServerCredentials = null as any;
+export const getScimServerCredentialsOutput: typeof import("./getScimServerCredentials").getScimServerCredentialsOutput = null as any;
+utilities.lazyLoad(exports, ["getScimServerCredentials","getScimServerCredentialsOutput"], () => require("./getScimServerCredentials"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
+
+export { GroupArgs, GroupState } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { ScimServerCredentialArgs, ScimServerCredentialState } from "./scimServerCredential";
+export type ScimServerCredential = import("./scimServerCredential").ScimServerCredential;
+export const ScimServerCredential: typeof import("./scimServerCredential").ScimServerCredential = null as any;
+utilities.lazyLoad(exports, ["ScimServerCredential"], () => require("./scimServerCredential"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
+export { UserAttachmentArgs, UserAttachmentState } from "./userAttachment";
+export type UserAttachment = import("./userAttachment").UserAttachment;
+export const UserAttachment: typeof import("./userAttachment").UserAttachment = null as any;
+utilities.lazyLoad(exports, ["UserAttachment"], () => require("./userAttachment"));
+
 
 const _module = {
     version: utilities.getVersion(),

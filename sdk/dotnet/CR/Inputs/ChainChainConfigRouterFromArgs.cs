@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CR.Inputs
 {
 
-    public sealed class ChainChainConfigRouterFromArgs : Pulumi.ResourceArgs
+    public sealed class ChainChainConfigRouterFromArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.CR.Inputs
         public ChainChainConfigRouterFromArgs()
         {
         }
+        public static new ChainChainConfigRouterFromArgs Empty => new ChainChainConfigRouterFromArgs();
     }
 }

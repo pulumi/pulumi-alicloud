@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.Eds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Eds.SimpleOfficeSite("default", new()
     ///     {
-    ///         var @default = new AliCloud.Eds.SimpleOfficeSite("default", new AliCloud.Eds.SimpleOfficeSiteArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///             DesktopAccessType = "Internet",
-    ///             OfficeSiteName = "your_office_site_name",
-    ///             EnableInternetAccess = false,
-    ///         });
-    ///         var example = new AliCloud.Eds.NasFileSystem("example", new AliCloud.Eds.NasFileSystemArgs
-    ///         {
-    ///             NasFileSystemName = "example_value",
-    ///             OfficeSiteId = @default.Id,
-    ///             Description = "example_value",
-    ///         });
-    ///     }
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         DesktopAccessType = "Internet",
+    ///         OfficeSiteName = "your_office_site_name",
+    ///         EnableInternetAccess = false,
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.Eds.NasFileSystem("example", new()
+    ///     {
+    ///         NasFileSystemName = "example_value",
+    ///         OfficeSiteId = @default.Id,
+    ///         Description = "example_value",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +54,7 @@ namespace Pulumi.AliCloud.Eds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/nasFileSystem:NasFileSystem")]
-    public partial class NasFileSystem : Pulumi.CustomResource
+    public partial class NasFileSystem : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of nas file system.
@@ -143,7 +142,7 @@ namespace Pulumi.AliCloud.Eds
         }
     }
 
-    public sealed class NasFileSystemArgs : Pulumi.ResourceArgs
+    public sealed class NasFileSystemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of nas file system.
@@ -184,9 +183,10 @@ namespace Pulumi.AliCloud.Eds
         public NasFileSystemArgs()
         {
         }
+        public static new NasFileSystemArgs Empty => new NasFileSystemArgs();
     }
 
-    public sealed class NasFileSystemState : Pulumi.ResourceArgs
+    public sealed class NasFileSystemState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of nas file system.
@@ -233,5 +233,6 @@ namespace Pulumi.AliCloud.Eds
         public NasFileSystemState()
         {
         }
+        public static new NasFileSystemState Empty => new NasFileSystemState();
     }
 }

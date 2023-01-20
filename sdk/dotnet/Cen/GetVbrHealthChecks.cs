@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Cen
         /// &gt; **NOTE:** Available in 1.98.0+
         /// </summary>
         public static Task<GetVbrHealthChecksResult> InvokeAsync(GetVbrHealthChecksArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVbrHealthChecksResult>("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args ?? new GetVbrHealthChecksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVbrHealthChecksResult>("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args ?? new GetVbrHealthChecksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN VBR Health Checks available to the user.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Cen
         /// &gt; **NOTE:** Available in 1.98.0+
         /// </summary>
         public static Output<GetVbrHealthChecksResult> Invoke(GetVbrHealthChecksInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVbrHealthChecksResult>("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args ?? new GetVbrHealthChecksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVbrHealthChecksResult>("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args ?? new GetVbrHealthChecksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetVbrHealthChecksArgs : Pulumi.InvokeArgs
+    public sealed class GetVbrHealthChecksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Cloud Enterprise Network (CEN) instance.
@@ -61,9 +61,10 @@ namespace Pulumi.AliCloud.Cen
         public GetVbrHealthChecksArgs()
         {
         }
+        public static new GetVbrHealthChecksArgs Empty => new GetVbrHealthChecksArgs();
     }
 
-    public sealed class GetVbrHealthChecksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVbrHealthChecksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Cloud Enterprise Network (CEN) instance.
@@ -95,6 +96,7 @@ namespace Pulumi.AliCloud.Cen
         public GetVbrHealthChecksInvokeArgs()
         {
         }
+        public static new GetVbrHealthChecksInvokeArgs Empty => new GetVbrHealthChecksInvokeArgs();
     }
 
 

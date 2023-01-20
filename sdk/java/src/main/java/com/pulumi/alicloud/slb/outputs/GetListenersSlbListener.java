@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.slb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -130,6 +131,11 @@ public final class GetListenersSlbListener {
      * 
      */
     private String protocol;
+    /**
+     * @return Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     * 
+     */
+    private Boolean proxyProtocolV2Enabled;
     /**
      * @return Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
      * 
@@ -372,6 +378,13 @@ public final class GetListenersSlbListener {
         return this.protocol;
     }
     /**
+     * @return Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     * 
+     */
+    public Boolean proxyProtocolV2Enabled() {
+        return this.proxyProtocolV2Enabled;
+    }
+    /**
      * @return Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
      * 
      */
@@ -506,6 +519,7 @@ public final class GetListenersSlbListener {
         private String masterSlaveServerGroupId;
         private Integer persistenceTimeout;
         private String protocol;
+        private Boolean proxyProtocolV2Enabled;
         private Integer requestTimeout;
         private String scheduler;
         private String securityStatus;
@@ -548,6 +562,7 @@ public final class GetListenersSlbListener {
     	      this.masterSlaveServerGroupId = defaults.masterSlaveServerGroupId;
     	      this.persistenceTimeout = defaults.persistenceTimeout;
     	      this.protocol = defaults.protocol;
+    	      this.proxyProtocolV2Enabled = defaults.proxyProtocolV2Enabled;
     	      this.requestTimeout = defaults.requestTimeout;
     	      this.scheduler = defaults.scheduler;
     	      this.securityStatus = defaults.securityStatus;
@@ -686,6 +701,11 @@ public final class GetListenersSlbListener {
             return this;
         }
         @CustomType.Setter
+        public Builder proxyProtocolV2Enabled(Boolean proxyProtocolV2Enabled) {
+            this.proxyProtocolV2Enabled = Objects.requireNonNull(proxyProtocolV2Enabled);
+            return this;
+        }
+        @CustomType.Setter
         public Builder requestTimeout(Integer requestTimeout) {
             this.requestTimeout = Objects.requireNonNull(requestTimeout);
             return this;
@@ -786,6 +806,7 @@ public final class GetListenersSlbListener {
             o.masterSlaveServerGroupId = masterSlaveServerGroupId;
             o.persistenceTimeout = persistenceTimeout;
             o.protocol = protocol;
+            o.proxyProtocolV2Enabled = proxyProtocolV2Enabled;
             o.requestTimeout = requestTimeout;
             o.scheduler = scheduler;
             o.securityStatus = securityStatus;

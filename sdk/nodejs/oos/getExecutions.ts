@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,22 +17,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.oos.getExecutions({
+ * const example = alicloud.oos.getExecutions({
  *     ids: ["execution_id"],
  *     status: "Success",
  *     templateName: "name",
- * }));
- *
- * export const firstExecutionId = example.executions[0].id;
+ * });
+ * export const firstExecutionId = example.then(example => example.executions?.[0]?.id);
  * ```
  */
 export function getExecutions(args?: GetExecutionsArgs, opts?: pulumi.InvokeOptions): Promise<GetExecutionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oos/getExecutions:getExecutions", {
         "category": args.category,
         "endDate": args.endDate,
@@ -157,9 +154,27 @@ export interface GetExecutionsResult {
     readonly tags?: {[key: string]: any};
     readonly templateName?: string;
 }
-
+/**
+ * This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in v1.93.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.oos.getExecutions({
+ *     ids: ["execution_id"],
+ *     status: "Success",
+ *     templateName: "name",
+ * });
+ * export const firstExecutionId = example.then(example => example.executions?.[0]?.id);
+ * ```
+ */
 export function getExecutionsOutput(args?: GetExecutionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionsResult> {
-    return pulumi.output(args).apply(a => getExecutions(a, opts))
+    return pulumi.output(args).apply((a: any) => getExecutions(a, opts))
 }
 
 /**

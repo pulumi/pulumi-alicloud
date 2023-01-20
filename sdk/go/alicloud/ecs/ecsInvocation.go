@@ -51,7 +51,7 @@ import (
 //			_, err = ecs.NewEcsInvocation(ctx, "defaultEcsInvocation", &ecs.EcsInvocationArgs{
 //				CommandId: defaultCommand.ID(),
 //				InstanceIds: pulumi.StringArray{
-//					pulumi.String(defaultInstances.Ids[0]),
+//					*pulumi.String(defaultInstances.Ids[0]),
 //				},
 //			})
 //			if err != nil {

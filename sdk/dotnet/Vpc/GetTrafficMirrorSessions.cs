@@ -23,116 +23,107 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId1 = ids.Apply(ids =&gt; ids.Sessions?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             NameRegex = "^my-TrafficMirrorSession",
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Sessions?[0]?.Id);
-        ///         var enabled = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             Enabled = false,
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId3 = enabled.Apply(enabled =&gt; enabled.Sessions?[0]?.Id);
-        ///         var priority = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             Priority = 1,
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId4 = priority.Apply(priority =&gt; priority.Sessions?[0]?.Id);
-        ///         var filterId = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             TrafficMirrorFilterId = "example_value",
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId5 = filterId.Apply(filterId =&gt; filterId.Sessions?[0]?.Id);
-        ///         var sessionName = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             TrafficMirrorSessionName = "example_value",
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId6 = sessionName.Apply(sessionName =&gt; sessionName.Sessions?[0]?.Id);
-        ///         var sourceId = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             TrafficMirrorSourceId = "example_value",
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId7 = sourceId.Apply(sourceId =&gt; sourceId.Sessions?[0]?.Id);
-        ///         var targetId = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             TrafficMirrorTargetId = "example_value",
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId8 = targetId.Apply(targetId =&gt; targetId.Sessions?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             Status = "Created",
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId9 = status.Apply(status =&gt; status.Sessions?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcTrafficMirrorSessionId1")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId1 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId2")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId2 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId3")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId3 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId4")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId4 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId5")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId5 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId6")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId6 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId7")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId7 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId8")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId8 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId9")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId9 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-TrafficMirrorSession",
+        ///     });
+        /// 
+        ///     var enabled = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Enabled = false,
+        ///     });
+        /// 
+        ///     var priority = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Priority = 1,
+        ///     });
+        /// 
+        ///     var filterId = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         TrafficMirrorFilterId = "example_value",
+        ///     });
+        /// 
+        ///     var sessionName = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         TrafficMirrorSessionName = "example_value",
+        ///     });
+        /// 
+        ///     var sourceId = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         TrafficMirrorSourceId = "example_value",
+        ///     });
+        /// 
+        ///     var targetId = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         TrafficMirrorTargetId = "example_value",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = "Created",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcTrafficMirrorSessionId1"] = ids.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId2"] = nameRegex.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId3"] = enabled.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId4"] = priority.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId5"] = filterId.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId6"] = sessionName.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId7"] = sourceId.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId8"] = targetId.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId9"] = status.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrafficMirrorSessionsResult> InvokeAsync(GetTrafficMirrorSessionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorSessionsResult>("alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions", args ?? new GetTrafficMirrorSessionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorSessionsResult>("alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions", args ?? new GetTrafficMirrorSessionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
@@ -146,120 +137,111 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId1 = ids.Apply(ids =&gt; ids.Sessions?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             NameRegex = "^my-TrafficMirrorSession",
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Sessions?[0]?.Id);
-        ///         var enabled = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             Enabled = false,
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId3 = enabled.Apply(enabled =&gt; enabled.Sessions?[0]?.Id);
-        ///         var priority = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             Priority = 1,
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId4 = priority.Apply(priority =&gt; priority.Sessions?[0]?.Id);
-        ///         var filterId = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             TrafficMirrorFilterId = "example_value",
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId5 = filterId.Apply(filterId =&gt; filterId.Sessions?[0]?.Id);
-        ///         var sessionName = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             TrafficMirrorSessionName = "example_value",
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId6 = sessionName.Apply(sessionName =&gt; sessionName.Sessions?[0]?.Id);
-        ///         var sourceId = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             TrafficMirrorSourceId = "example_value",
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId7 = sourceId.Apply(sourceId =&gt; sourceId.Sessions?[0]?.Id);
-        ///         var targetId = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             TrafficMirrorTargetId = "example_value",
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId8 = targetId.Apply(targetId =&gt; targetId.Sessions?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetTrafficMirrorSessions.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorSessionsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             Status = "Created",
-        ///         }));
-        ///         this.VpcTrafficMirrorSessionId9 = status.Apply(status =&gt; status.Sessions?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcTrafficMirrorSessionId1")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId1 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId2")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId2 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId3")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId3 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId4")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId4 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId5")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId5 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId6")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId6 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId7")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId7 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId8")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId8 { get; set; }
-        ///     [Output("vpcTrafficMirrorSessionId9")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorSessionId9 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-TrafficMirrorSession",
+        ///     });
+        /// 
+        ///     var enabled = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Enabled = false,
+        ///     });
+        /// 
+        ///     var priority = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Priority = 1,
+        ///     });
+        /// 
+        ///     var filterId = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         TrafficMirrorFilterId = "example_value",
+        ///     });
+        /// 
+        ///     var sessionName = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         TrafficMirrorSessionName = "example_value",
+        ///     });
+        /// 
+        ///     var sourceId = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         TrafficMirrorSourceId = "example_value",
+        ///     });
+        /// 
+        ///     var targetId = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         TrafficMirrorTargetId = "example_value",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetTrafficMirrorSessions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = "Created",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcTrafficMirrorSessionId1"] = ids.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId2"] = nameRegex.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId3"] = enabled.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId4"] = priority.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId5"] = filterId.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId6"] = sessionName.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId7"] = sourceId.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId8"] = targetId.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///         ["vpcTrafficMirrorSessionId9"] = status.Apply(getTrafficMirrorSessionsResult =&gt; getTrafficMirrorSessionsResult.Sessions[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTrafficMirrorSessionsResult> Invoke(GetTrafficMirrorSessionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorSessionsResult>("alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions", args ?? new GetTrafficMirrorSessionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorSessionsResult>("alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions", args ?? new GetTrafficMirrorSessionsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTrafficMirrorSessionsArgs : Pulumi.InvokeArgs
+    public sealed class GetTrafficMirrorSessionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Indicates whether traffic mirror sessions are enabled. default to `false`.
@@ -327,9 +309,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetTrafficMirrorSessionsArgs()
         {
         }
+        public static new GetTrafficMirrorSessionsArgs Empty => new GetTrafficMirrorSessionsArgs();
     }
 
-    public sealed class GetTrafficMirrorSessionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTrafficMirrorSessionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Indicates whether traffic mirror sessions are enabled. default to `false`.
@@ -397,6 +380,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetTrafficMirrorSessionsInvokeArgs()
         {
         }
+        public static new GetTrafficMirrorSessionsInvokeArgs Empty => new GetTrafficMirrorSessionsInvokeArgs();
     }
 
 

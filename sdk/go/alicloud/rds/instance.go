@@ -45,6 +45,12 @@ type Instance struct {
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
 	CaType pulumi.StringOutput `pulumi:"caType"`
+	// The RDS edition of the instance. Valid values:
+	// * **Basic**: Basic Edition.
+	// * **HighAvailability**: High-availability Edition.
+	// * **AlwaysOn**: Cluster Edition.
+	// * **Finance**: Enterprise Edition.
+	Category pulumi.StringOutput `pulumi:"category"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert pulumi.StringPtrOutput `pulumi:"clientCaCert"`
 	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
@@ -85,6 +91,10 @@ type Instance struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// - Immediate: The change immediately takes effect.
+	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -213,6 +223,8 @@ type Instance struct {
 	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
 	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
 	UpgradeTime pulumi.StringPtrOutput `pulumi:"upgradeTime"`
+	// The VPC ID of the instance.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
@@ -293,6 +305,12 @@ type instanceState struct {
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
 	CaType *string `pulumi:"caType"`
+	// The RDS edition of the instance. Valid values:
+	// * **Basic**: Basic Edition.
+	// * **HighAvailability**: High-availability Edition.
+	// * **AlwaysOn**: Cluster Edition.
+	// * **Finance**: Enterprise Edition.
+	Category *string `pulumi:"category"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert *string `pulumi:"clientCaCert"`
 	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
@@ -333,6 +351,10 @@ type instanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// - Immediate: The change immediately takes effect.
+	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -461,6 +483,8 @@ type instanceState struct {
 	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
 	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
 	UpgradeTime *string `pulumi:"upgradeTime"`
+	// The VPC ID of the instance.
+	VpcId *string `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
@@ -501,6 +525,12 @@ type InstanceState struct {
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
 	CaType pulumi.StringPtrInput
+	// The RDS edition of the instance. Valid values:
+	// * **Basic**: Basic Edition.
+	// * **HighAvailability**: High-availability Edition.
+	// * **AlwaysOn**: Cluster Edition.
+	// * **Finance**: Enterprise Edition.
+	Category pulumi.StringPtrInput
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert pulumi.StringPtrInput
 	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
@@ -541,6 +571,10 @@ type InstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection pulumi.BoolPtrInput
+	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// - Immediate: The change immediately takes effect.
+	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	EffectiveTime pulumi.StringPtrInput
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -669,6 +703,8 @@ type InstanceState struct {
 	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
 	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
 	UpgradeTime pulumi.StringPtrInput
+	// The VPC ID of the instance.
+	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrInput
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
@@ -713,6 +749,12 @@ type instanceArgs struct {
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
 	CaType *string `pulumi:"caType"`
+	// The RDS edition of the instance. Valid values:
+	// * **Basic**: Basic Edition.
+	// * **HighAvailability**: High-availability Edition.
+	// * **AlwaysOn**: Cluster Edition.
+	// * **Finance**: Enterprise Edition.
+	Category *string `pulumi:"category"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert *string `pulumi:"clientCaCert"`
 	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
@@ -751,6 +793,10 @@ type instanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// - Immediate: The change immediately takes effect.
+	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -877,6 +923,8 @@ type instanceArgs struct {
 	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
 	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
 	UpgradeTime *string `pulumi:"upgradeTime"`
+	// The VPC ID of the instance.
+	VpcId *string `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
@@ -918,6 +966,12 @@ type InstanceArgs struct {
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
 	CaType pulumi.StringPtrInput
+	// The RDS edition of the instance. Valid values:
+	// * **Basic**: Basic Edition.
+	// * **HighAvailability**: High-availability Edition.
+	// * **AlwaysOn**: Cluster Edition.
+	// * **Finance**: Enterprise Edition.
+	Category pulumi.StringPtrInput
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert pulumi.StringPtrInput
 	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
@@ -956,6 +1010,10 @@ type InstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	DeletionProtection pulumi.BoolPtrInput
+	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// - Immediate: The change immediately takes effect.
+	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	EffectiveTime pulumi.StringPtrInput
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -1082,6 +1140,8 @@ type InstanceArgs struct {
 	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
 	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
 	UpgradeTime pulumi.StringPtrInput
+	// The VPC ID of the instance.
+	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrInput
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
@@ -1229,6 +1289,15 @@ func (o InstanceOutput) CaType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CaType }).(pulumi.StringOutput)
 }
 
+// The RDS edition of the instance. Valid values:
+// * **Basic**: Basic Edition.
+// * **HighAvailability**: High-availability Edition.
+// * **AlwaysOn**: Cluster Edition.
+// * **Finance**: Enterprise Edition.
+func (o InstanceOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
+}
+
 // The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 func (o InstanceOutput) ClientCaCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ClientCaCert }).(pulumi.StringPtrOutput)
@@ -1303,6 +1372,13 @@ func (o InstanceOutput) DbTimeZone() pulumi.StringOutput {
 // - false: no delete protect.
 func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The method to update the engine version.  Default value: Immediate. Valid values:
+// - Immediate: The change immediately takes effect.
+// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+func (o InstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
 }
 
 // The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -1560,6 +1636,11 @@ func (o InstanceOutput) UpgradeDbInstanceKernelVersion() pulumi.BoolPtrOutput {
 // - SpecifyTime: The minor engine version is updated at the point in time you specify.
 func (o InstanceOutput) UpgradeTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UpgradeTime }).(pulumi.StringPtrOutput)
+}
+
+// The VPC ID of the instance.
+func (o InstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.

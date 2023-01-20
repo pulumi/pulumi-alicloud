@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,17 +23,14 @@ import * as utilities from "../utilities";
  *     status: "Running",
  * });
  * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getDatabases({
- *     dbClusterId: polardbClustersDs.clusters?[0]?.id,
+ *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
  * }));
- * export const database = _default.then(_default => _default.databases?[0]?.dbName);
+ * export const database = _default.then(_default => _default.databases?.[0]?.dbName);
  * ```
  */
 export function getDatabases(args: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:polardb/getDatabases:getDatabases", {
         "dbClusterId": args.dbClusterId,
         "nameRegex": args.nameRegex,
@@ -72,9 +70,30 @@ export interface GetDatabasesResult {
      */
     readonly names: string[];
 }
-
+/**
+ * The `alicloud.polardb.getDatabases` data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
+ * Filters support regular expression for the database name, searches by clusterId.
+ *
+ * > **NOTE:** Available in v1.70.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const polardbClustersDs = alicloud.polardb.getClusters({
+ *     descriptionRegex: "pc-\\w+",
+ *     status: "Running",
+ * });
+ * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getDatabases({
+ *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
+ * }));
+ * export const database = _default.then(_default => _default.databases?.[0]?.dbName);
+ * ```
+ */
 export function getDatabasesOutput(args: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {
-    return pulumi.output(args).apply(a => getDatabases(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatabases(a, opts))
 }
 
 /**

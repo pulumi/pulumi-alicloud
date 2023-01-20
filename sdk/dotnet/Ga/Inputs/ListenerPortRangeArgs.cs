@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ga.Inputs
 {
 
-    public sealed class ListenerPortRangeArgs : Pulumi.ResourceArgs
+    public sealed class ListenerPortRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The initial listening port used to receive requests and forward them to terminal nodes.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public ListenerPortRangeArgs()
         {
         }
+        public static new ListenerPortRangeArgs Empty => new ListenerPortRangeArgs();
     }
 }

@@ -21,37 +21,36 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = AliCloud.Cen.GetRouteMaps.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(AliCloud.Cen.GetRouteMaps.InvokeAsync(new AliCloud.Cen.GetRouteMapsArgs
+        ///         CenId = "cen-ihdlgo87ai********",
+        ///         Ids = new[]
         ///         {
-        ///             CenId = "cen-ihdlgo87ai********",
-        ///             Ids = 
-        ///             {
-        ///                 "cen-ihdlgo87ai:cenrmap-bnh97kb3mn********",
-        ///             },
-        ///             DescriptionRegex = "datasource_test",
-        ///             CenRegionId = "cn-hangzhou",
-        ///             TransmitDirection = "RegionIn",
-        ///             Status = "Active",
-        ///         }));
-        ///         this.FirstCenRouteMapId = @this.Apply(@this =&gt; @this.Maps?[0]?.RouteMapId);
-        ///     }
+        ///             "cen-ihdlgo87ai:cenrmap-bnh97kb3mn********",
+        ///         },
+        ///         DescriptionRegex = "datasource_test",
+        ///         CenRegionId = "cn-hangzhou",
+        ///         TransmitDirection = "RegionIn",
+        ///         Status = "Active",
+        ///     });
         /// 
-        ///     [Output("firstCenRouteMapId")]
-        ///     public Output&lt;string&gt; FirstCenRouteMapId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCenRouteMapId"] = @this.Apply(getRouteMapsResult =&gt; getRouteMapsResult).Apply(@this =&gt; @this.Apply(getRouteMapsResult =&gt; getRouteMapsResult.Maps[0]?.RouteMapId)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteMapsResult> InvokeAsync(GetRouteMapsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteMapsResult>("alicloud:cen/getRouteMaps:getRouteMaps", args ?? new GetRouteMapsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouteMapsResult>("alicloud:cen/getRouteMaps:getRouteMaps", args ?? new GetRouteMapsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN Route Maps available to the user.
@@ -63,41 +62,40 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = AliCloud.Cen.GetRouteMaps.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(AliCloud.Cen.GetRouteMaps.InvokeAsync(new AliCloud.Cen.GetRouteMapsArgs
+        ///         CenId = "cen-ihdlgo87ai********",
+        ///         Ids = new[]
         ///         {
-        ///             CenId = "cen-ihdlgo87ai********",
-        ///             Ids = 
-        ///             {
-        ///                 "cen-ihdlgo87ai:cenrmap-bnh97kb3mn********",
-        ///             },
-        ///             DescriptionRegex = "datasource_test",
-        ///             CenRegionId = "cn-hangzhou",
-        ///             TransmitDirection = "RegionIn",
-        ///             Status = "Active",
-        ///         }));
-        ///         this.FirstCenRouteMapId = @this.Apply(@this =&gt; @this.Maps?[0]?.RouteMapId);
-        ///     }
+        ///             "cen-ihdlgo87ai:cenrmap-bnh97kb3mn********",
+        ///         },
+        ///         DescriptionRegex = "datasource_test",
+        ///         CenRegionId = "cn-hangzhou",
+        ///         TransmitDirection = "RegionIn",
+        ///         Status = "Active",
+        ///     });
         /// 
-        ///     [Output("firstCenRouteMapId")]
-        ///     public Output&lt;string&gt; FirstCenRouteMapId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCenRouteMapId"] = @this.Apply(getRouteMapsResult =&gt; getRouteMapsResult).Apply(@this =&gt; @this.Apply(getRouteMapsResult =&gt; getRouteMapsResult.Maps[0]?.RouteMapId)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouteMapsResult> Invoke(GetRouteMapsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRouteMapsResult>("alicloud:cen/getRouteMaps:getRouteMaps", args ?? new GetRouteMapsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouteMapsResult>("alicloud:cen/getRouteMaps:getRouteMaps", args ?? new GetRouteMapsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRouteMapsArgs : Pulumi.InvokeArgs
+    public sealed class GetRouteMapsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the CEN instance.
@@ -147,9 +145,10 @@ namespace Pulumi.AliCloud.Cen
         public GetRouteMapsArgs()
         {
         }
+        public static new GetRouteMapsArgs Empty => new GetRouteMapsArgs();
     }
 
-    public sealed class GetRouteMapsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRouteMapsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the CEN instance.
@@ -199,6 +198,7 @@ namespace Pulumi.AliCloud.Cen
         public GetRouteMapsInvokeArgs()
         {
         }
+        public static new GetRouteMapsInvokeArgs Empty => new GetRouteMapsInvokeArgs();
     }
 
 

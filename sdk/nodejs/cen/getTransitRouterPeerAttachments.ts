@@ -2,33 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides CEN Transit Router peer attachments available to the user.
  *
  * > **NOTE:** Available in 1.128.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultTransitRouterPeerAttachments = pulumi.output(alicloud.cen.getTransitRouterPeerAttachments({
- *     cenId: "cen-id1",
- * }));
- *
- * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = defaultTransitRouterPeerAttachments.transitRouterAttachments.0.resourceType;
- * ```
  */
 export function getTransitRouterPeerAttachments(args: GetTransitRouterPeerAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterPeerAttachmentsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", {
         "cenId": args.cenId,
         "ids": args.ids,
@@ -104,9 +89,13 @@ export interface GetTransitRouterPeerAttachmentsResult {
      */
     readonly transitRouterId?: string;
 }
-
+/**
+ * This data source provides CEN Transit Router peer attachments available to the user.
+ *
+ * > **NOTE:** Available in 1.128.0+
+ */
 export function getTransitRouterPeerAttachmentsOutput(args: GetTransitRouterPeerAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterPeerAttachmentsResult> {
-    return pulumi.output(args).apply(a => getTransitRouterPeerAttachments(a, opts))
+    return pulumi.output(args).apply((a: any) => getTransitRouterPeerAttachments(a, opts))
 }
 
 /**

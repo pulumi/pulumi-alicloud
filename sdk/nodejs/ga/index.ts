@@ -5,39 +5,166 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./accelerator";
-export * from "./acceleratorSpareIpAttachment";
-export * from "./acl";
-export * from "./aclAttachment";
-export * from "./additionalCertificate";
-export * from "./bandwidthPackage";
-export * from "./bandwidthPackageAttachment";
-export * from "./endpointGroup";
-export * from "./forwardingRule";
-export * from "./getAcceleratorSpareIpAttachments";
-export * from "./getAccelerators";
-export * from "./getAcls";
-export * from "./getAdditionalCertificates";
-export * from "./getBandwidthPackages";
-export * from "./getEndpointGroups";
-export * from "./getForwardingRules";
-export * from "./getIpSets";
-export * from "./getListeners";
-export * from "./ipSet";
-export * from "./listener";
+export { AcceleratorArgs, AcceleratorState } from "./accelerator";
+export type Accelerator = import("./accelerator").Accelerator;
+export const Accelerator: typeof import("./accelerator").Accelerator = null as any;
+utilities.lazyLoad(exports, ["Accelerator"], () => require("./accelerator"));
 
-// Import resources to register:
-import { Accelerator } from "./accelerator";
-import { AcceleratorSpareIpAttachment } from "./acceleratorSpareIpAttachment";
-import { Acl } from "./acl";
-import { AclAttachment } from "./aclAttachment";
-import { AdditionalCertificate } from "./additionalCertificate";
-import { BandwidthPackage } from "./bandwidthPackage";
-import { BandwidthPackageAttachment } from "./bandwidthPackageAttachment";
-import { EndpointGroup } from "./endpointGroup";
-import { ForwardingRule } from "./forwardingRule";
-import { IpSet } from "./ipSet";
-import { Listener } from "./listener";
+export { AcceleratorSpareIpAttachmentArgs, AcceleratorSpareIpAttachmentState } from "./acceleratorSpareIpAttachment";
+export type AcceleratorSpareIpAttachment = import("./acceleratorSpareIpAttachment").AcceleratorSpareIpAttachment;
+export const AcceleratorSpareIpAttachment: typeof import("./acceleratorSpareIpAttachment").AcceleratorSpareIpAttachment = null as any;
+utilities.lazyLoad(exports, ["AcceleratorSpareIpAttachment"], () => require("./acceleratorSpareIpAttachment"));
+
+export { AccessLogArgs, AccessLogState } from "./accessLog";
+export type AccessLog = import("./accessLog").AccessLog;
+export const AccessLog: typeof import("./accessLog").AccessLog = null as any;
+utilities.lazyLoad(exports, ["AccessLog"], () => require("./accessLog"));
+
+export { AclArgs, AclState } from "./acl";
+export type Acl = import("./acl").Acl;
+export const Acl: typeof import("./acl").Acl = null as any;
+utilities.lazyLoad(exports, ["Acl"], () => require("./acl"));
+
+export { AclAttachmentArgs, AclAttachmentState } from "./aclAttachment";
+export type AclAttachment = import("./aclAttachment").AclAttachment;
+export const AclAttachment: typeof import("./aclAttachment").AclAttachment = null as any;
+utilities.lazyLoad(exports, ["AclAttachment"], () => require("./aclAttachment"));
+
+export { AclEntryAttachmentArgs, AclEntryAttachmentState } from "./aclEntryAttachment";
+export type AclEntryAttachment = import("./aclEntryAttachment").AclEntryAttachment;
+export const AclEntryAttachment: typeof import("./aclEntryAttachment").AclEntryAttachment = null as any;
+utilities.lazyLoad(exports, ["AclEntryAttachment"], () => require("./aclEntryAttachment"));
+
+export { AdditionalCertificateArgs, AdditionalCertificateState } from "./additionalCertificate";
+export type AdditionalCertificate = import("./additionalCertificate").AdditionalCertificate;
+export const AdditionalCertificate: typeof import("./additionalCertificate").AdditionalCertificate = null as any;
+utilities.lazyLoad(exports, ["AdditionalCertificate"], () => require("./additionalCertificate"));
+
+export { BandwidthPackageArgs, BandwidthPackageState } from "./bandwidthPackage";
+export type BandwidthPackage = import("./bandwidthPackage").BandwidthPackage;
+export const BandwidthPackage: typeof import("./bandwidthPackage").BandwidthPackage = null as any;
+utilities.lazyLoad(exports, ["BandwidthPackage"], () => require("./bandwidthPackage"));
+
+export { BandwidthPackageAttachmentArgs, BandwidthPackageAttachmentState } from "./bandwidthPackageAttachment";
+export type BandwidthPackageAttachment = import("./bandwidthPackageAttachment").BandwidthPackageAttachment;
+export const BandwidthPackageAttachment: typeof import("./bandwidthPackageAttachment").BandwidthPackageAttachment = null as any;
+utilities.lazyLoad(exports, ["BandwidthPackageAttachment"], () => require("./bandwidthPackageAttachment"));
+
+export { BasicAccelerateIpArgs, BasicAccelerateIpState } from "./basicAccelerateIp";
+export type BasicAccelerateIp = import("./basicAccelerateIp").BasicAccelerateIp;
+export const BasicAccelerateIp: typeof import("./basicAccelerateIp").BasicAccelerateIp = null as any;
+utilities.lazyLoad(exports, ["BasicAccelerateIp"], () => require("./basicAccelerateIp"));
+
+export { BasicAccelerateIpEndpointRelationArgs, BasicAccelerateIpEndpointRelationState } from "./basicAccelerateIpEndpointRelation";
+export type BasicAccelerateIpEndpointRelation = import("./basicAccelerateIpEndpointRelation").BasicAccelerateIpEndpointRelation;
+export const BasicAccelerateIpEndpointRelation: typeof import("./basicAccelerateIpEndpointRelation").BasicAccelerateIpEndpointRelation = null as any;
+utilities.lazyLoad(exports, ["BasicAccelerateIpEndpointRelation"], () => require("./basicAccelerateIpEndpointRelation"));
+
+export { BasicAcceleratorArgs, BasicAcceleratorState } from "./basicAccelerator";
+export type BasicAccelerator = import("./basicAccelerator").BasicAccelerator;
+export const BasicAccelerator: typeof import("./basicAccelerator").BasicAccelerator = null as any;
+utilities.lazyLoad(exports, ["BasicAccelerator"], () => require("./basicAccelerator"));
+
+export { BasicEndpointArgs, BasicEndpointState } from "./basicEndpoint";
+export type BasicEndpoint = import("./basicEndpoint").BasicEndpoint;
+export const BasicEndpoint: typeof import("./basicEndpoint").BasicEndpoint = null as any;
+utilities.lazyLoad(exports, ["BasicEndpoint"], () => require("./basicEndpoint"));
+
+export { BasicEndpointGroupArgs, BasicEndpointGroupState } from "./basicEndpointGroup";
+export type BasicEndpointGroup = import("./basicEndpointGroup").BasicEndpointGroup;
+export const BasicEndpointGroup: typeof import("./basicEndpointGroup").BasicEndpointGroup = null as any;
+utilities.lazyLoad(exports, ["BasicEndpointGroup"], () => require("./basicEndpointGroup"));
+
+export { BasicIpSetArgs, BasicIpSetState } from "./basicIpSet";
+export type BasicIpSet = import("./basicIpSet").BasicIpSet;
+export const BasicIpSet: typeof import("./basicIpSet").BasicIpSet = null as any;
+utilities.lazyLoad(exports, ["BasicIpSet"], () => require("./basicIpSet"));
+
+export { EndpointGroupArgs, EndpointGroupState } from "./endpointGroup";
+export type EndpointGroup = import("./endpointGroup").EndpointGroup;
+export const EndpointGroup: typeof import("./endpointGroup").EndpointGroup = null as any;
+utilities.lazyLoad(exports, ["EndpointGroup"], () => require("./endpointGroup"));
+
+export { ForwardingRuleArgs, ForwardingRuleState } from "./forwardingRule";
+export type ForwardingRule = import("./forwardingRule").ForwardingRule;
+export const ForwardingRule: typeof import("./forwardingRule").ForwardingRule = null as any;
+utilities.lazyLoad(exports, ["ForwardingRule"], () => require("./forwardingRule"));
+
+export { GetAcceleratorSpareIpAttachmentsArgs, GetAcceleratorSpareIpAttachmentsResult, GetAcceleratorSpareIpAttachmentsOutputArgs } from "./getAcceleratorSpareIpAttachments";
+export const getAcceleratorSpareIpAttachments: typeof import("./getAcceleratorSpareIpAttachments").getAcceleratorSpareIpAttachments = null as any;
+export const getAcceleratorSpareIpAttachmentsOutput: typeof import("./getAcceleratorSpareIpAttachments").getAcceleratorSpareIpAttachmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getAcceleratorSpareIpAttachments","getAcceleratorSpareIpAttachmentsOutput"], () => require("./getAcceleratorSpareIpAttachments"));
+
+export { GetAcceleratorsArgs, GetAcceleratorsResult, GetAcceleratorsOutputArgs } from "./getAccelerators";
+export const getAccelerators: typeof import("./getAccelerators").getAccelerators = null as any;
+export const getAcceleratorsOutput: typeof import("./getAccelerators").getAcceleratorsOutput = null as any;
+utilities.lazyLoad(exports, ["getAccelerators","getAcceleratorsOutput"], () => require("./getAccelerators"));
+
+export { GetAclsArgs, GetAclsResult, GetAclsOutputArgs } from "./getAcls";
+export const getAcls: typeof import("./getAcls").getAcls = null as any;
+export const getAclsOutput: typeof import("./getAcls").getAclsOutput = null as any;
+utilities.lazyLoad(exports, ["getAcls","getAclsOutput"], () => require("./getAcls"));
+
+export { GetAdditionalCertificatesArgs, GetAdditionalCertificatesResult, GetAdditionalCertificatesOutputArgs } from "./getAdditionalCertificates";
+export const getAdditionalCertificates: typeof import("./getAdditionalCertificates").getAdditionalCertificates = null as any;
+export const getAdditionalCertificatesOutput: typeof import("./getAdditionalCertificates").getAdditionalCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getAdditionalCertificates","getAdditionalCertificatesOutput"], () => require("./getAdditionalCertificates"));
+
+export { GetBandwidthPackagesArgs, GetBandwidthPackagesResult, GetBandwidthPackagesOutputArgs } from "./getBandwidthPackages";
+export const getBandwidthPackages: typeof import("./getBandwidthPackages").getBandwidthPackages = null as any;
+export const getBandwidthPackagesOutput: typeof import("./getBandwidthPackages").getBandwidthPackagesOutput = null as any;
+utilities.lazyLoad(exports, ["getBandwidthPackages","getBandwidthPackagesOutput"], () => require("./getBandwidthPackages"));
+
+export { GetBasicAccelerateIpEndpointRelationsArgs, GetBasicAccelerateIpEndpointRelationsResult, GetBasicAccelerateIpEndpointRelationsOutputArgs } from "./getBasicAccelerateIpEndpointRelations";
+export const getBasicAccelerateIpEndpointRelations: typeof import("./getBasicAccelerateIpEndpointRelations").getBasicAccelerateIpEndpointRelations = null as any;
+export const getBasicAccelerateIpEndpointRelationsOutput: typeof import("./getBasicAccelerateIpEndpointRelations").getBasicAccelerateIpEndpointRelationsOutput = null as any;
+utilities.lazyLoad(exports, ["getBasicAccelerateIpEndpointRelations","getBasicAccelerateIpEndpointRelationsOutput"], () => require("./getBasicAccelerateIpEndpointRelations"));
+
+export { GetBasicAccelerateIpsArgs, GetBasicAccelerateIpsResult, GetBasicAccelerateIpsOutputArgs } from "./getBasicAccelerateIps";
+export const getBasicAccelerateIps: typeof import("./getBasicAccelerateIps").getBasicAccelerateIps = null as any;
+export const getBasicAccelerateIpsOutput: typeof import("./getBasicAccelerateIps").getBasicAccelerateIpsOutput = null as any;
+utilities.lazyLoad(exports, ["getBasicAccelerateIps","getBasicAccelerateIpsOutput"], () => require("./getBasicAccelerateIps"));
+
+export { GetBasicAcceleratorsArgs, GetBasicAcceleratorsResult, GetBasicAcceleratorsOutputArgs } from "./getBasicAccelerators";
+export const getBasicAccelerators: typeof import("./getBasicAccelerators").getBasicAccelerators = null as any;
+export const getBasicAcceleratorsOutput: typeof import("./getBasicAccelerators").getBasicAcceleratorsOutput = null as any;
+utilities.lazyLoad(exports, ["getBasicAccelerators","getBasicAcceleratorsOutput"], () => require("./getBasicAccelerators"));
+
+export { GetBasicEndpointsArgs, GetBasicEndpointsResult, GetBasicEndpointsOutputArgs } from "./getBasicEndpoints";
+export const getBasicEndpoints: typeof import("./getBasicEndpoints").getBasicEndpoints = null as any;
+export const getBasicEndpointsOutput: typeof import("./getBasicEndpoints").getBasicEndpointsOutput = null as any;
+utilities.lazyLoad(exports, ["getBasicEndpoints","getBasicEndpointsOutput"], () => require("./getBasicEndpoints"));
+
+export { GetEndpointGroupsArgs, GetEndpointGroupsResult, GetEndpointGroupsOutputArgs } from "./getEndpointGroups";
+export const getEndpointGroups: typeof import("./getEndpointGroups").getEndpointGroups = null as any;
+export const getEndpointGroupsOutput: typeof import("./getEndpointGroups").getEndpointGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointGroups","getEndpointGroupsOutput"], () => require("./getEndpointGroups"));
+
+export { GetForwardingRulesArgs, GetForwardingRulesResult, GetForwardingRulesOutputArgs } from "./getForwardingRules";
+export const getForwardingRules: typeof import("./getForwardingRules").getForwardingRules = null as any;
+export const getForwardingRulesOutput: typeof import("./getForwardingRules").getForwardingRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getForwardingRules","getForwardingRulesOutput"], () => require("./getForwardingRules"));
+
+export { GetIpSetsArgs, GetIpSetsResult, GetIpSetsOutputArgs } from "./getIpSets";
+export const getIpSets: typeof import("./getIpSets").getIpSets = null as any;
+export const getIpSetsOutput: typeof import("./getIpSets").getIpSetsOutput = null as any;
+utilities.lazyLoad(exports, ["getIpSets","getIpSetsOutput"], () => require("./getIpSets"));
+
+export { GetListenersArgs, GetListenersResult, GetListenersOutputArgs } from "./getListeners";
+export const getListeners: typeof import("./getListeners").getListeners = null as any;
+export const getListenersOutput: typeof import("./getListeners").getListenersOutput = null as any;
+utilities.lazyLoad(exports, ["getListeners","getListenersOutput"], () => require("./getListeners"));
+
+export { IpSetArgs, IpSetState } from "./ipSet";
+export type IpSet = import("./ipSet").IpSet;
+export const IpSet: typeof import("./ipSet").IpSet = null as any;
+utilities.lazyLoad(exports, ["IpSet"], () => require("./ipSet"));
+
+export { ListenerArgs, ListenerState } from "./listener";
+export type Listener = import("./listener").Listener;
+export const Listener: typeof import("./listener").Listener = null as any;
+utilities.lazyLoad(exports, ["Listener"], () => require("./listener"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -47,16 +174,32 @@ const _module = {
                 return new Accelerator(name, <any>undefined, { urn })
             case "alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment":
                 return new AcceleratorSpareIpAttachment(name, <any>undefined, { urn })
+            case "alicloud:ga/accessLog:AccessLog":
+                return new AccessLog(name, <any>undefined, { urn })
             case "alicloud:ga/acl:Acl":
                 return new Acl(name, <any>undefined, { urn })
             case "alicloud:ga/aclAttachment:AclAttachment":
                 return new AclAttachment(name, <any>undefined, { urn })
+            case "alicloud:ga/aclEntryAttachment:AclEntryAttachment":
+                return new AclEntryAttachment(name, <any>undefined, { urn })
             case "alicloud:ga/additionalCertificate:AdditionalCertificate":
                 return new AdditionalCertificate(name, <any>undefined, { urn })
             case "alicloud:ga/bandwidthPackage:BandwidthPackage":
                 return new BandwidthPackage(name, <any>undefined, { urn })
             case "alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment":
                 return new BandwidthPackageAttachment(name, <any>undefined, { urn })
+            case "alicloud:ga/basicAccelerateIp:BasicAccelerateIp":
+                return new BasicAccelerateIp(name, <any>undefined, { urn })
+            case "alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation":
+                return new BasicAccelerateIpEndpointRelation(name, <any>undefined, { urn })
+            case "alicloud:ga/basicAccelerator:BasicAccelerator":
+                return new BasicAccelerator(name, <any>undefined, { urn })
+            case "alicloud:ga/basicEndpoint:BasicEndpoint":
+                return new BasicEndpoint(name, <any>undefined, { urn })
+            case "alicloud:ga/basicEndpointGroup:BasicEndpointGroup":
+                return new BasicEndpointGroup(name, <any>undefined, { urn })
+            case "alicloud:ga/basicIpSet:BasicIpSet":
+                return new BasicIpSet(name, <any>undefined, { urn })
             case "alicloud:ga/endpointGroup:EndpointGroup":
                 return new EndpointGroup(name, <any>undefined, { urn })
             case "alicloud:ga/forwardingRule:ForwardingRule":
@@ -72,11 +215,19 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "ga/accelerator", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/acceleratorSpareIpAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/accessLog", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/acl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/aclAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/aclEntryAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/additionalCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/bandwidthPackage", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/bandwidthPackageAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/basicAccelerateIp", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/basicAccelerateIpEndpointRelation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/basicAccelerator", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/basicEndpoint", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/basicEndpointGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/basicIpSet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/endpointGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/forwardingRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/ipSet", _module)

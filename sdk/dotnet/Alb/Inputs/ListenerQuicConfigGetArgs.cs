@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ListenerQuicConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ListenerQuicConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public ListenerQuicConfigGetArgs()
         {
         }
+        public static new ListenerQuicConfigGetArgs Empty => new ListenerQuicConfigGetArgs();
     }
 }

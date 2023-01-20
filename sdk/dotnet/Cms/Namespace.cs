@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Cms.Namespace("example", new()
     ///     {
-    ///         var example = new AliCloud.Cms.Namespace("example", new AliCloud.Cms.NamespaceArgs
-    ///         {
-    ///             NamespaceName = "example-value",
-    ///             Specification = "cms.s1.large",
-    ///         });
-    ///     }
+    ///         NamespaceName = "example-value",
+    ///         Specification = "cms.s1.large",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/namespace:Namespace")]
-    public partial class Namespace : Pulumi.CustomResource
+    public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Description of indicator warehouse.
@@ -117,7 +115,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class NamespaceArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of indicator warehouse.
@@ -146,9 +144,10 @@ namespace Pulumi.AliCloud.Cms
         public NamespaceArgs()
         {
         }
+        public static new NamespaceArgs Empty => new NamespaceArgs();
     }
 
-    public sealed class NamespaceState : Pulumi.ResourceArgs
+    public sealed class NamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of indicator warehouse.
@@ -177,5 +176,6 @@ namespace Pulumi.AliCloud.Cms
         public NamespaceState()
         {
         }
+        public static new NamespaceState Empty => new NamespaceState();
     }
 }

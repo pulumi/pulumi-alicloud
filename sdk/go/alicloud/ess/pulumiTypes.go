@@ -10,14 +10,151 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type EciScalingConfigurationAcrRegistryInfo struct {
+	// Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
+	// when `acrRegistryInfo` is configured.
+	Domains []string `pulumi:"domains"`
+	// The ID of Container Registry Enterprise Edition instance. It is required
+	// when `acrRegistryInfo` is configured.
+	InstanceId *string `pulumi:"instanceId"`
+	// The name of Container Registry Enterprise Edition instance. It is required when `acrRegistryInfo` is
+	// configured.
+	InstanceName *string `pulumi:"instanceName"`
+	// The region ID of Container Registry Enterprise Edition instance. It is required
+	// when `acrRegistryInfo` is configured.
+	RegionId *string `pulumi:"regionId"`
+}
+
+// EciScalingConfigurationAcrRegistryInfoInput is an input type that accepts EciScalingConfigurationAcrRegistryInfoArgs and EciScalingConfigurationAcrRegistryInfoOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationAcrRegistryInfoInput` via:
+//
+//	EciScalingConfigurationAcrRegistryInfoArgs{...}
+type EciScalingConfigurationAcrRegistryInfoInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationAcrRegistryInfoOutput() EciScalingConfigurationAcrRegistryInfoOutput
+	ToEciScalingConfigurationAcrRegistryInfoOutputWithContext(context.Context) EciScalingConfigurationAcrRegistryInfoOutput
+}
+
+type EciScalingConfigurationAcrRegistryInfoArgs struct {
+	// Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
+	// when `acrRegistryInfo` is configured.
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// The ID of Container Registry Enterprise Edition instance. It is required
+	// when `acrRegistryInfo` is configured.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// The name of Container Registry Enterprise Edition instance. It is required when `acrRegistryInfo` is
+	// configured.
+	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
+	// The region ID of Container Registry Enterprise Edition instance. It is required
+	// when `acrRegistryInfo` is configured.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+}
+
+func (EciScalingConfigurationAcrRegistryInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationAcrRegistryInfo)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationAcrRegistryInfoArgs) ToEciScalingConfigurationAcrRegistryInfoOutput() EciScalingConfigurationAcrRegistryInfoOutput {
+	return i.ToEciScalingConfigurationAcrRegistryInfoOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationAcrRegistryInfoArgs) ToEciScalingConfigurationAcrRegistryInfoOutputWithContext(ctx context.Context) EciScalingConfigurationAcrRegistryInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationAcrRegistryInfoOutput)
+}
+
+// EciScalingConfigurationAcrRegistryInfoArrayInput is an input type that accepts EciScalingConfigurationAcrRegistryInfoArray and EciScalingConfigurationAcrRegistryInfoArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationAcrRegistryInfoArrayInput` via:
+//
+//	EciScalingConfigurationAcrRegistryInfoArray{ EciScalingConfigurationAcrRegistryInfoArgs{...} }
+type EciScalingConfigurationAcrRegistryInfoArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationAcrRegistryInfoArrayOutput() EciScalingConfigurationAcrRegistryInfoArrayOutput
+	ToEciScalingConfigurationAcrRegistryInfoArrayOutputWithContext(context.Context) EciScalingConfigurationAcrRegistryInfoArrayOutput
+}
+
+type EciScalingConfigurationAcrRegistryInfoArray []EciScalingConfigurationAcrRegistryInfoInput
+
+func (EciScalingConfigurationAcrRegistryInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationAcrRegistryInfo)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationAcrRegistryInfoArray) ToEciScalingConfigurationAcrRegistryInfoArrayOutput() EciScalingConfigurationAcrRegistryInfoArrayOutput {
+	return i.ToEciScalingConfigurationAcrRegistryInfoArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationAcrRegistryInfoArray) ToEciScalingConfigurationAcrRegistryInfoArrayOutputWithContext(ctx context.Context) EciScalingConfigurationAcrRegistryInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationAcrRegistryInfoArrayOutput)
+}
+
+type EciScalingConfigurationAcrRegistryInfoOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationAcrRegistryInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationAcrRegistryInfo)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationAcrRegistryInfoOutput) ToEciScalingConfigurationAcrRegistryInfoOutput() EciScalingConfigurationAcrRegistryInfoOutput {
+	return o
+}
+
+func (o EciScalingConfigurationAcrRegistryInfoOutput) ToEciScalingConfigurationAcrRegistryInfoOutputWithContext(ctx context.Context) EciScalingConfigurationAcrRegistryInfoOutput {
+	return o
+}
+
+// Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
+// when `acrRegistryInfo` is configured.
+func (o EciScalingConfigurationAcrRegistryInfoOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationAcrRegistryInfo) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// The ID of Container Registry Enterprise Edition instance. It is required
+// when `acrRegistryInfo` is configured.
+func (o EciScalingConfigurationAcrRegistryInfoOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationAcrRegistryInfo) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The name of Container Registry Enterprise Edition instance. It is required when `acrRegistryInfo` is
+// configured.
+func (o EciScalingConfigurationAcrRegistryInfoOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationAcrRegistryInfo) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The region ID of Container Registry Enterprise Edition instance. It is required
+// when `acrRegistryInfo` is configured.
+func (o EciScalingConfigurationAcrRegistryInfoOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationAcrRegistryInfo) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+type EciScalingConfigurationAcrRegistryInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationAcrRegistryInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationAcrRegistryInfo)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationAcrRegistryInfoArrayOutput) ToEciScalingConfigurationAcrRegistryInfoArrayOutput() EciScalingConfigurationAcrRegistryInfoArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationAcrRegistryInfoArrayOutput) ToEciScalingConfigurationAcrRegistryInfoArrayOutputWithContext(ctx context.Context) EciScalingConfigurationAcrRegistryInfoArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationAcrRegistryInfoArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationAcrRegistryInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationAcrRegistryInfo {
+		return vs[0].([]EciScalingConfigurationAcrRegistryInfo)[vs[1].(int)]
+	}).(EciScalingConfigurationAcrRegistryInfoOutput)
+}
+
 type EciScalingConfigurationContainer struct {
 	// The arguments passed to the commands.
 	Args []string `pulumi:"args"`
 	// The commands run by the init container.
 	Commands []string `pulumi:"commands"`
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
 	// The structure of environmentVars.
+	// See Block_environment_var_in_init_container below for details.
 	// See Block_environment_var_in_container below for details.
 	EnvironmentVars []EciScalingConfigurationContainerEnvironmentVar `pulumi:"environmentVars"`
 	// The number GPUs.
@@ -26,13 +163,55 @@ type EciScalingConfigurationContainer struct {
 	Image *string `pulumi:"image"`
 	// The restart policy of the image.
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container.
+	// Commands that you want to run in containers when you use the CLI to perform liveness probes.
+	LivenessProbeExecCommands []string `pulumi:"livenessProbeExecCommands"`
+	// The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
+	LivenessProbeFailureThreshold *int `pulumi:"livenessProbeFailureThreshold"`
+	// The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+	LivenessProbeHttpGetPath *string `pulumi:"livenessProbeHttpGetPath"`
+	// The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+	LivenessProbeHttpGetPort *int `pulumi:"livenessProbeHttpGetPort"`
+	// The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
+	LivenessProbeHttpGetScheme *string `pulumi:"livenessProbeHttpGetScheme"`
+	// The number of seconds after container has started before liveness probes are initiated.
+	LivenessProbeInitialDelaySeconds *int `pulumi:"livenessProbeInitialDelaySeconds"`
+	// The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+	LivenessProbePeriodSeconds *int `pulumi:"livenessProbePeriodSeconds"`
+	// The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+	LivenessProbeSuccessThreshold *int `pulumi:"livenessProbeSuccessThreshold"`
+	// The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
+	LivenessProbeTcpSocketPort *int `pulumi:"livenessProbeTcpSocketPort"`
+	// The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+	LivenessProbeTimeoutSeconds *int `pulumi:"livenessProbeTimeoutSeconds"`
+	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
-	// The name of the mounted volume.
+	// The name of the volume.
 	Name *string `pulumi:"name"`
-	// The structure of port. See Block_port_in_container below for details.
+	// The structure of port. See Block_port_in_init_container below
+	// for details.
 	Ports []EciScalingConfigurationContainerPort `pulumi:"ports"`
+	// Commands that you want to run in containers when you use the CLI to perform readiness probes.
+	ReadinessProbeExecCommands []string `pulumi:"readinessProbeExecCommands"`
+	// The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
+	ReadinessProbeFailureThreshold *int `pulumi:"readinessProbeFailureThreshold"`
+	// The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+	ReadinessProbeHttpGetPath *string `pulumi:"readinessProbeHttpGetPath"`
+	// The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+	ReadinessProbeHttpGetPort *int `pulumi:"readinessProbeHttpGetPort"`
+	// The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
+	ReadinessProbeHttpGetScheme *string `pulumi:"readinessProbeHttpGetScheme"`
+	// The number of seconds after container N has started before readiness probes are initiated.
+	ReadinessProbeInitialDelaySeconds *int `pulumi:"readinessProbeInitialDelaySeconds"`
+	// The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+	ReadinessProbePeriodSeconds *int `pulumi:"readinessProbePeriodSeconds"`
+	// The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+	ReadinessProbeSuccessThreshold *int `pulumi:"readinessProbeSuccessThreshold"`
+	// The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
+	ReadinessProbeTcpSocketPort *int `pulumi:"readinessProbeTcpSocketPort"`
+	// The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+	ReadinessProbeTimeoutSeconds *int `pulumi:"readinessProbeTimeoutSeconds"`
 	// The structure of volumeMounts.
+	// See Block_volume_mount_in_init_container below for details.
 	// See Block_volume_mount_in_container below for details.
 	VolumeMounts []EciScalingConfigurationContainerVolumeMount `pulumi:"volumeMounts"`
 	// The working directory of the container.
@@ -55,9 +234,10 @@ type EciScalingConfigurationContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// The commands run by the init container.
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
 	// The structure of environmentVars.
+	// See Block_environment_var_in_init_container below for details.
 	// See Block_environment_var_in_container below for details.
 	EnvironmentVars EciScalingConfigurationContainerEnvironmentVarArrayInput `pulumi:"environmentVars"`
 	// The number GPUs.
@@ -66,13 +246,55 @@ type EciScalingConfigurationContainerArgs struct {
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The restart policy of the image.
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container.
+	// Commands that you want to run in containers when you use the CLI to perform liveness probes.
+	LivenessProbeExecCommands pulumi.StringArrayInput `pulumi:"livenessProbeExecCommands"`
+	// The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
+	LivenessProbeFailureThreshold pulumi.IntPtrInput `pulumi:"livenessProbeFailureThreshold"`
+	// The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+	LivenessProbeHttpGetPath pulumi.StringPtrInput `pulumi:"livenessProbeHttpGetPath"`
+	// The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+	LivenessProbeHttpGetPort pulumi.IntPtrInput `pulumi:"livenessProbeHttpGetPort"`
+	// The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
+	LivenessProbeHttpGetScheme pulumi.StringPtrInput `pulumi:"livenessProbeHttpGetScheme"`
+	// The number of seconds after container has started before liveness probes are initiated.
+	LivenessProbeInitialDelaySeconds pulumi.IntPtrInput `pulumi:"livenessProbeInitialDelaySeconds"`
+	// The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+	LivenessProbePeriodSeconds pulumi.IntPtrInput `pulumi:"livenessProbePeriodSeconds"`
+	// The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+	LivenessProbeSuccessThreshold pulumi.IntPtrInput `pulumi:"livenessProbeSuccessThreshold"`
+	// The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
+	LivenessProbeTcpSocketPort pulumi.IntPtrInput `pulumi:"livenessProbeTcpSocketPort"`
+	// The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+	LivenessProbeTimeoutSeconds pulumi.IntPtrInput `pulumi:"livenessProbeTimeoutSeconds"`
+	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput `pulumi:"memory"`
-	// The name of the mounted volume.
+	// The name of the volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The structure of port. See Block_port_in_container below for details.
+	// The structure of port. See Block_port_in_init_container below
+	// for details.
 	Ports EciScalingConfigurationContainerPortArrayInput `pulumi:"ports"`
+	// Commands that you want to run in containers when you use the CLI to perform readiness probes.
+	ReadinessProbeExecCommands pulumi.StringArrayInput `pulumi:"readinessProbeExecCommands"`
+	// The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
+	ReadinessProbeFailureThreshold pulumi.IntPtrInput `pulumi:"readinessProbeFailureThreshold"`
+	// The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+	ReadinessProbeHttpGetPath pulumi.StringPtrInput `pulumi:"readinessProbeHttpGetPath"`
+	// The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+	ReadinessProbeHttpGetPort pulumi.IntPtrInput `pulumi:"readinessProbeHttpGetPort"`
+	// The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
+	ReadinessProbeHttpGetScheme pulumi.StringPtrInput `pulumi:"readinessProbeHttpGetScheme"`
+	// The number of seconds after container N has started before readiness probes are initiated.
+	ReadinessProbeInitialDelaySeconds pulumi.IntPtrInput `pulumi:"readinessProbeInitialDelaySeconds"`
+	// The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+	ReadinessProbePeriodSeconds pulumi.IntPtrInput `pulumi:"readinessProbePeriodSeconds"`
+	// The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+	ReadinessProbeSuccessThreshold pulumi.IntPtrInput `pulumi:"readinessProbeSuccessThreshold"`
+	// The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
+	ReadinessProbeTcpSocketPort pulumi.IntPtrInput `pulumi:"readinessProbeTcpSocketPort"`
+	// The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+	ReadinessProbeTimeoutSeconds pulumi.IntPtrInput `pulumi:"readinessProbeTimeoutSeconds"`
 	// The structure of volumeMounts.
+	// See Block_volume_mount_in_init_container below for details.
 	// See Block_volume_mount_in_container below for details.
 	VolumeMounts EciScalingConfigurationContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
 	// The working directory of the container.
@@ -140,12 +362,13 @@ func (o EciScalingConfigurationContainerOutput) Commands() pulumi.StringArrayOut
 	return o.ApplyT(func(v EciScalingConfigurationContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
-// The amount of CPU resources allocated to the container.
+// The amount of CPU resources allocated to the container group.
 func (o EciScalingConfigurationContainerOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
 }
 
 // The structure of environmentVars.
+// See Block_environment_var_in_init_container below for details.
 // See Block_environment_var_in_container below for details.
 func (o EciScalingConfigurationContainerOutput) EnvironmentVars() EciScalingConfigurationContainerEnvironmentVarArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) []EciScalingConfigurationContainerEnvironmentVar {
@@ -168,22 +391,124 @@ func (o EciScalingConfigurationContainerOutput) ImagePullPolicy() pulumi.StringP
 	return o.ApplyT(func(v EciScalingConfigurationContainer) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The amount of memory resources allocated to the container.
+// Commands that you want to run in containers when you use the CLI to perform liveness probes.
+func (o EciScalingConfigurationContainerOutput) LivenessProbeExecCommands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) []string { return v.LivenessProbeExecCommands }).(pulumi.StringArrayOutput)
+}
+
+// The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
+func (o EciScalingConfigurationContainerOutput) LivenessProbeFailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.LivenessProbeFailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+func (o EciScalingConfigurationContainerOutput) LivenessProbeHttpGetPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *string { return v.LivenessProbeHttpGetPath }).(pulumi.StringPtrOutput)
+}
+
+// The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+func (o EciScalingConfigurationContainerOutput) LivenessProbeHttpGetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.LivenessProbeHttpGetPort }).(pulumi.IntPtrOutput)
+}
+
+// The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
+func (o EciScalingConfigurationContainerOutput) LivenessProbeHttpGetScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *string { return v.LivenessProbeHttpGetScheme }).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds after container has started before liveness probes are initiated.
+func (o EciScalingConfigurationContainerOutput) LivenessProbeInitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.LivenessProbeInitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+func (o EciScalingConfigurationContainerOutput) LivenessProbePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.LivenessProbePeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+func (o EciScalingConfigurationContainerOutput) LivenessProbeSuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.LivenessProbeSuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
+func (o EciScalingConfigurationContainerOutput) LivenessProbeTcpSocketPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.LivenessProbeTcpSocketPort }).(pulumi.IntPtrOutput)
+}
+
+// The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+func (o EciScalingConfigurationContainerOutput) LivenessProbeTimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.LivenessProbeTimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The amount of memory resources allocated to the container group.
 func (o EciScalingConfigurationContainerOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
 }
 
-// The name of the mounted volume.
+// The name of the volume.
 func (o EciScalingConfigurationContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The structure of port. See Block_port_in_container below for details.
+// The structure of port. See Block_port_in_init_container below
+// for details.
 func (o EciScalingConfigurationContainerOutput) Ports() EciScalingConfigurationContainerPortArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) []EciScalingConfigurationContainerPort { return v.Ports }).(EciScalingConfigurationContainerPortArrayOutput)
 }
 
+// Commands that you want to run in containers when you use the CLI to perform readiness probes.
+func (o EciScalingConfigurationContainerOutput) ReadinessProbeExecCommands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) []string { return v.ReadinessProbeExecCommands }).(pulumi.StringArrayOutput)
+}
+
+// The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
+func (o EciScalingConfigurationContainerOutput) ReadinessProbeFailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.ReadinessProbeFailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+func (o EciScalingConfigurationContainerOutput) ReadinessProbeHttpGetPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *string { return v.ReadinessProbeHttpGetPath }).(pulumi.StringPtrOutput)
+}
+
+// The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+func (o EciScalingConfigurationContainerOutput) ReadinessProbeHttpGetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.ReadinessProbeHttpGetPort }).(pulumi.IntPtrOutput)
+}
+
+// The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
+func (o EciScalingConfigurationContainerOutput) ReadinessProbeHttpGetScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *string { return v.ReadinessProbeHttpGetScheme }).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds after container N has started before readiness probes are initiated.
+func (o EciScalingConfigurationContainerOutput) ReadinessProbeInitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.ReadinessProbeInitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+func (o EciScalingConfigurationContainerOutput) ReadinessProbePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.ReadinessProbePeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+func (o EciScalingConfigurationContainerOutput) ReadinessProbeSuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.ReadinessProbeSuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
+func (o EciScalingConfigurationContainerOutput) ReadinessProbeTcpSocketPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.ReadinessProbeTcpSocketPort }).(pulumi.IntPtrOutput)
+}
+
+// The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+func (o EciScalingConfigurationContainerOutput) ReadinessProbeTimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.ReadinessProbeTimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
 // The structure of volumeMounts.
+// See Block_volume_mount_in_init_container below for details.
 // See Block_volume_mount_in_container below for details.
 func (o EciScalingConfigurationContainerOutput) VolumeMounts() EciScalingConfigurationContainerVolumeMountArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) []EciScalingConfigurationContainerVolumeMount {
@@ -219,6 +544,7 @@ func (o EciScalingConfigurationContainerArrayOutput) Index(i pulumi.IntInput) Ec
 type EciScalingConfigurationContainerEnvironmentVar struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
 	// digits, and underscores (_). It cannot start with a digit.
+	// digits, and underscores (_). It cannot start with a digit.
 	Key *string `pulumi:"key"`
 	// The value of the variable. The value can be 0 to 256 characters in length.
 	Value *string `pulumi:"value"`
@@ -237,6 +563,7 @@ type EciScalingConfigurationContainerEnvironmentVarInput interface {
 
 type EciScalingConfigurationContainerEnvironmentVarArgs struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+	// digits, and underscores (_). It cannot start with a digit.
 	// digits, and underscores (_). It cannot start with a digit.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the variable. The value can be 0 to 256 characters in length.
@@ -295,6 +622,7 @@ func (o EciScalingConfigurationContainerEnvironmentVarOutput) ToEciScalingConfig
 }
 
 // The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+// digits, and underscores (_). It cannot start with a digit.
 // digits, and underscores (_). It cannot start with a digit.
 func (o EciScalingConfigurationContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
@@ -434,8 +762,9 @@ func (o EciScalingConfigurationContainerPortArrayOutput) Index(i pulumi.IntInput
 type EciScalingConfigurationContainerVolumeMount struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the
 	// data in the volume.
+	// data in the volume.
 	MountPath *string `pulumi:"mountPath"`
-	// The name of the mounted volume.
+	// The name of the volume.
 	Name *string `pulumi:"name"`
 	// Default to `false`.
 	ReadOnly *bool `pulumi:"readOnly"`
@@ -455,8 +784,9 @@ type EciScalingConfigurationContainerVolumeMountInput interface {
 type EciScalingConfigurationContainerVolumeMountArgs struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the
 	// data in the volume.
+	// data in the volume.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// The name of the mounted volume.
+	// The name of the volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Default to `false`.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
@@ -515,11 +845,12 @@ func (o EciScalingConfigurationContainerVolumeMountOutput) ToEciScalingConfigura
 
 // The directory of the mounted volume. Data under this directory will be overwritten by the
 // data in the volume.
+// data in the volume.
 func (o EciScalingConfigurationContainerVolumeMountOutput) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerVolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// The name of the mounted volume.
+// The name of the volume.
 func (o EciScalingConfigurationContainerVolumeMountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerVolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -778,9 +1109,10 @@ type EciScalingConfigurationInitContainer struct {
 	Args []string `pulumi:"args"`
 	// The commands run by the init container.
 	Commands []string `pulumi:"commands"`
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
 	// The structure of environmentVars.
+	// See Block_environment_var_in_init_container below for details.
 	// See Block_environment_var_in_container below for details.
 	EnvironmentVars []EciScalingConfigurationInitContainerEnvironmentVar `pulumi:"environmentVars"`
 	// The number GPUs.
@@ -789,13 +1121,15 @@ type EciScalingConfigurationInitContainer struct {
 	Image *string `pulumi:"image"`
 	// The restart policy of the image.
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
-	// The name of the mounted volume.
+	// The name of the volume.
 	Name *string `pulumi:"name"`
-	// The structure of port. See Block_port_in_container below for details.
+	// The structure of port. See Block_port_in_init_container below
+	// for details.
 	Ports []EciScalingConfigurationInitContainerPort `pulumi:"ports"`
 	// The structure of volumeMounts.
+	// See Block_volume_mount_in_init_container below for details.
 	// See Block_volume_mount_in_container below for details.
 	VolumeMounts []EciScalingConfigurationInitContainerVolumeMount `pulumi:"volumeMounts"`
 	// The working directory of the container.
@@ -818,9 +1152,10 @@ type EciScalingConfigurationInitContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// The commands run by the init container.
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
 	// The structure of environmentVars.
+	// See Block_environment_var_in_init_container below for details.
 	// See Block_environment_var_in_container below for details.
 	EnvironmentVars EciScalingConfigurationInitContainerEnvironmentVarArrayInput `pulumi:"environmentVars"`
 	// The number GPUs.
@@ -829,13 +1164,15 @@ type EciScalingConfigurationInitContainerArgs struct {
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The restart policy of the image.
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput `pulumi:"memory"`
-	// The name of the mounted volume.
+	// The name of the volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The structure of port. See Block_port_in_container below for details.
+	// The structure of port. See Block_port_in_init_container below
+	// for details.
 	Ports EciScalingConfigurationInitContainerPortArrayInput `pulumi:"ports"`
 	// The structure of volumeMounts.
+	// See Block_volume_mount_in_init_container below for details.
 	// See Block_volume_mount_in_container below for details.
 	VolumeMounts EciScalingConfigurationInitContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
 	// The working directory of the container.
@@ -903,12 +1240,13 @@ func (o EciScalingConfigurationInitContainerOutput) Commands() pulumi.StringArra
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
-// The amount of CPU resources allocated to the container.
+// The amount of CPU resources allocated to the container group.
 func (o EciScalingConfigurationInitContainerOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
 }
 
 // The structure of environmentVars.
+// See Block_environment_var_in_init_container below for details.
 // See Block_environment_var_in_container below for details.
 func (o EciScalingConfigurationInitContainerOutput) EnvironmentVars() EciScalingConfigurationInitContainerEnvironmentVarArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []EciScalingConfigurationInitContainerEnvironmentVar {
@@ -931,17 +1269,18 @@ func (o EciScalingConfigurationInitContainerOutput) ImagePullPolicy() pulumi.Str
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The amount of memory resources allocated to the container.
+// The amount of memory resources allocated to the container group.
 func (o EciScalingConfigurationInitContainerOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
 }
 
-// The name of the mounted volume.
+// The name of the volume.
 func (o EciScalingConfigurationInitContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The structure of port. See Block_port_in_container below for details.
+// The structure of port. See Block_port_in_init_container below
+// for details.
 func (o EciScalingConfigurationInitContainerOutput) Ports() EciScalingConfigurationInitContainerPortArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []EciScalingConfigurationInitContainerPort {
 		return v.Ports
@@ -949,6 +1288,7 @@ func (o EciScalingConfigurationInitContainerOutput) Ports() EciScalingConfigurat
 }
 
 // The structure of volumeMounts.
+// See Block_volume_mount_in_init_container below for details.
 // See Block_volume_mount_in_container below for details.
 func (o EciScalingConfigurationInitContainerOutput) VolumeMounts() EciScalingConfigurationInitContainerVolumeMountArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []EciScalingConfigurationInitContainerVolumeMount {
@@ -984,6 +1324,7 @@ func (o EciScalingConfigurationInitContainerArrayOutput) Index(i pulumi.IntInput
 type EciScalingConfigurationInitContainerEnvironmentVar struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
 	// digits, and underscores (_). It cannot start with a digit.
+	// digits, and underscores (_). It cannot start with a digit.
 	Key *string `pulumi:"key"`
 	// The value of the variable. The value can be 0 to 256 characters in length.
 	Value *string `pulumi:"value"`
@@ -1002,6 +1343,7 @@ type EciScalingConfigurationInitContainerEnvironmentVarInput interface {
 
 type EciScalingConfigurationInitContainerEnvironmentVarArgs struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+	// digits, and underscores (_). It cannot start with a digit.
 	// digits, and underscores (_). It cannot start with a digit.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the variable. The value can be 0 to 256 characters in length.
@@ -1060,6 +1402,7 @@ func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) ToEciScalingCo
 }
 
 // The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+// digits, and underscores (_). It cannot start with a digit.
 // digits, and underscores (_). It cannot start with a digit.
 func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
@@ -1199,8 +1542,9 @@ func (o EciScalingConfigurationInitContainerPortArrayOutput) Index(i pulumi.IntI
 type EciScalingConfigurationInitContainerVolumeMount struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the
 	// data in the volume.
+	// data in the volume.
 	MountPath *string `pulumi:"mountPath"`
-	// The name of the mounted volume.
+	// The name of the volume.
 	Name *string `pulumi:"name"`
 	// Default to `false`.
 	ReadOnly *bool `pulumi:"readOnly"`
@@ -1220,8 +1564,9 @@ type EciScalingConfigurationInitContainerVolumeMountInput interface {
 type EciScalingConfigurationInitContainerVolumeMountArgs struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the
 	// data in the volume.
+	// data in the volume.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// The name of the mounted volume.
+	// The name of the volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Default to `false`.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
@@ -1280,11 +1625,12 @@ func (o EciScalingConfigurationInitContainerVolumeMountOutput) ToEciScalingConfi
 
 // The directory of the mounted volume. Data under this directory will be overwritten by the
 // data in the volume.
+// data in the volume.
 func (o EciScalingConfigurationInitContainerVolumeMountOutput) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerVolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// The name of the mounted volume.
+// The name of the volume.
 func (o EciScalingConfigurationInitContainerVolumeMountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerVolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1331,7 +1677,7 @@ type EciScalingConfigurationVolume struct {
 	// The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
 	// string.
 	FlexVolumeOptions *string `pulumi:"flexVolumeOptions"`
-	// The name of the mounted volume.
+	// The name of the volume.
 	Name *string `pulumi:"name"`
 	// The path to the NFS volume.
 	NfsVolumePath *string `pulumi:"nfsVolumePath"`
@@ -1371,7 +1717,7 @@ type EciScalingConfigurationVolumeArgs struct {
 	// The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
 	// string.
 	FlexVolumeOptions pulumi.StringPtrInput `pulumi:"flexVolumeOptions"`
-	// The name of the mounted volume.
+	// The name of the volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The path to the NFS volume.
 	NfsVolumePath pulumi.StringPtrInput `pulumi:"nfsVolumePath"`
@@ -1473,7 +1819,7 @@ func (o EciScalingConfigurationVolumeOutput) FlexVolumeOptions() pulumi.StringPt
 	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.FlexVolumeOptions }).(pulumi.StringPtrOutput)
 }
 
-// The name of the mounted volume.
+// The name of the volume.
 func (o EciScalingConfigurationVolumeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3348,7 +3694,8 @@ func (o GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput) Index(i 
 
 type GetScalingGroupsGroup struct {
 	// Number of active instances in scaling group.
-	ActiveCapacity             int    `pulumi:"activeCapacity"`
+	ActiveCapacity int `pulumi:"activeCapacity"`
+	// Active scaling configuration for scaling group.
 	ActiveScalingConfiguration string `pulumi:"activeScalingConfiguration"`
 	// Default cooldown time of scaling group.
 	CooldownTime int `pulumi:"cooldownTime"`
@@ -3377,7 +3724,6 @@ type GetScalingGroupsGroup struct {
 	// The modification time.
 	ModificationTime string `pulumi:"modificationTime"`
 	// Name of the scaling group.
-	// * `activeScalingConfiguration` -Active scaling configuration for scaling group.
 	Name string `pulumi:"name"`
 	// Number of pending instances in scaling group.
 	PendingCapacity int `pulumi:"pendingCapacity"`
@@ -3416,7 +3762,8 @@ type GetScalingGroupsGroupInput interface {
 
 type GetScalingGroupsGroupArgs struct {
 	// Number of active instances in scaling group.
-	ActiveCapacity             pulumi.IntInput    `pulumi:"activeCapacity"`
+	ActiveCapacity pulumi.IntInput `pulumi:"activeCapacity"`
+	// Active scaling configuration for scaling group.
 	ActiveScalingConfiguration pulumi.StringInput `pulumi:"activeScalingConfiguration"`
 	// Default cooldown time of scaling group.
 	CooldownTime pulumi.IntInput `pulumi:"cooldownTime"`
@@ -3445,7 +3792,6 @@ type GetScalingGroupsGroupArgs struct {
 	// The modification time.
 	ModificationTime pulumi.StringInput `pulumi:"modificationTime"`
 	// Name of the scaling group.
-	// * `activeScalingConfiguration` -Active scaling configuration for scaling group.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Number of pending instances in scaling group.
 	PendingCapacity pulumi.IntInput `pulumi:"pendingCapacity"`
@@ -3527,6 +3873,7 @@ func (o GetScalingGroupsGroupOutput) ActiveCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.ActiveCapacity }).(pulumi.IntOutput)
 }
 
+// Active scaling configuration for scaling group.
 func (o GetScalingGroupsGroupOutput) ActiveScalingConfiguration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.ActiveScalingConfiguration }).(pulumi.StringOutput)
 }
@@ -3597,7 +3944,6 @@ func (o GetScalingGroupsGroupOutput) ModificationTime() pulumi.StringOutput {
 }
 
 // Name of the scaling group.
-// * `activeScalingConfiguration` -Active scaling configuration for scaling group.
 func (o GetScalingGroupsGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4034,6 +4380,8 @@ func (o GetScheduledTasksTaskArrayOutput) Index(i pulumi.IntInput) GetScheduledT
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationAcrRegistryInfoInput)(nil)).Elem(), EciScalingConfigurationAcrRegistryInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationAcrRegistryInfoArrayInput)(nil)).Elem(), EciScalingConfigurationAcrRegistryInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationContainerInput)(nil)).Elem(), EciScalingConfigurationContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationContainerArrayInput)(nil)).Elem(), EciScalingConfigurationContainerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationContainerEnvironmentVarInput)(nil)).Elem(), EciScalingConfigurationContainerEnvironmentVarArgs{})
@@ -4088,6 +4436,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleArrayInput)(nil)).Elem(), GetScalingRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduledTasksTaskInput)(nil)).Elem(), GetScheduledTasksTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduledTasksTaskArrayInput)(nil)).Elem(), GetScheduledTasksTaskArray{})
+	pulumi.RegisterOutputType(EciScalingConfigurationAcrRegistryInfoOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationAcrRegistryInfoArrayOutput{})
 	pulumi.RegisterOutputType(EciScalingConfigurationContainerOutput{})
 	pulumi.RegisterOutputType(EciScalingConfigurationContainerArrayOutput{})
 	pulumi.RegisterOutputType(EciScalingConfigurationContainerEnvironmentVarOutput{})

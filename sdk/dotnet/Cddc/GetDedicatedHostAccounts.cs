@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Cddc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Cddc.GetDedicatedHostAccounts.InvokeAsync());
-        ///         this.CddcDedicatedHostAccountId1 = ids.Apply(ids =&gt; ids.Accounts?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Cddc.GetDedicatedHostAccounts.Invoke();
         /// 
-        ///     [Output("cddcDedicatedHostAccountId1")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostAccountId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cddcDedicatedHostAccountId1"] = ids.Apply(getDedicatedHostAccountsResult =&gt; getDedicatedHostAccountsResult.Accounts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDedicatedHostAccountsResult> InvokeAsync(GetDedicatedHostAccountsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostAccountsResult>("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", args ?? new GetDedicatedHostAccountsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostAccountsResult>("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", args ?? new GetDedicatedHostAccountsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Cddc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Cddc.GetDedicatedHostAccounts.InvokeAsync());
-        ///         this.CddcDedicatedHostAccountId1 = ids.Apply(ids =&gt; ids.Accounts?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Cddc.GetDedicatedHostAccounts.Invoke();
         /// 
-        ///     [Output("cddcDedicatedHostAccountId1")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostAccountId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cddcDedicatedHostAccountId1"] = ids.Apply(getDedicatedHostAccountsResult =&gt; getDedicatedHostAccountsResult.Accounts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDedicatedHostAccountsResult> Invoke(GetDedicatedHostAccountsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDedicatedHostAccountsResult>("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", args ?? new GetDedicatedHostAccountsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedHostAccountsResult>("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", args ?? new GetDedicatedHostAccountsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDedicatedHostAccountsArgs : Pulumi.InvokeArgs
+    public sealed class GetDedicatedHostAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Dedicated host.
@@ -117,9 +115,10 @@ namespace Pulumi.AliCloud.Cddc
         public GetDedicatedHostAccountsArgs()
         {
         }
+        public static new GetDedicatedHostAccountsArgs Empty => new GetDedicatedHostAccountsArgs();
     }
 
-    public sealed class GetDedicatedHostAccountsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDedicatedHostAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Dedicated host.
@@ -157,6 +156,7 @@ namespace Pulumi.AliCloud.Cddc
         public GetDedicatedHostAccountsInvokeArgs()
         {
         }
+        public static new GetDedicatedHostAccountsInvokeArgs Empty => new GetDedicatedHostAccountsInvokeArgs();
     }
 
 

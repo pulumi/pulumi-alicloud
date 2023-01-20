@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworkAclEgressAclEntry {
     /**
-     * @return The description of egress entries.
+     * @return The description of the network acl instance.
      * 
      */
     private @Nullable String description;
@@ -22,29 +22,29 @@ public final class NetworkAclEgressAclEntry {
      */
     private @Nullable String destinationCidrIp;
     /**
-     * @return The entry name of egress entries.
+     * @return The entry name of ingress entries.
      * 
      */
     private @Nullable String networkAclEntryName;
     /**
-     * @return The policy of egress entries. Valid values `accept` and `drop`.
+     * @return The policy of ingress entries. Valid values `accept` and `drop`.
      * 
      */
     private @Nullable String policy;
     /**
-     * @return The port of egress entries.
+     * @return The port of ingress entries.
      * 
      */
     private @Nullable String port;
     /**
-     * @return The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+     * @return The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
      * 
      */
     private @Nullable String protocol;
 
     private NetworkAclEgressAclEntry() {}
     /**
-     * @return The description of egress entries.
+     * @return The description of the network acl instance.
      * 
      */
     public Optional<String> description() {
@@ -58,28 +58,28 @@ public final class NetworkAclEgressAclEntry {
         return Optional.ofNullable(this.destinationCidrIp);
     }
     /**
-     * @return The entry name of egress entries.
+     * @return The entry name of ingress entries.
      * 
      */
     public Optional<String> networkAclEntryName() {
         return Optional.ofNullable(this.networkAclEntryName);
     }
     /**
-     * @return The policy of egress entries. Valid values `accept` and `drop`.
+     * @return The policy of ingress entries. Valid values `accept` and `drop`.
      * 
      */
     public Optional<String> policy() {
         return Optional.ofNullable(this.policy);
     }
     /**
-     * @return The port of egress entries.
+     * @return The port of ingress entries.
      * 
      */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+     * @return The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
      * 
      */
     public Optional<String> protocol() {

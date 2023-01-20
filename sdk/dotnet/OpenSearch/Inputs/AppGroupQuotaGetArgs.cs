@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.OpenSearch.Inputs
 {
 
-    public sealed class AppGroupQuotaGetArgs : Pulumi.ResourceArgs
+    public sealed class AppGroupQuotaGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Computing resources. Unit: LCU.
@@ -46,5 +46,6 @@ namespace Pulumi.AliCloud.OpenSearch.Inputs
         public AppGroupQuotaGetArgs()
         {
         }
+        public static new AppGroupQuotaGetArgs Empty => new AppGroupQuotaGetArgs();
     }
 }

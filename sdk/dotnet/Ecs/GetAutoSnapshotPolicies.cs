@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetAutoSnapshotPolicies.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetAutoSnapshotPolicies.InvokeAsync(new AliCloud.Ecs.GetAutoSnapshotPoliciesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "sp-bp14e66xxxxxxxx",
-        ///             },
-        ///             NameRegex = "tf-testAcc",
-        ///         }));
-        ///         this.FirstEcsAutoSnapshotPolicyId = example.Apply(example =&gt; example.Policies?[0]?.Id);
-        ///     }
+        ///             "sp-bp14e66xxxxxxxx",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
         /// 
-        ///     [Output("firstEcsAutoSnapshotPolicyId")]
-        ///     public Output&lt;string&gt; FirstEcsAutoSnapshotPolicyId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsAutoSnapshotPolicyId"] = example.Apply(getAutoSnapshotPoliciesResult =&gt; getAutoSnapshotPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAutoSnapshotPoliciesResult> InvokeAsync(GetAutoSnapshotPoliciesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAutoSnapshotPoliciesResult>("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", args ?? new GetAutoSnapshotPoliciesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAutoSnapshotPoliciesResult>("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", args ?? new GetAutoSnapshotPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetAutoSnapshotPolicies.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetAutoSnapshotPolicies.InvokeAsync(new AliCloud.Ecs.GetAutoSnapshotPoliciesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "sp-bp14e66xxxxxxxx",
-        ///             },
-        ///             NameRegex = "tf-testAcc",
-        ///         }));
-        ///         this.FirstEcsAutoSnapshotPolicyId = example.Apply(example =&gt; example.Policies?[0]?.Id);
-        ///     }
+        ///             "sp-bp14e66xxxxxxxx",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
         /// 
-        ///     [Output("firstEcsAutoSnapshotPolicyId")]
-        ///     public Output&lt;string&gt; FirstEcsAutoSnapshotPolicyId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsAutoSnapshotPolicyId"] = example.Apply(getAutoSnapshotPoliciesResult =&gt; getAutoSnapshotPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAutoSnapshotPoliciesResult> Invoke(GetAutoSnapshotPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAutoSnapshotPoliciesResult>("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", args ?? new GetAutoSnapshotPoliciesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAutoSnapshotPoliciesResult>("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", args ?? new GetAutoSnapshotPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAutoSnapshotPoliciesArgs : Pulumi.InvokeArgs
+    public sealed class GetAutoSnapshotPoliciesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -137,9 +135,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetAutoSnapshotPoliciesArgs()
         {
         }
+        public static new GetAutoSnapshotPoliciesArgs Empty => new GetAutoSnapshotPoliciesArgs();
     }
 
-    public sealed class GetAutoSnapshotPoliciesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAutoSnapshotPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -183,6 +182,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetAutoSnapshotPoliciesInvokeArgs()
         {
         }
+        public static new GetAutoSnapshotPoliciesInvokeArgs Empty => new GetAutoSnapshotPoliciesInvokeArgs();
     }
 
 

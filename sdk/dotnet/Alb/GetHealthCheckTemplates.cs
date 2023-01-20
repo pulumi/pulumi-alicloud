@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Alb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Alb.GetHealthCheckTemplates.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Alb.GetHealthCheckTemplates.InvokeAsync(new AliCloud.Alb.GetHealthCheckTemplatesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.AlbHealthCheckTemplateId1 = ids.Apply(ids =&gt; ids.Templates?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Alb.GetHealthCheckTemplates.InvokeAsync(new AliCloud.Alb.GetHealthCheckTemplatesArgs
-        ///         {
-        ///             NameRegex = "^my-HealthCheckTemplate",
-        ///         }));
-        ///         this.AlbHealthCheckTemplateId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("albHealthCheckTemplateId1")]
-        ///     public Output&lt;string&gt; AlbHealthCheckTemplateId1 { get; set; }
-        ///     [Output("albHealthCheckTemplateId2")]
-        ///     public Output&lt;string&gt; AlbHealthCheckTemplateId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Alb.GetHealthCheckTemplates.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-HealthCheckTemplate",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albHealthCheckTemplateId1"] = ids.Apply(getHealthCheckTemplatesResult =&gt; getHealthCheckTemplatesResult.Templates[0]?.Id),
+        ///         ["albHealthCheckTemplateId2"] = nameRegex.Apply(getHealthCheckTemplatesResult =&gt; getHealthCheckTemplatesResult.Templates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHealthCheckTemplatesResult> InvokeAsync(GetHealthCheckTemplatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHealthCheckTemplatesResult>("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", args ?? new GetHealthCheckTemplatesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHealthCheckTemplatesResult>("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", args ?? new GetHealthCheckTemplatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Alb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Alb.GetHealthCheckTemplates.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Alb.GetHealthCheckTemplates.InvokeAsync(new AliCloud.Alb.GetHealthCheckTemplatesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.AlbHealthCheckTemplateId1 = ids.Apply(ids =&gt; ids.Templates?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Alb.GetHealthCheckTemplates.InvokeAsync(new AliCloud.Alb.GetHealthCheckTemplatesArgs
-        ///         {
-        ///             NameRegex = "^my-HealthCheckTemplate",
-        ///         }));
-        ///         this.AlbHealthCheckTemplateId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("albHealthCheckTemplateId1")]
-        ///     public Output&lt;string&gt; AlbHealthCheckTemplateId1 { get; set; }
-        ///     [Output("albHealthCheckTemplateId2")]
-        ///     public Output&lt;string&gt; AlbHealthCheckTemplateId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Alb.GetHealthCheckTemplates.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-HealthCheckTemplate",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albHealthCheckTemplateId1"] = ids.Apply(getHealthCheckTemplatesResult =&gt; getHealthCheckTemplatesResult.Templates[0]?.Id),
+        ///         ["albHealthCheckTemplateId2"] = nameRegex.Apply(getHealthCheckTemplatesResult =&gt; getHealthCheckTemplatesResult.Templates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHealthCheckTemplatesResult> Invoke(GetHealthCheckTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHealthCheckTemplatesResult>("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", args ?? new GetHealthCheckTemplatesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHealthCheckTemplatesResult>("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", args ?? new GetHealthCheckTemplatesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHealthCheckTemplatesArgs : Pulumi.InvokeArgs
+    public sealed class GetHealthCheckTemplatesArgs : global::Pulumi.InvokeArgs
     {
         [Input("healthCheckTemplateIds")]
         private List<string>? _healthCheckTemplateIds;
@@ -149,9 +145,10 @@ namespace Pulumi.AliCloud.Alb
         public GetHealthCheckTemplatesArgs()
         {
         }
+        public static new GetHealthCheckTemplatesArgs Empty => new GetHealthCheckTemplatesArgs();
     }
 
-    public sealed class GetHealthCheckTemplatesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHealthCheckTemplatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("healthCheckTemplateIds")]
         private InputList<string>? _healthCheckTemplateIds;
@@ -195,6 +192,7 @@ namespace Pulumi.AliCloud.Alb
         public GetHealthCheckTemplatesInvokeArgs()
         {
         }
+        public static new GetHealthCheckTemplatesInvokeArgs Empty => new GetHealthCheckTemplatesInvokeArgs();
     }
 
 

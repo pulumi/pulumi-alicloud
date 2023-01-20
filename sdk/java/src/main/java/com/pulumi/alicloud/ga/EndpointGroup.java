@@ -159,14 +159,14 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The endpointConfigurations of the endpoint group.
+     * The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
      * 
      */
     @Export(name="endpointConfigurations", type=List.class, parameters={EndpointGroupEndpointConfiguration.class})
     private Output<List<EndpointGroupEndpointConfiguration>> endpointConfigurations;
 
     /**
-     * @return The endpointConfigurations of the endpoint group.
+     * @return The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
      * 
      */
     public Output<List<EndpointGroupEndpointConfiguration>> endpointConfigurations() {
@@ -191,14 +191,14 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="endpointGroupType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> endpointGroupType;
+    private Output<String> endpointGroupType;
 
     /**
      * @return The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
      * 
      */
-    public Output<Optional<String>> endpointGroupType() {
-        return Codegen.optional(this.endpointGroupType);
+    public Output<String> endpointGroupType() {
+        return this.endpointGroupType;
     }
     /**
      * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
@@ -299,14 +299,14 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Mapping between listening port and forwarding port of boarding point.
+     * Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
      * 
      */
     @Export(name="portOverrides", type=EndpointGroupPortOverrides.class, parameters={})
     private Output</* @Nullable */ EndpointGroupPortOverrides> portOverrides;
 
     /**
-     * @return Mapping between listening port and forwarding port of boarding point.
+     * @return Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
      * 
      */
     public Output<Optional<EndpointGroupPortOverrides>> portOverrides() {

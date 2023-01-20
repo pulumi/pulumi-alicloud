@@ -5,14 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./cluster";
-export * from "./getClusters";
-export * from "./getJobTemplates";
-export * from "./jobTemplate";
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
-// Import resources to register:
-import { Cluster } from "./cluster";
-import { JobTemplate } from "./jobTemplate";
+export { GetClustersArgs, GetClustersResult, GetClustersOutputArgs } from "./getClusters";
+export const getClusters: typeof import("./getClusters").getClusters = null as any;
+export const getClustersOutput: typeof import("./getClusters").getClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getClusters","getClustersOutput"], () => require("./getClusters"));
+
+export { GetJobTemplatesArgs, GetJobTemplatesResult, GetJobTemplatesOutputArgs } from "./getJobTemplates";
+export const getJobTemplates: typeof import("./getJobTemplates").getJobTemplates = null as any;
+export const getJobTemplatesOutput: typeof import("./getJobTemplates").getJobTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getJobTemplates","getJobTemplatesOutput"], () => require("./getJobTemplates"));
+
+export { JobTemplateArgs, JobTemplateState } from "./jobTemplate";
+export type JobTemplate = import("./jobTemplate").JobTemplate;
+export const JobTemplate: typeof import("./jobTemplate").JobTemplate = null as any;
+utilities.lazyLoad(exports, ["JobTemplate"], () => require("./jobTemplate"));
+
 
 const _module = {
     version: utilities.getVersion(),

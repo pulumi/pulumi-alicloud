@@ -15,72 +15,75 @@ namespace Pulumi.AliCloud.Rds
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "Rds";
+    ///     var name = config.Get("name") ?? "dbInstancevpc";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "Rds";
-    ///         var name = config.Get("name") ?? "dbInstancevpc";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new AliCloud.Rds.InstanceArgs
-    ///         {
-    ///             Engine = "MySQL",
-    ///             EngineVersion = "5.6",
-    ///             InstanceType = "rds.mysql.t1.small",
-    ///             InstanceStorage = 20,
-    ///             InstanceChargeType = "Postpaid",
-    ///             InstanceName = name,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             SecurityIps = 
-    ///             {
-    ///                 "10.168.1.12",
-    ///                 "100.69.7.112",
-    ///             },
-    ///         });
-    ///         var defaultReadOnlyInstance = new AliCloud.Rds.ReadOnlyInstance("defaultReadOnlyInstance", new AliCloud.Rds.ReadOnlyInstanceArgs
-    ///         {
-    ///             MasterDbInstanceId = defaultInstance.Id,
-    ///             ZoneId = defaultInstance.ZoneId,
-    ///             EngineVersion = defaultInstance.EngineVersion,
-    ///             InstanceType = defaultInstance.InstanceType,
-    ///             InstanceStorage = 30,
-    ///             InstanceName = $"{name}ro",
-    ///             VswitchId = defaultSwitch.Id,
-    ///         });
-    ///         var defaultReadWriteSplittingConnection = new AliCloud.Rds.ReadWriteSplittingConnection("defaultReadWriteSplittingConnection", new AliCloud.Rds.ReadWriteSplittingConnectionArgs
-    ///         {
-    ///             InstanceId = defaultInstance.Id,
-    ///             ConnectionPrefix = "t-con-123",
-    ///             DistributionType = "Standard",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 defaultReadOnlyInstance,
-    ///             },
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
+    ///         InstanceType = "rds.mysql.t1.small",
+    ///         InstanceStorage = 20,
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.168.1.12",
+    ///             "100.69.7.112",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultReadOnlyInstance = new AliCloud.Rds.ReadOnlyInstance("defaultReadOnlyInstance", new()
+    ///     {
+    ///         MasterDbInstanceId = defaultInstance.Id,
+    ///         ZoneId = defaultInstance.ZoneId,
+    ///         EngineVersion = defaultInstance.EngineVersion,
+    ///         InstanceType = defaultInstance.InstanceType,
+    ///         InstanceStorage = 30,
+    ///         InstanceName = $"{name}ro",
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var defaultReadWriteSplittingConnection = new AliCloud.Rds.ReadWriteSplittingConnection("defaultReadWriteSplittingConnection", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         ConnectionPrefix = "t-con-123",
+    ///         DistributionType = "Standard",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             defaultReadOnlyInstance,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// &gt; **NOTE:** Resource `alicloud.rds.ReadWriteSplittingConnection` should be created after `alicloud.rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
@@ -94,7 +97,7 @@ namespace Pulumi.AliCloud.Rds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection")]
-    public partial class ReadWriteSplittingConnection : Pulumi.CustomResource
+    public partial class ReadWriteSplittingConnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + 'rw'.
@@ -182,7 +185,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
-    public sealed class ReadWriteSplittingConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ReadWriteSplittingConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + 'rw'.
@@ -229,9 +232,10 @@ namespace Pulumi.AliCloud.Rds
         public ReadWriteSplittingConnectionArgs()
         {
         }
+        public static new ReadWriteSplittingConnectionArgs Empty => new ReadWriteSplittingConnectionArgs();
     }
 
-    public sealed class ReadWriteSplittingConnectionState : Pulumi.ResourceArgs
+    public sealed class ReadWriteSplittingConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + 'rw'.
@@ -284,5 +288,6 @@ namespace Pulumi.AliCloud.Rds
         public ReadWriteSplittingConnectionState()
         {
         }
+        public static new ReadWriteSplittingConnectionState Empty => new ReadWriteSplittingConnectionState();
     }
 }

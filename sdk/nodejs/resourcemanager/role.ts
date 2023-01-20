@@ -33,7 +33,8 @@ import * as utilities from "../utilities";
  *           ],
  *           "Version": "1"
  *      }
- * 	 `,
+ * 	 
+ * `,
  *     roleName: "testrd",
  * });
  * ```
@@ -76,7 +77,6 @@ export class Role extends pulumi.CustomResource {
 
     /**
      * The resource descriptor of the role.
-     * * `createDate` (Removed form v1.114.0) - Role creation time.
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
@@ -151,7 +151,6 @@ export class Role extends pulumi.CustomResource {
 export interface RoleState {
     /**
      * The resource descriptor of the role.
-     * * `createDate` (Removed form v1.114.0) - Role creation time.
      */
     arn?: pulumi.Input<string>;
     /**

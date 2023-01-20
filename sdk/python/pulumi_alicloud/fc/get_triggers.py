@@ -140,7 +140,7 @@ def get_triggers(function_name: Optional[str] = None,
 
 
     :param str function_name: FC function name.
-    :param Sequence[str] ids: - A list of FC triggers ids.
+    :param Sequence[str] ids: A list of FC triggers ids.
     :param str name_regex: A regex string to filter results by FC trigger name.
     :param str service_name: FC service name.
     """
@@ -188,7 +188,7 @@ def get_triggers_output(function_name: Optional[pulumi.Input[str]] = None,
 
 
     :param str function_name: FC function name.
-    :param Sequence[str] ids: - A list of FC triggers ids.
+    :param Sequence[str] ids: A list of FC triggers ids.
     :param str name_regex: A regex string to filter results by FC trigger name.
     :param str service_name: FC service name.
     """

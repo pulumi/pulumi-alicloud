@@ -21,171 +21,169 @@ namespace Pulumi.AliCloud.Log
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         var exampleProject = new AliCloud.Log.Project("exampleProject", new AliCloud.Log.ProjectArgs
-    ///         {
-    ///             Description = "created by terraform",
-    ///         });
-    ///         var exampleStore = new AliCloud.Log.Store("exampleStore", new AliCloud.Log.StoreArgs
-    ///         {
-    ///             Project = exampleProject.Name,
-    ///             RetentionPeriod = 3650,
-    ///             ShardCount = 3,
-    ///             AutoSplit = true,
-    ///             MaxSplitShardCount = 60,
-    ///             AppendMeta = true,
-    ///         });
-    ///         var example2 = new AliCloud.Log.Store("example2", new AliCloud.Log.StoreArgs
-    ///         {
-    ///             Project = exampleProject.Name,
-    ///             RetentionPeriod = 3650,
-    ///             ShardCount = 3,
-    ///             AutoSplit = true,
-    ///             MaxSplitShardCount = 60,
-    ///             AppendMeta = true,
-    ///         });
-    ///         var example3 = new AliCloud.Log.Store("example3", new AliCloud.Log.StoreArgs
-    ///         {
-    ///             Project = exampleProject.Name,
-    ///             RetentionPeriod = 3650,
-    ///             ShardCount = 3,
-    ///             AutoSplit = true,
-    ///             MaxSplitShardCount = 60,
-    ///             AppendMeta = true,
-    ///         });
-    ///         var exampleEtl = new AliCloud.Log.Etl("exampleEtl", new AliCloud.Log.EtlArgs
-    ///         {
-    ///             EtlName = "etl_name",
-    ///             Project = exampleProject.Name,
-    ///             DisplayName = "display_name",
-    ///             Description = "etl_description",
-    ///             AccessKeyId = "access_key_id",
-    ///             AccessKeySecret = "access_key_secret",
-    ///             Script = "e_set('new','key')",
-    ///             Logstore = exampleStore.Name,
-    ///             EtlSinks = 
-    ///             {
-    ///                 new AliCloud.Log.Inputs.EtlEtlSinkArgs
-    ///                 {
-    ///                     Name = "target_name",
-    ///                     AccessKeyId = "example2_access_key_id",
-    ///                     AccessKeySecret = "example2_access_key_secret",
-    ///                     Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                     Project = exampleProject.Name,
-    ///                     Logstore = example2.Name,
-    ///                 },
-    ///                 new AliCloud.Log.Inputs.EtlEtlSinkArgs
-    ///                 {
-    ///                     Name = "target_name2",
-    ///                     AccessKeyId = "example3_access_key_id",
-    ///                     AccessKeySecret = "example3_access_key_secret",
-    ///                     Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                     Project = exampleProject.Name,
-    ///                     Logstore = example3.Name,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Description = "created by terraform",
+    ///     });
     /// 
-    /// }
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var example2 = new AliCloud.Log.Store("example2", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var example3 = new AliCloud.Log.Store("example3", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var exampleEtl = new AliCloud.Log.Etl("exampleEtl", new()
+    ///     {
+    ///         EtlName = "etl_name",
+    ///         Project = exampleProject.Name,
+    ///         DisplayName = "display_name",
+    ///         Description = "etl_description",
+    ///         AccessKeyId = "access_key_id",
+    ///         AccessKeySecret = "access_key_secret",
+    ///         Script = "e_set('new','key')",
+    ///         Logstore = exampleStore.Name,
+    ///         EtlSinks = new[]
+    ///         {
+    ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
+    ///             {
+    ///                 Name = "target_name",
+    ///                 AccessKeyId = "example2_access_key_id",
+    ///                 AccessKeySecret = "example2_access_key_secret",
+    ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
+    ///                 Project = exampleProject.Name,
+    ///                 Logstore = example2.Name,
+    ///             },
+    ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
+    ///             {
+    ///                 Name = "target_name2",
+    ///                 AccessKeyId = "example3_access_key_id",
+    ///                 AccessKeySecret = "example3_access_key_secret",
+    ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
+    ///                 Project = exampleProject.Name,
+    ///                 Logstore = example3.Name,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// Stop the task in progress
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Log.Etl("example", new()
     ///     {
-    ///         var example = new AliCloud.Log.Etl("example", new AliCloud.Log.EtlArgs
+    ///         Status = STOPPED,
+    ///         EtlName = "etl_name",
+    ///         Project = alicloud_log_project.Example.Name,
+    ///         DisplayName = "display_name",
+    ///         Description = "etl_description",
+    ///         AccessKeyId = "access_key_id",
+    ///         AccessKeySecret = "access_key_secret",
+    ///         Script = "e_set('new','key')",
+    ///         Logstore = alicloud_log_store.Example.Name,
+    ///         EtlSinks = new[]
     ///         {
-    ///             Status = STOPPED,
-    ///             EtlName = "etl_name",
-    ///             Project = alicloud_log_project.Example.Name,
-    ///             DisplayName = "display_name",
-    ///             Description = "etl_description",
-    ///             AccessKeyId = "access_key_id",
-    ///             AccessKeySecret = "access_key_secret",
-    ///             Script = "e_set('new','key')",
-    ///             Logstore = alicloud_log_store.Example.Name,
-    ///             EtlSinks = 
+    ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
     ///             {
-    ///                 new AliCloud.Log.Inputs.EtlEtlSinkArgs
-    ///                 {
-    ///                     Name = "target_name",
-    ///                     AccessKeyId = "example2_access_key_id",
-    ///                     AccessKeySecret = "example2_access_key_secret",
-    ///                     Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                     Project = alicloud_log_project.Example.Name,
-    ///                     Logstore = alicloud_log_store.Example2.Name,
-    ///                 },
-    ///                 new AliCloud.Log.Inputs.EtlEtlSinkArgs
-    ///                 {
-    ///                     Name = "target_name2",
-    ///                     AccessKeyId = "example3_access_key_id",
-    ///                     AccessKeySecret = "example3_access_key_secret",
-    ///                     Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                     Project = alicloud_log_project.Example.Name,
-    ///                     Logstore = alicloud_log_store.Example3.Name,
-    ///                 },
+    ///                 Name = "target_name",
+    ///                 AccessKeyId = "example2_access_key_id",
+    ///                 AccessKeySecret = "example2_access_key_secret",
+    ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
+    ///                 Project = alicloud_log_project.Example.Name,
+    ///                 Logstore = alicloud_log_store.Example2.Name,
     ///             },
-    ///         });
-    ///     }
+    ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
+    ///             {
+    ///                 Name = "target_name2",
+    ///                 AccessKeyId = "example3_access_key_id",
+    ///                 AccessKeySecret = "example3_access_key_secret",
+    ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
+    ///                 Project = alicloud_log_project.Example.Name,
+    ///                 Logstore = alicloud_log_store.Example3.Name,
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ReStart the stopped task
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Log.Etl("example", new()
     ///     {
-    ///         var example = new AliCloud.Log.Etl("example", new AliCloud.Log.EtlArgs
+    ///         Status = RUNNING,
+    ///         EtlName = "etl_name",
+    ///         Project = alicloud_log_project.Example.Name,
+    ///         DisplayName = "display_name",
+    ///         Description = "etl_description",
+    ///         AccessKeyId = "access_key_id",
+    ///         AccessKeySecret = "access_key_secret",
+    ///         Script = "e_set('new','key')",
+    ///         Logstore = alicloud_log_store.Example.Name,
+    ///         EtlSinks = new[]
     ///         {
-    ///             Status = RUNNING,
-    ///             EtlName = "etl_name",
-    ///             Project = alicloud_log_project.Example.Name,
-    ///             DisplayName = "display_name",
-    ///             Description = "etl_description",
-    ///             AccessKeyId = "access_key_id",
-    ///             AccessKeySecret = "access_key_secret",
-    ///             Script = "e_set('new','key')",
-    ///             Logstore = alicloud_log_store.Example.Name,
-    ///             EtlSinks = 
+    ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
     ///             {
-    ///                 new AliCloud.Log.Inputs.EtlEtlSinkArgs
-    ///                 {
-    ///                     Name = "target_name",
-    ///                     AccessKeyId = "example2_access_key_id",
-    ///                     AccessKeySecret = "example2_access_key_secret",
-    ///                     Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                     Project = alicloud_log_project.Example.Name,
-    ///                     Logstore = alicloud_log_store.Example2.Name,
-    ///                 },
-    ///                 new AliCloud.Log.Inputs.EtlEtlSinkArgs
-    ///                 {
-    ///                     Name = "target_name2",
-    ///                     AccessKeyId = "example3_access_key_id",
-    ///                     AccessKeySecret = "example3_access_key_secret",
-    ///                     Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                     Project = alicloud_log_project.Example.Name,
-    ///                     Logstore = alicloud_log_store.Example3.Name,
-    ///                 },
+    ///                 Name = "target_name",
+    ///                 AccessKeyId = "example2_access_key_id",
+    ///                 AccessKeySecret = "example2_access_key_secret",
+    ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
+    ///                 Project = alicloud_log_project.Example.Name,
+    ///                 Logstore = alicloud_log_store.Example2.Name,
     ///             },
-    ///         });
-    ///     }
+    ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
+    ///             {
+    ///                 Name = "target_name2",
+    ///                 AccessKeyId = "example3_access_key_id",
+    ///                 AccessKeySecret = "example3_access_key_secret",
+    ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
+    ///                 Project = alicloud_log_project.Example.Name,
+    ///                 Logstore = alicloud_log_store.Example3.Name,
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -197,7 +195,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/etl:Etl")]
-    public partial class Etl : Pulumi.CustomResource
+    public partial class Etl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Delivery target logstore access key id.
@@ -360,6 +358,11 @@ namespace Pulumi.AliCloud.Log
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accessKeyId",
+                    "accessKeySecret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -381,19 +384,39 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class EtlArgs : Pulumi.ResourceArgs
+    public sealed class EtlArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessKeyId")]
+        private Input<string>? _accessKeyId;
+
         /// <summary>
         /// Delivery target logstore access key id.
         /// </summary>
-        [Input("accessKeyId")]
-        public Input<string>? AccessKeyId { get; set; }
+        public Input<string>? AccessKeyId
+        {
+            get => _accessKeyId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKeyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("accessKeySecret")]
+        private Input<string>? _accessKeySecret;
 
         /// <summary>
         /// Delivery target logstore access key secret.
         /// </summary>
-        [Input("accessKeySecret")]
-        public Input<string>? AccessKeySecret { get; set; }
+        public Input<string>? AccessKeySecret
+        {
+            get => _accessKeySecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKeySecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The etl job create time.
@@ -548,21 +571,42 @@ namespace Pulumi.AliCloud.Log
         public EtlArgs()
         {
         }
+        public static new EtlArgs Empty => new EtlArgs();
     }
 
-    public sealed class EtlState : Pulumi.ResourceArgs
+    public sealed class EtlState : global::Pulumi.ResourceArgs
     {
+        [Input("accessKeyId")]
+        private Input<string>? _accessKeyId;
+
         /// <summary>
         /// Delivery target logstore access key id.
         /// </summary>
-        [Input("accessKeyId")]
-        public Input<string>? AccessKeyId { get; set; }
+        public Input<string>? AccessKeyId
+        {
+            get => _accessKeyId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKeyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("accessKeySecret")]
+        private Input<string>? _accessKeySecret;
 
         /// <summary>
         /// Delivery target logstore access key secret.
         /// </summary>
-        [Input("accessKeySecret")]
-        public Input<string>? AccessKeySecret { get; set; }
+        public Input<string>? AccessKeySecret
+        {
+            get => _accessKeySecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKeySecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The etl job create time.
@@ -717,5 +761,6 @@ namespace Pulumi.AliCloud.Log
         public EtlState()
         {
         }
+        public static new EtlState Empty => new EtlState();
     }
 }

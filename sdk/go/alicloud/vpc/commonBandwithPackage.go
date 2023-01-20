@@ -78,6 +78,8 @@ type CommonBandwithPackage struct {
 	Ratio pulumi.IntPtrOutput `pulumi:"ratio"`
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+	SecurityProtectionTypes pulumi.StringArrayOutput `pulumi:"securityProtectionTypes"`
 	// (Available in 1.120.0+) The status of bandwidth package.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The zone of bandwidth package.
@@ -140,6 +142,8 @@ type commonBandwithPackageState struct {
 	Ratio *int `pulumi:"ratio"`
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// (Available in 1.120.0+) The status of bandwidth package.
 	Status *string `pulumi:"status"`
 	// The zone of bandwidth package.
@@ -171,6 +175,8 @@ type CommonBandwithPackageState struct {
 	Ratio pulumi.IntPtrInput
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+	SecurityProtectionTypes pulumi.StringArrayInput
 	// (Available in 1.120.0+) The status of bandwidth package.
 	Status pulumi.StringPtrInput
 	// The zone of bandwidth package.
@@ -206,6 +212,8 @@ type commonBandwithPackageArgs struct {
 	Ratio *int `pulumi:"ratio"`
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// The zone of bandwidth package.
 	Zone *string `pulumi:"zone"`
 }
@@ -236,6 +244,8 @@ type CommonBandwithPackageArgs struct {
 	Ratio pulumi.IntPtrInput
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+	SecurityProtectionTypes pulumi.StringArrayInput
 	// The zone of bandwidth package.
 	Zone pulumi.StringPtrInput
 }
@@ -379,6 +389,11 @@ func (o CommonBandwithPackageOutput) Ratio() pulumi.IntPtrOutput {
 // The Id of resource group which the common bandwidth package belongs.
 func (o CommonBandwithPackageOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+func (o CommonBandwithPackageOutput) SecurityProtectionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringArrayOutput { return v.SecurityProtectionTypes }).(pulumi.StringArrayOutput)
 }
 
 // (Available in 1.120.0+) The status of bandwidth package.

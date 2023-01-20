@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,20 +20,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.lindorm.getInstances({});
- * export const lindormInstanceId1 = ids.then(ids => ids.instances?[0]?.id);
+ * export const lindormInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
  * const nameRegex = alicloud.lindorm.getInstances({
  *     nameRegex: "^my-Instance",
  * });
- * export const lindormInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?[0]?.id);
+ * export const lindormInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:lindorm/getInstances:getInstances", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -93,9 +91,29 @@ export interface GetInstancesResult {
     readonly status?: string;
     readonly supportEngine?: number;
 }
-
+/**
+ * This data source provides the Lindorm Instances of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.132.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.lindorm.getInstances({});
+ * export const lindormInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
+ * const nameRegex = alicloud.lindorm.getInstances({
+ *     nameRegex: "^my-Instance",
+ * });
+ * export const lindormInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**

@@ -21,94 +21,94 @@ namespace Pulumi.AliCloud.Arms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultAlertContact = new AliCloud.Arms.AlertContact("defaultAlertContact", new()
     ///     {
-    ///         var defaultAlertContact = new AliCloud.Arms.AlertContact("defaultAlertContact", new AliCloud.Arms.AlertContactArgs
+    ///         AlertContactName = "example_value",
+    ///         Email = "example_value@aaa.com",
+    ///     });
+    /// 
+    ///     var defaultAlertContactGroup = new AliCloud.Arms.AlertContactGroup("defaultAlertContactGroup", new()
+    ///     {
+    ///         AlertContactGroupName = "example_value",
+    ///         ContactIds = new[]
     ///         {
-    ///             AlertContactName = "example_value",
-    ///             Email = "example_value@aaa.com",
-    ///         });
-    ///         var defaultAlertContactGroup = new AliCloud.Arms.AlertContactGroup("defaultAlertContactGroup", new AliCloud.Arms.AlertContactGroupArgs
+    ///             defaultAlertContact.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultDispatchRule = new AliCloud.Arms.DispatchRule("defaultDispatchRule", new()
+    ///     {
+    ///         DispatchRuleName = "example_value",
+    ///         DispatchType = "CREATE_ALERT",
+    ///         GroupRules = new[]
     ///         {
-    ///             AlertContactGroupName = "example_value",
-    ///             ContactIds = 
+    ///             new AliCloud.Arms.Inputs.DispatchRuleGroupRuleArgs
     ///             {
-    ///                 defaultAlertContact.Id,
-    ///             },
-    ///         });
-    ///         var defaultDispatchRule = new AliCloud.Arms.DispatchRule("defaultDispatchRule", new AliCloud.Arms.DispatchRuleArgs
-    ///         {
-    ///             DispatchRuleName = "example_value",
-    ///             DispatchType = "CREATE_ALERT",
-    ///             GroupRules = 
-    ///             {
-    ///                 new AliCloud.Arms.Inputs.DispatchRuleGroupRuleArgs
+    ///                 GroupWaitTime = 5,
+    ///                 GroupInterval = 15,
+    ///                 RepeatInterval = 100,
+    ///                 GroupingFields = new[]
     ///                 {
-    ///                     GroupWaitTime = 5,
-    ///                     GroupInterval = 15,
-    ///                     RepeatInterval = 100,
-    ///                     GroupingFields = 
-    ///                     {
-    ///                         "alertname",
-    ///                     },
+    ///                     "alertname",
     ///                 },
     ///             },
-    ///             LabelMatchExpressionGrids = 
+    ///         },
+    ///         LabelMatchExpressionGrids = new[]
+    ///         {
+    ///             new AliCloud.Arms.Inputs.DispatchRuleLabelMatchExpressionGridArgs
     ///             {
-    ///                 new AliCloud.Arms.Inputs.DispatchRuleLabelMatchExpressionGridArgs
+    ///                 LabelMatchExpressionGroups = new[]
     ///                 {
-    ///                     LabelMatchExpressionGroups = 
+    ///                     new AliCloud.Arms.Inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs
     ///                     {
-    ///                         new AliCloud.Arms.Inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs
+    ///                         LabelMatchExpressions = new[]
     ///                         {
-    ///                             LabelMatchExpressions = 
+    ///                             new AliCloud.Arms.Inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs
     ///                             {
-    ///                                 new AliCloud.Arms.Inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs
-    ///                                 {
-    ///                                     Key = "_aliyun_arms_involvedObject_kind",
-    ///                                     Value = "app",
-    ///                                     Operator = "eq",
-    ///                                 },
+    ///                                 Key = "_aliyun_arms_involvedObject_kind",
+    ///                                 Value = "app",
+    ///                                 Operator = "eq",
     ///                             },
     ///                         },
     ///                     },
     ///                 },
     ///             },
-    ///             NotifyRules = 
+    ///         },
+    ///         NotifyRules = new[]
+    ///         {
+    ///             new AliCloud.Arms.Inputs.DispatchRuleNotifyRuleArgs
     ///             {
-    ///                 new AliCloud.Arms.Inputs.DispatchRuleNotifyRuleArgs
+    ///                 NotifyObjects = new[]
     ///                 {
-    ///                     NotifyObjects = 
+    ///                     new AliCloud.Arms.Inputs.DispatchRuleNotifyRuleNotifyObjectArgs
     ///                     {
-    ///                         new AliCloud.Arms.Inputs.DispatchRuleNotifyRuleNotifyObjectArgs
-    ///                         {
-    ///                             NotifyObjectId = defaultAlertContact.Id,
-    ///                             NotifyType = "ARMS_CONTACT",
-    ///                             Name = "example_value",
-    ///                         },
-    ///                         new AliCloud.Arms.Inputs.DispatchRuleNotifyRuleNotifyObjectArgs
-    ///                         {
-    ///                             NotifyObjectId = defaultAlertContactGroup.Id,
-    ///                             NotifyType = "ARMS_CONTACT_GROUP",
-    ///                             Name = "example_value",
-    ///                         },
+    ///                         NotifyObjectId = defaultAlertContact.Id,
+    ///                         NotifyType = "ARMS_CONTACT",
+    ///                         Name = "example_value",
     ///                     },
-    ///                     NotifyChannels = 
+    ///                     new AliCloud.Arms.Inputs.DispatchRuleNotifyRuleNotifyObjectArgs
     ///                     {
-    ///                         "dingTalk",
-    ///                         "wechat",
+    ///                         NotifyObjectId = defaultAlertContactGroup.Id,
+    ///                         NotifyType = "ARMS_CONTACT_GROUP",
+    ///                         Name = "example_value",
     ///                     },
     ///                 },
+    ///                 NotifyChannels = new[]
+    ///                 {
+    ///                     "dingTalk",
+    ///                     "wechat",
+    ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Arms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:arms/dispatchRule:DispatchRule")]
-    public partial class DispatchRule : Pulumi.CustomResource
+    public partial class DispatchRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the dispatch policy.
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Arms
         }
     }
 
-    public sealed class DispatchRuleArgs : Pulumi.ResourceArgs
+    public sealed class DispatchRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the dispatch policy.
@@ -267,9 +267,10 @@ namespace Pulumi.AliCloud.Arms
         public DispatchRuleArgs()
         {
         }
+        public static new DispatchRuleArgs Empty => new DispatchRuleArgs();
     }
 
-    public sealed class DispatchRuleState : Pulumi.ResourceArgs
+    public sealed class DispatchRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the dispatch policy.
@@ -334,5 +335,6 @@ namespace Pulumi.AliCloud.Arms
         public DispatchRuleState()
         {
         }
+        public static new DispatchRuleState Empty => new DispatchRuleState();
     }
 }

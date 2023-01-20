@@ -23,26 +23,24 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cms.GetAlarmContactGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cms.GetAlarmContactGroups.InvokeAsync(new AliCloud.Cms.GetAlarmContactGroupsArgs
-        ///         {
-        ///             NameRegex = "tf-testacc",
-        ///         }));
-        ///     }
+        ///         NameRegex = "tf-testacc",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlarmContactGroupsResult> InvokeAsync(GetAlarmContactGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmContactGroupsResult>("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", args ?? new GetAlarmContactGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlarmContactGroupsResult>("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", args ?? new GetAlarmContactGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the CMS Groups of the current Alibaba Cloud user.
@@ -56,30 +54,28 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cms.GetAlarmContactGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cms.GetAlarmContactGroups.InvokeAsync(new AliCloud.Cms.GetAlarmContactGroupsArgs
-        ///         {
-        ///             NameRegex = "tf-testacc",
-        ///         }));
-        ///     }
+        ///         NameRegex = "tf-testacc",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAlarmContactGroupsResult> Invoke(GetAlarmContactGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAlarmContactGroupsResult>("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", args ?? new GetAlarmContactGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAlarmContactGroupsResult>("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", args ?? new GetAlarmContactGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAlarmContactGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetAlarmContactGroupsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -105,9 +101,10 @@ namespace Pulumi.AliCloud.Cms
         public GetAlarmContactGroupsArgs()
         {
         }
+        public static new GetAlarmContactGroupsArgs Empty => new GetAlarmContactGroupsArgs();
     }
 
-    public sealed class GetAlarmContactGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAlarmContactGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -133,6 +130,7 @@ namespace Pulumi.AliCloud.Cms
         public GetAlarmContactGroupsInvokeArgs()
         {
         }
+        public static new GetAlarmContactGroupsInvokeArgs Empty => new GetAlarmContactGroupsInvokeArgs();
     }
 
 

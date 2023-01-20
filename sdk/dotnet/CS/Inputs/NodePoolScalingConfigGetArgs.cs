@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class NodePoolScalingConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolScalingConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
@@ -51,5 +51,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public NodePoolScalingConfigGetArgs()
         {
         }
+        public static new NodePoolScalingConfigGetArgs Empty => new NodePoolScalingConfigGetArgs();
     }
 }

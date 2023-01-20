@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.SecurityCenter
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.SecurityCenter.Group("example", new()
     ///     {
-    ///         var example = new AliCloud.SecurityCenter.Group("example", new AliCloud.SecurityCenter.GroupArgs
-    ///         {
-    ///             GroupName = "example_value",
-    ///         });
-    ///     }
+    ///         GroupName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.SecurityCenter
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:securitycenter/group:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// GroupId.
@@ -104,7 +102,7 @@ namespace Pulumi.AliCloud.SecurityCenter
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// GroupId.
@@ -121,9 +119,10 @@ namespace Pulumi.AliCloud.SecurityCenter
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 
-    public sealed class GroupState : Pulumi.ResourceArgs
+    public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// GroupId.
@@ -140,5 +139,6 @@ namespace Pulumi.AliCloud.SecurityCenter
         public GroupState()
         {
         }
+        public static new GroupState Empty => new GroupState();
     }
 }

@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cs.ServerlessKubernetesArgs;
 import com.pulumi.alicloud.cs.inputs.ServerlessKubernetesState;
 import com.pulumi.alicloud.cs.outputs.ServerlessKubernetesAddon;
+import com.pulumi.alicloud.cs.outputs.ServerlessKubernetesRrsaMetadata;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -30,7 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -103,7 +104,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Serverless Kubernetes cluster can be imported using the id, e.g.
+ * Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
  * 
  * ```sh
  *  $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
@@ -211,14 +212,14 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
-     * Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
     @Export(name="enableRrsa", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableRrsa;
 
     /**
-     * @return Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     * @return Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
     public Output<Optional<Boolean>> enableRrsa() {
@@ -255,7 +256,11 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * The path of kube config, like `~/.kube/config`.
      * 
+     * @deprecated
+     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+     * 
      */
+    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
     @Export(name="kubeConfig", type=String.class, parameters={})
     private Output</* @Nullable */ String> kubeConfig;
 
@@ -295,14 +300,14 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.loggingType);
     }
     /**
-     * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+     * The kubernetes cluster&#39;s name. It is the only in one Alicloud account.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+     * @return The kubernetes cluster&#39;s name. It is the only in one Alicloud account.
      * 
      */
     public Output<String> name() {
@@ -365,6 +370,20 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<String>>> retainResources() {
         return Codegen.optional(this.retainResources);
+    }
+    /**
+     * (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * 
+     */
+    @Export(name="rrsaMetadata", type=ServerlessKubernetesRrsaMetadata.class, parameters={})
+    private Output<ServerlessKubernetesRrsaMetadata> rrsaMetadata;
+
+    /**
+     * @return (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+     * 
+     */
+    public Output<ServerlessKubernetesRrsaMetadata> rrsaMetadata() {
+        return this.rrsaMetadata;
     }
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

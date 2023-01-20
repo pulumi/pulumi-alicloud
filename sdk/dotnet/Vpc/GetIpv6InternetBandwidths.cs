@@ -23,53 +23,49 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetIpv6InternetBandwidths.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetIpv6InternetBandwidths.InvokeAsync(new AliCloud.Vpc.GetIpv6InternetBandwidthsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpcIpv6InternetBandwidthId1 = ids.Apply(ids =&gt; ids.Bandwidths?[0]?.Id);
-        ///         var ipv6InternetBandwidthId = Output.Create(AliCloud.Vpc.GetIpv6InternetBandwidths.InvokeAsync(new AliCloud.Vpc.GetIpv6InternetBandwidthsArgs
-        ///         {
-        ///             Ipv6InternetBandwidthId = "example_value",
-        ///         }));
-        ///         this.VpcIpv6InternetBandwidthId2 = ipv6InternetBandwidthId.Apply(ipv6InternetBandwidthId =&gt; ipv6InternetBandwidthId.Bandwidths?[0]?.Id);
-        ///         var ipv6AddressId = Output.Create(AliCloud.Vpc.GetIpv6InternetBandwidths.InvokeAsync(new AliCloud.Vpc.GetIpv6InternetBandwidthsArgs
-        ///         {
-        ///             Ipv6AddressId = "example_value",
-        ///         }));
-        ///         this.VpcIpv6InternetBandwidthId3 = ipv6AddressId.Apply(ipv6AddressId =&gt; ipv6AddressId.Bandwidths?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetIpv6InternetBandwidths.InvokeAsync(new AliCloud.Vpc.GetIpv6InternetBandwidthsArgs
-        ///         {
-        ///             Status = "Normal",
-        ///         }));
-        ///         this.VpcIpv6InternetBandwidthId4 = status.Apply(status =&gt; status.Bandwidths?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcIpv6InternetBandwidthId1")]
-        ///     public Output&lt;string&gt; VpcIpv6InternetBandwidthId1 { get; set; }
-        ///     [Output("vpcIpv6InternetBandwidthId2")]
-        ///     public Output&lt;string&gt; VpcIpv6InternetBandwidthId2 { get; set; }
-        ///     [Output("vpcIpv6InternetBandwidthId3")]
-        ///     public Output&lt;string&gt; VpcIpv6InternetBandwidthId3 { get; set; }
-        ///     [Output("vpcIpv6InternetBandwidthId4")]
-        ///     public Output&lt;string&gt; VpcIpv6InternetBandwidthId4 { get; set; }
-        /// }
+        ///     var ipv6InternetBandwidthId = AliCloud.Vpc.GetIpv6InternetBandwidths.Invoke(new()
+        ///     {
+        ///         Ipv6InternetBandwidthId = "example_value",
+        ///     });
+        /// 
+        ///     var ipv6AddressId = AliCloud.Vpc.GetIpv6InternetBandwidths.Invoke(new()
+        ///     {
+        ///         Ipv6AddressId = "example_value",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetIpv6InternetBandwidths.Invoke(new()
+        ///     {
+        ///         Status = "Normal",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcIpv6InternetBandwidthId1"] = ids.Apply(getIpv6InternetBandwidthsResult =&gt; getIpv6InternetBandwidthsResult.Bandwidths[0]?.Id),
+        ///         ["vpcIpv6InternetBandwidthId2"] = ipv6InternetBandwidthId.Apply(getIpv6InternetBandwidthsResult =&gt; getIpv6InternetBandwidthsResult.Bandwidths[0]?.Id),
+        ///         ["vpcIpv6InternetBandwidthId3"] = ipv6AddressId.Apply(getIpv6InternetBandwidthsResult =&gt; getIpv6InternetBandwidthsResult.Bandwidths[0]?.Id),
+        ///         ["vpcIpv6InternetBandwidthId4"] = status.Apply(getIpv6InternetBandwidthsResult =&gt; getIpv6InternetBandwidthsResult.Bandwidths[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpv6InternetBandwidthsResult> InvokeAsync(GetIpv6InternetBandwidthsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6InternetBandwidthsResult>("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", args ?? new GetIpv6InternetBandwidthsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpv6InternetBandwidthsResult>("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", args ?? new GetIpv6InternetBandwidthsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Ipv6 Internet Bandwidths of the current Alibaba Cloud user.
@@ -83,57 +79,53 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetIpv6InternetBandwidths.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetIpv6InternetBandwidths.InvokeAsync(new AliCloud.Vpc.GetIpv6InternetBandwidthsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpcIpv6InternetBandwidthId1 = ids.Apply(ids =&gt; ids.Bandwidths?[0]?.Id);
-        ///         var ipv6InternetBandwidthId = Output.Create(AliCloud.Vpc.GetIpv6InternetBandwidths.InvokeAsync(new AliCloud.Vpc.GetIpv6InternetBandwidthsArgs
-        ///         {
-        ///             Ipv6InternetBandwidthId = "example_value",
-        ///         }));
-        ///         this.VpcIpv6InternetBandwidthId2 = ipv6InternetBandwidthId.Apply(ipv6InternetBandwidthId =&gt; ipv6InternetBandwidthId.Bandwidths?[0]?.Id);
-        ///         var ipv6AddressId = Output.Create(AliCloud.Vpc.GetIpv6InternetBandwidths.InvokeAsync(new AliCloud.Vpc.GetIpv6InternetBandwidthsArgs
-        ///         {
-        ///             Ipv6AddressId = "example_value",
-        ///         }));
-        ///         this.VpcIpv6InternetBandwidthId3 = ipv6AddressId.Apply(ipv6AddressId =&gt; ipv6AddressId.Bandwidths?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetIpv6InternetBandwidths.InvokeAsync(new AliCloud.Vpc.GetIpv6InternetBandwidthsArgs
-        ///         {
-        ///             Status = "Normal",
-        ///         }));
-        ///         this.VpcIpv6InternetBandwidthId4 = status.Apply(status =&gt; status.Bandwidths?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcIpv6InternetBandwidthId1")]
-        ///     public Output&lt;string&gt; VpcIpv6InternetBandwidthId1 { get; set; }
-        ///     [Output("vpcIpv6InternetBandwidthId2")]
-        ///     public Output&lt;string&gt; VpcIpv6InternetBandwidthId2 { get; set; }
-        ///     [Output("vpcIpv6InternetBandwidthId3")]
-        ///     public Output&lt;string&gt; VpcIpv6InternetBandwidthId3 { get; set; }
-        ///     [Output("vpcIpv6InternetBandwidthId4")]
-        ///     public Output&lt;string&gt; VpcIpv6InternetBandwidthId4 { get; set; }
-        /// }
+        ///     var ipv6InternetBandwidthId = AliCloud.Vpc.GetIpv6InternetBandwidths.Invoke(new()
+        ///     {
+        ///         Ipv6InternetBandwidthId = "example_value",
+        ///     });
+        /// 
+        ///     var ipv6AddressId = AliCloud.Vpc.GetIpv6InternetBandwidths.Invoke(new()
+        ///     {
+        ///         Ipv6AddressId = "example_value",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetIpv6InternetBandwidths.Invoke(new()
+        ///     {
+        ///         Status = "Normal",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcIpv6InternetBandwidthId1"] = ids.Apply(getIpv6InternetBandwidthsResult =&gt; getIpv6InternetBandwidthsResult.Bandwidths[0]?.Id),
+        ///         ["vpcIpv6InternetBandwidthId2"] = ipv6InternetBandwidthId.Apply(getIpv6InternetBandwidthsResult =&gt; getIpv6InternetBandwidthsResult.Bandwidths[0]?.Id),
+        ///         ["vpcIpv6InternetBandwidthId3"] = ipv6AddressId.Apply(getIpv6InternetBandwidthsResult =&gt; getIpv6InternetBandwidthsResult.Bandwidths[0]?.Id),
+        ///         ["vpcIpv6InternetBandwidthId4"] = status.Apply(getIpv6InternetBandwidthsResult =&gt; getIpv6InternetBandwidthsResult.Bandwidths[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpv6InternetBandwidthsResult> Invoke(GetIpv6InternetBandwidthsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpv6InternetBandwidthsResult>("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", args ?? new GetIpv6InternetBandwidthsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpv6InternetBandwidthsResult>("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", args ?? new GetIpv6InternetBandwidthsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetIpv6InternetBandwidthsArgs : Pulumi.InvokeArgs
+    public sealed class GetIpv6InternetBandwidthsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -171,9 +163,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetIpv6InternetBandwidthsArgs()
         {
         }
+        public static new GetIpv6InternetBandwidthsArgs Empty => new GetIpv6InternetBandwidthsArgs();
     }
 
-    public sealed class GetIpv6InternetBandwidthsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIpv6InternetBandwidthsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -211,6 +204,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetIpv6InternetBandwidthsInvokeArgs()
         {
         }
+        public static new GetIpv6InternetBandwidthsInvokeArgs Empty => new GetIpv6InternetBandwidthsInvokeArgs();
     }
 
 

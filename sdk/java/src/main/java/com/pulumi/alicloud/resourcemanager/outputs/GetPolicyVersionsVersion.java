@@ -12,35 +12,51 @@ import java.util.Objects;
 public final class GetPolicyVersionsVersion {
     /**
      * @return The ID of the resource, the value is `&lt;policy_name&gt;`:`&lt;version_id&gt;`.
-     * * `version_id`- The ID of the policy version.
-     * * `create_date`- (Removed form v1.114.0)The time when the policy version was created.
-     * * `is_default_version`- Indicates whether the policy version is the default version.
-     * * `policy_document`- (Available in v1.114.0+) The policy document of the policy version.
      * 
      */
     private String id;
+    /**
+     * @return Indicates whether the policy version is the default version.
+     * 
+     */
     private Boolean isDefaultVersion;
+    /**
+     * @return (Available in v1.114.0+) The policy document of the policy version.
+     * 
+     */
     private String policyDocument;
+    /**
+     * @return The ID of the policy version.
+     * 
+     */
     private String versionId;
 
     private GetPolicyVersionsVersion() {}
     /**
      * @return The ID of the resource, the value is `&lt;policy_name&gt;`:`&lt;version_id&gt;`.
-     * * `version_id`- The ID of the policy version.
-     * * `create_date`- (Removed form v1.114.0)The time when the policy version was created.
-     * * `is_default_version`- Indicates whether the policy version is the default version.
-     * * `policy_document`- (Available in v1.114.0+) The policy document of the policy version.
      * 
      */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Indicates whether the policy version is the default version.
+     * 
+     */
     public Boolean isDefaultVersion() {
         return this.isDefaultVersion;
     }
+    /**
+     * @return (Available in v1.114.0+) The policy document of the policy version.
+     * 
+     */
     public String policyDocument() {
         return this.policyDocument;
     }
+    /**
+     * @return The ID of the policy version.
+     * 
+     */
     public String versionId() {
         return this.versionId;
     }

@@ -21,63 +21,68 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var zoneId = "cn-hangzhou-i";
-    ///         var defaultSwitches = defaultNetworks.Apply(defaultNetworks =&gt; Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///         {
-    ///             VpcId = defaultNetworks.Ids?[0],
-    ///             ZoneId = zoneId,
-    ///         })));
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             Description = "tf test",
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///         });
-    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             Owners = "system",
-    ///             NameRegex = "^centos_8",
-    ///             MostRecent = true,
-    ///         }));
-    ///         var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new AliCloud.Ecs.InstanceArgs
-    ///         {
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
-    ///             InstanceName = @var.Name,
-    ///             InstanceType = "ecs.g7se.large",
-    ///             AvailabilityZone = zoneId,
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             SystemDiskCategory = "cloud_essd",
-    ///             SecurityGroups = 
-    ///             {
-    ///                 defaultSecurityGroup.Id,
-    ///             },
-    ///         });
-    ///         var defaultDatabasefilesystem_instanceInstance = new AliCloud.DatabaseFilesystem.Instance("defaultDatabasefilesystem/instanceInstance", new AliCloud.DatabaseFilesystem.InstanceArgs
-    ///         {
-    ///             Category = "standard",
-    ///             ZoneId = defaultInstance.AvailabilityZone,
-    ///             PerformanceLevel = "PL1",
-    ///             InstanceName = @var.Name,
-    ///             Size = 100,
-    ///         });
-    ///         var example = new AliCloud.DatabaseFilesystem.InstanceAttachment("example", new AliCloud.DatabaseFilesystem.InstanceAttachmentArgs
-    ///         {
-    ///             EcsId = defaultInstance.Id,
-    ///             InstanceId = defaultDatabasefilesystem / instanceInstance.Id,
-    ///         });
-    ///     }
+    ///         NameRegex = "default-NODELETING",
+    ///     });
     /// 
-    /// }
+    ///     var zoneId = "cn-hangzhou-i";
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         Description = "tf test",
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         Owners = "system",
+    ///         NameRegex = "^centos_8",
+    ///         MostRecent = true,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     {
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceName = @var.Name,
+    ///         InstanceType = "ecs.g7se.large",
+    ///         AvailabilityZone = zoneId,
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         SystemDiskCategory = "cloud_essd",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultDatabasefilesystem_instanceInstance = new AliCloud.DatabaseFilesystem.Instance("defaultDatabasefilesystem/instanceInstance", new()
+    ///     {
+    ///         Category = "standard",
+    ///         ZoneId = defaultInstance.AvailabilityZone,
+    ///         PerformanceLevel = "PL1",
+    ///         InstanceName = @var.Name,
+    ///         Size = 100,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.DatabaseFilesystem.InstanceAttachment("example", new()
+    ///     {
+    ///         EcsId = defaultInstance.Id,
+    ///         InstanceId = defaultDatabasefilesystem / instanceInstance.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -89,7 +94,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:databasefilesystem/instanceAttachment:InstanceAttachment")]
-    public partial class InstanceAttachment : Pulumi.CustomResource
+    public partial class InstanceAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the ECS instance.
@@ -103,6 +108,9 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -150,7 +158,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         }
     }
 
-    public sealed class InstanceAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class InstanceAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the ECS instance.
@@ -167,9 +175,10 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public InstanceAttachmentArgs()
         {
         }
+        public static new InstanceAttachmentArgs Empty => new InstanceAttachmentArgs();
     }
 
-    public sealed class InstanceAttachmentState : Pulumi.ResourceArgs
+    public sealed class InstanceAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the ECS instance.
@@ -183,11 +192,15 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
+        /// <summary>
+        /// The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         public InstanceAttachmentState()
         {
         }
+        public static new InstanceAttachmentState Empty => new InstanceAttachmentState();
     }
 }

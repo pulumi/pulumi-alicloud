@@ -21,33 +21,31 @@ namespace Pulumi.AliCloud.Nas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Nas.AutoSnapshotPolicy("example", new()
     ///     {
-    ///         var example = new AliCloud.Nas.AutoSnapshotPolicy("example", new AliCloud.Nas.AutoSnapshotPolicyArgs
+    ///         AutoSnapshotPolicyName = "example_value",
+    ///         RepeatWeekdays = new[]
     ///         {
-    ///             AutoSnapshotPolicyName = "example_value",
-    ///             RepeatWeekdays = 
-    ///             {
-    ///                 "3",
-    ///                 "4",
-    ///                 "5",
-    ///             },
-    ///             RetentionDays = 30,
-    ///             TimePoints = 
-    ///             {
-    ///                 "3",
-    ///                 "4",
-    ///                 "5",
-    ///             },
-    ///         });
-    ///     }
+    ///             "3",
+    ///             "4",
+    ///             "5",
+    ///         },
+    ///         RetentionDays = 30,
+    ///         TimePoints = new[]
+    ///         {
+    ///             "3",
+    ///             "4",
+    ///             "5",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +57,7 @@ namespace Pulumi.AliCloud.Nas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy")]
-    public partial class AutoSnapshotPolicy : Pulumi.CustomResource
+    public partial class AutoSnapshotPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the automatic snapshot policy. Limits:
@@ -144,7 +142,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
-    public sealed class AutoSnapshotPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AutoSnapshotPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the automatic snapshot policy. Limits:
@@ -194,9 +192,10 @@ namespace Pulumi.AliCloud.Nas
         public AutoSnapshotPolicyArgs()
         {
         }
+        public static new AutoSnapshotPolicyArgs Empty => new AutoSnapshotPolicyArgs();
     }
 
-    public sealed class AutoSnapshotPolicyState : Pulumi.ResourceArgs
+    public sealed class AutoSnapshotPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the automatic snapshot policy. Limits:
@@ -252,5 +251,6 @@ namespace Pulumi.AliCloud.Nas
         public AutoSnapshotPolicyState()
         {
         }
+        public static new AutoSnapshotPolicyState Empty => new AutoSnapshotPolicyState();
     }
 }

@@ -28,15 +28,15 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vpn.GetGateways(ctx, &vpn.GetGatewaysArgs{
 //				BusinessStatus: pulumi.StringRef("Normal"),
-//				EnableIpsec:    pulumi.BoolRef(true),
 //				Ids: []string{
 //					"fake-vpn-id1",
 //					"fake-vpn-id2",
 //				},
-//				NameRegex:  pulumi.StringRef("testAcc*"),
-//				OutputFile: pulumi.StringRef("/tmp/vpns"),
-//				Status:     pulumi.StringRef("active"),
-//				VpcId:      pulumi.StringRef("fake-vpc-id"),
+//				IncludeReservationData: pulumi.BoolRef(true),
+//				NameRegex:              pulumi.StringRef("testAcc*"),
+//				OutputFile:             pulumi.StringRef("/tmp/vpns"),
+//				Status:                 pulumi.StringRef("Active"),
+//				VpcId:                  pulumi.StringRef("fake-vpc-id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -60,9 +60,13 @@ type GetGatewaysArgs struct {
 	// Limit search to specific business status - valid value is "Normal", "FinancialLocked".
 	BusinessStatus *string `pulumi:"businessStatus"`
 	// Indicates whether the IPsec-VPN feature is enabled.
+	//
+	// Deprecated: Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
 	EnableIpsec *bool `pulumi:"enableIpsec"`
 	// IDs of the VPN.
 	Ids []string `pulumi:"ids"`
+	// Include ineffective ordering data.
+	IncludeReservationData *bool `pulumi:"includeReservationData"`
 	// A regex string of VPN name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// Save the result to the file.
@@ -78,14 +82,17 @@ type GetGatewaysResult struct {
 	// The business status of the VPN gateway.
 	BusinessStatus *string `pulumi:"businessStatus"`
 	// Whether the ipsec function is enabled.
+	//
+	// Deprecated: Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
 	EnableIpsec *bool `pulumi:"enableIpsec"`
 	// A list of VPN gateways. Each element contains the following attributes:
 	Gateways []GetGatewaysGateway `pulumi:"gateways"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// IDs of the VPN.
-	Ids       []string `pulumi:"ids"`
-	NameRegex *string  `pulumi:"nameRegex"`
+	Ids                    []string `pulumi:"ids"`
+	IncludeReservationData *bool    `pulumi:"includeReservationData"`
+	NameRegex              *string  `pulumi:"nameRegex"`
 	// names of the VPN.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -113,9 +120,13 @@ type GetGatewaysOutputArgs struct {
 	// Limit search to specific business status - valid value is "Normal", "FinancialLocked".
 	BusinessStatus pulumi.StringPtrInput `pulumi:"businessStatus"`
 	// Indicates whether the IPsec-VPN feature is enabled.
+	//
+	// Deprecated: Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
 	EnableIpsec pulumi.BoolPtrInput `pulumi:"enableIpsec"`
 	// IDs of the VPN.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Include ineffective ordering data.
+	IncludeReservationData pulumi.BoolPtrInput `pulumi:"includeReservationData"`
 	// A regex string of VPN name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// Save the result to the file.
@@ -151,6 +162,8 @@ func (o GetGatewaysResultOutput) BusinessStatus() pulumi.StringPtrOutput {
 }
 
 // Whether the ipsec function is enabled.
+//
+// Deprecated: Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
 func (o GetGatewaysResultOutput) EnableIpsec() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *bool { return v.EnableIpsec }).(pulumi.BoolPtrOutput)
 }
@@ -168,6 +181,10 @@ func (o GetGatewaysResultOutput) Id() pulumi.StringOutput {
 // IDs of the VPN.
 func (o GetGatewaysResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGatewaysResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGatewaysResultOutput) IncludeReservationData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *bool { return v.IncludeReservationData }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetGatewaysResultOutput) NameRegex() pulumi.StringPtrOutput {

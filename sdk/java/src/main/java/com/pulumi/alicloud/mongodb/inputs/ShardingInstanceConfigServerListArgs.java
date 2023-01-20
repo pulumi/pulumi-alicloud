@@ -62,14 +62,14 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
     }
 
     /**
-     * -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     @Import(name="nodeClass")
     private @Nullable Output<String> nodeClass;
 
     /**
-     * @return -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     public Optional<Output<String>> nodeClass() {
@@ -233,7 +233,7 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nodeClass -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * @param nodeClass Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nodeClass -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * @param nodeClass Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
          * 
          * @return builder
          * 

@@ -21,53 +21,55 @@ namespace Pulumi.AliCloud.KVStore
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "KVStore";
+    ///     var name = config.Get("name") ?? "kvstoreinstancevpc";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "KVStore";
-    ///         var name = config.Get("name") ?? "kvstoreinstancevpc";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new AliCloud.KVStore.InstanceArgs
-    ///         {
-    ///             InstanceClass = "redis.master.small.default",
-    ///             InstanceName = name,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             PrivateIp = "172.16.0.10",
-    ///             SecurityIps = 
-    ///             {
-    ///                 "10.0.0.1",
-    ///             },
-    ///             InstanceType = "Redis",
-    ///             EngineVersion = "4.0",
-    ///         });
-    ///         var example = new AliCloud.KVStore.Account("example", new AliCloud.KVStore.AccountArgs
-    ///         {
-    ///             AccountName = "tftestnormal",
-    ///             AccountPassword = "YourPassword_123",
-    ///             InstanceId = defaultInstance.Id,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new()
+    ///     {
+    ///         InstanceClass = "redis.master.small.default",
+    ///         InstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         PrivateIp = "172.16.0.10",
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.0.0.1",
+    ///         },
+    ///         InstanceType = "Redis",
+    ///         EngineVersion = "4.0",
+    ///     });
+    /// 
+    ///     var example = new AliCloud.KVStore.Account("example", new()
+    ///     {
+    ///         AccountName = "tftestnormal",
+    ///         AccountPassword = "YourPassword_123",
+    ///         InstanceId = defaultInstance.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -79,7 +81,7 @@ namespace Pulumi.AliCloud.KVStore
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kvstore/account:Account")]
-    public partial class Account : Pulumi.CustomResource
+    public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the account. The name must meet the following requirements:
@@ -97,9 +99,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> AccountPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The privilege of account access database. Default value: `RoleReadWrite` 
-        /// - `RoleReadOnly`: This value is only for Redis and Memcache
-        /// - `RoleReadWrite`: This value is only for Redis and Memcache
+        /// The privilege of account access database. Default value: `RoleReadWrite`
         /// </summary>
         [Output("accountPrivilege")]
         public Output<string?> AccountPrivilege { get; private set; } = null!;
@@ -165,6 +165,10 @@ namespace Pulumi.AliCloud.KVStore
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -186,7 +190,7 @@ namespace Pulumi.AliCloud.KVStore
         }
     }
 
-    public sealed class AccountArgs : Pulumi.ResourceArgs
+    public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the account. The name must meet the following requirements:
@@ -197,16 +201,24 @@ namespace Pulumi.AliCloud.KVStore
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
 
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// The privilege of account access database. Default value: `RoleReadWrite` 
-        /// - `RoleReadOnly`: This value is only for Redis and Memcache
-        /// - `RoleReadWrite`: This value is only for Redis and Memcache
+        /// The privilege of account access database. Default value: `RoleReadWrite`
         /// </summary>
         [Input("accountPrivilege")]
         public Input<string>? AccountPrivilege { get; set; }
@@ -252,9 +264,10 @@ namespace Pulumi.AliCloud.KVStore
         public AccountArgs()
         {
         }
+        public static new AccountArgs Empty => new AccountArgs();
     }
 
-    public sealed class AccountState : Pulumi.ResourceArgs
+    public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the account. The name must meet the following requirements:
@@ -265,16 +278,24 @@ namespace Pulumi.AliCloud.KVStore
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// The privilege of account access database. Default value: `RoleReadWrite` 
-        /// - `RoleReadOnly`: This value is only for Redis and Memcache
-        /// - `RoleReadWrite`: This value is only for Redis and Memcache
+        /// The privilege of account access database. Default value: `RoleReadWrite`
         /// </summary>
         [Input("accountPrivilege")]
         public Input<string>? AccountPrivilege { get; set; }
@@ -326,5 +347,6 @@ namespace Pulumi.AliCloud.KVStore
         public AccountState()
         {
         }
+        public static new AccountState Empty => new AccountState();
     }
 }

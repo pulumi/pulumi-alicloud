@@ -5,28 +5,71 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./endpoint";
-export * from "./getEndpoints";
-export * from "./getResolverZones";
-export * from "./getRules";
-export * from "./getService";
-export * from "./getZoneRecords";
-export * from "./getZones";
-export * from "./rule";
-export * from "./ruleAttachment";
-export * from "./userVpcAuthorization";
-export * from "./zone";
-export * from "./zoneAttachment";
-export * from "./zoneRecord";
+export { EndpointArgs, EndpointState } from "./endpoint";
+export type Endpoint = import("./endpoint").Endpoint;
+export const Endpoint: typeof import("./endpoint").Endpoint = null as any;
+utilities.lazyLoad(exports, ["Endpoint"], () => require("./endpoint"));
 
-// Import resources to register:
-import { Endpoint } from "./endpoint";
-import { Rule } from "./rule";
-import { RuleAttachment } from "./ruleAttachment";
-import { UserVpcAuthorization } from "./userVpcAuthorization";
-import { Zone } from "./zone";
-import { ZoneAttachment } from "./zoneAttachment";
-import { ZoneRecord } from "./zoneRecord";
+export { GetEndpointsArgs, GetEndpointsResult, GetEndpointsOutputArgs } from "./getEndpoints";
+export const getEndpoints: typeof import("./getEndpoints").getEndpoints = null as any;
+export const getEndpointsOutput: typeof import("./getEndpoints").getEndpointsOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpoints","getEndpointsOutput"], () => require("./getEndpoints"));
+
+export { GetResolverZonesArgs, GetResolverZonesResult, GetResolverZonesOutputArgs } from "./getResolverZones";
+export const getResolverZones: typeof import("./getResolverZones").getResolverZones = null as any;
+export const getResolverZonesOutput: typeof import("./getResolverZones").getResolverZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getResolverZones","getResolverZonesOutput"], () => require("./getResolverZones"));
+
+export { GetRulesArgs, GetRulesResult, GetRulesOutputArgs } from "./getRules";
+export const getRules: typeof import("./getRules").getRules = null as any;
+export const getRulesOutput: typeof import("./getRules").getRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getRules","getRulesOutput"], () => require("./getRules"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { GetZoneRecordsArgs, GetZoneRecordsResult, GetZoneRecordsOutputArgs } from "./getZoneRecords";
+export const getZoneRecords: typeof import("./getZoneRecords").getZoneRecords = null as any;
+export const getZoneRecordsOutput: typeof import("./getZoneRecords").getZoneRecordsOutput = null as any;
+utilities.lazyLoad(exports, ["getZoneRecords","getZoneRecordsOutput"], () => require("./getZoneRecords"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
+export { RuleArgs, RuleState } from "./rule";
+export type Rule = import("./rule").Rule;
+export const Rule: typeof import("./rule").Rule = null as any;
+utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
+
+export { RuleAttachmentArgs, RuleAttachmentState } from "./ruleAttachment";
+export type RuleAttachment = import("./ruleAttachment").RuleAttachment;
+export const RuleAttachment: typeof import("./ruleAttachment").RuleAttachment = null as any;
+utilities.lazyLoad(exports, ["RuleAttachment"], () => require("./ruleAttachment"));
+
+export { UserVpcAuthorizationArgs, UserVpcAuthorizationState } from "./userVpcAuthorization";
+export type UserVpcAuthorization = import("./userVpcAuthorization").UserVpcAuthorization;
+export const UserVpcAuthorization: typeof import("./userVpcAuthorization").UserVpcAuthorization = null as any;
+utilities.lazyLoad(exports, ["UserVpcAuthorization"], () => require("./userVpcAuthorization"));
+
+export { ZoneArgs, ZoneState } from "./zone";
+export type Zone = import("./zone").Zone;
+export const Zone: typeof import("./zone").Zone = null as any;
+utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
+
+export { ZoneAttachmentArgs, ZoneAttachmentState } from "./zoneAttachment";
+export type ZoneAttachment = import("./zoneAttachment").ZoneAttachment;
+export const ZoneAttachment: typeof import("./zoneAttachment").ZoneAttachment = null as any;
+utilities.lazyLoad(exports, ["ZoneAttachment"], () => require("./zoneAttachment"));
+
+export { ZoneRecordArgs, ZoneRecordState } from "./zoneRecord";
+export type ZoneRecord = import("./zoneRecord").ZoneRecord;
+export const ZoneRecord: typeof import("./zoneRecord").ZoneRecord = null as any;
+utilities.lazyLoad(exports, ["ZoneRecord"], () => require("./zoneRecord"));
+
 
 const _module = {
     version: utilities.getVersion(),

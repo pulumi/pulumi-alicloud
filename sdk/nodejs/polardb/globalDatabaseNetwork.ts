@@ -23,10 +23,10 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
+ *     vpcId: defaultNetworks.ids?.[0],
  * }));
  * const defaultNodeClasses = defaultSwitches.then(defaultSwitches => alicloud.polardb.getNodeClasses({
- *     zoneId: defaultSwitches.vswitches?[0]?.zoneId,
+ *     zoneId: defaultSwitches.vswitches?.[0]?.zoneId,
  *     payType: "PostPaid",
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
@@ -35,8 +35,8 @@ import * as utilities from "../utilities";
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",
- *     dbNodeClass: defaultNodeClasses.then(defaultNodeClasses => defaultNodeClasses.classes?[0]?.supportedEngines?[0]?.availableResources?[0]?.dbNodeClass),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     dbNodeClass: defaultNodeClasses.then(defaultNodeClasses => defaultNodeClasses.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     description: "example_value",
  * });
  * const defaultGlobalDatabaseNetwork = new alicloud.polardb.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", {

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Ess
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ess/scheduledTask:ScheduledTask")]
-    public partial class ScheduledTask : Pulumi.CustomResource
+    public partial class ScheduledTask : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
-    public sealed class ScheduledTaskArgs : Pulumi.ResourceArgs
+    public sealed class ScheduledTaskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
@@ -250,9 +250,10 @@ namespace Pulumi.AliCloud.Ess
         public ScheduledTaskArgs()
         {
         }
+        public static new ScheduledTaskArgs Empty => new ScheduledTaskArgs();
     }
 
-    public sealed class ScheduledTaskState : Pulumi.ResourceArgs
+    public sealed class ScheduledTaskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
@@ -347,5 +348,6 @@ namespace Pulumi.AliCloud.Ess
         public ScheduledTaskState()
         {
         }
+        public static new ScheduledTaskState Empty => new ScheduledTaskState();
     }
 }

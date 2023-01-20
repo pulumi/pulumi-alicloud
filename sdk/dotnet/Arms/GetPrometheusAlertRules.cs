@@ -23,42 +23,40 @@ namespace Pulumi.AliCloud.Arms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Arms.GetPrometheusAlertRules.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Arms.GetPrometheusAlertRules.InvokeAsync(new AliCloud.Arms.GetPrometheusAlertRulesArgs
+        ///         ClusterId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             ClusterId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.ArmsPrometheusAlertRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Arms.GetPrometheusAlertRules.InvokeAsync(new AliCloud.Arms.GetPrometheusAlertRulesArgs
-        ///         {
-        ///             ClusterId = "example_value",
-        ///             NameRegex = "^my-PrometheusAlertRule",
-        ///         }));
-        ///         this.ArmsPrometheusAlertRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("armsPrometheusAlertRuleId1")]
-        ///     public Output&lt;string&gt; ArmsPrometheusAlertRuleId1 { get; set; }
-        ///     [Output("armsPrometheusAlertRuleId2")]
-        ///     public Output&lt;string&gt; ArmsPrometheusAlertRuleId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Arms.GetPrometheusAlertRules.Invoke(new()
+        ///     {
+        ///         ClusterId = "example_value",
+        ///         NameRegex = "^my-PrometheusAlertRule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["armsPrometheusAlertRuleId1"] = ids.Apply(getPrometheusAlertRulesResult =&gt; getPrometheusAlertRulesResult.Rules[0]?.Id),
+        ///         ["armsPrometheusAlertRuleId2"] = nameRegex.Apply(getPrometheusAlertRulesResult =&gt; getPrometheusAlertRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrometheusAlertRulesResult> InvokeAsync(GetPrometheusAlertRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPrometheusAlertRulesResult>("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args ?? new GetPrometheusAlertRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrometheusAlertRulesResult>("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args ?? new GetPrometheusAlertRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
@@ -72,46 +70,44 @@ namespace Pulumi.AliCloud.Arms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Arms.GetPrometheusAlertRules.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Arms.GetPrometheusAlertRules.InvokeAsync(new AliCloud.Arms.GetPrometheusAlertRulesArgs
+        ///         ClusterId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             ClusterId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.ArmsPrometheusAlertRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Arms.GetPrometheusAlertRules.InvokeAsync(new AliCloud.Arms.GetPrometheusAlertRulesArgs
-        ///         {
-        ///             ClusterId = "example_value",
-        ///             NameRegex = "^my-PrometheusAlertRule",
-        ///         }));
-        ///         this.ArmsPrometheusAlertRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("armsPrometheusAlertRuleId1")]
-        ///     public Output&lt;string&gt; ArmsPrometheusAlertRuleId1 { get; set; }
-        ///     [Output("armsPrometheusAlertRuleId2")]
-        ///     public Output&lt;string&gt; ArmsPrometheusAlertRuleId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Arms.GetPrometheusAlertRules.Invoke(new()
+        ///     {
+        ///         ClusterId = "example_value",
+        ///         NameRegex = "^my-PrometheusAlertRule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["armsPrometheusAlertRuleId1"] = ids.Apply(getPrometheusAlertRulesResult =&gt; getPrometheusAlertRulesResult.Rules[0]?.Id),
+        ///         ["armsPrometheusAlertRuleId2"] = nameRegex.Apply(getPrometheusAlertRulesResult =&gt; getPrometheusAlertRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrometheusAlertRulesResult> Invoke(GetPrometheusAlertRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPrometheusAlertRulesResult>("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args ?? new GetPrometheusAlertRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrometheusAlertRulesResult>("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args ?? new GetPrometheusAlertRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPrometheusAlertRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetPrometheusAlertRulesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the cluster.
@@ -145,8 +141,6 @@ namespace Pulumi.AliCloud.Arms
 
         /// <summary>
         /// The status of the resource. Valid values: `0`, `1`.
-        /// * `1`: open.
-        /// * `0`: off.
         /// </summary>
         [Input("status")]
         public int? Status { get; set; }
@@ -160,9 +154,10 @@ namespace Pulumi.AliCloud.Arms
         public GetPrometheusAlertRulesArgs()
         {
         }
+        public static new GetPrometheusAlertRulesArgs Empty => new GetPrometheusAlertRulesArgs();
     }
 
-    public sealed class GetPrometheusAlertRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPrometheusAlertRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the cluster.
@@ -196,8 +191,6 @@ namespace Pulumi.AliCloud.Arms
 
         /// <summary>
         /// The status of the resource. Valid values: `0`, `1`.
-        /// * `1`: open.
-        /// * `0`: off.
         /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }
@@ -211,6 +204,7 @@ namespace Pulumi.AliCloud.Arms
         public GetPrometheusAlertRulesInvokeArgs()
         {
         }
+        public static new GetPrometheusAlertRulesInvokeArgs Empty => new GetPrometheusAlertRulesInvokeArgs();
     }
 
 

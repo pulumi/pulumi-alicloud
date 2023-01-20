@@ -18,7 +18,7 @@ public final class ContainerGroupInitContainerVolumeMount {
      */
     private @Nullable String mountPath;
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     private @Nullable String name;
@@ -37,7 +37,7 @@ public final class ContainerGroupInitContainerVolumeMount {
         return Optional.ofNullable(this.mountPath);
     }
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     public Optional<String> name() {

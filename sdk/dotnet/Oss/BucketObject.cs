@@ -16,51 +16,48 @@ namespace Pulumi.AliCloud.Oss
     /// ### Uploading a file to a bucket
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var object_source = new AliCloud.Oss.BucketObject("object-source", new()
     ///     {
-    ///         var object_source = new AliCloud.Oss.BucketObject("object-source", new AliCloud.Oss.BucketObjectArgs
-    ///         {
-    ///             Bucket = "your_bucket_name",
-    ///             Key = "new_object_key",
-    ///             Source = "path/to/file",
-    ///         });
-    ///     }
+    ///         Bucket = "your_bucket_name",
+    ///         Key = "new_object_key",
+    ///         Source = "path/to/file",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Uploading a content to a bucket
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Oss.Bucket("example", new()
     ///     {
-    ///         var example = new AliCloud.Oss.Bucket("example", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             BucketName = "your_bucket_name",
-    ///             Acl = "public-read",
-    ///         });
-    ///         var object_content = new AliCloud.Oss.BucketObject("object-content", new AliCloud.Oss.BucketObjectArgs
-    ///         {
-    ///             Bucket = example.BucketName,
-    ///             Key = "new_object_key",
-    ///             Content = "the content that you want to upload.",
-    ///         });
-    ///     }
+    ///         BucketName = "your_bucket_name",
+    ///         Acl = "public-read",
+    ///     });
     /// 
-    /// }
+    ///     var object_content = new AliCloud.Oss.BucketObject("object-content", new()
+    ///     {
+    ///         Bucket = example.BucketName,
+    ///         Key = "new_object_key",
+    ///         Content = "the content that you want to upload.",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oss/bucketObject:BucketObject")]
-    public partial class BucketObject : Pulumi.CustomResource
+    public partial class BucketObject : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
@@ -202,7 +199,7 @@ namespace Pulumi.AliCloud.Oss
         }
     }
 
-    public sealed class BucketObjectArgs : Pulumi.ResourceArgs
+    public sealed class BucketObjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
@@ -285,9 +282,10 @@ namespace Pulumi.AliCloud.Oss
         public BucketObjectArgs()
         {
         }
+        public static new BucketObjectArgs Empty => new BucketObjectArgs();
     }
 
-    public sealed class BucketObjectState : Pulumi.ResourceArgs
+    public sealed class BucketObjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
@@ -388,5 +386,6 @@ namespace Pulumi.AliCloud.Oss
         public BucketObjectState()
         {
         }
+        public static new BucketObjectState Empty => new BucketObjectState();
     }
 }

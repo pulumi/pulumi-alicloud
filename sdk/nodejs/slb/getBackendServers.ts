@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,19 +17,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const sampleDs = alicloud_slb_load_balancer_sample_slb.id.apply(id => alicloud.slb.getBackendServers({
- *     loadBalancerId: id,
- * }));
- *
- * export const firstSlbBackendServerId = sampleDs.backendServers[0].id;
+ * const sampleDs = alicloud.slb.getBackendServers({
+ *     loadBalancerId: alicloud_slb_load_balancer.sample_slb.id,
+ * });
+ * export const firstSlbBackendServerId = sampleDs.then(sampleDs => sampleDs.backendServers?.[0]?.id);
  * ```
  */
 export function getBackendServers(args: GetBackendServersArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getBackendServers:getBackendServers", {
         "ids": args.ids,
         "loadBalancerId": args.loadBalancerId,
@@ -64,9 +61,25 @@ export interface GetBackendServersResult {
     readonly loadBalancerId: string;
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the server load balancer backend servers related to a server load balancer..
+ *
+ * > **NOTE:** Available in 1.53.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const sampleDs = alicloud.slb.getBackendServers({
+ *     loadBalancerId: alicloud_slb_load_balancer.sample_slb.id,
+ * });
+ * export const firstSlbBackendServerId = sampleDs.then(sampleDs => sampleDs.backendServers?.[0]?.id);
+ * ```
+ */
 export function getBackendServersOutput(args: GetBackendServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendServersResult> {
-    return pulumi.output(args).apply(a => getBackendServers(a, opts))
+    return pulumi.output(args).apply((a: any) => getBackendServers(a, opts))
 }
 
 /**

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ga
     /// <summary>
     /// Provides a Global Accelerator (GA) Bandwidth Package Attachment resource.
     /// 
-    /// For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
+    /// For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/bandwidthpackageaddaccelerator).
     /// 
     /// &gt; **NOTE:** Available in v1.113.0+.
     /// 
@@ -21,48 +21,48 @@ namespace Pulumi.AliCloud.Ga
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new()
     ///     {
-    ///         var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new AliCloud.Ga.AcceleratorArgs
-    ///         {
-    ///             Duration = 1,
-    ///             AutoUseCoupon = true,
-    ///             Spec = "1",
-    ///         });
-    ///         var exampleBandwidthPackage = new AliCloud.Ga.BandwidthPackage("exampleBandwidthPackage", new AliCloud.Ga.BandwidthPackageArgs
-    ///         {
-    ///             Bandwidth = 20,
-    ///             Type = "Basic",
-    ///             BandwidthType = "Basic",
-    ///             Duration = "1",
-    ///             AutoPay = true,
-    ///             Ratio = 30,
-    ///         });
-    ///         var exampleBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new AliCloud.Ga.BandwidthPackageAttachmentArgs
-    ///         {
-    ///             AcceleratorId = exampleAccelerator.Id,
-    ///             BandwidthPackageId = exampleBandwidthPackage.Id,
-    ///         });
-    ///     }
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "1",
+    ///     });
     /// 
-    /// }
+    ///     var exampleBandwidthPackage = new AliCloud.Ga.BandwidthPackage("exampleBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 20,
+    ///         Type = "Basic",
+    ///         BandwidthType = "Basic",
+    ///         Duration = "1",
+    ///         AutoPay = true,
+    ///         Ratio = 30,
+    ///     });
+    /// 
+    ///     var exampleBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new()
+    ///     {
+    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         BandwidthPackageId = exampleBandwidthPackage.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// Ga Bandwidth Package Attachment can be imported using the id, e.g.
+    /// Ga Bandwidth Package Attachment can be imported using the id. Format to `&lt;accelerator_id&gt;:&lt;bandwidth_package_id&gt;`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example &lt;accelerator_id&gt;:&lt;bandwidth_package_id&gt;
+    ///  $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example your_accelerator_id:your_bandwidth_package_id
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment")]
-    public partial class BandwidthPackageAttachment : Pulumi.CustomResource
+    public partial class BandwidthPackageAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<ImmutableArray<string>> Accelerators { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the bandwidth plan to disassociate.
+        /// The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         /// </summary>
         [Output("bandwidthPackageId")]
         public Output<string> BandwidthPackageId { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Ga
         }
     }
 
-    public sealed class BandwidthPackageAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class BandwidthPackageAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string> AcceleratorId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the bandwidth plan to disassociate.
+        /// The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         /// </summary>
         [Input("bandwidthPackageId", required: true)]
         public Input<string> BandwidthPackageId { get; set; } = null!;
@@ -149,9 +149,10 @@ namespace Pulumi.AliCloud.Ga
         public BandwidthPackageAttachmentArgs()
         {
         }
+        public static new BandwidthPackageAttachmentArgs Empty => new BandwidthPackageAttachmentArgs();
     }
 
-    public sealed class BandwidthPackageAttachmentState : Pulumi.ResourceArgs
+    public sealed class BandwidthPackageAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
@@ -172,7 +173,7 @@ namespace Pulumi.AliCloud.Ga
         }
 
         /// <summary>
-        /// The ID of the bandwidth plan to disassociate.
+        /// The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         /// </summary>
         [Input("bandwidthPackageId")]
         public Input<string>? BandwidthPackageId { get; set; }
@@ -186,5 +187,6 @@ namespace Pulumi.AliCloud.Ga
         public BandwidthPackageAttachmentState()
         {
         }
+        public static new BandwidthPackageAttachmentState Empty => new BandwidthPackageAttachmentState();
     }
 }

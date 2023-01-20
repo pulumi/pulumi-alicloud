@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,17 +23,14 @@ import * as utilities from "../utilities";
  *     status: "Running",
  * });
  * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getAccounts({
- *     dbClusterId: polardbClustersDs.clusters?[0]?.id,
+ *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
  * }));
- * export const account = _default.then(_default => _default.accounts?[0]?.accountName);
+ * export const account = _default.then(_default => _default.accounts?.[0]?.accountName);
  * ```
  */
 export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:polardb/getAccounts:getAccounts", {
         "dbClusterId": args.dbClusterId,
         "nameRegex": args.nameRegex,
@@ -72,9 +70,30 @@ export interface GetAccountsResult {
      */
     readonly names: string[];
 }
-
+/**
+ * The `alicloud.polardb.getAccounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
+ * Filters support regular expression for the account name, searches by clusterId.
+ *
+ * > **NOTE:** Available in v1.70.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const polardbClustersDs = alicloud.polardb.getClusters({
+ *     descriptionRegex: "pc-\\w+",
+ *     status: "Running",
+ * });
+ * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getAccounts({
+ *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
+ * }));
+ * export const account = _default.then(_default => _default.accounts?.[0]?.accountName);
+ * ```
+ */
 export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
-    return pulumi.output(args).apply(a => getAccounts(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccounts(a, opts))
 }
 
 /**

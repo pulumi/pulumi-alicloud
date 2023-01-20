@@ -14,6 +14,7 @@ from .dhcp_options_set import *
 from .dhcp_options_set_attachment import *
 from .flow_log import *
 from .forward_entry import *
+from .gateway_route_table_attachment import *
 from .get_bgp_groups import *
 from .get_bgp_networks import *
 from .get_bgp_peers import *
@@ -34,7 +35,10 @@ from .get_nat_ips import *
 from .get_network_acls import *
 from .get_networks import *
 from .get_pbr_route_entries import *
+from .get_peer_connections import *
 from .get_prefix_lists import *
+from .get_public_ip_address_pool_cidr_blocks import *
+from .get_public_ip_address_pools import *
 from .get_route_entries import *
 from .get_route_tables import *
 from .get_router_interfaces import *
@@ -50,6 +54,7 @@ from .get_traffic_mirror_sessions import *
 from .get_vpc_flow_logs import *
 from .ha_vip import *
 from .ha_vip_attachment import *
+from .ipv4_cidr_block import *
 from .ipv4_gateway import *
 from .ipv6_egress_rule import *
 from .ipv6_gateway import *
@@ -63,7 +68,11 @@ from .network_acl_attachment import *
 from .network_acl_entries import *
 from .network_interface import *
 from .network_interface_attachment import *
+from .peer_connection import *
+from .peer_connection_accepter import *
 from .prefix_list import *
+from .public_ip_address_pool import *
+from .public_ip_address_pool_cidr_block import *
 from .route_entry import *
 from .route_table import *
 from .route_table_attachment import *
@@ -77,5 +86,6 @@ from .traffic_mirror_filter_egress_rule import *
 from .traffic_mirror_filter_ingress_rule import *
 from .traffic_mirror_session import *
 from .vbr_ha import *
+from .vpc_network_acl_attachment import *
 from ._inputs import *
 from . import outputs

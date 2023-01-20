@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ListenerXForwardedForConfigArgs : Pulumi.ResourceArgs
+    public sealed class ListenerXForwardedForConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
@@ -93,5 +93,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public ListenerXForwardedForConfigArgs()
         {
         }
+        public static new ListenerXForwardedForConfigArgs Empty => new ListenerXForwardedForConfigArgs();
     }
 }

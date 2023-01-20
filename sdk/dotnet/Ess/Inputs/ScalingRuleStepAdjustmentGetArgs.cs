@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class ScalingRuleStepAdjustmentGetArgs : Pulumi.ResourceArgs
+    public sealed class ScalingRuleStepAdjustmentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("metricIntervalLowerBound")]
         public Input<string>? MetricIntervalLowerBound { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public ScalingRuleStepAdjustmentGetArgs()
         {
         }
+        public static new ScalingRuleStepAdjustmentGetArgs Empty => new ScalingRuleStepAdjustmentGetArgs();
     }
 }

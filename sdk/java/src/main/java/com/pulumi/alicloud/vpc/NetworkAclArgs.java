@@ -20,14 +20,14 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
     public static final NetworkAclArgs Empty = new NetworkAclArgs();
 
     /**
-     * The description of egress entries.
+     * The description of the network acl instance.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of egress entries.
+     * @return The description of the network acl instance.
      * 
      */
     public Optional<Output<String>> description() {
@@ -103,16 +103,24 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The associated resources.
+     * The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
+     * 
+     * @deprecated
+     * Field &#39;resources&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_network_acl_attachment&#39;.
      * 
      */
+    @Deprecated /* Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'. */
     @Import(name="resources")
     private @Nullable Output<List<NetworkAclResourceArgs>> resources;
 
     /**
-     * @return The associated resources.
+     * @return The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
+     * 
+     * @deprecated
+     * Field &#39;resources&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_network_acl_attachment&#39;.
      * 
      */
+    @Deprecated /* Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'. */
     public Optional<Output<List<NetworkAclResourceArgs>>> resources() {
         return Optional.ofNullable(this.resources);
     }
@@ -163,7 +171,7 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of egress entries.
+         * @param description The description of the network acl instance.
          * 
          * @return builder
          * 
@@ -174,7 +182,7 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of egress entries.
+         * @param description The description of the network acl instance.
          * 
          * @return builder
          * 
@@ -296,32 +304,44 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resources The associated resources.
+         * @param resources The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;resources&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_network_acl_attachment&#39;.
+         * 
          */
+        @Deprecated /* Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'. */
         public Builder resources(@Nullable Output<List<NetworkAclResourceArgs>> resources) {
             $.resources = resources;
             return this;
         }
 
         /**
-         * @param resources The associated resources.
+         * @param resources The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;resources&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_network_acl_attachment&#39;.
+         * 
          */
+        @Deprecated /* Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'. */
         public Builder resources(List<NetworkAclResourceArgs> resources) {
             return resources(Output.of(resources));
         }
 
         /**
-         * @param resources The associated resources.
+         * @param resources The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;resources&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_network_acl_attachment&#39;.
+         * 
          */
+        @Deprecated /* Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'. */
         public Builder resources(NetworkAclResourceArgs... resources) {
             return resources(List.of(resources));
         }

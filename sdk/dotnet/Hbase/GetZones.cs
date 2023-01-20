@@ -21,28 +21,27 @@ namespace Pulumi.AliCloud.Hbase
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var zonesIds = Output.Create(AliCloud.Hbase.GetZones.InvokeAsync());
-        ///         var hbase = new AliCloud.Hbase.Instance("hbase", new AliCloud.Hbase.InstanceArgs
-        ///         {
-        ///             ZoneId = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones?[0]?.Id),
-        ///         });
-        ///         // Other properties...
-        ///     }
+        ///     var zonesIds = AliCloud.Hbase.GetZones.Invoke();
         /// 
-        /// }
+        ///     var hbase = new AliCloud.Hbase.Instance("hbase", new()
+        ///     {
+        ///         ZoneId = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     // Other properties...
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:hbase/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:hbase/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides availability zones for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -54,32 +53,31 @@ namespace Pulumi.AliCloud.Hbase
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var zonesIds = Output.Create(AliCloud.Hbase.GetZones.InvokeAsync());
-        ///         var hbase = new AliCloud.Hbase.Instance("hbase", new AliCloud.Hbase.InstanceArgs
-        ///         {
-        ///             ZoneId = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones?[0]?.Id),
-        ///         });
-        ///         // Other properties...
-        ///     }
+        ///     var zonesIds = AliCloud.Hbase.GetZones.Invoke();
         /// 
-        /// }
+        ///     var hbase = new AliCloud.Hbase.Instance("hbase", new()
+        ///     {
+        ///         ZoneId = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     // Other properties...
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:hbase/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:hbase/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -87,9 +85,10 @@ namespace Pulumi.AliCloud.Hbase
         public GetZonesArgs()
         {
         }
+        public static new GetZonesArgs Empty => new GetZonesArgs();
     }
 
-    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -97,6 +96,7 @@ namespace Pulumi.AliCloud.Hbase
         public GetZonesInvokeArgs()
         {
         }
+        public static new GetZonesInvokeArgs Empty => new GetZonesInvokeArgs();
     }
 
 

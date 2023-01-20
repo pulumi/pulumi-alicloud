@@ -19,40 +19,38 @@ namespace Pulumi.AliCloud.Ddos
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ddos.SchedulerRule("example", new()
     ///     {
-    ///         var example = new AliCloud.Ddos.SchedulerRule("example", new AliCloud.Ddos.SchedulerRuleArgs
+    ///         RuleName = "tf-testacc7929727",
+    ///         RuleType = 3,
+    ///         Rules = new[]
     ///         {
-    ///             RuleName = "tf-testacc7929727",
-    ///             RuleType = 3,
-    ///             Rules = 
+    ///             new AliCloud.Ddos.Inputs.SchedulerRuleRuleArgs
     ///             {
-    ///                 new AliCloud.Ddos.Inputs.SchedulerRuleRuleArgs
-    ///                 {
-    ///                     Priority = 100,
-    ///                     RegionId = "cn-hangzhou",
-    ///                     Type = "A",
-    ///                     Value = "127.0.0.1",
-    ///                     ValueType = 3,
-    ///                 },
-    ///                 new AliCloud.Ddos.Inputs.SchedulerRuleRuleArgs
-    ///                 {
-    ///                     Priority = 50,
-    ///                     RegionId = "cn-hangzhou",
-    ///                     Type = "A",
-    ///                     Value = "127.0.0.0",
-    ///                     ValueType = 1,
-    ///                 },
+    ///                 Priority = 100,
+    ///                 RegionId = "cn-hangzhou",
+    ///                 Type = "A",
+    ///                 Value = "127.0.0.1",
+    ///                 ValueType = 3,
     ///             },
-    ///         });
-    ///     }
+    ///             new AliCloud.Ddos.Inputs.SchedulerRuleRuleArgs
+    ///             {
+    ///                 Priority = 50,
+    ///                 RegionId = "cn-hangzhou",
+    ///                 Type = "A",
+    ///                 Value = "127.0.0.0",
+    ///                 ValueType = 1,
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +62,7 @@ namespace Pulumi.AliCloud.Ddos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ddos/schedulerRule:SchedulerRule")]
-    public partial class SchedulerRule : Pulumi.CustomResource
+    public partial class SchedulerRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The cname is the traffic scheduler corresponding to rules.
@@ -149,7 +147,7 @@ namespace Pulumi.AliCloud.Ddos
         }
     }
 
-    public sealed class SchedulerRuleArgs : Pulumi.ResourceArgs
+    public sealed class SchedulerRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
@@ -193,9 +191,10 @@ namespace Pulumi.AliCloud.Ddos
         public SchedulerRuleArgs()
         {
         }
+        public static new SchedulerRuleArgs Empty => new SchedulerRuleArgs();
     }
 
-    public sealed class SchedulerRuleState : Pulumi.ResourceArgs
+    public sealed class SchedulerRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The cname is the traffic scheduler corresponding to rules.
@@ -245,5 +244,6 @@ namespace Pulumi.AliCloud.Ddos
         public SchedulerRuleState()
         {
         }
+        public static new SchedulerRuleState Empty => new SchedulerRuleState();
     }
 }

@@ -37,12 +37,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
  * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
  * import com.pulumi.alicloud.nas.FileSystemArgs;
  * import com.pulumi.alicloud.nas.MountTarget;
@@ -307,9 +307,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-     * - `NoSpot`: The compute nodes are pay-as-you-go instances.
-     * - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-     * - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
      * 
      */
     @Export(name="computeSpotStrategy", type=String.class, parameters={})
@@ -317,9 +314,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-     * - `NoSpot`: The compute nodes are pay-as-you-go instances.
-     * - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-     * - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
      * 
      */
     public Output<Optional<String>> computeSpotStrategy() {
@@ -327,9 +321,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-     * - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-     * - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-     * - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
      * 
      */
     @Export(name="deployMode", type=String.class, parameters={})
@@ -337,9 +328,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-     * - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-     * - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-     * - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
      * 
      */
     public Output<String> deployMode() {
@@ -472,14 +460,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isComputeEss);
     }
     /**
-     * The queue of the nodes to which the additional file system is attached.
+     * The queue to which the compute nodes are added.
      * 
      */
     @Export(name="jobQueue", type=String.class, parameters={})
     private Output</* @Nullable */ String> jobQueue;
 
     /**
-     * @return The queue of the nodes to which the additional file system is attached.
+     * @return The queue to which the compute nodes are added.
      * 
      */
     public Output<Optional<String>> jobQueue() {
@@ -698,14 +686,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.releaseInstance);
     }
     /**
-     * The remote directory to which the additional file system is mounted.
+     * The remote directory to which the file system is mounted.
      * 
      */
     @Export(name="remoteDirectory", type=String.class, parameters={})
     private Output<String> remoteDirectory;
 
     /**
-     * @return The remote directory to which the additional file system is mounted.
+     * @return The remote directory to which the file system is mounted.
      * 
      */
     public Output<String> remoteDirectory() {
@@ -811,10 +799,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-     * * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-     * * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
      * 
      */
     @Export(name="systemDiskLevel", type=String.class, parameters={})
@@ -822,10 +806,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-     * * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-     * * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
      * 
      */
     public Output<Optional<String>> systemDiskLevel() {
@@ -860,14 +840,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskType);
     }
     /**
-     * The ID of the additional file system.
+     * The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      * 
      */
     @Export(name="volumeId", type=String.class, parameters={})
     private Output<String> volumeId;
 
     /**
-     * @return The ID of the additional file system.
+     * @return The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      * 
      */
     public Output<String> volumeId() {
@@ -888,42 +868,46 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.volumeMountOption);
     }
     /**
-     * The mount target of the additional file system.
+     * The mount target of the file system. Take note of the following information:
+     * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+     * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      * 
      */
     @Export(name="volumeMountpoint", type=String.class, parameters={})
     private Output<String> volumeMountpoint;
 
     /**
-     * @return The mount target of the additional file system.
+     * @return The mount target of the file system. Take note of the following information:
+     * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+     * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      * 
      */
     public Output<String> volumeMountpoint() {
         return this.volumeMountpoint;
     }
     /**
-     * The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+     * The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      * 
      */
     @Export(name="volumeProtocol", type=String.class, parameters={})
     private Output<String> volumeProtocol;
 
     /**
-     * @return The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+     * @return The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      * 
      */
     public Output<String> volumeProtocol() {
         return this.volumeProtocol;
     }
     /**
-     * The type of the additional shared storage. Only NAS file systems are supported.
+     * The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      * 
      */
     @Export(name="volumeType", type=String.class, parameters={})
     private Output<String> volumeType;
 
     /**
-     * @return The type of the additional shared storage. Only NAS file systems are supported.
+     * @return The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      * 
      */
     public Output<String> volumeType() {
@@ -1032,6 +1016,9 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

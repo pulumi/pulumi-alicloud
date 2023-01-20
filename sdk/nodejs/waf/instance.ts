@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstance = new alicloud.waf.Instance("default", {
+ * const _default = new alicloud.waf.Instance("default", {
  *     bigScreen: "0",
  *     exclusiveIpPackage: "1",
  *     extBandwidth: "50",

@@ -64,9 +64,9 @@ import (
 //					defaultDynamicTagGroup.ID(),
 //				},
 //			}, nil)
-//			ctx.Export("cmsDynamicTagGroupId1", ids.ApplyT(func(ids cms.GetDynamicTagGroupsResult) (string, error) {
-//				return ids.Groups[0].Id, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("cmsDynamicTagGroupId1", ids.ApplyT(func(ids cms.GetDynamicTagGroupsResult) (*string, error) {
+//				return &ids.Groups[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

@@ -22,42 +22,9 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** The endpoint of bssopenapi used only support &#34;business.aliyuncs.com&#34; at present.
  * 
- * &gt; **NOTE:** Available in 1.57.0+ .
+ * &gt; **NOTE:** Available in 1.183.0+ .
  * 
  * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ddos.DdosBgpInstance;
- * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var instance = new DdosBgpInstance(&#34;instance&#34;, DdosBgpInstanceArgs.builder()        
- *             .bandwidth(&#34;201&#34;)
- *             .baseBandwidth(&#34;20&#34;)
- *             .ipCount(&#34;100&#34;)
- *             .ipType(&#34;IPv4&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
@@ -141,6 +108,20 @@ public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Normal defend bandwidth of the instance. The unit is Gbps.
+     * 
+     */
+    @Export(name="normalBandwidth", type=Integer.class, parameters={})
+    private Output<Integer> normalBandwidth;
+
+    /**
+     * @return Normal defend bandwidth of the instance. The unit is Gbps.
+     * 
+     */
+    public Output<Integer> normalBandwidth() {
+        return this.normalBandwidth;
+    }
+    /**
      * The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify &#34;period&#34;.
      * 
      */
@@ -155,14 +136,14 @@ public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+     * Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+     * @return Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
      * 
      */
     public Output<Optional<String>> type() {

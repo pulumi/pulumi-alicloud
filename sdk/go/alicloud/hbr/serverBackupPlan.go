@@ -43,7 +43,7 @@ import (
 //			}
 //			_, err = hbr.NewServerBackupPlan(ctx, "example", &hbr.ServerBackupPlanArgs{
 //				EcsServerBackupPlanName: pulumi.String("server_backup_plan"),
-//				InstanceId:              pulumi.String(_default.Instances[0].Id),
+//				InstanceId:              *pulumi.String(_default.Instances[0].Id),
 //				Schedule:                pulumi.String("I|1602673264|PT2H"),
 //				Retention:               pulumi.Int(1),
 //				Details: hbr.ServerBackupPlanDetailArray{

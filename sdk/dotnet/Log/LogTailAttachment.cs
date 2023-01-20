@@ -23,45 +23,47 @@ namespace Pulumi.AliCloud.Log
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var testProject = new AliCloud.Log.Project("testProject", new()
     ///     {
-    ///         var testProject = new AliCloud.Log.Project("testProject", new AliCloud.Log.ProjectArgs
+    ///         Description = "create by terraform",
+    ///     });
+    /// 
+    ///     var testStore = new AliCloud.Log.Store("testStore", new()
+    ///     {
+    ///         Project = testProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var testMachineGroup = new AliCloud.Log.MachineGroup("testMachineGroup", new()
+    ///     {
+    ///         Project = testProject.Name,
+    ///         Topic = "terraform",
+    ///         IdentifyLists = new[]
     ///         {
-    ///             Description = "create by terraform",
-    ///         });
-    ///         var testStore = new AliCloud.Log.Store("testStore", new AliCloud.Log.StoreArgs
-    ///         {
-    ///             Project = testProject.Name,
-    ///             RetentionPeriod = 3650,
-    ///             ShardCount = 3,
-    ///             AutoSplit = true,
-    ///             MaxSplitShardCount = 60,
-    ///             AppendMeta = true,
-    ///         });
-    ///         var testMachineGroup = new AliCloud.Log.MachineGroup("testMachineGroup", new AliCloud.Log.MachineGroupArgs
-    ///         {
-    ///             Project = testProject.Name,
-    ///             Topic = "terraform",
-    ///             IdentifyLists = 
-    ///             {
-    ///                 "10.0.0.1",
-    ///                 "10.0.0.3",
-    ///                 "10.0.0.2",
-    ///             },
-    ///         });
-    ///         var testLogTailConfig = new AliCloud.Log.LogTailConfig("testLogTailConfig", new AliCloud.Log.LogTailConfigArgs
-    ///         {
-    ///             Project = testProject.Name,
-    ///             Logstore = testStore.Name,
-    ///             InputType = "file",
-    ///             LogSample = "test",
-    ///             OutputType = "LogService",
-    ///             InputDetail = @"  	{
+    ///             "10.0.0.1",
+    ///             "10.0.0.3",
+    ///             "10.0.0.2",
+    ///         },
+    ///     });
+    /// 
+    ///     var testLogTailConfig = new AliCloud.Log.LogTailConfig("testLogTailConfig", new()
+    ///     {
+    ///         Project = testProject.Name,
+    ///         Logstore = testStore.Name,
+    ///         InputType = "file",
+    ///         LogSample = "test",
+    ///         OutputType = "LogService",
+    ///         InputDetail = @"  	{
     /// 		""logPath"": ""/logPath"",
     /// 		""filePattern"": ""access.log"",
     /// 		""logType"": ""json_log"",
@@ -73,16 +75,16 @@ namespace Pulumi.AliCloud.Log
     /// 	}
     /// 	
     /// ",
-    ///         });
-    ///         var testLogTailAttachment = new AliCloud.Log.LogTailAttachment("testLogTailAttachment", new AliCloud.Log.LogTailAttachmentArgs
-    ///         {
-    ///             Project = testProject.Name,
-    ///             LogtailConfigName = testLogTailConfig.Name,
-    ///             MachineGroupName = testMachineGroup.Name,
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    ///     var testLogTailAttachment = new AliCloud.Log.LogTailAttachment("testLogTailAttachment", new()
+    ///     {
+    ///         Project = testProject.Name,
+    ///         LogtailConfigName = testLogTailConfig.Name,
+    ///         MachineGroupName = testMachineGroup.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -94,7 +96,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/logTailAttachment:LogTailAttachment")]
-    public partial class LogTailAttachment : Pulumi.CustomResource
+    public partial class LogTailAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Logtail configuration name, which is unique in the same project.
@@ -158,7 +160,7 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class LogTailAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class LogTailAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Logtail configuration name, which is unique in the same project.
@@ -181,9 +183,10 @@ namespace Pulumi.AliCloud.Log
         public LogTailAttachmentArgs()
         {
         }
+        public static new LogTailAttachmentArgs Empty => new LogTailAttachmentArgs();
     }
 
-    public sealed class LogTailAttachmentState : Pulumi.ResourceArgs
+    public sealed class LogTailAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Logtail configuration name, which is unique in the same project.
@@ -206,5 +209,6 @@ namespace Pulumi.AliCloud.Log
         public LogTailAttachmentState()
         {
         }
+        public static new LogTailAttachmentState Empty => new LogTailAttachmentState();
     }
 }

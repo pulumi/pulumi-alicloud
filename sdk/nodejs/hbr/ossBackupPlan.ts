@@ -79,6 +79,18 @@ export class OssBackupPlan extends pulumi.CustomResource {
      */
     public readonly bucket!: pulumi.Output<string>;
     /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    public readonly crossAccountRoleName!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    public readonly crossAccountType!: pulumi.Output<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    public readonly crossAccountUserId!: pulumi.Output<number | undefined>;
+    /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     public readonly disabled!: pulumi.Output<boolean>;
@@ -118,6 +130,9 @@ export class OssBackupPlan extends pulumi.CustomResource {
             const state = argsOrState as OssBackupPlanState | undefined;
             resourceInputs["backupType"] = state ? state.backupType : undefined;
             resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["crossAccountRoleName"] = state ? state.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = state ? state.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = state ? state.crossAccountUserId : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["ossBackupPlanName"] = state ? state.ossBackupPlanName : undefined;
             resourceInputs["prefix"] = state ? state.prefix : undefined;
@@ -146,6 +161,9 @@ export class OssBackupPlan extends pulumi.CustomResource {
             }
             resourceInputs["backupType"] = args ? args.backupType : undefined;
             resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["crossAccountRoleName"] = args ? args.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = args ? args.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = args ? args.crossAccountUserId : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["ossBackupPlanName"] = args ? args.ossBackupPlanName : undefined;
             resourceInputs["prefix"] = args ? args.prefix : undefined;
@@ -170,6 +188,18 @@ export interface OssBackupPlanState {
      * The name of OSS bucket.
      */
     bucket?: pulumi.Input<string>;
+    /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
@@ -208,6 +238,18 @@ export interface OssBackupPlanArgs {
      * The name of OSS bucket.
      */
     bucket: pulumi.Input<string>;
+    /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */

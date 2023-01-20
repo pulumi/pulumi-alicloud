@@ -41,7 +41,7 @@ import (
 //			_, err = cms.NewSlsGroup(ctx, "default", &cms.SlsGroupArgs{
 //				SlsGroupConfigs: cms.SlsGroupSlsGroupConfigArray{
 //					&cms.SlsGroupSlsGroupConfigArgs{
-//						SlsUserId:   pulumi.String(this.Id),
+//						SlsUserId:   *pulumi.String(this.Id),
 //						SlsLogstore: pulumi.String("Logstore-ECS"),
 //						SlsProject:  pulumi.String("aliyun-project"),
 //						SlsRegion:   pulumi.String("cn-hangzhou"),

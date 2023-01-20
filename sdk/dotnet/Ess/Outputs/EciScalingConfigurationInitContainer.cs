@@ -22,11 +22,12 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         public readonly double? Cpu;
         /// <summary>
         /// The structure of environmentVars.
+        /// See Block_environment_var_in_init_container below for details.
         /// See Block_environment_var_in_container below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationInitContainerEnvironmentVar> EnvironmentVars;
@@ -43,19 +44,21 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string? ImagePullPolicy;
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         public readonly double? Memory;
         /// <summary>
-        /// The name of the mounted volume.
+        /// The name of the volume.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The structure of port. See Block_port_in_container below for details.
+        /// The structure of port. See Block_port_in_init_container below
+        /// for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationInitContainerPort> Ports;
         /// <summary>
         /// The structure of volumeMounts.
+        /// See Block_volume_mount_in_init_container below for details.
         /// See Block_volume_mount_in_container below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationInitContainerVolumeMount> VolumeMounts;

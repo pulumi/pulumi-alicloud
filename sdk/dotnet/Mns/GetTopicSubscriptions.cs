@@ -12,74 +12,68 @@ namespace Pulumi.AliCloud.Mns
     public static class GetTopicSubscriptions
     {
         /// <summary>
-        /// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var subscriptions = AliCloud.Mns.GetTopicSubscriptions.Invoke(new()
         ///     {
-        ///         var subscriptions = Output.Create(AliCloud.Mns.GetTopicSubscriptions.InvokeAsync(new AliCloud.Mns.GetTopicSubscriptionsArgs
-        ///         {
-        ///             NamePrefix = "tf-",
-        ///             TopicName = "topic_name",
-        ///         }));
-        ///         this.FirstTopicSubscriptionId = subscriptions.Apply(subscriptions =&gt; subscriptions.Subscriptions?[0]?.Id);
-        ///     }
+        ///         NamePrefix = "tf-",
+        ///         TopicName = "topic_name",
+        ///     });
         /// 
-        ///     [Output("firstTopicSubscriptionId")]
-        ///     public Output&lt;string&gt; FirstTopicSubscriptionId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTopicSubscriptionId"] = subscriptions.Apply(getTopicSubscriptionsResult =&gt; getTopicSubscriptionsResult.Subscriptions[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicSubscriptionsResult> InvokeAsync(GetTopicSubscriptionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicSubscriptionsResult>("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args ?? new GetTopicSubscriptionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTopicSubscriptionsResult>("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args ?? new GetTopicSubscriptionsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var subscriptions = AliCloud.Mns.GetTopicSubscriptions.Invoke(new()
         ///     {
-        ///         var subscriptions = Output.Create(AliCloud.Mns.GetTopicSubscriptions.InvokeAsync(new AliCloud.Mns.GetTopicSubscriptionsArgs
-        ///         {
-        ///             NamePrefix = "tf-",
-        ///             TopicName = "topic_name",
-        ///         }));
-        ///         this.FirstTopicSubscriptionId = subscriptions.Apply(subscriptions =&gt; subscriptions.Subscriptions?[0]?.Id);
-        ///     }
+        ///         NamePrefix = "tf-",
+        ///         TopicName = "topic_name",
+        ///     });
         /// 
-        ///     [Output("firstTopicSubscriptionId")]
-        ///     public Output&lt;string&gt; FirstTopicSubscriptionId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTopicSubscriptionId"] = subscriptions.Apply(getTopicSubscriptionsResult =&gt; getTopicSubscriptionsResult.Subscriptions[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTopicSubscriptionsResult> Invoke(GetTopicSubscriptionsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTopicSubscriptionsResult>("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args ?? new GetTopicSubscriptionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTopicSubscriptionsResult>("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args ?? new GetTopicSubscriptionsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTopicSubscriptionsArgs : Pulumi.InvokeArgs
+    public sealed class GetTopicSubscriptionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A string to filter resulting subscriptions of the topic by their name prefixs.
@@ -99,9 +93,10 @@ namespace Pulumi.AliCloud.Mns
         public GetTopicSubscriptionsArgs()
         {
         }
+        public static new GetTopicSubscriptionsArgs Empty => new GetTopicSubscriptionsArgs();
     }
 
-    public sealed class GetTopicSubscriptionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTopicSubscriptionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A string to filter resulting subscriptions of the topic by their name prefixs.
@@ -121,6 +116,7 @@ namespace Pulumi.AliCloud.Mns
         public GetTopicSubscriptionsInvokeArgs()
         {
         }
+        public static new GetTopicSubscriptionsInvokeArgs Empty => new GetTopicSubscriptionsInvokeArgs();
     }
 
 
@@ -141,6 +137,9 @@ namespace Pulumi.AliCloud.Mns
         /// A list of subscriptions. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTopicSubscriptionsSubscriptionResult> Subscriptions;
+        /// <summary>
+        /// The topic which The subscription belongs to was named with the name.
+        /// </summary>
         public readonly string TopicName;
 
         [OutputConstructor]

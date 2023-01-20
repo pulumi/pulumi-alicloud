@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,25 +17,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const dmsEnterpriseInstancesDs = pulumi.output(alicloud.dms.getEnterpriseInstances({
+ * const dmsEnterpriseInstancesDs = alicloud.dms.getEnterpriseInstances({
  *     envType: "test",
  *     instanceType: "mysql",
  *     nameRegex: "tf_testAcc",
  *     netType: "CLASSIC",
  *     outputFile: "dms_enterprise_instances.json",
- * }));
- *
- * export const firstDatabaseInstanceId = dmsEnterpriseInstancesDs.instances[0].instanceId;
+ * });
+ * export const firstDatabaseInstanceId = dmsEnterpriseInstancesDs.then(dmsEnterpriseInstancesDs => dmsEnterpriseInstancesDs.instances?.[0]?.instanceId);
  * ```
  */
 export function getEnterpriseInstances(args?: GetEnterpriseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", {
         "envType": args.envType,
         "instanceAliasRegex": args.instanceAliasRegex,
@@ -135,9 +131,29 @@ export interface GetEnterpriseInstancesResult {
     readonly status?: string;
     readonly tid?: number;
 }
-
+/**
+ * This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in 1.88.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dmsEnterpriseInstancesDs = alicloud.dms.getEnterpriseInstances({
+ *     envType: "test",
+ *     instanceType: "mysql",
+ *     nameRegex: "tf_testAcc",
+ *     netType: "CLASSIC",
+ *     outputFile: "dms_enterprise_instances.json",
+ * });
+ * export const firstDatabaseInstanceId = dmsEnterpriseInstancesDs.then(dmsEnterpriseInstancesDs => dmsEnterpriseInstancesDs.instances?.[0]?.instanceId);
+ * ```
+ */
 export function getEnterpriseInstancesOutput(args?: GetEnterpriseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseInstancesResult> {
-    return pulumi.output(args).apply(a => getEnterpriseInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnterpriseInstances(a, opts))
 }
 
 /**

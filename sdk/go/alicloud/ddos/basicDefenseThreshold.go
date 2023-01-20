@@ -74,8 +74,6 @@ type BasicDefenseThreshold struct {
 	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
 	Bps pulumi.IntOutput `pulumi:"bps"`
 	// The type of the threshold to query. Valid values: `defense`,`blackhole`.
-	// -`defense` - scrubbing threshold.
-	// -`blackhole` - DDoS mitigation threshold.
 	DdosType pulumi.StringOutput `pulumi:"ddosType"`
 	// The ID of the instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -84,8 +82,6 @@ type BasicDefenseThreshold struct {
 	// The Internet IP address.
 	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
 	// Whether it is the system default threshold. Value:
-	// - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-	// - `false`: indicates no, that is, you manually set the cleaning threshold.
 	IsAuto pulumi.BoolOutput `pulumi:"isAuto"`
 	// The maximum traffic scrubbing threshold. Unit: Mbit/s.
 	MaxBps pulumi.IntOutput `pulumi:"maxBps"`
@@ -136,8 +132,6 @@ type basicDefenseThresholdState struct {
 	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
 	Bps *int `pulumi:"bps"`
 	// The type of the threshold to query. Valid values: `defense`,`blackhole`.
-	// -`defense` - scrubbing threshold.
-	// -`blackhole` - DDoS mitigation threshold.
 	DdosType *string `pulumi:"ddosType"`
 	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
@@ -146,8 +140,6 @@ type basicDefenseThresholdState struct {
 	// The Internet IP address.
 	InternetIp *string `pulumi:"internetIp"`
 	// Whether it is the system default threshold. Value:
-	// - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-	// - `false`: indicates no, that is, you manually set the cleaning threshold.
 	IsAuto *bool `pulumi:"isAuto"`
 	// The maximum traffic scrubbing threshold. Unit: Mbit/s.
 	MaxBps *int `pulumi:"maxBps"`
@@ -161,8 +153,6 @@ type BasicDefenseThresholdState struct {
 	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
 	Bps pulumi.IntPtrInput
 	// The type of the threshold to query. Valid values: `defense`,`blackhole`.
-	// -`defense` - scrubbing threshold.
-	// -`blackhole` - DDoS mitigation threshold.
 	DdosType pulumi.StringPtrInput
 	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput
@@ -171,8 +161,6 @@ type BasicDefenseThresholdState struct {
 	// The Internet IP address.
 	InternetIp pulumi.StringPtrInput
 	// Whether it is the system default threshold. Value:
-	// - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-	// - `false`: indicates no, that is, you manually set the cleaning threshold.
 	IsAuto pulumi.BoolPtrInput
 	// The maximum traffic scrubbing threshold. Unit: Mbit/s.
 	MaxBps pulumi.IntPtrInput
@@ -190,8 +178,6 @@ type basicDefenseThresholdArgs struct {
 	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
 	Bps *int `pulumi:"bps"`
 	// The type of the threshold to query. Valid values: `defense`,`blackhole`.
-	// -`defense` - scrubbing threshold.
-	// -`blackhole` - DDoS mitigation threshold.
 	DdosType string `pulumi:"ddosType"`
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -200,8 +186,6 @@ type basicDefenseThresholdArgs struct {
 	// The Internet IP address.
 	InternetIp *string `pulumi:"internetIp"`
 	// Whether it is the system default threshold. Value:
-	// - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-	// - `false`: indicates no, that is, you manually set the cleaning threshold.
 	IsAuto *bool `pulumi:"isAuto"`
 	// The current message number cleaning threshold. Unit: pps.
 	Pps *int `pulumi:"pps"`
@@ -212,8 +196,6 @@ type BasicDefenseThresholdArgs struct {
 	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
 	Bps pulumi.IntPtrInput
 	// The type of the threshold to query. Valid values: `defense`,`blackhole`.
-	// -`defense` - scrubbing threshold.
-	// -`blackhole` - DDoS mitigation threshold.
 	DdosType pulumi.StringInput
 	// The ID of the instance.
 	InstanceId pulumi.StringInput
@@ -222,8 +204,6 @@ type BasicDefenseThresholdArgs struct {
 	// The Internet IP address.
 	InternetIp pulumi.StringPtrInput
 	// Whether it is the system default threshold. Value:
-	// - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-	// - `false`: indicates no, that is, you manually set the cleaning threshold.
 	IsAuto pulumi.BoolPtrInput
 	// The current message number cleaning threshold. Unit: pps.
 	Pps pulumi.IntPtrInput
@@ -322,8 +302,6 @@ func (o BasicDefenseThresholdOutput) Bps() pulumi.IntOutput {
 }
 
 // The type of the threshold to query. Valid values: `defense`,`blackhole`.
-// -`defense` - scrubbing threshold.
-// -`blackhole` - DDoS mitigation threshold.
 func (o BasicDefenseThresholdOutput) DdosType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BasicDefenseThreshold) pulumi.StringOutput { return v.DdosType }).(pulumi.StringOutput)
 }
@@ -344,8 +322,6 @@ func (o BasicDefenseThresholdOutput) InternetIp() pulumi.StringOutput {
 }
 
 // Whether it is the system default threshold. Value:
-// - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-// - `false`: indicates no, that is, you manually set the cleaning threshold.
 func (o BasicDefenseThresholdOutput) IsAuto() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BasicDefenseThreshold) pulumi.BoolOutput { return v.IsAuto }).(pulumi.BoolOutput)
 }

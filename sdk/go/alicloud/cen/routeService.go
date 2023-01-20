@@ -54,17 +54,17 @@ import (
 //			}
 //			vpc, err := cen.NewInstanceAttachment(ctx, "vpc", &cen.InstanceAttachmentArgs{
 //				InstanceId:            exampleInstance.ID(),
-//				ChildInstanceId:       pulumi.String(exampleNetworks.Vpcs[0].Id),
+//				ChildInstanceId:       *pulumi.String(exampleNetworks.Vpcs[0].Id),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String(exampleNetworks.Vpcs[0].RegionId),
+//				ChildInstanceRegionId: *pulumi.String(exampleNetworks.Vpcs[0].RegionId),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cen.NewRouteService(ctx, "this", &cen.RouteServiceArgs{
-//				AccessRegionId: pulumi.String(exampleNetworks.Vpcs[0].RegionId),
-//				HostRegionId:   pulumi.String(exampleNetworks.Vpcs[0].RegionId),
-//				HostVpcId:      pulumi.String(exampleNetworks.Vpcs[0].Id),
+//				AccessRegionId: *pulumi.String(exampleNetworks.Vpcs[0].RegionId),
+//				HostRegionId:   *pulumi.String(exampleNetworks.Vpcs[0].RegionId),
+//				HostVpcId:      *pulumi.String(exampleNetworks.Vpcs[0].Id),
 //				CenId:          vpc.InstanceId,
 //				Host:           pulumi.String("100.118.28.52/32"),
 //			})

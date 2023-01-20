@@ -80,9 +80,6 @@ type SmartagFlowLog struct {
 	// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
 	NetflowVersion pulumi.StringOutput `pulumi:"netflowVersion"`
 	// The location where the flow log is stored. Valid values:
-	// - `sls`: The flow log is stored in Log Service.
-	// - `netflow`: The flow log is stored on a NetFlow collector.
-	// - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
 	OutputType pulumi.StringOutput `pulumi:"outputType"`
 	// The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
 	ProjectName pulumi.StringPtrOutput `pulumi:"projectName"`
@@ -141,9 +138,6 @@ type smartagFlowLogState struct {
 	// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
 	NetflowVersion *string `pulumi:"netflowVersion"`
 	// The location where the flow log is stored. Valid values:
-	// - `sls`: The flow log is stored in Log Service.
-	// - `netflow`: The flow log is stored on a NetFlow collector.
-	// - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
 	OutputType *string `pulumi:"outputType"`
 	// The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
 	ProjectName *string `pulumi:"projectName"`
@@ -171,9 +165,6 @@ type SmartagFlowLogState struct {
 	// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
 	NetflowVersion pulumi.StringPtrInput
 	// The location where the flow log is stored. Valid values:
-	// - `sls`: The flow log is stored in Log Service.
-	// - `netflow`: The flow log is stored on a NetFlow collector.
-	// - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
 	OutputType pulumi.StringPtrInput
 	// The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
 	ProjectName pulumi.StringPtrInput
@@ -205,9 +196,6 @@ type smartagFlowLogArgs struct {
 	// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
 	NetflowVersion *string `pulumi:"netflowVersion"`
 	// The location where the flow log is stored. Valid values:
-	// - `sls`: The flow log is stored in Log Service.
-	// - `netflow`: The flow log is stored on a NetFlow collector.
-	// - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
 	OutputType string `pulumi:"outputType"`
 	// The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
 	ProjectName *string `pulumi:"projectName"`
@@ -236,9 +224,6 @@ type SmartagFlowLogArgs struct {
 	// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
 	NetflowVersion pulumi.StringPtrInput
 	// The location where the flow log is stored. Valid values:
-	// - `sls`: The flow log is stored in Log Service.
-	// - `netflow`: The flow log is stored on a NetFlow collector.
-	// - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
 	OutputType pulumi.StringInput
 	// The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
 	ProjectName pulumi.StringPtrInput
@@ -376,9 +361,6 @@ func (o SmartagFlowLogOutput) NetflowVersion() pulumi.StringOutput {
 }
 
 // The location where the flow log is stored. Valid values:
-// - `sls`: The flow log is stored in Log Service.
-// - `netflow`: The flow log is stored on a NetFlow collector.
-// - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
 func (o SmartagFlowLogOutput) OutputType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmartagFlowLog) pulumi.StringOutput { return v.OutputType }).(pulumi.StringOutput)
 }

@@ -30,14 +30,14 @@ public final class GetRouteServicesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * -(Required, ForceNew) The ID of the CEN instance.
+     * The ID of the CEN instance.
      * 
      */
     @Import(name="cenId", required=true)
     private String cenId;
 
     /**
-     * @return -(Required, ForceNew) The ID of the CEN instance.
+     * @return The ID of the CEN instance.
      * 
      */
     public String cenId() {
@@ -45,14 +45,14 @@ public final class GetRouteServicesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * -(Optional, ForceNew) The domain name or IP address of the cloud service.
+     * The domain name or IP address of the cloud service.
      * 
      */
     @Import(name="host")
     private @Nullable String host;
 
     /**
-     * @return -(Optional, ForceNew) The domain name or IP address of the cloud service.
+     * @return The domain name or IP address of the cloud service.
      * 
      */
     public Optional<String> host() {
@@ -153,7 +153,7 @@ public final class GetRouteServicesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param cenId -(Required, ForceNew) The ID of the CEN instance.
+         * @param cenId The ID of the CEN instance.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class GetRouteServicesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param host -(Optional, ForceNew) The domain name or IP address of the cloud service.
+         * @param host The domain name or IP address of the cloud service.
          * 
          * @return builder
          * 

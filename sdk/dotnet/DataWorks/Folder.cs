@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.DataWorks
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.DataWorks.Folder("example", new()
     ///     {
-    ///         var example = new AliCloud.DataWorks.Folder("example", new AliCloud.DataWorks.FolderArgs
-    ///         {
-    ///             FolderPath = "Business Flow/tfTestAcc/folderDi/tftest1",
-    ///             ProjectId = "320687",
-    ///         });
-    ///     }
+    ///         FolderPath = "Business Flow/tfTestAcc/folderDi/tftest1",
+    ///         ProjectId = "320687",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.DataWorks
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dataworks/folder:Folder")]
-    public partial class Folder : Pulumi.CustomResource
+    public partial class Folder : global::Pulumi.CustomResource
     {
         [Output("folderId")]
         public Output<string> FolderId { get; private set; } = null!;
@@ -111,7 +109,7 @@ namespace Pulumi.AliCloud.DataWorks
         }
     }
 
-    public sealed class FolderArgs : Pulumi.ResourceArgs
+    public sealed class FolderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
@@ -131,9 +129,10 @@ namespace Pulumi.AliCloud.DataWorks
         public FolderArgs()
         {
         }
+        public static new FolderArgs Empty => new FolderArgs();
     }
 
-    public sealed class FolderState : Pulumi.ResourceArgs
+    public sealed class FolderState : global::Pulumi.ResourceArgs
     {
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
@@ -156,5 +155,6 @@ namespace Pulumi.AliCloud.DataWorks
         public FolderState()
         {
         }
+        public static new FolderState Empty => new FolderState();
     }
 }

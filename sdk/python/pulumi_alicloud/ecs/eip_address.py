@@ -27,7 +27,9 @@ class EipAddressArgs:
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a EipAddress resource.
@@ -45,7 +47,9 @@ class EipAddressArgs:
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if activity_id is not None:
@@ -80,8 +84,12 @@ class EipAddressArgs:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if public_ip_address_pool_id is not None:
+            pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_protection_types is not None:
+            pulumi.set(__self__, "security_protection_types", security_protection_types)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -243,6 +251,18 @@ class EipAddressArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="publicIpAddressPoolId")
+    def public_ip_address_pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        """
+        return pulumi.get(self, "public_ip_address_pool_id")
+
+    @public_ip_address_pool_id.setter
+    def public_ip_address_pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_ip_address_pool_id", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -253,6 +273,18 @@ class EipAddressArgs:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityProtectionTypes")
+    def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        """
+        return pulumi.get(self, "security_protection_types")
+
+    @security_protection_types.setter
+    def security_protection_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_protection_types", value)
 
     @property
     @pulumi.getter
@@ -284,7 +316,9 @@ class _EipAddressState:
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
@@ -304,7 +338,9 @@ class _EipAddressState:
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
         :param pulumi.Input[str] status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -342,8 +378,12 @@ class _EipAddressState:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if public_ip_address_pool_id is not None:
+            pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_protection_types is not None:
+            pulumi.set(__self__, "security_protection_types", security_protection_types)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -519,6 +559,18 @@ class _EipAddressState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="publicIpAddressPoolId")
+    def public_ip_address_pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        """
+        return pulumi.get(self, "public_ip_address_pool_id")
+
+    @public_ip_address_pool_id.setter
+    def public_ip_address_pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_ip_address_pool_id", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -529,6 +581,18 @@ class _EipAddressState:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityProtectionTypes")
+    def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        """
+        return pulumi.get(self, "security_protection_types")
+
+    @security_protection_types.setter
+    def security_protection_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_protection_types", value)
 
     @property
     @pulumi.getter
@@ -573,7 +637,9 @@ class EipAddress(pulumi.CustomResource):
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
@@ -627,7 +693,9 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
@@ -699,7 +767,9 @@ class EipAddress(pulumi.CustomResource):
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -729,7 +799,9 @@ class EipAddress(pulumi.CustomResource):
             __props__.__dict__["netmode"] = netmode
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
+            __props__.__dict__["public_ip_address_pool_id"] = public_ip_address_pool_id
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["security_protection_types"] = security_protection_types
             __props__.__dict__["tags"] = tags
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["status"] = None
@@ -757,7 +829,9 @@ class EipAddress(pulumi.CustomResource):
             netmode: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'EipAddress':
         """
@@ -782,7 +856,9 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
         :param pulumi.Input[str] status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -804,7 +880,9 @@ class EipAddress(pulumi.CustomResource):
         __props__.__dict__["netmode"] = netmode
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["public_ip_address_pool_id"] = public_ip_address_pool_id
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["security_protection_types"] = security_protection_types
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         return EipAddress(resource_name, opts=opts, __props__=__props__)
@@ -923,12 +1001,28 @@ class EipAddress(pulumi.CustomResource):
         return pulumi.get(self, "period")
 
     @property
+    @pulumi.getter(name="publicIpAddressPoolId")
+    def public_ip_address_pool_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        """
+        return pulumi.get(self, "public_ip_address_pool_id")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityProtectionTypes")
+    def security_protection_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        """
+        return pulumi.get(self, "security_protection_types")
 
     @property
     @pulumi.getter

@@ -23,38 +23,38 @@ namespace Pulumi.AliCloud.CloudAuth
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultFaceConfig = new AliCloud.CloudAuth.FaceConfig("defaultFaceConfig", new()
         ///     {
-        ///         var defaultFaceConfig = new AliCloud.CloudAuth.FaceConfig("defaultFaceConfig", new AliCloud.CloudAuth.FaceConfigArgs
-        ///         {
-        ///             BizName = "example-value",
-        ///             BizType = "example-value",
-        ///         });
-        ///         var defaultFaceConfigs = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new AliCloud.CloudAuth.GetFaceConfigsInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultFaceConfig.Id,
-        ///             },
-        ///             NameRegex = defaultFaceConfig.BizName,
-        ///         });
-        ///         this.FaceConfig = defaultFaceConfigs.Apply(defaultFaceConfigs =&gt; defaultFaceConfigs.Configs?[0]);
-        ///     }
+        ///         BizName = "example-value",
+        ///         BizType = "example-value",
+        ///     });
         /// 
-        ///     [Output("faceConfig")]
-        ///     public Output&lt;string&gt; FaceConfig { get; set; }
-        /// }
+        ///     var defaultFaceConfigs = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultFaceConfig.Id,
+        ///         },
+        ///         NameRegex = defaultFaceConfig.BizName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["faceConfig"] = defaultFaceConfigs.Apply(getFaceConfigsResult =&gt; getFaceConfigsResult.Configs[0]),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFaceConfigsResult> InvokeAsync(GetFaceConfigsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloudauth Face Configs of the current Alibaba Cloud user.
@@ -68,42 +68,42 @@ namespace Pulumi.AliCloud.CloudAuth
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultFaceConfig = new AliCloud.CloudAuth.FaceConfig("defaultFaceConfig", new()
         ///     {
-        ///         var defaultFaceConfig = new AliCloud.CloudAuth.FaceConfig("defaultFaceConfig", new AliCloud.CloudAuth.FaceConfigArgs
-        ///         {
-        ///             BizName = "example-value",
-        ///             BizType = "example-value",
-        ///         });
-        ///         var defaultFaceConfigs = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new AliCloud.CloudAuth.GetFaceConfigsInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultFaceConfig.Id,
-        ///             },
-        ///             NameRegex = defaultFaceConfig.BizName,
-        ///         });
-        ///         this.FaceConfig = defaultFaceConfigs.Apply(defaultFaceConfigs =&gt; defaultFaceConfigs.Configs?[0]);
-        ///     }
+        ///         BizName = "example-value",
+        ///         BizType = "example-value",
+        ///     });
         /// 
-        ///     [Output("faceConfig")]
-        ///     public Output&lt;string&gt; FaceConfig { get; set; }
-        /// }
+        ///     var defaultFaceConfigs = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultFaceConfig.Id,
+        ///         },
+        ///         NameRegex = defaultFaceConfig.BizName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["faceConfig"] = defaultFaceConfigs.Apply(getFaceConfigsResult =&gt; getFaceConfigsResult.Configs[0]),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFaceConfigsResult> Invoke(GetFaceConfigsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetFaceConfigsArgs : Pulumi.InvokeArgs
+    public sealed class GetFaceConfigsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -129,9 +129,10 @@ namespace Pulumi.AliCloud.CloudAuth
         public GetFaceConfigsArgs()
         {
         }
+        public static new GetFaceConfigsArgs Empty => new GetFaceConfigsArgs();
     }
 
-    public sealed class GetFaceConfigsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFaceConfigsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -157,6 +158,7 @@ namespace Pulumi.AliCloud.CloudAuth
         public GetFaceConfigsInvokeArgs()
         {
         }
+        public static new GetFaceConfigsInvokeArgs Empty => new GetFaceConfigsInvokeArgs();
     }
 
 

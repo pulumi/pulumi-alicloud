@@ -97,6 +97,13 @@ func NewShardingInstance(ctx *pulumi.Context,
 	if args.ShardLists == nil {
 		return nil, errors.New("invalid value for required argument 'ShardLists'")
 	}
+	if args.AccountPassword != nil {
+		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accountPassword",
+	})
+	opts = append(opts, secrets)
 	var resource ShardingInstance
 	err := ctx.RegisterResource("alicloud:mongodb/shardingInstance:ShardingInstance", name, args, &resource, opts...)
 	if err != nil {

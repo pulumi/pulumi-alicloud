@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,20 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const entry = pulumi.output(alicloud.cen.getRouteEntries({
+ * const entry = alicloud.cen.getRouteEntries({
  *     instanceId: "cen-id1",
  *     routeTableId: "vtb-id1",
- * }));
- *
- * export const firstRouteEntriesRouteEntryCidrBlock = entry.entries[0].cidrBlock;
+ * });
+ * export const firstRouteEntriesRouteEntryCidrBlock = entry.then(entry => entry.entries?.[0]?.cidrBlock);
  * ```
  */
 export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteEntriesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getRouteEntries:getRouteEntries", {
         "cidrBlock": args.cidrBlock,
         "instanceId": args.instanceId,
@@ -81,9 +78,24 @@ export interface GetRouteEntriesResult {
      */
     readonly routeTableId: string;
 }
-
+/**
+ * This data source provides CEN Route Entries available to the user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const entry = alicloud.cen.getRouteEntries({
+ *     instanceId: "cen-id1",
+ *     routeTableId: "vtb-id1",
+ * });
+ * export const firstRouteEntriesRouteEntryCidrBlock = entry.then(entry => entry.entries?.[0]?.cidrBlock);
+ * ```
+ */
 export function getRouteEntriesOutput(args: GetRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteEntriesResult> {
-    return pulumi.output(args).apply(a => getRouteEntries(a, opts))
+    return pulumi.output(args).apply((a: any) => getRouteEntries(a, opts))
 }
 
 /**

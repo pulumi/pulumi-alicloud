@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC.Inputs
 {
 
-    public sealed class FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs : Pulumi.ResourceArgs
+    public sealed class FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.FC.Inputs
         public FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs()
         {
         }
+        public static new FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs Empty => new FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs();
     }
 }

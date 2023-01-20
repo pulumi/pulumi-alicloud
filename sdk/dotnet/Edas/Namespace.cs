@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Edas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Edas.Namespace("example", new()
     ///     {
-    ///         var example = new AliCloud.Edas.Namespace("example", new AliCloud.Edas.NamespaceArgs
-    ///         {
-    ///             NamespaceLogicalId = "example_value",
-    ///             NamespaceName = "example_value",
-    ///         });
-    ///     }
+    ///         NamespaceLogicalId = "example_value",
+    ///         NamespaceName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Edas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:edas/namespace:Namespace")]
-    public partial class Namespace : Pulumi.CustomResource
+    public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies whether to enable remote debugging.
@@ -119,7 +117,7 @@ namespace Pulumi.AliCloud.Edas
         }
     }
 
-    public sealed class NamespaceArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to enable remote debugging.
@@ -150,9 +148,10 @@ namespace Pulumi.AliCloud.Edas
         public NamespaceArgs()
         {
         }
+        public static new NamespaceArgs Empty => new NamespaceArgs();
     }
 
-    public sealed class NamespaceState : Pulumi.ResourceArgs
+    public sealed class NamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to enable remote debugging.
@@ -183,5 +182,6 @@ namespace Pulumi.AliCloud.Edas
         public NamespaceState()
         {
         }
+        public static new NamespaceState Empty => new NamespaceState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Quotas
 {
     [AliCloudResourceType("alicloud:quotas/applicationInfo:ApplicationInfo")]
-    public partial class ApplicationInfo : Pulumi.CustomResource
+    public partial class ApplicationInfo : global::Pulumi.CustomResource
     {
         [Output("approveValue")]
         public Output<string> ApproveValue { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Quotas
         }
     }
 
-    public sealed class ApplicationInfoArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditMode")]
         public Input<string>? AuditMode { get; set; }
@@ -138,9 +138,10 @@ namespace Pulumi.AliCloud.Quotas
         public ApplicationInfoArgs()
         {
         }
+        public static new ApplicationInfoArgs Empty => new ApplicationInfoArgs();
     }
 
-    public sealed class ApplicationInfoState : Pulumi.ResourceArgs
+    public sealed class ApplicationInfoState : global::Pulumi.ResourceArgs
     {
         [Input("approveValue")]
         public Input<string>? ApproveValue { get; set; }
@@ -198,5 +199,6 @@ namespace Pulumi.AliCloud.Quotas
         public ApplicationInfoState()
         {
         }
+        public static new ApplicationInfoState Empty => new ApplicationInfoState();
     }
 }

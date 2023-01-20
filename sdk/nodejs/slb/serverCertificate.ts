@@ -23,10 +23,12 @@ import * as utilities from "../utilities";
  * const foo = new alicloud.slb.ServerCertificate("foo", {
  *     privateKey: `-----BEGIN RSA PRIVATE KEY-----
  * MIICXAIBAAKBgQDO0knDrlNdiys******ErVpjsckAaOW/JDG5PCSwkaMxk=
- * -----END RSA PRIVATE KEY-----`,
+ * -----END RSA PRIVATE KEY-----
+ * `,
  *     serverCertificate: `-----BEGIN CERTIFICATE-----
  * MIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=
- * -----END CERTIFICATE-----`,
+ * -----END CERTIFICATE-----
+ * `,
  * });
  * ```
  *

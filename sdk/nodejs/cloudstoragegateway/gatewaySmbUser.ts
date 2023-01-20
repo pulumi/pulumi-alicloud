@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
+ *     vpcId: defaultNetworks.ids?.[0],
  * }));
  * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
  * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("defaultGateway", {
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     gatewayClass: "Standard",
  *     type: "File",
  *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     releaseAfterExpiration: false,
  *     publicNetworkBandwidth: 40,
  *     storageBundleId: example.id,
@@ -122,10 +122,12 @@ export class GatewaySmbUser extends pulumi.CustomResource {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(GatewaySmbUser.__pulumiType, name, resourceInputs, opts);
     }
 }

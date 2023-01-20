@@ -13,17 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfigOpa {
     /**
-     * @return Whether to enable Service grid audit.
+     * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The CPU resource  of the limitsOPA proxy container.
+     * @return The limit cpu of the Sidecar injector Pods.
      * 
      */
     private @Nullable String limitCpu;
     /**
-     * @return The memory resource limit of the OPA proxy container.
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     private @Nullable String limitMemory;
@@ -33,33 +33,33 @@ public final class ServiceMeshMeshConfigOpa {
      */
     private @Nullable String logLevel;
     /**
-     * @return The CPU resource request of the OPA proxy container.
+     * @return The requested cpu the Sidecar injector Pods.
      * 
      */
     private @Nullable String requestCpu;
     /**
-     * @return The memory resource request of the OPA proxy container.
+     * @return The requested memory the Sidecar injector Pods.
      * 
      */
     private @Nullable String requestMemory;
 
     private ServiceMeshMeshConfigOpa() {}
     /**
-     * @return Whether to enable Service grid audit.
+     * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The CPU resource  of the limitsOPA proxy container.
+     * @return The limit cpu of the Sidecar injector Pods.
      * 
      */
     public Optional<String> limitCpu() {
         return Optional.ofNullable(this.limitCpu);
     }
     /**
-     * @return The memory resource limit of the OPA proxy container.
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     public Optional<String> limitMemory() {
@@ -73,14 +73,14 @@ public final class ServiceMeshMeshConfigOpa {
         return Optional.ofNullable(this.logLevel);
     }
     /**
-     * @return The CPU resource request of the OPA proxy container.
+     * @return The requested cpu the Sidecar injector Pods.
      * 
      */
     public Optional<String> requestCpu() {
         return Optional.ofNullable(this.requestCpu);
     }
     /**
-     * @return The memory resource request of the OPA proxy container.
+     * @return The requested memory the Sidecar injector Pods.
      * 
      */
     public Optional<String> requestMemory() {

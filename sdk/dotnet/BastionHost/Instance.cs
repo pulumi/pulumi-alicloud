@@ -19,13 +19,19 @@ namespace Pulumi.AliCloud.BastionHost
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The AD auth server of the Instance. See the following `Block ad_auth_server`.
         /// </summary>
         [Output("adAuthServers")]
         public Output<ImmutableArray<Outputs.InstanceAdAuthServer>> AdAuthServers { get; private set; } = null!;
+
+        /// <summary>
+        /// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        /// </summary>
+        [Output("bandwidth")]
+        public Output<string> Bandwidth { get; private set; } = null!;
 
         /// <summary>
         /// Description of the instance. This name can have a string of 1 to 63 characters.
@@ -55,13 +61,43 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
+        /// The plan code of Cloud Bastionhost instance. Valid values:
+        /// </summary>
+        [Output("planCode")]
+        public Output<string> PlanCode { get; private set; } = null!;
+
+        /// <summary>
+        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        /// </summary>
+        [Output("renewPeriod")]
+        public Output<int?> RenewPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        /// </summary>
+        [Output("renewalPeriodUnit")]
+        public Output<string> RenewalPeriodUnit { get; private set; } = null!;
+
+        /// <summary>
+        /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        /// </summary>
+        [Output("renewalStatus")]
+        public Output<string> RenewalStatus { get; private set; } = null!;
+
+        /// <summary>
         /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        /// </summary>
+        [Output("storage")]
+        public Output<string> Storage { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -119,7 +155,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         [Input("adAuthServers")]
         private InputList<Inputs.InstanceAdAuthServerArgs>? _adAuthServers;
@@ -132,6 +168,12 @@ namespace Pulumi.AliCloud.BastionHost
             get => _adAuthServers ?? (_adAuthServers = new InputList<Inputs.InstanceAdAuthServerArgs>());
             set => _adAuthServers = value;
         }
+
+        /// <summary>
+        /// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        /// </summary>
+        [Input("bandwidth", required: true)]
+        public Input<string> Bandwidth { get; set; } = null!;
 
         /// <summary>
         /// Description of the instance. This name can have a string of 1 to 63 characters.
@@ -167,6 +209,30 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// The plan code of Cloud Bastionhost instance. Valid values:
+        /// </summary>
+        [Input("planCode", required: true)]
+        public Input<string> PlanCode { get; set; } = null!;
+
+        /// <summary>
+        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        /// </summary>
+        [Input("renewPeriod")]
+        public Input<int>? RenewPeriod { get; set; }
+
+        /// <summary>
+        /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        /// </summary>
+        [Input("renewalPeriodUnit")]
+        public Input<string>? RenewalPeriodUnit { get; set; }
+
+        /// <summary>
+        /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        /// </summary>
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
         /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         /// </summary>
         [Input("resourceGroupId")]
@@ -179,6 +245,12 @@ namespace Pulumi.AliCloud.BastionHost
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
+
+        /// <summary>
+        /// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        /// </summary>
+        [Input("storage", required: true)]
+        public Input<string> Storage { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -201,9 +273,10 @@ namespace Pulumi.AliCloud.BastionHost
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         [Input("adAuthServers")]
         private InputList<Inputs.InstanceAdAuthServerGetArgs>? _adAuthServers;
@@ -216,6 +289,12 @@ namespace Pulumi.AliCloud.BastionHost
             get => _adAuthServers ?? (_adAuthServers = new InputList<Inputs.InstanceAdAuthServerGetArgs>());
             set => _adAuthServers = value;
         }
+
+        /// <summary>
+        /// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        /// </summary>
+        [Input("bandwidth")]
+        public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
         /// Description of the instance. This name can have a string of 1 to 63 characters.
@@ -251,6 +330,30 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// The plan code of Cloud Bastionhost instance. Valid values:
+        /// </summary>
+        [Input("planCode")]
+        public Input<string>? PlanCode { get; set; }
+
+        /// <summary>
+        /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        /// </summary>
+        [Input("renewPeriod")]
+        public Input<int>? RenewPeriod { get; set; }
+
+        /// <summary>
+        /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        /// </summary>
+        [Input("renewalPeriodUnit")]
+        public Input<string>? RenewalPeriodUnit { get; set; }
+
+        /// <summary>
+        /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        /// </summary>
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
         /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         /// </summary>
         [Input("resourceGroupId")]
@@ -263,6 +366,12 @@ namespace Pulumi.AliCloud.BastionHost
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
+
+        /// <summary>
+        /// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        /// </summary>
+        [Input("storage")]
+        public Input<string>? Storage { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -285,5 +394,6 @@ namespace Pulumi.AliCloud.BastionHost
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -271,6 +271,20 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> paymentType() {
         return Codegen.optional(this.paymentType);
+    }
+    /**
+     * (Available in 1.196.0+) The connection port of the instance.
+     * 
+     */
+    @Export(name="port", type=String.class, parameters={})
+    private Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) The connection port of the instance.
+     * 
+     */
+    public Output<String> port() {
+        return this.port;
     }
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).

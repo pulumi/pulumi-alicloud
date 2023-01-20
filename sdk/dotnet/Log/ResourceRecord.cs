@@ -21,23 +21,21 @@ namespace Pulumi.AliCloud.Log
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Log.ResourceRecord("example", new()
     ///     {
-    ///         var example = new AliCloud.Log.ResourceRecord("example", new AliCloud.Log.ResourceRecordArgs
-    ///         {
-    ///             RecordId = "user_tf_test_resource_1",
-    ///             ResourceName = "user.tf.test_resource",
-    ///             Tag = "test resource tag",
-    ///             Value = "{\"col1\": \"this is col1 value\", \"col2\": \"col2 value\"}",
-    ///         });
-    ///     }
+    ///         RecordId = "user_tf_test_resource_1",
+    ///         ResourceName = "user.tf.test_resource",
+    ///         Tag = "test resource tag",
+    ///         Value = "{\"col1\": \"this is col1 value\", \"col2\": \"col2 value\"}",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/resourceRecord:ResourceRecord")]
-    public partial class ResourceRecord : Pulumi.CustomResource
+    public partial class ResourceRecord : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The record's id, should be unique.
@@ -119,7 +117,7 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class ResourceRecordArgs : Pulumi.ResourceArgs
+    public sealed class ResourceRecordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The record's id, should be unique.
@@ -148,9 +146,10 @@ namespace Pulumi.AliCloud.Log
         public ResourceRecordArgs()
         {
         }
+        public static new ResourceRecordArgs Empty => new ResourceRecordArgs();
     }
 
-    public sealed class ResourceRecordState : Pulumi.ResourceArgs
+    public sealed class ResourceRecordState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The record's id, should be unique.
@@ -179,5 +178,6 @@ namespace Pulumi.AliCloud.Log
         public ResourceRecordState()
         {
         }
+        public static new ResourceRecordState Empty => new ResourceRecordState();
     }
 }

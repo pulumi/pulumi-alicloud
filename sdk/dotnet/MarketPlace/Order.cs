@@ -15,26 +15,24 @@ namespace Pulumi.AliCloud.MarketPlace
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var order = new AliCloud.MarketPlace.Order("order", new()
     ///     {
-    ///         var order = new AliCloud.MarketPlace.Order("order", new AliCloud.MarketPlace.OrderArgs
-    ///         {
-    ///             CouponId = "",
-    ///             Duration = 1,
-    ///             PackageVersion = "yuncode2713600001",
-    ///             PayType = "prepay",
-    ///             PricingCycle = "Month",
-    ///             ProductCode = "cmapi033136",
-    ///             Quantity = 1,
-    ///         });
-    ///     }
+    ///         CouponId = "",
+    ///         Duration = 1,
+    ///         PackageVersion = "yuncode2713600001",
+    ///         PayType = "prepay",
+    ///         PricingCycle = "Month",
+    ///         ProductCode = "cmapi033136",
+    ///         Quantity = 1,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.MarketPlace
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:marketplace/order:Order")]
-    public partial class Order : Pulumi.CustomResource
+    public partial class Order : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Service providers customize additional components.
@@ -140,7 +138,7 @@ namespace Pulumi.AliCloud.MarketPlace
         }
     }
 
-    public sealed class OrderArgs : Pulumi.ResourceArgs
+    public sealed class OrderArgs : global::Pulumi.ResourceArgs
     {
         [Input("components")]
         private InputMap<object>? _components;
@@ -199,9 +197,10 @@ namespace Pulumi.AliCloud.MarketPlace
         public OrderArgs()
         {
         }
+        public static new OrderArgs Empty => new OrderArgs();
     }
 
-    public sealed class OrderState : Pulumi.ResourceArgs
+    public sealed class OrderState : global::Pulumi.ResourceArgs
     {
         [Input("components")]
         private InputMap<object>? _components;
@@ -260,5 +259,6 @@ namespace Pulumi.AliCloud.MarketPlace
         public OrderState()
         {
         }
+        public static new OrderState Empty => new OrderState();
     }
 }

@@ -13,23 +13,21 @@ namespace Pulumi.AliCloud.Dns
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Domain record
+    ///     var record = new AliCloud.Dns.Record("record", new()
     ///     {
-    ///         // Create a new Domain record
-    ///         var record = new AliCloud.Dns.Record("record", new AliCloud.Dns.RecordArgs
-    ///         {
-    ///             HostRecord = "@",
-    ///             Type = "A",
-    ///             Value = "192.168.99.99",
-    ///         });
-    ///     }
+    ///         HostRecord = "@",
+    ///         Type = "A",
+    ///         Value = "192.168.99.99",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/record:Record")]
-    public partial class Record : Pulumi.CustomResource
+    public partial class Record : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Host record for the domain record. This host_record can have at most 253 characters, and each part split with "." can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as "-",".","*","@",  and must not begin or end with "-".
@@ -138,7 +136,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class RecordArgs : Pulumi.ResourceArgs
+    public sealed class RecordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Host record for the domain record. This host_record can have at most 253 characters, and each part split with "." can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as "-",".","*","@",  and must not begin or end with "-".
@@ -185,9 +183,10 @@ namespace Pulumi.AliCloud.Dns
         public RecordArgs()
         {
         }
+        public static new RecordArgs Empty => new RecordArgs();
     }
 
-    public sealed class RecordState : Pulumi.ResourceArgs
+    public sealed class RecordState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Host record for the domain record. This host_record can have at most 253 characters, and each part split with "." can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as "-",".","*","@",  and must not begin or end with "-".
@@ -243,5 +242,6 @@ namespace Pulumi.AliCloud.Dns
         public RecordState()
         {
         }
+        public static new RecordState Empty => new RecordState();
     }
 }

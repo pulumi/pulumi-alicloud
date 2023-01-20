@@ -90,6 +90,9 @@ class GetPoliciesResult:
     @property
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[str]:
+        """
+        The type of the policy.
+        """
         return pulumi.get(self, "policy_type")
 
 

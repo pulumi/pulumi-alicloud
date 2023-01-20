@@ -21,113 +21,121 @@ namespace Pulumi.AliCloud.Hbr
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultEcsBackupPlans = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
     ///     {
-    ///         var defaultEcsBackupPlans = Output.Create(AliCloud.Hbr.GetEcsBackupPlans.InvokeAsync(new AliCloud.Hbr.GetEcsBackupPlansArgs
-    ///         {
-    ///             NameRegex = "plan-tf-used-dont-delete",
-    ///         }));
-    ///         var defaultOssBackupPlans = Output.Create(AliCloud.Hbr.GetOssBackupPlans.InvokeAsync(new AliCloud.Hbr.GetOssBackupPlansArgs
-    ///         {
-    ///             NameRegex = "plan-tf-used-dont-delete",
-    ///         }));
-    ///         var defaultNasBackupPlans = Output.Create(AliCloud.Hbr.GetNasBackupPlans.InvokeAsync(new AliCloud.Hbr.GetNasBackupPlansArgs
-    ///         {
-    ///             NameRegex = "plan-tf-used-dont-delete",
-    ///         }));
-    ///         var ecsSnapshots = Output.Tuple(defaultEcsBackupPlans, defaultEcsBackupPlans).Apply(values =&gt;
-    ///         {
-    ///             var defaultEcsBackupPlans = values.Item1;
-    ///             var defaultEcsBackupPlans1 = values.Item2;
-    ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
-    ///             {
-    ///                 SourceType = "ECS_FILE",
-    ///                 VaultId = defaultEcsBackupPlans.Plans?[0]?.VaultId,
-    ///                 InstanceId = defaultEcsBackupPlans1.Plans?[0]?.InstanceId,
-    ///             }));
-    ///         });
-    ///         var ossSnapshots = Output.Tuple(defaultOssBackupPlans, defaultOssBackupPlans).Apply(values =&gt;
-    ///         {
-    ///             var defaultOssBackupPlans = values.Item1;
-    ///             var defaultOssBackupPlans1 = values.Item2;
-    ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
-    ///             {
-    ///                 SourceType = "OSS",
-    ///                 VaultId = defaultOssBackupPlans.Plans?[0]?.VaultId,
-    ///                 Bucket = defaultOssBackupPlans1.Plans?[0]?.Bucket,
-    ///             }));
-    ///         });
-    ///         var nasSnapshots = Output.Tuple(defaultNasBackupPlans, defaultNasBackupPlans, defaultNasBackupPlans).Apply(values =&gt;
-    ///         {
-    ///             var defaultNasBackupPlans = values.Item1;
-    ///             var defaultNasBackupPlans1 = values.Item2;
-    ///             var defaultNasBackupPlans2 = values.Item3;
-    ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
-    ///             {
-    ///                 SourceType = "NAS",
-    ///                 VaultId = defaultNasBackupPlans.Plans?[0]?.VaultId,
-    ///                 FileSystemId = defaultNasBackupPlans1.Plans?[0]?.FileSystemId,
-    ///                 CreateTime = defaultNasBackupPlans2.Plans?[0]?.CreateTime,
-    ///             }));
-    ///         });
-    ///         var nasJob = new AliCloud.Hbr.RestoreJob("nasJob", new AliCloud.Hbr.RestoreJobArgs
-    ///         {
-    ///             SnapshotHash = nasSnapshots.Apply(nasSnapshots =&gt; nasSnapshots.Snapshots?[0]?.SnapshotHash),
-    ///             VaultId = defaultNasBackupPlans.Apply(defaultNasBackupPlans =&gt; defaultNasBackupPlans.Plans?[0]?.VaultId),
-    ///             SourceType = "NAS",
-    ///             RestoreType = "NAS",
-    ///             SnapshotId = nasSnapshots.Apply(nasSnapshots =&gt; nasSnapshots.Snapshots?[0]?.SnapshotId),
-    ///             TargetFileSystemId = defaultNasBackupPlans.Apply(defaultNasBackupPlans =&gt; defaultNasBackupPlans.Plans?[0]?.FileSystemId),
-    ///             TargetCreateTime = defaultNasBackupPlans.Apply(defaultNasBackupPlans =&gt; defaultNasBackupPlans.Plans?[0]?.CreateTime),
-    ///             TargetPath = "/",
-    ///             Options = @"    {""includes"":[], ""excludes"":[]}
-    /// ",
-    ///         });
-    ///         var ossJob = new AliCloud.Hbr.RestoreJob("ossJob", new AliCloud.Hbr.RestoreJobArgs
-    ///         {
-    ///             SnapshotHash = ossSnapshots.Apply(ossSnapshots =&gt; ossSnapshots.Snapshots?[0]?.SnapshotHash),
-    ///             VaultId = defaultOssBackupPlans.Apply(defaultOssBackupPlans =&gt; defaultOssBackupPlans.Plans?[0]?.VaultId),
-    ///             SourceType = "OSS",
-    ///             RestoreType = "OSS",
-    ///             SnapshotId = ossSnapshots.Apply(ossSnapshots =&gt; ossSnapshots.Snapshots?[0]?.SnapshotId),
-    ///             TargetBucket = defaultOssBackupPlans.Apply(defaultOssBackupPlans =&gt; defaultOssBackupPlans.Plans?[0]?.Bucket),
-    ///             TargetPrefix = "",
-    ///             Options = @"    {""includes"":[], ""excludes"":[]}
-    /// ",
-    ///         });
-    ///         var ecsJob = new AliCloud.Hbr.RestoreJob("ecsJob", new AliCloud.Hbr.RestoreJobArgs
-    ///         {
-    ///             SnapshotHash = ecsSnapshots.Apply(ecsSnapshots =&gt; ecsSnapshots.Snapshots?[0]?.SnapshotHash),
-    ///             VaultId = defaultEcsBackupPlans.Apply(defaultEcsBackupPlans =&gt; defaultEcsBackupPlans.Plans?[0]?.VaultId),
-    ///             SourceType = "ECS_FILE",
-    ///             RestoreType = "ECS_FILE",
-    ///             SnapshotId = ecsSnapshots.Apply(ecsSnapshots =&gt; ecsSnapshots.Snapshots?[0]?.SnapshotId),
-    ///             TargetInstanceId = defaultEcsBackupPlans.Apply(defaultEcsBackupPlans =&gt; defaultEcsBackupPlans.Plans?[0]?.InstanceId),
-    ///             TargetPath = "/",
-    ///         });
-    ///     }
+    ///         NameRegex = "plan-tf-used-dont-delete",
+    ///     });
     /// 
-    /// }
+    ///     var defaultOssBackupPlans = AliCloud.Hbr.GetOssBackupPlans.Invoke(new()
+    ///     {
+    ///         NameRegex = "plan-tf-used-dont-delete",
+    ///     });
+    /// 
+    ///     var defaultNasBackupPlans = AliCloud.Hbr.GetNasBackupPlans.Invoke(new()
+    ///     {
+    ///         NameRegex = "plan-tf-used-dont-delete",
+    ///     });
+    /// 
+    ///     var ecsSnapshots = AliCloud.Hbr.GetSnapshots.Invoke(new()
+    ///     {
+    ///         SourceType = "ECS_FILE",
+    ///         VaultId = defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+    ///         InstanceId = defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+    ///     });
+    /// 
+    ///     var ossSnapshots = AliCloud.Hbr.GetSnapshots.Invoke(new()
+    ///     {
+    ///         SourceType = "OSS",
+    ///         VaultId = defaultOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.VaultId),
+    ///         Bucket = defaultOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.Bucket),
+    ///     });
+    /// 
+    ///     var nasSnapshots = AliCloud.Hbr.GetSnapshots.Invoke(new()
+    ///     {
+    ///         SourceType = "NAS",
+    ///         VaultId = defaultNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.VaultId),
+    ///         FileSystemId = defaultNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.FileSystemId),
+    ///         CreateTime = defaultNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.CreateTime),
+    ///     });
+    /// 
+    ///     var nasJob = new AliCloud.Hbr.RestoreJob("nasJob", new()
+    ///     {
+    ///         SnapshotHash = nasSnapshots.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.SnapshotHash),
+    ///         VaultId = defaultNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.VaultId),
+    ///         SourceType = "NAS",
+    ///         RestoreType = "NAS",
+    ///         SnapshotId = nasSnapshots.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.SnapshotId),
+    ///         TargetFileSystemId = defaultNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.FileSystemId),
+    ///         TargetCreateTime = defaultNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.CreateTime),
+    ///         TargetPath = "/",
+    ///         Options = @"    {""includes"":[], ""excludes"":[]}
+    /// ",
+    ///     });
+    /// 
+    ///     var ossJob = new AliCloud.Hbr.RestoreJob("ossJob", new()
+    ///     {
+    ///         SnapshotHash = ossSnapshots.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.SnapshotHash),
+    ///         VaultId = defaultOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.VaultId),
+    ///         SourceType = "OSS",
+    ///         RestoreType = "OSS",
+    ///         SnapshotId = ossSnapshots.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.SnapshotId),
+    ///         TargetBucket = defaultOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.Bucket),
+    ///         TargetPrefix = "",
+    ///         Options = @"    {""includes"":[], ""excludes"":[]}
+    /// ",
+    ///     });
+    /// 
+    ///     var ecsJob = new AliCloud.Hbr.RestoreJob("ecsJob", new()
+    ///     {
+    ///         SnapshotHash = ecsSnapshots.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.SnapshotHash),
+    ///         VaultId = defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+    ///         SourceType = "ECS_FILE",
+    ///         RestoreType = "ECS_FILE",
+    ///         SnapshotId = ecsSnapshots.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.SnapshotId),
+    ///         TargetInstanceId = defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+    ///         TargetPath = "/",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// &gt; **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
     /// 
     /// ## Import
     /// 
-    /// Hybrid Backup Recovery (HBR) Restore Job can be imported using the id, e.g.
+    /// Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `&lt;restore_job_id&gt;:&lt;restore_type&gt;`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:hbr/restoreJob:RestoreJob example &lt;restore_job_id&gt;:&lt;restore_type&gt;
+    ///  $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/restoreJob:RestoreJob")]
-    public partial class RestoreJob : Pulumi.CustomResource
+    public partial class RestoreJob : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Output("crossAccountRoleName")]
+        public Output<string?> CrossAccountRoleName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Output("crossAccountType")]
+        public Output<string> CrossAccountType { get; private set; } = null!;
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Output("crossAccountUserId")]
+        public Output<int?> CrossAccountUserId { get; private set; } = null!;
+
         /// <summary>
         /// The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
@@ -145,6 +153,12 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Output("options")]
         public Output<string?> Options { get; private set; } = null!;
+
+        /// <summary>
+        /// The details about the Tablestore instance. See the following `Block ots_detail`.
+        /// </summary>
+        [Output("otsDetail")]
+        public Output<Outputs.RestoreJobOtsDetail> OtsDetail { get; private set; } = null!;
 
         /// <summary>
         /// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
@@ -304,8 +318,26 @@ namespace Pulumi.AliCloud.Hbr
         }
     }
 
-    public sealed class RestoreJobArgs : Pulumi.ResourceArgs
+    public sealed class RestoreJobArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
+
         /// <summary>
         /// The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
@@ -323,6 +355,12 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
+
+        /// <summary>
+        /// The details about the Tablestore instance. See the following `Block ots_detail`.
+        /// </summary>
+        [Input("otsDetail")]
+        public Input<Inputs.RestoreJobOtsDetailArgs>? OtsDetail { get; set; }
 
         /// <summary>
         /// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
@@ -435,10 +473,29 @@ namespace Pulumi.AliCloud.Hbr
         public RestoreJobArgs()
         {
         }
+        public static new RestoreJobArgs Empty => new RestoreJobArgs();
     }
 
-    public sealed class RestoreJobState : Pulumi.ResourceArgs
+    public sealed class RestoreJobState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
+
         /// <summary>
         /// The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
@@ -456,6 +513,12 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
+
+        /// <summary>
+        /// The details about the Tablestore instance. See the following `Block ots_detail`.
+        /// </summary>
+        [Input("otsDetail")]
+        public Input<Inputs.RestoreJobOtsDetailGetArgs>? OtsDetail { get; set; }
 
         /// <summary>
         /// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
@@ -574,5 +637,6 @@ namespace Pulumi.AliCloud.Hbr
         public RestoreJobState()
         {
         }
+        public static new RestoreJobState Empty => new RestoreJobState();
     }
 }

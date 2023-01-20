@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,20 +17,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.resourcemanager.getRoles({
+ * const example = alicloud.resourcemanager.getRoles({
  *     nameRegex: "tftest",
- * }));
- *
- * export const firstRoleId = example.roles[0].id;
+ * });
+ * export const firstRoleId = example.then(example => example.roles?.[0]?.id);
  * ```
  */
 export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getRoles:getRoles", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -43,7 +40,7 @@ export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetRolesArgs {
     /**
-     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     * Default to `false`. Set it to true can output more details.
      */
     enableDetails?: boolean;
     /**
@@ -81,9 +78,25 @@ export interface GetRolesResult {
      */
     readonly roles: outputs.resourcemanager.GetRolesRole[];
 }
-
+/**
+ * This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
+ *
+ * > **NOTE:**  Available in 1.86.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.resourcemanager.getRoles({
+ *     nameRegex: "tftest",
+ * });
+ * export const firstRoleId = example.then(example => example.roles?.[0]?.id);
+ * ```
+ */
 export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
-    return pulumi.output(args).apply(a => getRoles(a, opts))
+    return pulumi.output(args).apply((a: any) => getRoles(a, opts))
 }
 
 /**
@@ -91,7 +104,7 @@ export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetRolesOutputArgs {
     /**
-     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     * Default to `false`. Set it to true can output more details.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**

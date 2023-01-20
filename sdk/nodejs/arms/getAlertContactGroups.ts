@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const nameRegex = alicloud.arms.getAlertContactGroups({
  *     nameRegex: "^my-AlertContactGroup",
  * });
- * export const armsAlertContactGroupId = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
+ * export const armsAlertContactGroupId = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
 export function getAlertContactGroups(args?: GetAlertContactGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertContactGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:arms/getAlertContactGroups:getAlertContactGroups", {
         "alertContactGroupName": args.alertContactGroupName,
         "contactId": args.contactId,
@@ -85,9 +83,27 @@ export interface GetAlertContactGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.131.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const nameRegex = alicloud.arms.getAlertContactGroups({
+ *     nameRegex: "^my-AlertContactGroup",
+ * });
+ * export const armsAlertContactGroupId = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * ```
+ */
 export function getAlertContactGroupsOutput(args?: GetAlertContactGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertContactGroupsResult> {
-    return pulumi.output(args).apply(a => getAlertContactGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getAlertContactGroups(a, opts))
 }
 
 /**

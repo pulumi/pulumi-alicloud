@@ -1728,7 +1728,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1765,7 +1765,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1802,7 +1802,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1839,7 +1839,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1876,7 +1876,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1913,7 +1913,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1952,7 +1952,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1991,7 +1991,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2030,7 +2030,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2069,7 +2069,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2108,7 +2108,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2147,7 +2147,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2424,7 +2424,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2460,7 +2460,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2496,7 +2496,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2532,7 +2532,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2568,7 +2568,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2604,7 +2604,7 @@ public final class DnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.dns.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

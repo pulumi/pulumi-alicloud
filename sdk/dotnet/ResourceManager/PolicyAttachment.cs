@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/policyAttachment:PolicyAttachment")]
-    public partial class PolicyAttachment : Pulumi.CustomResource
+    public partial class PolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class PolicyAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class PolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
@@ -135,9 +135,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public PolicyAttachmentArgs()
         {
         }
+        public static new PolicyAttachmentArgs Empty => new PolicyAttachmentArgs();
     }
 
-    public sealed class PolicyAttachmentState : Pulumi.ResourceArgs
+    public sealed class PolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
@@ -172,5 +173,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public PolicyAttachmentState()
         {
         }
+        public static new PolicyAttachmentState Empty => new PolicyAttachmentState();
     }
 }

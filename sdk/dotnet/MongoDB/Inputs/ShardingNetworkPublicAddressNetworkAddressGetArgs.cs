@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MongoDB.Inputs
 {
 
-    public sealed class ShardingNetworkPublicAddressNetworkAddressGetArgs : Pulumi.ResourceArgs
+    public sealed class ShardingNetworkPublicAddressNetworkAddressGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The remaining duration of the classic network address. Unit: `seconds`.
@@ -75,5 +75,6 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public ShardingNetworkPublicAddressNetworkAddressGetArgs()
         {
         }
+        public static new ShardingNetworkPublicAddressNetworkAddressGetArgs Empty => new ShardingNetworkPublicAddressNetworkAddressGetArgs();
     }
 }

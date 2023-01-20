@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,20 +20,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.cloudstoragegateway.getExpressSyncs({});
- * export const cloudStorageGatewayExpressSyncId1 = ids.then(ids => ids.syncs?[0]?.id);
+ * export const cloudStorageGatewayExpressSyncId1 = ids.then(ids => ids.syncs?.[0]?.id);
  * const nameRegex = alicloud.cloudstoragegateway.getExpressSyncs({
  *     nameRegex: "^my-ExpressSync",
  * });
- * export const cloudStorageGatewayExpressSyncId2 = nameRegex.then(nameRegex => nameRegex.syncs?[0]?.id);
+ * export const cloudStorageGatewayExpressSyncId2 = nameRegex.then(nameRegex => nameRegex.syncs?.[0]?.id);
  * ```
  */
 export function getExpressSyncs(args?: GetExpressSyncsArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressSyncsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -69,9 +67,29 @@ export interface GetExpressSyncsResult {
     readonly outputFile?: string;
     readonly syncs: outputs.cloudstoragegateway.GetExpressSyncsSync[];
 }
-
+/**
+ * This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.144.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudstoragegateway.getExpressSyncs({});
+ * export const cloudStorageGatewayExpressSyncId1 = ids.then(ids => ids.syncs?.[0]?.id);
+ * const nameRegex = alicloud.cloudstoragegateway.getExpressSyncs({
+ *     nameRegex: "^my-ExpressSync",
+ * });
+ * export const cloudStorageGatewayExpressSyncId2 = nameRegex.then(nameRegex => nameRegex.syncs?.[0]?.id);
+ * ```
+ */
 export function getExpressSyncsOutput(args?: GetExpressSyncsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExpressSyncsResult> {
-    return pulumi.output(args).apply(a => getExpressSyncs(a, opts))
+    return pulumi.output(args).apply((a: any) => getExpressSyncs(a, opts))
 }
 
 /**

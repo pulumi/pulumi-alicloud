@@ -490,7 +490,7 @@ type GetReceiversReceiverse struct {
 	Description string `pulumi:"description"`
 	// The ID of the Receivers.
 	Id string `pulumi:"id"`
-	// -The Receivers Alias.
+	// The Receivers Alias.
 	ReceiversAlias string `pulumi:"receiversAlias"`
 	// The first ID of the resource.
 	ReceiversId string `pulumi:"receiversId"`
@@ -518,7 +518,7 @@ type GetReceiversReceiverseArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The ID of the Receivers.
 	Id pulumi.StringInput `pulumi:"id"`
-	// -The Receivers Alias.
+	// The Receivers Alias.
 	ReceiversAlias pulumi.StringInput `pulumi:"receiversAlias"`
 	// The first ID of the resource.
 	ReceiversId pulumi.StringInput `pulumi:"receiversId"`
@@ -594,7 +594,7 @@ func (o GetReceiversReceiverseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReceiversReceiverse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// -The Receivers Alias.
+// The Receivers Alias.
 func (o GetReceiversReceiverseOutput) ReceiversAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReceiversReceiverse) string { return v.ReceiversAlias }).(pulumi.StringOutput)
 }

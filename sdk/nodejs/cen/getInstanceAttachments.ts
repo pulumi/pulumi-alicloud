@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,19 +17,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.cen.getInstanceAttachments({
+ * const example = alicloud.cen.getInstanceAttachments({
  *     instanceId: "cen-o40h17ll9w********",
- * }));
- *
- * export const theFirstAttachmentedInstanceId = example.attachments[0].childInstanceId;
+ * });
+ * export const theFirstAttachmentedInstanceId = example.then(example => example.attachments?.[0]?.childInstanceId);
  * ```
  */
 export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceAttachmentsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getInstanceAttachments:getInstanceAttachments", {
         "childInstanceRegionId": args.childInstanceRegionId,
         "childInstanceType": args.childInstanceType,
@@ -95,9 +92,25 @@ export interface GetInstanceAttachmentsResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides Cen Instance Attachments of the current Alibaba Cloud User.
+ *
+ * > **NOTE:** Available in v1.97.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cen.getInstanceAttachments({
+ *     instanceId: "cen-o40h17ll9w********",
+ * });
+ * export const theFirstAttachmentedInstanceId = example.then(example => example.attachments?.[0]?.childInstanceId);
+ * ```
+ */
 export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {
-    return pulumi.output(args).apply(a => getInstanceAttachments(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceAttachments(a, opts))
 }
 
 /**

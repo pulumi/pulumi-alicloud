@@ -18,11 +18,6 @@ public final class ProtectionModuleArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-     * * `waf`: RegEx Protection Engine.
-     * * `dld`: Big Data Deep Learning Engine.
-     * * `ac_cc`: HTTP Flood Protection.
-     * * `antifraud`: Data Risk Control.
-     * * `normalized`: Positive Security Model.
      * 
      */
     @Import(name="defenseType", required=true)
@@ -30,11 +25,6 @@ public final class ProtectionModuleArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-     * * `waf`: RegEx Protection Engine.
-     * * `dld`: Big Data Deep Learning Engine.
-     * * `ac_cc`: HTTP Flood Protection.
-     * * `antifraud`: Data Risk Control.
-     * * `normalized`: Positive Security Model.
      * 
      */
     public Output<String> defenseType() {
@@ -98,8 +88,6 @@ public final class ProtectionModuleArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The status of the resource. Valid values: `0`, `1`.
-     * * `0`: disables the protection module.
-     * * `1`: enables the protection module.
      * 
      */
     @Import(name="status")
@@ -107,8 +95,6 @@ public final class ProtectionModuleArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The status of the resource. Valid values: `0`, `1`.
-     * * `0`: disables the protection module.
-     * * `1`: enables the protection module.
      * 
      */
     public Optional<Output<Integer>> status() {
@@ -145,11 +131,6 @@ public final class ProtectionModuleArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param defenseType The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-         * * `waf`: RegEx Protection Engine.
-         * * `dld`: Big Data Deep Learning Engine.
-         * * `ac_cc`: HTTP Flood Protection.
-         * * `antifraud`: Data Risk Control.
-         * * `normalized`: Positive Security Model.
          * 
          * @return builder
          * 
@@ -161,11 +142,6 @@ public final class ProtectionModuleArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param defenseType The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-         * * `waf`: RegEx Protection Engine.
-         * * `dld`: Big Data Deep Learning Engine.
-         * * `ac_cc`: HTTP Flood Protection.
-         * * `antifraud`: Data Risk Control.
-         * * `normalized`: Positive Security Model.
          * 
          * @return builder
          * 
@@ -249,8 +225,6 @@ public final class ProtectionModuleArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param status The status of the resource. Valid values: `0`, `1`.
-         * * `0`: disables the protection module.
-         * * `1`: enables the protection module.
          * 
          * @return builder
          * 
@@ -262,8 +236,6 @@ public final class ProtectionModuleArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param status The status of the resource. Valid values: `0`, `1`.
-         * * `0`: disables the protection module.
-         * * `1`: enables the protection module.
          * 
          * @return builder
          * 

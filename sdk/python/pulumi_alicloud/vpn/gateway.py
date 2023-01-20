@@ -17,11 +17,13 @@ class GatewayArgs:
                  bandwidth: pulumi.Input[int],
                  vpc_id: pulumi.Input[str],
                  auto_pay: Optional[pulumi.Input[bool]] = None,
+                 auto_propagate: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ipsec: Optional[pulumi.Input[bool]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  ssl_connections: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -30,14 +32,16 @@ class GatewayArgs:
         The set of arguments for constructing a Gateway resource.
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Default value: `true`. Valid values:
-               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-               `true`: Enable automatic payment, automatic payment order.
+        :param pulumi.Input[bool] auto_propagate: Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
         :param pulumi.Input[str] instance_charge_type: The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
                Default to PostPaid.
         :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
+        :param pulumi.Input[str] network_type: The network type of the VPN gateway. Value:
+               - public (default): Public VPN gateway.
+               - private: Private VPN gateway.
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
@@ -48,6 +52,8 @@ class GatewayArgs:
         pulumi.set(__self__, "vpc_id", vpc_id)
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
+        if auto_propagate is not None:
+            pulumi.set(__self__, "auto_propagate", auto_propagate)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_ipsec is not None:
@@ -58,6 +64,8 @@ class GatewayArgs:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if ssl_connections is not None:
@@ -93,14 +101,24 @@ class GatewayArgs:
     def auto_pay(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to pay automatically. Default value: `true`. Valid values:
-        `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        `true`: Enable automatic payment, automatic payment order.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
     def auto_pay(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_pay", value)
+
+    @property
+    @pulumi.getter(name="autoPropagate")
+    def auto_propagate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+        """
+        return pulumi.get(self, "auto_propagate")
+
+    @auto_propagate.setter
+    def auto_propagate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_propagate", value)
 
     @property
     @pulumi.getter
@@ -164,6 +182,20 @@ class GatewayArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network type of the VPN gateway. Value:
+        - public (default): Public VPN gateway.
+        - private: Private VPN gateway.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_type", value)
+
+    @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -217,6 +249,7 @@ class GatewayArgs:
 class _GatewayState:
     def __init__(__self__, *,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
+                 auto_propagate: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  business_status: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -225,6 +258,7 @@ class _GatewayState:
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_ip: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  ssl_connections: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -234,8 +268,7 @@ class _GatewayState:
         """
         Input properties used for looking up and filtering Gateway resources.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Default value: `true`. Valid values:
-               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-               `true`: Enable automatic payment, automatic payment order.
+        :param pulumi.Input[bool] auto_propagate: Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
         :param pulumi.Input[str] business_status: The business status of the VPN gateway.
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -244,6 +277,9 @@ class _GatewayState:
                Default to PostPaid.
         :param pulumi.Input[str] internet_ip: The internet ip of the VPN.
         :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
+        :param pulumi.Input[str] network_type: The network type of the VPN gateway. Value:
+               - public (default): Public VPN gateway.
+               - private: Private VPN gateway.
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
@@ -254,6 +290,8 @@ class _GatewayState:
         """
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
+        if auto_propagate is not None:
+            pulumi.set(__self__, "auto_propagate", auto_propagate)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if business_status is not None:
@@ -270,6 +308,8 @@ class _GatewayState:
             pulumi.set(__self__, "internet_ip", internet_ip)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if ssl_connections is not None:
@@ -288,14 +328,24 @@ class _GatewayState:
     def auto_pay(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to pay automatically. Default value: `true`. Valid values:
-        `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        `true`: Enable automatic payment, automatic payment order.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
     def auto_pay(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_pay", value)
+
+    @property
+    @pulumi.getter(name="autoPropagate")
+    def auto_propagate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+        """
+        return pulumi.get(self, "auto_propagate")
+
+    @auto_propagate.setter
+    def auto_propagate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_propagate", value)
 
     @property
     @pulumi.getter
@@ -392,6 +442,20 @@ class _GatewayState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network type of the VPN gateway. Value:
+        - public (default): Public VPN gateway.
+        - private: Private VPN gateway.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_type", value)
+
+    @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -471,12 +535,14 @@ class Gateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
+                 auto_propagate: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ipsec: Optional[pulumi.Input[bool]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  ssl_connections: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -495,14 +561,16 @@ class Gateway(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Default value: `true`. Valid values:
-               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-               `true`: Enable automatic payment, automatic payment order.
+        :param pulumi.Input[bool] auto_propagate: Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
         :param pulumi.Input[str] instance_charge_type: The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
                Default to PostPaid.
         :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
+        :param pulumi.Input[str] network_type: The network type of the VPN gateway. Value:
+               - public (default): Public VPN gateway.
+               - private: Private VPN gateway.
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
@@ -541,12 +609,14 @@ class Gateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
+                 auto_propagate: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ipsec: Optional[pulumi.Input[bool]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  ssl_connections: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -562,6 +632,7 @@ class Gateway(pulumi.CustomResource):
             __props__ = GatewayArgs.__new__(GatewayArgs)
 
             __props__.__dict__["auto_pay"] = auto_pay
+            __props__.__dict__["auto_propagate"] = auto_propagate
             if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
             __props__.__dict__["bandwidth"] = bandwidth
@@ -570,6 +641,7 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["enable_ssl"] = enable_ssl
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["name"] = name
+            __props__.__dict__["network_type"] = network_type
             __props__.__dict__["period"] = period
             __props__.__dict__["ssl_connections"] = ssl_connections
             __props__.__dict__["tags"] = tags
@@ -591,6 +663,7 @@ class Gateway(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_pay: Optional[pulumi.Input[bool]] = None,
+            auto_propagate: Optional[pulumi.Input[bool]] = None,
             bandwidth: Optional[pulumi.Input[int]] = None,
             business_status: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -599,6 +672,7 @@ class Gateway(pulumi.CustomResource):
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             internet_ip: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             ssl_connections: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -613,8 +687,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Default value: `true`. Valid values:
-               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-               `true`: Enable automatic payment, automatic payment order.
+        :param pulumi.Input[bool] auto_propagate: Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
         :param pulumi.Input[str] business_status: The business status of the VPN gateway.
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -623,6 +696,9 @@ class Gateway(pulumi.CustomResource):
                Default to PostPaid.
         :param pulumi.Input[str] internet_ip: The internet ip of the VPN.
         :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
+        :param pulumi.Input[str] network_type: The network type of the VPN gateway. Value:
+               - public (default): Public VPN gateway.
+               - private: Private VPN gateway.
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
@@ -636,6 +712,7 @@ class Gateway(pulumi.CustomResource):
         __props__ = _GatewayState.__new__(_GatewayState)
 
         __props__.__dict__["auto_pay"] = auto_pay
+        __props__.__dict__["auto_propagate"] = auto_propagate
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["business_status"] = business_status
         __props__.__dict__["description"] = description
@@ -644,6 +721,7 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["internet_ip"] = internet_ip
         __props__.__dict__["name"] = name
+        __props__.__dict__["network_type"] = network_type
         __props__.__dict__["period"] = period
         __props__.__dict__["ssl_connections"] = ssl_connections
         __props__.__dict__["status"] = status
@@ -657,10 +735,16 @@ class Gateway(pulumi.CustomResource):
     def auto_pay(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to pay automatically. Default value: `true`. Valid values:
-        `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-        `true`: Enable automatic payment, automatic payment order.
         """
         return pulumi.get(self, "auto_pay")
+
+    @property
+    @pulumi.getter(name="autoPropagate")
+    def auto_propagate(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+        """
+        return pulumi.get(self, "auto_propagate")
 
     @property
     @pulumi.getter
@@ -723,6 +807,16 @@ class Gateway(pulumi.CustomResource):
         The name of the VPN. Defaults to null.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> pulumi.Output[str]:
+        """
+        The network type of the VPN gateway. Value:
+        - public (default): Public VPN gateway.
+        - private: Private VPN gateway.
+        """
+        return pulumi.get(self, "network_type")
 
     @property
     @pulumi.getter

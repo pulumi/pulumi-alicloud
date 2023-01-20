@@ -23,30 +23,29 @@ namespace Pulumi.AliCloud.Rds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Rds.GetAccounts.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Rds.GetAccounts.InvokeAsync(new AliCloud.Rds.GetAccountsArgs
-        ///         {
-        ///             DbInstanceId = "example_value",
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstRdsAccountId = example.Apply(example =&gt; example.Accounts?[0]?.Id);
-        ///     }
+        ///         DbInstanceId = "example_value",
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstRdsAccountId")]
-        ///     public Output&lt;string&gt; FirstRdsAccountId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRdsAccountId"] = example.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:rds/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:rds/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Rds Accounts of the current Alibaba Cloud user.
@@ -60,34 +59,33 @@ namespace Pulumi.AliCloud.Rds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Rds.GetAccounts.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Rds.GetAccounts.InvokeAsync(new AliCloud.Rds.GetAccountsArgs
-        ///         {
-        ///             DbInstanceId = "example_value",
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstRdsAccountId = example.Apply(example =&gt; example.Accounts?[0]?.Id);
-        ///     }
+        ///         DbInstanceId = "example_value",
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstRdsAccountId")]
-        ///     public Output&lt;string&gt; FirstRdsAccountId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRdsAccountId"] = example.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:rds/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:rds/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAccountsArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The db instance id.
@@ -125,9 +123,10 @@ namespace Pulumi.AliCloud.Rds
         public GetAccountsArgs()
         {
         }
+        public static new GetAccountsArgs Empty => new GetAccountsArgs();
     }
 
-    public sealed class GetAccountsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The db instance id.
@@ -165,6 +164,7 @@ namespace Pulumi.AliCloud.Rds
         public GetAccountsInvokeArgs()
         {
         }
+        public static new GetAccountsInvokeArgs Empty => new GetAccountsInvokeArgs();
     }
 
 

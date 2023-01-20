@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Sddp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Sddp.GetDataLimits.InvokeAsync());
-        ///         this.SddpDataLimitId1 = ids.Apply(ids =&gt; ids.Limits?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Sddp.GetDataLimits.Invoke();
         /// 
-        ///     [Output("sddpDataLimitId1")]
-        ///     public Output&lt;string&gt; SddpDataLimitId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["sddpDataLimitId1"] = ids.Apply(getDataLimitsResult =&gt; getDataLimitsResult.Limits[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDataLimitsResult> InvokeAsync(GetDataLimitsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDataLimitsResult>("alicloud:sddp/getDataLimits:getDataLimits", args ?? new GetDataLimitsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataLimitsResult>("alicloud:sddp/getDataLimits:getDataLimits", args ?? new GetDataLimitsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Sddp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Sddp.GetDataLimits.InvokeAsync());
-        ///         this.SddpDataLimitId1 = ids.Apply(ids =&gt; ids.Limits?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Sddp.GetDataLimits.Invoke();
         /// 
-        ///     [Output("sddpDataLimitId1")]
-        ///     public Output&lt;string&gt; SddpDataLimitId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["sddpDataLimitId1"] = ids.Apply(getDataLimitsResult =&gt; getDataLimitsResult.Limits[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDataLimitsResult> Invoke(GetDataLimitsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDataLimitsResult>("alicloud:sddp/getDataLimits:getDataLimits", args ?? new GetDataLimitsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDataLimitsResult>("alicloud:sddp/getDataLimits:getDataLimits", args ?? new GetDataLimitsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDataLimitsArgs : Pulumi.InvokeArgs
+    public sealed class GetDataLimitsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -111,9 +109,10 @@ namespace Pulumi.AliCloud.Sddp
         public GetDataLimitsArgs()
         {
         }
+        public static new GetDataLimitsArgs Empty => new GetDataLimitsArgs();
     }
 
-    public sealed class GetDataLimitsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDataLimitsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -145,6 +144,7 @@ namespace Pulumi.AliCloud.Sddp
         public GetDataLimitsInvokeArgs()
         {
         }
+        public static new GetDataLimitsInvokeArgs Empty => new GetDataLimitsInvokeArgs();
     }
 
 

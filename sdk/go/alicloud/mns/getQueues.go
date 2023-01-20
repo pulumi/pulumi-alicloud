@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
-//
 // ## Example Usage
 //
 // ```go

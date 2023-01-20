@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -29,33 +30,30 @@ import * as utilities from "../utilities";
  * });
  * const ecsSnapshots = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getSnapshots({
  *     sourceType: "ECS_FILE",
- *     vaultId: defaultEcsBackupPlans.plans?[0]?.vaultId,
- *     instanceId: defaultEcsBackupPlans1.plans?[0]?.instanceId,
+ *     vaultId: defaultEcsBackupPlans.plans?.[0]?.vaultId,
+ *     instanceId: defaultEcsBackupPlans1.plans?.[0]?.instanceId,
  * }));
  * const ossSnapshots = Promise.all([defaultOssBackupPlans, defaultOssBackupPlans]).then(([defaultOssBackupPlans, defaultOssBackupPlans1]) => alicloud.hbr.getSnapshots({
  *     sourceType: "OSS",
- *     vaultId: defaultOssBackupPlans.plans?[0]?.vaultId,
- *     bucket: defaultOssBackupPlans1.plans?[0]?.bucket,
+ *     vaultId: defaultOssBackupPlans.plans?.[0]?.vaultId,
+ *     bucket: defaultOssBackupPlans1.plans?.[0]?.bucket,
  *     completeTime: "2021-07-20T14:17:15CST,2021-07-24T14:17:15CST",
  *     completeTimeChecker: "BETWEEN",
  * }));
  * const nasSnapshots = Promise.all([defaultNasBackupPlans, defaultNasBackupPlans, defaultNasBackupPlans]).then(([defaultNasBackupPlans, defaultNasBackupPlans1, defaultNasBackupPlans2]) => alicloud.hbr.getSnapshots({
  *     sourceType: "NAS",
- *     vaultId: defaultNasBackupPlans.plans?[0]?.vaultId,
- *     fileSystemId: defaultNasBackupPlans1.plans?[0]?.fileSystemId,
- *     createTime: defaultNasBackupPlans2.plans?[0]?.createTime,
+ *     vaultId: defaultNasBackupPlans.plans?.[0]?.vaultId,
+ *     fileSystemId: defaultNasBackupPlans1.plans?.[0]?.fileSystemId,
+ *     createTime: defaultNasBackupPlans2.plans?.[0]?.createTime,
  *     completeTime: "2021-08-23T14:17:15CST",
  *     completeTimeChecker: "GREATER_THAN_OR_EQUAL",
  * }));
- * export const hbrSnapshotId1 = nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?[0]?.id);
+ * export const hbrSnapshotId1 = nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?.[0]?.id);
  * ```
  */
 export function getSnapshots(args: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getSnapshots:getSnapshots", {
         "bucket": args.bucket,
         "completeTime": args.completeTime,
@@ -145,9 +143,53 @@ export interface GetSnapshotsResult {
     readonly status?: string;
     readonly vaultId: string;
 }
-
+/**
+ * This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.133.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultEcsBackupPlans = alicloud.hbr.getEcsBackupPlans({
+ *     nameRegex: "plan-tf-used-dont-delete",
+ * });
+ * const defaultOssBackupPlans = alicloud.hbr.getOssBackupPlans({
+ *     nameRegex: "plan-tf-used-dont-delete",
+ * });
+ * const defaultNasBackupPlans = alicloud.hbr.getNasBackupPlans({
+ *     nameRegex: "plan-tf-used-dont-delete",
+ * });
+ * const ecsSnapshots = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getSnapshots({
+ *     sourceType: "ECS_FILE",
+ *     vaultId: defaultEcsBackupPlans.plans?.[0]?.vaultId,
+ *     instanceId: defaultEcsBackupPlans1.plans?.[0]?.instanceId,
+ * }));
+ * const ossSnapshots = Promise.all([defaultOssBackupPlans, defaultOssBackupPlans]).then(([defaultOssBackupPlans, defaultOssBackupPlans1]) => alicloud.hbr.getSnapshots({
+ *     sourceType: "OSS",
+ *     vaultId: defaultOssBackupPlans.plans?.[0]?.vaultId,
+ *     bucket: defaultOssBackupPlans1.plans?.[0]?.bucket,
+ *     completeTime: "2021-07-20T14:17:15CST,2021-07-24T14:17:15CST",
+ *     completeTimeChecker: "BETWEEN",
+ * }));
+ * const nasSnapshots = Promise.all([defaultNasBackupPlans, defaultNasBackupPlans, defaultNasBackupPlans]).then(([defaultNasBackupPlans, defaultNasBackupPlans1, defaultNasBackupPlans2]) => alicloud.hbr.getSnapshots({
+ *     sourceType: "NAS",
+ *     vaultId: defaultNasBackupPlans.plans?.[0]?.vaultId,
+ *     fileSystemId: defaultNasBackupPlans1.plans?.[0]?.fileSystemId,
+ *     createTime: defaultNasBackupPlans2.plans?.[0]?.createTime,
+ *     completeTime: "2021-08-23T14:17:15CST",
+ *     completeTimeChecker: "GREATER_THAN_OR_EQUAL",
+ * }));
+ * export const hbrSnapshotId1 = nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?.[0]?.id);
+ * ```
+ */
 export function getSnapshotsOutput(args: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
-    return pulumi.output(args).apply(a => getSnapshots(a, opts))
+    return pulumi.output(args).apply((a: any) => getSnapshots(a, opts))
 }
 
 /**

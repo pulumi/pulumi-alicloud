@@ -72,7 +72,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -87,7 +87,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .tags(Map.of(&#34;tagKey1&#34;, &#34;tagValue1&#34;))
      *             .build());
      * 
      *     }
@@ -107,7 +107,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -122,7 +122,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-     *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .tags(Map.of(&#34;tagKey1&#34;, &#34;tagValue1&#34;))
      *             .build());
      * 
      *     }
@@ -243,7 +243,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
          * import com.pulumi.Pulumi;
          * import com.pulumi.core.Output;
          * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
-         * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+         * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
          * import java.util.List;
          * import java.util.ArrayList;
          * import java.util.Map;
@@ -258,7 +258,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
          * 
          *     public static void stack(Context ctx) {
          *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-         *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+         *             .tags(Map.of(&#34;tagKey1&#34;, &#34;tagValue1&#34;))
          *             .build());
          * 
          *     }
@@ -282,7 +282,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
          * import com.pulumi.Pulumi;
          * import com.pulumi.core.Output;
          * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
-         * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+         * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
          * import java.util.List;
          * import java.util.ArrayList;
          * import java.util.Map;
@@ -297,7 +297,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
          * 
          *     public static void stack(Context ctx) {
          *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-         *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+         *             .tags(Map.of(&#34;tagKey1&#34;, &#34;tagValue1&#34;))
          *             .build());
          * 
          *     }

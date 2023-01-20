@@ -66,7 +66,7 @@ import (
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				DbNodeStorage:        pulumi.String("500"),
 //				StorageType:          pulumi.String("cloud_essd"),
-//				VswitchId:            pulumi.String(defaultSwitches.Vswitches[0].Id),
+//				VswitchId:            *pulumi.String(defaultSwitches.Vswitches[0].Id),
 //			})
 //			if err != nil {
 //				return err

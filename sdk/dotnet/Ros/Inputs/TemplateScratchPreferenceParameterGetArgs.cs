@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ros.Inputs
 {
 
-    public sealed class TemplateScratchPreferenceParameterGetArgs : Pulumi.ResourceArgs
+    public sealed class TemplateScratchPreferenceParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ros.Inputs
         public TemplateScratchPreferenceParameterGetArgs()
         {
         }
+        public static new TemplateScratchPreferenceParameterGetArgs Empty => new TemplateScratchPreferenceParameterGetArgs();
     }
 }

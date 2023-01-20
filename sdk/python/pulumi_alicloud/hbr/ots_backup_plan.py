@@ -19,6 +19,9 @@ class OtsBackupPlanArgs:
                  backup_type: pulumi.Input[str],
                  ots_backup_plan_name: pulumi.Input[str],
                  retention: pulumi.Input[str],
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  ots_details: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]] = None,
@@ -27,19 +30,28 @@ class OtsBackupPlanArgs:
                  vault_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OtsBackupPlan resource.
-        :param pulumi.Input[str] backup_type: The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] ots_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
-        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: true, false.
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         :param pulumi.Input[str] instance_name: The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]] ots_details: The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]] rules: The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "ots_backup_plan_name", ots_backup_plan_name)
         pulumi.set(__self__, "retention", retention)
+        if cross_account_role_name is not None:
+            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+        if cross_account_type is not None:
+            pulumi.set(__self__, "cross_account_type", cross_account_type)
+        if cross_account_user_id is not None:
+            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if instance_name is not None:
@@ -60,7 +72,7 @@ class OtsBackupPlanArgs:
     @pulumi.getter(name="backupType")
     def backup_type(self) -> pulumi.Input[str]:
         """
-        The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        Backup type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -84,7 +96,7 @@ class OtsBackupPlanArgs:
     @pulumi.getter
     def retention(self) -> pulumi.Input[str]:
         """
-        Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
@@ -93,10 +105,46 @@ class OtsBackupPlanArgs:
         pulumi.set(self, "retention", value)
 
     @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @cross_account_role_name.setter
+    def cross_account_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_role_name", value)
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @cross_account_type.setter
+    def cross_account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_type", value)
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The original account ID of the cross account backup managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_user_id")
+
+    @cross_account_user_id.setter
+    def cross_account_user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cross_account_user_id", value)
+
+    @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to disable the backup task. Valid values: true, false.
+        Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -144,7 +192,7 @@ class OtsBackupPlanArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -169,6 +217,9 @@ class OtsBackupPlanArgs:
 class _OtsBackupPlanState:
     def __init__(__self__, *,
                  backup_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  ots_backup_plan_name: Optional[pulumi.Input[str]] = None,
@@ -179,18 +230,27 @@ class _OtsBackupPlanState:
                  vault_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OtsBackupPlan resources.
-        :param pulumi.Input[str] backup_type: The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
-        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: true, false.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         :param pulumi.Input[str] instance_name: The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] ots_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]] ots_details: The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
-        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]] rules: The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         if backup_type is not None:
             pulumi.set(__self__, "backup_type", backup_type)
+        if cross_account_role_name is not None:
+            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+        if cross_account_type is not None:
+            pulumi.set(__self__, "cross_account_type", cross_account_type)
+        if cross_account_user_id is not None:
+            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if instance_name is not None:
@@ -215,7 +275,7 @@ class _OtsBackupPlanState:
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        Backup type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -224,10 +284,46 @@ class _OtsBackupPlanState:
         pulumi.set(self, "backup_type", value)
 
     @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @cross_account_role_name.setter
+    def cross_account_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_role_name", value)
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @cross_account_type.setter
+    def cross_account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_type", value)
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The original account ID of the cross account backup managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_user_id")
+
+    @cross_account_user_id.setter
+    def cross_account_user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cross_account_user_id", value)
+
+    @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to disable the backup task. Valid values: true, false.
+        Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -275,7 +371,7 @@ class _OtsBackupPlanState:
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
@@ -299,7 +395,7 @@ class _OtsBackupPlanState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 
@@ -326,6 +422,9 @@ class OtsBackupPlan(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  ots_backup_plan_name: Optional[pulumi.Input[str]] = None,
@@ -396,14 +495,17 @@ class OtsBackupPlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup_type: The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
-        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: true, false.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         :param pulumi.Input[str] instance_name: The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] ots_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanOtsDetailArgs']]]] ots_details: The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
-        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanRuleArgs']]]] rules: The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         ...
@@ -487,6 +589,9 @@ class OtsBackupPlan(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  ots_backup_plan_name: Optional[pulumi.Input[str]] = None,
@@ -507,6 +612,9 @@ class OtsBackupPlan(pulumi.CustomResource):
             if backup_type is None and not opts.urn:
                 raise TypeError("Missing required property 'backup_type'")
             __props__.__dict__["backup_type"] = backup_type
+            __props__.__dict__["cross_account_role_name"] = cross_account_role_name
+            __props__.__dict__["cross_account_type"] = cross_account_type
+            __props__.__dict__["cross_account_user_id"] = cross_account_user_id
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["instance_name"] = instance_name
             if ots_backup_plan_name is None and not opts.urn:
@@ -533,6 +641,9 @@ class OtsBackupPlan(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             backup_type: Optional[pulumi.Input[str]] = None,
+            cross_account_role_name: Optional[pulumi.Input[str]] = None,
+            cross_account_type: Optional[pulumi.Input[str]] = None,
+            cross_account_user_id: Optional[pulumi.Input[int]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             ots_backup_plan_name: Optional[pulumi.Input[str]] = None,
@@ -548,14 +659,17 @@ class OtsBackupPlan(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup_type: The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
-        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: true, false.
+        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         :param pulumi.Input[str] instance_name: The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] ots_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanOtsDetailArgs']]]] ots_details: The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
-        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanRuleArgs']]]] rules: The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
-        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -563,6 +677,9 @@ class OtsBackupPlan(pulumi.CustomResource):
         __props__ = _OtsBackupPlanState.__new__(_OtsBackupPlanState)
 
         __props__.__dict__["backup_type"] = backup_type
+        __props__.__dict__["cross_account_role_name"] = cross_account_role_name
+        __props__.__dict__["cross_account_type"] = cross_account_type
+        __props__.__dict__["cross_account_user_id"] = cross_account_user_id
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["ots_backup_plan_name"] = ots_backup_plan_name
@@ -577,15 +694,39 @@ class OtsBackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="backupType")
     def backup_type(self) -> pulumi.Output[str]:
         """
-        The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        Backup type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
+
+    @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> pulumi.Output[str]:
+        """
+        The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> pulumi.Output[Optional[int]]:
+        """
+        The original account ID of the cross account backup managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_user_id")
 
     @property
     @pulumi.getter
     def disabled(self) -> pulumi.Output[bool]:
         """
-        Whether to disable the backup task. Valid values: true, false.
+        Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -617,7 +758,7 @@ class OtsBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def retention(self) -> pulumi.Output[str]:
         """
-        Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
@@ -633,7 +774,7 @@ class OtsBackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[Optional[str]]:
         """
-        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
 

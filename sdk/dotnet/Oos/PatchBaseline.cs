@@ -21,22 +21,20 @@ namespace Pulumi.AliCloud.Oos
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Oos.PatchBaseline("example", new()
     ///     {
-    ///         var example = new AliCloud.Oos.PatchBaseline("example", new AliCloud.Oos.PatchBaselineArgs
-    ///         {
-    ///             ApprovalRules = "example_value",
-    ///             OperationSystem = "Windows",
-    ///             PatchBaselineName = "my-PatchBaseline",
-    ///         });
-    ///     }
+    ///         ApprovalRules = "example_value",
+    ///         OperationSystem = "Windows",
+    ///         PatchBaselineName = "my-PatchBaseline",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.Oos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/patchBaseline:PatchBaseline")]
-    public partial class PatchBaseline : Pulumi.CustomResource
+    public partial class PatchBaseline : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
@@ -63,7 +61,7 @@ namespace Pulumi.AliCloud.Oos
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         /// </summary>
         [Output("operationSystem")]
         public Output<string> OperationSystem { get; private set; } = null!;
@@ -118,7 +116,7 @@ namespace Pulumi.AliCloud.Oos
         }
     }
 
-    public sealed class PatchBaselineArgs : Pulumi.ResourceArgs
+    public sealed class PatchBaselineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
@@ -133,7 +131,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         /// </summary>
         [Input("operationSystem", required: true)]
         public Input<string> OperationSystem { get; set; } = null!;
@@ -147,9 +145,10 @@ namespace Pulumi.AliCloud.Oos
         public PatchBaselineArgs()
         {
         }
+        public static new PatchBaselineArgs Empty => new PatchBaselineArgs();
     }
 
-    public sealed class PatchBaselineState : Pulumi.ResourceArgs
+    public sealed class PatchBaselineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Accept the rules. This value follows the json format. For more details, see the [description of ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/doc-detail/311002.html).
@@ -164,7 +163,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         /// </summary>
         [Input("operationSystem")]
         public Input<string>? OperationSystem { get; set; }
@@ -178,5 +177,6 @@ namespace Pulumi.AliCloud.Oos
         public PatchBaselineState()
         {
         }
+        public static new PatchBaselineState Empty => new PatchBaselineState();
     }
 }

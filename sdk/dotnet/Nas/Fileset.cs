@@ -21,51 +21,48 @@ namespace Pulumi.AliCloud.Nas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultZones = AliCloud.Nas.GetZones.Invoke(new()
     ///     {
-    ///         var defaultZones = Output.Create(AliCloud.Nas.GetZones.InvokeAsync(new AliCloud.Nas.GetZonesArgs
-    ///         {
-    ///             FileSystemType = "cpfs",
-    ///         }));
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Zones?[0]?.ZoneId,
-    ///             }));
-    ///         });
-    ///         var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new AliCloud.Nas.FileSystemArgs
-    ///         {
-    ///             ProtocolType = "cpfs",
-    ///             StorageType = "advance_200",
-    ///             FileSystemType = "cpfs",
-    ///             Capacity = 3600,
-    ///             Description = "tf-testacc",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.ZoneId),
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///         });
-    ///         var defaultFileset = new AliCloud.Nas.Fileset("defaultFileset", new AliCloud.Nas.FilesetArgs
-    ///         {
-    ///             FileSystemId = defaultFileSystem.Id,
-    ///             FileSystemPath = "/example_path/",
-    ///             Description = "tf-testacc",
-    ///         });
-    ///     }
+    ///         FileSystemType = "cpfs",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///     });
+    /// 
+    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new()
+    ///     {
+    ///         ProtocolType = "cpfs",
+    ///         StorageType = "advance_200",
+    ///         FileSystemType = "cpfs",
+    ///         Capacity = 3600,
+    ///         Description = "tf-testacc",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultFileset = new AliCloud.Nas.Fileset("defaultFileset", new()
+    ///     {
+    ///         FileSystemId = defaultFileSystem.Id,
+    ///         FileSystemPath = "/example_path/",
+    ///         Description = "tf-testacc",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +74,7 @@ namespace Pulumi.AliCloud.Nas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/fileset:Fileset")]
-    public partial class Fileset : Pulumi.CustomResource
+    public partial class Fileset : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
@@ -159,7 +156,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
-    public sealed class FilesetArgs : Pulumi.ResourceArgs
+    public sealed class FilesetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
@@ -188,9 +185,10 @@ namespace Pulumi.AliCloud.Nas
         public FilesetArgs()
         {
         }
+        public static new FilesetArgs Empty => new FilesetArgs();
     }
 
-    public sealed class FilesetState : Pulumi.ResourceArgs
+    public sealed class FilesetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
@@ -231,5 +229,6 @@ namespace Pulumi.AliCloud.Nas
         public FilesetState()
         {
         }
+        public static new FilesetState Empty => new FilesetState();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,16 +19,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const snapshots = pulumi.output(alicloud.hbr.getOtsSnapshots());
+ * const snapshots = alicloud.hbr.getOtsSnapshots({});
  * ```
  */
 export function getOtsSnapshots(args?: GetOtsSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetOtsSnapshotsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", {
         "endTime": args.endTime,
         "ids": args.ids,
@@ -66,9 +64,24 @@ export interface GetOtsSnapshotsResult {
     readonly snapshots: outputs.hbr.GetOtsSnapshotsSnapshot[];
     readonly startTime?: string;
 }
-
+/**
+ * This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.164.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const snapshots = alicloud.hbr.getOtsSnapshots({});
+ * ```
+ */
 export function getOtsSnapshotsOutput(args?: GetOtsSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOtsSnapshotsResult> {
-    return pulumi.output(args).apply(a => getOtsSnapshots(a, opts))
+    return pulumi.output(args).apply((a: any) => getOtsSnapshots(a, opts))
 }
 
 /**

@@ -21,22 +21,20 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Cms.HybridMonitorFcTask("example", new()
     ///     {
-    ///         var example = new AliCloud.Cms.HybridMonitorFcTask("example", new AliCloud.Cms.HybridMonitorFcTaskArgs
-    ///         {
-    ///             Namespace = "example_value",
-    ///             TargetUserId = "example_value",
-    ///             YarmConfig = "example_value",
-    ///         });
-    ///     }
+    ///         Namespace = "example_value",
+    ///         TargetUserId = "example_value",
+    ///         YarmConfig = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask")]
-    public partial class HybridMonitorFcTask : Pulumi.CustomResource
+    public partial class HybridMonitorFcTask : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the monitoring task.
@@ -57,7 +55,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> HybridMonitorFcTaskId { get; private set; } = null!;
 
         /// <summary>
-        /// The index warehouse where the host belongs.
+        /// the namespace of the Alibaba Cloud service.
         /// </summary>
         [Output("namespace")]
         public Output<string> Namespace { get; private set; } = null!;
@@ -70,8 +68,6 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-        /// - `namespace`: the namespace of the Alibaba Cloud service.
-        /// - `metric_list`: the metrics of the Alibaba Cloud service.
         /// </summary>
         [Output("yarmConfig")]
         public Output<string> YarmConfig { get; private set; } = null!;
@@ -120,10 +116,10 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class HybridMonitorFcTaskArgs : Pulumi.ResourceArgs
+    public sealed class HybridMonitorFcTaskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The index warehouse where the host belongs.
+        /// the namespace of the Alibaba Cloud service.
         /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
@@ -136,8 +132,6 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-        /// - `namespace`: the namespace of the Alibaba Cloud service.
-        /// - `metric_list`: the metrics of the Alibaba Cloud service.
         /// </summary>
         [Input("yarmConfig", required: true)]
         public Input<string> YarmConfig { get; set; } = null!;
@@ -145,9 +139,10 @@ namespace Pulumi.AliCloud.Cms
         public HybridMonitorFcTaskArgs()
         {
         }
+        public static new HybridMonitorFcTaskArgs Empty => new HybridMonitorFcTaskArgs();
     }
 
-    public sealed class HybridMonitorFcTaskState : Pulumi.ResourceArgs
+    public sealed class HybridMonitorFcTaskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the monitoring task.
@@ -156,7 +151,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? HybridMonitorFcTaskId { get; set; }
 
         /// <summary>
-        /// The index warehouse where the host belongs.
+        /// the namespace of the Alibaba Cloud service.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
@@ -169,8 +164,6 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-        /// - `namespace`: the namespace of the Alibaba Cloud service.
-        /// - `metric_list`: the metrics of the Alibaba Cloud service.
         /// </summary>
         [Input("yarmConfig")]
         public Input<string>? YarmConfig { get; set; }
@@ -178,5 +171,6 @@ namespace Pulumi.AliCloud.Cms
         public HybridMonitorFcTaskState()
         {
         }
+        public static new HybridMonitorFcTaskState Empty => new HybridMonitorFcTaskState();
     }
 }

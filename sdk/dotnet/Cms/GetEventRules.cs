@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Cms.GetEventRules.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Cms.GetEventRules.InvokeAsync(new AliCloud.Cms.GetEventRulesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.CmsEventRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Cms.GetEventRules.InvokeAsync(new AliCloud.Cms.GetEventRulesArgs
-        ///         {
-        ///             NameRegex = "^my-EventRule",
-        ///         }));
-        ///         this.CmsEventRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cmsEventRuleId1")]
-        ///     public Output&lt;string&gt; CmsEventRuleId1 { get; set; }
-        ///     [Output("cmsEventRuleId2")]
-        ///     public Output&lt;string&gt; CmsEventRuleId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Cms.GetEventRules.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-EventRule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cmsEventRuleId1"] = ids.Apply(getEventRulesResult =&gt; getEventRulesResult.Rules[0]?.Id),
+        ///         ["cmsEventRuleId2"] = nameRegex.Apply(getEventRulesResult =&gt; getEventRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEventRulesResult> InvokeAsync(GetEventRulesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEventRulesResult>("alicloud:cms/getEventRules:getEventRules", args ?? new GetEventRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEventRulesResult>("alicloud:cms/getEventRules:getEventRules", args ?? new GetEventRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cms Event Rules of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Cms.GetEventRules.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Cms.GetEventRules.InvokeAsync(new AliCloud.Cms.GetEventRulesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.CmsEventRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Cms.GetEventRules.InvokeAsync(new AliCloud.Cms.GetEventRulesArgs
-        ///         {
-        ///             NameRegex = "^my-EventRule",
-        ///         }));
-        ///         this.CmsEventRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cmsEventRuleId1")]
-        ///     public Output&lt;string&gt; CmsEventRuleId1 { get; set; }
-        ///     [Output("cmsEventRuleId2")]
-        ///     public Output&lt;string&gt; CmsEventRuleId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Cms.GetEventRules.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-EventRule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cmsEventRuleId1"] = ids.Apply(getEventRulesResult =&gt; getEventRulesResult.Rules[0]?.Id),
+        ///         ["cmsEventRuleId2"] = nameRegex.Apply(getEventRulesResult =&gt; getEventRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEventRulesResult> Invoke(GetEventRulesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEventRulesResult>("alicloud:cms/getEventRules:getEventRules", args ?? new GetEventRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEventRulesResult>("alicloud:cms/getEventRules:getEventRules", args ?? new GetEventRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEventRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetEventRulesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -149,9 +145,10 @@ namespace Pulumi.AliCloud.Cms
         public GetEventRulesArgs()
         {
         }
+        public static new GetEventRulesArgs Empty => new GetEventRulesArgs();
     }
 
-    public sealed class GetEventRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEventRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -195,6 +192,7 @@ namespace Pulumi.AliCloud.Cms
         public GetEventRulesInvokeArgs()
         {
         }
+        public static new GetEventRulesInvokeArgs Empty => new GetEventRulesInvokeArgs();
     }
 
 

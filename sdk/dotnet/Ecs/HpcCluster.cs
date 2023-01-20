@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ecs.HpcCluster("example", new()
     ///     {
-    ///         var example = new AliCloud.Ecs.HpcCluster("example", new AliCloud.Ecs.HpcClusterArgs
-    ///         {
-    ///             Description = "For Terraform Test",
-    ///         });
-    ///     }
+    ///         Description = "For Terraform Test",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/hpcCluster:HpcCluster")]
-    public partial class HpcCluster : Pulumi.CustomResource
+    public partial class HpcCluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of ECS Hpc Cluster.
@@ -104,7 +102,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class HpcClusterArgs : Pulumi.ResourceArgs
+    public sealed class HpcClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of ECS Hpc Cluster.
@@ -121,9 +119,10 @@ namespace Pulumi.AliCloud.Ecs
         public HpcClusterArgs()
         {
         }
+        public static new HpcClusterArgs Empty => new HpcClusterArgs();
     }
 
-    public sealed class HpcClusterState : Pulumi.ResourceArgs
+    public sealed class HpcClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of ECS Hpc Cluster.
@@ -140,5 +139,6 @@ namespace Pulumi.AliCloud.Ecs
         public HpcClusterState()
         {
         }
+        public static new HpcClusterState Empty => new HpcClusterState();
     }
 }

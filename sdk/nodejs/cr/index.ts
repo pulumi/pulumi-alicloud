@@ -5,30 +5,81 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./chain";
-export * from "./chartNamespace";
-export * from "./chartRepository";
-export * from "./endpointAclPolicy";
-export * from "./getChains";
-export * from "./getChartNamespaces";
-export * from "./getChartRepositories";
-export * from "./getEndpointAclPolicies";
-export * from "./getEndpointAclService";
-export * from "./getNamespaces";
-export * from "./getRepos";
-export * from "./getService";
-export * from "./namespace";
-export * from "./registryEnterpriseInstance";
-export * from "./repo";
+export { ChainArgs, ChainState } from "./chain";
+export type Chain = import("./chain").Chain;
+export const Chain: typeof import("./chain").Chain = null as any;
+utilities.lazyLoad(exports, ["Chain"], () => require("./chain"));
 
-// Import resources to register:
-import { Chain } from "./chain";
-import { ChartNamespace } from "./chartNamespace";
-import { ChartRepository } from "./chartRepository";
-import { EndpointAclPolicy } from "./endpointAclPolicy";
-import { Namespace } from "./namespace";
-import { RegistryEnterpriseInstance } from "./registryEnterpriseInstance";
-import { Repo } from "./repo";
+export { ChartNamespaceArgs, ChartNamespaceState } from "./chartNamespace";
+export type ChartNamespace = import("./chartNamespace").ChartNamespace;
+export const ChartNamespace: typeof import("./chartNamespace").ChartNamespace = null as any;
+utilities.lazyLoad(exports, ["ChartNamespace"], () => require("./chartNamespace"));
+
+export { ChartRepositoryArgs, ChartRepositoryState } from "./chartRepository";
+export type ChartRepository = import("./chartRepository").ChartRepository;
+export const ChartRepository: typeof import("./chartRepository").ChartRepository = null as any;
+utilities.lazyLoad(exports, ["ChartRepository"], () => require("./chartRepository"));
+
+export { EndpointAclPolicyArgs, EndpointAclPolicyState } from "./endpointAclPolicy";
+export type EndpointAclPolicy = import("./endpointAclPolicy").EndpointAclPolicy;
+export const EndpointAclPolicy: typeof import("./endpointAclPolicy").EndpointAclPolicy = null as any;
+utilities.lazyLoad(exports, ["EndpointAclPolicy"], () => require("./endpointAclPolicy"));
+
+export { GetChainsArgs, GetChainsResult, GetChainsOutputArgs } from "./getChains";
+export const getChains: typeof import("./getChains").getChains = null as any;
+export const getChainsOutput: typeof import("./getChains").getChainsOutput = null as any;
+utilities.lazyLoad(exports, ["getChains","getChainsOutput"], () => require("./getChains"));
+
+export { GetChartNamespacesArgs, GetChartNamespacesResult, GetChartNamespacesOutputArgs } from "./getChartNamespaces";
+export const getChartNamespaces: typeof import("./getChartNamespaces").getChartNamespaces = null as any;
+export const getChartNamespacesOutput: typeof import("./getChartNamespaces").getChartNamespacesOutput = null as any;
+utilities.lazyLoad(exports, ["getChartNamespaces","getChartNamespacesOutput"], () => require("./getChartNamespaces"));
+
+export { GetChartRepositoriesArgs, GetChartRepositoriesResult, GetChartRepositoriesOutputArgs } from "./getChartRepositories";
+export const getChartRepositories: typeof import("./getChartRepositories").getChartRepositories = null as any;
+export const getChartRepositoriesOutput: typeof import("./getChartRepositories").getChartRepositoriesOutput = null as any;
+utilities.lazyLoad(exports, ["getChartRepositories","getChartRepositoriesOutput"], () => require("./getChartRepositories"));
+
+export { GetEndpointAclPoliciesArgs, GetEndpointAclPoliciesResult, GetEndpointAclPoliciesOutputArgs } from "./getEndpointAclPolicies";
+export const getEndpointAclPolicies: typeof import("./getEndpointAclPolicies").getEndpointAclPolicies = null as any;
+export const getEndpointAclPoliciesOutput: typeof import("./getEndpointAclPolicies").getEndpointAclPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointAclPolicies","getEndpointAclPoliciesOutput"], () => require("./getEndpointAclPolicies"));
+
+export { GetEndpointAclServiceArgs, GetEndpointAclServiceResult, GetEndpointAclServiceOutputArgs } from "./getEndpointAclService";
+export const getEndpointAclService: typeof import("./getEndpointAclService").getEndpointAclService = null as any;
+export const getEndpointAclServiceOutput: typeof import("./getEndpointAclService").getEndpointAclServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointAclService","getEndpointAclServiceOutput"], () => require("./getEndpointAclService"));
+
+export { GetNamespacesArgs, GetNamespacesResult, GetNamespacesOutputArgs } from "./getNamespaces";
+export const getNamespaces: typeof import("./getNamespaces").getNamespaces = null as any;
+export const getNamespacesOutput: typeof import("./getNamespaces").getNamespacesOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespaces","getNamespacesOutput"], () => require("./getNamespaces"));
+
+export { GetReposArgs, GetReposResult, GetReposOutputArgs } from "./getRepos";
+export const getRepos: typeof import("./getRepos").getRepos = null as any;
+export const getReposOutput: typeof import("./getRepos").getReposOutput = null as any;
+utilities.lazyLoad(exports, ["getRepos","getReposOutput"], () => require("./getRepos"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { NamespaceArgs, NamespaceState } from "./namespace";
+export type Namespace = import("./namespace").Namespace;
+export const Namespace: typeof import("./namespace").Namespace = null as any;
+utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+
+export { RegistryEnterpriseInstanceArgs, RegistryEnterpriseInstanceState } from "./registryEnterpriseInstance";
+export type RegistryEnterpriseInstance = import("./registryEnterpriseInstance").RegistryEnterpriseInstance;
+export const RegistryEnterpriseInstance: typeof import("./registryEnterpriseInstance").RegistryEnterpriseInstance = null as any;
+utilities.lazyLoad(exports, ["RegistryEnterpriseInstance"], () => require("./registryEnterpriseInstance"));
+
+export { RepoArgs, RepoState } from "./repo";
+export type Repo = import("./repo").Repo;
+export const Repo: typeof import("./repo").Repo = null as any;
+utilities.lazyLoad(exports, ["Repo"], () => require("./repo"));
+
 
 const _module = {
     version: utilities.getVersion(),

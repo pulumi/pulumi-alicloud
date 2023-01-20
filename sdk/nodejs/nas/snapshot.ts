@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const defaultFileSystem = new alicloud.nas.FileSystem("defaultFileSystem", {
  *     fileSystemType: "extreme",
  *     protocolType: "NFS",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.zoneId),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
  *     storageType: "standard",
  *     description: name,
  *     capacity: 100,

@@ -44,13 +44,13 @@ import (
 //			ctx.Export("expressConnectVirtualBorderRouterId2", nameRegex.Routers[0].Id)
 //			filter, err := expressconnect.GetVirtualBorderRouters(ctx, &expressconnect.GetVirtualBorderRoutersArgs{
 //				Filters: []expressconnect.GetVirtualBorderRoutersFilter{
-//					expressconnect.GetVirtualBorderRoutersFilter{
+//					{
 //						Key: pulumi.StringRef("PhysicalConnectionId"),
 //						Values: []string{
 //							"pc-xxxx1",
 //						},
 //					},
-//					expressconnect.GetVirtualBorderRoutersFilter{
+//					{
 //						Key: pulumi.StringRef("VbrId"),
 //						Values: []string{
 //							"vbr-xxxx1",

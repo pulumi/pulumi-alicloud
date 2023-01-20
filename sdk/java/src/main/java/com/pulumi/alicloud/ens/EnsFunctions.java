@@ -29,7 +29,7 @@ public final class EnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ens.EnsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import com.pulumi.alicloud.ens.inputs.GetKeyPairsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -72,7 +72,7 @@ public final class EnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ens.EnsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import com.pulumi.alicloud.ens.inputs.GetKeyPairsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -115,7 +115,7 @@ public final class EnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ens.EnsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import com.pulumi.alicloud.ens.inputs.GetKeyPairsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -158,7 +158,7 @@ public final class EnsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ens.EnsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import com.pulumi.alicloud.ens.inputs.GetKeyPairsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

@@ -19,7 +19,7 @@ public final class GatewayVpnAttachmentHealthCheckConfig {
      */
     private @Nullable String dip;
     /**
-     * @return Whether to enable BGP.
+     * @return Specifies whether to enable health checks.
      * 
      */
     private @Nullable Boolean enable;
@@ -53,7 +53,7 @@ public final class GatewayVpnAttachmentHealthCheckConfig {
         return Optional.ofNullable(this.dip);
     }
     /**
-     * @return Whether to enable BGP.
+     * @return Specifies whether to enable health checks.
      * 
      */
     public Optional<Boolean> enable() {

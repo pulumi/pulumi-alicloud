@@ -2,16 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getDBAuditInstance(args?: GetDBAuditInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDBAuditInstanceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", {
         "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,
@@ -45,9 +43,8 @@ export interface GetDBAuditInstanceResult {
     readonly outputFile?: string;
     readonly tags?: {[key: string]: any};
 }
-
 export function getDBAuditInstanceOutput(args?: GetDBAuditInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBAuditInstanceResult> {
-    return pulumi.output(args).apply(a => getDBAuditInstance(a, opts))
+    return pulumi.output(args).apply((a: any) => getDBAuditInstance(a, opts))
 }
 
 /**

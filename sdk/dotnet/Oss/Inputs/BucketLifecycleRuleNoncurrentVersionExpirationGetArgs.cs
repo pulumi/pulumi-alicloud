@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketLifecycleRuleNoncurrentVersionExpirationGetArgs : Pulumi.ResourceArgs
+    public sealed class BucketLifecycleRuleNoncurrentVersionExpirationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the number of days noncurrent object versions transition.
+        /// Specifies the number of days after object creation when the specific rule action takes effect.
         /// </summary>
         [Input("days", required: true)]
         public Input<int> Days { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketLifecycleRuleNoncurrentVersionExpirationGetArgs()
         {
         }
+        public static new BucketLifecycleRuleNoncurrentVersionExpirationGetArgs Empty => new BucketLifecycleRuleNoncurrentVersionExpirationGetArgs();
     }
 }

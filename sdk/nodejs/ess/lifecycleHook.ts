@@ -42,7 +42,7 @@ export class LifecycleHook extends pulumi.CustomResource {
     }
 
     /**
-     * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+     * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
      */
     public readonly defaultResult!: pulumi.Output<string | undefined>;
     /**
@@ -116,7 +116,7 @@ export class LifecycleHook extends pulumi.CustomResource {
  */
 export interface LifecycleHookState {
     /**
-     * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+     * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
      */
     defaultResult?: pulumi.Input<string>;
     /**
@@ -150,7 +150,7 @@ export interface LifecycleHookState {
  */
 export interface LifecycleHookArgs {
     /**
-     * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+     * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
      */
     defaultResult?: pulumi.Input<string>;
     /**

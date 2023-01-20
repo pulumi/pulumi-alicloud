@@ -22,34 +22,34 @@ namespace Pulumi.AliCloud.PolarDB
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var polardbClustersDs = AliCloud.PolarDB.GetClusters.Invoke(new()
         ///     {
-        ///         var polardbClustersDs = Output.Create(AliCloud.PolarDB.GetClusters.InvokeAsync(new AliCloud.PolarDB.GetClustersArgs
-        ///         {
-        ///             DescriptionRegex = "pc-\\w+",
-        ///             Status = "Running",
-        ///         }));
-        ///         var @default = polardbClustersDs.Apply(polardbClustersDs =&gt; Output.Create(AliCloud.PolarDB.GetEndpoints.InvokeAsync(new AliCloud.PolarDB.GetEndpointsArgs
-        ///         {
-        ///             DbClusterId = polardbClustersDs.Clusters?[0]?.Id,
-        ///         })));
-        ///         this.Endpoint = @default.Apply(@default =&gt; @default.Endpoints?[0]?.DbEndpointId);
-        ///     }
+        ///         DescriptionRegex = "pc-\\w+",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("endpoint")]
-        ///     public Output&lt;string&gt; Endpoint { get; set; }
-        /// }
+        ///     var @default = AliCloud.PolarDB.GetEndpoints.Invoke(new()
+        ///     {
+        ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpoint"] = @default.Apply(getEndpointsResult =&gt; getEndpointsResult).Apply(@default =&gt; @default.Apply(getEndpointsResult =&gt; getEndpointsResult.Endpoints[0]?.DbEndpointId)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndpointsResult> InvokeAsync(GetEndpointsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? new GetEndpointsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? new GetEndpointsArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.polardb.getEndpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
@@ -62,38 +62,38 @@ namespace Pulumi.AliCloud.PolarDB
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var polardbClustersDs = AliCloud.PolarDB.GetClusters.Invoke(new()
         ///     {
-        ///         var polardbClustersDs = Output.Create(AliCloud.PolarDB.GetClusters.InvokeAsync(new AliCloud.PolarDB.GetClustersArgs
-        ///         {
-        ///             DescriptionRegex = "pc-\\w+",
-        ///             Status = "Running",
-        ///         }));
-        ///         var @default = polardbClustersDs.Apply(polardbClustersDs =&gt; Output.Create(AliCloud.PolarDB.GetEndpoints.InvokeAsync(new AliCloud.PolarDB.GetEndpointsArgs
-        ///         {
-        ///             DbClusterId = polardbClustersDs.Clusters?[0]?.Id,
-        ///         })));
-        ///         this.Endpoint = @default.Apply(@default =&gt; @default.Endpoints?[0]?.DbEndpointId);
-        ///     }
+        ///         DescriptionRegex = "pc-\\w+",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("endpoint")]
-        ///     public Output&lt;string&gt; Endpoint { get; set; }
-        /// }
+        ///     var @default = AliCloud.PolarDB.GetEndpoints.Invoke(new()
+        ///     {
+        ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpoint"] = @default.Apply(getEndpointsResult =&gt; getEndpointsResult).Apply(@default =&gt; @default.Apply(getEndpointsResult =&gt; getEndpointsResult.Endpoints[0]?.DbEndpointId)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEndpointsResult> Invoke(GetEndpointsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? new GetEndpointsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? new GetEndpointsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEndpointsArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// PolarDB cluster ID.
@@ -110,9 +110,10 @@ namespace Pulumi.AliCloud.PolarDB
         public GetEndpointsArgs()
         {
         }
+        public static new GetEndpointsArgs Empty => new GetEndpointsArgs();
     }
 
-    public sealed class GetEndpointsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// PolarDB cluster ID.
@@ -129,6 +130,7 @@ namespace Pulumi.AliCloud.PolarDB
         public GetEndpointsInvokeArgs()
         {
         }
+        public static new GetEndpointsInvokeArgs Empty => new GetEndpointsInvokeArgs();
     }
 
 

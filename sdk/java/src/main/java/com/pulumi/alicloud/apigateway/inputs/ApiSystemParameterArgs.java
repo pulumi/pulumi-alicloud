@@ -14,14 +14,14 @@ public final class ApiSystemParameterArgs extends com.pulumi.resources.ResourceA
     public static final ApiSystemParameterArgs Empty = new ApiSystemParameterArgs();
 
     /**
-     * System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
+     * Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
      */
     @Import(name="in", required=true)
     private Output<String> in;
 
     /**
-     * @return System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
+     * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
      */
     public Output<String> in() {
@@ -29,14 +29,14 @@ public final class ApiSystemParameterArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * The name of the api gateway api. Defaults to null.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * @return The name of the api gateway api. Defaults to null.
      * 
      */
     public Output<String> name() {
@@ -85,7 +85,7 @@ public final class ApiSystemParameterArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param in System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
+         * @param in Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class ApiSystemParameterArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param in System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
+         * @param in Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class ApiSystemParameterArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+         * @param name The name of the api gateway api. Defaults to null.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ApiSystemParameterArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+         * @param name The name of the api gateway api. Defaults to null.
          * 
          * @return builder
          * 

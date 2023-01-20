@@ -36,8 +36,6 @@ type EcsInstanceSet struct {
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
 	// Indicate how to check instance ready to use.
-	// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-	// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
 	BootCheckOsWithAssistant pulumi.BoolPtrOutput `pulumi:"bootCheckOsWithAssistant"`
 	// The list of data disks created with instance. See the following `Block dataDisks`.
 	DataDisks EcsInstanceSetDataDiskArrayOutput `pulumi:"dataDisks"`
@@ -94,17 +92,12 @@ type EcsInstanceSet struct {
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The security enhancement strategy.
-	// - `Active`: Enable security enhancement strategy, it only works on system images.
-	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit pulumi.Float64Output `pulumi:"spotPriceLimit"`
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
-	// - `NoSpot`: A regular Pay-As-You-Go instance.
-	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
@@ -144,6 +137,13 @@ func NewEcsInstanceSet(ctx *pulumi.Context,
 	if args.SecurityGroupIds == nil {
 		return nil, errors.New("invalid value for required argument 'SecurityGroupIds'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource EcsInstanceSet
 	err := ctx.RegisterResource("alicloud:ecs/ecsInstanceSet:EcsInstanceSet", name, args, &resource, opts...)
 	if err != nil {
@@ -177,8 +177,6 @@ type ecsInstanceSetState struct {
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// Indicate how to check instance ready to use.
-	// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-	// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
 	BootCheckOsWithAssistant *bool `pulumi:"bootCheckOsWithAssistant"`
 	// The list of data disks created with instance. See the following `Block dataDisks`.
 	DataDisks []EcsInstanceSetDataDisk `pulumi:"dataDisks"`
@@ -235,17 +233,12 @@ type ecsInstanceSetState struct {
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The security enhancement strategy.
-	// - `Active`: Enable security enhancement strategy, it only works on system images.
-	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
-	// - `NoSpot`: A regular Pay-As-You-Go instance.
-	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
@@ -281,8 +274,6 @@ type EcsInstanceSetState struct {
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
 	AutoRenewPeriod pulumi.IntPtrInput
 	// Indicate how to check instance ready to use.
-	// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-	// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
 	BootCheckOsWithAssistant pulumi.BoolPtrInput
 	// The list of data disks created with instance. See the following `Block dataDisks`.
 	DataDisks EcsInstanceSetDataDiskArrayInput
@@ -339,17 +330,12 @@ type EcsInstanceSetState struct {
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The security enhancement strategy.
-	// - `Active`: Enable security enhancement strategy, it only works on system images.
-	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// A list of security group ids to associate with.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
-	// - `NoSpot`: A regular Pay-As-You-Go instance.
-	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
@@ -389,8 +375,6 @@ type ecsInstanceSetArgs struct {
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// Indicate how to check instance ready to use.
-	// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-	// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
 	BootCheckOsWithAssistant *bool `pulumi:"bootCheckOsWithAssistant"`
 	// The list of data disks created with instance. See the following `Block dataDisks`.
 	DataDisks []EcsInstanceSetDataDisk `pulumi:"dataDisks"`
@@ -445,17 +429,12 @@ type ecsInstanceSetArgs struct {
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The security enhancement strategy.
-	// - `Active`: Enable security enhancement strategy, it only works on system images.
-	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
-	// - `NoSpot`: A regular Pay-As-You-Go instance.
-	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
@@ -492,8 +471,6 @@ type EcsInstanceSetArgs struct {
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
 	AutoRenewPeriod pulumi.IntPtrInput
 	// Indicate how to check instance ready to use.
-	// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-	// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
 	BootCheckOsWithAssistant pulumi.BoolPtrInput
 	// The list of data disks created with instance. See the following `Block dataDisks`.
 	DataDisks EcsInstanceSetDataDiskArrayInput
@@ -548,17 +525,12 @@ type EcsInstanceSetArgs struct {
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The security enhancement strategy.
-	// - `Active`: Enable security enhancement strategy, it only works on system images.
-	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// A list of security group ids to associate with.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
-	// - `NoSpot`: A regular Pay-As-You-Go instance.
-	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
@@ -692,8 +664,6 @@ func (o EcsInstanceSetOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
 }
 
 // Indicate how to check instance ready to use.
-// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
 func (o EcsInstanceSetOutput) BootCheckOsWithAssistant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.BoolPtrOutput { return v.BootCheckOsWithAssistant }).(pulumi.BoolPtrOutput)
 }
@@ -831,8 +801,6 @@ func (o EcsInstanceSetOutput) ResourceGroupId() pulumi.StringPtrOutput {
 }
 
 // The security enhancement strategy.
-// - `Active`: Enable security enhancement strategy, it only works on system images.
-// - `Deactive`: Disable security enhancement strategy, it works on all images.
 func (o EcsInstanceSetOutput) SecurityEnhancementStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringPtrOutput)
 }
@@ -848,9 +816,6 @@ func (o EcsInstanceSetOutput) SpotPriceLimit() pulumi.Float64Output {
 }
 
 // The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
-// - `NoSpot`: A regular Pay-As-You-Go instance.
-// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
 func (o EcsInstanceSetOutput) SpotStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.SpotStrategy }).(pulumi.StringOutput)
 }

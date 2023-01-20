@@ -5,14 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./cluster";
-export * from "./getClusters";
-export * from "./getDiskTypes";
-export * from "./getInstanceTypes";
-export * from "./getMainVersions";
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
-// Import resources to register:
-import { Cluster } from "./cluster";
+export { GetClustersArgs, GetClustersResult, GetClustersOutputArgs } from "./getClusters";
+export const getClusters: typeof import("./getClusters").getClusters = null as any;
+export const getClustersOutput: typeof import("./getClusters").getClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getClusters","getClustersOutput"], () => require("./getClusters"));
+
+export { GetDiskTypesArgs, GetDiskTypesResult, GetDiskTypesOutputArgs } from "./getDiskTypes";
+export const getDiskTypes: typeof import("./getDiskTypes").getDiskTypes = null as any;
+export const getDiskTypesOutput: typeof import("./getDiskTypes").getDiskTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getDiskTypes","getDiskTypesOutput"], () => require("./getDiskTypes"));
+
+export { GetInstanceTypesArgs, GetInstanceTypesResult, GetInstanceTypesOutputArgs } from "./getInstanceTypes";
+export const getInstanceTypes: typeof import("./getInstanceTypes").getInstanceTypes = null as any;
+export const getInstanceTypesOutput: typeof import("./getInstanceTypes").getInstanceTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceTypes","getInstanceTypesOutput"], () => require("./getInstanceTypes"));
+
+export { GetMainVersionsArgs, GetMainVersionsResult, GetMainVersionsOutputArgs } from "./getMainVersions";
+export const getMainVersions: typeof import("./getMainVersions").getMainVersions = null as any;
+export const getMainVersionsOutput: typeof import("./getMainVersions").getMainVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getMainVersions","getMainVersionsOutput"], () => require("./getMainVersions"));
+
 
 const _module = {
     version: utilities.getVersion(),

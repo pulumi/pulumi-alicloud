@@ -11,7 +11,7 @@ namespace Pulumi.AliCloud.Vpc
 {
     [Obsolete(@"This resource has been deprecated and replaced by the Switch resource.")]
     [AliCloudResourceType("alicloud:vpc/subnet:Subnet")]
-    public partial class Subnet : Pulumi.CustomResource
+    public partial class Subnet : global::Pulumi.CustomResource
     {
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class SubnetArgs : Pulumi.ResourceArgs
+    public sealed class SubnetArgs : global::Pulumi.ResourceArgs
     {
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -118,9 +118,10 @@ namespace Pulumi.AliCloud.Vpc
         public SubnetArgs()
         {
         }
+        public static new SubnetArgs Empty => new SubnetArgs();
     }
 
-    public sealed class SubnetState : Pulumi.ResourceArgs
+    public sealed class SubnetState : global::Pulumi.ResourceArgs
     {
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -157,5 +158,6 @@ namespace Pulumi.AliCloud.Vpc
         public SubnetState()
         {
         }
+        public static new SubnetState Empty => new SubnetState();
     }
 }

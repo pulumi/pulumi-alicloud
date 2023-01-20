@@ -175,6 +175,13 @@ func NewEnterpriseInstance(ctx *pulumi.Context,
 	if args.SafeRule == nil {
 		return nil, errors.New("invalid value for required argument 'SafeRule'")
 	}
+	if args.DatabasePassword != nil {
+		args.DatabasePassword = pulumi.ToSecret(args.DatabasePassword).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"databasePassword",
+	})
+	opts = append(opts, secrets)
 	var resource EnterpriseInstance
 	err := ctx.RegisterResource("alicloud:dms/enterpriseInstance:EnterpriseInstance", name, args, &resource, opts...)
 	if err != nil {

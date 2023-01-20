@@ -50,9 +50,9 @@ import (
 //					defaultNetworkPackage.ID(),
 //				},
 //			}, nil)
-//			ctx.Export("ecdNetworkPackageId1", defaultNetworkPackages.ApplyT(func(defaultNetworkPackages eds.GetNetworkPackagesResult) (string, error) {
-//				return defaultNetworkPackages.Packages[0].Id, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("ecdNetworkPackageId1", defaultNetworkPackages.ApplyT(func(defaultNetworkPackages eds.GetNetworkPackagesResult) (*string, error) {
+//				return &defaultNetworkPackages.Packages[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

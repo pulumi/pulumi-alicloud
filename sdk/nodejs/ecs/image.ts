@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultImage = new alicloud.ecs.Image("default", {
+ * const _default = new alicloud.ecs.Image("default", {
  *     architecture: "x86_64",
  *     description: "test-image",
  *     imageName: "test-image",
@@ -103,7 +104,8 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
+     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
+     * Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
      */
     public readonly platform!: pulumi.Output<string | undefined>;
     /**
@@ -200,7 +202,8 @@ export interface ImageState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
+     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
+     * Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
      */
     platform?: pulumi.Input<string>;
     /**
@@ -253,7 +256,8 @@ export interface ImageArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
+     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
+     * Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
      */
     platform?: pulumi.Input<string>;
     /**

@@ -60,24 +60,22 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// <summary>
         /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var taggedInstances = AliCloud.Slb.GetLoadBalancers.Invoke(new()
         ///     {
-        ///         var taggedInstances = Output.Create(AliCloud.Slb.GetLoadBalancers.InvokeAsync(new AliCloud.Slb.GetLoadBalancersArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///                 { "tagKey2", "tagValue2" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "tagKey1", "tagValue1" },
+        ///             { "tagKey2", "tagValue2" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;

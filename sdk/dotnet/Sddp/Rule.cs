@@ -21,24 +21,22 @@ namespace Pulumi.AliCloud.Sddp
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Sddp.Rule("default", new()
     ///     {
-    ///         var @default = new AliCloud.Sddp.Rule("default", new AliCloud.Sddp.RuleArgs
-    ///         {
-    ///             Category = 0,
-    ///             Content = "content",
-    ///             ProductCode = "ODPS",
-    ///             RiskLevelId = "4",
-    ///             RuleName = "rule_name",
-    ///         });
-    ///     }
+    ///         Category = 0,
+    ///         Content = "content",
+    ///         ProductCode = "ODPS",
+    ///         RiskLevelId = "4",
+    ///         RuleName = "rule_name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,12 +48,10 @@ namespace Pulumi.AliCloud.Sddp
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sddp/rule:Rule")]
-    public partial class Rule : Pulumi.CustomResource
+    public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Sensitive Data Identification Rules for the Type of. Valid values:
-        /// * `0`: Keyword.
-        /// * `2`: Regular expression.
         /// </summary>
         [Output("category")]
         public Output<int> Category { get; private set; } = null!;
@@ -73,9 +69,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<string> ContentCategory { get; private set; } = null!;
 
         /// <summary>
-        /// Sensitive Data Identification Rules of Type. Valid values: 
-        /// * `0`: the Built-in.
-        /// * `1`: The User-Defined.
+        /// Sensitive Data Identification Rules of Type. Valid values:
         /// </summary>
         [Output("customType")]
         public Output<int> CustomType { get; private set; } = null!;
@@ -88,8 +82,6 @@ namespace Pulumi.AliCloud.Sddp
 
         /// <summary>
         /// The Request and Receive the Language of the Message Type. Valid values:
-        /// * `zh`: Chinese.
-        /// * `en`: English.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
@@ -101,20 +93,13 @@ namespace Pulumi.AliCloud.Sddp
         public Output<string?> ProductCode { get; private set; } = null!;
 
         /// <summary>
-        /// Product ID. Valid values: 
-        /// * `1`:MaxCompute
-        /// * `2`:OSS
-        /// * `5`:RDS.
+        /// Product ID. Valid values:
         /// </summary>
         [Output("productId")]
         public Output<string?> ProductId { get; private set; } = null!;
 
         /// <summary>
-        /// Sensitive Data Identification Rules of Risk Level ID. Valid values: 
-        /// * `2`:S1, Weak Risk Level.
-        /// * `3`:S2, Medium Risk Level.
-        /// * `4`:S3 High Risk Level.
-        /// * `5`:S4, the Highest Risk Level.
+        /// Sensitive Data Identification Rules of Risk Level ID. Valid values:
         /// </summary>
         [Output("riskLevelId")]
         public Output<string?> RiskLevelId { get; private set; } = null!;
@@ -150,10 +135,7 @@ namespace Pulumi.AliCloud.Sddp
         public Output<string?> Target { get; private set; } = null!;
 
         /// <summary>
-        /// The Level of Risk. Valid values: 
-        /// * `1`: Weak warn Level.
-        /// * `2`: Medium Risk Level.
-        /// * `3`: High Risk Level.
+        /// The Level of Risk. Valid values:
         /// </summary>
         [Output("warnLevel")]
         public Output<int?> WarnLevel { get; private set; } = null!;
@@ -202,12 +184,10 @@ namespace Pulumi.AliCloud.Sddp
         }
     }
 
-    public sealed class RuleArgs : Pulumi.ResourceArgs
+    public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sensitive Data Identification Rules for the Type of. Valid values:
-        /// * `0`: Keyword.
-        /// * `2`: Regular expression.
         /// </summary>
         [Input("category", required: true)]
         public Input<int> Category { get; set; } = null!;
@@ -225,9 +205,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? ContentCategory { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Rules of Type. Valid values: 
-        /// * `0`: the Built-in.
-        /// * `1`: The User-Defined.
+        /// Sensitive Data Identification Rules of Type. Valid values:
         /// </summary>
         [Input("customType")]
         public Input<int>? CustomType { get; set; }
@@ -240,8 +218,6 @@ namespace Pulumi.AliCloud.Sddp
 
         /// <summary>
         /// The Request and Receive the Language of the Message Type. Valid values:
-        /// * `zh`: Chinese.
-        /// * `en`: English.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -253,20 +229,13 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? ProductCode { get; set; }
 
         /// <summary>
-        /// Product ID. Valid values: 
-        /// * `1`:MaxCompute
-        /// * `2`:OSS
-        /// * `5`:RDS.
+        /// Product ID. Valid values:
         /// </summary>
         [Input("productId")]
         public Input<string>? ProductId { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Rules of Risk Level ID. Valid values: 
-        /// * `2`:S1, Weak Risk Level.
-        /// * `3`:S2, Medium Risk Level.
-        /// * `4`:S3 High Risk Level.
-        /// * `5`:S4, the Highest Risk Level.
+        /// Sensitive Data Identification Rules of Risk Level ID. Valid values:
         /// </summary>
         [Input("riskLevelId")]
         public Input<string>? RiskLevelId { get; set; }
@@ -302,10 +271,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The Level of Risk. Valid values: 
-        /// * `1`: Weak warn Level.
-        /// * `2`: Medium Risk Level.
-        /// * `3`: High Risk Level.
+        /// The Level of Risk. Valid values:
         /// </summary>
         [Input("warnLevel")]
         public Input<int>? WarnLevel { get; set; }
@@ -313,14 +279,13 @@ namespace Pulumi.AliCloud.Sddp
         public RuleArgs()
         {
         }
+        public static new RuleArgs Empty => new RuleArgs();
     }
 
-    public sealed class RuleState : Pulumi.ResourceArgs
+    public sealed class RuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sensitive Data Identification Rules for the Type of. Valid values:
-        /// * `0`: Keyword.
-        /// * `2`: Regular expression.
         /// </summary>
         [Input("category")]
         public Input<int>? Category { get; set; }
@@ -338,9 +303,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? ContentCategory { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Rules of Type. Valid values: 
-        /// * `0`: the Built-in.
-        /// * `1`: The User-Defined.
+        /// Sensitive Data Identification Rules of Type. Valid values:
         /// </summary>
         [Input("customType")]
         public Input<int>? CustomType { get; set; }
@@ -353,8 +316,6 @@ namespace Pulumi.AliCloud.Sddp
 
         /// <summary>
         /// The Request and Receive the Language of the Message Type. Valid values:
-        /// * `zh`: Chinese.
-        /// * `en`: English.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -366,20 +327,13 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? ProductCode { get; set; }
 
         /// <summary>
-        /// Product ID. Valid values: 
-        /// * `1`:MaxCompute
-        /// * `2`:OSS
-        /// * `5`:RDS.
+        /// Product ID. Valid values:
         /// </summary>
         [Input("productId")]
         public Input<string>? ProductId { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Rules of Risk Level ID. Valid values: 
-        /// * `2`:S1, Weak Risk Level.
-        /// * `3`:S2, Medium Risk Level.
-        /// * `4`:S3 High Risk Level.
-        /// * `5`:S4, the Highest Risk Level.
+        /// Sensitive Data Identification Rules of Risk Level ID. Valid values:
         /// </summary>
         [Input("riskLevelId")]
         public Input<string>? RiskLevelId { get; set; }
@@ -415,10 +369,7 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The Level of Risk. Valid values: 
-        /// * `1`: Weak warn Level.
-        /// * `2`: Medium Risk Level.
-        /// * `3`: High Risk Level.
+        /// The Level of Risk. Valid values:
         /// </summary>
         [Input("warnLevel")]
         public Input<int>? WarnLevel { get; set; }
@@ -426,5 +377,6 @@ namespace Pulumi.AliCloud.Sddp
         public RuleState()
         {
         }
+        public static new RuleState Empty => new RuleState();
     }
 }

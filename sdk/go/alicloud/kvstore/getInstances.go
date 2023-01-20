@@ -103,11 +103,11 @@ type GetInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of KVStore Instance IDs.
-	Ids           []string `pulumi:"ids"`
-	InstanceClass *string  `pulumi:"instanceClass"`
+	Ids []string `pulumi:"ids"`
+	// (Optional) Type of the applied ApsaraDB for instance.
+	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+	InstanceClass *string `pulumi:"instanceClass"`
 	// (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
-	// * `instanceClass`- (Optional) Type of the applied ApsaraDB for instance.
-	//   For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 	InstanceType *string `pulumi:"instanceType"`
 	// A list of KVStore Instances. Its every element contains the following attributes:
 	Instances []GetInstancesInstance `pulumi:"instances"`
@@ -242,13 +242,13 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// (Optional) Type of the applied ApsaraDB for instance.
+// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 func (o GetInstancesResultOutput) InstanceClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceClass }).(pulumi.StringPtrOutput)
 }
 
 // (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
-//   - `instanceClass`- (Optional) Type of the applied ApsaraDB for instance.
-//     For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 func (o GetInstancesResultOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.EventBridge
 {
     [AliCloudResourceType("alicloud:eventbridge/slr:Slr")]
-    public partial class Slr : Pulumi.CustomResource
+    public partial class Slr : global::Pulumi.CustomResource
     {
         [Output("productName")]
         public Output<string> ProductName { get; private set; } = null!;
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.EventBridge
         }
     }
 
-    public sealed class SlrArgs : Pulumi.ResourceArgs
+    public sealed class SlrArgs : global::Pulumi.ResourceArgs
     {
         [Input("productName", required: true)]
         public Input<string> ProductName { get; set; } = null!;
@@ -67,9 +67,10 @@ namespace Pulumi.AliCloud.EventBridge
         public SlrArgs()
         {
         }
+        public static new SlrArgs Empty => new SlrArgs();
     }
 
-    public sealed class SlrState : Pulumi.ResourceArgs
+    public sealed class SlrState : global::Pulumi.ResourceArgs
     {
         [Input("productName")]
         public Input<string>? ProductName { get; set; }
@@ -77,5 +78,6 @@ namespace Pulumi.AliCloud.EventBridge
         public SlrState()
         {
         }
+        public static new SlrState Empty => new SlrState();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["d-artgdsvdvxxxx"],
  *     nameRegex: "tf-test",
  * });
- * export const firstEcsDiskId = example.then(example => example.disks?[0]?.id);
+ * export const firstEcsDiskId = example.then(example => example.disks?.[0]?.id);
  * ```
  */
 export function getEcsDisks(args?: GetEcsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDisksResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsDisks:getEcsDisks", {
         "additionalAttributes": args.additionalAttributes,
         "autoSnapshotPolicyId": args.autoSnapshotPolicyId,
@@ -105,8 +103,6 @@ export interface GetEcsDisksArgs {
     diskType?: string;
     /**
      * Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-     * * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-     * * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
      */
     dryRun?: boolean;
     /**
@@ -228,9 +224,28 @@ export interface GetEcsDisksResult {
     readonly type?: string;
     readonly zoneId?: string;
 }
-
+/**
+ * This data source provides the Ecs Disks of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.122.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getEcsDisks({
+ *     ids: ["d-artgdsvdvxxxx"],
+ *     nameRegex: "tf-test",
+ * });
+ * export const firstEcsDiskId = example.then(example => example.disks?.[0]?.id);
+ * ```
+ */
 export function getEcsDisksOutput(args?: GetEcsDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDisksResult> {
-    return pulumi.output(args).apply(a => getEcsDisks(a, opts))
+    return pulumi.output(args).apply((a: any) => getEcsDisks(a, opts))
 }
 
 /**
@@ -273,8 +288,6 @@ export interface GetEcsDisksOutputArgs {
     diskType?: pulumi.Input<string>;
     /**
      * Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-     * * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-     * * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
      */
     dryRun?: pulumi.Input<boolean>;
     /**

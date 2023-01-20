@@ -79,6 +79,9 @@ export class DhcpOptionsSetAttachment extends pulumi.CustomResource {
      * Specifies whether to precheck this request only. Default values: `false`. Valid values:
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    /**
+     * The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The ID of the VPC network that is to be associated with the DHCP options set..
@@ -132,6 +135,9 @@ export interface DhcpOptionsSetAttachmentState {
      * Specifies whether to precheck this request only. Default values: `false`. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+     */
     status?: pulumi.Input<string>;
     /**
      * The ID of the VPC network that is to be associated with the DHCP options set..

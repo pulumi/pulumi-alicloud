@@ -25,33 +25,30 @@ namespace Pulumi.AliCloud.Sag
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultAcls = AliCloud.Sag.GetAcls.Invoke(new()
         ///     {
-        ///         var defaultAcls = Output.Create(AliCloud.Sag.GetAcls.InvokeAsync(new AliCloud.Sag.GetAclsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 alicloud_sag_acls.Default.Id,
-        ///             },
-        ///             NameRegex = "^tf-testAcc.*",
-        ///         }));
-        ///         var defaultAcl = new AliCloud.RocketMQ.Acl("defaultAcl", new AliCloud.RocketMQ.AclArgs
-        ///         {
-        ///         });
-        ///     }
+        ///             alicloud_sag_acls.Default.Id,
+        ///         },
+        ///         NameRegex = "^tf-testAcc.*",
+        ///     });
         /// 
-        /// }
+        ///     var defaultAcl = new AliCloud.RocketMQ.Acl("defaultAcl");
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:sag/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:sag/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides Sag Acls available to the user.
@@ -67,37 +64,34 @@ namespace Pulumi.AliCloud.Sag
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultAcls = AliCloud.Sag.GetAcls.Invoke(new()
         ///     {
-        ///         var defaultAcls = Output.Create(AliCloud.Sag.GetAcls.InvokeAsync(new AliCloud.Sag.GetAclsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 alicloud_sag_acls.Default.Id,
-        ///             },
-        ///             NameRegex = "^tf-testAcc.*",
-        ///         }));
-        ///         var defaultAcl = new AliCloud.RocketMQ.Acl("defaultAcl", new AliCloud.RocketMQ.AclArgs
-        ///         {
-        ///         });
-        ///     }
+        ///             alicloud_sag_acls.Default.Id,
+        ///         },
+        ///         NameRegex = "^tf-testAcc.*",
+        ///     });
         /// 
-        /// }
+        ///     var defaultAcl = new AliCloud.RocketMQ.Acl("defaultAcl");
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:sag/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:sag/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAclsArgs : Pulumi.InvokeArgs
+    public sealed class GetAclsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -123,9 +117,10 @@ namespace Pulumi.AliCloud.Sag
         public GetAclsArgs()
         {
         }
+        public static new GetAclsArgs Empty => new GetAclsArgs();
     }
 
-    public sealed class GetAclsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAclsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -151,6 +146,7 @@ namespace Pulumi.AliCloud.Sag
         public GetAclsInvokeArgs()
         {
         }
+        public static new GetAclsInvokeArgs Empty => new GetAclsInvokeArgs();
     }
 
 

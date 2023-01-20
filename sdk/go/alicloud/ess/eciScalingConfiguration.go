@@ -112,6 +112,10 @@ import (
 type EciScalingConfiguration struct {
 	pulumi.CustomResourceState
 
+	// Information about the Container Registry Enterprise Edition instance. The details see
+	// Block `acrRegistryInfo`.See Block acrRegistryInfo below for
+	// details.
+	AcrRegistryInfos EciScalingConfigurationAcrRegistryInfoArrayOutput `pulumi:"acrRegistryInfos"`
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
 	Active pulumi.BoolPtrOutput `pulumi:"active"`
@@ -121,7 +125,7 @@ type EciScalingConfiguration struct {
 	ContainerGroupName pulumi.StringPtrOutput `pulumi:"containerGroupName"`
 	// The list of containers.See Block container below for details.
 	Containers EciScalingConfigurationContainerArrayOutput `pulumi:"containers"`
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrOutput `pulumi:"cpu"`
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
@@ -150,7 +154,7 @@ type EciScalingConfiguration struct {
 	// The list of initContainers.See Block initContainer below for
 	// details.
 	InitContainers EciScalingConfigurationInitContainerArrayOutput `pulumi:"initContainers"`
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrOutput `pulumi:"memory"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName pulumi.StringPtrOutput `pulumi:"ramRoleName"`
@@ -215,6 +219,10 @@ func GetEciScalingConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EciScalingConfiguration resources.
 type eciScalingConfigurationState struct {
+	// Information about the Container Registry Enterprise Edition instance. The details see
+	// Block `acrRegistryInfo`.See Block acrRegistryInfo below for
+	// details.
+	AcrRegistryInfos []EciScalingConfigurationAcrRegistryInfo `pulumi:"acrRegistryInfos"`
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
 	Active *bool `pulumi:"active"`
@@ -224,7 +232,7 @@ type eciScalingConfigurationState struct {
 	ContainerGroupName *string `pulumi:"containerGroupName"`
 	// The list of containers.See Block container below for details.
 	Containers []EciScalingConfigurationContainer `pulumi:"containers"`
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
@@ -253,7 +261,7 @@ type eciScalingConfigurationState struct {
 	// The list of initContainers.See Block initContainer below for
 	// details.
 	InitContainers []EciScalingConfigurationInitContainer `pulumi:"initContainers"`
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName *string `pulumi:"ramRoleName"`
@@ -287,6 +295,10 @@ type eciScalingConfigurationState struct {
 }
 
 type EciScalingConfigurationState struct {
+	// Information about the Container Registry Enterprise Edition instance. The details see
+	// Block `acrRegistryInfo`.See Block acrRegistryInfo below for
+	// details.
+	AcrRegistryInfos EciScalingConfigurationAcrRegistryInfoArrayInput
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
 	Active pulumi.BoolPtrInput
@@ -296,7 +308,7 @@ type EciScalingConfigurationState struct {
 	ContainerGroupName pulumi.StringPtrInput
 	// The list of containers.See Block container below for details.
 	Containers EciScalingConfigurationContainerArrayInput
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
@@ -325,7 +337,7 @@ type EciScalingConfigurationState struct {
 	// The list of initContainers.See Block initContainer below for
 	// details.
 	InitContainers EciScalingConfigurationInitContainerArrayInput
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName pulumi.StringPtrInput
@@ -363,6 +375,10 @@ func (EciScalingConfigurationState) ElementType() reflect.Type {
 }
 
 type eciScalingConfigurationArgs struct {
+	// Information about the Container Registry Enterprise Edition instance. The details see
+	// Block `acrRegistryInfo`.See Block acrRegistryInfo below for
+	// details.
+	AcrRegistryInfos []EciScalingConfigurationAcrRegistryInfo `pulumi:"acrRegistryInfos"`
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
 	Active *bool `pulumi:"active"`
@@ -372,7 +388,7 @@ type eciScalingConfigurationArgs struct {
 	ContainerGroupName *string `pulumi:"containerGroupName"`
 	// The list of containers.See Block container below for details.
 	Containers []EciScalingConfigurationContainer `pulumi:"containers"`
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
@@ -401,7 +417,7 @@ type eciScalingConfigurationArgs struct {
 	// The list of initContainers.See Block initContainer below for
 	// details.
 	InitContainers []EciScalingConfigurationInitContainer `pulumi:"initContainers"`
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName *string `pulumi:"ramRoleName"`
@@ -436,6 +452,10 @@ type eciScalingConfigurationArgs struct {
 
 // The set of arguments for constructing a EciScalingConfiguration resource.
 type EciScalingConfigurationArgs struct {
+	// Information about the Container Registry Enterprise Edition instance. The details see
+	// Block `acrRegistryInfo`.See Block acrRegistryInfo below for
+	// details.
+	AcrRegistryInfos EciScalingConfigurationAcrRegistryInfoArrayInput
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
 	Active pulumi.BoolPtrInput
@@ -445,7 +465,7 @@ type EciScalingConfigurationArgs struct {
 	ContainerGroupName pulumi.StringPtrInput
 	// The list of containers.See Block container below for details.
 	Containers EciScalingConfigurationContainerArrayInput
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
@@ -474,7 +494,7 @@ type EciScalingConfigurationArgs struct {
 	// The list of initContainers.See Block initContainer below for
 	// details.
 	InitContainers EciScalingConfigurationInitContainerArrayInput
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName pulumi.StringPtrInput
@@ -594,6 +614,15 @@ func (o EciScalingConfigurationOutput) ToEciScalingConfigurationOutputWithContex
 	return o
 }
 
+// Information about the Container Registry Enterprise Edition instance. The details see
+// Block `acrRegistryInfo`.See Block acrRegistryInfo below for
+// details.
+func (o EciScalingConfigurationOutput) AcrRegistryInfos() EciScalingConfigurationAcrRegistryInfoArrayOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationAcrRegistryInfoArrayOutput {
+		return v.AcrRegistryInfos
+	}).(EciScalingConfigurationAcrRegistryInfoArrayOutput)
+}
+
 // Whether active current eci scaling configuration in the specified scaling group. Note that only
 // one configuration can be active. Default to `false`.
 func (o EciScalingConfigurationOutput) Active() pulumi.BoolPtrOutput {
@@ -615,7 +644,7 @@ func (o EciScalingConfigurationOutput) Containers() EciScalingConfigurationConta
 	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationContainerArrayOutput { return v.Containers }).(EciScalingConfigurationContainerArrayOutput)
 }
 
-// The amount of CPU resources allocated to the container.
+// The amount of CPU resources allocated to the container group.
 func (o EciScalingConfigurationOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.Float64PtrOutput { return v.Cpu }).(pulumi.Float64PtrOutput)
 }
@@ -684,7 +713,7 @@ func (o EciScalingConfigurationOutput) InitContainers() EciScalingConfigurationI
 	}).(EciScalingConfigurationInitContainerArrayOutput)
 }
 
-// The amount of memory resources allocated to the container.
+// The amount of memory resources allocated to the container group.
 func (o EciScalingConfigurationOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.Float64PtrOutput { return v.Memory }).(pulumi.Float64PtrOutput)
 }

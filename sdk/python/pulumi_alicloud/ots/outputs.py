@@ -11,24 +11,336 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'SearchIndexSchema',
+    'SearchIndexSchemaFieldSchema',
+    'SearchIndexSchemaIndexSetting',
+    'SearchIndexSchemaIndexSort',
+    'SearchIndexSchemaIndexSortSorter',
+    'TableDefinedColumn',
     'TablePrimaryKey',
     'TunnelChannel',
     'GetInstanceAttachmentsAttachmentResult',
     'GetInstancesInstanceResult',
+    'GetSearchIndexesIndexResult',
+    'GetSecondaryIndexesIndexResult',
     'GetTablesTableResult',
+    'GetTablesTableDefinedColumnResult',
     'GetTablesTablePrimaryKeyResult',
     'GetTunnelsTunnelResult',
     'GetTunnelsTunnelChannelResult',
 ]
 
 @pulumi.output_type
-class TablePrimaryKey(dict):
+class SearchIndexSchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldSchemas":
+            suggest = "field_schemas"
+        elif key == "indexSettings":
+            suggest = "index_settings"
+        elif key == "indexSorts":
+            suggest = "index_sorts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SearchIndexSchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SearchIndexSchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SearchIndexSchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_schemas: Sequence['outputs.SearchIndexSchemaFieldSchema'],
+                 index_settings: Optional[Sequence['outputs.SearchIndexSchemaIndexSetting']] = None,
+                 index_sorts: Optional[Sequence['outputs.SearchIndexSchemaIndexSort']] = None):
+        """
+        :param Sequence['SearchIndexSchemaFieldSchemaArgs'] field_schemas: A list of field schemas. Each field schema contains the following parameters:
+        :param Sequence['SearchIndexSchemaIndexSettingArgs'] index_settings: The settings of the search index, including routingFields.
+        :param Sequence['SearchIndexSchemaIndexSortArgs'] index_sorts: The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
+        """
+        pulumi.set(__self__, "field_schemas", field_schemas)
+        if index_settings is not None:
+            pulumi.set(__self__, "index_settings", index_settings)
+        if index_sorts is not None:
+            pulumi.set(__self__, "index_sorts", index_sorts)
+
+    @property
+    @pulumi.getter(name="fieldSchemas")
+    def field_schemas(self) -> Sequence['outputs.SearchIndexSchemaFieldSchema']:
+        """
+        A list of field schemas. Each field schema contains the following parameters:
+        """
+        return pulumi.get(self, "field_schemas")
+
+    @property
+    @pulumi.getter(name="indexSettings")
+    def index_settings(self) -> Optional[Sequence['outputs.SearchIndexSchemaIndexSetting']]:
+        """
+        The settings of the search index, including routingFields.
+        """
+        return pulumi.get(self, "index_settings")
+
+    @property
+    @pulumi.getter(name="indexSorts")
+    def index_sorts(self) -> Optional[Sequence['outputs.SearchIndexSchemaIndexSort']]:
+        """
+        The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
+        """
+        return pulumi.get(self, "index_sorts")
+
+
+@pulumi.output_type
+class SearchIndexSchemaFieldSchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldName":
+            suggest = "field_name"
+        elif key == "fieldType":
+            suggest = "field_type"
+        elif key == "enableSortAndAgg":
+            suggest = "enable_sort_and_agg"
+        elif key == "isArray":
+            suggest = "is_array"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SearchIndexSchemaFieldSchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SearchIndexSchemaFieldSchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SearchIndexSchemaFieldSchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_name: str,
+                 field_type: str,
+                 analyzer: Optional[str] = None,
+                 enable_sort_and_agg: Optional[bool] = None,
+                 index: Optional[bool] = None,
+                 is_array: Optional[bool] = None,
+                 store: Optional[bool] = None):
+        """
+        :param str field_name: The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        :param str field_type: Specifies the type of the field. Use FieldType.XXX to set the type.
+        :param str analyzer: Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+        :param bool enable_sort_and_agg: Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+        :param bool index: Specifies whether to enable indexing for the column. Type: Boolean.
+        :param bool is_array: Specifies whether the value is an array. Type: Boolean.
+        :param bool store: Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+        """
+        pulumi.set(__self__, "field_name", field_name)
+        pulumi.set(__self__, "field_type", field_type)
+        if analyzer is not None:
+            pulumi.set(__self__, "analyzer", analyzer)
+        if enable_sort_and_agg is not None:
+            pulumi.set(__self__, "enable_sort_and_agg", enable_sort_and_agg)
+        if index is not None:
+            pulumi.set(__self__, "index", index)
+        if is_array is not None:
+            pulumi.set(__self__, "is_array", is_array)
+        if store is not None:
+            pulumi.set(__self__, "store", store)
+
+    @property
+    @pulumi.getter(name="fieldName")
+    def field_name(self) -> str:
+        """
+        The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        """
+        return pulumi.get(self, "field_name")
+
+    @property
+    @pulumi.getter(name="fieldType")
+    def field_type(self) -> str:
+        """
+        Specifies the type of the field. Use FieldType.XXX to set the type.
+        """
+        return pulumi.get(self, "field_type")
+
+    @property
+    @pulumi.getter
+    def analyzer(self) -> Optional[str]:
+        """
+        Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+        """
+        return pulumi.get(self, "analyzer")
+
+    @property
+    @pulumi.getter(name="enableSortAndAgg")
+    def enable_sort_and_agg(self) -> Optional[bool]:
+        """
+        Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+        """
+        return pulumi.get(self, "enable_sort_and_agg")
+
+    @property
+    @pulumi.getter
+    def index(self) -> Optional[bool]:
+        """
+        Specifies whether to enable indexing for the column. Type: Boolean.
+        """
+        return pulumi.get(self, "index")
+
+    @property
+    @pulumi.getter(name="isArray")
+    def is_array(self) -> Optional[bool]:
+        """
+        Specifies whether the value is an array. Type: Boolean.
+        """
+        return pulumi.get(self, "is_array")
+
+    @property
+    @pulumi.getter
+    def store(self) -> Optional[bool]:
+        """
+        Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+        """
+        return pulumi.get(self, "store")
+
+
+@pulumi.output_type
+class SearchIndexSchemaIndexSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "routingFields":
+            suggest = "routing_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SearchIndexSchemaIndexSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SearchIndexSchemaIndexSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SearchIndexSchemaIndexSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 routing_fields: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] routing_fields: Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
+        """
+        if routing_fields is not None:
+            pulumi.set(__self__, "routing_fields", routing_fields)
+
+    @property
+    @pulumi.getter(name="routingFields")
+    def routing_fields(self) -> Optional[Sequence[str]]:
+        """
+        Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
+        """
+        return pulumi.get(self, "routing_fields")
+
+
+@pulumi.output_type
+class SearchIndexSchemaIndexSort(dict):
+    def __init__(__self__, *,
+                 sorters: Sequence['outputs.SearchIndexSchemaIndexSortSorter']):
+        """
+        :param Sequence['SearchIndexSchemaIndexSortSorterArgs'] sorters: Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+        """
+        pulumi.set(__self__, "sorters", sorters)
+
+    @property
+    @pulumi.getter
+    def sorters(self) -> Sequence['outputs.SearchIndexSchemaIndexSortSorter']:
+        """
+        Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+        """
+        return pulumi.get(self, "sorters")
+
+
+@pulumi.output_type
+class SearchIndexSchemaIndexSortSorter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldName":
+            suggest = "field_name"
+        elif key == "sorterType":
+            suggest = "sorter_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SearchIndexSchemaIndexSortSorter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SearchIndexSchemaIndexSortSorter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SearchIndexSchemaIndexSortSorter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_name: Optional[str] = None,
+                 mode: Optional[str] = None,
+                 order: Optional[str] = None,
+                 sorter_type: Optional[str] = None):
+        """
+        :param str field_name: The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        :param str mode: The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+        :param str order: The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+        :param str sorter_type: Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+        """
+        if field_name is not None:
+            pulumi.set(__self__, "field_name", field_name)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if sorter_type is not None:
+            pulumi.set(__self__, "sorter_type", sorter_type)
+
+    @property
+    @pulumi.getter(name="fieldName")
+    def field_name(self) -> Optional[str]:
+        """
+        The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        """
+        return pulumi.get(self, "field_name")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[str]:
+        """
+        The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+        """
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter(name="sorterType")
+    def sorter_type(self) -> Optional[str]:
+        """
+        Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+        """
+        return pulumi.get(self, "sorter_type")
+
+
+@pulumi.output_type
+class TableDefinedColumn(dict):
     def __init__(__self__, *,
                  name: str,
                  type: str):
         """
-        :param str name: Name for primary key.
-        :param str type: Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+        :param str name: Name for defined column.
+        :param str type: Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -37,7 +349,7 @@ class TablePrimaryKey(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name for primary key.
+        Name for defined column.
         """
         return pulumi.get(self, "name")
 
@@ -45,7 +357,36 @@ class TablePrimaryKey(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+        Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class TablePrimaryKey(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str):
+        """
+        :param str name: Name for defined column.
+        :param str type: Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name for defined column.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
         """
         return pulumi.get(self, "type")
 
@@ -384,8 +725,189 @@ class GetInstancesInstanceResult(dict):
 
 
 @pulumi.output_type
+class GetSearchIndexesIndexResult(dict):
+    def __init__(__self__, *,
+                 create_time: int,
+                 current_sync_timestamp: int,
+                 id: str,
+                 index_name: str,
+                 instance_name: str,
+                 metering_last_update_time: int,
+                 reserved_read_cu: int,
+                 row_count: int,
+                 schema: str,
+                 storage_size: int,
+                 sync_phase: str,
+                 table_name: str,
+                 time_to_live: int):
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "current_sync_timestamp", current_sync_timestamp)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "index_name", index_name)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "metering_last_update_time", metering_last_update_time)
+        pulumi.set(__self__, "reserved_read_cu", reserved_read_cu)
+        pulumi.set(__self__, "row_count", row_count)
+        pulumi.set(__self__, "schema", schema)
+        pulumi.set(__self__, "storage_size", storage_size)
+        pulumi.set(__self__, "sync_phase", sync_phase)
+        pulumi.set(__self__, "table_name", table_name)
+        pulumi.set(__self__, "time_to_live", time_to_live)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> int:
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="currentSyncTimestamp")
+    def current_sync_timestamp(self) -> int:
+        return pulumi.get(self, "current_sync_timestamp")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> str:
+        return pulumi.get(self, "index_name")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="meteringLastUpdateTime")
+    def metering_last_update_time(self) -> int:
+        return pulumi.get(self, "metering_last_update_time")
+
+    @property
+    @pulumi.getter(name="reservedReadCu")
+    def reserved_read_cu(self) -> int:
+        return pulumi.get(self, "reserved_read_cu")
+
+    @property
+    @pulumi.getter(name="rowCount")
+    def row_count(self) -> int:
+        return pulumi.get(self, "row_count")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="storageSize")
+    def storage_size(self) -> int:
+        return pulumi.get(self, "storage_size")
+
+    @property
+    @pulumi.getter(name="syncPhase")
+    def sync_phase(self) -> str:
+        return pulumi.get(self, "sync_phase")
+
+    @property
+    @pulumi.getter(name="tableName")
+    def table_name(self) -> str:
+        return pulumi.get(self, "table_name")
+
+    @property
+    @pulumi.getter(name="timeToLive")
+    def time_to_live(self) -> int:
+        return pulumi.get(self, "time_to_live")
+
+
+@pulumi.output_type
+class GetSecondaryIndexesIndexResult(dict):
+    def __init__(__self__, *,
+                 defined_columns: Sequence[str],
+                 id: str,
+                 index_name: str,
+                 index_type: str,
+                 instance_name: str,
+                 primary_keys: Sequence[str],
+                 table_name: str):
+        """
+        :param Sequence[str] defined_columns: A list of defined column for index, referenced from Table's primary keys or predefined columns.
+        :param str id: The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
+        :param str index_name: The index name of the OTS Table which could not be changed.
+        :param str index_type: The index type of the OTS Table which could not be changed.
+        :param str instance_name: The name of OTS instance.
+        :param Sequence[str] primary_keys: A list of primary keys for index, referenced from Table's primary keys or predefined columns.
+        :param str table_name: The name of OTS table.
+        """
+        pulumi.set(__self__, "defined_columns", defined_columns)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "index_name", index_name)
+        pulumi.set(__self__, "index_type", index_type)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "primary_keys", primary_keys)
+        pulumi.set(__self__, "table_name", table_name)
+
+    @property
+    @pulumi.getter(name="definedColumns")
+    def defined_columns(self) -> Sequence[str]:
+        """
+        A list of defined column for index, referenced from Table's primary keys or predefined columns.
+        """
+        return pulumi.get(self, "defined_columns")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> str:
+        """
+        The index name of the OTS Table which could not be changed.
+        """
+        return pulumi.get(self, "index_name")
+
+    @property
+    @pulumi.getter(name="indexType")
+    def index_type(self) -> str:
+        """
+        The index type of the OTS Table which could not be changed.
+        """
+        return pulumi.get(self, "index_type")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of OTS instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="primaryKeys")
+    def primary_keys(self) -> Sequence[str]:
+        """
+        A list of primary keys for index, referenced from Table's primary keys or predefined columns.
+        """
+        return pulumi.get(self, "primary_keys")
+
+    @property
+    @pulumi.getter(name="tableName")
+    def table_name(self) -> str:
+        """
+        The name of OTS table.
+        """
+        return pulumi.get(self, "table_name")
+
+
+@pulumi.output_type
 class GetTablesTableResult(dict):
     def __init__(__self__, *,
+                 defined_columns: Sequence['outputs.GetTablesTableDefinedColumnResult'],
                  id: str,
                  instance_name: str,
                  max_version: int,
@@ -400,12 +922,18 @@ class GetTablesTableResult(dict):
         :param str table_name: The table name of the OTS which could not be changed.
         :param int time_to_live: The retention time of data stored in this table.
         """
+        pulumi.set(__self__, "defined_columns", defined_columns)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "max_version", max_version)
         pulumi.set(__self__, "primary_keys", primary_keys)
         pulumi.set(__self__, "table_name", table_name)
         pulumi.set(__self__, "time_to_live", time_to_live)
+
+    @property
+    @pulumi.getter(name="definedColumns")
+    def defined_columns(self) -> Sequence['outputs.GetTablesTableDefinedColumnResult']:
+        return pulumi.get(self, "defined_columns")
 
     @property
     @pulumi.getter
@@ -454,6 +982,25 @@ class GetTablesTableResult(dict):
         The retention time of data stored in this table.
         """
         return pulumi.get(self, "time_to_live")
+
+
+@pulumi.output_type
+class GetTablesTableDefinedColumnResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

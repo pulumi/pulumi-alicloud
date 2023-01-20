@@ -98,6 +98,21 @@ func NewHostAccount(ctx *pulumi.Context,
 	if args.ProtocolName == nil {
 		return nil, errors.New("invalid value for required argument 'ProtocolName'")
 	}
+	if args.PassPhrase != nil {
+		args.PassPhrase = pulumi.ToSecret(args.PassPhrase).(pulumi.StringPtrInput)
+	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	if args.PrivateKey != nil {
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"passPhrase",
+		"password",
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	var resource HostAccount
 	err := ctx.RegisterResource("alicloud:bastionhost/hostAccount:HostAccount", name, args, &resource, opts...)
 	if err != nil {

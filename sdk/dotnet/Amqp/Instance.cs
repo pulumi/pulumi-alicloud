@@ -23,37 +23,36 @@ namespace Pulumi.AliCloud.Amqp
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var professional = new AliCloud.Amqp.Instance("professional", new()
     ///     {
-    ///         var professional = new AliCloud.Amqp.Instance("professional", new AliCloud.Amqp.InstanceArgs
-    ///         {
-    ///             InstanceType = "professional",
-    ///             MaxEipTps = "128",
-    ///             MaxTps = "1000",
-    ///             PaymentType = "Subscription",
-    ///             Period = 1,
-    ///             QueueCapacity = "50",
-    ///             SupportEip = true,
-    ///         });
-    ///         var vip = new AliCloud.Amqp.Instance("vip", new AliCloud.Amqp.InstanceArgs
-    ///         {
-    ///             InstanceType = "vip",
-    ///             MaxEipTps = "128",
-    ///             MaxTps = "5000",
-    ///             PaymentType = "Subscription",
-    ///             Period = 1,
-    ///             QueueCapacity = "50",
-    ///             StorageSize = "700",
-    ///             SupportEip = true,
-    ///         });
-    ///     }
+    ///         InstanceType = "professional",
+    ///         MaxEipTps = "128",
+    ///         MaxTps = "1000",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         QueueCapacity = "50",
+    ///         SupportEip = true,
+    ///     });
     /// 
-    /// }
+    ///     var vip = new AliCloud.Amqp.Instance("vip", new()
+    ///     {
+    ///         InstanceType = "vip",
+    ///         MaxEipTps = "128",
+    ///         MaxTps = "5000",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         QueueCapacity = "50",
+    ///         StorageSize = "700",
+    ///         SupportEip = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -65,7 +64,7 @@ namespace Pulumi.AliCloud.Amqp
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:amqp/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The instance name.
@@ -132,9 +131,6 @@ namespace Pulumi.AliCloud.Amqp
 
         /// <summary>
         /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
-        /// - `AutoRenewal`: Auto renewal.
-        /// - `ManualRenewal`: Manual renewal.
-        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
@@ -201,7 +197,7 @@ namespace Pulumi.AliCloud.Amqp
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The instance name.
@@ -268,9 +264,6 @@ namespace Pulumi.AliCloud.Amqp
 
         /// <summary>
         /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
-        /// - `AutoRenewal`: Auto renewal.
-        /// - `ManualRenewal`: Manual renewal.
-        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -290,9 +283,10 @@ namespace Pulumi.AliCloud.Amqp
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The instance name.
@@ -359,9 +353,6 @@ namespace Pulumi.AliCloud.Amqp
 
         /// <summary>
         /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
-        /// - `AutoRenewal`: Auto renewal.
-        /// - `ManualRenewal`: Manual renewal.
-        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -387,5 +378,6 @@ namespace Pulumi.AliCloud.Amqp
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

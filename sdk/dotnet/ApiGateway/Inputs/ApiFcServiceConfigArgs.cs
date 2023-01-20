@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ApiGateway.Inputs
 {
 
-    public sealed class ApiFcServiceConfigArgs : Pulumi.ResourceArgs
+    public sealed class ApiFcServiceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public ApiFcServiceConfigArgs()
         {
         }
+        public static new ApiFcServiceConfigArgs Empty => new ApiFcServiceConfigArgs();
     }
 }

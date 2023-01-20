@@ -32,7 +32,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -47,7 +47,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -106,8 +106,6 @@ type LoadBalancer struct {
 	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection pulumi.StringPtrOutput `pulumi:"deleteProtection"`
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// Valid
 	// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
@@ -183,8 +181,6 @@ type loadBalancerState struct {
 	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection *string `pulumi:"deleteProtection"`
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Valid
 	// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
@@ -232,8 +228,6 @@ type LoadBalancerState struct {
 	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection pulumi.StringPtrInput
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
 	InstanceChargeType pulumi.StringPtrInput
 	// Valid
 	// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
@@ -285,8 +279,6 @@ type loadBalancerArgs struct {
 	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection *string `pulumi:"deleteProtection"`
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Valid
 	// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
@@ -335,8 +327,6 @@ type LoadBalancerArgs struct {
 	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection pulumi.StringPtrInput
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
 	InstanceChargeType pulumi.StringPtrInput
 	// Valid
 	// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
@@ -485,8 +475,6 @@ func (o LoadBalancerOutput) DeleteProtection() pulumi.StringPtrOutput {
 }
 
 // The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-//
-// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
 func (o LoadBalancerOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }

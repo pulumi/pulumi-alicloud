@@ -18,6 +18,8 @@ from .get_service import *
 from .instance_cluster_attachment import *
 from .k8s_application import *
 from .k8s_cluster import *
+from .k8s_slb_attachment import *
 from .namespace import *
 from .slb_attachment import *
+from ._inputs import *
 from . import outputs

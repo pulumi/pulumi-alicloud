@@ -34,7 +34,7 @@ class BandwidthPackageArgs:
         :param pulumi.Input[str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
-        :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         if cen_bandwidth_package_name is not None:
@@ -165,7 +165,7 @@ class BandwidthPackageArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         """
         return pulumi.get(self, "payment_type")
 
@@ -209,7 +209,7 @@ class _BandwidthPackageState:
         :param pulumi.Input[str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
-        :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         :param pulumi.Input[str] status: The association status of the bandwidth package.
         """
         if bandwidth is not None:
@@ -358,7 +358,7 @@ class _BandwidthPackageState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         """
         return pulumi.get(self, "payment_type")
 
@@ -423,7 +423,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
-        :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         """
         ...
     @overload
@@ -535,7 +535,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
-        :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         :param pulumi.Input[str] status: The association status of the bandwidth package.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -632,7 +632,7 @@ class BandwidthPackage(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         """
         return pulumi.get(self, "payment_type")
 

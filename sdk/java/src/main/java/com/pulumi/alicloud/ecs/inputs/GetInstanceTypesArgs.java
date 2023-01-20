@@ -176,6 +176,21 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+     * 
+     */
+    @Import(name="minimumEniIpv6AddressQuantity")
+    private @Nullable Output<Integer> minimumEniIpv6AddressQuantity;
+
+    /**
+     * @return The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+     * 
+     */
+    public Optional<Output<Integer>> minimumEniIpv6AddressQuantity() {
+        return Optional.ofNullable(this.minimumEniIpv6AddressQuantity);
+    }
+
+    /**
      * Filter the results by network type. Valid values: `Classic` and `Vpc`.
      * 
      */
@@ -250,6 +265,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         this.isOutdated = $.isOutdated;
         this.kubernetesNodeRole = $.kubernetesNodeRole;
         this.memorySize = $.memorySize;
+        this.minimumEniIpv6AddressQuantity = $.minimumEniIpv6AddressQuantity;
         this.networkType = $.networkType;
         this.outputFile = $.outputFile;
         this.sortedBy = $.sortedBy;
@@ -492,6 +508,27 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder memorySize(Double memorySize) {
             return memorySize(Output.of(memorySize));
+        }
+
+        /**
+         * @param minimumEniIpv6AddressQuantity The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumEniIpv6AddressQuantity(@Nullable Output<Integer> minimumEniIpv6AddressQuantity) {
+            $.minimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
+            return this;
+        }
+
+        /**
+         * @param minimumEniIpv6AddressQuantity The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumEniIpv6AddressQuantity(Integer minimumEniIpv6AddressQuantity) {
+            return minimumEniIpv6AddressQuantity(Output.of(minimumEniIpv6AddressQuantity));
         }
 
         /**

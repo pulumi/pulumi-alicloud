@@ -16,6 +16,8 @@ class EcsNetworkInterfaceArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
@@ -33,6 +35,8 @@ class EcsNetworkInterfaceArgs:
         The set of arguments for constructing a EcsNetworkInterface resource.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
         :param pulumi.Input[str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         :param pulumi.Input[str] network_interface_name: The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] primary_ip_address: The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
@@ -50,6 +54,10 @@ class EcsNetworkInterfaceArgs:
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv6_address_count is not None:
+            pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+        if ipv6_addresses is not None:
+            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
@@ -115,6 +123,30 @@ class EcsNetworkInterfaceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipv6AddressCount")
+    def ipv6_address_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        """
+        return pulumi.get(self, "ipv6_address_count")
+
+    @ipv6_address_count.setter
+    def ipv6_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv6_address_count", value)
+
+    @property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        """
+        return pulumi.get(self, "ipv6_addresses")
+
+    @ipv6_addresses.setter
+    def ipv6_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv6_addresses", value)
 
     @property
     @pulumi.getter
@@ -277,6 +309,8 @@ class EcsNetworkInterfaceArgs:
 class _EcsNetworkInterfaceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mac: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
@@ -296,6 +330,8 @@ class _EcsNetworkInterfaceState:
         """
         Input properties used for looking up and filtering EcsNetworkInterface resources.
         :param pulumi.Input[str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[str] mac: The MAC address of the ENI.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         :param pulumi.Input[str] network_interface_name: The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
@@ -315,6 +351,10 @@ class _EcsNetworkInterfaceState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv6_address_count is not None:
+            pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+        if ipv6_addresses is not None:
+            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
         if mac is not None:
             pulumi.set(__self__, "mac", mac)
         if name is not None:
@@ -374,6 +414,30 @@ class _EcsNetworkInterfaceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipv6AddressCount")
+    def ipv6_address_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        """
+        return pulumi.get(self, "ipv6_address_count")
+
+    @ipv6_address_count.setter
+    def ipv6_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv6_address_count", value)
+
+    @property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        """
+        return pulumi.get(self, "ipv6_addresses")
+
+    @ipv6_addresses.setter
+    def ipv6_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv6_addresses", value)
 
     @property
     @pulumi.getter
@@ -574,6 +638,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
@@ -645,6 +711,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         :param pulumi.Input[str] network_interface_name: The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] primary_ip_address: The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
@@ -735,6 +803,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
@@ -759,6 +829,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
             __props__ = EcsNetworkInterfaceArgs.__new__(EcsNetworkInterfaceArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["ipv6_address_count"] = ipv6_address_count
+            __props__.__dict__["ipv6_addresses"] = ipv6_addresses
             if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
                 pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
@@ -803,6 +875,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            ipv6_address_count: Optional[pulumi.Input[int]] = None,
+            ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             mac: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interface_name: Optional[pulumi.Input[str]] = None,
@@ -827,6 +901,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[str] mac: The MAC address of the ENI.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         :param pulumi.Input[str] network_interface_name: The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
@@ -849,6 +925,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
         __props__ = _EcsNetworkInterfaceState.__new__(_EcsNetworkInterfaceState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["ipv6_address_count"] = ipv6_address_count
+        __props__.__dict__["ipv6_addresses"] = ipv6_addresses
         __props__.__dict__["mac"] = mac
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interface_name"] = network_interface_name
@@ -874,6 +952,22 @@ class EcsNetworkInterface(pulumi.CustomResource):
         The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="ipv6AddressCount")
+    def ipv6_address_count(self) -> pulumi.Output[int]:
+        """
+        The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        """
+        return pulumi.get(self, "ipv6_address_count")
+
+    @property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        """
+        return pulumi.get(self, "ipv6_addresses")
 
     @property
     @pulumi.getter

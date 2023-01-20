@@ -10,6 +10,247 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetEnterpriseDatabasesDatabase struct {
+	// The name of the Database Directory.> PG Series databases will display the database name.
+	CatalogName string `pulumi:"catalogName"`
+	// The ID of the physical library.
+	DatabaseId string `pulumi:"databaseId"`
+	// Database type.
+	DbType string `pulumi:"dbType"`
+	// The DBA user ID of the target database.
+	DbaId string `pulumi:"dbaId"`
+	// The DBA nickname of the target Library.
+	DbaName string `pulumi:"dbaName"`
+	// Database encoding.
+	Encoding string `pulumi:"encoding"`
+	// The environment type of the database.
+	EnvType string `pulumi:"envType"`
+	// The database connection address.
+	Host string `pulumi:"host"`
+	// The Database ID, same value as `databaseId`.
+	Id string `pulumi:"id"`
+	// The instance ID of the target database.
+	InstanceId string `pulumi:"instanceId"`
+	// Library Owner User ID list.
+	OwnerIdLists []string `pulumi:"ownerIdLists"`
+	// Library Owner nickname list.
+	OwnerNameLists []string `pulumi:"ownerNameLists"`
+	// The connection port of the database.
+	Port int `pulumi:"port"`
+	// The name of the database.> PG Series databases will display schema names.
+	SchemaName string `pulumi:"schemaName"`
+	// Library search name.
+	SearchName string `pulumi:"searchName"`
+	// Database SID.> only Oracle Database Display.
+	Sid string `pulumi:"sid"`
+	// Library status, value description:-**NORMAL**: NORMAL-**DISABLE**: Disabled-**OFFLINE**: OFFLINE-**NOT_EXIST**: does not exist
+	State string `pulumi:"state"`
+}
+
+// GetEnterpriseDatabasesDatabaseInput is an input type that accepts GetEnterpriseDatabasesDatabaseArgs and GetEnterpriseDatabasesDatabaseOutput values.
+// You can construct a concrete instance of `GetEnterpriseDatabasesDatabaseInput` via:
+//
+//	GetEnterpriseDatabasesDatabaseArgs{...}
+type GetEnterpriseDatabasesDatabaseInput interface {
+	pulumi.Input
+
+	ToGetEnterpriseDatabasesDatabaseOutput() GetEnterpriseDatabasesDatabaseOutput
+	ToGetEnterpriseDatabasesDatabaseOutputWithContext(context.Context) GetEnterpriseDatabasesDatabaseOutput
+}
+
+type GetEnterpriseDatabasesDatabaseArgs struct {
+	// The name of the Database Directory.> PG Series databases will display the database name.
+	CatalogName pulumi.StringInput `pulumi:"catalogName"`
+	// The ID of the physical library.
+	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	// Database type.
+	DbType pulumi.StringInput `pulumi:"dbType"`
+	// The DBA user ID of the target database.
+	DbaId pulumi.StringInput `pulumi:"dbaId"`
+	// The DBA nickname of the target Library.
+	DbaName pulumi.StringInput `pulumi:"dbaName"`
+	// Database encoding.
+	Encoding pulumi.StringInput `pulumi:"encoding"`
+	// The environment type of the database.
+	EnvType pulumi.StringInput `pulumi:"envType"`
+	// The database connection address.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The Database ID, same value as `databaseId`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The instance ID of the target database.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Library Owner User ID list.
+	OwnerIdLists pulumi.StringArrayInput `pulumi:"ownerIdLists"`
+	// Library Owner nickname list.
+	OwnerNameLists pulumi.StringArrayInput `pulumi:"ownerNameLists"`
+	// The connection port of the database.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The name of the database.> PG Series databases will display schema names.
+	SchemaName pulumi.StringInput `pulumi:"schemaName"`
+	// Library search name.
+	SearchName pulumi.StringInput `pulumi:"searchName"`
+	// Database SID.> only Oracle Database Display.
+	Sid pulumi.StringInput `pulumi:"sid"`
+	// Library status, value description:-**NORMAL**: NORMAL-**DISABLE**: Disabled-**OFFLINE**: OFFLINE-**NOT_EXIST**: does not exist
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetEnterpriseDatabasesDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseDatabasesDatabase)(nil)).Elem()
+}
+
+func (i GetEnterpriseDatabasesDatabaseArgs) ToGetEnterpriseDatabasesDatabaseOutput() GetEnterpriseDatabasesDatabaseOutput {
+	return i.ToGetEnterpriseDatabasesDatabaseOutputWithContext(context.Background())
+}
+
+func (i GetEnterpriseDatabasesDatabaseArgs) ToGetEnterpriseDatabasesDatabaseOutputWithContext(ctx context.Context) GetEnterpriseDatabasesDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseDatabasesDatabaseOutput)
+}
+
+// GetEnterpriseDatabasesDatabaseArrayInput is an input type that accepts GetEnterpriseDatabasesDatabaseArray and GetEnterpriseDatabasesDatabaseArrayOutput values.
+// You can construct a concrete instance of `GetEnterpriseDatabasesDatabaseArrayInput` via:
+//
+//	GetEnterpriseDatabasesDatabaseArray{ GetEnterpriseDatabasesDatabaseArgs{...} }
+type GetEnterpriseDatabasesDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToGetEnterpriseDatabasesDatabaseArrayOutput() GetEnterpriseDatabasesDatabaseArrayOutput
+	ToGetEnterpriseDatabasesDatabaseArrayOutputWithContext(context.Context) GetEnterpriseDatabasesDatabaseArrayOutput
+}
+
+type GetEnterpriseDatabasesDatabaseArray []GetEnterpriseDatabasesDatabaseInput
+
+func (GetEnterpriseDatabasesDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnterpriseDatabasesDatabase)(nil)).Elem()
+}
+
+func (i GetEnterpriseDatabasesDatabaseArray) ToGetEnterpriseDatabasesDatabaseArrayOutput() GetEnterpriseDatabasesDatabaseArrayOutput {
+	return i.ToGetEnterpriseDatabasesDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnterpriseDatabasesDatabaseArray) ToGetEnterpriseDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetEnterpriseDatabasesDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseDatabasesDatabaseArrayOutput)
+}
+
+type GetEnterpriseDatabasesDatabaseOutput struct{ *pulumi.OutputState }
+
+func (GetEnterpriseDatabasesDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseDatabasesDatabase)(nil)).Elem()
+}
+
+func (o GetEnterpriseDatabasesDatabaseOutput) ToGetEnterpriseDatabasesDatabaseOutput() GetEnterpriseDatabasesDatabaseOutput {
+	return o
+}
+
+func (o GetEnterpriseDatabasesDatabaseOutput) ToGetEnterpriseDatabasesDatabaseOutputWithContext(ctx context.Context) GetEnterpriseDatabasesDatabaseOutput {
+	return o
+}
+
+// The name of the Database Directory.> PG Series databases will display the database name.
+func (o GetEnterpriseDatabasesDatabaseOutput) CatalogName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.CatalogName }).(pulumi.StringOutput)
+}
+
+// The ID of the physical library.
+func (o GetEnterpriseDatabasesDatabaseOutput) DatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.DatabaseId }).(pulumi.StringOutput)
+}
+
+// Database type.
+func (o GetEnterpriseDatabasesDatabaseOutput) DbType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.DbType }).(pulumi.StringOutput)
+}
+
+// The DBA user ID of the target database.
+func (o GetEnterpriseDatabasesDatabaseOutput) DbaId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.DbaId }).(pulumi.StringOutput)
+}
+
+// The DBA nickname of the target Library.
+func (o GetEnterpriseDatabasesDatabaseOutput) DbaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.DbaName }).(pulumi.StringOutput)
+}
+
+// Database encoding.
+func (o GetEnterpriseDatabasesDatabaseOutput) Encoding() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.Encoding }).(pulumi.StringOutput)
+}
+
+// The environment type of the database.
+func (o GetEnterpriseDatabasesDatabaseOutput) EnvType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.EnvType }).(pulumi.StringOutput)
+}
+
+// The database connection address.
+func (o GetEnterpriseDatabasesDatabaseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The Database ID, same value as `databaseId`.
+func (o GetEnterpriseDatabasesDatabaseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The instance ID of the target database.
+func (o GetEnterpriseDatabasesDatabaseOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Library Owner User ID list.
+func (o GetEnterpriseDatabasesDatabaseOutput) OwnerIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) []string { return v.OwnerIdLists }).(pulumi.StringArrayOutput)
+}
+
+// Library Owner nickname list.
+func (o GetEnterpriseDatabasesDatabaseOutput) OwnerNameLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) []string { return v.OwnerNameLists }).(pulumi.StringArrayOutput)
+}
+
+// The connection port of the database.
+func (o GetEnterpriseDatabasesDatabaseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The name of the database.> PG Series databases will display schema names.
+func (o GetEnterpriseDatabasesDatabaseOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.SchemaName }).(pulumi.StringOutput)
+}
+
+// Library search name.
+func (o GetEnterpriseDatabasesDatabaseOutput) SearchName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.SearchName }).(pulumi.StringOutput)
+}
+
+// Database SID.> only Oracle Database Display.
+func (o GetEnterpriseDatabasesDatabaseOutput) Sid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.Sid }).(pulumi.StringOutput)
+}
+
+// Library status, value description:-**NORMAL**: NORMAL-**DISABLE**: Disabled-**OFFLINE**: OFFLINE-**NOT_EXIST**: does not exist
+func (o GetEnterpriseDatabasesDatabaseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseDatabasesDatabase) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetEnterpriseDatabasesDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnterpriseDatabasesDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnterpriseDatabasesDatabase)(nil)).Elem()
+}
+
+func (o GetEnterpriseDatabasesDatabaseArrayOutput) ToGetEnterpriseDatabasesDatabaseArrayOutput() GetEnterpriseDatabasesDatabaseArrayOutput {
+	return o
+}
+
+func (o GetEnterpriseDatabasesDatabaseArrayOutput) ToGetEnterpriseDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetEnterpriseDatabasesDatabaseArrayOutput {
+	return o
+}
+
+func (o GetEnterpriseDatabasesDatabaseArrayOutput) Index(i pulumi.IntInput) GetEnterpriseDatabasesDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnterpriseDatabasesDatabase {
+		return vs[0].([]GetEnterpriseDatabasesDatabase)[vs[1].(int)]
+	}).(GetEnterpriseDatabasesDatabaseOutput)
+}
+
 type GetEnterpriseInstancesInstance struct {
 	// The name of the data link for the database instance.
 	DataLinkName string `pulumi:"dataLinkName"`
@@ -306,6 +547,579 @@ func (o GetEnterpriseInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetE
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnterpriseInstancesInstance {
 		return vs[0].([]GetEnterpriseInstancesInstance)[vs[1].(int)]
 	}).(GetEnterpriseInstancesInstanceOutput)
+}
+
+type GetEnterpriseLogicDatabasesDatabase struct {
+	// Logical Library alias.
+	Alias string `pulumi:"alias"`
+	// Sub-Database ID.
+	DatabaseIds []string `pulumi:"databaseIds"`
+	// Database type.
+	DbType string `pulumi:"dbType"`
+	// Environment type, return value is as follows:-product: production environment-dev: development environment-pre: Advance Environment-test: test environment-sit:SIT environment-uat:UAT environment-pet: Pressure measurement environment-stag:STAG environment
+	EnvType string `pulumi:"envType"`
+	// Logic Database ID.
+	Id string `pulumi:"id"`
+	// Whether it is a logical Library, the return value is true.
+	Logic bool `pulumi:"logic"`
+	// The ID of the logical Library.
+	LogicDatabaseId string `pulumi:"logicDatabaseId"`
+	// The user ID list of the logical library Owner.
+	OwnerIdLists []string `pulumi:"ownerIdLists"`
+	// The nickname list of the logical library Owner.
+	OwnerNameLists []string `pulumi:"ownerNameLists"`
+	// Logical Library name.
+	SchemaName string `pulumi:"schemaName"`
+	// Logical library search name.
+	SearchName string `pulumi:"searchName"`
+}
+
+// GetEnterpriseLogicDatabasesDatabaseInput is an input type that accepts GetEnterpriseLogicDatabasesDatabaseArgs and GetEnterpriseLogicDatabasesDatabaseOutput values.
+// You can construct a concrete instance of `GetEnterpriseLogicDatabasesDatabaseInput` via:
+//
+//	GetEnterpriseLogicDatabasesDatabaseArgs{...}
+type GetEnterpriseLogicDatabasesDatabaseInput interface {
+	pulumi.Input
+
+	ToGetEnterpriseLogicDatabasesDatabaseOutput() GetEnterpriseLogicDatabasesDatabaseOutput
+	ToGetEnterpriseLogicDatabasesDatabaseOutputWithContext(context.Context) GetEnterpriseLogicDatabasesDatabaseOutput
+}
+
+type GetEnterpriseLogicDatabasesDatabaseArgs struct {
+	// Logical Library alias.
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// Sub-Database ID.
+	DatabaseIds pulumi.StringArrayInput `pulumi:"databaseIds"`
+	// Database type.
+	DbType pulumi.StringInput `pulumi:"dbType"`
+	// Environment type, return value is as follows:-product: production environment-dev: development environment-pre: Advance Environment-test: test environment-sit:SIT environment-uat:UAT environment-pet: Pressure measurement environment-stag:STAG environment
+	EnvType pulumi.StringInput `pulumi:"envType"`
+	// Logic Database ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether it is a logical Library, the return value is true.
+	Logic pulumi.BoolInput `pulumi:"logic"`
+	// The ID of the logical Library.
+	LogicDatabaseId pulumi.StringInput `pulumi:"logicDatabaseId"`
+	// The user ID list of the logical library Owner.
+	OwnerIdLists pulumi.StringArrayInput `pulumi:"ownerIdLists"`
+	// The nickname list of the logical library Owner.
+	OwnerNameLists pulumi.StringArrayInput `pulumi:"ownerNameLists"`
+	// Logical Library name.
+	SchemaName pulumi.StringInput `pulumi:"schemaName"`
+	// Logical library search name.
+	SearchName pulumi.StringInput `pulumi:"searchName"`
+}
+
+func (GetEnterpriseLogicDatabasesDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseLogicDatabasesDatabase)(nil)).Elem()
+}
+
+func (i GetEnterpriseLogicDatabasesDatabaseArgs) ToGetEnterpriseLogicDatabasesDatabaseOutput() GetEnterpriseLogicDatabasesDatabaseOutput {
+	return i.ToGetEnterpriseLogicDatabasesDatabaseOutputWithContext(context.Background())
+}
+
+func (i GetEnterpriseLogicDatabasesDatabaseArgs) ToGetEnterpriseLogicDatabasesDatabaseOutputWithContext(ctx context.Context) GetEnterpriseLogicDatabasesDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseLogicDatabasesDatabaseOutput)
+}
+
+// GetEnterpriseLogicDatabasesDatabaseArrayInput is an input type that accepts GetEnterpriseLogicDatabasesDatabaseArray and GetEnterpriseLogicDatabasesDatabaseArrayOutput values.
+// You can construct a concrete instance of `GetEnterpriseLogicDatabasesDatabaseArrayInput` via:
+//
+//	GetEnterpriseLogicDatabasesDatabaseArray{ GetEnterpriseLogicDatabasesDatabaseArgs{...} }
+type GetEnterpriseLogicDatabasesDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToGetEnterpriseLogicDatabasesDatabaseArrayOutput() GetEnterpriseLogicDatabasesDatabaseArrayOutput
+	ToGetEnterpriseLogicDatabasesDatabaseArrayOutputWithContext(context.Context) GetEnterpriseLogicDatabasesDatabaseArrayOutput
+}
+
+type GetEnterpriseLogicDatabasesDatabaseArray []GetEnterpriseLogicDatabasesDatabaseInput
+
+func (GetEnterpriseLogicDatabasesDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnterpriseLogicDatabasesDatabase)(nil)).Elem()
+}
+
+func (i GetEnterpriseLogicDatabasesDatabaseArray) ToGetEnterpriseLogicDatabasesDatabaseArrayOutput() GetEnterpriseLogicDatabasesDatabaseArrayOutput {
+	return i.ToGetEnterpriseLogicDatabasesDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnterpriseLogicDatabasesDatabaseArray) ToGetEnterpriseLogicDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetEnterpriseLogicDatabasesDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseLogicDatabasesDatabaseArrayOutput)
+}
+
+type GetEnterpriseLogicDatabasesDatabaseOutput struct{ *pulumi.OutputState }
+
+func (GetEnterpriseLogicDatabasesDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseLogicDatabasesDatabase)(nil)).Elem()
+}
+
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) ToGetEnterpriseLogicDatabasesDatabaseOutput() GetEnterpriseLogicDatabasesDatabaseOutput {
+	return o
+}
+
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) ToGetEnterpriseLogicDatabasesDatabaseOutputWithContext(ctx context.Context) GetEnterpriseLogicDatabasesDatabaseOutput {
+	return o
+}
+
+// Logical Library alias.
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseLogicDatabasesDatabase) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+// Sub-Database ID.
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) DatabaseIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseLogicDatabasesDatabase) []string { return v.DatabaseIds }).(pulumi.StringArrayOutput)
+}
+
+// Database type.
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) DbType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseLogicDatabasesDatabase) string { return v.DbType }).(pulumi.StringOutput)
+}
+
+// Environment type, return value is as follows:-product: production environment-dev: development environment-pre: Advance Environment-test: test environment-sit:SIT environment-uat:UAT environment-pet: Pressure measurement environment-stag:STAG environment
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) EnvType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseLogicDatabasesDatabase) string { return v.EnvType }).(pulumi.StringOutput)
+}
+
+// Logic Database ID.
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseLogicDatabasesDatabase) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether it is a logical Library, the return value is true.
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) Logic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnterpriseLogicDatabasesDatabase) bool { return v.Logic }).(pulumi.BoolOutput)
+}
+
+// The ID of the logical Library.
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) LogicDatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseLogicDatabasesDatabase) string { return v.LogicDatabaseId }).(pulumi.StringOutput)
+}
+
+// The user ID list of the logical library Owner.
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) OwnerIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseLogicDatabasesDatabase) []string { return v.OwnerIdLists }).(pulumi.StringArrayOutput)
+}
+
+// The nickname list of the logical library Owner.
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) OwnerNameLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseLogicDatabasesDatabase) []string { return v.OwnerNameLists }).(pulumi.StringArrayOutput)
+}
+
+// Logical Library name.
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseLogicDatabasesDatabase) string { return v.SchemaName }).(pulumi.StringOutput)
+}
+
+// Logical library search name.
+func (o GetEnterpriseLogicDatabasesDatabaseOutput) SearchName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseLogicDatabasesDatabase) string { return v.SearchName }).(pulumi.StringOutput)
+}
+
+type GetEnterpriseLogicDatabasesDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnterpriseLogicDatabasesDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnterpriseLogicDatabasesDatabase)(nil)).Elem()
+}
+
+func (o GetEnterpriseLogicDatabasesDatabaseArrayOutput) ToGetEnterpriseLogicDatabasesDatabaseArrayOutput() GetEnterpriseLogicDatabasesDatabaseArrayOutput {
+	return o
+}
+
+func (o GetEnterpriseLogicDatabasesDatabaseArrayOutput) ToGetEnterpriseLogicDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetEnterpriseLogicDatabasesDatabaseArrayOutput {
+	return o
+}
+
+func (o GetEnterpriseLogicDatabasesDatabaseArrayOutput) Index(i pulumi.IntInput) GetEnterpriseLogicDatabasesDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnterpriseLogicDatabasesDatabase {
+		return vs[0].([]GetEnterpriseLogicDatabasesDatabase)[vs[1].(int)]
+	}).(GetEnterpriseLogicDatabasesDatabaseOutput)
+}
+
+type GetEnterpriseProxiesProxy struct {
+	// The ID of the user who enabled the secure access proxy feature.
+	CreatorId string `pulumi:"creatorId"`
+	// The nickname of the user who enabled the secure access proxy feature.
+	CreatorName string `pulumi:"creatorName"`
+	// The port that was used by HTTPS clients to connect to the database instance.
+	HttpsPort int `pulumi:"httpsPort"`
+	// The ID of the Proxy.
+	Id string `pulumi:"id"`
+	// The ID of the database instance.
+	InstanceId string `pulumi:"instanceId"`
+	// Indicates whether the internal endpoint is enabled. Default value: true.
+	PrivateEnable bool `pulumi:"privateEnable"`
+	// The internal endpoint.
+	PrivateHost string `pulumi:"privateHost"`
+	// Database protocol connection port number.
+	ProtocolPort int `pulumi:"protocolPort"`
+	// Database protocol type, for example, MYSQL.
+	ProtocolType string `pulumi:"protocolType"`
+	// The ID of the secure access proxy.
+	ProxyId string `pulumi:"proxyId"`
+	// Indicates whether the public endpoint is enabled.
+	PublicEnable bool `pulumi:"publicEnable"`
+	// The public endpoint. A public endpoint is returned no matter whether the public endpoint is enabled or disabled. **Note:** When the public network address is in the **true** state, the returned public network address is a valid address with DNS resolution capability. When the public address is in the **false** state, the returned Public address is an invalid address without DNS resolution.
+	PublicHost string `pulumi:"publicHost"`
+}
+
+// GetEnterpriseProxiesProxyInput is an input type that accepts GetEnterpriseProxiesProxyArgs and GetEnterpriseProxiesProxyOutput values.
+// You can construct a concrete instance of `GetEnterpriseProxiesProxyInput` via:
+//
+//	GetEnterpriseProxiesProxyArgs{...}
+type GetEnterpriseProxiesProxyInput interface {
+	pulumi.Input
+
+	ToGetEnterpriseProxiesProxyOutput() GetEnterpriseProxiesProxyOutput
+	ToGetEnterpriseProxiesProxyOutputWithContext(context.Context) GetEnterpriseProxiesProxyOutput
+}
+
+type GetEnterpriseProxiesProxyArgs struct {
+	// The ID of the user who enabled the secure access proxy feature.
+	CreatorId pulumi.StringInput `pulumi:"creatorId"`
+	// The nickname of the user who enabled the secure access proxy feature.
+	CreatorName pulumi.StringInput `pulumi:"creatorName"`
+	// The port that was used by HTTPS clients to connect to the database instance.
+	HttpsPort pulumi.IntInput `pulumi:"httpsPort"`
+	// The ID of the Proxy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the database instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Indicates whether the internal endpoint is enabled. Default value: true.
+	PrivateEnable pulumi.BoolInput `pulumi:"privateEnable"`
+	// The internal endpoint.
+	PrivateHost pulumi.StringInput `pulumi:"privateHost"`
+	// Database protocol connection port number.
+	ProtocolPort pulumi.IntInput `pulumi:"protocolPort"`
+	// Database protocol type, for example, MYSQL.
+	ProtocolType pulumi.StringInput `pulumi:"protocolType"`
+	// The ID of the secure access proxy.
+	ProxyId pulumi.StringInput `pulumi:"proxyId"`
+	// Indicates whether the public endpoint is enabled.
+	PublicEnable pulumi.BoolInput `pulumi:"publicEnable"`
+	// The public endpoint. A public endpoint is returned no matter whether the public endpoint is enabled or disabled. **Note:** When the public network address is in the **true** state, the returned public network address is a valid address with DNS resolution capability. When the public address is in the **false** state, the returned Public address is an invalid address without DNS resolution.
+	PublicHost pulumi.StringInput `pulumi:"publicHost"`
+}
+
+func (GetEnterpriseProxiesProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseProxiesProxy)(nil)).Elem()
+}
+
+func (i GetEnterpriseProxiesProxyArgs) ToGetEnterpriseProxiesProxyOutput() GetEnterpriseProxiesProxyOutput {
+	return i.ToGetEnterpriseProxiesProxyOutputWithContext(context.Background())
+}
+
+func (i GetEnterpriseProxiesProxyArgs) ToGetEnterpriseProxiesProxyOutputWithContext(ctx context.Context) GetEnterpriseProxiesProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseProxiesProxyOutput)
+}
+
+// GetEnterpriseProxiesProxyArrayInput is an input type that accepts GetEnterpriseProxiesProxyArray and GetEnterpriseProxiesProxyArrayOutput values.
+// You can construct a concrete instance of `GetEnterpriseProxiesProxyArrayInput` via:
+//
+//	GetEnterpriseProxiesProxyArray{ GetEnterpriseProxiesProxyArgs{...} }
+type GetEnterpriseProxiesProxyArrayInput interface {
+	pulumi.Input
+
+	ToGetEnterpriseProxiesProxyArrayOutput() GetEnterpriseProxiesProxyArrayOutput
+	ToGetEnterpriseProxiesProxyArrayOutputWithContext(context.Context) GetEnterpriseProxiesProxyArrayOutput
+}
+
+type GetEnterpriseProxiesProxyArray []GetEnterpriseProxiesProxyInput
+
+func (GetEnterpriseProxiesProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnterpriseProxiesProxy)(nil)).Elem()
+}
+
+func (i GetEnterpriseProxiesProxyArray) ToGetEnterpriseProxiesProxyArrayOutput() GetEnterpriseProxiesProxyArrayOutput {
+	return i.ToGetEnterpriseProxiesProxyArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnterpriseProxiesProxyArray) ToGetEnterpriseProxiesProxyArrayOutputWithContext(ctx context.Context) GetEnterpriseProxiesProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseProxiesProxyArrayOutput)
+}
+
+type GetEnterpriseProxiesProxyOutput struct{ *pulumi.OutputState }
+
+func (GetEnterpriseProxiesProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseProxiesProxy)(nil)).Elem()
+}
+
+func (o GetEnterpriseProxiesProxyOutput) ToGetEnterpriseProxiesProxyOutput() GetEnterpriseProxiesProxyOutput {
+	return o
+}
+
+func (o GetEnterpriseProxiesProxyOutput) ToGetEnterpriseProxiesProxyOutputWithContext(ctx context.Context) GetEnterpriseProxiesProxyOutput {
+	return o
+}
+
+// The ID of the user who enabled the secure access proxy feature.
+func (o GetEnterpriseProxiesProxyOutput) CreatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxiesProxy) string { return v.CreatorId }).(pulumi.StringOutput)
+}
+
+// The nickname of the user who enabled the secure access proxy feature.
+func (o GetEnterpriseProxiesProxyOutput) CreatorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxiesProxy) string { return v.CreatorName }).(pulumi.StringOutput)
+}
+
+// The port that was used by HTTPS clients to connect to the database instance.
+func (o GetEnterpriseProxiesProxyOutput) HttpsPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEnterpriseProxiesProxy) int { return v.HttpsPort }).(pulumi.IntOutput)
+}
+
+// The ID of the Proxy.
+func (o GetEnterpriseProxiesProxyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxiesProxy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the database instance.
+func (o GetEnterpriseProxiesProxyOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxiesProxy) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Indicates whether the internal endpoint is enabled. Default value: true.
+func (o GetEnterpriseProxiesProxyOutput) PrivateEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnterpriseProxiesProxy) bool { return v.PrivateEnable }).(pulumi.BoolOutput)
+}
+
+// The internal endpoint.
+func (o GetEnterpriseProxiesProxyOutput) PrivateHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxiesProxy) string { return v.PrivateHost }).(pulumi.StringOutput)
+}
+
+// Database protocol connection port number.
+func (o GetEnterpriseProxiesProxyOutput) ProtocolPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEnterpriseProxiesProxy) int { return v.ProtocolPort }).(pulumi.IntOutput)
+}
+
+// Database protocol type, for example, MYSQL.
+func (o GetEnterpriseProxiesProxyOutput) ProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxiesProxy) string { return v.ProtocolType }).(pulumi.StringOutput)
+}
+
+// The ID of the secure access proxy.
+func (o GetEnterpriseProxiesProxyOutput) ProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxiesProxy) string { return v.ProxyId }).(pulumi.StringOutput)
+}
+
+// Indicates whether the public endpoint is enabled.
+func (o GetEnterpriseProxiesProxyOutput) PublicEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnterpriseProxiesProxy) bool { return v.PublicEnable }).(pulumi.BoolOutput)
+}
+
+// The public endpoint. A public endpoint is returned no matter whether the public endpoint is enabled or disabled. **Note:** When the public network address is in the **true** state, the returned public network address is a valid address with DNS resolution capability. When the public address is in the **false** state, the returned Public address is an invalid address without DNS resolution.
+func (o GetEnterpriseProxiesProxyOutput) PublicHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxiesProxy) string { return v.PublicHost }).(pulumi.StringOutput)
+}
+
+type GetEnterpriseProxiesProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnterpriseProxiesProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnterpriseProxiesProxy)(nil)).Elem()
+}
+
+func (o GetEnterpriseProxiesProxyArrayOutput) ToGetEnterpriseProxiesProxyArrayOutput() GetEnterpriseProxiesProxyArrayOutput {
+	return o
+}
+
+func (o GetEnterpriseProxiesProxyArrayOutput) ToGetEnterpriseProxiesProxyArrayOutputWithContext(ctx context.Context) GetEnterpriseProxiesProxyArrayOutput {
+	return o
+}
+
+func (o GetEnterpriseProxiesProxyArrayOutput) Index(i pulumi.IntInput) GetEnterpriseProxiesProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnterpriseProxiesProxy {
+		return vs[0].([]GetEnterpriseProxiesProxy)[vs[1].(int)]
+	}).(GetEnterpriseProxiesProxyOutput)
+}
+
+type GetEnterpriseProxyAccessesAccess struct {
+	// The authorized account of the security agent.
+	AccessId     string `pulumi:"accessId"`
+	AccessSecret string `pulumi:"accessSecret"`
+	CreateTime   string `pulumi:"createTime"`
+	// Security Protection authorization ID.
+	Id string `pulumi:"id"`
+	// Database account.
+	IndepAccount string `pulumi:"indepAccount"`
+	// The ID of the instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The source information of the security access agent permission is enabled, and the return value is as follows:**Owner Authorization**: The UID of the owner in parentheses.**Work Order Authorization**: The ticket number in parentheses is the number of the user to apply for permission.
+	OriginInfo string `pulumi:"originInfo"`
+	// Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
+	ProxyAccessId string `pulumi:"proxyAccessId"`
+	// The ID of the security agent.
+	ProxyId string `pulumi:"proxyId"`
+	// The user ID.
+	UserId string `pulumi:"userId"`
+	// User nickname.
+	UserName string `pulumi:"userName"`
+	// User UID.
+	UserUid string `pulumi:"userUid"`
+}
+
+// GetEnterpriseProxyAccessesAccessInput is an input type that accepts GetEnterpriseProxyAccessesAccessArgs and GetEnterpriseProxyAccessesAccessOutput values.
+// You can construct a concrete instance of `GetEnterpriseProxyAccessesAccessInput` via:
+//
+//	GetEnterpriseProxyAccessesAccessArgs{...}
+type GetEnterpriseProxyAccessesAccessInput interface {
+	pulumi.Input
+
+	ToGetEnterpriseProxyAccessesAccessOutput() GetEnterpriseProxyAccessesAccessOutput
+	ToGetEnterpriseProxyAccessesAccessOutputWithContext(context.Context) GetEnterpriseProxyAccessesAccessOutput
+}
+
+type GetEnterpriseProxyAccessesAccessArgs struct {
+	// The authorized account of the security agent.
+	AccessId     pulumi.StringInput `pulumi:"accessId"`
+	AccessSecret pulumi.StringInput `pulumi:"accessSecret"`
+	CreateTime   pulumi.StringInput `pulumi:"createTime"`
+	// Security Protection authorization ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Database account.
+	IndepAccount pulumi.StringInput `pulumi:"indepAccount"`
+	// The ID of the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The source information of the security access agent permission is enabled, and the return value is as follows:**Owner Authorization**: The UID of the owner in parentheses.**Work Order Authorization**: The ticket number in parentheses is the number of the user to apply for permission.
+	OriginInfo pulumi.StringInput `pulumi:"originInfo"`
+	// Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
+	ProxyAccessId pulumi.StringInput `pulumi:"proxyAccessId"`
+	// The ID of the security agent.
+	ProxyId pulumi.StringInput `pulumi:"proxyId"`
+	// The user ID.
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// User nickname.
+	UserName pulumi.StringInput `pulumi:"userName"`
+	// User UID.
+	UserUid pulumi.StringInput `pulumi:"userUid"`
+}
+
+func (GetEnterpriseProxyAccessesAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseProxyAccessesAccess)(nil)).Elem()
+}
+
+func (i GetEnterpriseProxyAccessesAccessArgs) ToGetEnterpriseProxyAccessesAccessOutput() GetEnterpriseProxyAccessesAccessOutput {
+	return i.ToGetEnterpriseProxyAccessesAccessOutputWithContext(context.Background())
+}
+
+func (i GetEnterpriseProxyAccessesAccessArgs) ToGetEnterpriseProxyAccessesAccessOutputWithContext(ctx context.Context) GetEnterpriseProxyAccessesAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseProxyAccessesAccessOutput)
+}
+
+// GetEnterpriseProxyAccessesAccessArrayInput is an input type that accepts GetEnterpriseProxyAccessesAccessArray and GetEnterpriseProxyAccessesAccessArrayOutput values.
+// You can construct a concrete instance of `GetEnterpriseProxyAccessesAccessArrayInput` via:
+//
+//	GetEnterpriseProxyAccessesAccessArray{ GetEnterpriseProxyAccessesAccessArgs{...} }
+type GetEnterpriseProxyAccessesAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetEnterpriseProxyAccessesAccessArrayOutput() GetEnterpriseProxyAccessesAccessArrayOutput
+	ToGetEnterpriseProxyAccessesAccessArrayOutputWithContext(context.Context) GetEnterpriseProxyAccessesAccessArrayOutput
+}
+
+type GetEnterpriseProxyAccessesAccessArray []GetEnterpriseProxyAccessesAccessInput
+
+func (GetEnterpriseProxyAccessesAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnterpriseProxyAccessesAccess)(nil)).Elem()
+}
+
+func (i GetEnterpriseProxyAccessesAccessArray) ToGetEnterpriseProxyAccessesAccessArrayOutput() GetEnterpriseProxyAccessesAccessArrayOutput {
+	return i.ToGetEnterpriseProxyAccessesAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnterpriseProxyAccessesAccessArray) ToGetEnterpriseProxyAccessesAccessArrayOutputWithContext(ctx context.Context) GetEnterpriseProxyAccessesAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseProxyAccessesAccessArrayOutput)
+}
+
+type GetEnterpriseProxyAccessesAccessOutput struct{ *pulumi.OutputState }
+
+func (GetEnterpriseProxyAccessesAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseProxyAccessesAccess)(nil)).Elem()
+}
+
+func (o GetEnterpriseProxyAccessesAccessOutput) ToGetEnterpriseProxyAccessesAccessOutput() GetEnterpriseProxyAccessesAccessOutput {
+	return o
+}
+
+func (o GetEnterpriseProxyAccessesAccessOutput) ToGetEnterpriseProxyAccessesAccessOutputWithContext(ctx context.Context) GetEnterpriseProxyAccessesAccessOutput {
+	return o
+}
+
+// The authorized account of the security agent.
+func (o GetEnterpriseProxyAccessesAccessOutput) AccessId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.AccessId }).(pulumi.StringOutput)
+}
+
+func (o GetEnterpriseProxyAccessesAccessOutput) AccessSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.AccessSecret }).(pulumi.StringOutput)
+}
+
+func (o GetEnterpriseProxyAccessesAccessOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Security Protection authorization ID.
+func (o GetEnterpriseProxyAccessesAccessOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Database account.
+func (o GetEnterpriseProxyAccessesAccessOutput) IndepAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.IndepAccount }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetEnterpriseProxyAccessesAccessOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The source information of the security access agent permission is enabled, and the return value is as follows:**Owner Authorization**: The UID of the owner in parentheses.**Work Order Authorization**: The ticket number in parentheses is the number of the user to apply for permission.
+func (o GetEnterpriseProxyAccessesAccessOutput) OriginInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.OriginInfo }).(pulumi.StringOutput)
+}
+
+// Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
+func (o GetEnterpriseProxyAccessesAccessOutput) ProxyAccessId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.ProxyAccessId }).(pulumi.StringOutput)
+}
+
+// The ID of the security agent.
+func (o GetEnterpriseProxyAccessesAccessOutput) ProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.ProxyId }).(pulumi.StringOutput)
+}
+
+// The user ID.
+func (o GetEnterpriseProxyAccessesAccessOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// User nickname.
+func (o GetEnterpriseProxyAccessesAccessOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+// User UID.
+func (o GetEnterpriseProxyAccessesAccessOutput) UserUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.UserUid }).(pulumi.StringOutput)
+}
+
+type GetEnterpriseProxyAccessesAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnterpriseProxyAccessesAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnterpriseProxyAccessesAccess)(nil)).Elem()
+}
+
+func (o GetEnterpriseProxyAccessesAccessArrayOutput) ToGetEnterpriseProxyAccessesAccessArrayOutput() GetEnterpriseProxyAccessesAccessArrayOutput {
+	return o
+}
+
+func (o GetEnterpriseProxyAccessesAccessArrayOutput) ToGetEnterpriseProxyAccessesAccessArrayOutputWithContext(ctx context.Context) GetEnterpriseProxyAccessesAccessArrayOutput {
+	return o
+}
+
+func (o GetEnterpriseProxyAccessesAccessArrayOutput) Index(i pulumi.IntInput) GetEnterpriseProxyAccessesAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnterpriseProxyAccessesAccess {
+		return vs[0].([]GetEnterpriseProxyAccessesAccess)[vs[1].(int)]
+	}).(GetEnterpriseProxyAccessesAccessOutput)
 }
 
 type GetEnterpriseUsersUser struct {
@@ -608,14 +1422,30 @@ func (o GetUserTenantsTenantArrayOutput) Index(i pulumi.IntInput) GetUserTenants
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseDatabasesDatabaseInput)(nil)).Elem(), GetEnterpriseDatabasesDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseDatabasesDatabaseArrayInput)(nil)).Elem(), GetEnterpriseDatabasesDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseInstancesInstanceInput)(nil)).Elem(), GetEnterpriseInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseInstancesInstanceArrayInput)(nil)).Elem(), GetEnterpriseInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseLogicDatabasesDatabaseInput)(nil)).Elem(), GetEnterpriseLogicDatabasesDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseLogicDatabasesDatabaseArrayInput)(nil)).Elem(), GetEnterpriseLogicDatabasesDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseProxiesProxyInput)(nil)).Elem(), GetEnterpriseProxiesProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseProxiesProxyArrayInput)(nil)).Elem(), GetEnterpriseProxiesProxyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseProxyAccessesAccessInput)(nil)).Elem(), GetEnterpriseProxyAccessesAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseProxyAccessesAccessArrayInput)(nil)).Elem(), GetEnterpriseProxyAccessesAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseUsersUserInput)(nil)).Elem(), GetEnterpriseUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseUsersUserArrayInput)(nil)).Elem(), GetEnterpriseUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserTenantsTenantInput)(nil)).Elem(), GetUserTenantsTenantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserTenantsTenantArrayInput)(nil)).Elem(), GetUserTenantsTenantArray{})
+	pulumi.RegisterOutputType(GetEnterpriseDatabasesDatabaseOutput{})
+	pulumi.RegisterOutputType(GetEnterpriseDatabasesDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetEnterpriseInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetEnterpriseInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetEnterpriseLogicDatabasesDatabaseOutput{})
+	pulumi.RegisterOutputType(GetEnterpriseLogicDatabasesDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(GetEnterpriseProxiesProxyOutput{})
+	pulumi.RegisterOutputType(GetEnterpriseProxiesProxyArrayOutput{})
+	pulumi.RegisterOutputType(GetEnterpriseProxyAccessesAccessOutput{})
+	pulumi.RegisterOutputType(GetEnterpriseProxyAccessesAccessArrayOutput{})
 	pulumi.RegisterOutputType(GetEnterpriseUsersUserOutput{})
 	pulumi.RegisterOutputType(GetEnterpriseUsersUserArrayOutput{})
 	pulumi.RegisterOutputType(GetUserTenantsTenantOutput{})

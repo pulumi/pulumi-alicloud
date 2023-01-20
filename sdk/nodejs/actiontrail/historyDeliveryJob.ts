@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const exampleProject = new alicloud.log.Project("exampleProject", {description: "tf actiontrail test"});
  * const exampleTrail = new alicloud.actiontrail.Trail("exampleTrail", {
  *     trailName: "example_value",
- *     slsProjectArn: pulumi.all([exampleRegions, exampleAccount, exampleProject.name]).apply(([exampleRegions, exampleAccount, name]) => `acs:log:${exampleRegions.regions?[0]?.id}:${exampleAccount.id}:project/${name}`),
+ *     slsProjectArn: pulumi.all([exampleRegions, exampleAccount, exampleProject.name]).apply(([exampleRegions, exampleAccount, name]) => `acs:log:${exampleRegions.regions?.[0]?.id}:${exampleAccount.id}:project/${name}`),
  * });
  * const exampleHistoryDeliveryJob = new alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", {trailName: exampleTrail.id});
  * ```

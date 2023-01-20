@@ -47,14 +47,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * The CPU resource  of the limitsOPA proxy container.
+     * The limit cpu of the Sidecar injector Pods.
      * 
      */
     @Import(name="limitCpu")
     private @Nullable Output<String> limitCpu;
 
     /**
-     * @return The CPU resource  of the limitsOPA proxy container.
+     * @return The limit cpu of the Sidecar injector Pods.
      * 
      */
     public Optional<Output<String>> limitCpu() {
@@ -62,14 +62,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * The memory resource limit of the OPA proxy container.
+     * Sidecar injector Pods on the throttle.
      * 
      */
     @Import(name="limitMemory")
     private @Nullable Output<String> limitMemory;
 
     /**
-     * @return The memory resource limit of the OPA proxy container.
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     public Optional<Output<String>> limitMemory() {
@@ -77,14 +77,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * The CPU resource request of the OPA proxy container.
+     * The requested cpu the Sidecar injector Pods.
      * 
      */
     @Import(name="requestCpu")
     private @Nullable Output<String> requestCpu;
 
     /**
-     * @return The CPU resource request of the OPA proxy container.
+     * @return The requested cpu the Sidecar injector Pods.
      * 
      */
     public Optional<Output<String>> requestCpu() {
@@ -92,14 +92,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * The memory resource request of the OPA proxy container.
+     * The requested memory the Sidecar injector Pods.
      * 
      */
     @Import(name="requestMemory")
     private @Nullable Output<String> requestMemory;
 
     /**
-     * @return The memory resource request of the OPA proxy container.
+     * @return The requested memory the Sidecar injector Pods.
      * 
      */
     public Optional<Output<String>> requestMemory() {
@@ -178,7 +178,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param limitCpu The CPU resource  of the limitsOPA proxy container.
+         * @param limitCpu The limit cpu of the Sidecar injector Pods.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param limitCpu The CPU resource  of the limitsOPA proxy container.
+         * @param limitCpu The limit cpu of the Sidecar injector Pods.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param limitMemory The memory resource limit of the OPA proxy container.
+         * @param limitMemory Sidecar injector Pods on the throttle.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param limitMemory The memory resource limit of the OPA proxy container.
+         * @param limitMemory Sidecar injector Pods on the throttle.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param requestCpu The CPU resource request of the OPA proxy container.
+         * @param requestCpu The requested cpu the Sidecar injector Pods.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param requestCpu The CPU resource request of the OPA proxy container.
+         * @param requestCpu The requested cpu the Sidecar injector Pods.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param requestMemory The memory resource request of the OPA proxy container.
+         * @param requestMemory The requested memory the Sidecar injector Pods.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param requestMemory The memory resource request of the OPA proxy container.
+         * @param requestMemory The requested memory the Sidecar injector Pods.
          * 
          * @return builder
          * 

@@ -70,6 +70,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/routeTable:RouteTable")
 public class RouteTable extends com.pulumi.resources.CustomResource {
     /**
+     * The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * 
+     */
+    @Export(name="associateType", type=String.class, parameters={})
+    private Output<String> associateType;
+
+    /**
+     * @return The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * 
+     */
+    public Output<String> associateType() {
+        return this.associateType;
+    }
+    /**
      * The description of the route table instance.
      * 
      */

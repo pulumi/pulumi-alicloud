@@ -45,7 +45,7 @@ import (
 //			}
 //			defaultHostShareKey, err := bastionhost.NewHostShareKey(ctx, "defaultHostShareKey", &bastionhost.HostShareKeyArgs{
 //				HostShareKeyName: pulumi.String("example_name"),
-//				InstanceId:       pulumi.String(defaultInstances.Instances[0].Id),
+//				InstanceId:       *pulumi.String(defaultInstances.Instances[0].Id),
 //				PassPhrase:       pulumi.String("example_value"),
 //				PrivateKey:       pulumi.String("example_value"),
 //			})
@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			defaultHost, err := bastionhost.NewHost(ctx, "defaultHost", &bastionhost.HostArgs{
-//				InstanceId:         pulumi.String(defaultInstances.Ids[0]),
+//				InstanceId:         *pulumi.String(defaultInstances.Ids[0]),
 //				HostName:           pulumi.String(name),
 //				ActiveAddressType:  pulumi.String("Private"),
 //				HostPrivateAddress: pulumi.String("172.16.0.10"),
@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			defaultHostAccount, err := bastionhost.NewHostAccount(ctx, "defaultHostAccount", &bastionhost.HostAccountArgs{
-//				InstanceId:      pulumi.String(defaultInstances.Ids[0]),
+//				InstanceId:      *pulumi.String(defaultInstances.Ids[0]),
 //				HostAccountName: pulumi.String(name),
 //				HostId:          defaultHost.HostId,
 //				ProtocolName:    pulumi.String("SSH"),
@@ -74,7 +74,7 @@ import (
 //				return err
 //			}
 //			_, err = bastionhost.NewHostAccountShareKeyAttachment(ctx, "defaultHostAccountShareKeyAttachment", &bastionhost.HostAccountShareKeyAttachmentArgs{
-//				InstanceId:     pulumi.String(defaultInstances.Instances[0].Id),
+//				InstanceId:     *pulumi.String(defaultInstances.Instances[0].Id),
 //				HostShareKeyId: defaultHostShareKey.HostShareKeyId,
 //				HostAccountId:  defaultHostAccount.HostAccountId,
 //			})

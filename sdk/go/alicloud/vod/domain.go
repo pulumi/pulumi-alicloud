@@ -94,8 +94,6 @@ type Domain struct {
 	// The status of the domain name for CDN. Valid values:
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-	// * `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The top-level domain name.
 	TopLevelDomain pulumi.StringPtrOutput `pulumi:"topLevelDomain"`
@@ -163,8 +161,6 @@ type domainState struct {
 	// The status of the domain name for CDN. Valid values:
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-	// * `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The top-level domain name.
 	TopLevelDomain *string `pulumi:"topLevelDomain"`
@@ -198,8 +194,6 @@ type DomainState struct {
 	// The status of the domain name for CDN. Valid values:
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-	// * `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags pulumi.MapInput
 	// The top-level domain name.
 	TopLevelDomain pulumi.StringPtrInput
@@ -221,8 +215,6 @@ type domainArgs struct {
 	// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
 	Sources []DomainSource `pulumi:"sources"`
 	// A mapping of tags to assign to the resource.
-	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-	// * `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The top-level domain name.
 	TopLevelDomain *string `pulumi:"topLevelDomain"`
@@ -239,8 +231,6 @@ type DomainArgs struct {
 	// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
 	Sources DomainSourceArrayInput
 	// A mapping of tags to assign to the resource.
-	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-	// * `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags pulumi.MapInput
 	// The top-level domain name.
 	TopLevelDomain pulumi.StringPtrInput
@@ -394,8 +384,6 @@ func (o DomainOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-// * `Value`: It can be up to 128 characters in length. It can be a null string.
 func (o DomainOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Domain) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

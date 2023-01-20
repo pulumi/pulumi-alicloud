@@ -23,46 +23,43 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.DatabaseFilesystem.GetSnapshots.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.DatabaseFilesystem.GetSnapshots.InvokeAsync(new AliCloud.DatabaseFilesystem.GetSnapshotsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.DbfsSnapshotId1 = ids.Apply(ids =&gt; ids.Snapshots?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.DatabaseFilesystem.GetSnapshots.InvokeAsync(new AliCloud.DatabaseFilesystem.GetSnapshotsArgs
-        ///         {
-        ///             NameRegex = "^my-Snapshot",
-        ///         }));
-        ///         this.DbfsSnapshotId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Snapshots?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.DatabaseFilesystem.GetSnapshots.InvokeAsync(new AliCloud.DatabaseFilesystem.GetSnapshotsArgs
-        ///         {
-        ///             Status = "accomplished",
-        ///         }));
-        ///         this.DbfsSnapshotId3 = status.Apply(status =&gt; status.Snapshots?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("dbfsSnapshotId1")]
-        ///     public Output&lt;string&gt; DbfsSnapshotId1 { get; set; }
-        ///     [Output("dbfsSnapshotId2")]
-        ///     public Output&lt;string&gt; DbfsSnapshotId2 { get; set; }
-        ///     [Output("dbfsSnapshotId3")]
-        ///     public Output&lt;string&gt; DbfsSnapshotId3 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.DatabaseFilesystem.GetSnapshots.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Snapshot",
+        ///     });
+        /// 
+        ///     var status = AliCloud.DatabaseFilesystem.GetSnapshots.Invoke(new()
+        ///     {
+        ///         Status = "accomplished",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dbfsSnapshotId1"] = ids.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["dbfsSnapshotId2"] = nameRegex.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["dbfsSnapshotId3"] = status.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnapshotsResult> InvokeAsync(GetSnapshotsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:databasefilesystem/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:databasefilesystem/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
@@ -76,50 +73,47 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.DatabaseFilesystem.GetSnapshots.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.DatabaseFilesystem.GetSnapshots.InvokeAsync(new AliCloud.DatabaseFilesystem.GetSnapshotsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.DbfsSnapshotId1 = ids.Apply(ids =&gt; ids.Snapshots?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.DatabaseFilesystem.GetSnapshots.InvokeAsync(new AliCloud.DatabaseFilesystem.GetSnapshotsArgs
-        ///         {
-        ///             NameRegex = "^my-Snapshot",
-        ///         }));
-        ///         this.DbfsSnapshotId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Snapshots?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.DatabaseFilesystem.GetSnapshots.InvokeAsync(new AliCloud.DatabaseFilesystem.GetSnapshotsArgs
-        ///         {
-        ///             Status = "accomplished",
-        ///         }));
-        ///         this.DbfsSnapshotId3 = status.Apply(status =&gt; status.Snapshots?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("dbfsSnapshotId1")]
-        ///     public Output&lt;string&gt; DbfsSnapshotId1 { get; set; }
-        ///     [Output("dbfsSnapshotId2")]
-        ///     public Output&lt;string&gt; DbfsSnapshotId2 { get; set; }
-        ///     [Output("dbfsSnapshotId3")]
-        ///     public Output&lt;string&gt; DbfsSnapshotId3 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.DatabaseFilesystem.GetSnapshots.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Snapshot",
+        ///     });
+        /// 
+        ///     var status = AliCloud.DatabaseFilesystem.GetSnapshots.Invoke(new()
+        ///     {
+        ///         Status = "accomplished",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dbfsSnapshotId1"] = ids.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["dbfsSnapshotId2"] = nameRegex.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["dbfsSnapshotId3"] = status.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSnapshotsResult> Invoke(GetSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:databasefilesystem/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:databasefilesystem/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSnapshotsArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -151,9 +145,10 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public GetSnapshotsArgs()
         {
         }
+        public static new GetSnapshotsArgs Empty => new GetSnapshotsArgs();
     }
 
-    public sealed class GetSnapshotsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -185,6 +180,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public GetSnapshotsInvokeArgs()
         {
         }
+        public static new GetSnapshotsInvokeArgs Empty => new GetSnapshotsInvokeArgs();
     }
 
 

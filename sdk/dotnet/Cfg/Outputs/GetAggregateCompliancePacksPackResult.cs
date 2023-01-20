@@ -17,10 +17,12 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// The Aliyun User Id.
         /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// The Aggregate Compliance Package Name.
+        /// </summary>
         public readonly string AggregateCompliancePackName;
         /// <summary>
         /// The Aggregate Compliance Package Id.
-        /// * `aggregate_compliance_pack_name` -The Aggregate Compliance Package Name.
         /// </summary>
         public readonly string AggregatorCompliancePackId;
         /// <summary>

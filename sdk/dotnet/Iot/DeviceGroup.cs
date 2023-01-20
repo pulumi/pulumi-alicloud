@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.Iot
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Iot.DeviceGroup("example", new()
     ///     {
-    ///         var example = new AliCloud.Iot.DeviceGroup("example", new AliCloud.Iot.DeviceGroupArgs
-    ///         {
-    ///             GroupName = "example_value",
-    ///         });
-    ///     }
+    ///         GroupName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.Iot
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:iot/deviceGroup:DeviceGroup")]
-    public partial class DeviceGroup : Pulumi.CustomResource
+    public partial class DeviceGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The GroupDesc of the device group.
@@ -116,7 +114,7 @@ namespace Pulumi.AliCloud.Iot
         }
     }
 
-    public sealed class DeviceGroupArgs : Pulumi.ResourceArgs
+    public sealed class DeviceGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GroupDesc of the device group.
@@ -145,9 +143,10 @@ namespace Pulumi.AliCloud.Iot
         public DeviceGroupArgs()
         {
         }
+        public static new DeviceGroupArgs Empty => new DeviceGroupArgs();
     }
 
-    public sealed class DeviceGroupState : Pulumi.ResourceArgs
+    public sealed class DeviceGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GroupDesc of the device group.
@@ -176,5 +175,6 @@ namespace Pulumi.AliCloud.Iot
         public DeviceGroupState()
         {
         }
+        public static new DeviceGroupState Empty => new DeviceGroupState();
     }
 }

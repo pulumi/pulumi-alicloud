@@ -536,14 +536,13 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-testAcccExample"
-        us = pulumi.providers.Alicloud("us", region="us-east-1")
-        cn = pulumi.providers.Alicloud("cn", region="cn-hangzhou")
+        us = alicloud.Provider("us", region="us-east-1")
+        cn = alicloud.Provider("cn", region="cn-hangzhou")
         default_instance = alicloud.cen.Instance("defaultInstance",
             cen_instance_name=name,
             protection_level="REDUCED",
@@ -618,14 +617,13 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-testAcccExample"
-        us = pulumi.providers.Alicloud("us", region="us-east-1")
-        cn = pulumi.providers.Alicloud("cn", region="cn-hangzhou")
+        us = alicloud.Provider("us", region="us-east-1")
+        cn = alicloud.Provider("cn", region="cn-hangzhou")
         default_instance = alicloud.cen.Instance("defaultInstance",
             cen_instance_name=name,
             protection_level="REDUCED",

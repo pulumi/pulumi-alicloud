@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -11,11 +12,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.157.0+.
  */
 export function getShardingNetworkPrivateAddresses(args: GetShardingNetworkPrivateAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetShardingNetworkPrivateAddressesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", {
         "dbInstanceId": args.dbInstanceId,
         "nodeId": args.nodeId,
@@ -57,9 +55,13 @@ export interface GetShardingNetworkPrivateAddressesResult {
     readonly outputFile?: string;
     readonly role?: string;
 }
-
+/**
+ * This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.157.0+.
+ */
 export function getShardingNetworkPrivateAddressesOutput(args: GetShardingNetworkPrivateAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShardingNetworkPrivateAddressesResult> {
-    return pulumi.output(args).apply(a => getShardingNetworkPrivateAddresses(a, opts))
+    return pulumi.output(args).apply((a: any) => getShardingNetworkPrivateAddresses(a, opts))
 }
 
 /**

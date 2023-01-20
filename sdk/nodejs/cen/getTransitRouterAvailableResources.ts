@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,11 +26,8 @@ import * as utilities from "../utilities";
  */
 export function getTransitRouterAvailableResources(args?: GetTransitRouterAvailableResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterAvailableResourcesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", {
         "outputFile": args.outputFile,
     }, opts);
@@ -53,9 +51,26 @@ export interface GetTransitRouterAvailableResourcesResult {
     readonly outputFile?: string;
     readonly resources: outputs.cen.GetTransitRouterAvailableResourcesResource[];
 }
-
+/**
+ * This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.163.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouterAvailableResources({});
+ * export const masterId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].master_zones[0];
+ * export const slaveId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].slave_zones[0];
+ * ```
+ */
 export function getTransitRouterAvailableResourcesOutput(args?: GetTransitRouterAvailableResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterAvailableResourcesResult> {
-    return pulumi.output(args).apply(a => getTransitRouterAvailableResources(a, opts))
+    return pulumi.output(args).apply((a: any) => getTransitRouterAvailableResources(a, opts))
 }
 
 /**

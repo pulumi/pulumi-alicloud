@@ -20,41 +20,42 @@ namespace Pulumi.AliCloud.Log
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         var exampleProject = new AliCloud.Log.Project("exampleProject", new AliCloud.Log.ProjectArgs
+    ///         Description = "created by terraform",
+    ///         Tags = 
     ///         {
-    ///             Description = "created by terraform",
-    ///             Tags = 
-    ///             {
-    ///                 { "test", "test" },
-    ///             },
-    ///         });
-    ///         var exampleStore = new AliCloud.Log.Store("exampleStore", new AliCloud.Log.StoreArgs
-    ///         {
-    ///             Project = exampleProject.Name,
-    ///             RetentionPeriod = 3650,
-    ///             ShardCount = 3,
-    ///             AutoSplit = true,
-    ///             MaxSplitShardCount = 60,
-    ///             AppendMeta = true,
-    ///         });
-    ///         var exampleIngestion = new AliCloud.Log.Ingestion("exampleIngestion", new AliCloud.Log.IngestionArgs
-    ///         {
-    ///             Project = exampleProject.Name,
-    ///             Logstore = exampleStore.Name,
-    ///             IngestionName = "ingestion_name",
-    ///             DisplayName = "display_name",
-    ///             Description = "oss2sls",
-    ///             Interval = "30m",
-    ///             RunImmediately = true,
-    ///             TimeZone = "+0800",
-    ///             Source = @"        {
+    ///             { "test", "test" },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var exampleIngestion = new AliCloud.Log.Ingestion("exampleIngestion", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         Logstore = exampleStore.Name,
+    ///         IngestionName = "ingestion_name",
+    ///         DisplayName = "display_name",
+    ///         Description = "oss2sls",
+    ///         Interval = "30m",
+    ///         RunImmediately = true,
+    ///         TimeZone = "+0800",
+    ///         Source = @"        {
     ///           ""bucket"": ""bucket_name"",
     ///           ""compressionCodec"": ""none"",
     ///           ""encoding"": ""UTF-8"",
@@ -77,10 +78,9 @@ namespace Pulumi.AliCloud.Log
     ///           ""type"": ""AliyunOSS""
     ///         }
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/ingestion:Ingestion")]
-    public partial class Ingestion : Pulumi.CustomResource
+    public partial class Ingestion : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Ingestion job description.
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class IngestionArgs : Pulumi.ResourceArgs
+    public sealed class IngestionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Ingestion job description.
@@ -251,9 +251,10 @@ namespace Pulumi.AliCloud.Log
         public IngestionArgs()
         {
         }
+        public static new IngestionArgs Empty => new IngestionArgs();
     }
 
-    public sealed class IngestionState : Pulumi.ResourceArgs
+    public sealed class IngestionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Ingestion job description.
@@ -312,5 +313,6 @@ namespace Pulumi.AliCloud.Log
         public IngestionState()
         {
         }
+        public static new IngestionState Empty => new IngestionState();
     }
 }

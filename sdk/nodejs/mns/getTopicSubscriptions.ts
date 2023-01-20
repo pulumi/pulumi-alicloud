@@ -2,32 +2,27 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const subscriptions = pulumi.output(alicloud.mns.getTopicSubscriptions({
+ * const subscriptions = alicloud.mns.getTopicSubscriptions({
  *     namePrefix: "tf-",
  *     topicName: "topic_name",
- * }));
- *
- * export const firstTopicSubscriptionId = subscriptions.subscriptions[0].id;
+ * });
+ * export const firstTopicSubscriptionId = subscriptions.then(subscriptions => subscriptions.subscriptions?.[0]?.id);
  * ```
  */
 export function getTopicSubscriptions(args: GetTopicSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicSubscriptionsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", {
         "namePrefix": args.namePrefix,
         "outputFile": args.outputFile,
@@ -68,11 +63,27 @@ export interface GetTopicSubscriptionsResult {
      * A list of subscriptions. Each element contains the following attributes:
      */
     readonly subscriptions: outputs.mns.GetTopicSubscriptionsSubscription[];
+    /**
+     * The topic which The subscription belongs to was named with the name.
+     */
     readonly topicName: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const subscriptions = alicloud.mns.getTopicSubscriptions({
+ *     namePrefix: "tf-",
+ *     topicName: "topic_name",
+ * });
+ * export const firstTopicSubscriptionId = subscriptions.then(subscriptions => subscriptions.subscriptions?.[0]?.id);
+ * ```
+ */
 export function getTopicSubscriptionsOutput(args: GetTopicSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicSubscriptionsResult> {
-    return pulumi.output(args).apply(a => getTopicSubscriptions(a, opts))
+    return pulumi.output(args).apply((a: any) => getTopicSubscriptions(a, opts))
 }
 
 /**

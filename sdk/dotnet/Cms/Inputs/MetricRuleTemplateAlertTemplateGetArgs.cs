@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class MetricRuleTemplateAlertTemplateGetArgs : Pulumi.ResourceArgs
+    public sealed class MetricRuleTemplateAlertTemplateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
@@ -51,5 +51,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public MetricRuleTemplateAlertTemplateGetArgs()
         {
         }
+        public static new MetricRuleTemplateAlertTemplateGetArgs Empty => new MetricRuleTemplateAlertTemplateGetArgs();
     }
 }

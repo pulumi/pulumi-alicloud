@@ -18,23 +18,21 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Add a Resource Manager handshake.
+    ///     var example = new AliCloud.ResourceManager.Handshake("example", new()
     ///     {
-    ///         // Add a Resource Manager handshake.
-    ///         var example = new AliCloud.ResourceManager.Handshake("example", new AliCloud.ResourceManager.HandshakeArgs
-    ///         {
-    ///             Note = "test resource manager handshake",
-    ///             TargetEntity = "1182775234******",
-    ///             TargetType = "Account",
-    ///         });
-    ///     }
+    ///         Note = "test resource manager handshake",
+    ///         TargetEntity = "1182775234******",
+    ///         TargetType = "Account",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/handshake:Handshake")]
-    public partial class Handshake : Pulumi.CustomResource
+    public partial class Handshake : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The expiration time of the invitation.
@@ -146,7 +144,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class HandshakeArgs : Pulumi.ResourceArgs
+    public sealed class HandshakeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Remarks. The maximum length is 1024 characters.
@@ -169,9 +167,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public HandshakeArgs()
         {
         }
+        public static new HandshakeArgs Empty => new HandshakeArgs();
     }
 
-    public sealed class HandshakeState : Pulumi.ResourceArgs
+    public sealed class HandshakeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The expiration time of the invitation.
@@ -230,5 +229,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public HandshakeState()
         {
         }
+        public static new HandshakeState Empty => new HandshakeState();
     }
 }

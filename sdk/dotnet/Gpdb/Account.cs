@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:gpdb/account:Account")]
-    public partial class Account : Pulumi.CustomResource
+    public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the account.
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
     }
 
-    public sealed class AccountArgs : Pulumi.ResourceArgs
+    public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the account.
@@ -146,9 +146,10 @@ namespace Pulumi.AliCloud.Gpdb
         public AccountArgs()
         {
         }
+        public static new AccountArgs Empty => new AccountArgs();
     }
 
-    public sealed class AccountState : Pulumi.ResourceArgs
+    public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the account.
@@ -191,5 +192,6 @@ namespace Pulumi.AliCloud.Gpdb
         public AccountState()
         {
         }
+        public static new AccountState Empty => new AccountState();
     }
 }

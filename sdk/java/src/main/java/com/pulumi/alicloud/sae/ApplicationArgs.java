@@ -20,6 +20,36 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     public static final ApplicationArgs Empty = new ApplicationArgs();
 
     /**
+     * The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+     * 
+     */
+    @Import(name="acrAssumeRoleArn")
+    private @Nullable Output<String> acrAssumeRoleArn;
+
+    /**
+     * @return The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+     * 
+     */
+    public Optional<Output<String>> acrAssumeRoleArn() {
+        return Optional.ofNullable(this.acrAssumeRoleArn);
+    }
+
+    /**
+     * The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+     * 
+     */
+    @Import(name="acrInstanceId")
+    private @Nullable Output<String> acrInstanceId;
+
+    /**
+     * @return The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+     * 
+     */
+    public Optional<Output<String>> acrInstanceId() {
+        return Optional.ofNullable(this.acrInstanceId);
+    }
+
+    /**
      * Application description information. No more than 1024 characters.
      * 
      */
@@ -836,6 +866,8 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     private ApplicationArgs() {}
 
     private ApplicationArgs(ApplicationArgs $) {
+        this.acrAssumeRoleArn = $.acrAssumeRoleArn;
+        this.acrInstanceId = $.acrInstanceId;
         this.appDescription = $.appDescription;
         this.appName = $.appName;
         this.autoConfig = $.autoConfig;
@@ -908,6 +940,48 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ApplicationArgs defaults) {
             $ = new ApplicationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acrAssumeRoleArn The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrAssumeRoleArn(@Nullable Output<String> acrAssumeRoleArn) {
+            $.acrAssumeRoleArn = acrAssumeRoleArn;
+            return this;
+        }
+
+        /**
+         * @param acrAssumeRoleArn The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrAssumeRoleArn(String acrAssumeRoleArn) {
+            return acrAssumeRoleArn(Output.of(acrAssumeRoleArn));
+        }
+
+        /**
+         * @param acrInstanceId The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrInstanceId(@Nullable Output<String> acrInstanceId) {
+            $.acrInstanceId = acrInstanceId;
+            return this;
+        }
+
+        /**
+         * @param acrInstanceId The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrInstanceId(String acrInstanceId) {
+            return acrInstanceId(Output.of(acrInstanceId));
         }
 
         /**

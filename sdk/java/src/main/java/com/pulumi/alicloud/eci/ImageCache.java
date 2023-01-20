@@ -73,7 +73,6 @@ import javax.annotation.Nullable;
 public class ImageCache extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the container group job that is used to create the image cache.
-     * * `status` -The status of the image cache.
      * 
      */
     @Export(name="containerGroupId", type=String.class, parameters={})
@@ -81,7 +80,6 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the container group job that is used to create the image cache.
-     * * `status` -The status of the image cache.
      * 
      */
     public Output<String> containerGroupId() {
@@ -199,9 +197,17 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
     public Output<String> securityGroupId() {
         return this.securityGroupId;
     }
+    /**
+     * The status of the image cache.
+     * 
+     */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
+    /**
+     * @return The status of the image cache.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }

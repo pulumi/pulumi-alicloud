@@ -23,31 +23,30 @@ namespace Pulumi.AliCloud.MongoDB
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.MongoDB.GetShardingNetworkPublicAddresses.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.MongoDB.GetShardingNetworkPublicAddresses.InvokeAsync(new AliCloud.MongoDB.GetShardingNetworkPublicAddressesArgs
-        ///         {
-        ///             DbInstanceId = "example_value",
-        ///             NodeId = "example_value",
-        ///             Role = "Primary",
-        ///         }));
-        ///         this.MongodbShardingNetworkPublicAddressDbInstanceId1 = example.Apply(example =&gt; example.Addresses?[0]?.DbInstanceId);
-        ///     }
+        ///         DbInstanceId = "example_value",
+        ///         NodeId = "example_value",
+        ///         Role = "Primary",
+        ///     });
         /// 
-        ///     [Output("mongodbShardingNetworkPublicAddressDbInstanceId1")]
-        ///     public Output&lt;string&gt; MongodbShardingNetworkPublicAddressDbInstanceId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbShardingNetworkPublicAddressDbInstanceId1"] = example.Apply(getShardingNetworkPublicAddressesResult =&gt; getShardingNetworkPublicAddressesResult.Addresses[0]?.DbInstanceId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetShardingNetworkPublicAddressesResult> InvokeAsync(GetShardingNetworkPublicAddressesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetShardingNetworkPublicAddressesResult>("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", args ?? new GetShardingNetworkPublicAddressesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetShardingNetworkPublicAddressesResult>("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", args ?? new GetShardingNetworkPublicAddressesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
@@ -61,35 +60,34 @@ namespace Pulumi.AliCloud.MongoDB
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.MongoDB.GetShardingNetworkPublicAddresses.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.MongoDB.GetShardingNetworkPublicAddresses.InvokeAsync(new AliCloud.MongoDB.GetShardingNetworkPublicAddressesArgs
-        ///         {
-        ///             DbInstanceId = "example_value",
-        ///             NodeId = "example_value",
-        ///             Role = "Primary",
-        ///         }));
-        ///         this.MongodbShardingNetworkPublicAddressDbInstanceId1 = example.Apply(example =&gt; example.Addresses?[0]?.DbInstanceId);
-        ///     }
+        ///         DbInstanceId = "example_value",
+        ///         NodeId = "example_value",
+        ///         Role = "Primary",
+        ///     });
         /// 
-        ///     [Output("mongodbShardingNetworkPublicAddressDbInstanceId1")]
-        ///     public Output&lt;string&gt; MongodbShardingNetworkPublicAddressDbInstanceId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbShardingNetworkPublicAddressDbInstanceId1"] = example.Apply(getShardingNetworkPublicAddressesResult =&gt; getShardingNetworkPublicAddressesResult.Addresses[0]?.DbInstanceId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetShardingNetworkPublicAddressesResult> Invoke(GetShardingNetworkPublicAddressesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetShardingNetworkPublicAddressesResult>("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", args ?? new GetShardingNetworkPublicAddressesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetShardingNetworkPublicAddressesResult>("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", args ?? new GetShardingNetworkPublicAddressesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetShardingNetworkPublicAddressesArgs : Pulumi.InvokeArgs
+    public sealed class GetShardingNetworkPublicAddressesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The db instance id.
@@ -115,9 +113,10 @@ namespace Pulumi.AliCloud.MongoDB
         public GetShardingNetworkPublicAddressesArgs()
         {
         }
+        public static new GetShardingNetworkPublicAddressesArgs Empty => new GetShardingNetworkPublicAddressesArgs();
     }
 
-    public sealed class GetShardingNetworkPublicAddressesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetShardingNetworkPublicAddressesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The db instance id.
@@ -143,6 +142,7 @@ namespace Pulumi.AliCloud.MongoDB
         public GetShardingNetworkPublicAddressesInvokeArgs()
         {
         }
+        public static new GetShardingNetworkPublicAddressesInvokeArgs Empty => new GetShardingNetworkPublicAddressesInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ehpc.Inputs
 {
 
-    public sealed class ClusterApplicationGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterApplicationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The tag of the software.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Ehpc.Inputs
         public ClusterApplicationGetArgs()
         {
         }
+        public static new ClusterApplicationGetArgs Empty => new ClusterApplicationGetArgs();
     }
 }

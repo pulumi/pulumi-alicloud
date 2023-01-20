@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				ApplicationName: pulumi.String(name),
 //				Description:     pulumi.String(name),
 //				Tags: pulumi.AnyMap{

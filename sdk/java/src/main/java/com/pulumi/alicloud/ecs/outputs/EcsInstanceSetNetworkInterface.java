@@ -27,7 +27,7 @@ public final class EcsInstanceSetNetworkInterface {
      */
     private @Nullable String primaryIpAddress;
     /**
-     * @return -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+     * @return The ID of the security group to which to assign secondary ENI.
      * 
      */
     private String securityGroupId;
@@ -60,7 +60,7 @@ public final class EcsInstanceSetNetworkInterface {
         return Optional.ofNullable(this.primaryIpAddress);
     }
     /**
-     * @return -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+     * @return The ID of the security group to which to assign secondary ENI.
      * 
      */
     public String securityGroupId() {

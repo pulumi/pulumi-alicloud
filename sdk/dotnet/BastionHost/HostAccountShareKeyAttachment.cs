@@ -21,49 +21,51 @@ namespace Pulumi.AliCloud.BastionHost
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tfacc_host_account_share_key_attachment";
-    ///         var defaultInstances = Output.Create(AliCloud.BastionHost.GetInstances.InvokeAsync());
-    ///         var defaultHostShareKey = new AliCloud.BastionHost.HostShareKey("defaultHostShareKey", new AliCloud.BastionHost.HostShareKeyArgs
-    ///         {
-    ///             HostShareKeyName = "example_name",
-    ///             InstanceId = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances?[0]?.Id),
-    ///             PassPhrase = "example_value",
-    ///             PrivateKey = "example_value",
-    ///         });
-    ///         var defaultHost = new AliCloud.BastionHost.Host("defaultHost", new AliCloud.BastionHost.HostArgs
-    ///         {
-    ///             InstanceId = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Ids?[0]),
-    ///             HostName = name,
-    ///             ActiveAddressType = "Private",
-    ///             HostPrivateAddress = "172.16.0.10",
-    ///             OsType = "Linux",
-    ///             Source = "Local",
-    ///         });
-    ///         var defaultHostAccount = new AliCloud.BastionHost.HostAccount("defaultHostAccount", new AliCloud.BastionHost.HostAccountArgs
-    ///         {
-    ///             InstanceId = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Ids?[0]),
-    ///             HostAccountName = name,
-    ///             HostId = defaultHost.HostId,
-    ///             ProtocolName = "SSH",
-    ///             Password = "YourPassword12345",
-    ///         });
-    ///         var defaultHostAccountShareKeyAttachment = new AliCloud.BastionHost.HostAccountShareKeyAttachment("defaultHostAccountShareKeyAttachment", new AliCloud.BastionHost.HostAccountShareKeyAttachmentArgs
-    ///         {
-    ///             InstanceId = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances?[0]?.Id),
-    ///             HostShareKeyId = defaultHostShareKey.HostShareKeyId,
-    ///             HostAccountId = defaultHostAccount.HostAccountId,
-    ///         });
-    ///     }
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfacc_host_account_share_key_attachment";
+    ///     var defaultInstances = AliCloud.BastionHost.GetInstances.Invoke();
     /// 
-    /// }
+    ///     var defaultHostShareKey = new AliCloud.BastionHost.HostShareKey("defaultHostShareKey", new()
+    ///     {
+    ///         HostShareKeyName = "example_name",
+    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+    ///         PassPhrase = "example_value",
+    ///         PrivateKey = "example_value",
+    ///     });
+    /// 
+    ///     var defaultHost = new AliCloud.BastionHost.Host("defaultHost", new()
+    ///     {
+    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///         HostName = name,
+    ///         ActiveAddressType = "Private",
+    ///         HostPrivateAddress = "172.16.0.10",
+    ///         OsType = "Linux",
+    ///         Source = "Local",
+    ///     });
+    /// 
+    ///     var defaultHostAccount = new AliCloud.BastionHost.HostAccount("defaultHostAccount", new()
+    ///     {
+    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///         HostAccountName = name,
+    ///         HostId = defaultHost.HostId,
+    ///         ProtocolName = "SSH",
+    ///         Password = "YourPassword12345",
+    ///     });
+    /// 
+    ///     var defaultHostAccountShareKeyAttachment = new AliCloud.BastionHost.HostAccountShareKeyAttachment("defaultHostAccountShareKeyAttachment", new()
+    ///     {
+    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+    ///         HostShareKeyId = defaultHostShareKey.HostShareKeyId,
+    ///         HostAccountId = defaultHostAccount.HostAccountId,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -75,7 +77,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment")]
-    public partial class HostAccountShareKeyAttachment : Pulumi.CustomResource
+    public partial class HostAccountShareKeyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID list of the host account.
@@ -139,7 +141,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
     }
 
-    public sealed class HostAccountShareKeyAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class HostAccountShareKeyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID list of the host account.
@@ -162,9 +164,10 @@ namespace Pulumi.AliCloud.BastionHost
         public HostAccountShareKeyAttachmentArgs()
         {
         }
+        public static new HostAccountShareKeyAttachmentArgs Empty => new HostAccountShareKeyAttachmentArgs();
     }
 
-    public sealed class HostAccountShareKeyAttachmentState : Pulumi.ResourceArgs
+    public sealed class HostAccountShareKeyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID list of the host account.
@@ -187,5 +190,6 @@ namespace Pulumi.AliCloud.BastionHost
         public HostAccountShareKeyAttachmentState()
         {
         }
+        public static new HostAccountShareKeyAttachmentState Empty => new HostAccountShareKeyAttachmentState();
     }
 }

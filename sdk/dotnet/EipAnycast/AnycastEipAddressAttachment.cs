@@ -24,27 +24,26 @@ namespace Pulumi.AliCloud.EipAnycast
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleAnycastEipAddress = new AliCloud.EipAnycast.AnycastEipAddress("exampleAnycastEipAddress", new()
     ///     {
-    ///         var exampleAnycastEipAddress = new AliCloud.EipAnycast.AnycastEipAddress("exampleAnycastEipAddress", new AliCloud.EipAnycast.AnycastEipAddressArgs
-    ///         {
-    ///             ServiceLocation = "international",
-    ///         });
-    ///         var exampleAnycastEipAddressAttachment = new AliCloud.EipAnycast.AnycastEipAddressAttachment("exampleAnycastEipAddressAttachment", new AliCloud.EipAnycast.AnycastEipAddressAttachmentArgs
-    ///         {
-    ///             AnycastId = exampleAnycastEipAddress.Id,
-    ///             BindInstanceId = "lb-j6chlcr8lffy7********",
-    ///             BindInstanceRegionId = "cn-hongkong",
-    ///             BindInstanceType = "SlbInstance",
-    ///         });
-    ///     }
+    ///         ServiceLocation = "international",
+    ///     });
     /// 
-    /// }
+    ///     var exampleAnycastEipAddressAttachment = new AliCloud.EipAnycast.AnycastEipAddressAttachment("exampleAnycastEipAddressAttachment", new()
+    ///     {
+    ///         AnycastId = exampleAnycastEipAddress.Id,
+    ///         BindInstanceId = "lb-j6chlcr8lffy7********",
+    ///         BindInstanceRegionId = "cn-hongkong",
+    ///         BindInstanceType = "SlbInstance",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.EipAnycast
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment")]
-    public partial class AnycastEipAddressAttachment : Pulumi.CustomResource
+    public partial class AnycastEipAddressAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of Anycast EIP.
@@ -132,7 +131,7 @@ namespace Pulumi.AliCloud.EipAnycast
         }
     }
 
-    public sealed class AnycastEipAddressAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class AnycastEipAddressAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of Anycast EIP.
@@ -161,9 +160,10 @@ namespace Pulumi.AliCloud.EipAnycast
         public AnycastEipAddressAttachmentArgs()
         {
         }
+        public static new AnycastEipAddressAttachmentArgs Empty => new AnycastEipAddressAttachmentArgs();
     }
 
-    public sealed class AnycastEipAddressAttachmentState : Pulumi.ResourceArgs
+    public sealed class AnycastEipAddressAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of Anycast EIP.
@@ -198,5 +198,6 @@ namespace Pulumi.AliCloud.EipAnycast
         public AnycastEipAddressAttachmentState()
         {
         }
+        public static new AnycastEipAddressAttachmentState Empty => new AnycastEipAddressAttachmentState();
     }
 }

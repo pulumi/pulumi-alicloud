@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -15,25 +16,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const dbInstancesDs = pulumi.output(alicloud.rds.getInstances({
+ * const dbInstancesDs = alicloud.rds.getInstances({
  *     nameRegex: "data-\\d+",
  *     status: "Running",
  *     tags: {
  *         size: "tiny",
  *         type: "database",
  *     },
- * }));
- *
- * export const firstDbInstanceId = dbInstancesDs.instances[0].id;
+ * });
+ * export const firstDbInstanceId = dbInstancesDs.then(dbInstancesDs => dbInstancesDs.instances?.[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getInstances:getInstances", {
         "connectionMode": args.connectionMode,
         "dbType": args.dbType,
@@ -153,9 +150,29 @@ export interface GetInstancesResult {
      */
     readonly vswitchId?: string;
 }
-
+/**
+ * The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
+ * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dbInstancesDs = alicloud.rds.getInstances({
+ *     nameRegex: "data-\\d+",
+ *     status: "Running",
+ *     tags: {
+ *         size: "tiny",
+ *         type: "database",
+ *     },
+ * });
+ * export const firstDbInstanceId = dbInstancesDs.then(dbInstancesDs => dbInstancesDs.instances?.[0]?.id);
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["5VR90-421F886-81E9-xxx"],
  *     nameRegex: "tf-testAcc",
  * });
- * export const firstQuotasQuotaAlarmId = example.then(example => example.alarms?[0]?.id);
+ * export const firstQuotasQuotaAlarmId = example.then(example => example.alarms?.[0]?.id);
  * ```
  */
 export function getQuotaAlarms(args?: GetQuotaAlarmsArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaAlarmsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -98,9 +96,28 @@ export interface GetQuotaAlarmsResult {
     readonly quotaAlarmName?: string;
     readonly quotaDimensions?: outputs.quotas.GetQuotaAlarmsQuotaDimension[];
 }
-
+/**
+ * This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.116.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.quotas.getQuotaAlarms({
+ *     ids: ["5VR90-421F886-81E9-xxx"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstQuotasQuotaAlarmId = example.then(example => example.alarms?.[0]?.id);
+ * ```
+ */
 export function getQuotaAlarmsOutput(args?: GetQuotaAlarmsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaAlarmsResult> {
-    return pulumi.output(args).apply(a => getQuotaAlarms(a, opts))
+    return pulumi.output(args).apply((a: any) => getQuotaAlarms(a, opts))
 }
 
 /**

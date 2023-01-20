@@ -45,7 +45,7 @@ import (
 //			}
 //			defaultAcl, err := alb.NewAcl(ctx, "defaultAcl", &alb.AclArgs{
 //				AclName:         pulumi.String("example_value"),
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				AclEntries: alb.AclAclEntryArray{
 //					&alb.AclAclEntryArgs{
 //						Description: pulumi.String("description"),
@@ -81,12 +81,12 @@ import (
 //				return err
 //			}
 //			defaultLoadBalancer, err := alb.NewLoadBalancer(ctx, "defaultLoadBalancer", &alb.LoadBalancerArgs{
-//				VpcId:                pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId:                *pulumi.String(defaultNetworks.Ids[0]),
 //				AddressType:          pulumi.String("Internet"),
 //				AddressAllocatedMode: pulumi.String("Fixed"),
 //				LoadBalancerName:     pulumi.String("example_value"),
 //				LoadBalancerEdition:  pulumi.String("Standard"),
-//				ResourceGroupId:      pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId:      *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{
 //					PayType: pulumi.String("PayAsYouGo"),
 //				},
@@ -95,12 +95,12 @@ import (
 //				},
 //				ZoneMappings: alb.LoadBalancerZoneMappingArray{
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: pulumi.String(default1.Ids[0]),
-//						ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//						VswitchId: *pulumi.String(default1.Ids[0]),
+//						ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
 //					},
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: pulumi.String(default2.Ids[0]),
-//						ZoneId:    pulumi.String(defaultZones.Zones[1].Id),
+//						VswitchId: *pulumi.String(default2.Ids[0]),
+//						ZoneId:    *pulumi.String(defaultZones.Zones[1].Id),
 //					},
 //				},
 //				ModificationProtectionConfig: &alb.LoadBalancerModificationProtectionConfigArgs{
@@ -112,9 +112,9 @@ import (
 //			}
 //			defaultServerGroup, err := alb.NewServerGroup(ctx, "defaultServerGroup", &alb.ServerGroupArgs{
 //				Protocol:        pulumi.String("HTTP"),
-//				VpcId:           pulumi.String(defaultNetworks.Vpcs[0].Id),
+//				VpcId:           *pulumi.String(defaultNetworks.Vpcs[0].Id),
 //				ServerGroupName: pulumi.String("example_value"),
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
 //					HealthCheckEnabled: pulumi.Bool(false),
 //				},

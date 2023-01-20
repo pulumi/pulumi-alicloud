@@ -14,13 +14,21 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     public sealed class RuleTarget
     {
         /// <summary>
+        /// Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+        /// </summary>
+        public readonly Outputs.RuleTargetDeadLetterQueue? DeadLetterQueue;
+        /// <summary>
         /// The endpoint of target.
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// A list of param.
+        /// A list of param. See the following `Block param_list`.
         /// </summary>
         public readonly ImmutableArray<Outputs.RuleTargetParamList> ParamLists;
+        /// <summary>
+        /// The retry policy that is used to push the event. Valid values:
+        /// </summary>
+        public readonly string? PushRetryStrategy;
         /// <summary>
         /// The ID of target.
         /// </summary>
@@ -32,16 +40,22 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
 
         [OutputConstructor]
         private RuleTarget(
+            Outputs.RuleTargetDeadLetterQueue? deadLetterQueue,
+
             string endpoint,
 
             ImmutableArray<Outputs.RuleTargetParamList> paramLists,
+
+            string? pushRetryStrategy,
 
             string targetId,
 
             string type)
         {
+            DeadLetterQueue = deadLetterQueue;
             Endpoint = endpoint;
             ParamLists = paramLists;
+            PushRetryStrategy = pushRetryStrategy;
             TargetId = targetId;
             Type = type;
         }

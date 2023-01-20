@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const ids = alicloud.cms.getHybridMonitorFcTasks({
  *     ids: ["example_value"],
  * });
- * export const cmsHybridMonitorFcTaskId1 = ids.then(ids => ids.tasks?[0]?.id);
+ * export const cmsHybridMonitorFcTaskId1 = ids.then(ids => ids.tasks?.[0]?.id);
  * ```
  */
 export function getHybridMonitorFcTasks(args?: GetHybridMonitorFcTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridMonitorFcTasksResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks", {
         "ids": args.ids,
         "namespace": args.namespace,
@@ -72,9 +70,27 @@ export interface GetHybridMonitorFcTasksResult {
     readonly pageSize?: number;
     readonly tasks: outputs.cms.GetHybridMonitorFcTasksTask[];
 }
-
+/**
+ * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.179.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cms.getHybridMonitorFcTasks({
+ *     ids: ["example_value"],
+ * });
+ * export const cmsHybridMonitorFcTaskId1 = ids.then(ids => ids.tasks?.[0]?.id);
+ * ```
+ */
 export function getHybridMonitorFcTasksOutput(args?: GetHybridMonitorFcTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridMonitorFcTasksResult> {
-    return pulumi.output(args).apply(a => getHybridMonitorFcTasks(a, opts))
+    return pulumi.output(args).apply((a: any) => getHybridMonitorFcTasks(a, opts))
 }
 
 /**

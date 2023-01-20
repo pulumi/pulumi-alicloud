@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -103,6 +104,10 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The routing type of the listener. Default Value: `Standard`. Valid values:
+     */
+    public readonly listenerType!: pulumi.Output<string>;
+    /**
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      */
     public readonly name!: pulumi.Output<string>;
@@ -120,6 +125,10 @@ export class Listener extends pulumi.CustomResource {
      * `false`: keep client source IP function is not turned on.
      */
     public readonly proxyProtocol!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     */
+    public readonly securityPolicyId!: pulumi.Output<string>;
     /**
      * The status of the listener.
      */
@@ -142,10 +151,12 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["certificates"] = state ? state.certificates : undefined;
             resourceInputs["clientAffinity"] = state ? state.clientAffinity : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["listenerType"] = state ? state.listenerType : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["portRanges"] = state ? state.portRanges : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
+            resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
@@ -159,10 +170,12 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["certificates"] = args ? args.certificates : undefined;
             resourceInputs["clientAffinity"] = args ? args.clientAffinity : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["listenerType"] = args ? args.listenerType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["portRanges"] = args ? args.portRanges : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
+            resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -193,6 +206,10 @@ export interface ListenerState {
      */
     description?: pulumi.Input<string>;
     /**
+     * The routing type of the listener. Default Value: `Standard`. Valid values:
+     */
+    listenerType?: pulumi.Input<string>;
+    /**
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      */
     name?: pulumi.Input<string>;
@@ -210,6 +227,10 @@ export interface ListenerState {
      * `false`: keep client source IP function is not turned on.
      */
     proxyProtocol?: pulumi.Input<boolean>;
+    /**
+     * The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     */
+    securityPolicyId?: pulumi.Input<string>;
     /**
      * The status of the listener.
      */
@@ -239,6 +260,10 @@ export interface ListenerArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * The routing type of the listener. Default Value: `Standard`. Valid values:
+     */
+    listenerType?: pulumi.Input<string>;
+    /**
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      */
     name?: pulumi.Input<string>;
@@ -256,4 +281,8 @@ export interface ListenerArgs {
      * `false`: keep client source IP function is not turned on.
      */
     proxyProtocol?: pulumi.Input<boolean>;
+    /**
+     * The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     */
+    securityPolicyId?: pulumi.Input<string>;
 }

@@ -23,40 +23,39 @@ namespace Pulumi.AliCloud.Cen
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-test";
+    ///     var exampleNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-test";
-    ///         var exampleNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             IsDefault = true,
-    ///         }));
-    ///         var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///         });
-    ///         var vpc = new AliCloud.Cen.InstanceAttachment("vpc", new AliCloud.Cen.InstanceAttachmentArgs
-    ///         {
-    ///             InstanceId = exampleInstance.Id,
-    ///             ChildInstanceId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs?[0]?.Id),
-    ///             ChildInstanceType = "VPC",
-    ///             ChildInstanceRegionId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs?[0]?.RegionId),
-    ///         });
-    ///         var @this = new AliCloud.Cen.RouteService("this", new AliCloud.Cen.RouteServiceArgs
-    ///         {
-    ///             AccessRegionId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs?[0]?.RegionId),
-    ///             HostRegionId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs?[0]?.RegionId),
-    ///             HostVpcId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs?[0]?.Id),
-    ///             CenId = vpc.InstanceId,
-    ///             Host = "100.118.28.52/32",
-    ///         });
-    ///     }
+    ///         IsDefault = true,
+    ///     });
     /// 
-    /// }
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance");
+    /// 
+    ///     var vpc = new AliCloud.Cen.InstanceAttachment("vpc", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
+    ///         ChildInstanceId = exampleNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.Id),
+    ///         ChildInstanceType = "VPC",
+    ///         ChildInstanceRegionId = exampleNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.RegionId),
+    ///     });
+    /// 
+    ///     var @this = new AliCloud.Cen.RouteService("this", new()
+    ///     {
+    ///         AccessRegionId = exampleNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.RegionId),
+    ///         HostRegionId = exampleNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.RegionId),
+    ///         HostVpcId = exampleNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.Id),
+    ///         CenId = vpc.InstanceId,
+    ///         Host = "100.118.28.52/32",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -68,7 +67,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/routeService:RouteService")]
-    public partial class RouteService : Pulumi.CustomResource
+    public partial class RouteService : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The region of the network instances that access the cloud services.
@@ -156,7 +155,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class RouteServiceArgs : Pulumi.ResourceArgs
+    public sealed class RouteServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The region of the network instances that access the cloud services.
@@ -197,9 +196,10 @@ namespace Pulumi.AliCloud.Cen
         public RouteServiceArgs()
         {
         }
+        public static new RouteServiceArgs Empty => new RouteServiceArgs();
     }
 
-    public sealed class RouteServiceState : Pulumi.ResourceArgs
+    public sealed class RouteServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The region of the network instances that access the cloud services.
@@ -246,5 +246,6 @@ namespace Pulumi.AliCloud.Cen
         public RouteServiceState()
         {
         }
+        public static new RouteServiceState Empty => new RouteServiceState();
     }
 }

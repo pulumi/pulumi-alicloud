@@ -24,52 +24,52 @@ namespace Pulumi.AliCloud.BastionHost
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultHost = new AliCloud.BastionHost.Host("defaultHost", new()
     ///     {
-    ///         var defaultHost = new AliCloud.BastionHost.Host("defaultHost", new AliCloud.BastionHost.HostArgs
-    ///         {
-    ///             InstanceId = "bastionhost-cn-tl3xxxxxxx",
-    ///             HostName = @var.Name,
-    ///             ActiveAddressType = "Private",
-    ///             HostPrivateAddress = "172.16.0.10",
-    ///             OsType = "Linux",
-    ///             Source = "Local",
-    ///         });
-    ///         var defaultHostAccount = new List&lt;AliCloud.BastionHost.HostAccount&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             defaultHostAccount.Add(new AliCloud.BastionHost.HostAccount($"defaultHostAccount-{range.Value}", new AliCloud.BastionHost.HostAccountArgs
-    ///             {
-    ///                 InstanceId = defaultHost.InstanceId,
-    ///                 HostAccountName = $"example_value-{range.Value}",
-    ///                 HostId = defaultHost.HostId,
-    ///                 ProtocolName = "SSH",
-    ///                 Password = "YourPassword12345",
-    ///             }));
-    ///         }
-    ///         var defaultUserGroup = new AliCloud.BastionHost.UserGroup("defaultUserGroup", new AliCloud.BastionHost.UserGroupArgs
-    ///         {
-    ///             InstanceId = defaultHost.InstanceId,
-    ///             UserGroupName = "my-local-user",
-    ///         });
-    ///         var defaultHostGroup = new AliCloud.BastionHost.HostGroup("defaultHostGroup", new AliCloud.BastionHost.HostGroupArgs
-    ///         {
-    ///             HostGroupName = "example_value",
-    ///             InstanceId = "bastionhost-cn-tl3xxxxxxx",
-    ///         });
-    ///         var defaultHostGroupAccountUserGroupAttachment = new AliCloud.BastionHost.HostGroupAccountUserGroupAttachment("defaultHostGroupAccountUserGroupAttachment", new AliCloud.BastionHost.HostGroupAccountUserGroupAttachmentArgs
-    ///         {
-    ///             InstanceId = defaultHost.InstanceId,
-    ///             UserGroupId = defaultUserGroup.UserGroupId,
-    ///             HostGroupId = defaultHostGroup.HostGroupId,
-    ///             HostAccountNames = defaultHostAccount.Select(__item =&gt; __item.HostAccountName).ToList(),
-    ///         });
-    ///     }
+    ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
+    ///         HostName = @var.Name,
+    ///         ActiveAddressType = "Private",
+    ///         HostPrivateAddress = "172.16.0.10",
+    ///         OsType = "Linux",
+    ///         Source = "Local",
+    ///     });
     /// 
-    /// }
+    ///     var defaultHostAccount = new List&lt;AliCloud.BastionHost.HostAccount&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultHostAccount.Add(new AliCloud.BastionHost.HostAccount($"defaultHostAccount-{range.Value}", new()
+    ///         {
+    ///             InstanceId = defaultHost.InstanceId,
+    ///             HostAccountName = $"example_value-{range.Value}",
+    ///             HostId = defaultHost.HostId,
+    ///             ProtocolName = "SSH",
+    ///             Password = "YourPassword12345",
+    ///         }));
+    ///     }
+    ///     var defaultUserGroup = new AliCloud.BastionHost.UserGroup("defaultUserGroup", new()
+    ///     {
+    ///         InstanceId = defaultHost.InstanceId,
+    ///         UserGroupName = "my-local-user",
+    ///     });
+    /// 
+    ///     var defaultHostGroup = new AliCloud.BastionHost.HostGroup("defaultHostGroup", new()
+    ///     {
+    ///         HostGroupName = "example_value",
+    ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
+    ///     });
+    /// 
+    ///     var defaultHostGroupAccountUserGroupAttachment = new AliCloud.BastionHost.HostGroupAccountUserGroupAttachment("defaultHostGroupAccountUserGroupAttachment", new()
+    ///     {
+    ///         InstanceId = defaultHost.InstanceId,
+    ///         UserGroupId = defaultUserGroup.UserGroupId,
+    ///         HostGroupId = defaultHostGroup.HostGroupId,
+    ///         HostAccountNames = defaultHostAccount.Select(__item =&gt; __item.HostAccountName).ToList(),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment")]
-    public partial class HostGroupAccountUserGroupAttachment : Pulumi.CustomResource
+    public partial class HostGroupAccountUserGroupAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list names of the host account.
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
     }
 
-    public sealed class HostGroupAccountUserGroupAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class HostGroupAccountUserGroupAttachmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("hostAccountNames", required: true)]
         private InputList<string>? _hostAccountNames;
@@ -186,9 +186,10 @@ namespace Pulumi.AliCloud.BastionHost
         public HostGroupAccountUserGroupAttachmentArgs()
         {
         }
+        public static new HostGroupAccountUserGroupAttachmentArgs Empty => new HostGroupAccountUserGroupAttachmentArgs();
     }
 
-    public sealed class HostGroupAccountUserGroupAttachmentState : Pulumi.ResourceArgs
+    public sealed class HostGroupAccountUserGroupAttachmentState : global::Pulumi.ResourceArgs
     {
         [Input("hostAccountNames")]
         private InputList<string>? _hostAccountNames;
@@ -223,5 +224,6 @@ namespace Pulumi.AliCloud.BastionHost
         public HostGroupAccountUserGroupAttachmentState()
         {
         }
+        public static new HostGroupAccountUserGroupAttachmentState Empty => new HostGroupAccountUserGroupAttachmentState();
     }
 }

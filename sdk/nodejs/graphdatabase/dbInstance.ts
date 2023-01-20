@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -26,7 +27,7 @@ import * as utilities from "../utilities";
  *     dbInstanceNetworkType: "vpc",
  *     dbInstanceStorageType: "cloud_ssd",
  *     dbNodeClass: "gdb.r.2xlarge",
- *     dbNodeStorage: Number.parseFloat("example_value"),
+ *     dbNodeStorage: "example_value",
  *     dbVersion: "1.0",
  *     paymentType: "PayAsYouGo",
  * });
@@ -69,6 +70,10 @@ export class DbInstance extends pulumi.CustomResource {
     }
 
     /**
+     * (Available in 1.196.0+)  The connection string of the instance.
+     */
+    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    /**
      * The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
      */
     public readonly dbInstanceCategory!: pulumi.Output<string>;
@@ -105,6 +110,10 @@ export class DbInstance extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
+     * (Available in 1.196.0+) The connection port of the instance.
+     */
+    public /*out*/ readonly port!: pulumi.Output<string>;
+    /**
      * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -134,6 +143,7 @@ export class DbInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbInstanceState | undefined;
+            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
             resourceInputs["dbInstanceCategory"] = state ? state.dbInstanceCategory : undefined;
             resourceInputs["dbInstanceDescription"] = state ? state.dbInstanceDescription : undefined;
             resourceInputs["dbInstanceIpArrays"] = state ? state.dbInstanceIpArrays : undefined;
@@ -143,6 +153,7 @@ export class DbInstance extends pulumi.CustomResource {
             resourceInputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
             resourceInputs["dbVersion"] = state ? state.dbVersion : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -182,6 +193,8 @@ export class DbInstance extends pulumi.CustomResource {
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["connectionString"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -193,6 +206,10 @@ export class DbInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DbInstance resources.
  */
 export interface DbInstanceState {
+    /**
+     * (Available in 1.196.0+)  The connection string of the instance.
+     */
+    connectionString?: pulumi.Input<string>;
     /**
      * The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
      */
@@ -229,6 +246,10 @@ export interface DbInstanceState {
      * The paymen type of the resource. Valid values: `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * (Available in 1.196.0+) The connection port of the instance.
+     */
+    port?: pulumi.Input<string>;
     /**
      * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      */

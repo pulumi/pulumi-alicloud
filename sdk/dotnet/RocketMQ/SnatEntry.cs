@@ -23,22 +23,20 @@ namespace Pulumi.AliCloud.RocketMQ
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.RocketMQ.SnatEntry("default", new()
     ///     {
-    ///         var @default = new AliCloud.RocketMQ.SnatEntry("default", new AliCloud.RocketMQ.SnatEntryArgs
-    ///         {
-    ///             CidrBlock = "192.168.7.0/24",
-    ///             SagId = "sag-3rb1t3iagy3w0zgwy9",
-    ///             SnatIp = "192.0.0.2",
-    ///         });
-    ///     }
+    ///         CidrBlock = "192.168.7.0/24",
+    ///         SagId = "sag-3rb1t3iagy3w0zgwy9",
+    ///         SnatIp = "192.0.0.2",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/snatEntry:SnatEntry")]
-    public partial class SnatEntry : Pulumi.CustomResource
+    public partial class SnatEntry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The destination CIDR block.
@@ -114,7 +112,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
-    public sealed class SnatEntryArgs : Pulumi.ResourceArgs
+    public sealed class SnatEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination CIDR block.
@@ -137,9 +135,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public SnatEntryArgs()
         {
         }
+        public static new SnatEntryArgs Empty => new SnatEntryArgs();
     }
 
-    public sealed class SnatEntryState : Pulumi.ResourceArgs
+    public sealed class SnatEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination CIDR block.
@@ -162,5 +161,6 @@ namespace Pulumi.AliCloud.RocketMQ
         public SnatEntryState()
         {
         }
+        public static new SnatEntryState Empty => new SnatEntryState();
     }
 }

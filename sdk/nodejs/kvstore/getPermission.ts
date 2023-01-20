@@ -19,18 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.kvstore.getPermission({
+ * const open = alicloud.kvstore.getPermission({
  *     enable: "On",
- * }));
+ * });
  * ```
  */
 export function getPermission(args?: GetPermissionArgs, opts?: pulumi.InvokeOptions): Promise<GetPermissionResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kvstore/getPermission:getPermission", {
         "enable": args.enable,
     }, opts);
@@ -60,9 +57,28 @@ export interface GetPermissionResult {
      */
     readonly status: string;
 }
-
+/**
+ * Assigns a RAM role to ApsaraDB for Redis.
+ *
+ * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
+ * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
+ * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
+ *
+ * > **NOTE:** Available in v1.128.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.kvstore.getPermission({
+ *     enable: "On",
+ * });
+ * ```
+ */
 export function getPermissionOutput(args?: GetPermissionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionResult> {
-    return pulumi.output(args).apply(a => getPermission(a, opts))
+    return pulumi.output(args).apply((a: any) => getPermission(a, opts))
 }
 
 /**

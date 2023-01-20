@@ -80,7 +80,7 @@ public final class GetServiceMeshesMesh {
      */
     private String sidecarVersion;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `running` or `initial`.
      * 
      */
     private String status;
@@ -183,7 +183,7 @@ public final class GetServiceMeshesMesh {
         return this.sidecarVersion;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `running` or `initial`.
      * 
      */
     public String status() {

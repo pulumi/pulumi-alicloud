@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.Cms
     public static class GetMonitorGroupInstances
     {
         public static Task<GetMonitorGroupInstancesResult> InvokeAsync(GetMonitorGroupInstancesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMonitorGroupInstancesResult>("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args ?? new GetMonitorGroupInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMonitorGroupInstancesResult>("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args ?? new GetMonitorGroupInstancesArgs(), options.WithDefaults());
 
         public static Output<GetMonitorGroupInstancesResult> Invoke(GetMonitorGroupInstancesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMonitorGroupInstancesResult>("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args ?? new GetMonitorGroupInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMonitorGroupInstancesResult>("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args ?? new GetMonitorGroupInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetMonitorGroupInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetMonitorGroupInstancesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids", required: true)]
         public string Ids { get; set; } = null!;
@@ -33,9 +33,10 @@ namespace Pulumi.AliCloud.Cms
         public GetMonitorGroupInstancesArgs()
         {
         }
+        public static new GetMonitorGroupInstancesArgs Empty => new GetMonitorGroupInstancesArgs();
     }
 
-    public sealed class GetMonitorGroupInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMonitorGroupInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids", required: true)]
         public Input<string> Ids { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.AliCloud.Cms
         public GetMonitorGroupInstancesInvokeArgs()
         {
         }
+        public static new GetMonitorGroupInstancesInvokeArgs Empty => new GetMonitorGroupInstancesInvokeArgs();
     }
 
 

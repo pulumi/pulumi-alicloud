@@ -8,12 +8,18 @@ import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsArgs;
 import com.pulumi.alicloud.cen.inputs.GetBandwidthLimitsPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesArgs;
 import com.pulumi.alicloud.cen.inputs.GetBandwidthPackagesPlainArgs;
+import com.pulumi.alicloud.cen.inputs.GetChildInstanceRouteEntryToAttachmentsArgs;
+import com.pulumi.alicloud.cen.inputs.GetChildInstanceRouteEntryToAttachmentsPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
 import com.pulumi.alicloud.cen.inputs.GetFlowlogsPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
 import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
 import com.pulumi.alicloud.cen.inputs.GetInstancesPlainArgs;
+import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosPoliciesArgs;
+import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosPoliciesPlainArgs;
+import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosQueuesArgs;
+import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosQueuesPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetPrivateZonesArgs;
 import com.pulumi.alicloud.cen.inputs.GetPrivateZonesPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetRegionRouteEntriesArgs;
@@ -28,8 +34,22 @@ import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesArgs;
 import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesPlainArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsPlainArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainAssociationsArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainAssociationsPlainArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainMembersArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainMembersPlainArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainPeerMembersArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainPeerMembersPlainArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainSourcesArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainSourcesPlainArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainsArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainsPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterPeerAttachmentsArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterPeerAttachmentsPlainArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterPrefixListAssociationsArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterPrefixListAssociationsPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteEntriesArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteEntriesPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
@@ -44,15 +64,20 @@ import com.pulumi.alicloud.cen.inputs.GetTransitRouterVbrAttachmentsArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterVbrAttachmentsPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpcAttachmentsArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpcAttachmentsPlainArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRoutersArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRoutersPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetVbrHealthChecksArgs;
 import com.pulumi.alicloud.cen.inputs.GetVbrHealthChecksPlainArgs;
 import com.pulumi.alicloud.cen.outputs.GetBandwidthLimitsResult;
 import com.pulumi.alicloud.cen.outputs.GetBandwidthPackagesResult;
+import com.pulumi.alicloud.cen.outputs.GetChildInstanceRouteEntryToAttachmentsResult;
 import com.pulumi.alicloud.cen.outputs.GetFlowlogsResult;
 import com.pulumi.alicloud.cen.outputs.GetInstanceAttachmentsResult;
 import com.pulumi.alicloud.cen.outputs.GetInstancesResult;
+import com.pulumi.alicloud.cen.outputs.GetInterRegionTrafficQosPoliciesResult;
+import com.pulumi.alicloud.cen.outputs.GetInterRegionTrafficQosQueuesResult;
 import com.pulumi.alicloud.cen.outputs.GetPrivateZonesResult;
 import com.pulumi.alicloud.cen.outputs.GetRegionRouteEntriesResult;
 import com.pulumi.alicloud.cen.outputs.GetRouteEntriesResult;
@@ -60,7 +85,14 @@ import com.pulumi.alicloud.cen.outputs.GetRouteMapsResult;
 import com.pulumi.alicloud.cen.outputs.GetRouteServicesResult;
 import com.pulumi.alicloud.cen.outputs.GetTrafficMarkingPoliciesResult;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterAvailableResourcesResult;
+import com.pulumi.alicloud.cen.outputs.GetTransitRouterCidrsResult;
+import com.pulumi.alicloud.cen.outputs.GetTransitRouterMulticastDomainAssociationsResult;
+import com.pulumi.alicloud.cen.outputs.GetTransitRouterMulticastDomainMembersResult;
+import com.pulumi.alicloud.cen.outputs.GetTransitRouterMulticastDomainPeerMembersResult;
+import com.pulumi.alicloud.cen.outputs.GetTransitRouterMulticastDomainSourcesResult;
+import com.pulumi.alicloud.cen.outputs.GetTransitRouterMulticastDomainsResult;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterPeerAttachmentsResult;
+import com.pulumi.alicloud.cen.outputs.GetTransitRouterPrefixListAssociationsResult;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterRouteEntriesResult;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterRouteTableAssociationsResult;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterRouteTablePropagationsResult;
@@ -68,6 +100,7 @@ import com.pulumi.alicloud.cen.outputs.GetTransitRouterRouteTablesResult;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterServiceResult;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterVbrAttachmentsResult;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterVpcAttachmentsResult;
+import com.pulumi.alicloud.cen.outputs.GetTransitRouterVpnAttachmentsResult;
 import com.pulumi.alicloud.cen.outputs.GetTransitRoutersResult;
 import com.pulumi.alicloud.cen.outputs.GetVbrHealthChecksResult;
 import com.pulumi.core.Output;
@@ -540,6 +573,170 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getBandwidthPackages:getBandwidthPackages", TypeShape.of(GetBandwidthPackagesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetChildInstanceRouteEntryToAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs.builder()
+     *             .childInstanceRouteTableId(&#34;vtb-t4nt0z5xxbti85c78nkzy&#34;)
+     *             .transitRouterAttachmentId(&#34;tr-attach-f1fd1y50rql00emvej&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenChildInstanceRouteEntryToAttachmentExampleId&#34;, default_.attachments()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs args) {
+        return getChildInstanceRouteEntryToAttachments(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetChildInstanceRouteEntryToAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs.builder()
+     *             .childInstanceRouteTableId(&#34;vtb-t4nt0z5xxbti85c78nkzy&#34;)
+     *             .transitRouterAttachmentId(&#34;tr-attach-f1fd1y50rql00emvej&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenChildInstanceRouteEntryToAttachmentExampleId&#34;, default_.attachments()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntryToAttachmentsPlain(GetChildInstanceRouteEntryToAttachmentsPlainArgs args) {
+        return getChildInstanceRouteEntryToAttachmentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetChildInstanceRouteEntryToAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs.builder()
+     *             .childInstanceRouteTableId(&#34;vtb-t4nt0z5xxbti85c78nkzy&#34;)
+     *             .transitRouterAttachmentId(&#34;tr-attach-f1fd1y50rql00emvej&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenChildInstanceRouteEntryToAttachmentExampleId&#34;, default_.attachments()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments", TypeShape.of(GetChildInstanceRouteEntryToAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetChildInstanceRouteEntryToAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs.builder()
+     *             .childInstanceRouteTableId(&#34;vtb-t4nt0z5xxbti85c78nkzy&#34;)
+     *             .transitRouterAttachmentId(&#34;tr-attach-f1fd1y50rql00emvej&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenChildInstanceRouteEntryToAttachmentExampleId&#34;, default_.attachments()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntryToAttachmentsPlain(GetChildInstanceRouteEntryToAttachmentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments", TypeShape.of(GetChildInstanceRouteEntryToAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides CEN flow logs available to the user.
      * 
      * &gt; **NOTE:** Available in 1.78.0+
@@ -968,7 +1165,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1007,7 +1204,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1046,7 +1243,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1085,7 +1282,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1124,7 +1321,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1163,7 +1360,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cen.CenFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cen.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1190,6 +1387,378 @@ public final class CenFunctions {
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId0&#34;, ids.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId1&#34;, nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInterRegionTrafficQosPoliciesResult> getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs args) {
+        return getInterRegionTrafficQosPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId0&#34;, ids.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId1&#34;, nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInterRegionTrafficQosPoliciesResult> getInterRegionTrafficQosPoliciesPlain(GetInterRegionTrafficQosPoliciesPlainArgs args) {
+        return getInterRegionTrafficQosPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId0&#34;, ids.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId1&#34;, nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInterRegionTrafficQosPoliciesResult> getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies", TypeShape.of(GetInterRegionTrafficQosPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId0&#34;, ids.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId1&#34;, nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInterRegionTrafficQosPoliciesResult> getInterRegionTrafficQosPoliciesPlain(GetInterRegionTrafficQosPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies", TypeShape.of(GetInterRegionTrafficQosPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
+     *             .ids(alicloud_cen_inter_region_traffic_qos_queue.default().id())
+     *             .nameRegex(alicloud_cen_inter_region_traffic_qos_queue.default().name())
+     *             .trafficQosPolicyId(&#34;qos-xxxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenInterRegionTrafficQosQueueExampleId&#34;, default_.queues()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInterRegionTrafficQosQueuesResult> getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs args) {
+        return getInterRegionTrafficQosQueues(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
+     *             .ids(alicloud_cen_inter_region_traffic_qos_queue.default().id())
+     *             .nameRegex(alicloud_cen_inter_region_traffic_qos_queue.default().name())
+     *             .trafficQosPolicyId(&#34;qos-xxxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenInterRegionTrafficQosQueueExampleId&#34;, default_.queues()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInterRegionTrafficQosQueuesResult> getInterRegionTrafficQosQueuesPlain(GetInterRegionTrafficQosQueuesPlainArgs args) {
+        return getInterRegionTrafficQosQueuesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
+     *             .ids(alicloud_cen_inter_region_traffic_qos_queue.default().id())
+     *             .nameRegex(alicloud_cen_inter_region_traffic_qos_queue.default().name())
+     *             .trafficQosPolicyId(&#34;qos-xxxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenInterRegionTrafficQosQueueExampleId&#34;, default_.queues()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInterRegionTrafficQosQueuesResult> getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", TypeShape.of(GetInterRegionTrafficQosQueuesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetInterRegionTrafficQosQueuesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
+     *             .ids(alicloud_cen_inter_region_traffic_qos_queue.default().id())
+     *             .nameRegex(alicloud_cen_inter_region_traffic_qos_queue.default().name())
+     *             .trafficQosPolicyId(&#34;qos-xxxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenInterRegionTrafficQosQueueExampleId&#34;, default_.queues()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInterRegionTrafficQosQueuesResult> getInterRegionTrafficQosQueuesPlain(GetInterRegionTrafficQosQueuesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", TypeShape.of(GetInterRegionTrafficQosQueuesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides CEN Private Zones available to the user.
@@ -2470,11 +3039,1053 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", TypeShape.of(GetTransitRouterAvailableResourcesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.193.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterCidrId0&#34;, ids.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterCidrId1&#34;, nameRegex.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterCidrsResult> getTransitRouterCidrs(GetTransitRouterCidrsArgs args) {
+        return getTransitRouterCidrs(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.193.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterCidrId0&#34;, ids.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterCidrId1&#34;, nameRegex.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterCidrsResult> getTransitRouterCidrsPlain(GetTransitRouterCidrsPlainArgs args) {
+        return getTransitRouterCidrsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.193.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterCidrId0&#34;, ids.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterCidrId1&#34;, nameRegex.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterCidrsResult> getTransitRouterCidrs(GetTransitRouterCidrsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterCidrs:getTransitRouterCidrs", TypeShape.of(GetTransitRouterCidrsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.193.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterCidrId0&#34;, ids.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterCidrId1&#34;, nameRegex.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterCidrsResult> getTransitRouterCidrsPlain(GetTransitRouterCidrsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterCidrs:getTransitRouterCidrs", TypeShape.of(GetTransitRouterCidrsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterMulticastDomainId(&#34;your_transit_router_multicast_domain_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -&gt; getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs args) {
+        return getTransitRouterMulticastDomainAssociations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterMulticastDomainId(&#34;your_transit_router_multicast_domain_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -&gt; getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMulticastDomainAssociationsPlain(GetTransitRouterMulticastDomainAssociationsPlainArgs args) {
+        return getTransitRouterMulticastDomainAssociationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterMulticastDomainId(&#34;your_transit_router_multicast_domain_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -&gt; getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations", TypeShape.of(GetTransitRouterMulticastDomainAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterMulticastDomainId(&#34;your_transit_router_multicast_domain_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -&gt; getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMulticastDomainAssociationsPlain(GetTransitRouterMulticastDomainAssociationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations", TypeShape.of(GetTransitRouterMulticastDomainAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Member available to the user.[What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs.builder()
+     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfr29&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainMemberExampleId&#34;, default_.members()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs args) {
+        return getTransitRouterMulticastDomainMembers(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Member available to the user.[What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs.builder()
+     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfr29&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainMemberExampleId&#34;, default_.members()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDomainMembersPlain(GetTransitRouterMulticastDomainMembersPlainArgs args) {
+        return getTransitRouterMulticastDomainMembersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Member available to the user.[What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs.builder()
+     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfr29&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainMemberExampleId&#34;, default_.members()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers", TypeShape.of(GetTransitRouterMulticastDomainMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Member available to the user.[What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs.builder()
+     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfr29&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainMemberExampleId&#34;, default_.members()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDomainMembersPlain(GetTransitRouterMulticastDomainMembersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers", TypeShape.of(GetTransitRouterMulticastDomainMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user.[What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainPeerMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs.builder()
+     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfrxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainPeerMemberExampleId&#34;, default_.members()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs args) {
+        return getTransitRouterMulticastDomainPeerMembers(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user.[What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainPeerMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs.builder()
+     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfrxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainPeerMemberExampleId&#34;, default_.members()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMulticastDomainPeerMembersPlain(GetTransitRouterMulticastDomainPeerMembersPlainArgs args) {
+        return getTransitRouterMulticastDomainPeerMembersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user.[What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainPeerMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs.builder()
+     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfrxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainPeerMemberExampleId&#34;, default_.members()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", TypeShape.of(GetTransitRouterMulticastDomainPeerMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user.[What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainPeerMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs.builder()
+     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfrxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainPeerMemberExampleId&#34;, default_.members()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMulticastDomainPeerMembersPlain(GetTransitRouterMulticastDomainPeerMembersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", TypeShape.of(GetTransitRouterMulticastDomainPeerMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainSourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs.builder()
+     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-xxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainSourceExampleId&#34;, default_.sources()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs args) {
+        return getTransitRouterMulticastDomainSources(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainSourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs.builder()
+     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-xxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainSourceExampleId&#34;, default_.sources()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDomainSourcesPlain(GetTransitRouterMulticastDomainSourcesPlainArgs args) {
+        return getTransitRouterMulticastDomainSourcesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainSourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs.builder()
+     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-xxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainSourceExampleId&#34;, default_.sources()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainSources:getTransitRouterMulticastDomainSources", TypeShape.of(GetTransitRouterMulticastDomainSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainSourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs.builder()
+     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-xxxxxx&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainSourceExampleId&#34;, default_.sources()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDomainSourcesPlain(GetTransitRouterMulticastDomainSourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterMulticastDomainSources:getTransitRouterMulticastDomainSources", TypeShape.of(GetTransitRouterMulticastDomainSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterMulticastDomainsResult> getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs args) {
+        return getTransitRouterMulticastDomains(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterMulticastDomainsResult> getTransitRouterMulticastDomainsPlain(GetTransitRouterMulticastDomainsPlainArgs args) {
+        return getTransitRouterMulticastDomainsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterMulticastDomainsResult> getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomains:getTransitRouterMulticastDomains", TypeShape.of(GetTransitRouterMulticastDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.195.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterMulticastDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterMulticastDomainsResult> getTransitRouterMulticastDomainsPlain(GetTransitRouterMulticastDomainsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterMulticastDomains:getTransitRouterMulticastDomains", TypeShape.of(GetTransitRouterMulticastDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides CEN Transit Router peer attachments available to the user.
      * 
      * &gt; **NOTE:** Available in 1.128.0+
-     * 
-     * ## Example Usage
      * 
      */
     public static Output<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachments(GetTransitRouterPeerAttachmentsArgs args) {
@@ -2485,8 +4096,6 @@ public final class CenFunctions {
      * 
      * &gt; **NOTE:** Available in 1.128.0+
      * 
-     * ## Example Usage
-     * 
      */
     public static CompletableFuture<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachmentsPlain(GetTransitRouterPeerAttachmentsPlainArgs args) {
         return getTransitRouterPeerAttachmentsPlain(args, InvokeOptions.Empty);
@@ -2495,8 +4104,6 @@ public final class CenFunctions {
      * This data source provides CEN Transit Router peer attachments available to the user.
      * 
      * &gt; **NOTE:** Available in 1.128.0+
-     * 
-     * ## Example Usage
      * 
      */
     public static Output<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachments(GetTransitRouterPeerAttachmentsArgs args, InvokeOptions options) {
@@ -2507,11 +4114,181 @@ public final class CenFunctions {
      * 
      * &gt; **NOTE:** Available in 1.128.0+
      * 
-     * ## Example Usage
-     * 
      */
     public static CompletableFuture<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachmentsPlain(GetTransitRouterPeerAttachmentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", TypeShape.of(GetTransitRouterPeerAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.188.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPrefixListAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs.builder()
+     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .transitRouterTableId(&#34;vtb-6ehgc262hr170qgyc****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterPrefixListAssociationId&#34;, default_.associations()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs args) {
+        return getTransitRouterPrefixListAssociations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.188.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPrefixListAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs.builder()
+     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .transitRouterTableId(&#34;vtb-6ehgc262hr170qgyc****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterPrefixListAssociationId&#34;, default_.associations()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListAssociationsPlain(GetTransitRouterPrefixListAssociationsPlainArgs args) {
+        return getTransitRouterPrefixListAssociationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.188.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPrefixListAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs.builder()
+     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .transitRouterTableId(&#34;vtb-6ehgc262hr170qgyc****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterPrefixListAssociationId&#34;, default_.associations()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", TypeShape.of(GetTransitRouterPrefixListAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.188.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPrefixListAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs.builder()
+     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .transitRouterTableId(&#34;vtb-6ehgc262hr170qgyc****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterPrefixListAssociationId&#34;, default_.associations()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListAssociationsPlain(GetTransitRouterPrefixListAssociationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", TypeShape.of(GetTransitRouterPrefixListAssociationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
@@ -3222,6 +4999,174 @@ public final class CenFunctions {
      */
     public static CompletableFuture<GetTransitRouterVpcAttachmentsResult> getTransitRouterVpcAttachmentsPlain(GetTransitRouterVpcAttachmentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", TypeShape.of(GetTransitRouterVpcAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .cenId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterVpnAttachmentId1&#34;, ids.applyValue(getTransitRouterVpnAttachmentsResult -&gt; getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs args) {
+        return getTransitRouterVpnAttachments(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .cenId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterVpnAttachmentId1&#34;, ids.applyValue(getTransitRouterVpnAttachmentsResult -&gt; getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachmentsPlain(GetTransitRouterVpnAttachmentsPlainArgs args) {
+        return getTransitRouterVpnAttachmentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .cenId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterVpnAttachmentId1&#34;, ids.applyValue(getTransitRouterVpnAttachmentsResult -&gt; getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", TypeShape.of(GetTransitRouterVpnAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .cenId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterVpnAttachmentId1&#34;, ids.applyValue(getTransitRouterVpnAttachmentsResult -&gt; getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachmentsPlain(GetTransitRouterVpnAttachmentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", TypeShape.of(GetTransitRouterVpnAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)

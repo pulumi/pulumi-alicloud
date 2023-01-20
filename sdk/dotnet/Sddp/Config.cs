@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Sddp
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Sddp.Config("default", new()
     ///     {
-    ///         var @default = new AliCloud.Sddp.Config("default", new AliCloud.Sddp.ConfigArgs
-    ///         {
-    ///             Code = "access_failed_cnt",
-    ///             Value = "10",
-    ///         });
-    ///     }
+    ///         Code = "access_failed_cnt",
+    ///         Value = "10",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Sddp
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sddp/config:Config")]
-    public partial class Config : Pulumi.CustomResource
+    public partial class Config : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
@@ -63,17 +61,12 @@ namespace Pulumi.AliCloud.Sddp
 
         /// <summary>
         /// The language of the request and response. Valid values: `zh`,`en`.
-        /// * `zh`: Chinese.
-        /// * `en`: English.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
         /// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
-        /// * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
-        /// * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
-        /// * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         /// </summary>
         [Output("value")]
         public Output<string?> Value { get; private set; } = null!;
@@ -122,7 +115,7 @@ namespace Pulumi.AliCloud.Sddp
         }
     }
 
-    public sealed class ConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
@@ -138,17 +131,12 @@ namespace Pulumi.AliCloud.Sddp
 
         /// <summary>
         /// The language of the request and response. Valid values: `zh`,`en`.
-        /// * `zh`: Chinese.
-        /// * `en`: English.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
         /// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
-        /// * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
-        /// * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
-        /// * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -156,9 +144,10 @@ namespace Pulumi.AliCloud.Sddp
         public ConfigArgs()
         {
         }
+        public static new ConfigArgs Empty => new ConfigArgs();
     }
 
-    public sealed class ConfigState : Pulumi.ResourceArgs
+    public sealed class ConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
@@ -174,17 +163,12 @@ namespace Pulumi.AliCloud.Sddp
 
         /// <summary>
         /// The language of the request and response. Valid values: `zh`,`en`.
-        /// * `zh`: Chinese.
-        /// * `en`: English.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
         /// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
-        /// * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
-        /// * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
-        /// * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -192,5 +176,6 @@ namespace Pulumi.AliCloud.Sddp
         public ConfigState()
         {
         }
+        public static new ConfigState Empty => new ConfigState();
     }
 }

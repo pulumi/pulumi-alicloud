@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const defaultInstances = alicloud.bastionhost.getInstances({});
  * const defaultHostShareKey = new alicloud.bastionhost.HostShareKey("defaultHostShareKey", {
  *     hostShareKeyName: "example_name",
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.instances?[0]?.id),
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.instances?.[0]?.id),
  *     passPhrase: "example_value",
  *     privateKey: "example_value",
  * });
@@ -121,12 +121,14 @@ export class HostShareKey extends pulumi.CustomResource {
             }
             resourceInputs["hostShareKeyName"] = args ? args.hostShareKeyName : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["passPhrase"] = args ? args.passPhrase : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["passPhrase"] = args?.passPhrase ? pulumi.secret(args.passPhrase) : undefined;
+            resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["hostShareKeyId"] = undefined /*out*/;
             resourceInputs["privateKeyFingerPrint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["passPhrase", "privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(HostShareKey.__pulumiType, name, resourceInputs, opts);
     }
 }

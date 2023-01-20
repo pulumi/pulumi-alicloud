@@ -79,7 +79,6 @@ type GetAggregateConfigRulesResult struct {
 	// The name of the rule.
 	AggregateConfigRuleName *string `pulumi:"aggregateConfigRuleName"`
 	// The ID of Aggregator.
-	// * `compliance` -The Compliance information.
 	AggregatorId  string `pulumi:"aggregatorId"`
 	EnableDetails *bool  `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
@@ -154,7 +153,6 @@ func (o GetAggregateConfigRulesResultOutput) AggregateConfigRuleName() pulumi.St
 }
 
 // The ID of Aggregator.
-// * `compliance` -The Compliance information.
 func (o GetAggregateConfigRulesResultOutput) AggregatorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesResult) string { return v.AggregatorId }).(pulumi.StringOutput)
 }

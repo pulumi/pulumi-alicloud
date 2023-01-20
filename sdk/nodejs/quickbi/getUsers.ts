@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const ids = alicloud.quickbi.getUsers({
  *     ids: ["example_id"],
  * });
- * export const quickBiUserId1 = ids.then(ids => ids.users?[0]?.id);
+ * export const quickBiUserId1 = ids.then(ids => ids.users?.[0]?.id);
  * ```
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:quickbi/getUsers:getUsers", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -72,9 +70,27 @@ export interface GetUsersResult {
     readonly outputFile?: string;
     readonly users: outputs.quickbi.GetUsersUser[];
 }
-
+/**
+ * This data source provides the Quick BI Users of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.quickbi.getUsers({
+ *     ids: ["example_id"],
+ * });
+ * export const quickBiUserId1 = ids.then(ids => ids.users?.[0]?.id);
+ * ```
+ */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
-    return pulumi.output(args).apply(a => getUsers(a, opts))
+    return pulumi.output(args).apply((a: any) => getUsers(a, opts))
 }
 
 /**

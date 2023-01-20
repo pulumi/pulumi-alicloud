@@ -14,6 +14,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRulesRule {
+    /**
+     * @return The ID of the Alicloud account.
+     * 
+     */
     private String accountId;
     private String compliancePackId;
     /**
@@ -21,7 +25,15 @@ public final class GetRulesRule {
      * 
      */
     private List<GetRulesRuleCompliance> compliances;
+    /**
+     * @return The ARN of the Config Rule.
+     * 
+     */
     private String configRuleArn;
+    /**
+     * @return The ID of the Config Rule.
+     * 
+     */
     private String configRuleId;
     /**
      * @return Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
@@ -33,6 +45,10 @@ public final class GetRulesRule {
      * 
      */
     private String configRuleTriggerTypes;
+    /**
+     * @return The description of the Config Rule.
+     * 
+     */
     private String description;
     /**
      * @return Event source of the Config Rule.
@@ -46,24 +62,23 @@ public final class GetRulesRule {
     private String excludeResourceIdsScope;
     /**
      * @return The ID of the Config Rule.
-     * * `account_id`- The ID of the Alicloud account.
-     * * `config_rule_arn`- The ARN of the Config Rule.
-     * * `config_rule_id`- The ID of the Config Rule.
-     * * `config_rule_state`- The state of the Config Rule.
-     * * `description`- The description of the Config Rule.
-     * * `input_parameters`- The input parameters of the Config Rule.
-     * * `modified_timestamp`- the timestamp of the Config Rule modified.
-     * * `risk_level`- The risk level of the Config Rule.
-     * * `rule_name`- The name of the Config Rule.
      * 
      */
     private String id;
+    /**
+     * @return The input parameters of the Config Rule.
+     * 
+     */
     private Map<String,Object> inputParameters;
     /**
      * @return (Available in 1.124.1+) The frequency of maximum execution.
      * 
      */
     private String maximumExecutionFrequency;
+    /**
+     * @return the timestamp of the Config Rule modified.
+     * 
+     */
     private String modifiedTimestamp;
     /**
      * @return (Available in 1.124.1+) The scope of region ids.
@@ -100,14 +115,20 @@ public final class GetRulesRule {
      * 
      */
     private String sourceDetailMessageType;
+    /**
+     * @return The identifier of the managed rule or the arn of the custom function.
+     * 
+     */
     private String sourceIdentifier;
     /**
      * @return Rule execution cycle.
-     * * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
-     * * `source_owner`- The source owner of the Config Rule.
      * 
      */
     private String sourceMaximumExecutionFrequency;
+    /**
+     * @return The source owner of the Config Rule.
+     * 
+     */
     private String sourceOwner;
     /**
      * @return The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
@@ -126,6 +147,10 @@ public final class GetRulesRule {
     private String tagValueScope;
 
     private GetRulesRule() {}
+    /**
+     * @return The ID of the Alicloud account.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
@@ -139,9 +164,17 @@ public final class GetRulesRule {
     public List<GetRulesRuleCompliance> compliances() {
         return this.compliances;
     }
+    /**
+     * @return The ARN of the Config Rule.
+     * 
+     */
     public String configRuleArn() {
         return this.configRuleArn;
     }
+    /**
+     * @return The ID of the Config Rule.
+     * 
+     */
     public String configRuleId() {
         return this.configRuleId;
     }
@@ -159,6 +192,10 @@ public final class GetRulesRule {
     public String configRuleTriggerTypes() {
         return this.configRuleTriggerTypes;
     }
+    /**
+     * @return The description of the Config Rule.
+     * 
+     */
     public String description() {
         return this.description;
     }
@@ -178,20 +215,15 @@ public final class GetRulesRule {
     }
     /**
      * @return The ID of the Config Rule.
-     * * `account_id`- The ID of the Alicloud account.
-     * * `config_rule_arn`- The ARN of the Config Rule.
-     * * `config_rule_id`- The ID of the Config Rule.
-     * * `config_rule_state`- The state of the Config Rule.
-     * * `description`- The description of the Config Rule.
-     * * `input_parameters`- The input parameters of the Config Rule.
-     * * `modified_timestamp`- the timestamp of the Config Rule modified.
-     * * `risk_level`- The risk level of the Config Rule.
-     * * `rule_name`- The name of the Config Rule.
      * 
      */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The input parameters of the Config Rule.
+     * 
+     */
     public Map<String,Object> inputParameters() {
         return this.inputParameters;
     }
@@ -202,6 +234,10 @@ public final class GetRulesRule {
     public String maximumExecutionFrequency() {
         return this.maximumExecutionFrequency;
     }
+    /**
+     * @return the timestamp of the Config Rule modified.
+     * 
+     */
     public String modifiedTimestamp() {
         return this.modifiedTimestamp;
     }
@@ -254,18 +290,24 @@ public final class GetRulesRule {
     public String sourceDetailMessageType() {
         return this.sourceDetailMessageType;
     }
+    /**
+     * @return The identifier of the managed rule or the arn of the custom function.
+     * 
+     */
     public String sourceIdentifier() {
         return this.sourceIdentifier;
     }
     /**
      * @return Rule execution cycle.
-     * * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
-     * * `source_owner`- The source owner of the Config Rule.
      * 
      */
     public String sourceMaximumExecutionFrequency() {
         return this.sourceMaximumExecutionFrequency;
     }
+    /**
+     * @return The source owner of the Config Rule.
+     * 
+     */
     public String sourceOwner() {
         return this.sourceOwner;
     }

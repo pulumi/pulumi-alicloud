@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly bool? AutoRenew;
         /// <summary>
-        /// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        /// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         /// </summary>
         public readonly string? ChargeType;
         /// <summary>

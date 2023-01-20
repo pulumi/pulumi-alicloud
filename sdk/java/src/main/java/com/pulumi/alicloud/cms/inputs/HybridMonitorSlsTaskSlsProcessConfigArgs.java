@@ -20,14 +20,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
     public static final HybridMonitorSlsTaskSlsProcessConfigArgs Empty = new HybridMonitorSlsTaskSlsProcessConfigArgs();
 
     /**
-     * The extended field that specifies the result of basic operations that are performed on aggregation results.
+     * The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
      * 
      */
     @Import(name="expresses")
     private @Nullable Output<List<HybridMonitorSlsTaskSlsProcessConfigExpressArgs>> expresses;
 
     /**
-     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
      * 
      */
     public Optional<Output<List<HybridMonitorSlsTaskSlsProcessConfigExpressArgs>>> expresses() {
@@ -107,7 +107,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param expresses The extended field that specifies the result of basic operations that are performed on aggregation results.
+         * @param expresses The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param expresses The extended field that specifies the result of basic operations that are performed on aggregation results.
+         * @param expresses The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param expresses The extended field that specifies the result of basic operations that are performed on aggregation results.
+         * @param expresses The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
          * 
          * @return builder
          * 

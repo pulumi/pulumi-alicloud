@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MongoDB.Inputs
 {
 
-    public sealed class ServerlessInstanceSecurityIpGroupArgs : Pulumi.ResourceArgs
+    public sealed class ServerlessInstanceSecurityIpGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The attribute of the IP whitelist. This parameter is empty by default.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public ServerlessInstanceSecurityIpGroupArgs()
         {
         }
+        public static new ServerlessInstanceSecurityIpGroupArgs Empty => new ServerlessInstanceSecurityIpGroupArgs();
     }
 }

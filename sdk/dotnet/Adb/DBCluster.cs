@@ -21,59 +21,60 @@ namespace Pulumi.AliCloud.Adb
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "adbClusterconfig";
+    ///     var creation = config.Get("creation") ?? "ADB";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "adbClusterconfig";
-    ///         var creation = config.Get("creation") ?? "ADB";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var @this = new AliCloud.Adb.DBCluster("this", new AliCloud.Adb.DBClusterArgs
-    ///         {
-    ///             DbClusterCategory = "Cluster",
-    ///             DbNodeClass = "C8",
-    ///             DbNodeCount = 4,
-    ///             DbNodeStorage = 400,
-    ///             Mode = "reserver",
-    ///             DbClusterVersion = "3.0",
-    ///             PaymentType = "PayAsYouGo",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             Description = "Test new adb again.",
-    ///             MaintainTime = "23:00Z-00:00Z",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF-update" },
-    ///                 { "For", "acceptance-test-update" },
-    ///             },
-    ///             ResourceGroupId = "rg-aek2s7ylxx6****",
-    ///             SecurityIps = 
-    ///             {
-    ///                 "10.168.1.12",
-    ///                 "10.168.1.11",
-    ///             },
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var @this = new AliCloud.Adb.DBCluster("this", new()
+    ///     {
+    ///         DbClusterCategory = "Cluster",
+    ///         DbNodeClass = "C8",
+    ///         DbNodeCount = 4,
+    ///         DbNodeStorage = 400,
+    ///         Mode = "reserver",
+    ///         DbClusterVersion = "3.0",
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Description = "Test new adb again.",
+    ///         MaintainTime = "23:00Z-00:00Z",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF-update" },
+    ///             { "For", "acceptance-test-update" },
+    ///         },
+    ///         ResourceGroupId = "rg-aek2s7ylxx6****",
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.168.1.12",
+    ///             "10.168.1.11",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -85,7 +86,7 @@ namespace Pulumi.AliCloud.Adb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:adb/dBCluster:DBCluster")]
-    public partial class DBCluster : Pulumi.CustomResource
+    public partial class DBCluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
@@ -100,7 +101,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string?> ComputeResource { get; private set; } = null!;
 
         /// <summary>
-        /// The endpoint of the cluster.
+        /// The connection string of the cluster.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
@@ -185,6 +186,12 @@ namespace Pulumi.AliCloud.Adb
 
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.196.0+) The connection port of the ADB cluster.
+        /// </summary>
+        [Output("port")]
+        public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
         /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -280,7 +287,7 @@ namespace Pulumi.AliCloud.Adb
         }
     }
 
-    public sealed class DBClusterArgs : Pulumi.ResourceArgs
+    public sealed class DBClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
@@ -434,9 +441,10 @@ namespace Pulumi.AliCloud.Adb
         public DBClusterArgs()
         {
         }
+        public static new DBClusterArgs Empty => new DBClusterArgs();
     }
 
-    public sealed class DBClusterState : Pulumi.ResourceArgs
+    public sealed class DBClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
@@ -451,7 +459,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ComputeResource { get; set; }
 
         /// <summary>
-        /// The endpoint of the cluster.
+        /// The connection string of the cluster.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
@@ -538,6 +546,12 @@ namespace Pulumi.AliCloud.Adb
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// (Available in 1.196.0+) The connection port of the ADB cluster.
+        /// </summary>
+        [Input("port")]
+        public Input<string>? Port { get; set; }
+
+        /// <summary>
         /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         /// </summary>
         [Input("renewalStatus")]
@@ -602,5 +616,6 @@ namespace Pulumi.AliCloud.Adb
         public DBClusterState()
         {
         }
+        public static new DBClusterState Empty => new DBClusterState();
     }
 }

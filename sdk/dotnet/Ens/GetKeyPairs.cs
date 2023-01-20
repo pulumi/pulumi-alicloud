@@ -23,30 +23,29 @@ namespace Pulumi.AliCloud.Ens
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var nameRegex = AliCloud.Ens.GetKeyPairs.Invoke(new()
         ///     {
-        ///         var nameRegex = Output.Create(AliCloud.Ens.GetKeyPairs.InvokeAsync(new AliCloud.Ens.GetKeyPairsArgs
-        ///         {
-        ///             Version = "example_value",
-        ///             NameRegex = "^my-KeyPair",
-        ///         }));
-        ///         this.EnsKeyPairId1 = nameRegex.Apply(nameRegex =&gt; nameRegex.Pairs?[0]?.Id);
-        ///     }
+        ///         Version = "example_value",
+        ///         NameRegex = "^my-KeyPair",
+        ///     });
         /// 
-        ///     [Output("ensKeyPairId1")]
-        ///     public Output&lt;string&gt; EnsKeyPairId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ensKeyPairId1"] = nameRegex.Apply(getKeyPairsResult =&gt; getKeyPairsResult.Pairs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeyPairsResult> InvokeAsync(GetKeyPairsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPairsResult>("alicloud:ens/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeyPairsResult>("alicloud:ens/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
@@ -60,34 +59,33 @@ namespace Pulumi.AliCloud.Ens
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var nameRegex = AliCloud.Ens.GetKeyPairs.Invoke(new()
         ///     {
-        ///         var nameRegex = Output.Create(AliCloud.Ens.GetKeyPairs.InvokeAsync(new AliCloud.Ens.GetKeyPairsArgs
-        ///         {
-        ///             Version = "example_value",
-        ///             NameRegex = "^my-KeyPair",
-        ///         }));
-        ///         this.EnsKeyPairId1 = nameRegex.Apply(nameRegex =&gt; nameRegex.Pairs?[0]?.Id);
-        ///     }
+        ///         Version = "example_value",
+        ///         NameRegex = "^my-KeyPair",
+        ///     });
         /// 
-        ///     [Output("ensKeyPairId1")]
-        ///     public Output&lt;string&gt; EnsKeyPairId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ensKeyPairId1"] = nameRegex.Apply(getKeyPairsResult =&gt; getKeyPairsResult.Pairs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKeyPairsResult> Invoke(GetKeyPairsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeyPairsResult>("alicloud:ens/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeyPairsResult>("alicloud:ens/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetKeyPairsArgs : Pulumi.InvokeArgs
+    public sealed class GetKeyPairsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the key pair.
@@ -113,9 +111,10 @@ namespace Pulumi.AliCloud.Ens
         public GetKeyPairsArgs()
         {
         }
+        public static new GetKeyPairsArgs Empty => new GetKeyPairsArgs();
     }
 
-    public sealed class GetKeyPairsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKeyPairsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the key pair.
@@ -141,6 +140,7 @@ namespace Pulumi.AliCloud.Ens
         public GetKeyPairsInvokeArgs()
         {
         }
+        public static new GetKeyPairsInvokeArgs Empty => new GetKeyPairsInvokeArgs();
     }
 
 

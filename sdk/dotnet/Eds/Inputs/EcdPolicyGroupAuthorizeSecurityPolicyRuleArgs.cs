@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eds.Inputs
 {
 
-    public sealed class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs : Pulumi.ResourceArgs
+    public sealed class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cidrip of authorize access rule.
+        /// The cidrip of security rules.
         /// </summary>
         [Input("cidrIp")]
         public Input<string>? CidrIp { get; set; }
 
         /// <summary>
-        /// The description of authorize access rule.
+        /// The description of security rules.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -57,5 +57,6 @@ namespace Pulumi.AliCloud.Eds.Inputs
         public EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs()
         {
         }
+        public static new EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs Empty => new EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs();
     }
 }

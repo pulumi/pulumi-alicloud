@@ -121,9 +121,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly renewalDurationUnit!: pulumi.Output<string | undefined>;
     /**
      * Whether to renew an instance automatically or not. Default to "ManualRenewal".
-     * - `AutoRenewal`: Auto renewal.
-     * - `ManualRenewal`: Manual renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     public readonly renewalStatus!: pulumi.Output<string>;
     /**
@@ -252,9 +249,6 @@ export interface InstanceState {
     renewalDurationUnit?: pulumi.Input<string>;
     /**
      * Whether to renew an instance automatically or not. Default to "ManualRenewal".
-     * - `AutoRenewal`: Auto renewal.
-     * - `ManualRenewal`: Manual renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
     /**
@@ -318,9 +312,6 @@ export interface InstanceArgs {
     renewalDurationUnit?: pulumi.Input<string>;
     /**
      * Whether to renew an instance automatically or not. Default to "ManualRenewal".
-     * - `AutoRenewal`: Auto renewal.
-     * - `ManualRenewal`: Manual renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
     /**

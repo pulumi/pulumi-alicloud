@@ -15,57 +15,59 @@ namespace Pulumi.AliCloud.KVStore
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "KVStore";
+    ///     var multiAz = config.Get("multiAz") ?? "false";
+    ///     var name = config.Get("name") ?? "kvstorebackuppolicyvpc";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "KVStore";
-    ///         var multiAz = config.Get("multiAz") ?? "false";
-    ///         var name = config.Get("name") ?? "kvstorebackuppolicyvpc";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new AliCloud.KVStore.InstanceArgs
-    ///         {
-    ///             InstanceClass = "Memcache",
-    ///             InstanceName = name,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             PrivateIp = "172.16.0.10",
-    ///             SecurityIps = 
-    ///             {
-    ///                 "10.0.0.1",
-    ///             },
-    ///             InstanceType = "memcache.master.small.default",
-    ///             EngineVersion = "2.8",
-    ///         });
-    ///         var defaultBackupPolicy = new AliCloud.KVStore.BackupPolicy("defaultBackupPolicy", new AliCloud.KVStore.BackupPolicyArgs
-    ///         {
-    ///             InstanceId = defaultInstance.Id,
-    ///             BackupPeriods = 
-    ///             {
-    ///                 "Tuesday",
-    ///                 "Wednesday",
-    ///             },
-    ///             BackupTime = "10:00Z-11:00Z",
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new()
+    ///     {
+    ///         InstanceClass = "Memcache",
+    ///         InstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         PrivateIp = "172.16.0.10",
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.0.0.1",
+    ///         },
+    ///         InstanceType = "memcache.master.small.default",
+    ///         EngineVersion = "2.8",
+    ///     });
+    /// 
+    ///     var defaultBackupPolicy = new AliCloud.KVStore.BackupPolicy("defaultBackupPolicy", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         BackupPeriods = new[]
+    ///         {
+    ///             "Tuesday",
+    ///             "Wednesday",
+    ///         },
+    ///         BackupTime = "10:00Z-11:00Z",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +79,7 @@ namespace Pulumi.AliCloud.KVStore
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kvstore/backupPolicy:BackupPolicy")]
-    public partial class BackupPolicy : Pulumi.CustomResource
+    public partial class BackupPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
@@ -141,7 +143,7 @@ namespace Pulumi.AliCloud.KVStore
         }
     }
 
-    public sealed class BackupPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackupPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
@@ -170,9 +172,10 @@ namespace Pulumi.AliCloud.KVStore
         public BackupPolicyArgs()
         {
         }
+        public static new BackupPolicyArgs Empty => new BackupPolicyArgs();
     }
 
-    public sealed class BackupPolicyState : Pulumi.ResourceArgs
+    public sealed class BackupPolicyState : global::Pulumi.ResourceArgs
     {
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
@@ -201,5 +204,6 @@ namespace Pulumi.AliCloud.KVStore
         public BackupPolicyState()
         {
         }
+        public static new BackupPolicyState Empty => new BackupPolicyState();
     }
 }

@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     public static class GetImages
     {
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:simpleapplicationserver/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:simpleapplicationserver/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
 
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:simpleapplicationserver/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:simpleapplicationserver/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetImagesArgs : Pulumi.InvokeArgs
+    public sealed class GetImagesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -31,9 +31,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
 
         /// <summary>
         /// The type of the image. Valid values: `app`, `custom`, `system`.
-        /// * `system`: operating system (OS) image.
-        /// * `app`: application image.
-        /// * `custom`: custom image.
         /// </summary>
         [Input("imageType")]
         public string? ImageType { get; set; }
@@ -53,9 +50,10 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public GetImagesArgs()
         {
         }
+        public static new GetImagesArgs Empty => new GetImagesArgs();
     }
 
-    public sealed class GetImagesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -67,9 +65,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
 
         /// <summary>
         /// The type of the image. Valid values: `app`, `custom`, `system`.
-        /// * `system`: operating system (OS) image.
-        /// * `app`: application image.
-        /// * `custom`: custom image.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
@@ -89,6 +84,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public GetImagesInvokeArgs()
         {
         }
+        public static new GetImagesInvokeArgs Empty => new GetImagesInvokeArgs();
     }
 
 

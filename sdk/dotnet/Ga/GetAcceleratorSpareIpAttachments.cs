@@ -23,34 +23,33 @@ namespace Pulumi.AliCloud.Ga
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ga.GetAcceleratorSpareIpAttachments.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ga.GetAcceleratorSpareIpAttachments.InvokeAsync(new AliCloud.Ga.GetAcceleratorSpareIpAttachmentsArgs
+        ///         AcceleratorId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             AcceleratorId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.GaAcceleratorSpareIpAttachmentId1 = ids.Apply(ids =&gt; ids.Attachments?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("gaAcceleratorSpareIpAttachmentId1")]
-        ///     public Output&lt;string&gt; GaAcceleratorSpareIpAttachmentId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaAcceleratorSpareIpAttachmentId1"] = ids.Apply(getAcceleratorSpareIpAttachmentsResult =&gt; getAcceleratorSpareIpAttachmentsResult.Attachments[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAcceleratorSpareIpAttachmentsResult> InvokeAsync(GetAcceleratorSpareIpAttachmentsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAcceleratorSpareIpAttachmentsResult>("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", args ?? new GetAcceleratorSpareIpAttachmentsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAcceleratorSpareIpAttachmentsResult>("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", args ?? new GetAcceleratorSpareIpAttachmentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
@@ -64,38 +63,37 @@ namespace Pulumi.AliCloud.Ga
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ga.GetAcceleratorSpareIpAttachments.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ga.GetAcceleratorSpareIpAttachments.InvokeAsync(new AliCloud.Ga.GetAcceleratorSpareIpAttachmentsArgs
+        ///         AcceleratorId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             AcceleratorId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.GaAcceleratorSpareIpAttachmentId1 = ids.Apply(ids =&gt; ids.Attachments?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("gaAcceleratorSpareIpAttachmentId1")]
-        ///     public Output&lt;string&gt; GaAcceleratorSpareIpAttachmentId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaAcceleratorSpareIpAttachmentId1"] = ids.Apply(getAcceleratorSpareIpAttachmentsResult =&gt; getAcceleratorSpareIpAttachmentsResult.Attachments[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAcceleratorSpareIpAttachmentsResult> Invoke(GetAcceleratorSpareIpAttachmentsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAcceleratorSpareIpAttachmentsResult>("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", args ?? new GetAcceleratorSpareIpAttachmentsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAcceleratorSpareIpAttachmentsResult>("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", args ?? new GetAcceleratorSpareIpAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAcceleratorSpareIpAttachmentsArgs : Pulumi.InvokeArgs
+    public sealed class GetAcceleratorSpareIpAttachmentsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the global acceleration instance.
@@ -127,9 +125,10 @@ namespace Pulumi.AliCloud.Ga
         public GetAcceleratorSpareIpAttachmentsArgs()
         {
         }
+        public static new GetAcceleratorSpareIpAttachmentsArgs Empty => new GetAcceleratorSpareIpAttachmentsArgs();
     }
 
-    public sealed class GetAcceleratorSpareIpAttachmentsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAcceleratorSpareIpAttachmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the global acceleration instance.
@@ -161,6 +160,7 @@ namespace Pulumi.AliCloud.Ga
         public GetAcceleratorSpareIpAttachmentsInvokeArgs()
         {
         }
+        public static new GetAcceleratorSpareIpAttachmentsInvokeArgs Empty => new GetAcceleratorSpareIpAttachmentsInvokeArgs();
     }
 
 

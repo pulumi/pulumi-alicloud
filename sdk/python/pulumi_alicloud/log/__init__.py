@@ -17,6 +17,7 @@ from .ingestion import *
 from .log_tail_attachment import *
 from .log_tail_config import *
 from .machine_group import *
+from .oss_export import *
 from .oss_shipper import *
 from .project import *
 from .resource import *

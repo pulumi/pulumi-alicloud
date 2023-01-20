@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,22 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const kmsAliases = pulumi.output(alicloud.kms.getAliases({
+ * const kmsAliases = alicloud.kms.getAliases({
  *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
  *     nameRegex: "alias/tf-testKmsAlias_123",
- * }));
- *
- * export const firstKeyId = alicloud_kms_keys_kms_keys_ds.keys.0.id;
+ * });
+ * export const firstKeyId = data.alicloud_kms_keys.kms_keys_ds.keys[0].id;
  * ```
  */
 export function getAliases(args?: GetAliasesArgs, opts?: pulumi.InvokeOptions): Promise<GetAliasesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getAliases:getAliases", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -77,9 +73,26 @@ export interface GetAliasesResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in v1.79.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const kmsAliases = alicloud.kms.getAliases({
+ *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
+ *     nameRegex: "alias/tf-testKmsAlias_123",
+ * });
+ * export const firstKeyId = data.alicloud_kms_keys.kms_keys_ds.keys[0].id;
+ * ```
+ */
 export function getAliasesOutput(args?: GetAliasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAliasesResult> {
-    return pulumi.output(args).apply(a => getAliases(a, opts))
+    return pulumi.output(args).apply((a: any) => getAliases(a, opts))
 }
 
 /**

@@ -5,26 +5,61 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./consumerChannel";
-export * from "./getConsumerChannels";
-export * from "./getMigrationJobs";
-export * from "./getSubscriptionJobs";
-export * from "./getSynchronizationJobs";
-export * from "./jobMonitorRule";
-export * from "./migrationInstance";
-export * from "./migrationJob";
-export * from "./subscriptionJob";
-export * from "./synchronizationInstance";
-export * from "./synchronizationJob";
+export { ConsumerChannelArgs, ConsumerChannelState } from "./consumerChannel";
+export type ConsumerChannel = import("./consumerChannel").ConsumerChannel;
+export const ConsumerChannel: typeof import("./consumerChannel").ConsumerChannel = null as any;
+utilities.lazyLoad(exports, ["ConsumerChannel"], () => require("./consumerChannel"));
 
-// Import resources to register:
-import { ConsumerChannel } from "./consumerChannel";
-import { JobMonitorRule } from "./jobMonitorRule";
-import { MigrationInstance } from "./migrationInstance";
-import { MigrationJob } from "./migrationJob";
-import { SubscriptionJob } from "./subscriptionJob";
-import { SynchronizationInstance } from "./synchronizationInstance";
-import { SynchronizationJob } from "./synchronizationJob";
+export { GetConsumerChannelsArgs, GetConsumerChannelsResult, GetConsumerChannelsOutputArgs } from "./getConsumerChannels";
+export const getConsumerChannels: typeof import("./getConsumerChannels").getConsumerChannels = null as any;
+export const getConsumerChannelsOutput: typeof import("./getConsumerChannels").getConsumerChannelsOutput = null as any;
+utilities.lazyLoad(exports, ["getConsumerChannels","getConsumerChannelsOutput"], () => require("./getConsumerChannels"));
+
+export { GetMigrationJobsArgs, GetMigrationJobsResult, GetMigrationJobsOutputArgs } from "./getMigrationJobs";
+export const getMigrationJobs: typeof import("./getMigrationJobs").getMigrationJobs = null as any;
+export const getMigrationJobsOutput: typeof import("./getMigrationJobs").getMigrationJobsOutput = null as any;
+utilities.lazyLoad(exports, ["getMigrationJobs","getMigrationJobsOutput"], () => require("./getMigrationJobs"));
+
+export { GetSubscriptionJobsArgs, GetSubscriptionJobsResult, GetSubscriptionJobsOutputArgs } from "./getSubscriptionJobs";
+export const getSubscriptionJobs: typeof import("./getSubscriptionJobs").getSubscriptionJobs = null as any;
+export const getSubscriptionJobsOutput: typeof import("./getSubscriptionJobs").getSubscriptionJobsOutput = null as any;
+utilities.lazyLoad(exports, ["getSubscriptionJobs","getSubscriptionJobsOutput"], () => require("./getSubscriptionJobs"));
+
+export { GetSynchronizationJobsArgs, GetSynchronizationJobsResult, GetSynchronizationJobsOutputArgs } from "./getSynchronizationJobs";
+export const getSynchronizationJobs: typeof import("./getSynchronizationJobs").getSynchronizationJobs = null as any;
+export const getSynchronizationJobsOutput: typeof import("./getSynchronizationJobs").getSynchronizationJobsOutput = null as any;
+utilities.lazyLoad(exports, ["getSynchronizationJobs","getSynchronizationJobsOutput"], () => require("./getSynchronizationJobs"));
+
+export { JobMonitorRuleArgs, JobMonitorRuleState } from "./jobMonitorRule";
+export type JobMonitorRule = import("./jobMonitorRule").JobMonitorRule;
+export const JobMonitorRule: typeof import("./jobMonitorRule").JobMonitorRule = null as any;
+utilities.lazyLoad(exports, ["JobMonitorRule"], () => require("./jobMonitorRule"));
+
+export { MigrationInstanceArgs, MigrationInstanceState } from "./migrationInstance";
+export type MigrationInstance = import("./migrationInstance").MigrationInstance;
+export const MigrationInstance: typeof import("./migrationInstance").MigrationInstance = null as any;
+utilities.lazyLoad(exports, ["MigrationInstance"], () => require("./migrationInstance"));
+
+export { MigrationJobArgs, MigrationJobState } from "./migrationJob";
+export type MigrationJob = import("./migrationJob").MigrationJob;
+export const MigrationJob: typeof import("./migrationJob").MigrationJob = null as any;
+utilities.lazyLoad(exports, ["MigrationJob"], () => require("./migrationJob"));
+
+export { SubscriptionJobArgs, SubscriptionJobState } from "./subscriptionJob";
+export type SubscriptionJob = import("./subscriptionJob").SubscriptionJob;
+export const SubscriptionJob: typeof import("./subscriptionJob").SubscriptionJob = null as any;
+utilities.lazyLoad(exports, ["SubscriptionJob"], () => require("./subscriptionJob"));
+
+export { SynchronizationInstanceArgs, SynchronizationInstanceState } from "./synchronizationInstance";
+export type SynchronizationInstance = import("./synchronizationInstance").SynchronizationInstance;
+export const SynchronizationInstance: typeof import("./synchronizationInstance").SynchronizationInstance = null as any;
+utilities.lazyLoad(exports, ["SynchronizationInstance"], () => require("./synchronizationInstance"));
+
+export { SynchronizationJobArgs, SynchronizationJobState } from "./synchronizationJob";
+export type SynchronizationJob = import("./synchronizationJob").SynchronizationJob;
+export const SynchronizationJob: typeof import("./synchronizationJob").SynchronizationJob = null as any;
+utilities.lazyLoad(exports, ["SynchronizationJob"], () => require("./synchronizationJob"));
+
 
 const _module = {
     version: utilities.getVersion(),

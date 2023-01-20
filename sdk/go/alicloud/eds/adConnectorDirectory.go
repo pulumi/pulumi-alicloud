@@ -68,7 +68,7 @@ import (
 //				},
 //				SubDomainName: pulumi.String("child.example.com"),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.String(defaultSwitches.Ids[0]),
+//					*pulumi.String(defaultSwitches.Ids[0]),
 //				},
 //			})
 //			if err != nil {
@@ -145,6 +145,13 @@ func NewAdConnectorDirectory(ctx *pulumi.Context,
 	if args.VswitchIds == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchIds'")
 	}
+	if args.DomainPassword != nil {
+		args.DomainPassword = pulumi.ToSecret(args.DomainPassword).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"domainPassword",
+	})
+	opts = append(opts, secrets)
 	var resource AdConnectorDirectory
 	err := ctx.RegisterResource("alicloud:eds/adConnectorDirectory:AdConnectorDirectory", name, args, &resource, opts...)
 	if err != nil {

@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := alicloud.GetFileCrc64Checksum(ctx, &GetFileCrc64ChecksumArgs{
+//			_, err := alicloud.GetFileCrc64Checksum(ctx, &alicloud.GetFileCrc64ChecksumArgs{
 //				Filename: "exampleFileName",
 //			}, nil)
 //			if err != nil {

@@ -23,27 +23,25 @@ namespace Pulumi.AliCloud.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ecs.ImageCopy("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ecs.ImageCopy("default", new AliCloud.Ecs.ImageCopyArgs
+    ///         Description = "test-image",
+    ///         ImageName = "test-image",
+    ///         SourceImageId = "m-bp1gxyhdswlsn18tu***",
+    ///         SourceRegionId = "cn-hangzhou",
+    ///         Tags = 
     ///         {
-    ///             Description = "test-image",
-    ///             ImageName = "test-image",
-    ///             SourceImageId = "m-bp1gxyhdswlsn18tu***",
-    ///             SourceRegionId = "cn-hangzhou",
-    ///             Tags = 
-    ///             {
-    ///                 { "FinanceDept", "FinanceDeptJoshua" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "FinanceDept", "FinanceDeptJoshua" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes Reference0
     /// 
@@ -60,7 +58,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/imageCopy:ImageCopy")]
-    public partial class ImageCopy : Pulumi.CustomResource
+    public partial class ImageCopy : global::Pulumi.CustomResource
     {
         [Output("deleteAutoSnapshot")]
         public Output<bool?> DeleteAutoSnapshot { get; private set; } = null!;
@@ -162,7 +160,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class ImageCopyArgs : Pulumi.ResourceArgs
+    public sealed class ImageCopyArgs : global::Pulumi.ResourceArgs
     {
         [Input("deleteAutoSnapshot")]
         public Input<bool>? DeleteAutoSnapshot { get; set; }
@@ -229,9 +227,10 @@ namespace Pulumi.AliCloud.Ecs
         public ImageCopyArgs()
         {
         }
+        public static new ImageCopyArgs Empty => new ImageCopyArgs();
     }
 
-    public sealed class ImageCopyState : Pulumi.ResourceArgs
+    public sealed class ImageCopyState : global::Pulumi.ResourceArgs
     {
         [Input("deleteAutoSnapshot")]
         public Input<bool>? DeleteAutoSnapshot { get; set; }
@@ -298,5 +297,6 @@ namespace Pulumi.AliCloud.Ecs
         public ImageCopyState()
         {
         }
+        public static new ImageCopyState Empty => new ImageCopyState();
     }
 }

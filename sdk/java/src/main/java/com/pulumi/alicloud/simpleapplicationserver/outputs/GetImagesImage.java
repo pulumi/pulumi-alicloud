@@ -31,9 +31,6 @@ public final class GetImagesImage {
     private String imageName;
     /**
      * @return The type of the image. Valid values: `app`, `custom`, `system`.
-     * * `system`: operating system (OS) image.
-     * * `app`: application image.
-     * * `custom`: custom image.
      * 
      */
     private String imageType;
@@ -74,9 +71,6 @@ public final class GetImagesImage {
     }
     /**
      * @return The type of the image. Valid values: `app`, `custom`, `system`.
-     * * `system`: operating system (OS) image.
-     * * `app`: application image.
-     * * `custom`: custom image.
      * 
      */
     public String imageType() {

@@ -21,24 +21,22 @@ namespace Pulumi.AliCloud.QuickBI
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.QuickBI.User("example", new()
     ///     {
-    ///         var example = new AliCloud.QuickBI.User("example", new AliCloud.QuickBI.UserArgs
-    ///         {
-    ///             AccountName = "example_value",
-    ///             AdminUser = false,
-    ///             AuthAdminUser = false,
-    ///             NickName = "example_value",
-    ///             UserType = "Analyst",
-    ///         });
-    ///     }
+    ///         AccountName = "example_value",
+    ///         AdminUser = false,
+    ///         AuthAdminUser = false,
+    ///         NickName = "example_value",
+    ///         UserType = "Analyst",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.QuickBI
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:quickbi/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Alibaba Cloud account ID.
@@ -132,7 +130,7 @@ namespace Pulumi.AliCloud.QuickBI
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alibaba Cloud account ID.
@@ -173,9 +171,10 @@ namespace Pulumi.AliCloud.QuickBI
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alibaba Cloud account ID.
@@ -216,5 +215,6 @@ namespace Pulumi.AliCloud.QuickBI
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

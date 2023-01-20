@@ -34,8 +34,6 @@ public final class BasicDefenseThresholdState extends com.pulumi.resources.Resou
 
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
-     * -`defense` - scrubbing threshold.
-     * -`blackhole` - DDoS mitigation threshold.
      * 
      */
     @Import(name="ddosType")
@@ -43,8 +41,6 @@ public final class BasicDefenseThresholdState extends com.pulumi.resources.Resou
 
     /**
      * @return The type of the threshold to query. Valid values: `defense`,`blackhole`.
-     * -`defense` - scrubbing threshold.
-     * -`blackhole` - DDoS mitigation threshold.
      * 
      */
     public Optional<Output<String>> ddosType() {
@@ -98,8 +94,6 @@ public final class BasicDefenseThresholdState extends com.pulumi.resources.Resou
 
     /**
      * Whether it is the system default threshold. Value:
-     * - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-     * - `false`: indicates no, that is, you manually set the cleaning threshold.
      * 
      */
     @Import(name="isAuto")
@@ -107,8 +101,6 @@ public final class BasicDefenseThresholdState extends com.pulumi.resources.Resou
 
     /**
      * @return Whether it is the system default threshold. Value:
-     * - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-     * - `false`: indicates no, that is, you manually set the cleaning threshold.
      * 
      */
     public Optional<Output<Boolean>> isAuto() {
@@ -215,8 +207,6 @@ public final class BasicDefenseThresholdState extends com.pulumi.resources.Resou
 
         /**
          * @param ddosType The type of the threshold to query. Valid values: `defense`,`blackhole`.
-         * -`defense` - scrubbing threshold.
-         * -`blackhole` - DDoS mitigation threshold.
          * 
          * @return builder
          * 
@@ -228,8 +218,6 @@ public final class BasicDefenseThresholdState extends com.pulumi.resources.Resou
 
         /**
          * @param ddosType The type of the threshold to query. Valid values: `defense`,`blackhole`.
-         * -`defense` - scrubbing threshold.
-         * -`blackhole` - DDoS mitigation threshold.
          * 
          * @return builder
          * 
@@ -303,8 +291,6 @@ public final class BasicDefenseThresholdState extends com.pulumi.resources.Resou
 
         /**
          * @param isAuto Whether it is the system default threshold. Value:
-         * - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-         * - `false`: indicates no, that is, you manually set the cleaning threshold.
          * 
          * @return builder
          * 
@@ -316,8 +302,6 @@ public final class BasicDefenseThresholdState extends com.pulumi.resources.Resou
 
         /**
          * @param isAuto Whether it is the system default threshold. Value:
-         * - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-         * - `false`: indicates no, that is, you manually set the cleaning threshold.
          * 
          * @return builder
          * 

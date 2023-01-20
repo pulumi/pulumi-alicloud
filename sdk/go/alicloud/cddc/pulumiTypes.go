@@ -140,7 +140,7 @@ type GetDedicatedHostGroupsGroup struct {
 	CreateTime string `pulumi:"createTime"`
 	// The Dedicated Host Count Group by Host Type of the Dedicated Host Group.
 	DedicatedHostCountGroupByHostTypes []GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType `pulumi:"dedicatedHostCountGroupByHostTypes"`
-	// -The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
 	DedicatedHostGroupDesc string `pulumi:"dedicatedHostGroupDesc"`
 	// Dedicated Host Group ID.
 	DedicatedHostGroupId string `pulumi:"dedicatedHostGroupId"`
@@ -210,7 +210,7 @@ type GetDedicatedHostGroupsGroupArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The Dedicated Host Count Group by Host Type of the Dedicated Host Group.
 	DedicatedHostCountGroupByHostTypes GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayInput `pulumi:"dedicatedHostCountGroupByHostTypes"`
-	// -The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
 	DedicatedHostGroupDesc pulumi.StringInput `pulumi:"dedicatedHostGroupDesc"`
 	// Dedicated Host Group ID.
 	DedicatedHostGroupId pulumi.StringInput `pulumi:"dedicatedHostGroupId"`
@@ -342,7 +342,7 @@ func (o GetDedicatedHostGroupsGroupOutput) DedicatedHostCountGroupByHostTypes() 
 	}).(GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutput)
 }
 
-// -The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
 func (o GetDedicatedHostGroupsGroupOutput) DedicatedHostGroupDesc() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostGroupsGroup) string { return v.DedicatedHostGroupDesc }).(pulumi.StringOutput)
 }

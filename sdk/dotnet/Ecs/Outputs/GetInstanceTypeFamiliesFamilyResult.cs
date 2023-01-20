@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetInstanceTypeFamiliesFamilyResult
     {
         /// <summary>
-        /// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+        /// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
         /// </summary>
         public readonly string Generation;
         /// <summary>

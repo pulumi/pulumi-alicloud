@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.PrivateLink
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.PrivateLink.GetVpcEndpointServiceResources.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.PrivateLink.GetVpcEndpointServiceResources.InvokeAsync(new AliCloud.PrivateLink.GetVpcEndpointServiceResourcesArgs
-        ///         {
-        ///             ServiceId = "epsrv-gw8ii1xxxx",
-        ///         }));
-        ///         this.FirstPrivatelinkVpcEndpointServiceResourceId = example.Apply(example =&gt; example.Resources?[0]?.Id);
-        ///     }
+        ///         ServiceId = "epsrv-gw8ii1xxxx",
+        ///     });
         /// 
-        ///     [Output("firstPrivatelinkVpcEndpointServiceResourceId")]
-        ///     public Output&lt;string&gt; FirstPrivatelinkVpcEndpointServiceResourceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPrivatelinkVpcEndpointServiceResourceId"] = example.Apply(getVpcEndpointServiceResourcesResult =&gt; getVpcEndpointServiceResourcesResult.Resources[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVpcEndpointServiceResourcesResult> InvokeAsync(GetVpcEndpointServiceResourcesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointServiceResourcesResult>("alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources", args ?? new GetVpcEndpointServiceResourcesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointServiceResourcesResult>("alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources", args ?? new GetVpcEndpointServiceResourcesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.PrivateLink
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.PrivateLink.GetVpcEndpointServiceResources.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.PrivateLink.GetVpcEndpointServiceResources.InvokeAsync(new AliCloud.PrivateLink.GetVpcEndpointServiceResourcesArgs
-        ///         {
-        ///             ServiceId = "epsrv-gw8ii1xxxx",
-        ///         }));
-        ///         this.FirstPrivatelinkVpcEndpointServiceResourceId = example.Apply(example =&gt; example.Resources?[0]?.Id);
-        ///     }
+        ///         ServiceId = "epsrv-gw8ii1xxxx",
+        ///     });
         /// 
-        ///     [Output("firstPrivatelinkVpcEndpointServiceResourceId")]
-        ///     public Output&lt;string&gt; FirstPrivatelinkVpcEndpointServiceResourceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPrivatelinkVpcEndpointServiceResourceId"] = example.Apply(getVpcEndpointServiceResourcesResult =&gt; getVpcEndpointServiceResourcesResult.Resources[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVpcEndpointServiceResourcesResult> Invoke(GetVpcEndpointServiceResourcesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcEndpointServiceResourcesResult>("alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources", args ?? new GetVpcEndpointServiceResourcesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcEndpointServiceResourcesResult>("alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources", args ?? new GetVpcEndpointServiceResourcesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetVpcEndpointServiceResourcesArgs : Pulumi.InvokeArgs
+    public sealed class GetVpcEndpointServiceResourcesArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -99,9 +97,10 @@ namespace Pulumi.AliCloud.PrivateLink
         public GetVpcEndpointServiceResourcesArgs()
         {
         }
+        public static new GetVpcEndpointServiceResourcesArgs Empty => new GetVpcEndpointServiceResourcesArgs();
     }
 
-    public sealed class GetVpcEndpointServiceResourcesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVpcEndpointServiceResourcesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -115,6 +114,7 @@ namespace Pulumi.AliCloud.PrivateLink
         public GetVpcEndpointServiceResourcesInvokeArgs()
         {
         }
+        public static new GetVpcEndpointServiceResourcesInvokeArgs Empty => new GetVpcEndpointServiceResourcesInvokeArgs();
     }
 
 

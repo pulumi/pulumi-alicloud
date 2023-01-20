@@ -25,39 +25,37 @@ namespace Pulumi.AliCloud.CloudSso
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CloudSso.GetDirectories.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CloudSso.GetDirectories.InvokeAsync(new AliCloud.CloudSso.GetDirectoriesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.CloudSsoDirectoryId1 = ids.Apply(ids =&gt; ids.Directories?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.CloudSso.GetDirectories.InvokeAsync(new AliCloud.CloudSso.GetDirectoriesArgs
-        ///         {
-        ///             NameRegex = "^my-Directory",
-        ///         }));
-        ///         this.CloudSsoDirectoryId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Directories?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cloudSsoDirectoryId1")]
-        ///     public Output&lt;string&gt; CloudSsoDirectoryId1 { get; set; }
-        ///     [Output("cloudSsoDirectoryId2")]
-        ///     public Output&lt;string&gt; CloudSsoDirectoryId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CloudSso.GetDirectories.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Directory",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudSsoDirectoryId1"] = ids.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Directories[0]?.Id),
+        ///         ["cloudSsoDirectoryId2"] = nameRegex.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Directories[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDirectoriesResult> InvokeAsync(GetDirectoriesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDirectoriesResult>("alicloud:cloudsso/getDirectories:getDirectories", args ?? new GetDirectoriesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDirectoriesResult>("alicloud:cloudsso/getDirectories:getDirectories", args ?? new GetDirectoriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
@@ -73,43 +71,41 @@ namespace Pulumi.AliCloud.CloudSso
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CloudSso.GetDirectories.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CloudSso.GetDirectories.InvokeAsync(new AliCloud.CloudSso.GetDirectoriesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.CloudSsoDirectoryId1 = ids.Apply(ids =&gt; ids.Directories?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.CloudSso.GetDirectories.InvokeAsync(new AliCloud.CloudSso.GetDirectoriesArgs
-        ///         {
-        ///             NameRegex = "^my-Directory",
-        ///         }));
-        ///         this.CloudSsoDirectoryId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Directories?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cloudSsoDirectoryId1")]
-        ///     public Output&lt;string&gt; CloudSsoDirectoryId1 { get; set; }
-        ///     [Output("cloudSsoDirectoryId2")]
-        ///     public Output&lt;string&gt; CloudSsoDirectoryId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CloudSso.GetDirectories.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Directory",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudSsoDirectoryId1"] = ids.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Directories[0]?.Id),
+        ///         ["cloudSsoDirectoryId2"] = nameRegex.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Directories[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDirectoriesResult> Invoke(GetDirectoriesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDirectoriesResult>("alicloud:cloudsso/getDirectories:getDirectories", args ?? new GetDirectoriesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDirectoriesResult>("alicloud:cloudsso/getDirectories:getDirectories", args ?? new GetDirectoriesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDirectoriesArgs : Pulumi.InvokeArgs
+    public sealed class GetDirectoriesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -141,9 +137,10 @@ namespace Pulumi.AliCloud.CloudSso
         public GetDirectoriesArgs()
         {
         }
+        public static new GetDirectoriesArgs Empty => new GetDirectoriesArgs();
     }
 
-    public sealed class GetDirectoriesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDirectoriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -175,6 +172,7 @@ namespace Pulumi.AliCloud.CloudSso
         public GetDirectoriesInvokeArgs()
         {
         }
+        public static new GetDirectoriesInvokeArgs Empty => new GetDirectoriesInvokeArgs();
     }
 
 

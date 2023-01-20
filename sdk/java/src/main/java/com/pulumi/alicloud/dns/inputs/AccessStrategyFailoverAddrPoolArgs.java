@@ -17,14 +17,14 @@ public final class AccessStrategyFailoverAddrPoolArgs extends com.pulumi.resourc
     public static final AccessStrategyFailoverAddrPoolArgs Empty = new AccessStrategyFailoverAddrPoolArgs();
 
     /**
-     * The ID of the address pool in the primary address pool group.
+     * The ID of the address pool in the secondary address pool group.
      * 
      */
     @Import(name="addrPoolId")
     private @Nullable Output<String> addrPoolId;
 
     /**
-     * @return The ID of the address pool in the primary address pool group.
+     * @return The ID of the address pool in the secondary address pool group.
      * 
      */
     public Optional<Output<String>> addrPoolId() {
@@ -32,14 +32,14 @@ public final class AccessStrategyFailoverAddrPoolArgs extends com.pulumi.resourc
     }
 
     /**
-     * The weight of the address pool in the primary address pool group.
+     * The weight of the address pool in the secondary address pool group.
      * 
      */
     @Import(name="lbaWeight")
     private @Nullable Output<Integer> lbaWeight;
 
     /**
-     * @return The weight of the address pool in the primary address pool group.
+     * @return The weight of the address pool in the secondary address pool group.
      * 
      */
     public Optional<Output<Integer>> lbaWeight() {
@@ -72,7 +72,7 @@ public final class AccessStrategyFailoverAddrPoolArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param addrPoolId The ID of the address pool in the primary address pool group.
+         * @param addrPoolId The ID of the address pool in the secondary address pool group.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class AccessStrategyFailoverAddrPoolArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param addrPoolId The ID of the address pool in the primary address pool group.
+         * @param addrPoolId The ID of the address pool in the secondary address pool group.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class AccessStrategyFailoverAddrPoolArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param lbaWeight The weight of the address pool in the primary address pool group.
+         * @param lbaWeight The weight of the address pool in the secondary address pool group.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class AccessStrategyFailoverAddrPoolArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param lbaWeight The weight of the address pool in the primary address pool group.
+         * @param lbaWeight The weight of the address pool in the secondary address pool group.
          * 
          * @return builder
          * 

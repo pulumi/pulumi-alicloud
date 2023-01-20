@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn.Inputs
 {
 
-    public sealed class DomainParameterFilterConfigArgs : Pulumi.ResourceArgs
+    public sealed class DomainParameterFilterConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("enable")]
         public Input<string>? Enable { get; set; }
@@ -26,5 +26,6 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         public DomainParameterFilterConfigArgs()
         {
         }
+        public static new DomainParameterFilterConfigArgs Empty => new DomainParameterFilterConfigArgs();
     }
 }

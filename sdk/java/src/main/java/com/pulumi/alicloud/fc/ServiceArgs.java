@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc;
 
 import com.pulumi.alicloud.fc.inputs.ServiceLogConfigArgs;
 import com.pulumi.alicloud.fc.inputs.ServiceNasConfigArgs;
+import com.pulumi.alicloud.fc.inputs.ServiceTracingConfigArgs;
 import com.pulumi.alicloud.fc.inputs.ServiceVpcConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -50,14 +51,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.)
      * 
      */
     @Import(name="logConfig")
     private @Nullable Output<ServiceLogConfigArgs> logConfig;
 
     /**
-     * @return Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+     * @return Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.)
      * 
      */
     public Optional<Output<ServiceLogConfigArgs>> logConfig() {
@@ -95,14 +96,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
+     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nas_config` requires the following:
      * 
      */
     @Import(name="nasConfig")
     private @Nullable Output<ServiceNasConfigArgs> nasConfig;
 
     /**
-     * @return Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
+     * @return Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nas_config` requires the following:
      * 
      */
     public Optional<Output<ServiceNasConfigArgs>> nasConfig() {
@@ -140,14 +141,29 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+     * Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.)
+     * 
+     */
+    @Import(name="tracingConfig")
+    private @Nullable Output<ServiceTracingConfigArgs> tracingConfig;
+
+    /**
+     * @return Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.)
+     * 
+     */
+    public Optional<Output<ServiceTracingConfigArgs>> tracingConfig() {
+        return Optional.ofNullable(this.tracingConfig);
+    }
+
+    /**
+     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.)
      * 
      */
     @Import(name="vpcConfig")
     private @Nullable Output<ServiceVpcConfigArgs> vpcConfig;
 
     /**
-     * @return Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+     * @return Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.)
      * 
      */
     public Optional<Output<ServiceVpcConfigArgs>> vpcConfig() {
@@ -165,6 +181,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         this.nasConfig = $.nasConfig;
         this.publish = $.publish;
         this.role = $.role;
+        this.tracingConfig = $.tracingConfig;
         this.vpcConfig = $.vpcConfig;
     }
 
@@ -229,7 +246,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logConfig Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+         * @param logConfig Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.)
          * 
          * @return builder
          * 
@@ -240,7 +257,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logConfig Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
+         * @param logConfig Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.)
          * 
          * @return builder
          * 
@@ -292,7 +309,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nasConfig Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
+         * @param nasConfig Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nas_config` requires the following:
          * 
          * @return builder
          * 
@@ -303,7 +320,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nasConfig Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources.
+         * @param nasConfig Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nas_config` requires the following:
          * 
          * @return builder
          * 
@@ -355,7 +372,28 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcConfig Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+         * @param tracingConfig Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tracingConfig(@Nullable Output<ServiceTracingConfigArgs> tracingConfig) {
+            $.tracingConfig = tracingConfig;
+            return this;
+        }
+
+        /**
+         * @param tracingConfig Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tracingConfig(ServiceTracingConfigArgs tracingConfig) {
+            return tracingConfig(Output.of(tracingConfig));
+        }
+
+        /**
+         * @param vpcConfig Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.)
          * 
          * @return builder
          * 
@@ -366,7 +404,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcConfig Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
+         * @param vpcConfig Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.)
          * 
          * @return builder
          * 

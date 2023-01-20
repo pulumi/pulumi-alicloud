@@ -2,36 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides AccessRule available to the user.
  *
  * > **NOTE**: Available in 1.35.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const foo = pulumi.output(alicloud.nas.getAccessRules({
- *     accessGroupName: "tf-testAccAccessGroupsdatasource",
- *     rwAccess: "RDWR",
- *     sourceCidrIp: "168.1.1.0/16",
- *     userAccess: "no_squash",
- * }));
- *
- * export const alicloudNasAccessRulesId = foo.rules[0].id;
- * ```
  */
 export function getAccessRules(args: GetAccessRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessRulesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getAccessRules:getAccessRules", {
         "accessGroupName": args.accessGroupName,
         "ids": args.ids,
@@ -100,9 +82,13 @@ export interface GetAccessRulesResult {
      */
     readonly userAccess?: string;
 }
-
+/**
+ * This data source provides AccessRule available to the user.
+ *
+ * > **NOTE**: Available in 1.35.0+
+ */
 export function getAccessRulesOutput(args: GetAccessRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessRulesResult> {
-    return pulumi.output(args).apply(a => getAccessRules(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccessRules(a, opts))
 }
 
 /**

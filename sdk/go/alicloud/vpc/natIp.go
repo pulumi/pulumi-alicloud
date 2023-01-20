@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +50,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
 //				VpcId:       pulumi.Any(alicloud_vpc.Default.Id),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
 //				VswitchName: pulumi.String("example_value"),
 //			})
 //			if err != nil {

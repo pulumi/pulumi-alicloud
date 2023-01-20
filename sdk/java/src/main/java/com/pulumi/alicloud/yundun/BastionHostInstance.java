@@ -29,6 +29,12 @@ public class BastionHostInstance extends com.pulumi.resources.CustomResource {
     public Output<List<BastionHostInstanceAdAuthServer>> adAuthServers() {
         return this.adAuthServers;
     }
+    @Export(name="bandwidth", type=String.class, parameters={})
+    private Output<String> bandwidth;
+
+    public Output<String> bandwidth() {
+        return this.bandwidth;
+    }
     @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
@@ -59,17 +65,47 @@ public class BastionHostInstance extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
-    @Export(name="resourceGroupId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> resourceGroupId;
+    @Export(name="planCode", type=String.class, parameters={})
+    private Output<String> planCode;
 
-    public Output<Optional<String>> resourceGroupId() {
-        return Codegen.optional(this.resourceGroupId);
+    public Output<String> planCode() {
+        return this.planCode;
+    }
+    @Export(name="renewPeriod", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> renewPeriod;
+
+    public Output<Optional<Integer>> renewPeriod() {
+        return Codegen.optional(this.renewPeriod);
+    }
+    @Export(name="renewalPeriodUnit", type=String.class, parameters={})
+    private Output<String> renewalPeriodUnit;
+
+    public Output<String> renewalPeriodUnit() {
+        return this.renewalPeriodUnit;
+    }
+    @Export(name="renewalStatus", type=String.class, parameters={})
+    private Output<String> renewalStatus;
+
+    public Output<String> renewalStatus() {
+        return this.renewalStatus;
+    }
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output<String> resourceGroupId;
+
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     @Export(name="securityGroupIds", type=List.class, parameters={String.class})
     private Output<List<String>> securityGroupIds;
 
     public Output<List<String>> securityGroupIds() {
         return this.securityGroupIds;
+    }
+    @Export(name="storage", type=String.class, parameters={})
+    private Output<String> storage;
+
+    public Output<String> storage() {
+        return this.storage;
     }
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;

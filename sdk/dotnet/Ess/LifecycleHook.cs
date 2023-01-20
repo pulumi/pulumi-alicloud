@@ -19,10 +19,10 @@ namespace Pulumi.AliCloud.Ess
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ess/lifecycleHook:LifecycleHook")]
-    public partial class LifecycleHook : Pulumi.CustomResource
+    public partial class LifecycleHook : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+        /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
         /// </summary>
         [Output("defaultResult")]
         public Output<string?> DefaultResult { get; private set; } = null!;
@@ -107,10 +107,10 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
-    public sealed class LifecycleHookArgs : Pulumi.ResourceArgs
+    public sealed class LifecycleHookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+        /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
         /// </summary>
         [Input("defaultResult")]
         public Input<string>? DefaultResult { get; set; }
@@ -154,12 +154,13 @@ namespace Pulumi.AliCloud.Ess
         public LifecycleHookArgs()
         {
         }
+        public static new LifecycleHookArgs Empty => new LifecycleHookArgs();
     }
 
-    public sealed class LifecycleHookState : Pulumi.ResourceArgs
+    public sealed class LifecycleHookState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+        /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
         /// </summary>
         [Input("defaultResult")]
         public Input<string>? DefaultResult { get; set; }
@@ -203,5 +204,6 @@ namespace Pulumi.AliCloud.Ess
         public LifecycleHookState()
         {
         }
+        public static new LifecycleHookState Empty => new LifecycleHookState();
     }
 }

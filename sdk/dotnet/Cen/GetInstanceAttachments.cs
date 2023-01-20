@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cen.GetInstanceAttachments.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cen.GetInstanceAttachments.InvokeAsync(new AliCloud.Cen.GetInstanceAttachmentsArgs
-        ///         {
-        ///             InstanceId = "cen-o40h17ll9w********",
-        ///         }));
-        ///         this.TheFirstAttachmentedInstanceId = example.Apply(example =&gt; example.Attachments?[0]?.ChildInstanceId);
-        ///     }
+        ///         InstanceId = "cen-o40h17ll9w********",
+        ///     });
         /// 
-        ///     [Output("theFirstAttachmentedInstanceId")]
-        ///     public Output&lt;string&gt; TheFirstAttachmentedInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["theFirstAttachmentedInstanceId"] = example.Apply(getInstanceAttachmentsResult =&gt; getInstanceAttachmentsResult.Attachments[0]?.ChildInstanceId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceAttachmentsResult> InvokeAsync(GetInstanceAttachmentsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentsResult>("alicloud:cen/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentsResult>("alicloud:cen/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides Cen Instance Attachments of the current Alibaba Cloud User.
@@ -55,33 +54,32 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cen.GetInstanceAttachments.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cen.GetInstanceAttachments.InvokeAsync(new AliCloud.Cen.GetInstanceAttachmentsArgs
-        ///         {
-        ///             InstanceId = "cen-o40h17ll9w********",
-        ///         }));
-        ///         this.TheFirstAttachmentedInstanceId = example.Apply(example =&gt; example.Attachments?[0]?.ChildInstanceId);
-        ///     }
+        ///         InstanceId = "cen-o40h17ll9w********",
+        ///     });
         /// 
-        ///     [Output("theFirstAttachmentedInstanceId")]
-        ///     public Output&lt;string&gt; TheFirstAttachmentedInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["theFirstAttachmentedInstanceId"] = example.Apply(getInstanceAttachmentsResult =&gt; getInstanceAttachmentsResult.Attachments[0]?.ChildInstanceId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceAttachmentsResult> Invoke(GetInstanceAttachmentsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceAttachmentsResult>("alicloud:cen/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceAttachmentsResult>("alicloud:cen/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceAttachmentsArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceAttachmentsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The region to which the network to be queried belongs.
@@ -113,9 +111,10 @@ namespace Pulumi.AliCloud.Cen
         public GetInstanceAttachmentsArgs()
         {
         }
+        public static new GetInstanceAttachmentsArgs Empty => new GetInstanceAttachmentsArgs();
     }
 
-    public sealed class GetInstanceAttachmentsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceAttachmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The region to which the network to be queried belongs.
@@ -147,6 +146,7 @@ namespace Pulumi.AliCloud.Cen
         public GetInstanceAttachmentsInvokeArgs()
         {
         }
+        public static new GetInstanceAttachmentsInvokeArgs Empty => new GetInstanceAttachmentsInvokeArgs();
     }
 
 

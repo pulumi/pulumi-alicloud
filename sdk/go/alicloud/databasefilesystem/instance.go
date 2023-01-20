@@ -84,7 +84,8 @@ type Instance struct {
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The snapshot id of the Database file system.
 	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
-	Status     pulumi.StringOutput    `pulumi:"status"`
+	// The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The Zone ID of the Database file system.
@@ -153,7 +154,8 @@ type instanceState struct {
 	Size *int `pulumi:"size"`
 	// The snapshot id of the Database file system.
 	SnapshotId *string `pulumi:"snapshotId"`
-	Status     *string `pulumi:"status"`
+	// The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The Zone ID of the Database file system.
@@ -185,7 +187,8 @@ type InstanceState struct {
 	Size pulumi.IntPtrInput
 	// The snapshot id of the Database file system.
 	SnapshotId pulumi.StringPtrInput
-	Status     pulumi.StringPtrInput
+	// The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The Zone ID of the Database file system.
@@ -403,6 +406,7 @@ func (o InstanceOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
+// The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

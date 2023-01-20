@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CR.Inputs
 {
 
-    public sealed class ChainChainConfigNodeGetArgs : Pulumi.ResourceArgs
+    public sealed class ChainChainConfigNodeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to enable the delivery chain node. Valid values: `true`, `false`.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.CR.Inputs
         public ChainChainConfigNodeGetArgs()
         {
         }
+        public static new ChainChainConfigNodeGetArgs Empty => new ChainChainConfigNodeGetArgs();
     }
 }

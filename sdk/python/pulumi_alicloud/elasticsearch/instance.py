@@ -47,7 +47,6 @@ class InstanceArgs:
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input[int] data_node_disk_size: The single data node storage space.
-               - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         :param pulumi.Input[str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
@@ -148,7 +147,6 @@ class InstanceArgs:
     def data_node_disk_size(self) -> pulumi.Input[int]:
         """
         The single data node storage space.
-        - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         """
         return pulumi.get(self, "data_node_disk_size")
 
@@ -527,7 +525,6 @@ class _InstanceState:
         :param pulumi.Input[int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input[bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[int] data_node_disk_size: The single data node storage space.
-               - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         :param pulumi.Input[str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[str] description: The description of instance. It a string of 0 to 30 characters.
@@ -682,7 +679,6 @@ class _InstanceState:
     def data_node_disk_size(self) -> Optional[pulumi.Input[int]]:
         """
         The single data node storage space.
-        - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         """
         return pulumi.get(self, "data_node_disk_size")
 
@@ -1126,7 +1122,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input[bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[int] data_node_disk_size: The single data node storage space.
-               - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         :param pulumi.Input[str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[str] description: The description of instance. It a string of 0 to 30 characters.
@@ -1282,7 +1277,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
             __props__.__dict__["master_node_spec"] = master_node_spec
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["period"] = period
             __props__.__dict__["private_whitelists"] = private_whitelists
             __props__.__dict__["protocol"] = protocol
@@ -1302,6 +1297,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["kibana_port"] = None
             __props__.__dict__["port"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'alicloud:elasticsearch/instance:Instance',
             resource_name,
@@ -1358,7 +1355,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input[bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[int] data_node_disk_size: The single data node storage space.
-               - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         :param pulumi.Input[str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[str] description: The description of instance. It a string of 0 to 30 characters.
@@ -1468,7 +1464,6 @@ class Instance(pulumi.CustomResource):
     def data_node_disk_size(self) -> pulumi.Output[int]:
         """
         The single data node storage space.
-        - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         """
         return pulumi.get(self, "data_node_disk_size")
 

@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {addressName: _var.name});
  * const defaultDdosBgpInstances = alicloud.ddos.getDdosBgpInstances({});
  * const defaultBgpIp = new alicloud.ddos.BgpIp("defaultBgpIp", {
- *     instanceId: defaultDdosBgpInstances.then(defaultDdosBgpInstances => defaultDdosBgpInstances.ids?[0]),
+ *     instanceId: defaultDdosBgpInstances.then(defaultDdosBgpInstances => defaultDdosBgpInstances.ids?.[0]),
  *     ip: defaultEipAddress.ipAddress,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  * });
  * ```
  *

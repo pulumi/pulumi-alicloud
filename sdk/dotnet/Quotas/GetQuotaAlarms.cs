@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Quotas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Quotas.GetQuotaAlarms.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Quotas.GetQuotaAlarms.InvokeAsync(new AliCloud.Quotas.GetQuotaAlarmsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "5VR90-421F886-81E9-xxx",
-        ///             },
-        ///             NameRegex = "tf-testAcc",
-        ///         }));
-        ///         this.FirstQuotasQuotaAlarmId = example.Apply(example =&gt; example.Alarms?[0]?.Id);
-        ///     }
+        ///             "5VR90-421F886-81E9-xxx",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
         /// 
-        ///     [Output("firstQuotasQuotaAlarmId")]
-        ///     public Output&lt;string&gt; FirstQuotasQuotaAlarmId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstQuotasQuotaAlarmId"] = example.Apply(getQuotaAlarmsResult =&gt; getQuotaAlarmsResult.Alarms[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQuotaAlarmsResult> InvokeAsync(GetQuotaAlarmsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQuotaAlarmsResult>("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", args ?? new GetQuotaAlarmsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotaAlarmsResult>("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", args ?? new GetQuotaAlarmsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Quotas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Quotas.GetQuotaAlarms.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Quotas.GetQuotaAlarms.InvokeAsync(new AliCloud.Quotas.GetQuotaAlarmsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "5VR90-421F886-81E9-xxx",
-        ///             },
-        ///             NameRegex = "tf-testAcc",
-        ///         }));
-        ///         this.FirstQuotasQuotaAlarmId = example.Apply(example =&gt; example.Alarms?[0]?.Id);
-        ///     }
+        ///             "5VR90-421F886-81E9-xxx",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
         /// 
-        ///     [Output("firstQuotasQuotaAlarmId")]
-        ///     public Output&lt;string&gt; FirstQuotasQuotaAlarmId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstQuotasQuotaAlarmId"] = example.Apply(getQuotaAlarmsResult =&gt; getQuotaAlarmsResult.Alarms[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQuotaAlarmsResult> Invoke(GetQuotaAlarmsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQuotaAlarmsResult>("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", args ?? new GetQuotaAlarmsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetQuotaAlarmsResult>("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", args ?? new GetQuotaAlarmsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetQuotaAlarmsArgs : Pulumi.InvokeArgs
+    public sealed class GetQuotaAlarmsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -155,9 +153,10 @@ namespace Pulumi.AliCloud.Quotas
         public GetQuotaAlarmsArgs()
         {
         }
+        public static new GetQuotaAlarmsArgs Empty => new GetQuotaAlarmsArgs();
     }
 
-    public sealed class GetQuotaAlarmsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetQuotaAlarmsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -219,6 +218,7 @@ namespace Pulumi.AliCloud.Quotas
         public GetQuotaAlarmsInvokeArgs()
         {
         }
+        public static new GetQuotaAlarmsInvokeArgs Empty => new GetQuotaAlarmsInvokeArgs();
     }
 
 

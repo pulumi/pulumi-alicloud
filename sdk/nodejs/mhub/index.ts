@@ -5,14 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./app";
-export * from "./getApps";
-export * from "./getProducts";
-export * from "./product";
+export { AppArgs, AppState } from "./app";
+export type App = import("./app").App;
+export const App: typeof import("./app").App = null as any;
+utilities.lazyLoad(exports, ["App"], () => require("./app"));
 
-// Import resources to register:
-import { App } from "./app";
-import { Product } from "./product";
+export { GetAppsArgs, GetAppsResult, GetAppsOutputArgs } from "./getApps";
+export const getApps: typeof import("./getApps").getApps = null as any;
+export const getAppsOutput: typeof import("./getApps").getAppsOutput = null as any;
+utilities.lazyLoad(exports, ["getApps","getAppsOutput"], () => require("./getApps"));
+
+export { GetProductsArgs, GetProductsResult, GetProductsOutputArgs } from "./getProducts";
+export const getProducts: typeof import("./getProducts").getProducts = null as any;
+export const getProductsOutput: typeof import("./getProducts").getProductsOutput = null as any;
+utilities.lazyLoad(exports, ["getProducts","getProductsOutput"], () => require("./getProducts"));
+
+export { ProductArgs, ProductState } from "./product";
+export type Product = import("./product").Product;
+export const Product: typeof import("./product").Product = null as any;
+utilities.lazyLoad(exports, ["Product"], () => require("./product"));
+
 
 const _module = {
     version: utilities.getVersion(),

@@ -34,7 +34,7 @@ public final class SagFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.rocketmq.Acl;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -81,7 +81,7 @@ public final class SagFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.rocketmq.Acl;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -128,7 +128,7 @@ public final class SagFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.rocketmq.Acl;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -175,7 +175,7 @@ public final class SagFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.rocketmq.Acl;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -222,7 +222,7 @@ public final class SagFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.rocketmq.Acl;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -269,7 +269,7 @@ public final class SagFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.rocketmq.Acl;
      * import java.util.List;
      * import java.util.ArrayList;

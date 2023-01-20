@@ -8,12 +8,391 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'DbInstancePlanPlanConfig',
+    'DbInstancePlanPlanConfigPause',
+    'DbInstancePlanPlanConfigResume',
+    'DbInstancePlanPlanConfigScaleIn',
+    'DbInstancePlanPlanConfigScaleOut',
+    'InstanceIpWhitelist',
     'GetAccountsAccountResult',
+    'GetDbInstancePlansPlanResult',
+    'GetDbInstancePlansPlanPlanConfigResult',
+    'GetDbInstancePlansPlanPlanConfigPauseResult',
+    'GetDbInstancePlansPlanPlanConfigResumeResult',
+    'GetDbInstancePlansPlanPlanConfigScaleInResult',
+    'GetDbInstancePlansPlanPlanConfigScaleOutResult',
     'GetInstancesInstanceResult',
+    'GetInstancesInstanceIpWhitelistResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class DbInstancePlanPlanConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scaleIn":
+            suggest = "scale_in"
+        elif key == "scaleOut":
+            suggest = "scale_out"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbInstancePlanPlanConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbInstancePlanPlanConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbInstancePlanPlanConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pause: Optional['outputs.DbInstancePlanPlanConfigPause'] = None,
+                 resume: Optional['outputs.DbInstancePlanPlanConfigResume'] = None,
+                 scale_in: Optional['outputs.DbInstancePlanPlanConfigScaleIn'] = None,
+                 scale_out: Optional['outputs.DbInstancePlanPlanConfigScaleOut'] = None):
+        """
+        :param 'DbInstancePlanPlanConfigPauseArgs' pause: Pause instance plan config. See the following `Block pause`.
+        :param 'DbInstancePlanPlanConfigResumeArgs' resume: Resume instance plan config. See the following `Block resume`.
+        :param 'DbInstancePlanPlanConfigScaleInArgs' scale_in: Scale In instance plan config. See the following `Block scale_in`.
+        :param 'DbInstancePlanPlanConfigScaleOutArgs' scale_out: Scale out instance plan config. See the following `Block scale_out`.
+        """
+        if pause is not None:
+            pulumi.set(__self__, "pause", pause)
+        if resume is not None:
+            pulumi.set(__self__, "resume", resume)
+        if scale_in is not None:
+            pulumi.set(__self__, "scale_in", scale_in)
+        if scale_out is not None:
+            pulumi.set(__self__, "scale_out", scale_out)
+
+    @property
+    @pulumi.getter
+    def pause(self) -> Optional['outputs.DbInstancePlanPlanConfigPause']:
+        """
+        Pause instance plan config. See the following `Block pause`.
+        """
+        return pulumi.get(self, "pause")
+
+    @property
+    @pulumi.getter
+    def resume(self) -> Optional['outputs.DbInstancePlanPlanConfigResume']:
+        """
+        Resume instance plan config. See the following `Block resume`.
+        """
+        return pulumi.get(self, "resume")
+
+    @property
+    @pulumi.getter(name="scaleIn")
+    def scale_in(self) -> Optional['outputs.DbInstancePlanPlanConfigScaleIn']:
+        """
+        Scale In instance plan config. See the following `Block scale_in`.
+        """
+        return pulumi.get(self, "scale_in")
+
+    @property
+    @pulumi.getter(name="scaleOut")
+    def scale_out(self) -> Optional['outputs.DbInstancePlanPlanConfigScaleOut']:
+        """
+        Scale out instance plan config. See the following `Block scale_out`.
+        """
+        return pulumi.get(self, "scale_out")
+
+
+@pulumi.output_type
+class DbInstancePlanPlanConfigPause(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executeTime":
+            suggest = "execute_time"
+        elif key == "planCronTime":
+            suggest = "plan_cron_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbInstancePlanPlanConfigPause. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbInstancePlanPlanConfigPause.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbInstancePlanPlanConfigPause.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 execute_time: Optional[str] = None,
+                 plan_cron_time: Optional[str] = None):
+        """
+        :param str execute_time: The executed time of the Plan.
+        :param str plan_cron_time: The Cron Time of the plan.
+        """
+        if execute_time is not None:
+            pulumi.set(__self__, "execute_time", execute_time)
+        if plan_cron_time is not None:
+            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+
+    @property
+    @pulumi.getter(name="executeTime")
+    def execute_time(self) -> Optional[str]:
+        """
+        The executed time of the Plan.
+        """
+        return pulumi.get(self, "execute_time")
+
+    @property
+    @pulumi.getter(name="planCronTime")
+    def plan_cron_time(self) -> Optional[str]:
+        """
+        The Cron Time of the plan.
+        """
+        return pulumi.get(self, "plan_cron_time")
+
+
+@pulumi.output_type
+class DbInstancePlanPlanConfigResume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executeTime":
+            suggest = "execute_time"
+        elif key == "planCronTime":
+            suggest = "plan_cron_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbInstancePlanPlanConfigResume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbInstancePlanPlanConfigResume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbInstancePlanPlanConfigResume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 execute_time: Optional[str] = None,
+                 plan_cron_time: Optional[str] = None):
+        """
+        :param str execute_time: The executed time of the Plan.
+        :param str plan_cron_time: The Cron Time of the plan.
+        """
+        if execute_time is not None:
+            pulumi.set(__self__, "execute_time", execute_time)
+        if plan_cron_time is not None:
+            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+
+    @property
+    @pulumi.getter(name="executeTime")
+    def execute_time(self) -> Optional[str]:
+        """
+        The executed time of the Plan.
+        """
+        return pulumi.get(self, "execute_time")
+
+    @property
+    @pulumi.getter(name="planCronTime")
+    def plan_cron_time(self) -> Optional[str]:
+        """
+        The Cron Time of the plan.
+        """
+        return pulumi.get(self, "plan_cron_time")
+
+
+@pulumi.output_type
+class DbInstancePlanPlanConfigScaleIn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executeTime":
+            suggest = "execute_time"
+        elif key == "planCronTime":
+            suggest = "plan_cron_time"
+        elif key == "segmentNodeNum":
+            suggest = "segment_node_num"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbInstancePlanPlanConfigScaleIn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbInstancePlanPlanConfigScaleIn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbInstancePlanPlanConfigScaleIn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 execute_time: Optional[str] = None,
+                 plan_cron_time: Optional[str] = None,
+                 segment_node_num: Optional[str] = None):
+        """
+        :param str execute_time: The executed time of the Plan.
+        :param str plan_cron_time: The Cron Time of the plan.
+        :param str segment_node_num: The segment Node Num of the Plan.
+        """
+        if execute_time is not None:
+            pulumi.set(__self__, "execute_time", execute_time)
+        if plan_cron_time is not None:
+            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+        if segment_node_num is not None:
+            pulumi.set(__self__, "segment_node_num", segment_node_num)
+
+    @property
+    @pulumi.getter(name="executeTime")
+    def execute_time(self) -> Optional[str]:
+        """
+        The executed time of the Plan.
+        """
+        return pulumi.get(self, "execute_time")
+
+    @property
+    @pulumi.getter(name="planCronTime")
+    def plan_cron_time(self) -> Optional[str]:
+        """
+        The Cron Time of the plan.
+        """
+        return pulumi.get(self, "plan_cron_time")
+
+    @property
+    @pulumi.getter(name="segmentNodeNum")
+    def segment_node_num(self) -> Optional[str]:
+        """
+        The segment Node Num of the Plan.
+        """
+        return pulumi.get(self, "segment_node_num")
+
+
+@pulumi.output_type
+class DbInstancePlanPlanConfigScaleOut(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executeTime":
+            suggest = "execute_time"
+        elif key == "planCronTime":
+            suggest = "plan_cron_time"
+        elif key == "segmentNodeNum":
+            suggest = "segment_node_num"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbInstancePlanPlanConfigScaleOut. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbInstancePlanPlanConfigScaleOut.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbInstancePlanPlanConfigScaleOut.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 execute_time: Optional[str] = None,
+                 plan_cron_time: Optional[str] = None,
+                 segment_node_num: Optional[str] = None):
+        """
+        :param str execute_time: The executed time of the Plan.
+        :param str plan_cron_time: The Cron Time of the plan.
+        :param str segment_node_num: The segment Node Num of the Plan.
+        """
+        if execute_time is not None:
+            pulumi.set(__self__, "execute_time", execute_time)
+        if plan_cron_time is not None:
+            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+        if segment_node_num is not None:
+            pulumi.set(__self__, "segment_node_num", segment_node_num)
+
+    @property
+    @pulumi.getter(name="executeTime")
+    def execute_time(self) -> Optional[str]:
+        """
+        The executed time of the Plan.
+        """
+        return pulumi.get(self, "execute_time")
+
+    @property
+    @pulumi.getter(name="planCronTime")
+    def plan_cron_time(self) -> Optional[str]:
+        """
+        The Cron Time of the plan.
+        """
+        return pulumi.get(self, "plan_cron_time")
+
+    @property
+    @pulumi.getter(name="segmentNodeNum")
+    def segment_node_num(self) -> Optional[str]:
+        """
+        The segment Node Num of the Plan.
+        """
+        return pulumi.get(self, "segment_node_num")
+
+
+@pulumi.output_type
+class InstanceIpWhitelist(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "securityIpList":
+            suggest = "security_ip_list"
+        elif key == "ipGroupAttribute":
+            suggest = "ip_group_attribute"
+        elif key == "ipGroupName":
+            suggest = "ip_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceIpWhitelist. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceIpWhitelist.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceIpWhitelist.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 security_ip_list: str,
+                 ip_group_attribute: Optional[str] = None,
+                 ip_group_name: Optional[str] = None):
+        """
+        :param str security_ip_list: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        :param str ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        :param str ip_group_name: IP whitelist group name
+        """
+        pulumi.set(__self__, "security_ip_list", security_ip_list)
+        if ip_group_attribute is not None:
+            pulumi.set(__self__, "ip_group_attribute", ip_group_attribute)
+        if ip_group_name is not None:
+            pulumi.set(__self__, "ip_group_name", ip_group_name)
+
+    @property
+    @pulumi.getter(name="securityIpList")
+    def security_ip_list(self) -> str:
+        """
+        Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        """
+        return pulumi.get(self, "security_ip_list")
+
+    @property
+    @pulumi.getter(name="ipGroupAttribute")
+    def ip_group_attribute(self) -> Optional[str]:
+        """
+        The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        """
+        return pulumi.get(self, "ip_group_attribute")
+
+    @property
+    @pulumi.getter(name="ipGroupName")
+    def ip_group_name(self) -> Optional[str]:
+        """
+        IP whitelist group name
+        """
+        return pulumi.get(self, "ip_group_name")
+
 
 @pulumi.output_type
 class GetAccountsAccountResult(dict):
@@ -78,45 +457,444 @@ class GetAccountsAccountResult(dict):
 
 
 @pulumi.output_type
+class GetDbInstancePlansPlanResult(dict):
+    def __init__(__self__, *,
+                 db_instance_plan_name: str,
+                 id: str,
+                 plan_configs: Sequence['outputs.GetDbInstancePlansPlanPlanConfigResult'],
+                 plan_desc: str,
+                 plan_end_date: str,
+                 plan_id: str,
+                 plan_schedule_type: str,
+                 plan_start_date: str,
+                 plan_type: str,
+                 status: str):
+        """
+        :param str db_instance_plan_name: The name of the Plan.
+        :param str id: The ID of the resource. The value formats as `<db_instance_id>:<plan_id>`.
+        :param Sequence['GetDbInstancePlansPlanPlanConfigArgs'] plan_configs: Plan configuration information.
+        :param str plan_end_date: The end time of the Plan.
+        :param str plan_id: The ID of DB Instance Plan.
+        :param str plan_schedule_type: Plan scheduling type. Valid values: `Postpone`, `Regular`.
+        :param str plan_start_date: The start time of the Plan.
+        :param str plan_type: The type of the Plan. Valid values: `PauseResume`, `Resize`.
+        :param str status: The Status of the Plan.
+        """
+        pulumi.set(__self__, "db_instance_plan_name", db_instance_plan_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "plan_configs", plan_configs)
+        pulumi.set(__self__, "plan_desc", plan_desc)
+        pulumi.set(__self__, "plan_end_date", plan_end_date)
+        pulumi.set(__self__, "plan_id", plan_id)
+        pulumi.set(__self__, "plan_schedule_type", plan_schedule_type)
+        pulumi.set(__self__, "plan_start_date", plan_start_date)
+        pulumi.set(__self__, "plan_type", plan_type)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="dbInstancePlanName")
+    def db_instance_plan_name(self) -> str:
+        """
+        The name of the Plan.
+        """
+        return pulumi.get(self, "db_instance_plan_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the resource. The value formats as `<db_instance_id>:<plan_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="planConfigs")
+    def plan_configs(self) -> Sequence['outputs.GetDbInstancePlansPlanPlanConfigResult']:
+        """
+        Plan configuration information.
+        """
+        return pulumi.get(self, "plan_configs")
+
+    @property
+    @pulumi.getter(name="planDesc")
+    def plan_desc(self) -> str:
+        return pulumi.get(self, "plan_desc")
+
+    @property
+    @pulumi.getter(name="planEndDate")
+    def plan_end_date(self) -> str:
+        """
+        The end time of the Plan.
+        """
+        return pulumi.get(self, "plan_end_date")
+
+    @property
+    @pulumi.getter(name="planId")
+    def plan_id(self) -> str:
+        """
+        The ID of DB Instance Plan.
+        """
+        return pulumi.get(self, "plan_id")
+
+    @property
+    @pulumi.getter(name="planScheduleType")
+    def plan_schedule_type(self) -> str:
+        """
+        Plan scheduling type. Valid values: `Postpone`, `Regular`.
+        """
+        return pulumi.get(self, "plan_schedule_type")
+
+    @property
+    @pulumi.getter(name="planStartDate")
+    def plan_start_date(self) -> str:
+        """
+        The start time of the Plan.
+        """
+        return pulumi.get(self, "plan_start_date")
+
+    @property
+    @pulumi.getter(name="planType")
+    def plan_type(self) -> str:
+        """
+        The type of the Plan. Valid values: `PauseResume`, `Resize`.
+        """
+        return pulumi.get(self, "plan_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The Status of the Plan.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetDbInstancePlansPlanPlanConfigResult(dict):
+    def __init__(__self__, *,
+                 pauses: Sequence['outputs.GetDbInstancePlansPlanPlanConfigPauseResult'],
+                 resumes: Sequence['outputs.GetDbInstancePlansPlanPlanConfigResumeResult'],
+                 scale_ins: Sequence['outputs.GetDbInstancePlansPlanPlanConfigScaleInResult'],
+                 scale_outs: Sequence['outputs.GetDbInstancePlansPlanPlanConfigScaleOutResult']):
+        """
+        :param Sequence['GetDbInstancePlansPlanPlanConfigPauseArgs'] pauses: Pause instance plan config.
+        :param Sequence['GetDbInstancePlansPlanPlanConfigResumeArgs'] resumes: Resume instance plan config.
+        :param Sequence['GetDbInstancePlansPlanPlanConfigScaleInArgs'] scale_ins: Scale In instance plan config.
+        :param Sequence['GetDbInstancePlansPlanPlanConfigScaleOutArgs'] scale_outs: Scale out instance plan config.
+        """
+        pulumi.set(__self__, "pauses", pauses)
+        pulumi.set(__self__, "resumes", resumes)
+        pulumi.set(__self__, "scale_ins", scale_ins)
+        pulumi.set(__self__, "scale_outs", scale_outs)
+
+    @property
+    @pulumi.getter
+    def pauses(self) -> Sequence['outputs.GetDbInstancePlansPlanPlanConfigPauseResult']:
+        """
+        Pause instance plan config.
+        """
+        return pulumi.get(self, "pauses")
+
+    @property
+    @pulumi.getter
+    def resumes(self) -> Sequence['outputs.GetDbInstancePlansPlanPlanConfigResumeResult']:
+        """
+        Resume instance plan config.
+        """
+        return pulumi.get(self, "resumes")
+
+    @property
+    @pulumi.getter(name="scaleIns")
+    def scale_ins(self) -> Sequence['outputs.GetDbInstancePlansPlanPlanConfigScaleInResult']:
+        """
+        Scale In instance plan config.
+        """
+        return pulumi.get(self, "scale_ins")
+
+    @property
+    @pulumi.getter(name="scaleOuts")
+    def scale_outs(self) -> Sequence['outputs.GetDbInstancePlansPlanPlanConfigScaleOutResult']:
+        """
+        Scale out instance plan config.
+        """
+        return pulumi.get(self, "scale_outs")
+
+
+@pulumi.output_type
+class GetDbInstancePlansPlanPlanConfigPauseResult(dict):
+    def __init__(__self__, *,
+                 execute_time: str,
+                 plan_cron_time: str,
+                 plan_task_status: str):
+        """
+        :param str execute_time: The executed time of the Plan.
+        :param str plan_cron_time: The Cron Time of the plan.
+        :param str plan_task_status: The Status of the plan Task.
+        """
+        pulumi.set(__self__, "execute_time", execute_time)
+        pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+        pulumi.set(__self__, "plan_task_status", plan_task_status)
+
+    @property
+    @pulumi.getter(name="executeTime")
+    def execute_time(self) -> str:
+        """
+        The executed time of the Plan.
+        """
+        return pulumi.get(self, "execute_time")
+
+    @property
+    @pulumi.getter(name="planCronTime")
+    def plan_cron_time(self) -> str:
+        """
+        The Cron Time of the plan.
+        """
+        return pulumi.get(self, "plan_cron_time")
+
+    @property
+    @pulumi.getter(name="planTaskStatus")
+    def plan_task_status(self) -> str:
+        """
+        The Status of the plan Task.
+        """
+        return pulumi.get(self, "plan_task_status")
+
+
+@pulumi.output_type
+class GetDbInstancePlansPlanPlanConfigResumeResult(dict):
+    def __init__(__self__, *,
+                 execute_time: str,
+                 plan_cron_time: str,
+                 plan_task_status: str):
+        """
+        :param str execute_time: The executed time of the Plan.
+        :param str plan_cron_time: The Cron Time of the plan.
+        :param str plan_task_status: The Status of the plan Task.
+        """
+        pulumi.set(__self__, "execute_time", execute_time)
+        pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+        pulumi.set(__self__, "plan_task_status", plan_task_status)
+
+    @property
+    @pulumi.getter(name="executeTime")
+    def execute_time(self) -> str:
+        """
+        The executed time of the Plan.
+        """
+        return pulumi.get(self, "execute_time")
+
+    @property
+    @pulumi.getter(name="planCronTime")
+    def plan_cron_time(self) -> str:
+        """
+        The Cron Time of the plan.
+        """
+        return pulumi.get(self, "plan_cron_time")
+
+    @property
+    @pulumi.getter(name="planTaskStatus")
+    def plan_task_status(self) -> str:
+        """
+        The Status of the plan Task.
+        """
+        return pulumi.get(self, "plan_task_status")
+
+
+@pulumi.output_type
+class GetDbInstancePlansPlanPlanConfigScaleInResult(dict):
+    def __init__(__self__, *,
+                 execute_time: str,
+                 plan_cron_time: str,
+                 plan_task_status: str,
+                 segment_node_num: str):
+        """
+        :param str execute_time: The executed time of the Plan.
+        :param str plan_cron_time: The Cron Time of the plan.
+        :param str plan_task_status: The Status of the plan Task.
+        :param str segment_node_num: The segment Node Num of the Plan.
+        """
+        pulumi.set(__self__, "execute_time", execute_time)
+        pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+        pulumi.set(__self__, "plan_task_status", plan_task_status)
+        pulumi.set(__self__, "segment_node_num", segment_node_num)
+
+    @property
+    @pulumi.getter(name="executeTime")
+    def execute_time(self) -> str:
+        """
+        The executed time of the Plan.
+        """
+        return pulumi.get(self, "execute_time")
+
+    @property
+    @pulumi.getter(name="planCronTime")
+    def plan_cron_time(self) -> str:
+        """
+        The Cron Time of the plan.
+        """
+        return pulumi.get(self, "plan_cron_time")
+
+    @property
+    @pulumi.getter(name="planTaskStatus")
+    def plan_task_status(self) -> str:
+        """
+        The Status of the plan Task.
+        """
+        return pulumi.get(self, "plan_task_status")
+
+    @property
+    @pulumi.getter(name="segmentNodeNum")
+    def segment_node_num(self) -> str:
+        """
+        The segment Node Num of the Plan.
+        """
+        return pulumi.get(self, "segment_node_num")
+
+
+@pulumi.output_type
+class GetDbInstancePlansPlanPlanConfigScaleOutResult(dict):
+    def __init__(__self__, *,
+                 execute_time: str,
+                 plan_cron_time: str,
+                 plan_task_status: str,
+                 segment_node_num: str):
+        """
+        :param str execute_time: The executed time of the Plan.
+        :param str plan_cron_time: The Cron Time of the plan.
+        :param str plan_task_status: The Status of the plan Task.
+        :param str segment_node_num: The segment Node Num of the Plan.
+        """
+        pulumi.set(__self__, "execute_time", execute_time)
+        pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+        pulumi.set(__self__, "plan_task_status", plan_task_status)
+        pulumi.set(__self__, "segment_node_num", segment_node_num)
+
+    @property
+    @pulumi.getter(name="executeTime")
+    def execute_time(self) -> str:
+        """
+        The executed time of the Plan.
+        """
+        return pulumi.get(self, "execute_time")
+
+    @property
+    @pulumi.getter(name="planCronTime")
+    def plan_cron_time(self) -> str:
+        """
+        The Cron Time of the plan.
+        """
+        return pulumi.get(self, "plan_cron_time")
+
+    @property
+    @pulumi.getter(name="planTaskStatus")
+    def plan_task_status(self) -> str:
+        """
+        The Status of the plan Task.
+        """
+        return pulumi.get(self, "plan_task_status")
+
+    @property
+    @pulumi.getter(name="segmentNodeNum")
+    def segment_node_num(self) -> str:
+        """
+        The segment Node Num of the Plan.
+        """
+        return pulumi.get(self, "segment_node_num")
+
+
+@pulumi.output_type
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  availability_zone: str,
                  charge_type: str,
+                 connection_string: str,
+                 cpu_cores: str,
+                 create_time: str,
                  creation_time: str,
+                 db_instance_category: str,
+                 db_instance_class: str,
+                 db_instance_id: str,
+                 db_instance_mode: str,
                  description: str,
                  engine: str,
                  engine_version: str,
                  id: str,
-                 instance_class: str,
-                 instance_group_count: str,
                  instance_network_type: str,
+                 ip_whitelists: Sequence['outputs.GetInstancesInstanceIpWhitelistResult'],
+                 maintain_end_time: str,
+                 maintain_start_time: str,
+                 master_node_num: str,
+                 memory_size: str,
+                 payment_type: str,
                  region_id: str,
-                 status: str):
+                 seg_node_num: str,
+                 status: str,
+                 storage_size: int,
+                 storage_type: str,
+                 tags: Mapping[str, Any],
+                 vpc_id: str,
+                 vswitch_id: str,
+                 zone_id: str):
         """
         :param str availability_zone: Instance availability zone.
-        :param str charge_type: Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
-        :param str creation_time: The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
-        :param str description: The description of an instance.
-        :param str engine: Database engine type. Supported option is `gpdb`.
-        :param str engine_version: Database engine version.
-        :param str id: The instance id.
-        :param str instance_class: The group type.
-        :param str instance_group_count: The number of groups.
+        :param str connection_string: The connection string of the instance.
+        :param str cpu_cores: The number of CPU cores of the computing node. Unit: Core.
+        :param str create_time: The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+        :param str db_instance_category: The db instance category. Valid values: `HighAvailability`, `Basic`.
+        :param str db_instance_class: The db instance class.
+        :param str db_instance_id: The db instance id.
+        :param str db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param str description: The description of the instance.
+        :param str engine: The database engine used by the instance.
+        :param str engine_version: The version of the database engine used by the instance.
+        :param str id: The ID of the db Instance.
+        :param str instance_network_type: The network type of the instance.
+        :param Sequence['GetInstancesInstanceIpWhitelistArgs'] ip_whitelists: The ip whitelist.
+        :param str maintain_end_time: The end time of the maintenance window for the instance.
+        :param str maintain_start_time: The start time of the maintenance window for the instance.
+        :param str master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        :param str memory_size: The memory size of the compute node.
+        :param str payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         :param str region_id: Region ID the instance belongs to.
-        :param str status: Status of the instance.
+        :param str seg_node_num: Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        :param str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+        :param int storage_size: The storage capacity. Unit: GB. Value: `50` to `4000`.
+        :param str storage_type: The type of disks. Valid values: `cloud_essd`, `cloud_efficiency`.
+        :param Mapping[str, Any] tags: The tags of the instance.
+        :param str vpc_id: The ID of the VPC。.
+        :param str vswitch_id: The vswitch id.
+        :param str zone_id: The zone ID of the instance.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "charge_type", charge_type)
+        pulumi.set(__self__, "connection_string", connection_string)
+        pulumi.set(__self__, "cpu_cores", cpu_cores)
+        pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "db_instance_category", db_instance_category)
+        pulumi.set(__self__, "db_instance_class", db_instance_class)
+        pulumi.set(__self__, "db_instance_id", db_instance_id)
+        pulumi.set(__self__, "db_instance_mode", db_instance_mode)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "engine_version", engine_version)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_group_count", instance_group_count)
         pulumi.set(__self__, "instance_network_type", instance_network_type)
+        pulumi.set(__self__, "ip_whitelists", ip_whitelists)
+        pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+        pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+        pulumi.set(__self__, "master_node_num", master_node_num)
+        pulumi.set(__self__, "memory_size", memory_size)
+        pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "seg_node_num", seg_node_num)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_size", storage_size)
+        pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -129,24 +907,74 @@ class GetInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="chargeType")
     def charge_type(self) -> str:
-        """
-        Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
-        """
         return pulumi.get(self, "charge_type")
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> str:
+        """
+        The connection string of the instance.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @property
+    @pulumi.getter(name="cpuCores")
+    def cpu_cores(self) -> str:
+        """
+        The number of CPU cores of the computing node. Unit: Core.
+        """
+        return pulumi.get(self, "cpu_cores")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
-        """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="dbInstanceCategory")
+    def db_instance_category(self) -> str:
+        """
+        The db instance category. Valid values: `HighAvailability`, `Basic`.
+        """
+        return pulumi.get(self, "db_instance_category")
+
+    @property
+    @pulumi.getter(name="dbInstanceClass")
+    def db_instance_class(self) -> str:
+        """
+        The db instance class.
+        """
+        return pulumi.get(self, "db_instance_class")
+
+    @property
+    @pulumi.getter(name="dbInstanceId")
+    def db_instance_id(self) -> str:
+        """
+        The db instance id.
+        """
+        return pulumi.get(self, "db_instance_id")
+
+    @property
+    @pulumi.getter(name="dbInstanceMode")
+    def db_instance_mode(self) -> str:
+        """
+        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        """
+        return pulumi.get(self, "db_instance_mode")
 
     @property
     @pulumi.getter
     def description(self) -> str:
         """
-        The description of an instance.
+        The description of the instance.
         """
         return pulumi.get(self, "description")
 
@@ -154,7 +982,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def engine(self) -> str:
         """
-        Database engine type. Supported option is `gpdb`.
+        The database engine used by the instance.
         """
         return pulumi.get(self, "engine")
 
@@ -162,7 +990,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> str:
         """
-        Database engine version.
+        The version of the database engine used by the instance.
         """
         return pulumi.get(self, "engine_version")
 
@@ -170,30 +998,65 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The instance id.
+        The ID of the db Instance.
         """
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> str:
-        """
-        The group type.
-        """
-        return pulumi.get(self, "instance_class")
-
-    @property
-    @pulumi.getter(name="instanceGroupCount")
-    def instance_group_count(self) -> str:
-        """
-        The number of groups.
-        """
-        return pulumi.get(self, "instance_group_count")
-
-    @property
     @pulumi.getter(name="instanceNetworkType")
     def instance_network_type(self) -> str:
+        """
+        The network type of the instance.
+        """
         return pulumi.get(self, "instance_network_type")
+
+    @property
+    @pulumi.getter(name="ipWhitelists")
+    def ip_whitelists(self) -> Sequence['outputs.GetInstancesInstanceIpWhitelistResult']:
+        """
+        The ip whitelist.
+        """
+        return pulumi.get(self, "ip_whitelists")
+
+    @property
+    @pulumi.getter(name="maintainEndTime")
+    def maintain_end_time(self) -> str:
+        """
+        The end time of the maintenance window for the instance.
+        """
+        return pulumi.get(self, "maintain_end_time")
+
+    @property
+    @pulumi.getter(name="maintainStartTime")
+    def maintain_start_time(self) -> str:
+        """
+        The start time of the maintenance window for the instance.
+        """
+        return pulumi.get(self, "maintain_start_time")
+
+    @property
+    @pulumi.getter(name="masterNodeNum")
+    def master_node_num(self) -> str:
+        """
+        The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        """
+        return pulumi.get(self, "master_node_num")
+
+    @property
+    @pulumi.getter(name="memorySize")
+    def memory_size(self) -> str:
+        """
+        The memory size of the compute node.
+        """
+        return pulumi.get(self, "memory_size")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        """
+        return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter(name="regionId")
@@ -204,12 +1067,108 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "region_id")
 
     @property
+    @pulumi.getter(name="segNodeNum")
+    def seg_node_num(self) -> str:
+        """
+        Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        """
+        return pulumi.get(self, "seg_node_num")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of the instance.
+        The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageSize")
+    def storage_size(self) -> int:
+        """
+        The storage capacity. Unit: GB. Value: `50` to `4000`.
+        """
+        return pulumi.get(self, "storage_size")
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> str:
+        """
+        The type of disks. Valid values: `cloud_essd`, `cloud_efficiency`.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tags of the instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC。.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID of the instance.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceIpWhitelistResult(dict):
+    def __init__(__self__, *,
+                 ip_group_attribute: str,
+                 ip_group_name: str,
+                 security_ip_list: str):
+        """
+        :param str ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        :param str ip_group_name: IP whitelist group name
+        :param str security_ip_list: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+        """
+        pulumi.set(__self__, "ip_group_attribute", ip_group_attribute)
+        pulumi.set(__self__, "ip_group_name", ip_group_name)
+        pulumi.set(__self__, "security_ip_list", security_ip_list)
+
+    @property
+    @pulumi.getter(name="ipGroupAttribute")
+    def ip_group_attribute(self) -> str:
+        """
+        The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        """
+        return pulumi.get(self, "ip_group_attribute")
+
+    @property
+    @pulumi.getter(name="ipGroupName")
+    def ip_group_name(self) -> str:
+        """
+        IP whitelist group name
+        """
+        return pulumi.get(self, "ip_group_name")
+
+    @property
+    @pulumi.getter(name="securityIpList")
+    def security_ip_list(self) -> str:
+        """
+        List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+        """
+        return pulumi.get(self, "security_ip_list")
 
 
 @pulumi.output_type

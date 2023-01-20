@@ -17,7 +17,7 @@ public final class ApiRequestConfig {
      */
     private @Nullable String bodyFormat;
     /**
-     * @return The http method of backend service.
+     * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
      * 
      */
     private String method;
@@ -27,7 +27,7 @@ public final class ApiRequestConfig {
      */
     private String mode;
     /**
-     * @return The path of backend service.
+     * @return The request path of the api.
      * 
      */
     private String path;
@@ -46,7 +46,7 @@ public final class ApiRequestConfig {
         return Optional.ofNullable(this.bodyFormat);
     }
     /**
-     * @return The http method of backend service.
+     * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
      * 
      */
     public String method() {
@@ -60,7 +60,7 @@ public final class ApiRequestConfig {
         return this.mode;
     }
     /**
-     * @return The path of backend service.
+     * @return The request path of the api.
      * 
      */
     public String path() {

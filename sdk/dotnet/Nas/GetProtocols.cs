@@ -21,31 +21,30 @@ namespace Pulumi.AliCloud.Nas
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Nas.GetProtocols.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Nas.GetProtocols.InvokeAsync(new AliCloud.Nas.GetProtocolsArgs
-        ///         {
-        ///             OutputFile = "protocols.txt",
-        ///             Type = "Performance",
-        ///             ZoneId = "cn-beijing-e",
-        ///         }));
-        ///         this.NasProtocolsProtocol = @default.Apply(@default =&gt; @default.Protocols?[0]);
-        ///     }
+        ///         OutputFile = "protocols.txt",
+        ///         Type = "Performance",
+        ///         ZoneId = "cn-beijing-e",
+        ///     });
         /// 
-        ///     [Output("nasProtocolsProtocol")]
-        ///     public Output&lt;string&gt; NasProtocolsProtocol { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nasProtocolsProtocol"] = @default.Apply(getProtocolsResult =&gt; getProtocolsResult).Apply(@default =&gt; @default.Apply(getProtocolsResult =&gt; getProtocolsResult.Protocols[0])),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProtocolsResult> InvokeAsync(GetProtocolsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? new GetProtocolsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? new GetProtocolsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provide  a data source to retrieve the type of protocol used to create NAS file system.
@@ -57,35 +56,34 @@ namespace Pulumi.AliCloud.Nas
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Nas.GetProtocols.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Nas.GetProtocols.InvokeAsync(new AliCloud.Nas.GetProtocolsArgs
-        ///         {
-        ///             OutputFile = "protocols.txt",
-        ///             Type = "Performance",
-        ///             ZoneId = "cn-beijing-e",
-        ///         }));
-        ///         this.NasProtocolsProtocol = @default.Apply(@default =&gt; @default.Protocols?[0]);
-        ///     }
+        ///         OutputFile = "protocols.txt",
+        ///         Type = "Performance",
+        ///         ZoneId = "cn-beijing-e",
+        ///     });
         /// 
-        ///     [Output("nasProtocolsProtocol")]
-        ///     public Output&lt;string&gt; NasProtocolsProtocol { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nasProtocolsProtocol"] = @default.Apply(getProtocolsResult =&gt; getProtocolsResult).Apply(@default =&gt; @default.Apply(getProtocolsResult =&gt; getProtocolsResult.Protocols[0])),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProtocolsResult> Invoke(GetProtocolsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? new GetProtocolsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? new GetProtocolsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetProtocolsArgs : Pulumi.InvokeArgs
+    public sealed class GetProtocolsArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -105,9 +103,10 @@ namespace Pulumi.AliCloud.Nas
         public GetProtocolsArgs()
         {
         }
+        public static new GetProtocolsArgs Empty => new GetProtocolsArgs();
     }
 
-    public sealed class GetProtocolsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProtocolsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -127,6 +126,7 @@ namespace Pulumi.AliCloud.Nas
         public GetProtocolsInvokeArgs()
         {
         }
+        public static new GetProtocolsInvokeArgs Empty => new GetProtocolsInvokeArgs();
     }
 
 

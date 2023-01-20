@@ -23,30 +23,29 @@ namespace Pulumi.AliCloud.Dns
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dns.GetCustomLines.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dns.GetCustomLines.InvokeAsync(new AliCloud.Dns.GetCustomLinesArgs
-        ///         {
-        ///             EnableDetails = true,
-        ///             DomainName = "your_domain_name",
-        ///         }));
-        ///         this.AlidnsCustomLineId1 = ids.Apply(ids =&gt; ids.Lines?[0]?.Id);
-        ///     }
+        ///         EnableDetails = true,
+        ///         DomainName = "your_domain_name",
+        ///     });
         /// 
-        ///     [Output("alidnsCustomLineId1")]
-        ///     public Output&lt;string&gt; AlidnsCustomLineId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alidnsCustomLineId1"] = ids.Apply(getCustomLinesResult =&gt; getCustomLinesResult.Lines[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCustomLinesResult> InvokeAsync(GetCustomLinesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomLinesResult>("alicloud:dns/getCustomLines:getCustomLines", args ?? new GetCustomLinesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomLinesResult>("alicloud:dns/getCustomLines:getCustomLines", args ?? new GetCustomLinesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Alidns Custom Lines of the current Alibaba Cloud user.
@@ -60,34 +59,33 @@ namespace Pulumi.AliCloud.Dns
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dns.GetCustomLines.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dns.GetCustomLines.InvokeAsync(new AliCloud.Dns.GetCustomLinesArgs
-        ///         {
-        ///             EnableDetails = true,
-        ///             DomainName = "your_domain_name",
-        ///         }));
-        ///         this.AlidnsCustomLineId1 = ids.Apply(ids =&gt; ids.Lines?[0]?.Id);
-        ///     }
+        ///         EnableDetails = true,
+        ///         DomainName = "your_domain_name",
+        ///     });
         /// 
-        ///     [Output("alidnsCustomLineId1")]
-        ///     public Output&lt;string&gt; AlidnsCustomLineId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alidnsCustomLineId1"] = ids.Apply(getCustomLinesResult =&gt; getCustomLinesResult.Lines[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCustomLinesResult> Invoke(GetCustomLinesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCustomLinesResult>("alicloud:dns/getCustomLines:getCustomLines", args ?? new GetCustomLinesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomLinesResult>("alicloud:dns/getCustomLines:getCustomLines", args ?? new GetCustomLinesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCustomLinesArgs : Pulumi.InvokeArgs
+    public sealed class GetCustomLinesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Domain name.
@@ -131,9 +129,10 @@ namespace Pulumi.AliCloud.Dns
         public GetCustomLinesArgs()
         {
         }
+        public static new GetCustomLinesArgs Empty => new GetCustomLinesArgs();
     }
 
-    public sealed class GetCustomLinesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCustomLinesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Domain name.
@@ -177,6 +176,7 @@ namespace Pulumi.AliCloud.Dns
         public GetCustomLinesInvokeArgs()
         {
         }
+        public static new GetCustomLinesInvokeArgs Empty => new GetCustomLinesInvokeArgs();
     }
 
 

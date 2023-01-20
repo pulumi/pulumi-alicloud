@@ -46,14 +46,14 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+     * The resource type of should shared, valid value
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+     * @return The resource type of should shared, valid value
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -145,7 +145,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceType The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+         * @param resourceType The resource type of should shared, valid value
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceType The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+         * @param resourceType The resource type of should shared, valid value
          * 
          * @return builder
          * 

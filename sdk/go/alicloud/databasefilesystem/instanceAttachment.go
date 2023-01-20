@@ -51,7 +51,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
 //				Description: pulumi.String("tf test"),
-//				VpcId:       pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId:       *pulumi.String(defaultNetworks.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -65,11 +65,11 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				ImageId:            pulumi.String(defaultImages.Images[0].Id),
+//				ImageId:            *pulumi.String(defaultImages.Images[0].Id),
 //				InstanceName:       pulumi.Any(_var.Name),
 //				InstanceType:       pulumi.String("ecs.g7se.large"),
 //				AvailabilityZone:   pulumi.String(zoneId),
-//				VswitchId:          pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:          *pulumi.String(defaultSwitches.Ids[0]),
 //				SystemDiskCategory: pulumi.String("cloud_essd"),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
@@ -117,7 +117,8 @@ type InstanceAttachment struct {
 	EcsId pulumi.StringOutput `pulumi:"ecsId"`
 	// The ID of the database file system.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	Status     pulumi.StringOutput `pulumi:"status"`
+	// The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewInstanceAttachment registers a new resource with the given unique name, arguments, and options.
@@ -159,7 +160,8 @@ type instanceAttachmentState struct {
 	EcsId *string `pulumi:"ecsId"`
 	// The ID of the database file system.
 	InstanceId *string `pulumi:"instanceId"`
-	Status     *string `pulumi:"status"`
+	// The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+	Status *string `pulumi:"status"`
 }
 
 type InstanceAttachmentState struct {
@@ -167,7 +169,8 @@ type InstanceAttachmentState struct {
 	EcsId pulumi.StringPtrInput
 	// The ID of the database file system.
 	InstanceId pulumi.StringPtrInput
-	Status     pulumi.StringPtrInput
+	// The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+	Status pulumi.StringPtrInput
 }
 
 func (InstanceAttachmentState) ElementType() reflect.Type {
@@ -286,6 +289,7 @@ func (o InstanceAttachmentOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
 func (o InstanceAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

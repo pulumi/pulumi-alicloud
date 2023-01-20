@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,11 +26,8 @@ import * as utilities from "../utilities";
  */
 export function getEdgeKubernetesClusters(args?: GetEdgeKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetEdgeKubernetesClustersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -78,9 +76,26 @@ export interface GetEdgeKubernetesClustersResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.103.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const k8sClusters = alicloud.cs.getEdgeKubernetesClusters({
+ *     nameRegex: "my-first-k8s",
+ *     outputFile: "my-first-k8s-json",
+ * });
+ * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
+ * ```
+ */
 export function getEdgeKubernetesClustersOutput(args?: GetEdgeKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEdgeKubernetesClustersResult> {
-    return pulumi.output(args).apply(a => getEdgeKubernetesClusters(a, opts))
+    return pulumi.output(args).apply((a: any) => getEdgeKubernetesClusters(a, opts))
 }
 
 /**

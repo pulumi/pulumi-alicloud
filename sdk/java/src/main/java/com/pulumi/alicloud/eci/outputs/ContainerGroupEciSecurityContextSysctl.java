@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerGroupEciSecurityContextSysctl {
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The variable value of the security context that the container group runs.
+     * @return The value of the variable. The value can be 0 to 256 characters in length.
      * 
      */
     private @Nullable String value;
 
     private ContainerGroupEciSecurityContextSysctl() {}
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The variable value of the security context that the container group runs.
+     * @return The value of the variable. The value can be 0 to 256 characters in length.
      * 
      */
     public Optional<String> value() {

@@ -141,13 +141,12 @@ class InstanceGrant(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         # Create a new instance-grant and use it to grant one child instance of account1 to a new CEN of account 2.
-        account1 = pulumi.providers.Alicloud("account1",
+        account1 = alicloud.Provider("account1",
             access_key="access123",
             secret_key="secret123")
-        account2 = pulumi.providers.Alicloud("account2",
+        account2 = alicloud.Provider("account2",
             access_key="access456",
             secret_key="secret456")
         config = pulumi.Config()
@@ -204,13 +203,12 @@ class InstanceGrant(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         # Create a new instance-grant and use it to grant one child instance of account1 to a new CEN of account 2.
-        account1 = pulumi.providers.Alicloud("account1",
+        account1 = alicloud.Provider("account1",
             access_key="access123",
             secret_key="secret123")
-        account2 = pulumi.providers.Alicloud("account2",
+        account2 = alicloud.Provider("account2",
             access_key="access456",
             secret_key="secret456")
         config = pulumi.Config()

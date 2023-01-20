@@ -23,30 +23,29 @@ namespace Pulumi.AliCloud.Sae
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var nameRegex = AliCloud.Sae.GetGreyTagRoutes.Invoke(new()
         ///     {
-        ///         var nameRegex = Output.Create(AliCloud.Sae.GetGreyTagRoutes.InvokeAsync(new AliCloud.Sae.GetGreyTagRoutesArgs
-        ///         {
-        ///             AppId = "example_id",
-        ///             NameRegex = "^my-GreyTagRoute",
-        ///         }));
-        ///         this.SaeGreyTagRoutesId = nameRegex.Apply(nameRegex =&gt; nameRegex.Routes?[0]?.Id);
-        ///     }
+        ///         AppId = "example_id",
+        ///         NameRegex = "^my-GreyTagRoute",
+        ///     });
         /// 
-        ///     [Output("saeGreyTagRoutesId")]
-        ///     public Output&lt;string&gt; SaeGreyTagRoutesId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["saeGreyTagRoutesId"] = nameRegex.Apply(getGreyTagRoutesResult =&gt; getGreyTagRoutesResult.Routes[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGreyTagRoutesResult> InvokeAsync(GetGreyTagRoutesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGreyTagRoutesResult>("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", args ?? new GetGreyTagRoutesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGreyTagRoutesResult>("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", args ?? new GetGreyTagRoutesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
@@ -60,34 +59,33 @@ namespace Pulumi.AliCloud.Sae
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var nameRegex = AliCloud.Sae.GetGreyTagRoutes.Invoke(new()
         ///     {
-        ///         var nameRegex = Output.Create(AliCloud.Sae.GetGreyTagRoutes.InvokeAsync(new AliCloud.Sae.GetGreyTagRoutesArgs
-        ///         {
-        ///             AppId = "example_id",
-        ///             NameRegex = "^my-GreyTagRoute",
-        ///         }));
-        ///         this.SaeGreyTagRoutesId = nameRegex.Apply(nameRegex =&gt; nameRegex.Routes?[0]?.Id);
-        ///     }
+        ///         AppId = "example_id",
+        ///         NameRegex = "^my-GreyTagRoute",
+        ///     });
         /// 
-        ///     [Output("saeGreyTagRoutesId")]
-        ///     public Output&lt;string&gt; SaeGreyTagRoutesId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["saeGreyTagRoutesId"] = nameRegex.Apply(getGreyTagRoutesResult =&gt; getGreyTagRoutesResult.Routes[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGreyTagRoutesResult> Invoke(GetGreyTagRoutesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGreyTagRoutesResult>("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", args ?? new GetGreyTagRoutesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGreyTagRoutesResult>("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", args ?? new GetGreyTagRoutesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGreyTagRoutesArgs : Pulumi.InvokeArgs
+    public sealed class GetGreyTagRoutesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID  of the SAE Application.
@@ -119,9 +117,10 @@ namespace Pulumi.AliCloud.Sae
         public GetGreyTagRoutesArgs()
         {
         }
+        public static new GetGreyTagRoutesArgs Empty => new GetGreyTagRoutesArgs();
     }
 
-    public sealed class GetGreyTagRoutesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGreyTagRoutesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID  of the SAE Application.
@@ -153,6 +152,7 @@ namespace Pulumi.AliCloud.Sae
         public GetGreyTagRoutesInvokeArgs()
         {
         }
+        public static new GetGreyTagRoutesInvokeArgs Empty => new GetGreyTagRoutesInvokeArgs();
     }
 
 

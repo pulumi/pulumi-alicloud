@@ -18,14 +18,14 @@ public final class GetFoldersArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetFoldersArgs Empty = new GetFoldersArgs();
 
     /**
-     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     * Default to `false`. Set it to true can output more details.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     * @return Default to `false`. Set it to true can output more details.
      * 
      */
     public Optional<Output<Boolean>> enableDetails() {
@@ -129,7 +129,7 @@ public final class GetFoldersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+         * @param enableDetails Default to `false`. Set it to true can output more details.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GetFoldersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+         * @param enableDetails Default to `false`. Set it to true can output more details.
          * 
          * @return builder
          * 

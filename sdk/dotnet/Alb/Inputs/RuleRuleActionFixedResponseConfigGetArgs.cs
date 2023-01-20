@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class RuleRuleActionFixedResponseConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class RuleRuleActionFixedResponseConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+        /// The redirect method. Valid values:301, 302, 303, 307, and 308.
         /// </summary>
         [Input("httpCode")]
         public Input<string>? HttpCode { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public RuleRuleActionFixedResponseConfigGetArgs()
         {
         }
+        public static new RuleRuleActionFixedResponseConfigGetArgs Empty => new RuleRuleActionFixedResponseConfigGetArgs();
     }
 }

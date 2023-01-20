@@ -8,6 +8,7 @@ import com.pulumi.alicloud.hbr.inputs.OtsBackupPlanRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,14 +21,14 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     public static final OtsBackupPlanArgs Empty = new OtsBackupPlanArgs();
 
     /**
-     * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+     * Backup type. Valid values: `COMPLETE`.
      * 
      */
     @Import(name="backupType", required=true)
     private Output<String> backupType;
 
     /**
-     * @return The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return Backup type. Valid values: `COMPLETE`.
      * 
      */
     public Output<String> backupType() {
@@ -35,14 +36,59 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to disable the backup task. Valid values: true, false.
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    @Import(name="crossAccountRoleName")
+    private @Nullable Output<String> crossAccountRoleName;
+
+    /**
+     * @return The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    public Optional<Output<String>> crossAccountRoleName() {
+        return Optional.ofNullable(this.crossAccountRoleName);
+    }
+
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    @Import(name="crossAccountType")
+    private @Nullable Output<String> crossAccountType;
+
+    /**
+     * @return The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    public Optional<Output<String>> crossAccountType() {
+        return Optional.ofNullable(this.crossAccountType);
+    }
+
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    @Import(name="crossAccountUserId")
+    private @Nullable Output<Integer> crossAccountUserId;
+
+    /**
+     * @return The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    public Optional<Output<Integer>> crossAccountUserId() {
+        return Optional.ofNullable(this.crossAccountUserId);
+    }
+
+    /**
+     * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Whether to disable the backup task. Valid values: true, false.
+     * @return Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -95,14 +141,14 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+     * Backup retention days, the minimum is 1.
      * 
      */
     @Import(name="retention", required=true)
     private Output<String> retention;
 
     /**
-     * @return Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return Backup retention days, the minimum is 1.
      * 
      */
     public Output<String> retention() {
@@ -125,7 +171,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * 
      * @deprecated
      * Field &#39;schedule&#39; has been deprecated from version 1.163.0. Use &#39;rules&#39; instead.
@@ -136,7 +182,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> schedule;
 
     /**
-     * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * 
      * @deprecated
      * Field &#39;schedule&#39; has been deprecated from version 1.163.0. Use &#39;rules&#39; instead.
@@ -166,6 +212,9 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
 
     private OtsBackupPlanArgs(OtsBackupPlanArgs $) {
         this.backupType = $.backupType;
+        this.crossAccountRoleName = $.crossAccountRoleName;
+        this.crossAccountType = $.crossAccountType;
+        this.crossAccountUserId = $.crossAccountUserId;
         this.disabled = $.disabled;
         this.instanceName = $.instanceName;
         this.otsBackupPlanName = $.otsBackupPlanName;
@@ -195,7 +244,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupType The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+         * @param backupType Backup type. Valid values: `COMPLETE`.
          * 
          * @return builder
          * 
@@ -206,7 +255,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupType The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+         * @param backupType Backup type. Valid values: `COMPLETE`.
          * 
          * @return builder
          * 
@@ -216,7 +265,70 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Whether to disable the backup task. Valid values: true, false.
+         * @param crossAccountRoleName The role name created in the original account RAM backup by the cross account managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountRoleName(@Nullable Output<String> crossAccountRoleName) {
+            $.crossAccountRoleName = crossAccountRoleName;
+            return this;
+        }
+
+        /**
+         * @param crossAccountRoleName The role name created in the original account RAM backup by the cross account managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountRoleName(String crossAccountRoleName) {
+            return crossAccountRoleName(Output.of(crossAccountRoleName));
+        }
+
+        /**
+         * @param crossAccountType The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountType(@Nullable Output<String> crossAccountType) {
+            $.crossAccountType = crossAccountType;
+            return this;
+        }
+
+        /**
+         * @param crossAccountType The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountType(String crossAccountType) {
+            return crossAccountType(Output.of(crossAccountType));
+        }
+
+        /**
+         * @param crossAccountUserId The original account ID of the cross account backup managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountUserId(@Nullable Output<Integer> crossAccountUserId) {
+            $.crossAccountUserId = crossAccountUserId;
+            return this;
+        }
+
+        /**
+         * @param crossAccountUserId The original account ID of the cross account backup managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountUserId(Integer crossAccountUserId) {
+            return crossAccountUserId(Output.of(crossAccountUserId));
+        }
+
+        /**
+         * @param disabled Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
          * 
          * @return builder
          * 
@@ -227,7 +339,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Whether to disable the backup task. Valid values: true, false.
+         * @param disabled Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
          * 
          * @return builder
          * 
@@ -310,7 +422,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retention Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+         * @param retention Backup retention days, the minimum is 1.
          * 
          * @return builder
          * 
@@ -321,7 +433,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retention Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+         * @param retention Backup retention days, the minimum is 1.
          * 
          * @return builder
          * 
@@ -362,7 +474,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+         * @param schedule Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
          * 
          * @return builder
          * 
@@ -377,7 +489,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+         * @param schedule Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
          * 
          * @return builder
          * 

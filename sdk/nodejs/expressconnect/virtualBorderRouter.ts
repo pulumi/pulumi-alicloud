@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
- *     physicalConnectionId: nameRegex.then(nameRegex => nameRegex.connections?[0]?.id),
+ *     physicalConnectionId: nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id),
  *     virtualBorderRouterName: "example_value",
  *     vlanId: 1,
  *     minRxInterval: 1000,
@@ -78,7 +78,7 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
     /**
      * The bandwidth.
      */
-    public readonly bandwidth!: pulumi.Output<number | undefined>;
+    public readonly bandwidth!: pulumi.Output<number>;
     /**
      * Operators for physical connection circuit provided coding.
      */
@@ -95,6 +95,10 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
      * Whether to Enable IPv6. Valid values: `false`, `true`.
      */
     public readonly enableIpv6!: pulumi.Output<boolean>;
+    /**
+     * Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+     */
+    public readonly includeCrossAccountVbr!: pulumi.Output<boolean>;
     /**
      * Alibaba Cloud-Connected IPv4 address.
      */
@@ -171,6 +175,7 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["detectMultiplier"] = state ? state.detectMultiplier : undefined;
             resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
+            resourceInputs["includeCrossAccountVbr"] = state ? state.includeCrossAccountVbr : undefined;
             resourceInputs["localGatewayIp"] = state ? state.localGatewayIp : undefined;
             resourceInputs["localIpv6GatewayIp"] = state ? state.localIpv6GatewayIp : undefined;
             resourceInputs["minRxInterval"] = state ? state.minRxInterval : undefined;
@@ -208,6 +213,7 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["detectMultiplier"] = args ? args.detectMultiplier : undefined;
             resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
+            resourceInputs["includeCrossAccountVbr"] = args ? args.includeCrossAccountVbr : undefined;
             resourceInputs["localGatewayIp"] = args ? args.localGatewayIp : undefined;
             resourceInputs["localIpv6GatewayIp"] = args ? args.localIpv6GatewayIp : undefined;
             resourceInputs["minRxInterval"] = args ? args.minRxInterval : undefined;
@@ -256,6 +262,10 @@ export interface VirtualBorderRouterState {
      * Whether to Enable IPv6. Valid values: `false`, `true`.
      */
     enableIpv6?: pulumi.Input<boolean>;
+    /**
+     * Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+     */
+    includeCrossAccountVbr?: pulumi.Input<boolean>;
     /**
      * Alibaba Cloud-Connected IPv4 address.
      */
@@ -342,6 +352,10 @@ export interface VirtualBorderRouterArgs {
      * Whether to Enable IPv6. Valid values: `false`, `true`.
      */
     enableIpv6?: pulumi.Input<boolean>;
+    /**
+     * Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+     */
+    includeCrossAccountVbr?: pulumi.Input<boolean>;
     /**
      * Alibaba Cloud-Connected IPv4 address.
      */

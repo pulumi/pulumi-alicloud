@@ -21,36 +21,36 @@ namespace Pulumi.AliCloud.Oos
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
-    ///         var defaultApplication = new AliCloud.Oos.Application("defaultApplication", new AliCloud.Oos.ApplicationArgs
-    ///         {
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///             ApplicationName = "example_value",
-    ///             Description = "example_value",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///             },
-    ///         });
-    ///         var defaultApplicationGroup = new AliCloud.Oos.ApplicationGroup("defaultApplicationGroup", new AliCloud.Oos.ApplicationGroupArgs
-    ///         {
-    ///             ApplicationGroupName = @var.Name,
-    ///             ApplicationName = defaultApplication.Id,
-    ///             DeployRegionId = "example_value",
-    ///             Description = "example_value",
-    ///             ImportTagKey = "example_value",
-    ///             ImportTagValue = "example_value",
-    ///         });
-    ///     }
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    /// }
+    ///     var defaultApplication = new AliCloud.Oos.Application("defaultApplication", new()
+    ///     {
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ApplicationName = "example_value",
+    ///         Description = "example_value",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultApplicationGroup = new AliCloud.Oos.ApplicationGroup("defaultApplicationGroup", new()
+    ///     {
+    ///         ApplicationGroupName = @var.Name,
+    ///         ApplicationName = defaultApplication.Id,
+    ///         DeployRegionId = "example_value",
+    ///         Description = "example_value",
+    ///         ImportTagKey = "example_value",
+    ///         ImportTagValue = "example_value",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Oos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/applicationGroup:ApplicationGroup")]
-    public partial class ApplicationGroup : Pulumi.CustomResource
+    public partial class ApplicationGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the Application group.
@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.Oos
         }
     }
 
-    public sealed class ApplicationGroupArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Application group.
@@ -187,9 +187,10 @@ namespace Pulumi.AliCloud.Oos
         public ApplicationGroupArgs()
         {
         }
+        public static new ApplicationGroupArgs Empty => new ApplicationGroupArgs();
     }
 
-    public sealed class ApplicationGroupState : Pulumi.ResourceArgs
+    public sealed class ApplicationGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Application group.
@@ -231,5 +232,6 @@ namespace Pulumi.AliCloud.Oos
         public ApplicationGroupState()
         {
         }
+        public static new ApplicationGroupState Empty => new ApplicationGroupState();
     }
 }

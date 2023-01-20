@@ -46,6 +46,10 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentIkeConfigResult> IkeConfigs;
         /// <summary>
+        /// The internet ip of the resource. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+        /// </summary>
+        public readonly string InternetIp;
+        /// <summary>
         /// The configuration of Phase 2 negotiations.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentIpsecConfigResult> IpsecConfigs;
@@ -92,6 +96,8 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentIkeConfigResult> ikeConfigs,
 
+            string internetIp,
+
             ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentIpsecConfigResult> ipsecConfigs,
 
             string localSubnet,
@@ -114,6 +120,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             HealthCheckConfigs = healthCheckConfigs;
             Id = id;
             IkeConfigs = ikeConfigs;
+            InternetIp = internetIp;
             IpsecConfigs = ipsecConfigs;
             LocalSubnet = localSubnet;
             NetworkType = networkType;

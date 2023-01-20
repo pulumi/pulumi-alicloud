@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,18 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstanceTypes = pulumi.output(alicloud.ecp.getInstanceTypes());
- *
- * export const firstEcpInstanceTypesInstanceType = defaultInstanceTypes.instanceTypes[0].instanceType;
+ * const default = alicloud.ecp.getInstanceTypes({});
+ * export const firstEcpInstanceTypesInstanceType = _default.then(_default => _default.instanceTypes?.[0]?.instanceType);
  * ```
  */
 export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecp/getInstanceTypes:getInstanceTypes", {
         "outputFile": args.outputFile,
     }, opts);
@@ -53,9 +50,25 @@ export interface GetInstanceTypesResult {
     readonly instanceTypes: outputs.ecp.GetInstanceTypesInstanceType[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the available instance types with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.158.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ecp.getInstanceTypes({});
+ * export const firstEcpInstanceTypesInstanceType = _default.then(_default => _default.instanceTypes?.[0]?.instanceType);
+ * ```
+ */
 export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
-    return pulumi.output(args).apply(a => getInstanceTypes(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceTypes(a, opts))
 }
 
 /**

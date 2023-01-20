@@ -23,30 +23,29 @@ namespace Pulumi.AliCloud.CS
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_namespace = new AliCloud.CS.RegistryEnterpriseNamespace("my-namespace", new()
     ///     {
-    ///         var my_namespace = new AliCloud.CS.RegistryEnterpriseNamespace("my-namespace", new AliCloud.CS.RegistryEnterpriseNamespaceArgs
-    ///         {
-    ///             InstanceId = "cri-xxx",
-    ///             AutoCreate = false,
-    ///             DefaultVisibility = "PUBLIC",
-    ///         });
-    ///         var my_repo = new AliCloud.CS.RegistryEnterpriseRepo("my-repo", new AliCloud.CS.RegistryEnterpriseRepoArgs
-    ///         {
-    ///             InstanceId = my_namespace.InstanceId,
-    ///             Namespace = my_namespace.Name,
-    ///             Summary = "this is summary of my new repo",
-    ///             RepoType = "PUBLIC",
-    ///             Detail = "this is a public repo",
-    ///         });
-    ///     }
+    ///         InstanceId = "cri-xxx",
+    ///         AutoCreate = false,
+    ///         DefaultVisibility = "PUBLIC",
+    ///     });
     /// 
-    /// }
+    ///     var my_repo = new AliCloud.CS.RegistryEnterpriseRepo("my-repo", new()
+    ///     {
+    ///         InstanceId = my_namespace.InstanceId,
+    ///         Namespace = my_namespace.Name,
+    ///         Summary = "this is summary of my new repo",
+    ///         RepoType = "PUBLIC",
+    ///         Detail = "this is a public repo",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +57,7 @@ namespace Pulumi.AliCloud.CS
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo")]
-    public partial class RegistryEnterpriseRepo : Pulumi.CustomResource
+    public partial class RegistryEnterpriseRepo : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The repository specific information. MarkDown format is supported, and the length limit is 2000.
@@ -146,7 +145,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class RegistryEnterpriseRepoArgs : Pulumi.ResourceArgs
+    public sealed class RegistryEnterpriseRepoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The repository specific information. MarkDown format is supported, and the length limit is 2000.
@@ -187,9 +186,10 @@ namespace Pulumi.AliCloud.CS
         public RegistryEnterpriseRepoArgs()
         {
         }
+        public static new RegistryEnterpriseRepoArgs Empty => new RegistryEnterpriseRepoArgs();
     }
 
-    public sealed class RegistryEnterpriseRepoState : Pulumi.ResourceArgs
+    public sealed class RegistryEnterpriseRepoState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The repository specific information. MarkDown format is supported, and the length limit is 2000.
@@ -236,5 +236,6 @@ namespace Pulumi.AliCloud.CS
         public RegistryEnterpriseRepoState()
         {
         }
+        public static new RegistryEnterpriseRepoState Empty => new RegistryEnterpriseRepoState();
     }
 }

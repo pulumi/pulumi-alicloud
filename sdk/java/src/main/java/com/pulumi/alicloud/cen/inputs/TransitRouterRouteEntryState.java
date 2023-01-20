@@ -76,9 +76,17 @@ public final class TransitRouterRouteEntryState extends com.pulumi.resources.Res
         return Optional.ofNullable(this.transitRouterRouteEntryDestinationCidrBlock);
     }
 
+    /**
+     * The ID of the route entry.
+     * 
+     */
     @Import(name="transitRouterRouteEntryId")
     private @Nullable Output<String> transitRouterRouteEntryId;
 
+    /**
+     * @return The ID of the route entry.
+     * 
+     */
     public Optional<Output<String>> transitRouterRouteEntryId() {
         return Optional.ofNullable(this.transitRouterRouteEntryId);
     }
@@ -259,11 +267,23 @@ public final class TransitRouterRouteEntryState extends com.pulumi.resources.Res
             return transitRouterRouteEntryDestinationCidrBlock(Output.of(transitRouterRouteEntryDestinationCidrBlock));
         }
 
+        /**
+         * @param transitRouterRouteEntryId The ID of the route entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder transitRouterRouteEntryId(@Nullable Output<String> transitRouterRouteEntryId) {
             $.transitRouterRouteEntryId = transitRouterRouteEntryId;
             return this;
         }
 
+        /**
+         * @param transitRouterRouteEntryId The ID of the route entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder transitRouterRouteEntryId(String transitRouterRouteEntryId) {
             return transitRouterRouteEntryId(Output.of(transitRouterRouteEntryId));
         }

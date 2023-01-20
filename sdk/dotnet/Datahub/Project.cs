@@ -19,20 +19,18 @@ namespace Pulumi.AliCloud.Datahub
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Datahub.Project("example", new()
     ///     {
-    ///         var example = new AliCloud.Datahub.Project("example", new AliCloud.Datahub.ProjectArgs
-    ///         {
-    ///             Comment = "created by terraform",
-    ///         });
-    ///     }
+    ///         Comment = "created by terraform",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.AliCloud.Datahub
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:datahub/project:Project")]
-    public partial class Project : Pulumi.CustomResource
+    public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Comment of the datahub project. It cannot be longer than 255 characters.
@@ -114,7 +112,7 @@ namespace Pulumi.AliCloud.Datahub
         }
     }
 
-    public sealed class ProjectArgs : Pulumi.ResourceArgs
+    public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Comment of the datahub project. It cannot be longer than 255 characters.
@@ -131,9 +129,10 @@ namespace Pulumi.AliCloud.Datahub
         public ProjectArgs()
         {
         }
+        public static new ProjectArgs Empty => new ProjectArgs();
     }
 
-    public sealed class ProjectState : Pulumi.ResourceArgs
+    public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Comment of the datahub project. It cannot be longer than 255 characters.
@@ -162,5 +161,6 @@ namespace Pulumi.AliCloud.Datahub
         public ProjectState()
         {
         }
+        public static new ProjectState Empty => new ProjectState();
     }
 }

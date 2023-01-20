@@ -604,7 +604,7 @@ class HanaInstance(pulumi.CustomResource):
             __props__.__dict__["hana_name"] = hana_name
             __props__.__dict__["host"] = host
             __props__.__dict__["instance_number"] = instance_number
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["sid"] = sid
             __props__.__dict__["use_ssl"] = use_ssl
@@ -615,6 +615,8 @@ class HanaInstance(pulumi.CustomResource):
             __props__.__dict__["vault_id"] = vault_id
             __props__.__dict__["hana_instance_id"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(HanaInstance, __self__).__init__(
             'alicloud:hbr/hanaInstance:HanaInstance',
             resource_name,

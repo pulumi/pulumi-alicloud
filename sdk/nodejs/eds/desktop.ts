@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  * const defaultDesktop = new alicloud.eds.Desktop("defaultDesktop", {
  *     officeSiteId: defaultSimpleOfficeSite.id,
  *     policyGroupId: defaultEcdPolicyGroup.id,
- *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?[0]?.id),
+ *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?.[0]?.id),
  *     desktopName: "your_desktop_name",
  *     endUserIds: [defaultUser.id],
  * });

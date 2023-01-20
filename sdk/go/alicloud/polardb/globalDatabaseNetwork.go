@@ -59,8 +59,8 @@ import (
 //				DbType:      pulumi.String("MySQL"),
 //				DbVersion:   pulumi.String("8.0"),
 //				PayType:     pulumi.String("PostPaid"),
-//				DbNodeClass: pulumi.String(defaultNodeClasses.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
-//				VswitchId:   pulumi.String(defaultSwitches.Ids[0]),
+//				DbNodeClass: *pulumi.String(defaultNodeClasses.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
+//				VswitchId:   *pulumi.String(defaultSwitches.Ids[0]),
 //				Description: pulumi.String("example_value"),
 //			})
 //			if err != nil {

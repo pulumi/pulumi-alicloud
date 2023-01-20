@@ -23,34 +23,33 @@ namespace Pulumi.AliCloud.Cfg
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Cfg.GetAggregateDeliveries.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Cfg.GetAggregateDeliveries.InvokeAsync(new AliCloud.Cfg.GetAggregateDeliveriesArgs
+        ///         AggregatorId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             AggregatorId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.ConfigAggregateDeliveryId1 = ids.Apply(ids =&gt; ids.Deliveries?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("configAggregateDeliveryId1")]
-        ///     public Output&lt;string&gt; ConfigAggregateDeliveryId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["configAggregateDeliveryId1"] = ids.Apply(getAggregateDeliveriesResult =&gt; getAggregateDeliveriesResult.Deliveries[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAggregateDeliveriesResult> InvokeAsync(GetAggregateDeliveriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAggregateDeliveriesResult>("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", args ?? new GetAggregateDeliveriesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAggregateDeliveriesResult>("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", args ?? new GetAggregateDeliveriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
@@ -64,38 +63,37 @@ namespace Pulumi.AliCloud.Cfg
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Cfg.GetAggregateDeliveries.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Cfg.GetAggregateDeliveries.InvokeAsync(new AliCloud.Cfg.GetAggregateDeliveriesArgs
+        ///         AggregatorId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             AggregatorId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.ConfigAggregateDeliveryId1 = ids.Apply(ids =&gt; ids.Deliveries?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("configAggregateDeliveryId1")]
-        ///     public Output&lt;string&gt; ConfigAggregateDeliveryId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["configAggregateDeliveryId1"] = ids.Apply(getAggregateDeliveriesResult =&gt; getAggregateDeliveriesResult.Deliveries[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAggregateDeliveriesResult> Invoke(GetAggregateDeliveriesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAggregateDeliveriesResult>("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", args ?? new GetAggregateDeliveriesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAggregateDeliveriesResult>("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", args ?? new GetAggregateDeliveriesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAggregateDeliveriesArgs : Pulumi.InvokeArgs
+    public sealed class GetAggregateDeliveriesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Aggregator.
@@ -130,9 +128,10 @@ namespace Pulumi.AliCloud.Cfg
         public GetAggregateDeliveriesArgs()
         {
         }
+        public static new GetAggregateDeliveriesArgs Empty => new GetAggregateDeliveriesArgs();
     }
 
-    public sealed class GetAggregateDeliveriesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAggregateDeliveriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Aggregator.
@@ -167,6 +166,7 @@ namespace Pulumi.AliCloud.Cfg
         public GetAggregateDeliveriesInvokeArgs()
         {
         }
+        public static new GetAggregateDeliveriesInvokeArgs Empty => new GetAggregateDeliveriesInvokeArgs();
     }
 
 

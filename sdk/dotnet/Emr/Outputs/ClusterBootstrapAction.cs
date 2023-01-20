@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly string? ExecutionTarget;
         /// <summary>
-        /// bootstrap action name.
+        /// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         /// </summary>
         public readonly string? Name;
         /// <summary>

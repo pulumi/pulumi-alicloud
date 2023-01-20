@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class AlertGroupConfigurationGetArgs : Pulumi.ResourceArgs
+    public sealed class AlertGroupConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("fields")]
         private InputList<string>? _fields;
@@ -29,5 +29,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public AlertGroupConfigurationGetArgs()
         {
         }
+        public static new AlertGroupConfigurationGetArgs Empty => new AlertGroupConfigurationGetArgs();
     }
 }

@@ -190,7 +190,7 @@ def get_zones(enable_details: Optional[bool] = None,
     ```
 
 
-    :param bool enable_details: -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of zone IDs.
     :param str keyword: keyword for zone name.
     :param str lang: User language.
@@ -257,7 +257,7 @@ def get_zones_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     ```
 
 
-    :param bool enable_details: -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of zone IDs.
     :param str keyword: keyword for zone name.
     :param str lang: User language.

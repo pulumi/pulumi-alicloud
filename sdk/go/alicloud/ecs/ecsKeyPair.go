@@ -69,6 +69,7 @@ import (
 type EcsKeyPair struct {
 	pulumi.CustomResourceState
 
+	// The finger print of the key pair.
 	FingerPrint pulumi.StringOutput `pulumi:"fingerPrint"`
 	// The key file.
 	KeyFile pulumi.StringPtrOutput `pulumi:"keyFile"`
@@ -116,6 +117,7 @@ func GetEcsKeyPair(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsKeyPair resources.
 type ecsKeyPairState struct {
+	// The finger print of the key pair.
 	FingerPrint *string `pulumi:"fingerPrint"`
 	// The key file.
 	KeyFile *string `pulumi:"keyFile"`
@@ -135,6 +137,7 @@ type ecsKeyPairState struct {
 }
 
 type EcsKeyPairState struct {
+	// The finger print of the key pair.
 	FingerPrint pulumi.StringPtrInput
 	// The key file.
 	KeyFile pulumi.StringPtrInput
@@ -281,6 +284,7 @@ func (o EcsKeyPairOutput) ToEcsKeyPairOutputWithContext(ctx context.Context) Ecs
 	return o
 }
 
+// The finger print of the key pair.
 func (o EcsKeyPairOutput) FingerPrint() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringOutput { return v.FingerPrint }).(pulumi.StringOutput)
 }

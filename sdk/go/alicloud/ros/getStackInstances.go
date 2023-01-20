@@ -97,11 +97,6 @@ type GetStackInstancesArgs struct {
 	// The region of the stack instance.
 	StackInstanceRegionId *string `pulumi:"stackInstanceRegionId"`
 	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-	// * The create or update operation is not complete.
 	Status *string `pulumi:"status"`
 }
 
@@ -146,11 +141,6 @@ type GetStackInstancesOutputArgs struct {
 	// The region of the stack instance.
 	StackInstanceRegionId pulumi.StringPtrInput `pulumi:"stackInstanceRegionId"`
 	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-	// * The create or update operation is not complete.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

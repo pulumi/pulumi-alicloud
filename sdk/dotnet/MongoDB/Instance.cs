@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mongodb/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
@@ -238,6 +238,10 @@ namespace Pulumi.AliCloud.MongoDB
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -259,13 +263,23 @@ namespace Pulumi.AliCloud.MongoDB
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Auto renew for prepaid, true of false. Default is false.
@@ -458,15 +472,26 @@ namespace Pulumi.AliCloud.MongoDB
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Auto renew for prepaid, true of false. Default is false.
@@ -689,5 +714,6 @@ namespace Pulumi.AliCloud.MongoDB
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

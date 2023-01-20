@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,11 +19,11 @@ import * as utilities from "../utilities";
  * const instances = alicloud.ecs.getInstances({});
  * const template = new alicloud.ecs.LaunchTemplate("template", {
  *     description: "test1",
- *     imageId: images.then(images => images.images?[0]?.id),
+ *     imageId: images.then(images => images.images?.[0]?.id),
  *     hostName: "tf-test-host",
  *     instanceChargeType: "PrePaid",
  *     instanceName: "tf-instance-name",
- *     instanceType: instances.then(instances => instances.instances?[0]?.instanceType),
+ *     instanceType: instances.then(instances => instances.instances?.[0]?.instanceType),
  *     internetChargeType: "PayByBandwidth",
  *     internetMaxBandwidthIn: 5,
  *     internetMaxBandwidthOut: 0,
@@ -198,7 +199,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
     public readonly spotDuration!: pulumi.Output<string | undefined>;
     /**
-     * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+     * Sets the maximum hourly instance price. Supports up to three decimal places.
      */
     public readonly spotPriceLimit!: pulumi.Output<number | undefined>;
     /**
@@ -474,7 +475,7 @@ export interface LaunchTemplateState {
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     spotDuration?: pulumi.Input<string>;
     /**
-     * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+     * Sets the maximum hourly instance price. Supports up to three decimal places.
      */
     spotPriceLimit?: pulumi.Input<number>;
     /**
@@ -640,7 +641,7 @@ export interface LaunchTemplateArgs {
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     spotDuration?: pulumi.Input<string>;
     /**
-     * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+     * Sets the maximum hourly instance price. Supports up to three decimal places.
      */
     spotPriceLimit?: pulumi.Input<number>;
     /**

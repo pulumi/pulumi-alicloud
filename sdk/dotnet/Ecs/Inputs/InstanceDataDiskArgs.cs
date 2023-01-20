@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class InstanceDataDiskArgs : Pulumi.ResourceArgs
+    public sealed class InstanceDataDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the automatic snapshot policy applied to the system disk.
@@ -20,12 +20,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
         /// <summary>
         /// The category of the disk:
-        /// - `cloud`: The general cloud disk.
-        /// - `cloud_efficiency`: The efficiency cloud disk.
-        /// - `cloud_ssd`: The SSD cloud disk.
-        /// - `cloud_essd`: The ESSD cloud disk.
-        /// - `ephemeral_ssd`: The local SSD disk.
-        /// Default to `cloud_efficiency`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -43,7 +37,13 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+        /// The mount point of the data disk.
+        /// </summary>
+        [Input("device")]
+        public Input<string>? Device { get; set; }
+
+        /// <summary>
+        /// Encrypted the data in this disk. Default value: `false`.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -62,11 +62,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
         /// <summary>
         /// The performance level of the ESSD used as data disk:
-        /// - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        /// - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        /// - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        /// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-        /// Default to `PL1`.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
@@ -91,5 +86,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public InstanceDataDiskArgs()
         {
         }
+        public static new InstanceDataDiskArgs Empty => new InstanceDataDiskArgs();
     }
 }

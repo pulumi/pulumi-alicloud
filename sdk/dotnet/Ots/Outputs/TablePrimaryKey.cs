@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Ots.Outputs
     public sealed class TablePrimaryKey
     {
         /// <summary>
-        /// Name for primary key.
+        /// Name for defined column.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+        /// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
         /// </summary>
         public readonly string Type;
 

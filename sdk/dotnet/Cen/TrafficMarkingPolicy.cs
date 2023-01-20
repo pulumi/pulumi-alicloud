@@ -21,32 +21,32 @@ namespace Pulumi.AliCloud.Cen
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///             CenInstanceName = "example_value",
-    ///         });
-    ///         var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new AliCloud.Cen.TransitRouterArgs
-    ///         {
-    ///             CenId = exampleInstance.Id,
-    ///             TransitRouterName = "example_value",
-    ///         });
-    ///         var exampleTrafficMarkingPolicy = new AliCloud.Cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy", new AliCloud.Cen.TrafficMarkingPolicyArgs
-    ///         {
-    ///             MarkingDscp = 1,
-    ///             Priority = 1,
-    ///             TrafficMarkingPolicyName = "example_value",
-    ///             TransitRouterId = exampleTransitRouter.TransitRouterId,
-    ///         });
-    ///     }
+    ///         CenInstanceName = "example_value",
+    ///     });
     /// 
-    /// }
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     {
+    ///         CenId = exampleInstance.Id,
+    ///         TransitRouterName = "example_value",
+    ///     });
+    /// 
+    ///     var exampleTrafficMarkingPolicy = new AliCloud.Cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy", new()
+    ///     {
+    ///         MarkingDscp = 1,
+    ///         Priority = 1,
+    ///         TrafficMarkingPolicyName = "example_value",
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy")]
-    public partial class TrafficMarkingPolicy : Pulumi.CustomResource
+    public partial class TrafficMarkingPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class TrafficMarkingPolicyArgs : Pulumi.ResourceArgs
+    public sealed class TrafficMarkingPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
@@ -193,9 +193,10 @@ namespace Pulumi.AliCloud.Cen
         public TrafficMarkingPolicyArgs()
         {
         }
+        public static new TrafficMarkingPolicyArgs Empty => new TrafficMarkingPolicyArgs();
     }
 
-    public sealed class TrafficMarkingPolicyState : Pulumi.ResourceArgs
+    public sealed class TrafficMarkingPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
@@ -248,5 +249,6 @@ namespace Pulumi.AliCloud.Cen
         public TrafficMarkingPolicyState()
         {
         }
+        public static new TrafficMarkingPolicyState Empty => new TrafficMarkingPolicyState();
     }
 }

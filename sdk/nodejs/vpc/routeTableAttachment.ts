@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
  *     vpcId: fooNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: _default.then(_default => _default.zones?[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
  * const fooRouteTable = new alicloud.vpc.RouteTable("fooRouteTable", {
  *     vpcId: fooNetwork.id,

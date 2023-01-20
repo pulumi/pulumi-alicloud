@@ -5,22 +5,61 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getConsumerGroups";
-export * from "./getHistoryDeliveryJobs";
-export * from "./getInstances";
-export * from "./getSaslAcls";
-export * from "./getSaslUsers";
-export * from "./getTopics";
-export * from "./getTrails";
-export * from "./getTrailsDeprecated";
-export * from "./historyDeliveryJob";
-export * from "./trail";
-export * from "./trailDeprecated";
+export { GetConsumerGroupsArgs, GetConsumerGroupsResult, GetConsumerGroupsOutputArgs } from "./getConsumerGroups";
+export const getConsumerGroups: typeof import("./getConsumerGroups").getConsumerGroups = null as any;
+export const getConsumerGroupsOutput: typeof import("./getConsumerGroups").getConsumerGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getConsumerGroups","getConsumerGroupsOutput"], () => require("./getConsumerGroups"));
 
-// Import resources to register:
-import { HistoryDeliveryJob } from "./historyDeliveryJob";
-import { Trail } from "./trail";
-import { TrailDeprecated } from "./trailDeprecated";
+export { GetHistoryDeliveryJobsArgs, GetHistoryDeliveryJobsResult, GetHistoryDeliveryJobsOutputArgs } from "./getHistoryDeliveryJobs";
+export const getHistoryDeliveryJobs: typeof import("./getHistoryDeliveryJobs").getHistoryDeliveryJobs = null as any;
+export const getHistoryDeliveryJobsOutput: typeof import("./getHistoryDeliveryJobs").getHistoryDeliveryJobsOutput = null as any;
+utilities.lazyLoad(exports, ["getHistoryDeliveryJobs","getHistoryDeliveryJobsOutput"], () => require("./getHistoryDeliveryJobs"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetSaslAclsArgs, GetSaslAclsResult, GetSaslAclsOutputArgs } from "./getSaslAcls";
+export const getSaslAcls: typeof import("./getSaslAcls").getSaslAcls = null as any;
+export const getSaslAclsOutput: typeof import("./getSaslAcls").getSaslAclsOutput = null as any;
+utilities.lazyLoad(exports, ["getSaslAcls","getSaslAclsOutput"], () => require("./getSaslAcls"));
+
+export { GetSaslUsersArgs, GetSaslUsersResult, GetSaslUsersOutputArgs } from "./getSaslUsers";
+export const getSaslUsers: typeof import("./getSaslUsers").getSaslUsers = null as any;
+export const getSaslUsersOutput: typeof import("./getSaslUsers").getSaslUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getSaslUsers","getSaslUsersOutput"], () => require("./getSaslUsers"));
+
+export { GetTopicsArgs, GetTopicsResult, GetTopicsOutputArgs } from "./getTopics";
+export const getTopics: typeof import("./getTopics").getTopics = null as any;
+export const getTopicsOutput: typeof import("./getTopics").getTopicsOutput = null as any;
+utilities.lazyLoad(exports, ["getTopics","getTopicsOutput"], () => require("./getTopics"));
+
+export { GetTrailsArgs, GetTrailsResult, GetTrailsOutputArgs } from "./getTrails";
+export const getTrails: typeof import("./getTrails").getTrails = null as any;
+export const getTrailsOutput: typeof import("./getTrails").getTrailsOutput = null as any;
+utilities.lazyLoad(exports, ["getTrails","getTrailsOutput"], () => require("./getTrails"));
+
+export { GetTrailsDeprecatedArgs, GetTrailsDeprecatedResult, GetTrailsDeprecatedOutputArgs } from "./getTrailsDeprecated";
+export const getTrailsDeprecated: typeof import("./getTrailsDeprecated").getTrailsDeprecated = null as any;
+export const getTrailsDeprecatedOutput: typeof import("./getTrailsDeprecated").getTrailsDeprecatedOutput = null as any;
+utilities.lazyLoad(exports, ["getTrailsDeprecated","getTrailsDeprecatedOutput"], () => require("./getTrailsDeprecated"));
+
+export { HistoryDeliveryJobArgs, HistoryDeliveryJobState } from "./historyDeliveryJob";
+export type HistoryDeliveryJob = import("./historyDeliveryJob").HistoryDeliveryJob;
+export const HistoryDeliveryJob: typeof import("./historyDeliveryJob").HistoryDeliveryJob = null as any;
+utilities.lazyLoad(exports, ["HistoryDeliveryJob"], () => require("./historyDeliveryJob"));
+
+export { TrailArgs, TrailState } from "./trail";
+export type Trail = import("./trail").Trail;
+export const Trail: typeof import("./trail").Trail = null as any;
+utilities.lazyLoad(exports, ["Trail"], () => require("./trail"));
+
+export { TrailDeprecatedArgs, TrailDeprecatedState } from "./trailDeprecated";
+export type TrailDeprecated = import("./trailDeprecated").TrailDeprecated;
+export const TrailDeprecated: typeof import("./trailDeprecated").TrailDeprecated = null as any;
+utilities.lazyLoad(exports, ["TrailDeprecated"], () => require("./trailDeprecated"));
+
 
 const _module = {
     version: utilities.getVersion(),

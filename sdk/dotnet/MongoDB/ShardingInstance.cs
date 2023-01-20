@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mongodb/shardingInstance:ShardingInstance")]
-    public partial class ShardingInstance : Pulumi.CustomResource
+    public partial class ShardingInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
@@ -204,6 +204,10 @@ namespace Pulumi.AliCloud.MongoDB
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -225,13 +229,23 @@ namespace Pulumi.AliCloud.MongoDB
         }
     }
 
-    public sealed class ShardingInstanceArgs : Pulumi.ResourceArgs
+    public sealed class ShardingInstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Auto renew for prepaid, true of false. Default is false.
@@ -414,15 +428,26 @@ namespace Pulumi.AliCloud.MongoDB
         public ShardingInstanceArgs()
         {
         }
+        public static new ShardingInstanceArgs Empty => new ShardingInstanceArgs();
     }
 
-    public sealed class ShardingInstanceState : Pulumi.ResourceArgs
+    public sealed class ShardingInstanceState : global::Pulumi.ResourceArgs
     {
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Auto renew for prepaid, true of false. Default is false.
@@ -623,5 +648,6 @@ namespace Pulumi.AliCloud.MongoDB
         public ShardingInstanceState()
         {
         }
+        public static new ShardingInstanceState Empty => new ShardingInstanceState();
     }
 }

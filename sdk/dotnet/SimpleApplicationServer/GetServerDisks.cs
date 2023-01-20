@@ -23,60 +23,55 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.SimpleApplicationServer.GetServerDisks.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerDisksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.SimpleApplicationServerDiskId1 = ids.Apply(ids =&gt; ids.Disks?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.SimpleApplicationServer.GetServerDisks.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerDisksArgs
-        ///         {
-        ///             NameRegex = "^my-Disk",
-        ///         }));
-        ///         this.SimpleApplicationServerDiskId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Disks?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.SimpleApplicationServer.GetServerDisks.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerDisksArgs
-        ///         {
-        ///             Status = "In_use",
-        ///         }));
-        ///         this.SimpleApplicationServerDiskId3 = status.Apply(status =&gt; status.Disks?[0]?.Id);
-        ///         var instanceId = Output.Create(AliCloud.SimpleApplicationServer.GetServerDisks.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerDisksArgs
-        ///         {
-        ///             InstanceId = "example_value",
-        ///         }));
-        ///         this.SimpleApplicationServerDiskId4 = instanceId.Apply(instanceId =&gt; instanceId.Disks?[0]?.Id);
-        ///         var diskType = Output.Create(AliCloud.SimpleApplicationServer.GetServerDisks.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerDisksArgs
-        ///         {
-        ///             DiskType = "System",
-        ///         }));
-        ///         this.SimpleApplicationServerDiskId5 = diskType.Apply(diskType =&gt; diskType.Disks?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("simpleApplicationServerDiskId1")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerDiskId1 { get; set; }
-        ///     [Output("simpleApplicationServerDiskId2")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerDiskId2 { get; set; }
-        ///     [Output("simpleApplicationServerDiskId3")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerDiskId3 { get; set; }
-        ///     [Output("simpleApplicationServerDiskId4")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerDiskId4 { get; set; }
-        ///     [Output("simpleApplicationServerDiskId5")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerDiskId5 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Disk",
+        ///     });
+        /// 
+        ///     var status = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         Status = "In_use",
+        ///     });
+        /// 
+        ///     var instanceId = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///     });
+        /// 
+        ///     var diskType = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         DiskType = "System",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerDiskId1"] = ids.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///         ["simpleApplicationServerDiskId2"] = nameRegex.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///         ["simpleApplicationServerDiskId3"] = status.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///         ["simpleApplicationServerDiskId4"] = instanceId.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///         ["simpleApplicationServerDiskId5"] = diskType.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerDisksResult> InvokeAsync(GetServerDisksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerDisksResult>("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args ?? new GetServerDisksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerDisksResult>("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args ?? new GetServerDisksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
@@ -90,64 +85,59 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.SimpleApplicationServer.GetServerDisks.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerDisksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.SimpleApplicationServerDiskId1 = ids.Apply(ids =&gt; ids.Disks?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.SimpleApplicationServer.GetServerDisks.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerDisksArgs
-        ///         {
-        ///             NameRegex = "^my-Disk",
-        ///         }));
-        ///         this.SimpleApplicationServerDiskId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Disks?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.SimpleApplicationServer.GetServerDisks.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerDisksArgs
-        ///         {
-        ///             Status = "In_use",
-        ///         }));
-        ///         this.SimpleApplicationServerDiskId3 = status.Apply(status =&gt; status.Disks?[0]?.Id);
-        ///         var instanceId = Output.Create(AliCloud.SimpleApplicationServer.GetServerDisks.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerDisksArgs
-        ///         {
-        ///             InstanceId = "example_value",
-        ///         }));
-        ///         this.SimpleApplicationServerDiskId4 = instanceId.Apply(instanceId =&gt; instanceId.Disks?[0]?.Id);
-        ///         var diskType = Output.Create(AliCloud.SimpleApplicationServer.GetServerDisks.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerDisksArgs
-        ///         {
-        ///             DiskType = "System",
-        ///         }));
-        ///         this.SimpleApplicationServerDiskId5 = diskType.Apply(diskType =&gt; diskType.Disks?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("simpleApplicationServerDiskId1")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerDiskId1 { get; set; }
-        ///     [Output("simpleApplicationServerDiskId2")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerDiskId2 { get; set; }
-        ///     [Output("simpleApplicationServerDiskId3")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerDiskId3 { get; set; }
-        ///     [Output("simpleApplicationServerDiskId4")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerDiskId4 { get; set; }
-        ///     [Output("simpleApplicationServerDiskId5")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerDiskId5 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Disk",
+        ///     });
+        /// 
+        ///     var status = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         Status = "In_use",
+        ///     });
+        /// 
+        ///     var instanceId = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///     });
+        /// 
+        ///     var diskType = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+        ///     {
+        ///         DiskType = "System",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerDiskId1"] = ids.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///         ["simpleApplicationServerDiskId2"] = nameRegex.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///         ["simpleApplicationServerDiskId3"] = status.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///         ["simpleApplicationServerDiskId4"] = instanceId.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///         ["simpleApplicationServerDiskId5"] = diskType.Apply(getServerDisksResult =&gt; getServerDisksResult.Disks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerDisksResult> Invoke(GetServerDisksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerDisksResult>("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args ?? new GetServerDisksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerDisksResult>("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args ?? new GetServerDisksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServerDisksArgs : Pulumi.InvokeArgs
+    public sealed class GetServerDisksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of the disk. Possible values: `System`, `Data`.
@@ -191,9 +181,10 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public GetServerDisksArgs()
         {
         }
+        public static new GetServerDisksArgs Empty => new GetServerDisksArgs();
     }
 
-    public sealed class GetServerDisksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServerDisksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of the disk. Possible values: `System`, `Data`.
@@ -237,6 +228,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public GetServerDisksInvokeArgs()
         {
         }
+        public static new GetServerDisksInvokeArgs Empty => new GetServerDisksInvokeArgs();
     }
 
 

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -11,11 +12,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.82.0+
  */
 export function getDeployGroups(args: GetDeployGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeployGroupsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:edas/getDeployGroups:getDeployGroups", {
         "appId": args.appId,
         "nameRegex": args.nameRegex,
@@ -61,9 +59,13 @@ export interface GetDeployGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in 1.82.0+
+ */
 export function getDeployGroupsOutput(args: GetDeployGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeployGroupsResult> {
-    return pulumi.output(args).apply(a => getDeployGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getDeployGroups(a, opts))
 }
 
 /**

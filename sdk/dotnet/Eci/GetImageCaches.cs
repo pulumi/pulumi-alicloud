@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Eci
         /// &gt; **NOTE:** Available in 1.90.0+.
         /// </summary>
         public static Task<GetImageCachesResult> InvokeAsync(GetImageCachesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageCachesResult>("alicloud:eci/getImageCaches:getImageCaches", args ?? new GetImageCachesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageCachesResult>("alicloud:eci/getImageCaches:getImageCaches", args ?? new GetImageCachesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a collection of ECI Image Cache to the specified filters.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Eci
         /// &gt; **NOTE:** Available in 1.90.0+.
         /// </summary>
         public static Output<GetImageCachesResult> Invoke(GetImageCachesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImageCachesResult>("alicloud:eci/getImageCaches:getImageCaches", args ?? new GetImageCachesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetImageCachesResult>("alicloud:eci/getImageCaches:getImageCaches", args ?? new GetImageCachesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetImageCachesArgs : Pulumi.InvokeArgs
+    public sealed class GetImageCachesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -79,9 +79,10 @@ namespace Pulumi.AliCloud.Eci
         public GetImageCachesArgs()
         {
         }
+        public static new GetImageCachesArgs Empty => new GetImageCachesArgs();
     }
 
-    public sealed class GetImageCachesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImageCachesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -131,6 +132,7 @@ namespace Pulumi.AliCloud.Eci
         public GetImageCachesInvokeArgs()
         {
         }
+        public static new GetImageCachesInvokeArgs Empty => new GetImageCachesInvokeArgs();
     }
 
 

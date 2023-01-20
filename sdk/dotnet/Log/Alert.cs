@@ -22,241 +22,242 @@ namespace Pulumi.AliCloud.Log
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         var exampleProject = new AliCloud.Log.Project("exampleProject", new AliCloud.Log.ProjectArgs
-    ///         {
-    ///             Description = "create by terraform",
-    ///         });
-    ///         var exampleStore = new AliCloud.Log.Store("exampleStore", new AliCloud.Log.StoreArgs
-    ///         {
-    ///             Project = exampleProject.Name,
-    ///             RetentionPeriod = 3650,
-    ///             ShardCount = 3,
-    ///             AutoSplit = true,
-    ///             MaxSplitShardCount = 60,
-    ///             AppendMeta = true,
-    ///         });
-    ///         var exampleAlert = new AliCloud.Log.Alert("exampleAlert", new AliCloud.Log.AlertArgs
-    ///         {
-    ///             ProjectName = exampleProject.Name,
-    ///             AlertName = "tf-test-alert",
-    ///             AlertDisplayname = "tf-test-alert-displayname",
-    ///             Condition = "count&gt; 100",
-    ///             Dashboard = "tf-test-dashboard",
-    ///             Schedule = new AliCloud.Log.Inputs.AlertScheduleArgs
-    ///             {
-    ///                 Type = "FixedRate",
-    ///                 Interval = "5m",
-    ///                 Hour = 0,
-    ///                 DayOfWeek = 0,
-    ///                 Delay = 0,
-    ///                 RunImmediately = false,
-    ///             },
-    ///             QueryLists = 
-    ///             {
-    ///                 new AliCloud.Log.Inputs.AlertQueryListArgs
-    ///                 {
-    ///                     Logstore = "tf-test-logstore",
-    ///                     ChartTitle = "chart_title",
-    ///                     Start = "-60s",
-    ///                     End = "20s",
-    ///                     Query = "* AND aliyun",
-    ///                 },
-    ///             },
-    ///             NotificationLists = 
-    ///             {
-    ///                 new AliCloud.Log.Inputs.AlertNotificationListArgs
-    ///                 {
-    ///                     Type = "SMS",
-    ///                     MobileLists = 
-    ///                     {
-    ///                         "12345678",
-    ///                         "87654321",
-    ///                     },
-    ///                     Content = "alert content",
-    ///                 },
-    ///                 new AliCloud.Log.Inputs.AlertNotificationListArgs
-    ///                 {
-    ///                     Type = "Email",
-    ///                     EmailLists = 
-    ///                     {
-    ///                         "aliyun@alibaba-inc.com",
-    ///                         "tf-test@123.com",
-    ///                     },
-    ///                     Content = "alert content",
-    ///                 },
-    ///                 new AliCloud.Log.Inputs.AlertNotificationListArgs
-    ///                 {
-    ///                     Type = "DingTalk",
-    ///                     ServiceUri = "www.aliyun.com",
-    ///                     Content = "alert content",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Description = "create by terraform",
+    ///     });
     /// 
-    /// }
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var exampleAlert = new AliCloud.Log.Alert("exampleAlert", new()
+    ///     {
+    ///         ProjectName = exampleProject.Name,
+    ///         AlertName = "tf-test-alert",
+    ///         AlertDisplayname = "tf-test-alert-displayname",
+    ///         Condition = "count&gt; 100",
+    ///         Dashboard = "tf-test-dashboard",
+    ///         Schedule = new AliCloud.Log.Inputs.AlertScheduleArgs
+    ///         {
+    ///             Type = "FixedRate",
+    ///             Interval = "5m",
+    ///             Hour = 0,
+    ///             DayOfWeek = 0,
+    ///             Delay = 0,
+    ///             RunImmediately = false,
+    ///         },
+    ///         QueryLists = new[]
+    ///         {
+    ///             new AliCloud.Log.Inputs.AlertQueryListArgs
+    ///             {
+    ///                 Logstore = "tf-test-logstore",
+    ///                 ChartTitle = "chart_title",
+    ///                 Start = "-60s",
+    ///                 End = "20s",
+    ///                 Query = "* AND aliyun",
+    ///             },
+    ///         },
+    ///         NotificationLists = new[]
+    ///         {
+    ///             new AliCloud.Log.Inputs.AlertNotificationListArgs
+    ///             {
+    ///                 Type = "SMS",
+    ///                 MobileLists = new[]
+    ///                 {
+    ///                     "12345678",
+    ///                     "87654321",
+    ///                 },
+    ///                 Content = "alert content",
+    ///             },
+    ///             new AliCloud.Log.Inputs.AlertNotificationListArgs
+    ///             {
+    ///                 Type = "Email",
+    ///                 EmailLists = new[]
+    ///                 {
+    ///                     "aliyun@alibaba-inc.com",
+    ///                     "tf-test@123.com",
+    ///                 },
+    ///                 Content = "alert content",
+    ///             },
+    ///             new AliCloud.Log.Inputs.AlertNotificationListArgs
+    ///             {
+    ///                 Type = "DingTalk",
+    ///                 ServiceUri = "www.aliyun.com",
+    ///                 Content = "alert content",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// Basic Usage for new alert
+    /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         var exampleProject = new AliCloud.Log.Project("exampleProject", new AliCloud.Log.ProjectArgs
-    ///         {
-    ///             Description = "create by terraform",
-    ///         });
-    ///         var exampleStore = new AliCloud.Log.Store("exampleStore", new AliCloud.Log.StoreArgs
-    ///         {
-    ///             Project = exampleProject.Name,
-    ///             RetentionPeriod = 3650,
-    ///             ShardCount = 3,
-    ///             AutoSplit = true,
-    ///             MaxSplitShardCount = 60,
-    ///             AppendMeta = true,
-    ///         });
-    ///         var example_2 = new AliCloud.Log.Alert("example-2", new AliCloud.Log.AlertArgs
-    ///         {
-    ///             Version = "2.0",
-    ///             Type = "default",
-    ///             ProjectName = exampleProject.Name,
-    ///             AlertName = "tf-test-alert-2",
-    ///             AlertDisplayname = "tf-test-alert-displayname-2",
-    ///             Dashboard = "tf-test-dashboard",
-    ///             MuteUntil = 1632486684,
-    ///             NoDataFire = false,
-    ///             NoDataSeverity = 8,
-    ///             SendResolved = true,
-    ///             AutoAnnotation = true,
-    ///             Schedule = new AliCloud.Log.Inputs.AlertScheduleArgs
-    ///             {
-    ///                 Type = "FixedRate",
-    ///                 Interval = "5m",
-    ///                 Hour = 0,
-    ///                 DayOfWeek = 0,
-    ///                 Delay = 0,
-    ///                 RunImmediately = false,
-    ///             },
-    ///             QueryLists = 
-    ///             {
-    ///                 new AliCloud.Log.Inputs.AlertQueryListArgs
-    ///                 {
-    ///                     Store = "tf-test-logstore",
-    ///                     StoreType = "log",
-    ///                     Project = exampleProject.Name,
-    ///                     Region = "cn-heyuan",
-    ///                     ChartTitle = "chart_title",
-    ///                     Start = "-60s",
-    ///                     End = "20s",
-    ///                     Query = "* AND aliyun | select count(1) as cnt",
-    ///                     PowerSqlMode = "auto",
-    ///                 },
-    ///                 new AliCloud.Log.Inputs.AlertQueryListArgs
-    ///                 {
-    ///                     Store = "tf-test-logstore",
-    ///                     StoreType = "log",
-    ///                     Project = exampleProject.Name,
-    ///                     Region = "cn-heyuan",
-    ///                     ChartTitle = "chart_title",
-    ///                     Start = "-60s",
-    ///                     End = "20s",
-    ///                     Query = "error | select count(1) as error_cnt",
-    ///                     PowerSqlMode = "enable",
-    ///                 },
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 new AliCloud.Log.Inputs.AlertLabelArgs
-    ///                 {
-    ///                     Key = "env",
-    ///                     Value = "test",
-    ///                 },
-    ///             },
-    ///             Annotations = 
-    ///             {
-    ///                 new AliCloud.Log.Inputs.AlertAnnotationArgs
-    ///                 {
-    ///                     Key = "title",
-    ///                     Value = "alert title",
-    ///                 },
-    ///                 new AliCloud.Log.Inputs.AlertAnnotationArgs
-    ///                 {
-    ///                     Key = "desc",
-    ///                     Value = "alert desc",
-    ///                 },
-    ///                 new AliCloud.Log.Inputs.AlertAnnotationArgs
-    ///                 {
-    ///                     Key = "test_key",
-    ///                     Value = "test value",
-    ///                 },
-    ///             },
-    ///             GroupConfiguration = new AliCloud.Log.Inputs.AlertGroupConfigurationArgs
-    ///             {
-    ///                 Type = "custom",
-    ///                 Fields = 
-    ///                 {
-    ///                     "cnt",
-    ///                 },
-    ///             },
-    ///             PolicyConfiguration = new AliCloud.Log.Inputs.AlertPolicyConfigurationArgs
-    ///             {
-    ///                 AlertPolicyId = "sls.bultin",
-    ///                 ActionPolicyId = "sls_test_action",
-    ///                 RepeatInterval = "4h",
-    ///             },
-    ///             SeverityConfigurations = 
-    ///             {
-    ///                 new AliCloud.Log.Inputs.AlertSeverityConfigurationArgs
-    ///                 {
-    ///                     Severity = 8,
-    ///                     EvalCondition = 
-    ///                     {
-    ///                         { "condition", "cnt &gt; 3" },
-    ///                         { "count_condition", "__count__ &gt; 3" },
-    ///                     },
-    ///                 },
-    ///                 new AliCloud.Log.Inputs.AlertSeverityConfigurationArgs
-    ///                 {
-    ///                     Severity = 6,
-    ///                     EvalCondition = 
-    ///                     {
-    ///                         { "condition", "" },
-    ///                         { "count_condition", "__count__ &gt; 0" },
-    ///                     },
-    ///                 },
-    ///                 new AliCloud.Log.Inputs.AlertSeverityConfigurationArgs
-    ///                 {
-    ///                     Severity = 2,
-    ///                     EvalCondition = 
-    ///                     {
-    ///                         { "condition", "" },
-    ///                         { "count_condition", "" },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             JoinConfigurations = 
-    ///             {
-    ///                 new AliCloud.Log.Inputs.AlertJoinConfigurationArgs
-    ///                 {
-    ///                     Type = "cross_join",
-    ///                     Condition = "",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Description = "create by terraform",
+    ///     });
     /// 
-    /// }
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var example_2 = new AliCloud.Log.Alert("example-2", new()
+    ///     {
+    ///         Version = "2.0",
+    ///         Type = "default",
+    ///         ProjectName = exampleProject.Name,
+    ///         AlertName = "tf-test-alert-2",
+    ///         AlertDisplayname = "tf-test-alert-displayname-2",
+    ///         Dashboard = "tf-test-dashboard",
+    ///         MuteUntil = 1632486684,
+    ///         NoDataFire = false,
+    ///         NoDataSeverity = 8,
+    ///         SendResolved = true,
+    ///         AutoAnnotation = true,
+    ///         Schedule = new AliCloud.Log.Inputs.AlertScheduleArgs
+    ///         {
+    ///             Type = "FixedRate",
+    ///             Interval = "5m",
+    ///             Hour = 0,
+    ///             DayOfWeek = 0,
+    ///             Delay = 0,
+    ///             RunImmediately = false,
+    ///         },
+    ///         QueryLists = new[]
+    ///         {
+    ///             new AliCloud.Log.Inputs.AlertQueryListArgs
+    ///             {
+    ///                 Store = "tf-test-logstore",
+    ///                 StoreType = "log",
+    ///                 Project = exampleProject.Name,
+    ///                 Region = "cn-heyuan",
+    ///                 ChartTitle = "chart_title",
+    ///                 Start = "-60s",
+    ///                 End = "20s",
+    ///                 Query = "* AND aliyun | select count(1) as cnt",
+    ///                 PowerSqlMode = "auto",
+    ///             },
+    ///             new AliCloud.Log.Inputs.AlertQueryListArgs
+    ///             {
+    ///                 Store = "tf-test-logstore",
+    ///                 StoreType = "log",
+    ///                 Project = exampleProject.Name,
+    ///                 Region = "cn-heyuan",
+    ///                 ChartTitle = "chart_title",
+    ///                 Start = "-60s",
+    ///                 End = "20s",
+    ///                 Query = "error | select count(1) as error_cnt",
+    ///                 PowerSqlMode = "enable",
+    ///             },
+    ///         },
+    ///         Labels = new[]
+    ///         {
+    ///             new AliCloud.Log.Inputs.AlertLabelArgs
+    ///             {
+    ///                 Key = "env",
+    ///                 Value = "test",
+    ///             },
+    ///         },
+    ///         Annotations = new[]
+    ///         {
+    ///             new AliCloud.Log.Inputs.AlertAnnotationArgs
+    ///             {
+    ///                 Key = "title",
+    ///                 Value = "alert title",
+    ///             },
+    ///             new AliCloud.Log.Inputs.AlertAnnotationArgs
+    ///             {
+    ///                 Key = "desc",
+    ///                 Value = "alert desc",
+    ///             },
+    ///             new AliCloud.Log.Inputs.AlertAnnotationArgs
+    ///             {
+    ///                 Key = "test_key",
+    ///                 Value = "test value",
+    ///             },
+    ///         },
+    ///         GroupConfiguration = new AliCloud.Log.Inputs.AlertGroupConfigurationArgs
+    ///         {
+    ///             Type = "custom",
+    ///             Fields = new[]
+    ///             {
+    ///                 "cnt",
+    ///             },
+    ///         },
+    ///         PolicyConfiguration = new AliCloud.Log.Inputs.AlertPolicyConfigurationArgs
+    ///         {
+    ///             AlertPolicyId = "sls.bultin",
+    ///             ActionPolicyId = "sls_test_action",
+    ///             RepeatInterval = "4h",
+    ///         },
+    ///         SeverityConfigurations = new[]
+    ///         {
+    ///             new AliCloud.Log.Inputs.AlertSeverityConfigurationArgs
+    ///             {
+    ///                 Severity = 8,
+    ///                 EvalCondition = 
+    ///                 {
+    ///                     { "condition", "cnt &gt; 3" },
+    ///                     { "count_condition", "__count__ &gt; 3" },
+    ///                 },
+    ///             },
+    ///             new AliCloud.Log.Inputs.AlertSeverityConfigurationArgs
+    ///             {
+    ///                 Severity = 6,
+    ///                 EvalCondition = 
+    ///                 {
+    ///                     { "condition", "" },
+    ///                     { "count_condition", "__count__ &gt; 0" },
+    ///                 },
+    ///             },
+    ///             new AliCloud.Log.Inputs.AlertSeverityConfigurationArgs
+    ///             {
+    ///                 Severity = 2,
+    ///                 EvalCondition = 
+    ///                 {
+    ///                     { "condition", "" },
+    ///                     { "count_condition", "" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         JoinConfigurations = new[]
+    ///         {
+    ///             new AliCloud.Log.Inputs.AlertJoinConfigurationArgs
+    ///             {
+    ///                 Type = "cross_join",
+    ///                 Condition = "",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -268,7 +269,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/alert:Alert")]
-    public partial class Alert : Pulumi.CustomResource
+    public partial class Alert : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Alert description.
@@ -331,7 +332,7 @@ namespace Pulumi.AliCloud.Log
         /// Timestamp, notifications before closing again.
         /// </summary>
         [Output("muteUntil")]
-        public Output<int?> MuteUntil { get; private set; } = null!;
+        public Output<int> MuteUntil { get; private set; } = null!;
 
         /// <summary>
         /// Switch for whether new alert fires when no data happens, default is false.
@@ -473,7 +474,7 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class AlertArgs : Pulumi.ResourceArgs
+    public sealed class AlertArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alert description.
@@ -674,9 +675,10 @@ namespace Pulumi.AliCloud.Log
         public AlertArgs()
         {
         }
+        public static new AlertArgs Empty => new AlertArgs();
     }
 
-    public sealed class AlertState : Pulumi.ResourceArgs
+    public sealed class AlertState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alert description.
@@ -877,5 +879,6 @@ namespace Pulumi.AliCloud.Log
         public AlertState()
         {
         }
+        public static new AlertState Empty => new AlertState();
     }
 }

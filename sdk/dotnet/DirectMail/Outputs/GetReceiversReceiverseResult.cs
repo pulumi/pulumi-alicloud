@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// -The Receivers Alias.
+        /// The Receivers Alias.
         /// </summary>
         public readonly string ReceiversAlias;
         /// <summary>

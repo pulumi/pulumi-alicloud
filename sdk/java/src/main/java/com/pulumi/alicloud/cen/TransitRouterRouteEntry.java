@@ -149,9 +149,17 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
     public Output<String> transitRouterRouteEntryDestinationCidrBlock() {
         return this.transitRouterRouteEntryDestinationCidrBlock;
     }
+    /**
+     * The ID of the route entry.
+     * 
+     */
     @Export(name="transitRouterRouteEntryId", type=String.class, parameters={})
     private Output<String> transitRouterRouteEntryId;
 
+    /**
+     * @return The ID of the route entry.
+     * 
+     */
     public Output<String> transitRouterRouteEntryId() {
         return this.transitRouterRouteEntryId;
     }

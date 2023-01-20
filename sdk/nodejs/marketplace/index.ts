@@ -5,12 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getProduct";
-export * from "./getProducts";
-export * from "./order";
+export { GetProductArgs, GetProductResult, GetProductOutputArgs } from "./getProduct";
+export const getProduct: typeof import("./getProduct").getProduct = null as any;
+export const getProductOutput: typeof import("./getProduct").getProductOutput = null as any;
+utilities.lazyLoad(exports, ["getProduct","getProductOutput"], () => require("./getProduct"));
 
-// Import resources to register:
-import { Order } from "./order";
+export { GetProductsArgs, GetProductsResult, GetProductsOutputArgs } from "./getProducts";
+export const getProducts: typeof import("./getProducts").getProducts = null as any;
+export const getProductsOutput: typeof import("./getProducts").getProductsOutput = null as any;
+utilities.lazyLoad(exports, ["getProducts","getProductsOutput"], () => require("./getProducts"));
+
+export { OrderArgs, OrderState } from "./order";
+export type Order = import("./order").Order;
+export const Order: typeof import("./order").Order = null as any;
+utilities.lazyLoad(exports, ["Order"], () => require("./order"));
+
 
 const _module = {
     version: utilities.getVersion(),

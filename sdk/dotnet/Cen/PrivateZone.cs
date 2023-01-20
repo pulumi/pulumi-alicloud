@@ -23,52 +23,51 @@ namespace Pulumi.AliCloud.Cen
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a cen Private Zone resource and use it.
-    ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///         });
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = "test_name",
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment("defaultInstanceAttachment", new AliCloud.Cen.InstanceAttachmentArgs
-    ///         {
-    ///             InstanceId = defaultInstance.Id,
-    ///             ChildInstanceId = defaultNetwork.Id,
-    ///             ChildInstanceType = "VPC",
-    ///             ChildInstanceRegionId = "cn-hangzhou",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 defaultInstance,
-    ///                 defaultNetwork,
-    ///             },
-    ///         });
-    ///         var defaultPrivateZone = new AliCloud.Cen.PrivateZone("defaultPrivateZone", new AliCloud.Cen.PrivateZoneArgs
-    ///         {
-    ///             AccessRegionId = "cn-hangzhou",
-    ///             CenId = defaultInstance.Id,
-    ///             HostRegionId = "cn-hangzhou",
-    ///             HostVpcId = defaultNetwork.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 defaultInstanceAttachment,
-    ///             },
-    ///         });
-    ///     }
+    ///     // Create a cen Private Zone resource and use it.
+    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance");
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = "test_name",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment("defaultInstanceAttachment", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         ChildInstanceId = defaultNetwork.Id,
+    ///         ChildInstanceType = "VPC",
+    ///         ChildInstanceRegionId = "cn-hangzhou",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             defaultInstance,
+    ///             defaultNetwork,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultPrivateZone = new AliCloud.Cen.PrivateZone("defaultPrivateZone", new()
+    ///     {
+    ///         AccessRegionId = "cn-hangzhou",
+    ///         CenId = defaultInstance.Id,
+    ///         HostRegionId = "cn-hangzhou",
+    ///         HostVpcId = defaultNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             defaultInstanceAttachment,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -80,7 +79,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/privateZone:PrivateZone")]
-    public partial class PrivateZone : Pulumi.CustomResource
+    public partial class PrivateZone : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
@@ -156,7 +155,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class PrivateZoneArgs : Pulumi.ResourceArgs
+    public sealed class PrivateZoneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
@@ -185,9 +184,10 @@ namespace Pulumi.AliCloud.Cen
         public PrivateZoneArgs()
         {
         }
+        public static new PrivateZoneArgs Empty => new PrivateZoneArgs();
     }
 
-    public sealed class PrivateZoneState : Pulumi.ResourceArgs
+    public sealed class PrivateZoneState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
@@ -222,5 +222,6 @@ namespace Pulumi.AliCloud.Cen
         public PrivateZoneState()
         {
         }
+        public static new PrivateZoneState Empty => new PrivateZoneState();
     }
 }

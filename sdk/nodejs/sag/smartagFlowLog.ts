@@ -99,10 +99,7 @@ export class SmartagFlowLog extends pulumi.CustomResource {
      */
     public readonly netflowVersion!: pulumi.Output<string>;
     /**
-     * The location where the flow log is stored. Valid values:  
-     * - `sls`: The flow log is stored in Log Service.
-     * - `netflow`: The flow log is stored on a NetFlow collector.
-     * - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+     * The location where the flow log is stored. Valid values:
      */
     public readonly outputType!: pulumi.Output<string>;
     /**
@@ -203,10 +200,7 @@ export interface SmartagFlowLogState {
      */
     netflowVersion?: pulumi.Input<string>;
     /**
-     * The location where the flow log is stored. Valid values:  
-     * - `sls`: The flow log is stored in Log Service.
-     * - `netflow`: The flow log is stored on a NetFlow collector.
-     * - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+     * The location where the flow log is stored. Valid values:
      */
     outputType?: pulumi.Input<string>;
     /**
@@ -260,10 +254,7 @@ export interface SmartagFlowLogArgs {
      */
     netflowVersion?: pulumi.Input<string>;
     /**
-     * The location where the flow log is stored. Valid values:  
-     * - `sls`: The flow log is stored in Log Service.
-     * - `netflow`: The flow log is stored on a NetFlow collector.
-     * - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
+     * The location where the flow log is stored. Valid values:
      */
     outputType: pulumi.Input<string>;
     /**

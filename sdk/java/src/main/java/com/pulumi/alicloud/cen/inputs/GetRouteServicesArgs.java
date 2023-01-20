@@ -31,14 +31,14 @@ public final class GetRouteServicesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * -(Required, ForceNew) The ID of the CEN instance.
+     * The ID of the CEN instance.
      * 
      */
     @Import(name="cenId", required=true)
     private Output<String> cenId;
 
     /**
-     * @return -(Required, ForceNew) The ID of the CEN instance.
+     * @return The ID of the CEN instance.
      * 
      */
     public Output<String> cenId() {
@@ -46,14 +46,14 @@ public final class GetRouteServicesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * -(Optional, ForceNew) The domain name or IP address of the cloud service.
+     * The domain name or IP address of the cloud service.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return -(Optional, ForceNew) The domain name or IP address of the cloud service.
+     * @return The domain name or IP address of the cloud service.
      * 
      */
     public Optional<Output<String>> host() {
@@ -164,7 +164,7 @@ public final class GetRouteServicesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param cenId -(Required, ForceNew) The ID of the CEN instance.
+         * @param cenId The ID of the CEN instance.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class GetRouteServicesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param cenId -(Required, ForceNew) The ID of the CEN instance.
+         * @param cenId The ID of the CEN instance.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class GetRouteServicesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param host -(Optional, ForceNew) The domain name or IP address of the cloud service.
+         * @param host The domain name or IP address of the cloud service.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class GetRouteServicesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param host -(Optional, ForceNew) The domain name or IP address of the cloud service.
+         * @param host The domain name or IP address of the cloud service.
          * 
          * @return builder
          * 

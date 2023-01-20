@@ -26,12 +26,12 @@ class NetworkAclArgs:
         """
         The set of arguments for constructing a NetworkAcl resource.
         :param pulumi.Input[str] vpc_id: The vpc_id of the network acl, the field can't be changed.
-        :param pulumi.Input[str] description: The description of egress entries.
+        :param pulumi.Input[str] description: The description of the network acl instance.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]] egress_acl_entries: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]] ingress_acl_entries: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
         :param pulumi.Input[str] network_acl_name: The name of the network acl.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resources.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if description is not None:
@@ -47,6 +47,9 @@ class NetworkAclArgs:
             pulumi.set(__self__, "name", name)
         if network_acl_name is not None:
             pulumi.set(__self__, "network_acl_name", network_acl_name)
+        if resources is not None:
+            warnings.warn("""Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.""", DeprecationWarning)
+            pulumi.log.warn("""resources is deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.""")
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
 
@@ -66,7 +69,7 @@ class NetworkAclArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of egress entries.
+        The description of the network acl instance.
         """
         return pulumi.get(self, "description")
 
@@ -126,7 +129,7 @@ class NetworkAclArgs:
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]:
         """
-        The associated resources.
+        The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
         """
         return pulumi.get(self, "resources")
 
@@ -148,12 +151,12 @@ class _NetworkAclState:
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NetworkAcl resources.
-        :param pulumi.Input[str] description: The description of egress entries.
+        :param pulumi.Input[str] description: The description of the network acl instance.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]] egress_acl_entries: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]] ingress_acl_entries: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
         :param pulumi.Input[str] network_acl_name: The name of the network acl.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resources.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
         :param pulumi.Input[str] status: (Available in 1.122.0+) The status of the network acl.
         :param pulumi.Input[str] vpc_id: The vpc_id of the network acl, the field can't be changed.
         """
@@ -171,6 +174,9 @@ class _NetworkAclState:
         if network_acl_name is not None:
             pulumi.set(__self__, "network_acl_name", network_acl_name)
         if resources is not None:
+            warnings.warn("""Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.""", DeprecationWarning)
+            pulumi.log.warn("""resources is deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.""")
+        if resources is not None:
             pulumi.set(__self__, "resources", resources)
         if status is not None:
             pulumi.set(__self__, "status", status)
@@ -181,7 +187,7 @@ class _NetworkAclState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of egress entries.
+        The description of the network acl instance.
         """
         return pulumi.get(self, "description")
 
@@ -241,7 +247,7 @@ class _NetworkAclState:
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]:
         """
-        The associated resources.
+        The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
         """
         return pulumi.get(self, "resources")
 
@@ -302,12 +308,12 @@ class NetworkAcl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of egress entries.
+        :param pulumi.Input[str] description: The description of the network acl instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEgressAclEntryArgs']]]] egress_acl_entries: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]] ingress_acl_entries: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
         :param pulumi.Input[str] network_acl_name: The name of the network acl.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]] resources: The associated resources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]] resources: The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
         :param pulumi.Input[str] vpc_id: The vpc_id of the network acl, the field can't be changed.
         """
         ...
@@ -368,6 +374,9 @@ class NetworkAcl(pulumi.CustomResource):
                 pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead""")
             __props__.__dict__["name"] = name
             __props__.__dict__["network_acl_name"] = network_acl_name
+            if resources is not None and not opts.urn:
+                warnings.warn("""Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.""", DeprecationWarning)
+                pulumi.log.warn("""resources is deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.""")
             __props__.__dict__["resources"] = resources
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
@@ -398,12 +407,12 @@ class NetworkAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of egress entries.
+        :param pulumi.Input[str] description: The description of the network acl instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEgressAclEntryArgs']]]] egress_acl_entries: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]] ingress_acl_entries: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
         :param pulumi.Input[str] network_acl_name: The name of the network acl.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]] resources: The associated resources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]] resources: The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
         :param pulumi.Input[str] status: (Available in 1.122.0+) The status of the network acl.
         :param pulumi.Input[str] vpc_id: The vpc_id of the network acl, the field can't be changed.
         """
@@ -425,7 +434,7 @@ class NetworkAcl(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of egress entries.
+        The description of the network acl instance.
         """
         return pulumi.get(self, "description")
 
@@ -463,9 +472,9 @@ class NetworkAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def resources(self) -> pulumi.Output[Optional[Sequence['outputs.NetworkAclResource']]]:
+    def resources(self) -> pulumi.Output[Sequence['outputs.NetworkAclResource']]:
         """
-        The associated resources.
+        The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
         """
         return pulumi.get(self, "resources")
 

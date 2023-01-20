@@ -21,45 +21,46 @@ namespace Pulumi.AliCloud.RocketMQ
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "onsInstanceName";
+        ///     var groupName = config.Get("groupName") ?? "GID-onsGroupDatasourceName";
+        ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "onsInstanceName";
-        ///         var groupName = config.Get("groupName") ?? "GID-onsGroupDatasourceName";
-        ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
-        ///         {
-        ///             InstanceName = name,
-        ///             Remark = "default_ons_instance_remark",
-        ///         });
-        ///         var defaultGroup = new AliCloud.RocketMQ.Group("defaultGroup", new AliCloud.RocketMQ.GroupArgs
-        ///         {
-        ///             GroupName = groupName,
-        ///             InstanceId = defaultInstance.Id,
-        ///             Remark = "dafault_ons_group_remark",
-        ///         });
-        ///         var groupsDs = defaultGroup.InstanceId.Apply(instanceId =&gt; AliCloud.RocketMQ.GetGroups.Invoke(new AliCloud.RocketMQ.GetGroupsInvokeArgs
-        ///         {
-        ///             InstanceId = instanceId,
-        ///             NameRegex = @var.Group_id,
-        ///             OutputFile = "groups.txt",
-        ///         }));
-        ///         this.FirstGroupName = groupsDs.Apply(groupsDs =&gt; groupsDs.Groups?[0]?.GroupName);
-        ///     }
+        ///         InstanceName = name,
+        ///         Remark = "default_ons_instance_remark",
+        ///     });
         /// 
-        ///     [Output("firstGroupName")]
-        ///     public Output&lt;string&gt; FirstGroupName { get; set; }
-        /// }
+        ///     var defaultGroup = new AliCloud.RocketMQ.Group("defaultGroup", new()
+        ///     {
+        ///         GroupName = groupName,
+        ///         InstanceId = defaultInstance.Id,
+        ///         Remark = "dafault_ons_group_remark",
+        ///     });
+        /// 
+        ///     var groupsDs = AliCloud.RocketMQ.GetGroups.Invoke(new()
+        ///     {
+        ///         InstanceId = defaultGroup.InstanceId,
+        ///         NameRegex = @var.Group_id,
+        ///         OutputFile = "groups.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupName"] = groupsDs.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.GroupName),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
@@ -71,49 +72,50 @@ namespace Pulumi.AliCloud.RocketMQ
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "onsInstanceName";
+        ///     var groupName = config.Get("groupName") ?? "GID-onsGroupDatasourceName";
+        ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "onsInstanceName";
-        ///         var groupName = config.Get("groupName") ?? "GID-onsGroupDatasourceName";
-        ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
-        ///         {
-        ///             InstanceName = name,
-        ///             Remark = "default_ons_instance_remark",
-        ///         });
-        ///         var defaultGroup = new AliCloud.RocketMQ.Group("defaultGroup", new AliCloud.RocketMQ.GroupArgs
-        ///         {
-        ///             GroupName = groupName,
-        ///             InstanceId = defaultInstance.Id,
-        ///             Remark = "dafault_ons_group_remark",
-        ///         });
-        ///         var groupsDs = defaultGroup.InstanceId.Apply(instanceId =&gt; AliCloud.RocketMQ.GetGroups.Invoke(new AliCloud.RocketMQ.GetGroupsInvokeArgs
-        ///         {
-        ///             InstanceId = instanceId,
-        ///             NameRegex = @var.Group_id,
-        ///             OutputFile = "groups.txt",
-        ///         }));
-        ///         this.FirstGroupName = groupsDs.Apply(groupsDs =&gt; groupsDs.Groups?[0]?.GroupName);
-        ///     }
+        ///         InstanceName = name,
+        ///         Remark = "default_ons_instance_remark",
+        ///     });
         /// 
-        ///     [Output("firstGroupName")]
-        ///     public Output&lt;string&gt; FirstGroupName { get; set; }
-        /// }
+        ///     var defaultGroup = new AliCloud.RocketMQ.Group("defaultGroup", new()
+        ///     {
+        ///         GroupName = groupName,
+        ///         InstanceId = defaultInstance.Id,
+        ///         Remark = "dafault_ons_group_remark",
+        ///     });
+        /// 
+        ///     var groupsDs = AliCloud.RocketMQ.GetGroups.Invoke(new()
+        ///     {
+        ///         InstanceId = defaultGroup.InstanceId,
+        ///         NameRegex = @var.Group_id,
+        ///         OutputFile = "groups.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupName"] = groupsDs.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.GroupName),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A regex string to filter results by the group name.
@@ -166,9 +168,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public GetGroupsArgs()
         {
         }
+        public static new GetGroupsArgs Empty => new GetGroupsArgs();
     }
 
-    public sealed class GetGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A regex string to filter results by the group name.
@@ -221,6 +224,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public GetGroupsInvokeArgs()
         {
         }
+        public static new GetGroupsInvokeArgs Empty => new GetGroupsInvokeArgs();
     }
 
 

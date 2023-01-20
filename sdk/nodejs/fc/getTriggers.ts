@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,21 +15,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fcTriggersDs = pulumi.output(alicloud.fc.getTriggers({
+ * const fcTriggersDs = alicloud.fc.getTriggers({
  *     functionName: "sample_function",
  *     nameRegex: "sample_fc_trigger",
  *     serviceName: "sample_service",
- * }));
- *
- * export const firstFcTriggerName = fcTriggersDs.triggers[0].name;
+ * });
+ * export const firstFcTriggerName = fcTriggersDs.then(fcTriggersDs => fcTriggersDs.triggers?.[0]?.name);
  * ```
  */
 export function getTriggers(args: GetTriggersArgs, opts?: pulumi.InvokeOptions): Promise<GetTriggersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:fc/getTriggers:getTriggers", {
         "functionName": args.functionName,
         "ids": args.ids,
@@ -47,7 +44,7 @@ export interface GetTriggersArgs {
      */
     functionName: string;
     /**
-     * - A list of FC triggers ids.
+     * A list of FC triggers ids.
      */
     ids?: string[];
     /**
@@ -86,9 +83,25 @@ export interface GetTriggersResult {
      */
     readonly triggers: outputs.fc.GetTriggersTrigger[];
 }
-
+/**
+ * This data source provides the Function Compute triggers of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const fcTriggersDs = alicloud.fc.getTriggers({
+ *     functionName: "sample_function",
+ *     nameRegex: "sample_fc_trigger",
+ *     serviceName: "sample_service",
+ * });
+ * export const firstFcTriggerName = fcTriggersDs.then(fcTriggersDs => fcTriggersDs.triggers?.[0]?.name);
+ * ```
+ */
 export function getTriggersOutput(args: GetTriggersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggersResult> {
-    return pulumi.output(args).apply(a => getTriggers(a, opts))
+    return pulumi.output(args).apply((a: any) => getTriggers(a, opts))
 }
 
 /**
@@ -100,7 +113,7 @@ export interface GetTriggersOutputArgs {
      */
     functionName: pulumi.Input<string>;
     /**
-     * - A list of FC triggers ids.
+     * A list of FC triggers ids.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**

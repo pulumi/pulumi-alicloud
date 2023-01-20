@@ -21,6 +21,7 @@ class TransitRouterVbrAttachmentArgs:
                  resource_type: Optional[pulumi.Input[str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
                  route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
                  transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,7 @@ class TransitRouterVbrAttachmentArgs:
         :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
@@ -51,6 +53,8 @@ class TransitRouterVbrAttachmentArgs:
             pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
         if route_table_propagation_enabled is not None:
             pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if transit_router_attachment_description is not None:
             pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_name is not None:
@@ -145,6 +149,18 @@ class TransitRouterVbrAttachmentArgs:
         pulumi.set(self, "route_table_propagation_enabled", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="transitRouterAttachmentDescription")
     def transit_router_attachment_description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -203,6 +219,7 @@ class _TransitRouterVbrAttachmentState:
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
                  route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
                  transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
                  transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
@@ -218,6 +235,7 @@ class _TransitRouterVbrAttachmentState:
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
         :param pulumi.Input[str] status: The associating status of the network.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_id: The id of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
@@ -239,6 +257,8 @@ class _TransitRouterVbrAttachmentState:
             pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if transit_router_attachment_description is not None:
             pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_id is not None:
@@ -337,6 +357,18 @@ class _TransitRouterVbrAttachmentState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="transitRouterAttachmentDescription")
     def transit_router_attachment_description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -420,6 +452,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
                  resource_type: Optional[pulumi.Input[str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
                  route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
                  transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
@@ -447,6 +480,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
@@ -493,6 +527,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
                  resource_type: Optional[pulumi.Input[str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
                  route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
                  transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
@@ -515,6 +550,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
             __props__.__dict__["resource_type"] = resource_type
             __props__.__dict__["route_table_association_enabled"] = route_table_association_enabled
             __props__.__dict__["route_table_propagation_enabled"] = route_table_propagation_enabled
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["transit_router_attachment_description"] = transit_router_attachment_description
             __props__.__dict__["transit_router_attachment_name"] = transit_router_attachment_name
             __props__.__dict__["transit_router_id"] = transit_router_id
@@ -541,6 +577,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
             route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
             route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
             transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
             transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
@@ -561,6 +598,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
         :param pulumi.Input[str] status: The associating status of the network.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_id: The id of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
@@ -579,6 +617,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         __props__.__dict__["route_table_association_enabled"] = route_table_association_enabled
         __props__.__dict__["route_table_propagation_enabled"] = route_table_propagation_enabled
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["transit_router_attachment_description"] = transit_router_attachment_description
         __props__.__dict__["transit_router_attachment_id"] = transit_router_attachment_id
         __props__.__dict__["transit_router_attachment_name"] = transit_router_attachment_name
@@ -642,6 +681,14 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         The associating status of the network.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="transitRouterAttachmentDescription")

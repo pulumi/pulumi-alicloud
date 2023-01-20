@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// </summary>
         public readonly string Engine;
         /// <summary>
-        /// The engine version of the database..
+        /// The engine version of the database.
         /// </summary>
         public readonly string EngineVersion;
         /// <summary>

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEcsSnapshot = new alicloud.ecs.EcsSnapshot("default", {
+ * const _default = new alicloud.ecs.EcsSnapshot("default", {
  *     category: "standard",
  *     description: "Test For Terraform",
  *     diskId: "d-gw8csgxxxxxxxxx",

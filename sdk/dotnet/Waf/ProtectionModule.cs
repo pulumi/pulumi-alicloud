@@ -21,59 +21,59 @@ namespace Pulumi.AliCloud.Waf
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultInstances = Output.Create(AliCloud.Waf.GetInstances.InvokeAsync());
-    ///         var defaultDomain = new AliCloud.Waf.Domain("defaultDomain", new AliCloud.Waf.DomainArgs
-    ///         {
-    ///             DomainName = "you domain",
-    ///             InstanceId = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Ids?[0]),
-    ///             IsAccessProduct = "On",
-    ///             SourceIps = 
-    ///             {
-    ///                 "1.1.1.1",
-    ///             },
-    ///             ClusterType = "PhysicalCluster",
-    ///             Http2Ports = 
-    ///             {
-    ///                 "443",
-    ///             },
-    ///             HttpPorts = 
-    ///             {
-    ///                 "80",
-    ///             },
-    ///             HttpsPorts = 
-    ///             {
-    ///                 "443",
-    ///             },
-    ///             HttpToUserIp = "Off",
-    ///             HttpsRedirect = "Off",
-    ///             LoadBalancing = "IpHash",
-    ///             LogHeaders = 
-    ///             {
-    ///                 new AliCloud.Waf.Inputs.DomainLogHeaderArgs
-    ///                 {
-    ///                     Key = "foo",
-    ///                     Value = "http",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var defaultProtectionModule = new AliCloud.Waf.ProtectionModule("defaultProtectionModule", new AliCloud.Waf.ProtectionModuleArgs
-    ///         {
-    ///             InstanceId = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Ids?[0]),
-    ///             Domain = defaultDomain.DomainName,
-    ///             DefenseType = "ac_cc",
-    ///             Mode = 0,
-    ///             Status = 0,
-    ///         });
-    ///     }
+    ///     var defaultInstances = AliCloud.Waf.GetInstances.Invoke();
     /// 
-    /// }
+    ///     var defaultDomain = new AliCloud.Waf.Domain("defaultDomain", new()
+    ///     {
+    ///         DomainName = "you domain",
+    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///         IsAccessProduct = "On",
+    ///         SourceIps = new[]
+    ///         {
+    ///             "1.1.1.1",
+    ///         },
+    ///         ClusterType = "PhysicalCluster",
+    ///         Http2Ports = new[]
+    ///         {
+    ///             "443",
+    ///         },
+    ///         HttpPorts = new[]
+    ///         {
+    ///             "80",
+    ///         },
+    ///         HttpsPorts = new[]
+    ///         {
+    ///             "443",
+    ///         },
+    ///         HttpToUserIp = "Off",
+    ///         HttpsRedirect = "Off",
+    ///         LoadBalancing = "IpHash",
+    ///         LogHeaders = new[]
+    ///         {
+    ///             new AliCloud.Waf.Inputs.DomainLogHeaderArgs
+    ///             {
+    ///                 Key = "foo",
+    ///                 Value = "http",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultProtectionModule = new AliCloud.Waf.ProtectionModule("defaultProtectionModule", new()
+    ///     {
+    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///         Domain = defaultDomain.DomainName,
+    ///         DefenseType = "ac_cc",
+    ///         Mode = 0,
+    ///         Status = 0,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -85,15 +85,10 @@ namespace Pulumi.AliCloud.Waf
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:waf/protectionModule:ProtectionModule")]
-    public partial class ProtectionModule : Pulumi.CustomResource
+    public partial class ProtectionModule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-        /// * `waf`: RegEx Protection Engine.
-        /// * `dld`: Big Data Deep Learning Engine.
-        /// * `ac_cc`: HTTP Flood Protection.
-        /// * `antifraud`: Data Risk Control.
-        /// * `normalized`: Positive Security Model.
         /// </summary>
         [Output("defenseType")]
         public Output<string> DefenseType { get; private set; } = null!;
@@ -123,8 +118,6 @@ namespace Pulumi.AliCloud.Waf
 
         /// <summary>
         /// The status of the resource. Valid values: `0`, `1`.
-        /// * `0`: disables the protection module.
-        /// * `1`: enables the protection module.
         /// </summary>
         [Output("status")]
         public Output<int?> Status { get; private set; } = null!;
@@ -173,15 +166,10 @@ namespace Pulumi.AliCloud.Waf
         }
     }
 
-    public sealed class ProtectionModuleArgs : Pulumi.ResourceArgs
+    public sealed class ProtectionModuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-        /// * `waf`: RegEx Protection Engine.
-        /// * `dld`: Big Data Deep Learning Engine.
-        /// * `ac_cc`: HTTP Flood Protection.
-        /// * `antifraud`: Data Risk Control.
-        /// * `normalized`: Positive Security Model.
         /// </summary>
         [Input("defenseType", required: true)]
         public Input<string> DefenseType { get; set; } = null!;
@@ -211,8 +199,6 @@ namespace Pulumi.AliCloud.Waf
 
         /// <summary>
         /// The status of the resource. Valid values: `0`, `1`.
-        /// * `0`: disables the protection module.
-        /// * `1`: enables the protection module.
         /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }
@@ -220,17 +206,13 @@ namespace Pulumi.AliCloud.Waf
         public ProtectionModuleArgs()
         {
         }
+        public static new ProtectionModuleArgs Empty => new ProtectionModuleArgs();
     }
 
-    public sealed class ProtectionModuleState : Pulumi.ResourceArgs
+    public sealed class ProtectionModuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-        /// * `waf`: RegEx Protection Engine.
-        /// * `dld`: Big Data Deep Learning Engine.
-        /// * `ac_cc`: HTTP Flood Protection.
-        /// * `antifraud`: Data Risk Control.
-        /// * `normalized`: Positive Security Model.
         /// </summary>
         [Input("defenseType")]
         public Input<string>? DefenseType { get; set; }
@@ -260,8 +242,6 @@ namespace Pulumi.AliCloud.Waf
 
         /// <summary>
         /// The status of the resource. Valid values: `0`, `1`.
-        /// * `0`: disables the protection module.
-        /// * `1`: enables the protection module.
         /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }
@@ -269,5 +249,6 @@ namespace Pulumi.AliCloud.Waf
         public ProtectionModuleState()
         {
         }
+        public static new ProtectionModuleState Empty => new ProtectionModuleState();
     }
 }

@@ -21,51 +21,52 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new ECS disk-attachment and use it attach one disk to a new instance.
+    ///     var ecsSg = new AliCloud.Ecs.SecurityGroup("ecsSg", new()
     ///     {
-    ///         // Create a new ECS disk-attachment and use it attach one disk to a new instance.
-    ///         var ecsSg = new AliCloud.Ecs.SecurityGroup("ecsSg", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             Description = "New security group",
-    ///         });
-    ///         var ecsDisk = new AliCloud.Ecs.EcsDisk("ecsDisk", new AliCloud.Ecs.EcsDiskArgs
-    ///         {
-    ///             AvailabilityZone = "cn-beijing-a",
-    ///             Size = 50,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "TerraformTest-disk" },
-    ///             },
-    ///         });
-    ///         var ecsInstance = new AliCloud.Ecs.Instance("ecsInstance", new AliCloud.Ecs.InstanceArgs
-    ///         {
-    ///             ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
-    ///             InstanceType = "ecs.n4.small",
-    ///             AvailabilityZone = "cn-beijing-a",
-    ///             SecurityGroups = 
-    ///             {
-    ///                 ecsSg.Id,
-    ///             },
-    ///             InstanceName = "Hello",
-    ///             InternetChargeType = "PayByBandwidth",
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "TerraformTest-instance" },
-    ///             },
-    ///         });
-    ///         var ecsDiskAtt = new AliCloud.Ecs.EcsDiskAttachment("ecsDiskAtt", new AliCloud.Ecs.EcsDiskAttachmentArgs
-    ///         {
-    ///             DiskId = ecsDisk.Id,
-    ///             InstanceId = ecsInstance.Id,
-    ///         });
-    ///     }
+    ///         Description = "New security group",
+    ///     });
     /// 
-    /// }
+    ///     var ecsDisk = new AliCloud.Ecs.EcsDisk("ecsDisk", new()
+    ///     {
+    ///         AvailabilityZone = "cn-beijing-a",
+    ///         Size = 50,
+    ///         Tags = 
+    ///         {
+    ///             { "Name", "TerraformTest-disk" },
+    ///         },
+    ///     });
+    /// 
+    ///     var ecsInstance = new AliCloud.Ecs.Instance("ecsInstance", new()
+    ///     {
+    ///         ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
+    ///         InstanceType = "ecs.n4.small",
+    ///         AvailabilityZone = "cn-beijing-a",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             ecsSg.Id,
+    ///         },
+    ///         InstanceName = "Hello",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         Tags = 
+    ///         {
+    ///             { "Name", "TerraformTest-instance" },
+    ///         },
+    ///     });
+    /// 
+    ///     var ecsDiskAtt = new AliCloud.Ecs.EcsDiskAttachment("ecsDiskAtt", new()
+    ///     {
+    ///         DiskId = ecsDisk.Id,
+    ///         InstanceId = ecsInstance.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +78,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment")]
-    public partial class EcsDiskAttachment : Pulumi.CustomResource
+    public partial class EcsDiskAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to mount as a system disk. Default to: `false`.
@@ -162,7 +163,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsDiskAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class EcsDiskAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to mount as a system disk. Default to: `false`.
@@ -203,9 +204,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsDiskAttachmentArgs()
         {
         }
+        public static new EcsDiskAttachmentArgs Empty => new EcsDiskAttachmentArgs();
     }
 
-    public sealed class EcsDiskAttachmentState : Pulumi.ResourceArgs
+    public sealed class EcsDiskAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to mount as a system disk. Default to: `false`.
@@ -249,5 +251,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsDiskAttachmentState()
         {
         }
+        public static new EcsDiskAttachmentState Empty => new EcsDiskAttachmentState();
     }
 }

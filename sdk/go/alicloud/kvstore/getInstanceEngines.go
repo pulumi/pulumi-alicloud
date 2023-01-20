@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			resourcesZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			resourcesZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("KVStore"),
 //			}, nil)
 //			if err != nil {

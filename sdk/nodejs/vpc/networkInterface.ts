@@ -22,13 +22,14 @@ import * as utilities from "../utilities";
  * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
  *     cidrBlock: "192.168.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vpcId: vpc.id,
  * });
  * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
  * const defaultNetworkInterface = new alicloud.vpc.NetworkInterface("defaultNetworkInterface", {
+ *     networkInterfaceName: name,
  *     vswitchId: vswitch.id,
- *     securityGroups: [group.id],
+ *     securityGroupIds: [group.id],
  *     privateIp: "192.168.0.2",
  *     privateIpsCount: 3,
  * });
@@ -74,6 +75,8 @@ export class NetworkInterface extends pulumi.CustomResource {
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly ipv6AddressCount!: pulumi.Output<number>;
+    public readonly ipv6Addresses!: pulumi.Output<string[]>;
     /**
      * (Available in 1.54.0+) The MAC address of an ENI.
      */
@@ -142,6 +145,8 @@ export class NetworkInterface extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NetworkInterfaceState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipv6AddressCount"] = state ? state.ipv6AddressCount : undefined;
+            resourceInputs["ipv6Addresses"] = state ? state.ipv6Addresses : undefined;
             resourceInputs["mac"] = state ? state.mac : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaceName"] = state ? state.networkInterfaceName : undefined;
@@ -164,6 +169,8 @@ export class NetworkInterface extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipv6AddressCount"] = args ? args.ipv6AddressCount : undefined;
+            resourceInputs["ipv6Addresses"] = args ? args.ipv6Addresses : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaceName"] = args ? args.networkInterfaceName : undefined;
             resourceInputs["primaryIpAddress"] = args ? args.primaryIpAddress : undefined;
@@ -194,6 +201,8 @@ export interface NetworkInterfaceState {
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     description?: pulumi.Input<string>;
+    ipv6AddressCount?: pulumi.Input<number>;
+    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (Available in 1.54.0+) The MAC address of an ENI.
      */
@@ -257,6 +266,8 @@ export interface NetworkInterfaceArgs {
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     description?: pulumi.Input<string>;
+    ipv6AddressCount?: pulumi.Input<number>;
+    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      *

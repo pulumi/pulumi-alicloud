@@ -400,8 +400,6 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
     :param str disk_name: The disk name.
     :param str disk_type: The disk type.
     :param bool dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-           * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-           * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
     :param bool enable_auto_snapshot: Whether the disk implements an automatic snapshot policy.
     :param bool enable_automated_snapshot_policy: Whether the disk implements an automatic snapshot policy.
     :param bool enable_shared: Whether it is shared block storage.
@@ -547,8 +545,6 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
     :param str disk_name: The disk name.
     :param str disk_type: The disk type.
     :param bool dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-           * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-           * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
     :param bool enable_auto_snapshot: Whether the disk implements an automatic snapshot policy.
     :param bool enable_automated_snapshot_policy: Whether the disk implements an automatic snapshot policy.
     :param bool enable_shared: Whether it is shared block storage.

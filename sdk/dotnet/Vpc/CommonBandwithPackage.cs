@@ -15,23 +15,21 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new AliCloud.Vpc.CommonBandwithPackage("foo", new()
     ///     {
-    ///         var foo = new AliCloud.Vpc.CommonBandwithPackage("foo", new AliCloud.Vpc.CommonBandwithPackageArgs
-    ///         {
-    ///             Bandwidth = "1000",
-    ///             BandwidthPackageName = "test-common-bandwidth-package",
-    ///             Description = "test-common-bandwidth-package",
-    ///             InternetChargeType = "PayByBandwidth",
-    ///         });
-    ///     }
+    ///         Bandwidth = "1000",
+    ///         BandwidthPackageName = "test-common-bandwidth-package",
+    ///         Description = "test-common-bandwidth-package",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/commonBandwithPackage:CommonBandwithPackage")]
-    public partial class CommonBandwithPackage : Pulumi.CustomResource
+    public partial class CommonBandwithPackage : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The bandwidth of the common bandwidth package. Unit: Mbps.
@@ -108,6 +106,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+        /// </summary>
+        [Output("securityProtectionTypes")]
+        public Output<ImmutableArray<string>> SecurityProtectionTypes { get; private set; } = null!;
+
+        /// <summary>
         /// (Available in 1.120.0+) The status of bandwidth package.
         /// </summary>
         [Output("status")]
@@ -163,7 +167,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class CommonBandwithPackageArgs : Pulumi.ResourceArgs
+    public sealed class CommonBandwithPackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bandwidth of the common bandwidth package. Unit: Mbps.
@@ -227,6 +231,18 @@ namespace Pulumi.AliCloud.Vpc
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("securityProtectionTypes")]
+        private InputList<string>? _securityProtectionTypes;
+
+        /// <summary>
+        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+        /// </summary>
+        public InputList<string> SecurityProtectionTypes
+        {
+            get => _securityProtectionTypes ?? (_securityProtectionTypes = new InputList<string>());
+            set => _securityProtectionTypes = value;
+        }
+
         /// <summary>
         /// The zone of bandwidth package.
         /// </summary>
@@ -236,9 +252,10 @@ namespace Pulumi.AliCloud.Vpc
         public CommonBandwithPackageArgs()
         {
         }
+        public static new CommonBandwithPackageArgs Empty => new CommonBandwithPackageArgs();
     }
 
-    public sealed class CommonBandwithPackageState : Pulumi.ResourceArgs
+    public sealed class CommonBandwithPackageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bandwidth of the common bandwidth package. Unit: Mbps.
@@ -302,6 +319,18 @@ namespace Pulumi.AliCloud.Vpc
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("securityProtectionTypes")]
+        private InputList<string>? _securityProtectionTypes;
+
+        /// <summary>
+        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+        /// </summary>
+        public InputList<string> SecurityProtectionTypes
+        {
+            get => _securityProtectionTypes ?? (_securityProtectionTypes = new InputList<string>());
+            set => _securityProtectionTypes = value;
+        }
+
         /// <summary>
         /// (Available in 1.120.0+) The status of bandwidth package.
         /// </summary>
@@ -317,5 +346,6 @@ namespace Pulumi.AliCloud.Vpc
         public CommonBandwithPackageState()
         {
         }
+        public static new CommonBandwithPackageState Empty => new CommonBandwithPackageState();
     }
 }

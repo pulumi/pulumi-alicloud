@@ -20,16 +20,15 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.ResourceManager.Policy("example", new()
     ///     {
-    ///         var example = new AliCloud.ResourceManager.Policy("example", new AliCloud.ResourceManager.PolicyArgs
-    ///         {
-    ///             PolicyDocument = @"		{
+    ///         PolicyDocument = @"		{
     /// 			""Statement"": [{
     /// 				""Action"": [""oss:*""],
     /// 				""Effect"": ""Allow"",
@@ -39,11 +38,10 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 		}
     ///     
     /// ",
-    ///             PolicyName = "abc12345",
-    ///         });
-    ///     }
+    ///         PolicyName = "abc12345",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/policy:Policy")]
-    public partial class Policy : Pulumi.CustomResource
+    public partial class Policy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The version of the policy. Default to v1.
@@ -131,7 +129,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class PolicyArgs : Pulumi.ResourceArgs
+    public sealed class PolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The version of the policy. Default to v1.
@@ -160,9 +158,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public PolicyArgs()
         {
         }
+        public static new PolicyArgs Empty => new PolicyArgs();
     }
 
-    public sealed class PolicyState : Pulumi.ResourceArgs
+    public sealed class PolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The version of the policy. Default to v1.
@@ -197,5 +196,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public PolicyState()
         {
         }
+        public static new PolicyState Empty => new PolicyState();
     }
 }

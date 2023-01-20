@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,18 +17,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = pulumi.output(alicloud.nas.getZones());
- *
- * export const alicloudNasZonesId = defaultZones.zones[0].zoneId;
+ * const default = alicloud.nas.getZones({});
+ * export const alicloudNasZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getZones:getZones", {
         "fileSystemType": args.fileSystemType,
         "outputFile": args.outputFile,
@@ -60,9 +57,23 @@ export interface GetZonesResult {
      */
     readonly zones: outputs.nas.GetZonesZone[];
 }
-
+/**
+ * Provide  a data source to retrieve the type of zone used to create NAS file system.
+ *
+ * > **NOTE:** Available in v1.140.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.nas.getZones({});
+ * export const alicloudNasZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);
+ * ```
+ */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(args).apply(a => getZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getZones(a, opts))
 }
 
 /**

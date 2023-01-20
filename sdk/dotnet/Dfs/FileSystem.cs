@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.Dfs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testAccFileSystem";
-    ///         var defaultZones = Output.Create(AliCloud.Dfs.GetZones.InvokeAsync());
-    ///         var defaultFileSystem = new AliCloud.Dfs.FileSystem("defaultFileSystem", new AliCloud.Dfs.FileSystemArgs
-    ///         {
-    ///             StorageType = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Options?[0]?.StorageType),
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.ZoneId),
-    ///             ProtocolType = "HDFS",
-    ///             Description = name,
-    ///             FileSystemName = name,
-    ///             ThroughputMode = "Standard",
-    ///             SpaceCapacity = 1024,
-    ///         });
-    ///     }
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testAccFileSystem";
+    ///     var defaultZones = AliCloud.Dfs.GetZones.Invoke();
     /// 
-    /// }
+    ///     var defaultFileSystem = new AliCloud.Dfs.FileSystem("defaultFileSystem", new()
+    ///     {
+    ///         StorageType = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Options[0]?.StorageType),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         ProtocolType = "HDFS",
+    ///         Description = name,
+    ///         FileSystemName = name,
+    ///         ThroughputMode = "Standard",
+    ///         SpaceCapacity = 1024,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +54,7 @@ namespace Pulumi.AliCloud.Dfs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dfs/fileSystem:FileSystem")]
-    public partial class FileSystem : Pulumi.CustomResource
+    public partial class FileSystem : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the File system.
@@ -128,6 +127,10 @@ namespace Pulumi.AliCloud.Dfs
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "throughputMode",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -149,7 +152,7 @@ namespace Pulumi.AliCloud.Dfs
         }
     }
 
-    public sealed class FileSystemArgs : Pulumi.ResourceArgs
+    public sealed class FileSystemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the File system.
@@ -187,11 +190,21 @@ namespace Pulumi.AliCloud.Dfs
         [Input("storageType", required: true)]
         public Input<string> StorageType { get; set; } = null!;
 
+        [Input("throughputMode")]
+        private Input<string>? _throughputMode;
+
         /// <summary>
         /// The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
         /// </summary>
-        [Input("throughputMode")]
-        public Input<string>? ThroughputMode { get; set; }
+        public Input<string>? ThroughputMode
+        {
+            get => _throughputMode;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _throughputMode = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The zone ID of the File system.
@@ -202,9 +215,10 @@ namespace Pulumi.AliCloud.Dfs
         public FileSystemArgs()
         {
         }
+        public static new FileSystemArgs Empty => new FileSystemArgs();
     }
 
-    public sealed class FileSystemState : Pulumi.ResourceArgs
+    public sealed class FileSystemState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the File system.
@@ -242,11 +256,21 @@ namespace Pulumi.AliCloud.Dfs
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }
 
+        [Input("throughputMode")]
+        private Input<string>? _throughputMode;
+
         /// <summary>
         /// The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
         /// </summary>
-        [Input("throughputMode")]
-        public Input<string>? ThroughputMode { get; set; }
+        public Input<string>? ThroughputMode
+        {
+            get => _throughputMode;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _throughputMode = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The zone ID of the File system.
@@ -257,5 +281,6 @@ namespace Pulumi.AliCloud.Dfs
         public FileSystemState()
         {
         }
+        public static new FileSystemState Empty => new FileSystemState();
     }
 }

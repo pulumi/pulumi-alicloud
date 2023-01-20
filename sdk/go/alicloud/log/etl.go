@@ -294,6 +294,17 @@ func NewEtl(ctx *pulumi.Context,
 	if args.Script == nil {
 		return nil, errors.New("invalid value for required argument 'Script'")
 	}
+	if args.AccessKeyId != nil {
+		args.AccessKeyId = pulumi.ToSecret(args.AccessKeyId).(pulumi.StringPtrInput)
+	}
+	if args.AccessKeySecret != nil {
+		args.AccessKeySecret = pulumi.ToSecret(args.AccessKeySecret).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accessKeyId",
+		"accessKeySecret",
+	})
+	opts = append(opts, secrets)
 	var resource Etl
 	err := ctx.RegisterResource("alicloud:log/etl:Etl", name, args, &resource, opts...)
 	if err != nil {

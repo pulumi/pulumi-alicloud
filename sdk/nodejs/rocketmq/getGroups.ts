@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -33,15 +34,12 @@ import * as utilities from "../utilities";
  *     nameRegex: _var.group_id,
  *     outputFile: "groups.txt",
  * }));
- * export const firstGroupName = groupsDs.apply(groupsDs => groupsDs.groups?[0]?.groupName);
+ * export const firstGroupName = groupsDs.apply(groupsDs => groupsDs.groups?.[0]?.groupName);
  * ```
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rocketmq/getGroups:getGroups", {
         "groupIdRegex": args.groupIdRegex,
         "groupType": args.groupType,
@@ -111,9 +109,39 @@ export interface GetGroupsResult {
      */
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in 1.53.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "onsInstanceName";
+ * const groupName = config.get("groupName") || "GID-onsGroupDatasourceName";
+ * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {
+ *     instanceName: name,
+ *     remark: "default_ons_instance_remark",
+ * });
+ * const defaultGroup = new alicloud.rocketmq.Group("defaultGroup", {
+ *     groupName: groupName,
+ *     instanceId: defaultInstance.id,
+ *     remark: "dafault_ons_group_remark",
+ * });
+ * const groupsDs = defaultGroup.instanceId.apply(instanceId => alicloud.rocketmq.getGroupsOutput({
+ *     instanceId: instanceId,
+ *     nameRegex: _var.group_id,
+ *     outputFile: "groups.txt",
+ * }));
+ * export const firstGroupName = groupsDs.apply(groupsDs => groupsDs.groups?.[0]?.groupName);
+ * ```
+ */
 export function getGroupsOutput(args: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
-    return pulumi.output(args).apply(a => getGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getGroups(a, opts))
 }
 
 /**

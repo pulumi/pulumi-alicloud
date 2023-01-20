@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewIpv6EgressRule(ctx, "exampleIpv6EgressRule", &vpc.Ipv6EgressRuleArgs{
-//				InstanceId:         pulumi.String(defaultIpv6Addresses.Ids[0]),
+//				InstanceId:         *pulumi.String(defaultIpv6Addresses.Ids[0]),
 //				Ipv6EgressRuleName: pulumi.String("example_value"),
 //				Description:        pulumi.String("example_value"),
 //				Ipv6GatewayId:      exampleIpv6Gateway.ID(),

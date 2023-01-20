@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class AlarmEscalationsCriticalArgs : Pulumi.ResourceArgs
+    public sealed class AlarmEscalationsCriticalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Critical level alarm comparison operator. Valid values: ["&lt;=", "&lt;", "&gt;", "&gt;=", "==", "!="]. Default to "==".
@@ -19,19 +19,19 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public Input<string>? ComparisonOperator { get; set; }
 
         /// <summary>
-        /// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
         /// </summary>
         [Input("statistics")]
         public Input<string>? Statistics { get; set; }
 
         /// <summary>
-        /// Critical level alarm threshold value, which must be a numeric value currently.
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
         /// </summary>
         [Input("threshold")]
         public Input<string>? Threshold { get; set; }
 
         /// <summary>
-        /// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+        /// Critical level alarm retry times. Default to 3.
         /// </summary>
         [Input("times")]
         public Input<int>? Times { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public AlarmEscalationsCriticalArgs()
         {
         }
+        public static new AlarmEscalationsCriticalArgs Empty => new AlarmEscalationsCriticalArgs();
     }
 }

@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const _this = new alicloud.adb.DBCluster("this", {
@@ -103,7 +103,7 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly computeResource!: pulumi.Output<string | undefined>;
     /**
-     * The endpoint of the cluster.
+     * The connection string of the cluster.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
@@ -163,6 +163,10 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<number | undefined>;
+    /**
+     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     */
+    public /*out*/ readonly port!: pulumi.Output<string>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
@@ -228,6 +232,7 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["payType"] = state ? state.payType : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
@@ -268,6 +273,7 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -288,7 +294,7 @@ export interface DBClusterState {
      */
     computeResource?: pulumi.Input<string>;
     /**
-     * The endpoint of the cluster.
+     * The connection string of the cluster.
      */
     connectionString?: pulumi.Input<string>;
     /**
@@ -348,6 +354,10 @@ export interface DBClusterState {
      */
     paymentType?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
+    /**
+     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     */
+    port?: pulumi.Input<string>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */

@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudsso/userAttachment:UserAttachment")]
-    public partial class UserAttachment : Pulumi.CustomResource
+    public partial class UserAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Directory.
@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.CloudSso
         }
     }
 
-    public sealed class UserAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class UserAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Directory.
@@ -114,9 +114,10 @@ namespace Pulumi.AliCloud.CloudSso
         public UserAttachmentArgs()
         {
         }
+        public static new UserAttachmentArgs Empty => new UserAttachmentArgs();
     }
 
-    public sealed class UserAttachmentState : Pulumi.ResourceArgs
+    public sealed class UserAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Directory.
@@ -139,5 +140,6 @@ namespace Pulumi.AliCloud.CloudSso
         public UserAttachmentState()
         {
         }
+        public static new UserAttachmentState Empty => new UserAttachmentState();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,32 +19,29 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "forward-entry-config-example-name";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     cidrBlock: "172.16.0.0/12",
  *     vpcName: name,
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     cidrBlock: "172.16.0.0/21",
  *     vpcId: defaultNetwork.id,
  *     vswitchName: name,
- *     zoneId: defaultZones.zones[0].id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
- * const defaultNatGateway = new alicloud.vpc.NatGateway("default", {
+ * const defaultNatGateway = new alicloud.vpc.NatGateway("defaultNatGateway", {
  *     specification: "Small",
  *     vpcId: defaultNetwork.id,
  * });
- * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {
- *     addressName: name,
- * });
- * const defaultEipAssociation = new alicloud.ecs.EipAssociation("default", {
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {addressName: name});
+ * const defaultEipAssociation = new alicloud.ecs.EipAssociation("defaultEipAssociation", {
  *     allocationId: defaultEipAddress.id,
  *     instanceId: defaultNatGateway.id,
  * });
- * const defaultForwardEntry = new alicloud.vpc.ForwardEntry("default", {
+ * const defaultForwardEntry = new alicloud.vpc.ForwardEntry("defaultForwardEntry", {
  *     externalIp: defaultEipAddress.ipAddress,
  *     externalPort: "80",
  *     forwardTableId: defaultNatGateway.forwardTableIds,
@@ -51,17 +49,14 @@ import * as utilities from "../utilities";
  *     internalPort: "8080",
  *     ipProtocol: "tcp",
  * });
- * const defaultForwardEntries = defaultForwardEntry.forwardTableId.apply(forwardTableId => alicloud.vpc.getForwardEntries({
- *     forwardTableId: forwardTableId,
- * }));
+ * const defaultForwardEntries = alicloud.vpc.getForwardEntriesOutput({
+ *     forwardTableId: defaultForwardEntry.forwardTableId,
+ * });
  * ```
  */
 export function getForwardEntries(args: GetForwardEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardEntriesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getForwardEntries:getForwardEntries", {
         "externalIp": args.externalIp,
         "externalPort": args.externalPort,
@@ -176,9 +171,56 @@ export interface GetForwardEntriesResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
+ *
+ * > **NOTE:** Available in 1.37.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "forward-entry-config-example-name";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     cidrBlock: "172.16.0.0/21",
+ *     vpcId: defaultNetwork.id,
+ *     vswitchName: name,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultNatGateway = new alicloud.vpc.NatGateway("defaultNatGateway", {
+ *     specification: "Small",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {addressName: name});
+ * const defaultEipAssociation = new alicloud.ecs.EipAssociation("defaultEipAssociation", {
+ *     allocationId: defaultEipAddress.id,
+ *     instanceId: defaultNatGateway.id,
+ * });
+ * const defaultForwardEntry = new alicloud.vpc.ForwardEntry("defaultForwardEntry", {
+ *     externalIp: defaultEipAddress.ipAddress,
+ *     externalPort: "80",
+ *     forwardTableId: defaultNatGateway.forwardTableIds,
+ *     internalIp: "172.16.0.3",
+ *     internalPort: "8080",
+ *     ipProtocol: "tcp",
+ * });
+ * const defaultForwardEntries = alicloud.vpc.getForwardEntriesOutput({
+ *     forwardTableId: defaultForwardEntry.forwardTableId,
+ * });
+ * ```
+ */
 export function getForwardEntriesOutput(args: GetForwardEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardEntriesResult> {
-    return pulumi.output(args).apply(a => getForwardEntries(a, opts))
+    return pulumi.output(args).apply((a: any) => getForwardEntries(a, opts))
 }
 
 /**

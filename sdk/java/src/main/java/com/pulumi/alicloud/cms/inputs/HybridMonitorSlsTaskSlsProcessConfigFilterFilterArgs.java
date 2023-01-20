@@ -31,14 +31,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs extends 
     }
 
     /**
-     * The name of the key that is used to filter logs imported from Log Service.
+     * The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     @Import(name="slsKeyName")
     private @Nullable Output<String> slsKeyName;
 
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     public Optional<Output<String>> slsKeyName() {
@@ -46,14 +46,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs extends 
     }
 
     /**
-     * The tag value of the metric.
+     * The value of the key that is used to filter logs imported from Log Service.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The tag value of the metric.
+     * @return The value of the key that is used to filter logs imported from Log Service.
      * 
      */
     public Optional<Output<String>> value() {
@@ -108,7 +108,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs extends 
         }
 
         /**
-         * @param slsKeyName The name of the key that is used to filter logs imported from Log Service.
+         * @param slsKeyName The name of the key that is used to aggregate logs imported from Log Service.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs extends 
         }
 
         /**
-         * @param slsKeyName The name of the key that is used to filter logs imported from Log Service.
+         * @param slsKeyName The name of the key that is used to aggregate logs imported from Log Service.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs extends 
         }
 
         /**
-         * @param value The tag value of the metric.
+         * @param value The value of the key that is used to filter logs imported from Log Service.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs extends 
         }
 
         /**
-         * @param value The tag value of the metric.
+         * @param value The value of the key that is used to filter logs imported from Log Service.
          * 
          * @return builder
          * 

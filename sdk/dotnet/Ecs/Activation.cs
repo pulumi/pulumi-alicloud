@@ -21,24 +21,22 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ecs.Activation("example", new()
     ///     {
-    ///         var example = new AliCloud.Ecs.Activation("example", new AliCloud.Ecs.ActivationArgs
-    ///         {
-    ///             Description = @var.Name,
-    ///             InstanceCount = 10,
-    ///             InstanceName = @var.Name,
-    ///             IpAddressRange = "0.0.0.0/0",
-    ///             TimeToLiveInHours = 4,
-    ///         });
-    ///     }
+    ///         Description = @var.Name,
+    ///         InstanceCount = 10,
+    ///         InstanceName = @var.Name,
+    ///         IpAddressRange = "0.0.0.0/0",
+    ///         TimeToLiveInHours = 4,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/activation:Activation")]
-    public partial class Activation : Pulumi.CustomResource
+    public partial class Activation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
@@ -128,7 +126,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class ActivationArgs : Pulumi.ResourceArgs
+    public sealed class ActivationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
@@ -165,9 +163,10 @@ namespace Pulumi.AliCloud.Ecs
         public ActivationArgs()
         {
         }
+        public static new ActivationArgs Empty => new ActivationArgs();
     }
 
-    public sealed class ActivationState : Pulumi.ResourceArgs
+    public sealed class ActivationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
@@ -204,5 +203,6 @@ namespace Pulumi.AliCloud.Ecs
         public ActivationState()
         {
         }
+        public static new ActivationState Empty => new ActivationState();
     }
 }

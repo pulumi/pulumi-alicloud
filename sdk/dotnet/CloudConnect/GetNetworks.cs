@@ -23,36 +23,35 @@ namespace Pulumi.AliCloud.CloudConnect
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultNetworks = AliCloud.CloudConnect.GetNetworks.Invoke(new()
         ///     {
-        ///         var defaultNetworks = Output.Create(AliCloud.CloudConnect.GetNetworks.InvokeAsync(new AliCloud.CloudConnect.GetNetworksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 alicloud_cloud_connect_networks.Default.Id,
-        ///             },
-        ///             NameRegex = "^tf-testAcc.*",
-        ///         }));
-        ///         var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new AliCloud.CloudConnect.NetworkArgs
-        ///         {
-        ///             CidrBlock = "192.168.0.0/24",
-        ///             Description = "tf-testAccCloudConnectNetworkDescription",
-        ///             IsDefault = true,
-        ///         });
-        ///     }
+        ///             alicloud_cloud_connect_networks.Default.Id,
+        ///         },
+        ///         NameRegex = "^tf-testAcc.*",
+        ///     });
         /// 
-        /// }
+        ///     var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new()
+        ///     {
+        ///         CidrBlock = "192.168.0.0/24",
+        ///         Description = "tf-testAccCloudConnectNetworkDescription",
+        ///         IsDefault = true,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworksResult> InvokeAsync(GetNetworksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:cloudconnect/getNetworks:getNetworks", args ?? new GetNetworksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:cloudconnect/getNetworks:getNetworks", args ?? new GetNetworksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides Cloud Connect Networks available to the user.
@@ -66,40 +65,39 @@ namespace Pulumi.AliCloud.CloudConnect
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultNetworks = AliCloud.CloudConnect.GetNetworks.Invoke(new()
         ///     {
-        ///         var defaultNetworks = Output.Create(AliCloud.CloudConnect.GetNetworks.InvokeAsync(new AliCloud.CloudConnect.GetNetworksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 alicloud_cloud_connect_networks.Default.Id,
-        ///             },
-        ///             NameRegex = "^tf-testAcc.*",
-        ///         }));
-        ///         var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new AliCloud.CloudConnect.NetworkArgs
-        ///         {
-        ///             CidrBlock = "192.168.0.0/24",
-        ///             Description = "tf-testAccCloudConnectNetworkDescription",
-        ///             IsDefault = true,
-        ///         });
-        ///     }
+        ///             alicloud_cloud_connect_networks.Default.Id,
+        ///         },
+        ///         NameRegex = "^tf-testAcc.*",
+        ///     });
         /// 
-        /// }
+        ///     var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new()
+        ///     {
+        ///         CidrBlock = "192.168.0.0/24",
+        ///         Description = "tf-testAccCloudConnectNetworkDescription",
+        ///         IsDefault = true,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworksResult> Invoke(GetNetworksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworksResult>("alicloud:cloudconnect/getNetworks:getNetworks", args ?? new GetNetworksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworksResult>("alicloud:cloudconnect/getNetworks:getNetworks", args ?? new GetNetworksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNetworksArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworksArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -125,9 +123,10 @@ namespace Pulumi.AliCloud.CloudConnect
         public GetNetworksArgs()
         {
         }
+        public static new GetNetworksArgs Empty => new GetNetworksArgs();
     }
 
-    public sealed class GetNetworksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworksInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -153,6 +152,7 @@ namespace Pulumi.AliCloud.CloudConnect
         public GetNetworksInvokeArgs()
         {
         }
+        public static new GetNetworksInvokeArgs Empty => new GetNetworksInvokeArgs();
     }
 
 

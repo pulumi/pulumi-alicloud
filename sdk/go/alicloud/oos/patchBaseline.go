@@ -63,7 +63,7 @@ type PatchBaseline struct {
 	ApprovalRules pulumi.StringOutput `pulumi:"approvalRules"`
 	// Patches baseline description information.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
 	OperationSystem pulumi.StringOutput `pulumi:"operationSystem"`
 	// The name of the patch baseline.
 	PatchBaselineName pulumi.StringOutput `pulumi:"patchBaselineName"`
@@ -111,7 +111,7 @@ type patchBaselineState struct {
 	ApprovalRules *string `pulumi:"approvalRules"`
 	// Patches baseline description information.
 	Description *string `pulumi:"description"`
-	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
 	OperationSystem *string `pulumi:"operationSystem"`
 	// The name of the patch baseline.
 	PatchBaselineName *string `pulumi:"patchBaselineName"`
@@ -122,7 +122,7 @@ type PatchBaselineState struct {
 	ApprovalRules pulumi.StringPtrInput
 	// Patches baseline description information.
 	Description pulumi.StringPtrInput
-	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
 	OperationSystem pulumi.StringPtrInput
 	// The name of the patch baseline.
 	PatchBaselineName pulumi.StringPtrInput
@@ -137,7 +137,7 @@ type patchBaselineArgs struct {
 	ApprovalRules string `pulumi:"approvalRules"`
 	// Patches baseline description information.
 	Description *string `pulumi:"description"`
-	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
 	OperationSystem string `pulumi:"operationSystem"`
 	// The name of the patch baseline.
 	PatchBaselineName string `pulumi:"patchBaselineName"`
@@ -149,7 +149,7 @@ type PatchBaselineArgs struct {
 	ApprovalRules pulumi.StringInput
 	// Patches baseline description information.
 	Description pulumi.StringPtrInput
-	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
 	OperationSystem pulumi.StringInput
 	// The name of the patch baseline.
 	PatchBaselineName pulumi.StringInput
@@ -252,7 +252,7 @@ func (o PatchBaselineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchBaseline) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `Centos`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
 func (o PatchBaselineOutput) OperationSystem() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchBaseline) pulumi.StringOutput { return v.OperationSystem }).(pulumi.StringOutput)
 }

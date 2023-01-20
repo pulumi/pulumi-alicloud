@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultEcsInvocation = new alicloud.ecs.EcsInvocation("defaultEcsInvocation", {
  *     commandId: defaultCommand.id,
- *     instanceIds: [defaultInstances.then(defaultInstances => defaultInstances.ids?[0])],
+ *     instanceIds: [defaultInstances.then(defaultInstances => defaultInstances.ids?.[0])],
  * });
  * ```
  *

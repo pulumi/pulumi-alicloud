@@ -163,13 +163,12 @@ func (o GetQueuesQueueArrayOutput) Index(i pulumi.IntInput) GetQueuesQueueOutput
 
 type GetTopicSubscriptionsSubscription struct {
 	// Describe the terminal address of the message received in this subscription.
-	// * `filterTag`- A string to filter resulting messages of the topic by their message tag.
-	Endpoint  string `pulumi:"endpoint"`
+	Endpoint string `pulumi:"endpoint"`
+	// A string to filter resulting messages of the topic by their message tag.
 	FilterTag string `pulumi:"filterTag"`
 	// The ID of the topic subscription. The value is set to `name`.
 	Id string `pulumi:"id"`
 	// The name of the subscription.
-	// * `topicName`- The topic which The subscription belongs to was named with the name.
 	Name string `pulumi:"name"`
 	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users.
 	NotifyContentFormat string `pulumi:"notifyContentFormat"`
@@ -192,13 +191,12 @@ type GetTopicSubscriptionsSubscriptionInput interface {
 
 type GetTopicSubscriptionsSubscriptionArgs struct {
 	// Describe the terminal address of the message received in this subscription.
-	// * `filterTag`- A string to filter resulting messages of the topic by their message tag.
-	Endpoint  pulumi.StringInput `pulumi:"endpoint"`
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// A string to filter resulting messages of the topic by their message tag.
 	FilterTag pulumi.StringInput `pulumi:"filterTag"`
 	// The ID of the topic subscription. The value is set to `name`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the subscription.
-	// * `topicName`- The topic which The subscription belongs to was named with the name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users.
 	NotifyContentFormat pulumi.StringInput `pulumi:"notifyContentFormat"`
@@ -260,11 +258,11 @@ func (o GetTopicSubscriptionsSubscriptionOutput) ToGetTopicSubscriptionsSubscrip
 }
 
 // Describe the terminal address of the message received in this subscription.
-// * `filterTag`- A string to filter resulting messages of the topic by their message tag.
 func (o GetTopicSubscriptionsSubscriptionOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicSubscriptionsSubscription) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
+// A string to filter resulting messages of the topic by their message tag.
 func (o GetTopicSubscriptionsSubscriptionOutput) FilterTag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicSubscriptionsSubscription) string { return v.FilterTag }).(pulumi.StringOutput)
 }
@@ -275,7 +273,6 @@ func (o GetTopicSubscriptionsSubscriptionOutput) Id() pulumi.StringOutput {
 }
 
 // The name of the subscription.
-// * `topicName`- The topic which The subscription belongs to was named with the name.
 func (o GetTopicSubscriptionsSubscriptionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicSubscriptionsSubscription) string { return v.Name }).(pulumi.StringOutput)
 }

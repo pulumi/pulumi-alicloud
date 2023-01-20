@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const example = alicloud.adb.getDBClusters({
  *     descriptionRegex: "example",
  * });
- * export const firstAdbDbClusterId = example.then(example => example.clusters?[0]?.id);
+ * export const firstAdbDbClusterId = example.then(example => example.clusters?.[0]?.id);
  * ```
  */
 export function getDBClusters(args?: GetDBClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDBClustersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:adb/getDBClusters:getDBClusters", {
         "description": args.description,
         "descriptionRegex": args.descriptionRegex,
@@ -104,9 +102,27 @@ export interface GetDBClustersResult {
     readonly tags?: {[key: string]: any};
     readonly totalCount: number;
 }
-
+/**
+ * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.121.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.adb.getDBClusters({
+ *     descriptionRegex: "example",
+ * });
+ * export const firstAdbDbClusterId = example.then(example => example.clusters?.[0]?.id);
+ * ```
+ */
 export function getDBClustersOutput(args?: GetDBClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBClustersResult> {
-    return pulumi.output(args).apply(a => getDBClusters(a, opts))
+    return pulumi.output(args).apply((a: any) => getDBClusters(a, opts))
 }
 
 /**

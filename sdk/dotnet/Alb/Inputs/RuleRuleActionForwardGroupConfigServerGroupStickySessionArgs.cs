@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs : Pulumi.ResourceArgs
+    public sealed class RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to enable session persistence.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs()
         {
         }
+        public static new RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs Empty => new RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs();
     }
 }

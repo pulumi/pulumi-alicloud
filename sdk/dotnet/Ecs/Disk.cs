@@ -13,30 +13,28 @@ namespace Pulumi.AliCloud.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new ECS disk.
+    ///     var ecsDisk = new AliCloud.Ecs.Disk("ecsDisk", new()
     ///     {
-    ///         // Create a new ECS disk.
-    ///         var ecsDisk = new AliCloud.Ecs.Disk("ecsDisk", new AliCloud.Ecs.DiskArgs
+    ///         AvailabilityZone = "cn-beijing-b",
+    ///         Category = "cloud_efficiency",
+    ///         Description = "Hello ecs disk.",
+    ///         Encrypted = true,
+    ///         KmsKeyId = "2a6767f0-a16c-4679-a60f-13bf*****",
+    ///         Size = 30,
+    ///         Tags = 
     ///         {
-    ///             AvailabilityZone = "cn-beijing-b",
-    ///             Category = "cloud_efficiency",
-    ///             Description = "Hello ecs disk.",
-    ///             Encrypted = true,
-    ///             KmsKeyId = "2a6767f0-a16c-4679-a60f-13bf*****",
-    ///             Size = 30,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "TerraformTest" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "Name", "TerraformTest" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/disk:Disk")]
-    public partial class Disk : Pulumi.CustomResource
+    public partial class Disk : global::Pulumi.CustomResource
     {
         [Output("advancedFeatures")]
         public Output<string?> AdvancedFeatures { get; private set; } = null!;
@@ -126,10 +124,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
-        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
         /// </summary>
         [Output("performanceLevel")]
         public Output<string> PerformanceLevel { get; private set; } = null!;
@@ -221,7 +216,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class DiskArgs : Pulumi.ResourceArgs
+    public sealed class DiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("advancedFeatures")]
         public Input<string>? AdvancedFeatures { get; set; }
@@ -299,10 +294,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
-        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
@@ -353,9 +345,10 @@ namespace Pulumi.AliCloud.Ecs
         public DiskArgs()
         {
         }
+        public static new DiskArgs Empty => new DiskArgs();
     }
 
-    public sealed class DiskState : Pulumi.ResourceArgs
+    public sealed class DiskState : global::Pulumi.ResourceArgs
     {
         [Input("advancedFeatures")]
         public Input<string>? AdvancedFeatures { get; set; }
@@ -433,10 +426,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
-        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
@@ -493,5 +483,6 @@ namespace Pulumi.AliCloud.Ecs
         public DiskState()
         {
         }
+        public static new DiskState Empty => new DiskState();
     }
 }

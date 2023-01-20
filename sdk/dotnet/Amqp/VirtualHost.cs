@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Amqp
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Amqp.VirtualHost("example", new()
     ///     {
-    ///         var example = new AliCloud.Amqp.VirtualHost("example", new AliCloud.Amqp.VirtualHostArgs
-    ///         {
-    ///             InstanceId = "amqp-abc12345",
-    ///             VirtualHostName = "my-VirtualHost",
-    ///         });
-    ///     }
+    ///         InstanceId = "amqp-abc12345",
+    ///         VirtualHostName = "my-VirtualHost",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Amqp
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:amqp/virtualHost:VirtualHost")]
-    public partial class VirtualHost : Pulumi.CustomResource
+    public partial class VirtualHost : global::Pulumi.CustomResource
     {
         /// <summary>
         /// InstanceId.
@@ -105,7 +103,7 @@ namespace Pulumi.AliCloud.Amqp
         }
     }
 
-    public sealed class VirtualHostArgs : Pulumi.ResourceArgs
+    public sealed class VirtualHostArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// InstanceId.
@@ -122,9 +120,10 @@ namespace Pulumi.AliCloud.Amqp
         public VirtualHostArgs()
         {
         }
+        public static new VirtualHostArgs Empty => new VirtualHostArgs();
     }
 
-    public sealed class VirtualHostState : Pulumi.ResourceArgs
+    public sealed class VirtualHostState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// InstanceId.
@@ -141,5 +140,6 @@ namespace Pulumi.AliCloud.Amqp
         public VirtualHostState()
         {
         }
+        public static new VirtualHostState Empty => new VirtualHostState();
     }
 }

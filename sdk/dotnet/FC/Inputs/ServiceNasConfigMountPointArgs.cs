@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC.Inputs
 {
 
-    public sealed class ServiceNasConfigMountPointArgs : Pulumi.ResourceArgs
+    public sealed class ServiceNasConfigMountPointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The local address where to mount your remote NAS directory.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.FC.Inputs
         public ServiceNasConfigMountPointArgs()
         {
         }
+        public static new ServiceNasConfigMountPointArgs Empty => new ServiceNasConfigMountPointArgs();
     }
 }

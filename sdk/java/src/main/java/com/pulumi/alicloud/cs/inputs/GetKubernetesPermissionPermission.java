@@ -17,7 +17,6 @@ public final class GetKubernetesPermissionPermission extends com.pulumi.resource
 
     /**
      * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-     * * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
      * 
      */
     @Import(name="isOwner")
@@ -25,16 +24,23 @@ public final class GetKubernetesPermissionPermission extends com.pulumi.resource
 
     /**
      * @return ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-     * * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
      * 
      */
     public Optional<Boolean> isOwner() {
         return Optional.ofNullable(this.isOwner);
     }
 
+    /**
+     * Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+     * 
+     */
     @Import(name="isRamRole")
     private @Nullable Boolean isRamRole;
 
+    /**
+     * @return Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+     * 
+     */
     public Optional<Boolean> isRamRole() {
         return Optional.ofNullable(this.isRamRole);
     }
@@ -130,7 +136,6 @@ public final class GetKubernetesPermissionPermission extends com.pulumi.resource
 
         /**
          * @param isOwner ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-         * * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
          * 
          * @return builder
          * 
@@ -140,6 +145,12 @@ public final class GetKubernetesPermissionPermission extends com.pulumi.resource
             return this;
         }
 
+        /**
+         * @param isRamRole Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRamRole(@Nullable Boolean isRamRole) {
             $.isRamRole = isRamRole;
             return this;

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn.Inputs
 {
 
-    public sealed class DomainPage404ConfigArgs : Pulumi.ResourceArgs
+    public sealed class DomainPage404ConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("customPageUrl")]
         public Input<string>? CustomPageUrl { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         public DomainPage404ConfigArgs()
         {
         }
+        public static new DomainPage404ConfigArgs Empty => new DomainPage404ConfigArgs();
     }
 }

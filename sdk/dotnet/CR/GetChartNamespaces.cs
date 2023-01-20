@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.CR
         /// &gt; **NOTE:** Available in v1.149.0+.
         /// </summary>
         public static Task<GetChartNamespacesResult> InvokeAsync(GetChartNamespacesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChartNamespacesResult>("alicloud:cr/getChartNamespaces:getChartNamespaces", args ?? new GetChartNamespacesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetChartNamespacesResult>("alicloud:cr/getChartNamespaces:getChartNamespaces", args ?? new GetChartNamespacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cr Chart Namespaces of the current Alibaba Cloud user.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.CR
         /// &gt; **NOTE:** Available in v1.149.0+.
         /// </summary>
         public static Output<GetChartNamespacesResult> Invoke(GetChartNamespacesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChartNamespacesResult>("alicloud:cr/getChartNamespaces:getChartNamespaces", args ?? new GetChartNamespacesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetChartNamespacesResult>("alicloud:cr/getChartNamespaces:getChartNamespaces", args ?? new GetChartNamespacesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetChartNamespacesArgs : Pulumi.InvokeArgs
+    public sealed class GetChartNamespacesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -61,9 +61,10 @@ namespace Pulumi.AliCloud.CR
         public GetChartNamespacesArgs()
         {
         }
+        public static new GetChartNamespacesArgs Empty => new GetChartNamespacesArgs();
     }
 
-    public sealed class GetChartNamespacesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetChartNamespacesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -95,6 +96,7 @@ namespace Pulumi.AliCloud.CR
         public GetChartNamespacesInvokeArgs()
         {
         }
+        public static new GetChartNamespacesInvokeArgs Empty => new GetChartNamespacesInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ehpc.Inputs
 {
 
-    public sealed class ClusterPostInstallScriptGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterPostInstallScriptGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The parameter that is used to run the script after the cluster is created.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ehpc.Inputs
         public ClusterPostInstallScriptGetArgs()
         {
         }
+        public static new ClusterPostInstallScriptGetArgs Empty => new ClusterPostInstallScriptGetArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Cfg
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/aggregateDelivery:AggregateDelivery")]
-    public partial class AggregateDelivery : Pulumi.CustomResource
+    public partial class AggregateDelivery : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Aggregator.
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Cfg
         }
     }
 
-    public sealed class AggregateDeliveryArgs : Pulumi.ResourceArgs
+    public sealed class AggregateDeliveryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Aggregator.
@@ -224,9 +224,10 @@ namespace Pulumi.AliCloud.Cfg
         public AggregateDeliveryArgs()
         {
         }
+        public static new AggregateDeliveryArgs Empty => new AggregateDeliveryArgs();
     }
 
-    public sealed class AggregateDeliveryState : Pulumi.ResourceArgs
+    public sealed class AggregateDeliveryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Aggregator.
@@ -308,5 +309,6 @@ namespace Pulumi.AliCloud.Cfg
         public AggregateDeliveryState()
         {
         }
+        public static new AggregateDeliveryState Empty => new AggregateDeliveryState();
     }
 }

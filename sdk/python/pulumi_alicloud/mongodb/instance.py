@@ -1132,7 +1132,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["backup_periods"] = backup_periods
             __props__.__dict__["backup_time"] = backup_time
@@ -1169,6 +1169,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["replica_sets"] = None
             __props__.__dict__["retention_period"] = None
             __props__.__dict__["ssl_status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'alicloud:mongodb/instance:Instance',
             resource_name,

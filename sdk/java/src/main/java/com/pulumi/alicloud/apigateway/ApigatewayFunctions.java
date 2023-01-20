@@ -12,12 +12,21 @@ import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
 import com.pulumi.alicloud.apigateway.inputs.GetBackendsPlainArgs;
 import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
 import com.pulumi.alicloud.apigateway.inputs.GetGroupsPlainArgs;
+import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
+import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsPlainArgs;
+import com.pulumi.alicloud.apigateway.inputs.GetModelsArgs;
+import com.pulumi.alicloud.apigateway.inputs.GetModelsPlainArgs;
+import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
+import com.pulumi.alicloud.apigateway.inputs.GetPluginsPlainArgs;
 import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
 import com.pulumi.alicloud.apigateway.inputs.GetServicePlainArgs;
 import com.pulumi.alicloud.apigateway.outputs.GetApisResult;
 import com.pulumi.alicloud.apigateway.outputs.GetAppsResult;
 import com.pulumi.alicloud.apigateway.outputs.GetBackendsResult;
 import com.pulumi.alicloud.apigateway.outputs.GetGroupsResult;
+import com.pulumi.alicloud.apigateway.outputs.GetLogConfigsResult;
+import com.pulumi.alicloud.apigateway.outputs.GetModelsResult;
+import com.pulumi.alicloud.apigateway.outputs.GetPluginsResult;
 import com.pulumi.alicloud.apigateway.outputs.GetServiceResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -949,6 +958,750 @@ public final class ApigatewayFunctions {
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:apigateway/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.185.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayLogConfigId1&#34;, ids.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+     *             .logType(&#34;PROVIDER&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayLogConfigId2&#34;, logType.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetLogConfigsResult> getLogConfigs() {
+        return getLogConfigs(GetLogConfigsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.185.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayLogConfigId1&#34;, ids.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+     *             .logType(&#34;PROVIDER&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayLogConfigId2&#34;, logType.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetLogConfigsResult> getLogConfigsPlain() {
+        return getLogConfigsPlain(GetLogConfigsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.185.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayLogConfigId1&#34;, ids.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+     *             .logType(&#34;PROVIDER&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayLogConfigId2&#34;, logType.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetLogConfigsResult> getLogConfigs(GetLogConfigsArgs args) {
+        return getLogConfigs(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.185.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayLogConfigId1&#34;, ids.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+     *             .logType(&#34;PROVIDER&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayLogConfigId2&#34;, logType.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetLogConfigsResult> getLogConfigsPlain(GetLogConfigsPlainArgs args) {
+        return getLogConfigsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.185.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayLogConfigId1&#34;, ids.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+     *             .logType(&#34;PROVIDER&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayLogConfigId2&#34;, logType.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetLogConfigsResult> getLogConfigs(GetLogConfigsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apigateway/getLogConfigs:getLogConfigs", TypeShape.of(GetLogConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.185.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayLogConfigId1&#34;, ids.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
+     *             .logType(&#34;PROVIDER&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayLogConfigId2&#34;, logType.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetLogConfigsResult> getLogConfigsPlain(GetLogConfigsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:apigateway/getLogConfigs:getLogConfigs", TypeShape.of(GetLogConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Api Gateway Models of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetModelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getModels(GetModelsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .groupId(&#34;example_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayModelId1&#34;, ids.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
+     *             .groupId(&#34;example_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayModelId2&#34;, groupId.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetModelsResult> getModels(GetModelsArgs args) {
+        return getModels(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Models of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetModelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getModels(GetModelsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .groupId(&#34;example_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayModelId1&#34;, ids.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
+     *             .groupId(&#34;example_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayModelId2&#34;, groupId.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetModelsResult> getModelsPlain(GetModelsPlainArgs args) {
+        return getModelsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Models of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetModelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getModels(GetModelsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .groupId(&#34;example_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayModelId1&#34;, ids.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
+     *             .groupId(&#34;example_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayModelId2&#34;, groupId.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetModelsResult> getModels(GetModelsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apigateway/getModels:getModels", TypeShape.of(GetModelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Api Gateway Models of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetModelsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getModels(GetModelsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .groupId(&#34;example_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayModelId1&#34;, ids.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
+     *             .groupId(&#34;example_group_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayModelId2&#34;, groupId.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetModelsResult> getModelsPlain(GetModelsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:apigateway/getModels:getModels", TypeShape.of(GetModelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getPlugins();
+     * 
+     *         ctx.export(&#34;apiGatewayPluginId1&#34;, ids.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .nameRegex(&#34;^my-Plugin&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayPluginId2&#34;, nameRegex.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPluginsResult> getPlugins() {
+        return getPlugins(GetPluginsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getPlugins();
+     * 
+     *         ctx.export(&#34;apiGatewayPluginId1&#34;, ids.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .nameRegex(&#34;^my-Plugin&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayPluginId2&#34;, nameRegex.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPluginsResult> getPluginsPlain() {
+        return getPluginsPlain(GetPluginsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getPlugins();
+     * 
+     *         ctx.export(&#34;apiGatewayPluginId1&#34;, ids.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .nameRegex(&#34;^my-Plugin&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayPluginId2&#34;, nameRegex.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPluginsResult> getPlugins(GetPluginsArgs args) {
+        return getPlugins(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getPlugins();
+     * 
+     *         ctx.export(&#34;apiGatewayPluginId1&#34;, ids.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .nameRegex(&#34;^my-Plugin&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayPluginId2&#34;, nameRegex.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPluginsResult> getPluginsPlain(GetPluginsPlainArgs args) {
+        return getPluginsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getPlugins();
+     * 
+     *         ctx.export(&#34;apiGatewayPluginId1&#34;, ids.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .nameRegex(&#34;^my-Plugin&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayPluginId2&#34;, nameRegex.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPluginsResult> getPlugins(GetPluginsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apigateway/getPlugins:getPlugins", TypeShape.of(GetPluginsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
+     * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ApigatewayFunctions.getPlugins();
+     * 
+     *         ctx.export(&#34;apiGatewayPluginId1&#34;, ids.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .nameRegex(&#34;^my-Plugin&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;apiGatewayPluginId2&#34;, nameRegex.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPluginsResult> getPluginsPlain(GetPluginsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:apigateway/getPlugins:getPlugins", TypeShape.of(GetPluginsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Using this data source can enable API gateway service automatically. If the service has been enabled, it will return `Opened`.

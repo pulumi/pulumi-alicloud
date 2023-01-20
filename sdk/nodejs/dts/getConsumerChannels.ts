@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,15 +20,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.dts.getConsumerChannels({});
- * export const dtsConsumerChannelId1 = ids.then(ids => ids.channels?[0]?.id);
+ * export const dtsConsumerChannelId1 = ids.then(ids => ids.channels?.[0]?.id);
  * ```
  */
 export function getConsumerChannels(args: GetConsumerChannelsArgs, opts?: pulumi.InvokeOptions): Promise<GetConsumerChannelsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dts/getConsumerChannels:getConsumerChannels", {
         "dtsInstanceId": args.dtsInstanceId,
         "ids": args.ids,
@@ -63,9 +61,25 @@ export interface GetConsumerChannelsResult {
     readonly ids: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.146.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dts.getConsumerChannels({});
+ * export const dtsConsumerChannelId1 = ids.then(ids => ids.channels?.[0]?.id);
+ * ```
+ */
 export function getConsumerChannelsOutput(args: GetConsumerChannelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsumerChannelsResult> {
-    return pulumi.output(args).apply(a => getConsumerChannels(a, opts))
+    return pulumi.output(args).apply((a: any) => getConsumerChannels(a, opts))
 }
 
 /**

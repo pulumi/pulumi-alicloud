@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -26,16 +27,13 @@ import * as utilities from "../utilities";
  *     ids: [defaultFaceConfig.id],
  *     nameRegex: defaultFaceConfig.bizName,
  * });
- * export const faceConfig = defaultFaceConfigs.apply(defaultFaceConfigs => defaultFaceConfigs.configs?[0]);
+ * export const faceConfig = defaultFaceConfigs.apply(defaultFaceConfigs => defaultFaceConfigs.configs?.[0]);
  * ```
  */
 export function getFaceConfigs(args?: GetFaceConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetFaceConfigsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -72,9 +70,32 @@ export interface GetFaceConfigsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Cloudauth Face Configs of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.137.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultFaceConfig = new alicloud.cloudauth.FaceConfig("defaultFaceConfig", {
+ *     bizName: "example-value",
+ *     bizType: "example-value",
+ * });
+ * const defaultFaceConfigs = alicloud.cloudauth.getFaceConfigsOutput({
+ *     ids: [defaultFaceConfig.id],
+ *     nameRegex: defaultFaceConfig.bizName,
+ * });
+ * export const faceConfig = defaultFaceConfigs.apply(defaultFaceConfigs => defaultFaceConfigs.configs?.[0]);
+ * ```
+ */
 export function getFaceConfigsOutput(args?: GetFaceConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFaceConfigsResult> {
-    return pulumi.output(args).apply(a => getFaceConfigs(a, opts))
+    return pulumi.output(args).apply((a: any) => getFaceConfigs(a, opts))
 }
 
 /**

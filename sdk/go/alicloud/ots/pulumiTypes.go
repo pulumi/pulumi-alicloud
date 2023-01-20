@@ -10,10 +10,700 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type TablePrimaryKey struct {
-	// Name for primary key.
+type SearchIndexSchema struct {
+	// A list of field schemas. Each field schema contains the following parameters:
+	FieldSchemas []SearchIndexSchemaFieldSchema `pulumi:"fieldSchemas"`
+	// The settings of the search index, including routingFields.
+	IndexSettings []SearchIndexSchemaIndexSetting `pulumi:"indexSettings"`
+	// The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
+	IndexSorts []SearchIndexSchemaIndexSort `pulumi:"indexSorts"`
+}
+
+// SearchIndexSchemaInput is an input type that accepts SearchIndexSchemaArgs and SearchIndexSchemaOutput values.
+// You can construct a concrete instance of `SearchIndexSchemaInput` via:
+//
+//	SearchIndexSchemaArgs{...}
+type SearchIndexSchemaInput interface {
+	pulumi.Input
+
+	ToSearchIndexSchemaOutput() SearchIndexSchemaOutput
+	ToSearchIndexSchemaOutputWithContext(context.Context) SearchIndexSchemaOutput
+}
+
+type SearchIndexSchemaArgs struct {
+	// A list of field schemas. Each field schema contains the following parameters:
+	FieldSchemas SearchIndexSchemaFieldSchemaArrayInput `pulumi:"fieldSchemas"`
+	// The settings of the search index, including routingFields.
+	IndexSettings SearchIndexSchemaIndexSettingArrayInput `pulumi:"indexSettings"`
+	// The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
+	IndexSorts SearchIndexSchemaIndexSortArrayInput `pulumi:"indexSorts"`
+}
+
+func (SearchIndexSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchIndexSchema)(nil)).Elem()
+}
+
+func (i SearchIndexSchemaArgs) ToSearchIndexSchemaOutput() SearchIndexSchemaOutput {
+	return i.ToSearchIndexSchemaOutputWithContext(context.Background())
+}
+
+func (i SearchIndexSchemaArgs) ToSearchIndexSchemaOutputWithContext(ctx context.Context) SearchIndexSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaOutput)
+}
+
+// SearchIndexSchemaArrayInput is an input type that accepts SearchIndexSchemaArray and SearchIndexSchemaArrayOutput values.
+// You can construct a concrete instance of `SearchIndexSchemaArrayInput` via:
+//
+//	SearchIndexSchemaArray{ SearchIndexSchemaArgs{...} }
+type SearchIndexSchemaArrayInput interface {
+	pulumi.Input
+
+	ToSearchIndexSchemaArrayOutput() SearchIndexSchemaArrayOutput
+	ToSearchIndexSchemaArrayOutputWithContext(context.Context) SearchIndexSchemaArrayOutput
+}
+
+type SearchIndexSchemaArray []SearchIndexSchemaInput
+
+func (SearchIndexSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchIndexSchema)(nil)).Elem()
+}
+
+func (i SearchIndexSchemaArray) ToSearchIndexSchemaArrayOutput() SearchIndexSchemaArrayOutput {
+	return i.ToSearchIndexSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i SearchIndexSchemaArray) ToSearchIndexSchemaArrayOutputWithContext(ctx context.Context) SearchIndexSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaArrayOutput)
+}
+
+type SearchIndexSchemaOutput struct{ *pulumi.OutputState }
+
+func (SearchIndexSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchIndexSchema)(nil)).Elem()
+}
+
+func (o SearchIndexSchemaOutput) ToSearchIndexSchemaOutput() SearchIndexSchemaOutput {
+	return o
+}
+
+func (o SearchIndexSchemaOutput) ToSearchIndexSchemaOutputWithContext(ctx context.Context) SearchIndexSchemaOutput {
+	return o
+}
+
+// A list of field schemas. Each field schema contains the following parameters:
+func (o SearchIndexSchemaOutput) FieldSchemas() SearchIndexSchemaFieldSchemaArrayOutput {
+	return o.ApplyT(func(v SearchIndexSchema) []SearchIndexSchemaFieldSchema { return v.FieldSchemas }).(SearchIndexSchemaFieldSchemaArrayOutput)
+}
+
+// The settings of the search index, including routingFields.
+func (o SearchIndexSchemaOutput) IndexSettings() SearchIndexSchemaIndexSettingArrayOutput {
+	return o.ApplyT(func(v SearchIndexSchema) []SearchIndexSchemaIndexSetting { return v.IndexSettings }).(SearchIndexSchemaIndexSettingArrayOutput)
+}
+
+// The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
+func (o SearchIndexSchemaOutput) IndexSorts() SearchIndexSchemaIndexSortArrayOutput {
+	return o.ApplyT(func(v SearchIndexSchema) []SearchIndexSchemaIndexSort { return v.IndexSorts }).(SearchIndexSchemaIndexSortArrayOutput)
+}
+
+type SearchIndexSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (SearchIndexSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchIndexSchema)(nil)).Elem()
+}
+
+func (o SearchIndexSchemaArrayOutput) ToSearchIndexSchemaArrayOutput() SearchIndexSchemaArrayOutput {
+	return o
+}
+
+func (o SearchIndexSchemaArrayOutput) ToSearchIndexSchemaArrayOutputWithContext(ctx context.Context) SearchIndexSchemaArrayOutput {
+	return o
+}
+
+func (o SearchIndexSchemaArrayOutput) Index(i pulumi.IntInput) SearchIndexSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SearchIndexSchema {
+		return vs[0].([]SearchIndexSchema)[vs[1].(int)]
+	}).(SearchIndexSchemaOutput)
+}
+
+type SearchIndexSchemaFieldSchema struct {
+	// Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+	Analyzer *string `pulumi:"analyzer"`
+	// Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enableSortAndAgg is set to true.
+	EnableSortAndAgg *bool `pulumi:"enableSortAndAgg"`
+	// The name of the field that is used to sort data. only required if sorterType is FieldSort.
+	FieldName string `pulumi:"fieldName"`
+	// Specifies the type of the field. Use FieldType.XXX to set the type.
+	FieldType string `pulumi:"fieldType"`
+	// Specifies whether to enable indexing for the column. Type: Boolean.
+	Index *bool `pulumi:"index"`
+	// Specifies whether the value is an array. Type: Boolean.
+	IsArray *bool `pulumi:"isArray"`
+	// Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+	Store *bool `pulumi:"store"`
+}
+
+// SearchIndexSchemaFieldSchemaInput is an input type that accepts SearchIndexSchemaFieldSchemaArgs and SearchIndexSchemaFieldSchemaOutput values.
+// You can construct a concrete instance of `SearchIndexSchemaFieldSchemaInput` via:
+//
+//	SearchIndexSchemaFieldSchemaArgs{...}
+type SearchIndexSchemaFieldSchemaInput interface {
+	pulumi.Input
+
+	ToSearchIndexSchemaFieldSchemaOutput() SearchIndexSchemaFieldSchemaOutput
+	ToSearchIndexSchemaFieldSchemaOutputWithContext(context.Context) SearchIndexSchemaFieldSchemaOutput
+}
+
+type SearchIndexSchemaFieldSchemaArgs struct {
+	// Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+	Analyzer pulumi.StringPtrInput `pulumi:"analyzer"`
+	// Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enableSortAndAgg is set to true.
+	EnableSortAndAgg pulumi.BoolPtrInput `pulumi:"enableSortAndAgg"`
+	// The name of the field that is used to sort data. only required if sorterType is FieldSort.
+	FieldName pulumi.StringInput `pulumi:"fieldName"`
+	// Specifies the type of the field. Use FieldType.XXX to set the type.
+	FieldType pulumi.StringInput `pulumi:"fieldType"`
+	// Specifies whether to enable indexing for the column. Type: Boolean.
+	Index pulumi.BoolPtrInput `pulumi:"index"`
+	// Specifies whether the value is an array. Type: Boolean.
+	IsArray pulumi.BoolPtrInput `pulumi:"isArray"`
+	// Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+	Store pulumi.BoolPtrInput `pulumi:"store"`
+}
+
+func (SearchIndexSchemaFieldSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchIndexSchemaFieldSchema)(nil)).Elem()
+}
+
+func (i SearchIndexSchemaFieldSchemaArgs) ToSearchIndexSchemaFieldSchemaOutput() SearchIndexSchemaFieldSchemaOutput {
+	return i.ToSearchIndexSchemaFieldSchemaOutputWithContext(context.Background())
+}
+
+func (i SearchIndexSchemaFieldSchemaArgs) ToSearchIndexSchemaFieldSchemaOutputWithContext(ctx context.Context) SearchIndexSchemaFieldSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaFieldSchemaOutput)
+}
+
+// SearchIndexSchemaFieldSchemaArrayInput is an input type that accepts SearchIndexSchemaFieldSchemaArray and SearchIndexSchemaFieldSchemaArrayOutput values.
+// You can construct a concrete instance of `SearchIndexSchemaFieldSchemaArrayInput` via:
+//
+//	SearchIndexSchemaFieldSchemaArray{ SearchIndexSchemaFieldSchemaArgs{...} }
+type SearchIndexSchemaFieldSchemaArrayInput interface {
+	pulumi.Input
+
+	ToSearchIndexSchemaFieldSchemaArrayOutput() SearchIndexSchemaFieldSchemaArrayOutput
+	ToSearchIndexSchemaFieldSchemaArrayOutputWithContext(context.Context) SearchIndexSchemaFieldSchemaArrayOutput
+}
+
+type SearchIndexSchemaFieldSchemaArray []SearchIndexSchemaFieldSchemaInput
+
+func (SearchIndexSchemaFieldSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchIndexSchemaFieldSchema)(nil)).Elem()
+}
+
+func (i SearchIndexSchemaFieldSchemaArray) ToSearchIndexSchemaFieldSchemaArrayOutput() SearchIndexSchemaFieldSchemaArrayOutput {
+	return i.ToSearchIndexSchemaFieldSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i SearchIndexSchemaFieldSchemaArray) ToSearchIndexSchemaFieldSchemaArrayOutputWithContext(ctx context.Context) SearchIndexSchemaFieldSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaFieldSchemaArrayOutput)
+}
+
+type SearchIndexSchemaFieldSchemaOutput struct{ *pulumi.OutputState }
+
+func (SearchIndexSchemaFieldSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchIndexSchemaFieldSchema)(nil)).Elem()
+}
+
+func (o SearchIndexSchemaFieldSchemaOutput) ToSearchIndexSchemaFieldSchemaOutput() SearchIndexSchemaFieldSchemaOutput {
+	return o
+}
+
+func (o SearchIndexSchemaFieldSchemaOutput) ToSearchIndexSchemaFieldSchemaOutputWithContext(ctx context.Context) SearchIndexSchemaFieldSchemaOutput {
+	return o
+}
+
+// Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+func (o SearchIndexSchemaFieldSchemaOutput) Analyzer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SearchIndexSchemaFieldSchema) *string { return v.Analyzer }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enableSortAndAgg is set to true.
+func (o SearchIndexSchemaFieldSchemaOutput) EnableSortAndAgg() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SearchIndexSchemaFieldSchema) *bool { return v.EnableSortAndAgg }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the field that is used to sort data. only required if sorterType is FieldSort.
+func (o SearchIndexSchemaFieldSchemaOutput) FieldName() pulumi.StringOutput {
+	return o.ApplyT(func(v SearchIndexSchemaFieldSchema) string { return v.FieldName }).(pulumi.StringOutput)
+}
+
+// Specifies the type of the field. Use FieldType.XXX to set the type.
+func (o SearchIndexSchemaFieldSchemaOutput) FieldType() pulumi.StringOutput {
+	return o.ApplyT(func(v SearchIndexSchemaFieldSchema) string { return v.FieldType }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable indexing for the column. Type: Boolean.
+func (o SearchIndexSchemaFieldSchemaOutput) Index() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SearchIndexSchemaFieldSchema) *bool { return v.Index }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the value is an array. Type: Boolean.
+func (o SearchIndexSchemaFieldSchemaOutput) IsArray() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SearchIndexSchemaFieldSchema) *bool { return v.IsArray }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+func (o SearchIndexSchemaFieldSchemaOutput) Store() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SearchIndexSchemaFieldSchema) *bool { return v.Store }).(pulumi.BoolPtrOutput)
+}
+
+type SearchIndexSchemaFieldSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (SearchIndexSchemaFieldSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchIndexSchemaFieldSchema)(nil)).Elem()
+}
+
+func (o SearchIndexSchemaFieldSchemaArrayOutput) ToSearchIndexSchemaFieldSchemaArrayOutput() SearchIndexSchemaFieldSchemaArrayOutput {
+	return o
+}
+
+func (o SearchIndexSchemaFieldSchemaArrayOutput) ToSearchIndexSchemaFieldSchemaArrayOutputWithContext(ctx context.Context) SearchIndexSchemaFieldSchemaArrayOutput {
+	return o
+}
+
+func (o SearchIndexSchemaFieldSchemaArrayOutput) Index(i pulumi.IntInput) SearchIndexSchemaFieldSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SearchIndexSchemaFieldSchema {
+		return vs[0].([]SearchIndexSchemaFieldSchema)[vs[1].(int)]
+	}).(SearchIndexSchemaFieldSchemaOutput)
+}
+
+type SearchIndexSchemaIndexSetting struct {
+	// Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
+	RoutingFields []string `pulumi:"routingFields"`
+}
+
+// SearchIndexSchemaIndexSettingInput is an input type that accepts SearchIndexSchemaIndexSettingArgs and SearchIndexSchemaIndexSettingOutput values.
+// You can construct a concrete instance of `SearchIndexSchemaIndexSettingInput` via:
+//
+//	SearchIndexSchemaIndexSettingArgs{...}
+type SearchIndexSchemaIndexSettingInput interface {
+	pulumi.Input
+
+	ToSearchIndexSchemaIndexSettingOutput() SearchIndexSchemaIndexSettingOutput
+	ToSearchIndexSchemaIndexSettingOutputWithContext(context.Context) SearchIndexSchemaIndexSettingOutput
+}
+
+type SearchIndexSchemaIndexSettingArgs struct {
+	// Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
+	RoutingFields pulumi.StringArrayInput `pulumi:"routingFields"`
+}
+
+func (SearchIndexSchemaIndexSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchIndexSchemaIndexSetting)(nil)).Elem()
+}
+
+func (i SearchIndexSchemaIndexSettingArgs) ToSearchIndexSchemaIndexSettingOutput() SearchIndexSchemaIndexSettingOutput {
+	return i.ToSearchIndexSchemaIndexSettingOutputWithContext(context.Background())
+}
+
+func (i SearchIndexSchemaIndexSettingArgs) ToSearchIndexSchemaIndexSettingOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaIndexSettingOutput)
+}
+
+// SearchIndexSchemaIndexSettingArrayInput is an input type that accepts SearchIndexSchemaIndexSettingArray and SearchIndexSchemaIndexSettingArrayOutput values.
+// You can construct a concrete instance of `SearchIndexSchemaIndexSettingArrayInput` via:
+//
+//	SearchIndexSchemaIndexSettingArray{ SearchIndexSchemaIndexSettingArgs{...} }
+type SearchIndexSchemaIndexSettingArrayInput interface {
+	pulumi.Input
+
+	ToSearchIndexSchemaIndexSettingArrayOutput() SearchIndexSchemaIndexSettingArrayOutput
+	ToSearchIndexSchemaIndexSettingArrayOutputWithContext(context.Context) SearchIndexSchemaIndexSettingArrayOutput
+}
+
+type SearchIndexSchemaIndexSettingArray []SearchIndexSchemaIndexSettingInput
+
+func (SearchIndexSchemaIndexSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchIndexSchemaIndexSetting)(nil)).Elem()
+}
+
+func (i SearchIndexSchemaIndexSettingArray) ToSearchIndexSchemaIndexSettingArrayOutput() SearchIndexSchemaIndexSettingArrayOutput {
+	return i.ToSearchIndexSchemaIndexSettingArrayOutputWithContext(context.Background())
+}
+
+func (i SearchIndexSchemaIndexSettingArray) ToSearchIndexSchemaIndexSettingArrayOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaIndexSettingArrayOutput)
+}
+
+type SearchIndexSchemaIndexSettingOutput struct{ *pulumi.OutputState }
+
+func (SearchIndexSchemaIndexSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchIndexSchemaIndexSetting)(nil)).Elem()
+}
+
+func (o SearchIndexSchemaIndexSettingOutput) ToSearchIndexSchemaIndexSettingOutput() SearchIndexSchemaIndexSettingOutput {
+	return o
+}
+
+func (o SearchIndexSchemaIndexSettingOutput) ToSearchIndexSchemaIndexSettingOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSettingOutput {
+	return o
+}
+
+// Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
+func (o SearchIndexSchemaIndexSettingOutput) RoutingFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SearchIndexSchemaIndexSetting) []string { return v.RoutingFields }).(pulumi.StringArrayOutput)
+}
+
+type SearchIndexSchemaIndexSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (SearchIndexSchemaIndexSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchIndexSchemaIndexSetting)(nil)).Elem()
+}
+
+func (o SearchIndexSchemaIndexSettingArrayOutput) ToSearchIndexSchemaIndexSettingArrayOutput() SearchIndexSchemaIndexSettingArrayOutput {
+	return o
+}
+
+func (o SearchIndexSchemaIndexSettingArrayOutput) ToSearchIndexSchemaIndexSettingArrayOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSettingArrayOutput {
+	return o
+}
+
+func (o SearchIndexSchemaIndexSettingArrayOutput) Index(i pulumi.IntInput) SearchIndexSchemaIndexSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SearchIndexSchemaIndexSetting {
+		return vs[0].([]SearchIndexSchemaIndexSetting)[vs[1].(int)]
+	}).(SearchIndexSchemaIndexSettingOutput)
+}
+
+type SearchIndexSchemaIndexSort struct {
+	// Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+	Sorters []SearchIndexSchemaIndexSortSorter `pulumi:"sorters"`
+}
+
+// SearchIndexSchemaIndexSortInput is an input type that accepts SearchIndexSchemaIndexSortArgs and SearchIndexSchemaIndexSortOutput values.
+// You can construct a concrete instance of `SearchIndexSchemaIndexSortInput` via:
+//
+//	SearchIndexSchemaIndexSortArgs{...}
+type SearchIndexSchemaIndexSortInput interface {
+	pulumi.Input
+
+	ToSearchIndexSchemaIndexSortOutput() SearchIndexSchemaIndexSortOutput
+	ToSearchIndexSchemaIndexSortOutputWithContext(context.Context) SearchIndexSchemaIndexSortOutput
+}
+
+type SearchIndexSchemaIndexSortArgs struct {
+	// Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+	Sorters SearchIndexSchemaIndexSortSorterArrayInput `pulumi:"sorters"`
+}
+
+func (SearchIndexSchemaIndexSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchIndexSchemaIndexSort)(nil)).Elem()
+}
+
+func (i SearchIndexSchemaIndexSortArgs) ToSearchIndexSchemaIndexSortOutput() SearchIndexSchemaIndexSortOutput {
+	return i.ToSearchIndexSchemaIndexSortOutputWithContext(context.Background())
+}
+
+func (i SearchIndexSchemaIndexSortArgs) ToSearchIndexSchemaIndexSortOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaIndexSortOutput)
+}
+
+// SearchIndexSchemaIndexSortArrayInput is an input type that accepts SearchIndexSchemaIndexSortArray and SearchIndexSchemaIndexSortArrayOutput values.
+// You can construct a concrete instance of `SearchIndexSchemaIndexSortArrayInput` via:
+//
+//	SearchIndexSchemaIndexSortArray{ SearchIndexSchemaIndexSortArgs{...} }
+type SearchIndexSchemaIndexSortArrayInput interface {
+	pulumi.Input
+
+	ToSearchIndexSchemaIndexSortArrayOutput() SearchIndexSchemaIndexSortArrayOutput
+	ToSearchIndexSchemaIndexSortArrayOutputWithContext(context.Context) SearchIndexSchemaIndexSortArrayOutput
+}
+
+type SearchIndexSchemaIndexSortArray []SearchIndexSchemaIndexSortInput
+
+func (SearchIndexSchemaIndexSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchIndexSchemaIndexSort)(nil)).Elem()
+}
+
+func (i SearchIndexSchemaIndexSortArray) ToSearchIndexSchemaIndexSortArrayOutput() SearchIndexSchemaIndexSortArrayOutput {
+	return i.ToSearchIndexSchemaIndexSortArrayOutputWithContext(context.Background())
+}
+
+func (i SearchIndexSchemaIndexSortArray) ToSearchIndexSchemaIndexSortArrayOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaIndexSortArrayOutput)
+}
+
+type SearchIndexSchemaIndexSortOutput struct{ *pulumi.OutputState }
+
+func (SearchIndexSchemaIndexSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchIndexSchemaIndexSort)(nil)).Elem()
+}
+
+func (o SearchIndexSchemaIndexSortOutput) ToSearchIndexSchemaIndexSortOutput() SearchIndexSchemaIndexSortOutput {
+	return o
+}
+
+func (o SearchIndexSchemaIndexSortOutput) ToSearchIndexSchemaIndexSortOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSortOutput {
+	return o
+}
+
+// Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
+func (o SearchIndexSchemaIndexSortOutput) Sorters() SearchIndexSchemaIndexSortSorterArrayOutput {
+	return o.ApplyT(func(v SearchIndexSchemaIndexSort) []SearchIndexSchemaIndexSortSorter { return v.Sorters }).(SearchIndexSchemaIndexSortSorterArrayOutput)
+}
+
+type SearchIndexSchemaIndexSortArrayOutput struct{ *pulumi.OutputState }
+
+func (SearchIndexSchemaIndexSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchIndexSchemaIndexSort)(nil)).Elem()
+}
+
+func (o SearchIndexSchemaIndexSortArrayOutput) ToSearchIndexSchemaIndexSortArrayOutput() SearchIndexSchemaIndexSortArrayOutput {
+	return o
+}
+
+func (o SearchIndexSchemaIndexSortArrayOutput) ToSearchIndexSchemaIndexSortArrayOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSortArrayOutput {
+	return o
+}
+
+func (o SearchIndexSchemaIndexSortArrayOutput) Index(i pulumi.IntInput) SearchIndexSchemaIndexSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SearchIndexSchemaIndexSort {
+		return vs[0].([]SearchIndexSchemaIndexSort)[vs[1].(int)]
+	}).(SearchIndexSchemaIndexSortOutput)
+}
+
+type SearchIndexSchemaIndexSortSorter struct {
+	// The name of the field that is used to sort data. only required if sorterType is FieldSort.
+	FieldName *string `pulumi:"fieldName"`
+	// The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorterType is FieldSort.
+	Mode *string `pulumi:"mode"`
+	// The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+	Order *string `pulumi:"order"`
+	// Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+	SorterType *string `pulumi:"sorterType"`
+}
+
+// SearchIndexSchemaIndexSortSorterInput is an input type that accepts SearchIndexSchemaIndexSortSorterArgs and SearchIndexSchemaIndexSortSorterOutput values.
+// You can construct a concrete instance of `SearchIndexSchemaIndexSortSorterInput` via:
+//
+//	SearchIndexSchemaIndexSortSorterArgs{...}
+type SearchIndexSchemaIndexSortSorterInput interface {
+	pulumi.Input
+
+	ToSearchIndexSchemaIndexSortSorterOutput() SearchIndexSchemaIndexSortSorterOutput
+	ToSearchIndexSchemaIndexSortSorterOutputWithContext(context.Context) SearchIndexSchemaIndexSortSorterOutput
+}
+
+type SearchIndexSchemaIndexSortSorterArgs struct {
+	// The name of the field that is used to sort data. only required if sorterType is FieldSort.
+	FieldName pulumi.StringPtrInput `pulumi:"fieldName"`
+	// The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorterType is FieldSort.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+	SorterType pulumi.StringPtrInput `pulumi:"sorterType"`
+}
+
+func (SearchIndexSchemaIndexSortSorterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchIndexSchemaIndexSortSorter)(nil)).Elem()
+}
+
+func (i SearchIndexSchemaIndexSortSorterArgs) ToSearchIndexSchemaIndexSortSorterOutput() SearchIndexSchemaIndexSortSorterOutput {
+	return i.ToSearchIndexSchemaIndexSortSorterOutputWithContext(context.Background())
+}
+
+func (i SearchIndexSchemaIndexSortSorterArgs) ToSearchIndexSchemaIndexSortSorterOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSortSorterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaIndexSortSorterOutput)
+}
+
+// SearchIndexSchemaIndexSortSorterArrayInput is an input type that accepts SearchIndexSchemaIndexSortSorterArray and SearchIndexSchemaIndexSortSorterArrayOutput values.
+// You can construct a concrete instance of `SearchIndexSchemaIndexSortSorterArrayInput` via:
+//
+//	SearchIndexSchemaIndexSortSorterArray{ SearchIndexSchemaIndexSortSorterArgs{...} }
+type SearchIndexSchemaIndexSortSorterArrayInput interface {
+	pulumi.Input
+
+	ToSearchIndexSchemaIndexSortSorterArrayOutput() SearchIndexSchemaIndexSortSorterArrayOutput
+	ToSearchIndexSchemaIndexSortSorterArrayOutputWithContext(context.Context) SearchIndexSchemaIndexSortSorterArrayOutput
+}
+
+type SearchIndexSchemaIndexSortSorterArray []SearchIndexSchemaIndexSortSorterInput
+
+func (SearchIndexSchemaIndexSortSorterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchIndexSchemaIndexSortSorter)(nil)).Elem()
+}
+
+func (i SearchIndexSchemaIndexSortSorterArray) ToSearchIndexSchemaIndexSortSorterArrayOutput() SearchIndexSchemaIndexSortSorterArrayOutput {
+	return i.ToSearchIndexSchemaIndexSortSorterArrayOutputWithContext(context.Background())
+}
+
+func (i SearchIndexSchemaIndexSortSorterArray) ToSearchIndexSchemaIndexSortSorterArrayOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSortSorterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaIndexSortSorterArrayOutput)
+}
+
+type SearchIndexSchemaIndexSortSorterOutput struct{ *pulumi.OutputState }
+
+func (SearchIndexSchemaIndexSortSorterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchIndexSchemaIndexSortSorter)(nil)).Elem()
+}
+
+func (o SearchIndexSchemaIndexSortSorterOutput) ToSearchIndexSchemaIndexSortSorterOutput() SearchIndexSchemaIndexSortSorterOutput {
+	return o
+}
+
+func (o SearchIndexSchemaIndexSortSorterOutput) ToSearchIndexSchemaIndexSortSorterOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSortSorterOutput {
+	return o
+}
+
+// The name of the field that is used to sort data. only required if sorterType is FieldSort.
+func (o SearchIndexSchemaIndexSortSorterOutput) FieldName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SearchIndexSchemaIndexSortSorter) *string { return v.FieldName }).(pulumi.StringPtrOutput)
+}
+
+// The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorterType is FieldSort.
+func (o SearchIndexSchemaIndexSortSorterOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SearchIndexSchemaIndexSortSorter) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+func (o SearchIndexSchemaIndexSortSorterOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SearchIndexSchemaIndexSortSorter) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+// Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+func (o SearchIndexSchemaIndexSortSorterOutput) SorterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SearchIndexSchemaIndexSortSorter) *string { return v.SorterType }).(pulumi.StringPtrOutput)
+}
+
+type SearchIndexSchemaIndexSortSorterArrayOutput struct{ *pulumi.OutputState }
+
+func (SearchIndexSchemaIndexSortSorterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchIndexSchemaIndexSortSorter)(nil)).Elem()
+}
+
+func (o SearchIndexSchemaIndexSortSorterArrayOutput) ToSearchIndexSchemaIndexSortSorterArrayOutput() SearchIndexSchemaIndexSortSorterArrayOutput {
+	return o
+}
+
+func (o SearchIndexSchemaIndexSortSorterArrayOutput) ToSearchIndexSchemaIndexSortSorterArrayOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSortSorterArrayOutput {
+	return o
+}
+
+func (o SearchIndexSchemaIndexSortSorterArrayOutput) Index(i pulumi.IntInput) SearchIndexSchemaIndexSortSorterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SearchIndexSchemaIndexSortSorter {
+		return vs[0].([]SearchIndexSchemaIndexSortSorter)[vs[1].(int)]
+	}).(SearchIndexSchemaIndexSortSorterOutput)
+}
+
+type TableDefinedColumn struct {
+	// Name for defined column.
 	Name string `pulumi:"name"`
-	// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+	Type string `pulumi:"type"`
+}
+
+// TableDefinedColumnInput is an input type that accepts TableDefinedColumnArgs and TableDefinedColumnOutput values.
+// You can construct a concrete instance of `TableDefinedColumnInput` via:
+//
+//	TableDefinedColumnArgs{...}
+type TableDefinedColumnInput interface {
+	pulumi.Input
+
+	ToTableDefinedColumnOutput() TableDefinedColumnOutput
+	ToTableDefinedColumnOutputWithContext(context.Context) TableDefinedColumnOutput
+}
+
+type TableDefinedColumnArgs struct {
+	// Name for defined column.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (TableDefinedColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDefinedColumn)(nil)).Elem()
+}
+
+func (i TableDefinedColumnArgs) ToTableDefinedColumnOutput() TableDefinedColumnOutput {
+	return i.ToTableDefinedColumnOutputWithContext(context.Background())
+}
+
+func (i TableDefinedColumnArgs) ToTableDefinedColumnOutputWithContext(ctx context.Context) TableDefinedColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableDefinedColumnOutput)
+}
+
+// TableDefinedColumnArrayInput is an input type that accepts TableDefinedColumnArray and TableDefinedColumnArrayOutput values.
+// You can construct a concrete instance of `TableDefinedColumnArrayInput` via:
+//
+//	TableDefinedColumnArray{ TableDefinedColumnArgs{...} }
+type TableDefinedColumnArrayInput interface {
+	pulumi.Input
+
+	ToTableDefinedColumnArrayOutput() TableDefinedColumnArrayOutput
+	ToTableDefinedColumnArrayOutputWithContext(context.Context) TableDefinedColumnArrayOutput
+}
+
+type TableDefinedColumnArray []TableDefinedColumnInput
+
+func (TableDefinedColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableDefinedColumn)(nil)).Elem()
+}
+
+func (i TableDefinedColumnArray) ToTableDefinedColumnArrayOutput() TableDefinedColumnArrayOutput {
+	return i.ToTableDefinedColumnArrayOutputWithContext(context.Background())
+}
+
+func (i TableDefinedColumnArray) ToTableDefinedColumnArrayOutputWithContext(ctx context.Context) TableDefinedColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableDefinedColumnArrayOutput)
+}
+
+type TableDefinedColumnOutput struct{ *pulumi.OutputState }
+
+func (TableDefinedColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDefinedColumn)(nil)).Elem()
+}
+
+func (o TableDefinedColumnOutput) ToTableDefinedColumnOutput() TableDefinedColumnOutput {
+	return o
+}
+
+func (o TableDefinedColumnOutput) ToTableDefinedColumnOutputWithContext(ctx context.Context) TableDefinedColumnOutput {
+	return o
+}
+
+// Name for defined column.
+func (o TableDefinedColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TableDefinedColumn) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+func (o TableDefinedColumnOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TableDefinedColumn) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TableDefinedColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (TableDefinedColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableDefinedColumn)(nil)).Elem()
+}
+
+func (o TableDefinedColumnArrayOutput) ToTableDefinedColumnArrayOutput() TableDefinedColumnArrayOutput {
+	return o
+}
+
+func (o TableDefinedColumnArrayOutput) ToTableDefinedColumnArrayOutputWithContext(ctx context.Context) TableDefinedColumnArrayOutput {
+	return o
+}
+
+func (o TableDefinedColumnArrayOutput) Index(i pulumi.IntInput) TableDefinedColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableDefinedColumn {
+		return vs[0].([]TableDefinedColumn)[vs[1].(int)]
+	}).(TableDefinedColumnOutput)
+}
+
+type TablePrimaryKey struct {
+	// Name for defined column.
+	Name string `pulumi:"name"`
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
 	Type string `pulumi:"type"`
 }
 
@@ -29,9 +719,9 @@ type TablePrimaryKeyInput interface {
 }
 
 type TablePrimaryKeyArgs struct {
-	// Name for primary key.
+	// Name for defined column.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -86,12 +776,12 @@ func (o TablePrimaryKeyOutput) ToTablePrimaryKeyOutputWithContext(ctx context.Co
 	return o
 }
 
-// Name for primary key.
+// Name for defined column.
 func (o TablePrimaryKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TablePrimaryKey) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+// Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
 func (o TablePrimaryKeyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v TablePrimaryKey) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -668,7 +1358,325 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	}).(GetInstancesInstanceOutput)
 }
 
+type GetSearchIndexesIndex struct {
+	CreateTime             int    `pulumi:"createTime"`
+	CurrentSyncTimestamp   int    `pulumi:"currentSyncTimestamp"`
+	Id                     string `pulumi:"id"`
+	IndexName              string `pulumi:"indexName"`
+	InstanceName           string `pulumi:"instanceName"`
+	MeteringLastUpdateTime int    `pulumi:"meteringLastUpdateTime"`
+	ReservedReadCu         int    `pulumi:"reservedReadCu"`
+	RowCount               int    `pulumi:"rowCount"`
+	Schema                 string `pulumi:"schema"`
+	StorageSize            int    `pulumi:"storageSize"`
+	SyncPhase              string `pulumi:"syncPhase"`
+	TableName              string `pulumi:"tableName"`
+	TimeToLive             int    `pulumi:"timeToLive"`
+}
+
+// GetSearchIndexesIndexInput is an input type that accepts GetSearchIndexesIndexArgs and GetSearchIndexesIndexOutput values.
+// You can construct a concrete instance of `GetSearchIndexesIndexInput` via:
+//
+//	GetSearchIndexesIndexArgs{...}
+type GetSearchIndexesIndexInput interface {
+	pulumi.Input
+
+	ToGetSearchIndexesIndexOutput() GetSearchIndexesIndexOutput
+	ToGetSearchIndexesIndexOutputWithContext(context.Context) GetSearchIndexesIndexOutput
+}
+
+type GetSearchIndexesIndexArgs struct {
+	CreateTime             pulumi.IntInput    `pulumi:"createTime"`
+	CurrentSyncTimestamp   pulumi.IntInput    `pulumi:"currentSyncTimestamp"`
+	Id                     pulumi.StringInput `pulumi:"id"`
+	IndexName              pulumi.StringInput `pulumi:"indexName"`
+	InstanceName           pulumi.StringInput `pulumi:"instanceName"`
+	MeteringLastUpdateTime pulumi.IntInput    `pulumi:"meteringLastUpdateTime"`
+	ReservedReadCu         pulumi.IntInput    `pulumi:"reservedReadCu"`
+	RowCount               pulumi.IntInput    `pulumi:"rowCount"`
+	Schema                 pulumi.StringInput `pulumi:"schema"`
+	StorageSize            pulumi.IntInput    `pulumi:"storageSize"`
+	SyncPhase              pulumi.StringInput `pulumi:"syncPhase"`
+	TableName              pulumi.StringInput `pulumi:"tableName"`
+	TimeToLive             pulumi.IntInput    `pulumi:"timeToLive"`
+}
+
+func (GetSearchIndexesIndexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchIndexesIndex)(nil)).Elem()
+}
+
+func (i GetSearchIndexesIndexArgs) ToGetSearchIndexesIndexOutput() GetSearchIndexesIndexOutput {
+	return i.ToGetSearchIndexesIndexOutputWithContext(context.Background())
+}
+
+func (i GetSearchIndexesIndexArgs) ToGetSearchIndexesIndexOutputWithContext(ctx context.Context) GetSearchIndexesIndexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchIndexesIndexOutput)
+}
+
+// GetSearchIndexesIndexArrayInput is an input type that accepts GetSearchIndexesIndexArray and GetSearchIndexesIndexArrayOutput values.
+// You can construct a concrete instance of `GetSearchIndexesIndexArrayInput` via:
+//
+//	GetSearchIndexesIndexArray{ GetSearchIndexesIndexArgs{...} }
+type GetSearchIndexesIndexArrayInput interface {
+	pulumi.Input
+
+	ToGetSearchIndexesIndexArrayOutput() GetSearchIndexesIndexArrayOutput
+	ToGetSearchIndexesIndexArrayOutputWithContext(context.Context) GetSearchIndexesIndexArrayOutput
+}
+
+type GetSearchIndexesIndexArray []GetSearchIndexesIndexInput
+
+func (GetSearchIndexesIndexArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSearchIndexesIndex)(nil)).Elem()
+}
+
+func (i GetSearchIndexesIndexArray) ToGetSearchIndexesIndexArrayOutput() GetSearchIndexesIndexArrayOutput {
+	return i.ToGetSearchIndexesIndexArrayOutputWithContext(context.Background())
+}
+
+func (i GetSearchIndexesIndexArray) ToGetSearchIndexesIndexArrayOutputWithContext(ctx context.Context) GetSearchIndexesIndexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchIndexesIndexArrayOutput)
+}
+
+type GetSearchIndexesIndexOutput struct{ *pulumi.OutputState }
+
+func (GetSearchIndexesIndexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchIndexesIndex)(nil)).Elem()
+}
+
+func (o GetSearchIndexesIndexOutput) ToGetSearchIndexesIndexOutput() GetSearchIndexesIndexOutput {
+	return o
+}
+
+func (o GetSearchIndexesIndexOutput) ToGetSearchIndexesIndexOutputWithContext(ctx context.Context) GetSearchIndexesIndexOutput {
+	return o
+}
+
+func (o GetSearchIndexesIndexOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+func (o GetSearchIndexesIndexOutput) CurrentSyncTimestamp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.CurrentSyncTimestamp }).(pulumi.IntOutput)
+}
+
+func (o GetSearchIndexesIndexOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSearchIndexesIndexOutput) IndexName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) string { return v.IndexName }).(pulumi.StringOutput)
+}
+
+func (o GetSearchIndexesIndexOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+func (o GetSearchIndexesIndexOutput) MeteringLastUpdateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.MeteringLastUpdateTime }).(pulumi.IntOutput)
+}
+
+func (o GetSearchIndexesIndexOutput) ReservedReadCu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.ReservedReadCu }).(pulumi.IntOutput)
+}
+
+func (o GetSearchIndexesIndexOutput) RowCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.RowCount }).(pulumi.IntOutput)
+}
+
+func (o GetSearchIndexesIndexOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+func (o GetSearchIndexesIndexOutput) StorageSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.StorageSize }).(pulumi.IntOutput)
+}
+
+func (o GetSearchIndexesIndexOutput) SyncPhase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) string { return v.SyncPhase }).(pulumi.StringOutput)
+}
+
+func (o GetSearchIndexesIndexOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+func (o GetSearchIndexesIndexOutput) TimeToLive() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.TimeToLive }).(pulumi.IntOutput)
+}
+
+type GetSearchIndexesIndexArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSearchIndexesIndexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSearchIndexesIndex)(nil)).Elem()
+}
+
+func (o GetSearchIndexesIndexArrayOutput) ToGetSearchIndexesIndexArrayOutput() GetSearchIndexesIndexArrayOutput {
+	return o
+}
+
+func (o GetSearchIndexesIndexArrayOutput) ToGetSearchIndexesIndexArrayOutputWithContext(ctx context.Context) GetSearchIndexesIndexArrayOutput {
+	return o
+}
+
+func (o GetSearchIndexesIndexArrayOutput) Index(i pulumi.IntInput) GetSearchIndexesIndexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSearchIndexesIndex {
+		return vs[0].([]GetSearchIndexesIndex)[vs[1].(int)]
+	}).(GetSearchIndexesIndexOutput)
+}
+
+type GetSecondaryIndexesIndex struct {
+	// A list of defined column for index, referenced from Table's primary keys or predefined columns.
+	DefinedColumns []string `pulumi:"definedColumns"`
+	// The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
+	Id string `pulumi:"id"`
+	// The index name of the OTS Table which could not be changed.
+	IndexName string `pulumi:"indexName"`
+	// The index type of the OTS Table which could not be changed.
+	IndexType string `pulumi:"indexType"`
+	// The name of OTS instance.
+	InstanceName string `pulumi:"instanceName"`
+	// A list of primary keys for index, referenced from Table's primary keys or predefined columns.
+	PrimaryKeys []string `pulumi:"primaryKeys"`
+	// The name of OTS table.
+	TableName string `pulumi:"tableName"`
+}
+
+// GetSecondaryIndexesIndexInput is an input type that accepts GetSecondaryIndexesIndexArgs and GetSecondaryIndexesIndexOutput values.
+// You can construct a concrete instance of `GetSecondaryIndexesIndexInput` via:
+//
+//	GetSecondaryIndexesIndexArgs{...}
+type GetSecondaryIndexesIndexInput interface {
+	pulumi.Input
+
+	ToGetSecondaryIndexesIndexOutput() GetSecondaryIndexesIndexOutput
+	ToGetSecondaryIndexesIndexOutputWithContext(context.Context) GetSecondaryIndexesIndexOutput
+}
+
+type GetSecondaryIndexesIndexArgs struct {
+	// A list of defined column for index, referenced from Table's primary keys or predefined columns.
+	DefinedColumns pulumi.StringArrayInput `pulumi:"definedColumns"`
+	// The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The index name of the OTS Table which could not be changed.
+	IndexName pulumi.StringInput `pulumi:"indexName"`
+	// The index type of the OTS Table which could not be changed.
+	IndexType pulumi.StringInput `pulumi:"indexType"`
+	// The name of OTS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// A list of primary keys for index, referenced from Table's primary keys or predefined columns.
+	PrimaryKeys pulumi.StringArrayInput `pulumi:"primaryKeys"`
+	// The name of OTS table.
+	TableName pulumi.StringInput `pulumi:"tableName"`
+}
+
+func (GetSecondaryIndexesIndexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecondaryIndexesIndex)(nil)).Elem()
+}
+
+func (i GetSecondaryIndexesIndexArgs) ToGetSecondaryIndexesIndexOutput() GetSecondaryIndexesIndexOutput {
+	return i.ToGetSecondaryIndexesIndexOutputWithContext(context.Background())
+}
+
+func (i GetSecondaryIndexesIndexArgs) ToGetSecondaryIndexesIndexOutputWithContext(ctx context.Context) GetSecondaryIndexesIndexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecondaryIndexesIndexOutput)
+}
+
+// GetSecondaryIndexesIndexArrayInput is an input type that accepts GetSecondaryIndexesIndexArray and GetSecondaryIndexesIndexArrayOutput values.
+// You can construct a concrete instance of `GetSecondaryIndexesIndexArrayInput` via:
+//
+//	GetSecondaryIndexesIndexArray{ GetSecondaryIndexesIndexArgs{...} }
+type GetSecondaryIndexesIndexArrayInput interface {
+	pulumi.Input
+
+	ToGetSecondaryIndexesIndexArrayOutput() GetSecondaryIndexesIndexArrayOutput
+	ToGetSecondaryIndexesIndexArrayOutputWithContext(context.Context) GetSecondaryIndexesIndexArrayOutput
+}
+
+type GetSecondaryIndexesIndexArray []GetSecondaryIndexesIndexInput
+
+func (GetSecondaryIndexesIndexArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecondaryIndexesIndex)(nil)).Elem()
+}
+
+func (i GetSecondaryIndexesIndexArray) ToGetSecondaryIndexesIndexArrayOutput() GetSecondaryIndexesIndexArrayOutput {
+	return i.ToGetSecondaryIndexesIndexArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecondaryIndexesIndexArray) ToGetSecondaryIndexesIndexArrayOutputWithContext(ctx context.Context) GetSecondaryIndexesIndexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecondaryIndexesIndexArrayOutput)
+}
+
+type GetSecondaryIndexesIndexOutput struct{ *pulumi.OutputState }
+
+func (GetSecondaryIndexesIndexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecondaryIndexesIndex)(nil)).Elem()
+}
+
+func (o GetSecondaryIndexesIndexOutput) ToGetSecondaryIndexesIndexOutput() GetSecondaryIndexesIndexOutput {
+	return o
+}
+
+func (o GetSecondaryIndexesIndexOutput) ToGetSecondaryIndexesIndexOutputWithContext(ctx context.Context) GetSecondaryIndexesIndexOutput {
+	return o
+}
+
+// A list of defined column for index, referenced from Table's primary keys or predefined columns.
+func (o GetSecondaryIndexesIndexOutput) DefinedColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecondaryIndexesIndex) []string { return v.DefinedColumns }).(pulumi.StringArrayOutput)
+}
+
+// The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
+func (o GetSecondaryIndexesIndexOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecondaryIndexesIndex) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The index name of the OTS Table which could not be changed.
+func (o GetSecondaryIndexesIndexOutput) IndexName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecondaryIndexesIndex) string { return v.IndexName }).(pulumi.StringOutput)
+}
+
+// The index type of the OTS Table which could not be changed.
+func (o GetSecondaryIndexesIndexOutput) IndexType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecondaryIndexesIndex) string { return v.IndexType }).(pulumi.StringOutput)
+}
+
+// The name of OTS instance.
+func (o GetSecondaryIndexesIndexOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecondaryIndexesIndex) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// A list of primary keys for index, referenced from Table's primary keys or predefined columns.
+func (o GetSecondaryIndexesIndexOutput) PrimaryKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecondaryIndexesIndex) []string { return v.PrimaryKeys }).(pulumi.StringArrayOutput)
+}
+
+// The name of OTS table.
+func (o GetSecondaryIndexesIndexOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecondaryIndexesIndex) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+type GetSecondaryIndexesIndexArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecondaryIndexesIndexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecondaryIndexesIndex)(nil)).Elem()
+}
+
+func (o GetSecondaryIndexesIndexArrayOutput) ToGetSecondaryIndexesIndexArrayOutput() GetSecondaryIndexesIndexArrayOutput {
+	return o
+}
+
+func (o GetSecondaryIndexesIndexArrayOutput) ToGetSecondaryIndexesIndexArrayOutputWithContext(ctx context.Context) GetSecondaryIndexesIndexArrayOutput {
+	return o
+}
+
+func (o GetSecondaryIndexesIndexArrayOutput) Index(i pulumi.IntInput) GetSecondaryIndexesIndexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecondaryIndexesIndex {
+		return vs[0].([]GetSecondaryIndexesIndex)[vs[1].(int)]
+	}).(GetSecondaryIndexesIndexOutput)
+}
+
 type GetTablesTable struct {
+	DefinedColumns []GetTablesTableDefinedColumn `pulumi:"definedColumns"`
 	// ID of the table. The value is `<instance_name>:<table_name>`.
 	Id string `pulumi:"id"`
 	// The name of OTS instance.
@@ -695,6 +1703,7 @@ type GetTablesTableInput interface {
 }
 
 type GetTablesTableArgs struct {
+	DefinedColumns GetTablesTableDefinedColumnArrayInput `pulumi:"definedColumns"`
 	// ID of the table. The value is `<instance_name>:<table_name>`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of OTS instance.
@@ -760,6 +1769,10 @@ func (o GetTablesTableOutput) ToGetTablesTableOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o GetTablesTableOutput) DefinedColumns() GetTablesTableDefinedColumnArrayOutput {
+	return o.ApplyT(func(v GetTablesTable) []GetTablesTableDefinedColumn { return v.DefinedColumns }).(GetTablesTableDefinedColumnArrayOutput)
+}
+
 // ID of the table. The value is `<instance_name>:<table_name>`.
 func (o GetTablesTableOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTable) string { return v.Id }).(pulumi.StringOutput)
@@ -808,6 +1821,106 @@ func (o GetTablesTableArrayOutput) Index(i pulumi.IntInput) GetTablesTableOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTable {
 		return vs[0].([]GetTablesTable)[vs[1].(int)]
 	}).(GetTablesTableOutput)
+}
+
+type GetTablesTableDefinedColumn struct {
+	Name string `pulumi:"name"`
+	Type string `pulumi:"type"`
+}
+
+// GetTablesTableDefinedColumnInput is an input type that accepts GetTablesTableDefinedColumnArgs and GetTablesTableDefinedColumnOutput values.
+// You can construct a concrete instance of `GetTablesTableDefinedColumnInput` via:
+//
+//	GetTablesTableDefinedColumnArgs{...}
+type GetTablesTableDefinedColumnInput interface {
+	pulumi.Input
+
+	ToGetTablesTableDefinedColumnOutput() GetTablesTableDefinedColumnOutput
+	ToGetTablesTableDefinedColumnOutputWithContext(context.Context) GetTablesTableDefinedColumnOutput
+}
+
+type GetTablesTableDefinedColumnArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetTablesTableDefinedColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTableDefinedColumn)(nil)).Elem()
+}
+
+func (i GetTablesTableDefinedColumnArgs) ToGetTablesTableDefinedColumnOutput() GetTablesTableDefinedColumnOutput {
+	return i.ToGetTablesTableDefinedColumnOutputWithContext(context.Background())
+}
+
+func (i GetTablesTableDefinedColumnArgs) ToGetTablesTableDefinedColumnOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableDefinedColumnOutput)
+}
+
+// GetTablesTableDefinedColumnArrayInput is an input type that accepts GetTablesTableDefinedColumnArray and GetTablesTableDefinedColumnArrayOutput values.
+// You can construct a concrete instance of `GetTablesTableDefinedColumnArrayInput` via:
+//
+//	GetTablesTableDefinedColumnArray{ GetTablesTableDefinedColumnArgs{...} }
+type GetTablesTableDefinedColumnArrayInput interface {
+	pulumi.Input
+
+	ToGetTablesTableDefinedColumnArrayOutput() GetTablesTableDefinedColumnArrayOutput
+	ToGetTablesTableDefinedColumnArrayOutputWithContext(context.Context) GetTablesTableDefinedColumnArrayOutput
+}
+
+type GetTablesTableDefinedColumnArray []GetTablesTableDefinedColumnInput
+
+func (GetTablesTableDefinedColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTableDefinedColumn)(nil)).Elem()
+}
+
+func (i GetTablesTableDefinedColumnArray) ToGetTablesTableDefinedColumnArrayOutput() GetTablesTableDefinedColumnArrayOutput {
+	return i.ToGetTablesTableDefinedColumnArrayOutputWithContext(context.Background())
+}
+
+func (i GetTablesTableDefinedColumnArray) ToGetTablesTableDefinedColumnArrayOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableDefinedColumnArrayOutput)
+}
+
+type GetTablesTableDefinedColumnOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTableDefinedColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTableDefinedColumn)(nil)).Elem()
+}
+
+func (o GetTablesTableDefinedColumnOutput) ToGetTablesTableDefinedColumnOutput() GetTablesTableDefinedColumnOutput {
+	return o
+}
+
+func (o GetTablesTableDefinedColumnOutput) ToGetTablesTableDefinedColumnOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnOutput {
+	return o
+}
+
+func (o GetTablesTableDefinedColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTableDefinedColumn) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetTablesTableDefinedColumnOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTableDefinedColumn) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetTablesTableDefinedColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTableDefinedColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTableDefinedColumn)(nil)).Elem()
+}
+
+func (o GetTablesTableDefinedColumnArrayOutput) ToGetTablesTableDefinedColumnArrayOutput() GetTablesTableDefinedColumnArrayOutput {
+	return o
+}
+
+func (o GetTablesTableDefinedColumnArrayOutput) ToGetTablesTableDefinedColumnArrayOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnArrayOutput {
+	return o
+}
+
+func (o GetTablesTableDefinedColumnArrayOutput) Index(i pulumi.IntInput) GetTablesTableDefinedColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTableDefinedColumn {
+		return vs[0].([]GetTablesTableDefinedColumn)[vs[1].(int)]
+	}).(GetTablesTableDefinedColumnOutput)
 }
 
 type GetTablesTablePrimaryKey struct {
@@ -1231,6 +2344,18 @@ func (o GetTunnelsTunnelChannelArrayOutput) Index(i pulumi.IntInput) GetTunnelsT
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchIndexSchemaInput)(nil)).Elem(), SearchIndexSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchIndexSchemaArrayInput)(nil)).Elem(), SearchIndexSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchIndexSchemaFieldSchemaInput)(nil)).Elem(), SearchIndexSchemaFieldSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchIndexSchemaFieldSchemaArrayInput)(nil)).Elem(), SearchIndexSchemaFieldSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchIndexSchemaIndexSettingInput)(nil)).Elem(), SearchIndexSchemaIndexSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchIndexSchemaIndexSettingArrayInput)(nil)).Elem(), SearchIndexSchemaIndexSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchIndexSchemaIndexSortInput)(nil)).Elem(), SearchIndexSchemaIndexSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchIndexSchemaIndexSortArrayInput)(nil)).Elem(), SearchIndexSchemaIndexSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchIndexSchemaIndexSortSorterInput)(nil)).Elem(), SearchIndexSchemaIndexSortSorterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SearchIndexSchemaIndexSortSorterArrayInput)(nil)).Elem(), SearchIndexSchemaIndexSortSorterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDefinedColumnInput)(nil)).Elem(), TableDefinedColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDefinedColumnArrayInput)(nil)).Elem(), TableDefinedColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TablePrimaryKeyInput)(nil)).Elem(), TablePrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TablePrimaryKeyArrayInput)(nil)).Elem(), TablePrimaryKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelChannelInput)(nil)).Elem(), TunnelChannelArgs{})
@@ -1239,14 +2364,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachmentsAttachmentArrayInput)(nil)).Elem(), GetInstanceAttachmentsAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchIndexesIndexInput)(nil)).Elem(), GetSearchIndexesIndexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchIndexesIndexArrayInput)(nil)).Elem(), GetSearchIndexesIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecondaryIndexesIndexInput)(nil)).Elem(), GetSecondaryIndexesIndexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecondaryIndexesIndexArrayInput)(nil)).Elem(), GetSecondaryIndexesIndexArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableInput)(nil)).Elem(), GetTablesTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableArrayInput)(nil)).Elem(), GetTablesTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableDefinedColumnInput)(nil)).Elem(), GetTablesTableDefinedColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableDefinedColumnArrayInput)(nil)).Elem(), GetTablesTableDefinedColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyInput)(nil)).Elem(), GetTablesTablePrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyArrayInput)(nil)).Elem(), GetTablesTablePrimaryKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTunnelsTunnelInput)(nil)).Elem(), GetTunnelsTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTunnelsTunnelArrayInput)(nil)).Elem(), GetTunnelsTunnelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTunnelsTunnelChannelInput)(nil)).Elem(), GetTunnelsTunnelChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTunnelsTunnelChannelArrayInput)(nil)).Elem(), GetTunnelsTunnelChannelArray{})
+	pulumi.RegisterOutputType(SearchIndexSchemaOutput{})
+	pulumi.RegisterOutputType(SearchIndexSchemaArrayOutput{})
+	pulumi.RegisterOutputType(SearchIndexSchemaFieldSchemaOutput{})
+	pulumi.RegisterOutputType(SearchIndexSchemaFieldSchemaArrayOutput{})
+	pulumi.RegisterOutputType(SearchIndexSchemaIndexSettingOutput{})
+	pulumi.RegisterOutputType(SearchIndexSchemaIndexSettingArrayOutput{})
+	pulumi.RegisterOutputType(SearchIndexSchemaIndexSortOutput{})
+	pulumi.RegisterOutputType(SearchIndexSchemaIndexSortArrayOutput{})
+	pulumi.RegisterOutputType(SearchIndexSchemaIndexSortSorterOutput{})
+	pulumi.RegisterOutputType(SearchIndexSchemaIndexSortSorterArrayOutput{})
+	pulumi.RegisterOutputType(TableDefinedColumnOutput{})
+	pulumi.RegisterOutputType(TableDefinedColumnArrayOutput{})
 	pulumi.RegisterOutputType(TablePrimaryKeyOutput{})
 	pulumi.RegisterOutputType(TablePrimaryKeyArrayOutput{})
 	pulumi.RegisterOutputType(TunnelChannelOutput{})
@@ -1255,8 +2398,14 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceAttachmentsAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetSearchIndexesIndexOutput{})
+	pulumi.RegisterOutputType(GetSearchIndexesIndexArrayOutput{})
+	pulumi.RegisterOutputType(GetSecondaryIndexesIndexOutput{})
+	pulumi.RegisterOutputType(GetSecondaryIndexesIndexArrayOutput{})
 	pulumi.RegisterOutputType(GetTablesTableOutput{})
 	pulumi.RegisterOutputType(GetTablesTableArrayOutput{})
+	pulumi.RegisterOutputType(GetTablesTableDefinedColumnOutput{})
+	pulumi.RegisterOutputType(GetTablesTableDefinedColumnArrayOutput{})
 	pulumi.RegisterOutputType(GetTablesTablePrimaryKeyOutput{})
 	pulumi.RegisterOutputType(GetTablesTablePrimaryKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetTunnelsTunnelOutput{})

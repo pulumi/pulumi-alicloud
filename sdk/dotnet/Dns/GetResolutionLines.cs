@@ -21,33 +21,32 @@ namespace Pulumi.AliCloud.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var resolutionLinesDs = AliCloud.Dns.GetResolutionLines.Invoke(new()
         ///     {
-        ///         var resolutionLinesDs = Output.Create(AliCloud.Dns.GetResolutionLines.InvokeAsync(new AliCloud.Dns.GetResolutionLinesArgs
+        ///         LineCodes = new[]
         ///         {
-        ///             LineCodes = 
-        ///             {
-        ///                 "cn_unicom_shanxi",
-        ///             },
-        ///             OutputFile = "support_lines.txt",
-        ///         }));
-        ///         this.FirstLineCode = resolutionLinesDs.Apply(resolutionLinesDs =&gt; resolutionLinesDs.Lines?[0]?.LineCode);
-        ///     }
+        ///             "cn_unicom_shanxi",
+        ///         },
+        ///         OutputFile = "support_lines.txt",
+        ///     });
         /// 
-        ///     [Output("firstLineCode")]
-        ///     public Output&lt;string&gt; FirstLineCode { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstLineCode"] = resolutionLinesDs.Apply(getResolutionLinesResult =&gt; getResolutionLinesResult.Lines[0]?.LineCode),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResolutionLinesResult> InvokeAsync(GetResolutionLinesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? new GetResolutionLinesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? new GetResolutionLinesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
@@ -59,37 +58,36 @@ namespace Pulumi.AliCloud.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var resolutionLinesDs = AliCloud.Dns.GetResolutionLines.Invoke(new()
         ///     {
-        ///         var resolutionLinesDs = Output.Create(AliCloud.Dns.GetResolutionLines.InvokeAsync(new AliCloud.Dns.GetResolutionLinesArgs
+        ///         LineCodes = new[]
         ///         {
-        ///             LineCodes = 
-        ///             {
-        ///                 "cn_unicom_shanxi",
-        ///             },
-        ///             OutputFile = "support_lines.txt",
-        ///         }));
-        ///         this.FirstLineCode = resolutionLinesDs.Apply(resolutionLinesDs =&gt; resolutionLinesDs.Lines?[0]?.LineCode);
-        ///     }
+        ///             "cn_unicom_shanxi",
+        ///         },
+        ///         OutputFile = "support_lines.txt",
+        ///     });
         /// 
-        ///     [Output("firstLineCode")]
-        ///     public Output&lt;string&gt; FirstLineCode { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstLineCode"] = resolutionLinesDs.Apply(getResolutionLinesResult =&gt; getResolutionLinesResult.Lines[0]?.LineCode),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResolutionLinesResult> Invoke(GetResolutionLinesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? new GetResolutionLinesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? new GetResolutionLinesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetResolutionLinesArgs : Pulumi.InvokeArgs
+    public sealed class GetResolutionLinesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Domain Name.
@@ -147,9 +145,10 @@ namespace Pulumi.AliCloud.Dns
         public GetResolutionLinesArgs()
         {
         }
+        public static new GetResolutionLinesArgs Empty => new GetResolutionLinesArgs();
     }
 
-    public sealed class GetResolutionLinesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetResolutionLinesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Domain Name.
@@ -207,6 +206,7 @@ namespace Pulumi.AliCloud.Dns
         public GetResolutionLinesInvokeArgs()
         {
         }
+        public static new GetResolutionLinesInvokeArgs Empty => new GetResolutionLinesInvokeArgs();
     }
 
 

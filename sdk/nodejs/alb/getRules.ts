@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,20 +22,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.alb.getRules({
  *     ids: ["example_id"],
  * });
- * export const albRuleId1 = ids.then(ids => ids.rules?[0]?.id);
+ * export const albRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * const nameRegex = alicloud.alb.getRules({
  *     nameRegex: "^my-Rule",
  * });
- * export const albRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?[0]?.id);
+ * export const albRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:alb/getRules:getRules", {
         "ids": args.ids,
         "listenerIds": args.listenerIds,
@@ -95,9 +93,31 @@ export interface GetRulesResult {
     readonly rules: outputs.alb.GetRulesRule[];
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Alb Rules of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.133.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.alb.getRules({
+ *     ids: ["example_id"],
+ * });
+ * export const albRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * const nameRegex = alicloud.alb.getRules({
+ *     nameRegex: "^my-Rule",
+ * });
+ * export const albRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
+ * ```
+ */
 export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
-    return pulumi.output(args).apply(a => getRules(a, opts))
+    return pulumi.output(args).apply((a: any) => getRules(a, opts))
 }
 
 /**

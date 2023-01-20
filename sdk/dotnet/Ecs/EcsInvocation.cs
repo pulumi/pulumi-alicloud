@@ -21,35 +21,35 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultCommand = new AliCloud.Ecs.Command("defaultCommand", new()
     ///     {
-    ///         var defaultCommand = new AliCloud.Ecs.Command("defaultCommand", new AliCloud.Ecs.CommandArgs
-    ///         {
-    ///             CommandContent = "bHMK",
-    ///             Description = "For Terraform Test",
-    ///             Type = "RunShellScript",
-    ///             WorkingDir = "/root",
-    ///         });
-    ///         var defaultInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
-    ///         {
-    ///             Status = "Running",
-    ///         }));
-    ///         var defaultEcsInvocation = new AliCloud.Ecs.EcsInvocation("defaultEcsInvocation", new AliCloud.Ecs.EcsInvocationArgs
-    ///         {
-    ///             CommandId = defaultCommand.Id,
-    ///             InstanceIds = 
-    ///             {
-    ///                 defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Ids?[0]),
-    ///             },
-    ///         });
-    ///     }
+    ///         CommandContent = "bHMK",
+    ///         Description = "For Terraform Test",
+    ///         Type = "RunShellScript",
+    ///         WorkingDir = "/root",
+    ///     });
     /// 
-    /// }
+    ///     var defaultInstances = AliCloud.Ecs.GetInstances.Invoke(new()
+    ///     {
+    ///         Status = "Running",
+    ///     });
+    /// 
+    ///     var defaultEcsInvocation = new AliCloud.Ecs.EcsInvocation("defaultEcsInvocation", new()
+    ///     {
+    ///         CommandId = defaultCommand.Id,
+    ///         InstanceIds = new[]
+    ///         {
+    ///             defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsInvocation:EcsInvocation")]
-    public partial class EcsInvocation : Pulumi.CustomResource
+    public partial class EcsInvocation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the command.
@@ -167,7 +167,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsInvocationArgs : Pulumi.ResourceArgs
+    public sealed class EcsInvocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the command.
@@ -238,9 +238,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsInvocationArgs()
         {
         }
+        public static new EcsInvocationArgs Empty => new EcsInvocationArgs();
     }
 
-    public sealed class EcsInvocationState : Pulumi.ResourceArgs
+    public sealed class EcsInvocationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the command.
@@ -317,5 +318,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsInvocationState()
         {
         }
+        public static new EcsInvocationState Empty => new EcsInvocationState();
     }
 }

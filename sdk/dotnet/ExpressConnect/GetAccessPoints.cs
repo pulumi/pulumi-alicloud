@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.ExpressConnect.GetAccessPoints.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.ExpressConnect.GetAccessPoints.InvokeAsync(new AliCloud.ExpressConnect.GetAccessPointsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "ap-cn-hangzhou-yh-C",
-        ///             },
-        ///         }));
-        ///         this.ExpressConnectAccessPointId1 = ids.Apply(ids =&gt; ids.Points?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.ExpressConnect.GetAccessPoints.InvokeAsync(new AliCloud.ExpressConnect.GetAccessPointsArgs
-        ///         {
-        ///             NameRegex = "^杭州-",
-        ///         }));
-        ///         this.ExpressConnectAccessPointId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Points?[0]?.Id);
-        ///     }
+        ///             "ap-cn-hangzhou-yh-C",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("expressConnectAccessPointId1")]
-        ///     public Output&lt;string&gt; ExpressConnectAccessPointId1 { get; set; }
-        ///     [Output("expressConnectAccessPointId2")]
-        ///     public Output&lt;string&gt; ExpressConnectAccessPointId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.ExpressConnect.GetAccessPoints.Invoke(new()
+        ///     {
+        ///         NameRegex = "^杭州-",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["expressConnectAccessPointId1"] = ids.Apply(getAccessPointsResult =&gt; getAccessPointsResult.Points[0]?.Id),
+        ///         ["expressConnectAccessPointId2"] = nameRegex.Apply(getAccessPointsResult =&gt; getAccessPointsResult.Points[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessPointsResult> InvokeAsync(GetAccessPointsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessPointsResult>("alicloud:expressconnect/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessPointsResult>("alicloud:expressconnect/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.ExpressConnect.GetAccessPoints.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.ExpressConnect.GetAccessPoints.InvokeAsync(new AliCloud.ExpressConnect.GetAccessPointsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "ap-cn-hangzhou-yh-C",
-        ///             },
-        ///         }));
-        ///         this.ExpressConnectAccessPointId1 = ids.Apply(ids =&gt; ids.Points?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.ExpressConnect.GetAccessPoints.InvokeAsync(new AliCloud.ExpressConnect.GetAccessPointsArgs
-        ///         {
-        ///             NameRegex = "^杭州-",
-        ///         }));
-        ///         this.ExpressConnectAccessPointId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Points?[0]?.Id);
-        ///     }
+        ///             "ap-cn-hangzhou-yh-C",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("expressConnectAccessPointId1")]
-        ///     public Output&lt;string&gt; ExpressConnectAccessPointId1 { get; set; }
-        ///     [Output("expressConnectAccessPointId2")]
-        ///     public Output&lt;string&gt; ExpressConnectAccessPointId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.ExpressConnect.GetAccessPoints.Invoke(new()
+        ///     {
+        ///         NameRegex = "^杭州-",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["expressConnectAccessPointId1"] = ids.Apply(getAccessPointsResult =&gt; getAccessPointsResult.Points[0]?.Id),
+        ///         ["expressConnectAccessPointId2"] = nameRegex.Apply(getAccessPointsResult =&gt; getAccessPointsResult.Points[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessPointsResult> Invoke(GetAccessPointsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccessPointsResult>("alicloud:expressconnect/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessPointsResult>("alicloud:expressconnect/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAccessPointsArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessPointsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -137,9 +133,10 @@ namespace Pulumi.AliCloud.ExpressConnect
         public GetAccessPointsArgs()
         {
         }
+        public static new GetAccessPointsArgs Empty => new GetAccessPointsArgs();
     }
 
-    public sealed class GetAccessPointsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessPointsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -171,6 +168,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public GetAccessPointsInvokeArgs()
         {
         }
+        public static new GetAccessPointsInvokeArgs Empty => new GetAccessPointsInvokeArgs();
     }
 
 

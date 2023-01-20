@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Instance{}
 	case "alicloud:ots/instanceAttachment:InstanceAttachment":
 		r = &InstanceAttachment{}
+	case "alicloud:ots/searchIndex:SearchIndex":
+		r = &SearchIndex{}
+	case "alicloud:ots/secondaryIndex:SecondaryIndex":
+		r = &SecondaryIndex{}
 	case "alicloud:ots/table:Table":
 		r = &Table{}
 	case "alicloud:ots/tunnel:Tunnel":
@@ -50,6 +54,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ots/instanceAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ots/searchIndex",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ots/secondaryIndex",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

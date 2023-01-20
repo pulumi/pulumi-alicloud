@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Hbr.Inputs
 {
 
-    public sealed class GetBackupJobsFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupJobsFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         public GetBackupJobsFilterArgs()
         {
         }
+        public static new GetBackupJobsFilterArgs Empty => new GetBackupJobsFilterArgs();
     }
 }

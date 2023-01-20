@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs : Pulumi.ResourceArgs
+    public sealed class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the destination server group to which requests are forwarded.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs()
         {
         }
+        public static new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs Empty => new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs();
     }
 }

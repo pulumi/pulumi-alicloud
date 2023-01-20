@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn.Inputs
 {
 
-    public sealed class IpsecServerIpsecConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class IpsecServerIpsecConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authentication algorithm that is used in Phase 2 negotiations. Default value: `sha1`.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public IpsecServerIpsecConfigGetArgs()
         {
         }
+        public static new IpsecServerIpsecConfigGetArgs Empty => new IpsecServerIpsecConfigGetArgs();
     }
 }

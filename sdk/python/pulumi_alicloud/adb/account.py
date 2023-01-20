@@ -274,7 +274,7 @@ class Account(pulumi.CustomResource):
         ADB account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:adb/account:Account example "am-12345:tf_account"
+         $ pulumi import alicloud:adb/account:Account example am-12345:tf_account
         ```
 
         :param str resource_name: The name of the resource.
@@ -337,7 +337,7 @@ class Account(pulumi.CustomResource):
         ADB account can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:adb/account:Account example "am-12345:tf_account"
+         $ pulumi import alicloud:adb/account:Account example am-12345:tf_account
         ```
 
         :param str resource_name: The name of the resource.
@@ -374,12 +374,14 @@ class Account(pulumi.CustomResource):
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
             __props__.__dict__["account_name"] = account_name
-            __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__.__dict__["db_cluster_id"] = db_cluster_id
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Account, __self__).__init__(
             'alicloud:adb/account:Account',
             resource_name,

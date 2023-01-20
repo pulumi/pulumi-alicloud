@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApplicationScalingRuleScalingRuleMetric {
     /**
-     * @return Maximum number of instances applied.
+     * @return Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
      * 
      */
     private @Nullable Integer maxReplicas;
@@ -26,7 +26,7 @@ public final class ApplicationScalingRuleScalingRuleMetric {
      */
     private @Nullable List<ApplicationScalingRuleScalingRuleMetricMetric> metrics;
     /**
-     * @return Minimum number of instances applied.
+     * @return Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
      * 
      */
     private @Nullable Integer minReplicas;
@@ -43,7 +43,7 @@ public final class ApplicationScalingRuleScalingRuleMetric {
 
     private ApplicationScalingRuleScalingRuleMetric() {}
     /**
-     * @return Maximum number of instances applied.
+     * @return Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
      * 
      */
     public Optional<Integer> maxReplicas() {
@@ -57,7 +57,7 @@ public final class ApplicationScalingRuleScalingRuleMetric {
         return this.metrics == null ? List.of() : this.metrics;
     }
     /**
-     * @return Minimum number of instances applied.
+     * @return Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
      * 
      */
     public Optional<Integer> minReplicas() {

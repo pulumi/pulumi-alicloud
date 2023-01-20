@@ -23,26 +23,24 @@ namespace Pulumi.AliCloud.Cdn
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cdn.GetBlockedRegions.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cdn.GetBlockedRegions.InvokeAsync(new AliCloud.Cdn.GetBlockedRegionsArgs
-        ///         {
-        ///             Language = "zh",
-        ///         }));
-        ///     }
+        ///         Language = "zh",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBlockedRegionsResult> InvokeAsync(GetBlockedRegionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBlockedRegionsResult>("alicloud:cdn/getBlockedRegions:getBlockedRegions", args ?? new GetBlockedRegionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBlockedRegionsResult>("alicloud:cdn/getBlockedRegions:getBlockedRegions", args ?? new GetBlockedRegionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cdn blocked regions.
@@ -56,30 +54,28 @@ namespace Pulumi.AliCloud.Cdn
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cdn.GetBlockedRegions.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cdn.GetBlockedRegions.InvokeAsync(new AliCloud.Cdn.GetBlockedRegionsArgs
-        ///         {
-        ///             Language = "zh",
-        ///         }));
-        ///     }
+        ///         Language = "zh",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBlockedRegionsResult> Invoke(GetBlockedRegionsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBlockedRegionsResult>("alicloud:cdn/getBlockedRegions:getBlockedRegions", args ?? new GetBlockedRegionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBlockedRegionsResult>("alicloud:cdn/getBlockedRegions:getBlockedRegions", args ?? new GetBlockedRegionsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBlockedRegionsArgs : Pulumi.InvokeArgs
+    public sealed class GetBlockedRegionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The language. Valid values: `zh`, `en`, `jp`.
@@ -90,9 +86,10 @@ namespace Pulumi.AliCloud.Cdn
         public GetBlockedRegionsArgs()
         {
         }
+        public static new GetBlockedRegionsArgs Empty => new GetBlockedRegionsArgs();
     }
 
-    public sealed class GetBlockedRegionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBlockedRegionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The language. Valid values: `zh`, `en`, `jp`.
@@ -103,6 +100,7 @@ namespace Pulumi.AliCloud.Cdn
         public GetBlockedRegionsInvokeArgs()
         {
         }
+        public static new GetBlockedRegionsInvokeArgs Empty => new GetBlockedRegionsInvokeArgs();
     }
 
 

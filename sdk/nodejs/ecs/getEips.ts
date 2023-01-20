@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,20 +13,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const eipsDs = pulumi.output(alicloud.ecs.getEips());
- *
- * export const firstEipId = eipsDs.eips[0].id;
+ * const eipsDs = alicloud.ecs.getEips({});
+ * export const firstEipId = eipsDs.then(eipsDs => eipsDs.eips?.[0]?.id);
  * ```
  */
 /** @deprecated This function has been deprecated in favour of the getEipAddresses function */
 export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promise<GetEipsResult> {
     pulumi.log.warn("getEips is deprecated: This function has been deprecated in favour of the getEipAddresses function")
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEips:getEips", {
         "addressName": args.addressName,
         "associatedInstanceId": args.associatedInstanceId,
@@ -145,9 +142,20 @@ export interface GetEipsResult {
     readonly status?: string;
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const eipsDs = alicloud.ecs.getEips({});
+ * export const firstEipId = eipsDs.then(eipsDs => eipsDs.eips?.[0]?.id);
+ * ```
+ */
+/** @deprecated This function has been deprecated in favour of the getEipAddresses function */
 export function getEipsOutput(args?: GetEipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEipsResult> {
-    return pulumi.output(args).apply(a => getEips(a, opts))
+    return pulumi.output(args).apply((a: any) => getEips(a, opts))
 }
 
 /**

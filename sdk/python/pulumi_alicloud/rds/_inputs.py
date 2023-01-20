@@ -15,10 +15,12 @@ __all__ = [
     'InstancePgHbaConfArgs',
     'RdsCloneDbInstanceParameterArgs',
     'RdsCloneDbInstancePgHbaConfArgs',
+    'RdsDbProxyReadOnlyInstanceWeightArgs',
     'RdsParameterGroupParamDetailArgs',
     'RdsUpgradeDbInstanceParameterArgs',
     'RdsUpgradeDbInstancePgHbaConfArgs',
     'ReadOnlyInstanceParameterArgs',
+    'GetInstanceClassInfosInfoArgs',
 ]
 
 @pulumi.input_type
@@ -413,6 +415,39 @@ class RdsCloneDbInstancePgHbaConfArgs:
 
 
 @pulumi.input_type
+class RdsDbProxyReadOnlyInstanceWeightArgs:
+    def __init__(__self__, *,
+                 instance_id: pulumi.Input[str],
+                 weight: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] instance_id: The Id of instance that can run database.
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The Id of instance that can run database.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: pulumi.Input[str]):
+        pulumi.set(self, "weight", value)
+
+
+@pulumi.input_type
 class RdsParameterGroupParamDetailArgs:
     def __init__(__self__, *,
                  param_name: pulumi.Input[str],
@@ -636,5 +671,156 @@ class ReadOnlyInstanceParameterArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GetInstanceClassInfosInfoArgs:
+    def __init__(__self__, *,
+                 class_code: Optional[str] = None,
+                 class_group: Optional[str] = None,
+                 cpu: Optional[str] = None,
+                 instruction_set_arch: Optional[str] = None,
+                 max_connections: Optional[str] = None,
+                 max_iombps: Optional[str] = None,
+                 max_iops: Optional[str] = None,
+                 memory_class: Optional[str] = None,
+                 reference_price: Optional[str] = None):
+        """
+        :param str class_code: The code of the instance type.
+        :param str class_group: The instance family of the instance.
+        :param str cpu: The number of cores that are supported by the instance type. Unit: cores.
+        :param str instruction_set_arch: The architecture of the instance type.
+        :param str max_connections: The maximum number of connections that are supported by the instance type. Unit: connections.
+        :param str max_iombps: The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
+        :param str max_iops: The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
+        :param str memory_class: The memory capacity that is supported by the instance type. Unit: GB.
+        :param str reference_price: The fee that you must pay for the instance type. Unit: cent (USD).
+        """
+        if class_code is not None:
+            pulumi.set(__self__, "class_code", class_code)
+        if class_group is not None:
+            pulumi.set(__self__, "class_group", class_group)
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if instruction_set_arch is not None:
+            pulumi.set(__self__, "instruction_set_arch", instruction_set_arch)
+        if max_connections is not None:
+            pulumi.set(__self__, "max_connections", max_connections)
+        if max_iombps is not None:
+            pulumi.set(__self__, "max_iombps", max_iombps)
+        if max_iops is not None:
+            pulumi.set(__self__, "max_iops", max_iops)
+        if memory_class is not None:
+            pulumi.set(__self__, "memory_class", memory_class)
+        if reference_price is not None:
+            pulumi.set(__self__, "reference_price", reference_price)
+
+    @property
+    @pulumi.getter(name="classCode")
+    def class_code(self) -> Optional[str]:
+        """
+        The code of the instance type.
+        """
+        return pulumi.get(self, "class_code")
+
+    @class_code.setter
+    def class_code(self, value: Optional[str]):
+        pulumi.set(self, "class_code", value)
+
+    @property
+    @pulumi.getter(name="classGroup")
+    def class_group(self) -> Optional[str]:
+        """
+        The instance family of the instance.
+        """
+        return pulumi.get(self, "class_group")
+
+    @class_group.setter
+    def class_group(self, value: Optional[str]):
+        pulumi.set(self, "class_group", value)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[str]:
+        """
+        The number of cores that are supported by the instance type. Unit: cores.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[str]):
+        pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter(name="instructionSetArch")
+    def instruction_set_arch(self) -> Optional[str]:
+        """
+        The architecture of the instance type.
+        """
+        return pulumi.get(self, "instruction_set_arch")
+
+    @instruction_set_arch.setter
+    def instruction_set_arch(self, value: Optional[str]):
+        pulumi.set(self, "instruction_set_arch", value)
+
+    @property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> Optional[str]:
+        """
+        The maximum number of connections that are supported by the instance type. Unit: connections.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @max_connections.setter
+    def max_connections(self, value: Optional[str]):
+        pulumi.set(self, "max_connections", value)
+
+    @property
+    @pulumi.getter(name="maxIombps")
+    def max_iombps(self) -> Optional[str]:
+        """
+        The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "max_iombps")
+
+    @max_iombps.setter
+    def max_iombps(self, value: Optional[str]):
+        pulumi.set(self, "max_iombps", value)
+
+    @property
+    @pulumi.getter(name="maxIops")
+    def max_iops(self) -> Optional[str]:
+        """
+        The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
+        """
+        return pulumi.get(self, "max_iops")
+
+    @max_iops.setter
+    def max_iops(self, value: Optional[str]):
+        pulumi.set(self, "max_iops", value)
+
+    @property
+    @pulumi.getter(name="memoryClass")
+    def memory_class(self) -> Optional[str]:
+        """
+        The memory capacity that is supported by the instance type. Unit: GB.
+        """
+        return pulumi.get(self, "memory_class")
+
+    @memory_class.setter
+    def memory_class(self, value: Optional[str]):
+        pulumi.set(self, "memory_class", value)
+
+    @property
+    @pulumi.getter(name="referencePrice")
+    def reference_price(self) -> Optional[str]:
+        """
+        The fee that you must pay for the instance type. Unit: cent (USD).
+        """
+        return pulumi.get(self, "reference_price")
+
+    @reference_price.setter
+    def reference_price(self, value: Optional[str]):
+        pulumi.set(self, "reference_price", value)
 
 

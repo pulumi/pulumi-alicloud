@@ -71,13 +71,17 @@ type GetPolicyAttachmentsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Resource Manager Policy Attachment IDs.
-	Ids           []string `pulumi:"ids"`
-	Language      *string  `pulumi:"language"`
-	OutputFile    *string  `pulumi:"outputFile"`
-	PolicyName    *string  `pulumi:"policyName"`
-	PolicyType    *string  `pulumi:"policyType"`
-	PrincipalName *string  `pulumi:"principalName"`
-	PrincipalType *string  `pulumi:"principalType"`
+	Ids        []string `pulumi:"ids"`
+	Language   *string  `pulumi:"language"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The name of the policy.
+	PolicyName *string `pulumi:"policyName"`
+	// The type of the policy.
+	PolicyType *string `pulumi:"policyType"`
+	// The name of the object to which the policy is attached.
+	PrincipalName *string `pulumi:"principalName"`
+	// The type of the object to which the policy is attached.
+	PrincipalType *string `pulumi:"principalType"`
 	// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 }
@@ -154,18 +158,22 @@ func (o GetPolicyAttachmentsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPolicyAttachmentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The name of the policy.
 func (o GetPolicyAttachmentsResultOutput) PolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPolicyAttachmentsResult) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
 }
 
+// The type of the policy.
 func (o GetPolicyAttachmentsResultOutput) PolicyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPolicyAttachmentsResult) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
 }
 
+// The name of the object to which the policy is attached.
 func (o GetPolicyAttachmentsResultOutput) PrincipalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPolicyAttachmentsResult) *string { return v.PrincipalName }).(pulumi.StringPtrOutput)
 }
 
+// The type of the object to which the policy is attached.
 func (o GetPolicyAttachmentsResultOutput) PrincipalType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPolicyAttachmentsResult) *string { return v.PrincipalType }).(pulumi.StringPtrOutput)
 }

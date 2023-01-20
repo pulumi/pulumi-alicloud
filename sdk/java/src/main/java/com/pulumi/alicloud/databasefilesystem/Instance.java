@@ -231,9 +231,17 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> snapshotId() {
         return Codegen.optional(this.snapshotId);
     }
+    /**
+     * The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+     * 
+     */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
+    /**
+     * @return The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }

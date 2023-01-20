@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
  * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
  * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.clickhouse.DbCluster;
  * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
@@ -114,6 +114,20 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.category;
     }
     /**
+     * (Available in 1.196.0+) - The connection string of the cluster.
+     * 
+     */
+    @Export(name="connectionString", type=String.class, parameters={})
+    private Output<String> connectionString;
+
+    /**
+     * @return (Available in 1.196.0+) - The connection string of the cluster.
+     * 
+     */
+    public Output<String> connectionString() {
+        return this.connectionString;
+    }
+    /**
      * The db cluster access white list.
      * 
      */
@@ -174,14 +188,14 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.dbClusterNetworkType;
     }
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
      * 
      */
     @Export(name="dbClusterVersion", type=String.class, parameters={})
     private Output<String> dbClusterVersion;
 
     /**
-     * @return The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+     * @return The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
      * 
      */
     public Output<String> dbClusterVersion() {
@@ -286,6 +300,20 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
+     * (Available in 1.196.0+) The connection port of the cluster.
+     * 
+     */
+    @Export(name="port", type=String.class, parameters={})
+    private Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) The connection port of the cluster.
+     * 
+     */
+    public Output<String> port() {
+        return this.port;
+    }
+    /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      * 
      */
@@ -328,6 +356,20 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.usedTime);
     }
     /**
+     * The id of the VPC.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output<String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Output<String> vpcId() {
+        return this.vpcId;
+    }
+    /**
      * The vswitch id of DBCluster.
      * 
      */
@@ -340,6 +382,20 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> vswitchId() {
         return Codegen.optional(this.vswitchId);
+    }
+    /**
+     * The zone ID of the instance.
+     * 
+     */
+    @Export(name="zoneId", type=String.class, parameters={})
+    private Output<String> zoneId;
+
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,6 +22,8 @@ import javax.annotation.Nullable;
  * For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
  * 
  * &gt; **NOTE:** Available in v1.83.0+.
+ * 
+ * &gt; **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
  * 
  * ## Example Usage
  * ```java
@@ -58,6 +61,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Deleting `alicloud.resourcemanager.Account` or removing it from your configuration
+ * 
+ * Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
+ * but may not destroy the account. If there are some dependent resource in the account,
+ * the deleting account will enter a silence period of 45 days. After the silence period ends,
+ * the system automatically starts to delete the member. [See More Details](https://www.alibabacloud.com/help/en/resource-management/latest/delete-resource-account).
  * 
  * ## Import
  * 
@@ -70,6 +79,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:resourcemanager/account:Account")
 public class Account extends com.pulumi.resources.CustomResource {
+    /**
+     * The IDs of the check items that you can choose to ignore for the member deletion.
+     * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+     * to get check ids and set them.
+     * 
+     */
+    @Export(name="abandonAbleCheckIds", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> abandonAbleCheckIds;
+
+    /**
+     * @return The IDs of the check items that you can choose to ignore for the member deletion.
+     * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+     * to get check ids and set them.
+     * 
+     */
+    public Output<Optional<List<String>>> abandonAbleCheckIds() {
+        return Codegen.optional(this.abandonAbleCheckIds);
+    }
     /**
      * The name prefix of account.
      * 

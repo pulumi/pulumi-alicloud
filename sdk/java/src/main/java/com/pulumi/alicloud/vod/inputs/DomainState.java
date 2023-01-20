@@ -201,8 +201,6 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     @Import(name="tags")
@@ -210,8 +208,6 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -550,8 +546,6 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
-         * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-         * * `Value`: It can be up to 128 characters in length. It can be a null string.
          * 
          * @return builder
          * 
@@ -563,8 +557,6 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
-         * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-         * * `Value`: It can be up to 128 characters in length. It can be a null string.
          * 
          * @return builder
          * 

@@ -21,37 +21,36 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mySyncRules = AliCloud.CS.GetRegistryEnterpriseSyncRules.Invoke(new()
         ///     {
-        ///         var mySyncRules = Output.Create(AliCloud.CS.GetRegistryEnterpriseSyncRules.InvokeAsync(new AliCloud.CS.GetRegistryEnterpriseSyncRulesArgs
-        ///         {
-        ///             InstanceId = "cri-xxx",
-        ///             NamespaceName = "test-namespace",
-        ///             RepoName = "test-repo",
-        ///             TargetInstanceId = "cri-yyy",
-        ///             NameRegex = "test-rule",
-        ///         }));
-        ///         this.Output = 
-        ///         {
-        ///             mySyncRules.Apply(mySyncRules =&gt; mySyncRules.Rules),
-        ///         }.Select(__item =&gt; __item?.Id).ToList();
-        ///     }
+        ///         InstanceId = "cri-xxx",
+        ///         NamespaceName = "test-namespace",
+        ///         RepoName = "test-repo",
+        ///         TargetInstanceId = "cri-yyy",
+        ///         NameRegex = "test-rule",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = new[]
+        ///         {
+        ///             mySyncRules.Apply(getRegistryEnterpriseSyncRulesResult =&gt; getRegistryEnterpriseSyncRulesResult.Rules),
+        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryEnterpriseSyncRulesResult> InvokeAsync(GetRegistryEnterpriseSyncRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseSyncRulesResult>("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args ?? new GetRegistryEnterpriseSyncRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseSyncRulesResult>("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args ?? new GetRegistryEnterpriseSyncRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.
@@ -63,41 +62,40 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mySyncRules = AliCloud.CS.GetRegistryEnterpriseSyncRules.Invoke(new()
         ///     {
-        ///         var mySyncRules = Output.Create(AliCloud.CS.GetRegistryEnterpriseSyncRules.InvokeAsync(new AliCloud.CS.GetRegistryEnterpriseSyncRulesArgs
-        ///         {
-        ///             InstanceId = "cri-xxx",
-        ///             NamespaceName = "test-namespace",
-        ///             RepoName = "test-repo",
-        ///             TargetInstanceId = "cri-yyy",
-        ///             NameRegex = "test-rule",
-        ///         }));
-        ///         this.Output = 
-        ///         {
-        ///             mySyncRules.Apply(mySyncRules =&gt; mySyncRules.Rules),
-        ///         }.Select(__item =&gt; __item?.Id).ToList();
-        ///     }
+        ///         InstanceId = "cri-xxx",
+        ///         NamespaceName = "test-namespace",
+        ///         RepoName = "test-repo",
+        ///         TargetInstanceId = "cri-yyy",
+        ///         NameRegex = "test-rule",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = new[]
+        ///         {
+        ///             mySyncRules.Apply(getRegistryEnterpriseSyncRulesResult =&gt; getRegistryEnterpriseSyncRulesResult.Rules),
+        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegistryEnterpriseSyncRulesResult> Invoke(GetRegistryEnterpriseSyncRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseSyncRulesResult>("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args ?? new GetRegistryEnterpriseSyncRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseSyncRulesResult>("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args ?? new GetRegistryEnterpriseSyncRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRegistryEnterpriseSyncRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryEnterpriseSyncRulesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -147,9 +145,10 @@ namespace Pulumi.AliCloud.CS
         public GetRegistryEnterpriseSyncRulesArgs()
         {
         }
+        public static new GetRegistryEnterpriseSyncRulesArgs Empty => new GetRegistryEnterpriseSyncRulesArgs();
     }
 
-    public sealed class GetRegistryEnterpriseSyncRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryEnterpriseSyncRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -199,6 +198,7 @@ namespace Pulumi.AliCloud.CS
         public GetRegistryEnterpriseSyncRulesInvokeArgs()
         {
         }
+        public static new GetRegistryEnterpriseSyncRulesInvokeArgs Empty => new GetRegistryEnterpriseSyncRulesInvokeArgs();
     }
 
 

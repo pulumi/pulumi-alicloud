@@ -21,46 +21,47 @@ namespace Pulumi.AliCloud.RocketMQ
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "onsInstanceName";
+        ///     var topic = config.Get("topic") ?? "onsTopicDatasourceName";
+        ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "onsInstanceName";
-        ///         var topic = config.Get("topic") ?? "onsTopicDatasourceName";
-        ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
-        ///         {
-        ///             InstanceName = name,
-        ///             Remark = "default_ons_instance_remark",
-        ///         });
-        ///         var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new AliCloud.RocketMQ.TopicArgs
-        ///         {
-        ///             TopicName = topic,
-        ///             InstanceId = defaultInstance.Id,
-        ///             MessageType = 0,
-        ///             Remark = "dafault_ons_topic_remark",
-        ///         });
-        ///         var topicsDs = AliCloud.RocketMQ.GetTopics.Invoke(new AliCloud.RocketMQ.GetTopicsInvokeArgs
-        ///         {
-        ///             InstanceId = defaultTopic.InstanceId,
-        ///             NameRegex = topic,
-        ///             OutputFile = "topics.txt",
-        ///         });
-        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics?[0]?.TopicName);
-        ///     }
+        ///         InstanceName = name,
+        ///         Remark = "default_ons_instance_remark",
+        ///     });
         /// 
-        ///     [Output("firstTopicName")]
-        ///     public Output&lt;string&gt; FirstTopicName { get; set; }
-        /// }
+        ///     var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new()
+        ///     {
+        ///         TopicName = topic,
+        ///         InstanceId = defaultInstance.Id,
+        ///         MessageType = 0,
+        ///         Remark = "dafault_ons_topic_remark",
+        ///     });
+        /// 
+        ///     var topicsDs = AliCloud.RocketMQ.GetTopics.Invoke(new()
+        ///     {
+        ///         InstanceId = defaultTopic.InstanceId,
+        ///         NameRegex = topic,
+        ///         OutputFile = "topics.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTopicName"] = topicsDs.Apply(getTopicsResult =&gt; getTopicsResult.Topics[0]?.TopicName),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
@@ -72,50 +73,51 @@ namespace Pulumi.AliCloud.RocketMQ
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "onsInstanceName";
+        ///     var topic = config.Get("topic") ?? "onsTopicDatasourceName";
+        ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "onsInstanceName";
-        ///         var topic = config.Get("topic") ?? "onsTopicDatasourceName";
-        ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
-        ///         {
-        ///             InstanceName = name,
-        ///             Remark = "default_ons_instance_remark",
-        ///         });
-        ///         var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new AliCloud.RocketMQ.TopicArgs
-        ///         {
-        ///             TopicName = topic,
-        ///             InstanceId = defaultInstance.Id,
-        ///             MessageType = 0,
-        ///             Remark = "dafault_ons_topic_remark",
-        ///         });
-        ///         var topicsDs = AliCloud.RocketMQ.GetTopics.Invoke(new AliCloud.RocketMQ.GetTopicsInvokeArgs
-        ///         {
-        ///             InstanceId = defaultTopic.InstanceId,
-        ///             NameRegex = topic,
-        ///             OutputFile = "topics.txt",
-        ///         });
-        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics?[0]?.TopicName);
-        ///     }
+        ///         InstanceName = name,
+        ///         Remark = "default_ons_instance_remark",
+        ///     });
         /// 
-        ///     [Output("firstTopicName")]
-        ///     public Output&lt;string&gt; FirstTopicName { get; set; }
-        /// }
+        ///     var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new()
+        ///     {
+        ///         TopicName = topic,
+        ///         InstanceId = defaultInstance.Id,
+        ///         MessageType = 0,
+        ///         Remark = "dafault_ons_topic_remark",
+        ///     });
+        /// 
+        ///     var topicsDs = AliCloud.RocketMQ.GetTopics.Invoke(new()
+        ///     {
+        ///         InstanceId = defaultTopic.InstanceId,
+        ///         NameRegex = topic,
+        ///         OutputFile = "topics.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTopicName"] = topicsDs.Apply(getTopicsResult =&gt; getTopicsResult.Topics[0]?.TopicName),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTopicsResult> Invoke(GetTopicsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTopicsArgs : Pulumi.InvokeArgs
+    public sealed class GetTopicsArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -162,9 +164,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public GetTopicsArgs()
         {
         }
+        public static new GetTopicsArgs Empty => new GetTopicsArgs();
     }
 
-    public sealed class GetTopicsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTopicsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -211,6 +214,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public GetTopicsInvokeArgs()
         {
         }
+        public static new GetTopicsInvokeArgs Empty => new GetTopicsInvokeArgs();
     }
 
 

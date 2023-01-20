@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,15 +26,12 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const gaAcceleratorSpareIpAttachmentId1 = ids.then(ids => ids.attachments?[0]?.id);
+ * export const gaAcceleratorSpareIpAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
  * ```
  */
 export function getAcceleratorSpareIpAttachments(args: GetAcceleratorSpareIpAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAcceleratorSpareIpAttachmentsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", {
         "acceleratorId": args.acceleratorId,
         "ids": args.ids,
@@ -75,9 +73,31 @@ export interface GetAcceleratorSpareIpAttachmentsResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.167.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ga.getAcceleratorSpareIpAttachments({
+ *     acceleratorId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const gaAcceleratorSpareIpAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
+ * ```
+ */
 export function getAcceleratorSpareIpAttachmentsOutput(args: GetAcceleratorSpareIpAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAcceleratorSpareIpAttachmentsResult> {
-    return pulumi.output(args).apply(a => getAcceleratorSpareIpAttachments(a, opts))
+    return pulumi.output(args).apply((a: any) => getAcceleratorSpareIpAttachments(a, opts))
 }
 
 /**

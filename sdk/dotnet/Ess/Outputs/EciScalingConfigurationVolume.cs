@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string? FlexVolumeOptions;
         /// <summary>
-        /// The name of the mounted volume.
+        /// The name of the volume.
         /// </summary>
         public readonly string? Name;
         /// <summary>

@@ -12,15 +12,18 @@ namespace Pulumi.AliCloud.CS
     /// <summary>
     /// ## Import
     /// 
-    /// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`
+    /// Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes alicloud_cs_edge_kubernetes.main cluster-id
+    ///  $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/edgeKubernetes:EdgeKubernetes")]
-    public partial class EdgeKubernetes : Pulumi.CustomResource
+    public partial class EdgeKubernetes : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The addon you want to install in cluster.
+        /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.EdgeKubernetesAddon>> Addons { get; private set; } = null!;
 
@@ -54,6 +57,17 @@ namespace Pulumi.AliCloud.CS
         [Output("clusterCaCert")]
         public Output<string?> ClusterCaCert { get; private set; } = null!;
 
+        /// <summary>
+        /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        /// * ack.standard : Standard edge clusters.
+        /// * ack.pro.small : Professional edge clusters.
+        /// </summary>
+        [Output("clusterSpec")]
+        public Output<string> ClusterSpec { get; private set; } = null!;
+
+        /// <summary>
+        /// Map of kubernetes cluster connection information.
+        /// </summary>
         [Output("connections")]
         public Output<Outputs.EdgeKubernetesConnections> Connections { get; private set; } = null!;
 
@@ -93,6 +107,15 @@ namespace Pulumi.AliCloud.CS
         [Output("kubeConfig")]
         public Output<string?> KubeConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        /// </summary>
+        [Output("loadBalancerSpec")]
+        public Output<string> LoadBalancerSpec { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of one element containing information about the associated log store. It contains the following attributes:
+        /// </summary>
         [Output("logConfig")]
         public Output<Outputs.EdgeKubernetesLogConfig?> LogConfig { get; private set; } = null!;
 
@@ -141,6 +164,9 @@ namespace Pulumi.AliCloud.CS
         [Output("proxyMode")]
         public Output<string?> ProxyMode { get; private set; } = null!;
 
+        /// <summary>
+        /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        /// </summary>
         [Output("rdsInstances")]
         public Output<ImmutableArray<string>> RdsInstances { get; private set; } = null!;
 
@@ -154,6 +180,12 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
 
         /// <summary>
+        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        /// </summary>
+        [Output("runtime")]
+        public Output<Outputs.EdgeKubernetesRuntime?> Runtime { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
         [Output("securityGroupId")]
@@ -165,6 +197,9 @@ namespace Pulumi.AliCloud.CS
         [Output("serviceCidr")]
         public Output<string?> ServiceCidr { get; private set; } = null!;
 
+        /// <summary>
+        /// The public ip of load balancer.
+        /// </summary>
         [Output("slbInternet")]
         public Output<string> SlbInternet { get; private set; } = null!;
 
@@ -234,11 +269,14 @@ namespace Pulumi.AliCloud.CS
         [Output("workerDiskSnapshotPolicyId")]
         public Output<string?> WorkerDiskSnapshotPolicyId { get; private set; } = null!;
 
+        /// <summary>
+        /// Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+        /// </summary>
         [Output("workerInstanceChargeType")]
         public Output<string?> WorkerInstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+        /// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
         /// </summary>
         [Output("workerInstanceTypes")]
         public Output<ImmutableArray<string>> WorkerInstanceTypes { get; private set; } = null!;
@@ -255,6 +293,15 @@ namespace Pulumi.AliCloud.CS
         [Output("workerNumber")]
         public Output<int> WorkerNumber { get; private set; } = null!;
 
+        /// <summary>
+        /// The RamRole Name attached to worker node.
+        /// </summary>
+        [Output("workerRamRoleName")]
+        public Output<string> WorkerRamRoleName { get; private set; } = null!;
+
+        /// <summary>
+        /// The vswitches used by workers.
+        /// </summary>
         [Output("workerVswitchIds")]
         public Output<ImmutableArray<string>> WorkerVswitchIds { get; private set; } = null!;
 
@@ -281,6 +328,10 @@ namespace Pulumi.AliCloud.CS
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -302,10 +353,14 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class EdgeKubernetesArgs : Pulumi.ResourceArgs
+    public sealed class EdgeKubernetesArgs : global::Pulumi.ResourceArgs
     {
         [Input("addons")]
         private InputList<Inputs.EdgeKubernetesAddonArgs>? _addons;
+
+        /// <summary>
+        /// The addon you want to install in cluster.
+        /// </summary>
         public InputList<Inputs.EdgeKubernetesAddonArgs> Addons
         {
             get => _addons ?? (_addons = new InputList<Inputs.EdgeKubernetesAddonArgs>());
@@ -335,6 +390,14 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
+
+        /// <summary>
+        /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        /// * ack.standard : Standard edge clusters.
+        /// * ack.pro.small : Professional edge clusters.
+        /// </summary>
+        [Input("clusterSpec")]
+        public Input<string>? ClusterSpec { get; set; }
 
         /// <summary>
         /// Whether to enable cluster deletion protection.
@@ -372,6 +435,15 @@ namespace Pulumi.AliCloud.CS
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
 
+        /// <summary>
+        /// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        /// </summary>
+        [Input("loadBalancerSpec")]
+        public Input<string>? LoadBalancerSpec { get; set; }
+
+        /// <summary>
+        /// A list of one element containing information about the associated log store. It contains the following attributes:
+        /// </summary>
         [Input("logConfig")]
         public Input<Inputs.EdgeKubernetesLogConfigArgs>? LogConfig { get; set; }
 
@@ -396,11 +468,21 @@ namespace Pulumi.AliCloud.CS
         [Input("nodeCidrMask")]
         public Input<int>? NodeCidrMask { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
@@ -416,6 +498,10 @@ namespace Pulumi.AliCloud.CS
 
         [Input("rdsInstances")]
         private InputList<string>? _rdsInstances;
+
+        /// <summary>
+        /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        /// </summary>
         public InputList<string> RdsInstances
         {
             get => _rdsInstances ?? (_rdsInstances = new InputList<string>());
@@ -435,6 +521,12 @@ namespace Pulumi.AliCloud.CS
             get => _retainResources ?? (_retainResources = new InputList<string>());
             set => _retainResources = value;
         }
+
+        /// <summary>
+        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        /// </summary>
+        [Input("runtime")]
+        public Input<Inputs.EdgeKubernetesRuntimeArgs>? Runtime { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -514,6 +606,9 @@ namespace Pulumi.AliCloud.CS
         [Input("workerDiskSnapshotPolicyId")]
         public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
 
+        /// <summary>
+        /// Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+        /// </summary>
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
 
@@ -521,7 +616,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerInstanceTypes;
 
         /// <summary>
-        /// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+        /// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
         /// </summary>
         public InputList<string> WorkerInstanceTypes
         {
@@ -537,6 +632,10 @@ namespace Pulumi.AliCloud.CS
 
         [Input("workerVswitchIds", required: true)]
         private InputList<string>? _workerVswitchIds;
+
+        /// <summary>
+        /// The vswitches used by workers.
+        /// </summary>
         public InputList<string> WorkerVswitchIds
         {
             get => _workerVswitchIds ?? (_workerVswitchIds = new InputList<string>());
@@ -546,12 +645,17 @@ namespace Pulumi.AliCloud.CS
         public EdgeKubernetesArgs()
         {
         }
+        public static new EdgeKubernetesArgs Empty => new EdgeKubernetesArgs();
     }
 
-    public sealed class EdgeKubernetesState : Pulumi.ResourceArgs
+    public sealed class EdgeKubernetesState : global::Pulumi.ResourceArgs
     {
         [Input("addons")]
         private InputList<Inputs.EdgeKubernetesAddonGetArgs>? _addons;
+
+        /// <summary>
+        /// The addon you want to install in cluster.
+        /// </summary>
         public InputList<Inputs.EdgeKubernetesAddonGetArgs> Addons
         {
             get => _addons ?? (_addons = new InputList<Inputs.EdgeKubernetesAddonGetArgs>());
@@ -588,6 +692,17 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
 
+        /// <summary>
+        /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        /// * ack.standard : Standard edge clusters.
+        /// * ack.pro.small : Professional edge clusters.
+        /// </summary>
+        [Input("clusterSpec")]
+        public Input<string>? ClusterSpec { get; set; }
+
+        /// <summary>
+        /// Map of kubernetes cluster connection information.
+        /// </summary>
         [Input("connections")]
         public Input<Inputs.EdgeKubernetesConnectionsGetArgs>? Connections { get; set; }
 
@@ -627,6 +742,15 @@ namespace Pulumi.AliCloud.CS
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
 
+        /// <summary>
+        /// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        /// </summary>
+        [Input("loadBalancerSpec")]
+        public Input<string>? LoadBalancerSpec { get; set; }
+
+        /// <summary>
+        /// A list of one element containing information about the associated log store. It contains the following attributes:
+        /// </summary>
         [Input("logConfig")]
         public Input<Inputs.EdgeKubernetesLogConfigGetArgs>? LogConfig { get; set; }
 
@@ -657,11 +781,21 @@ namespace Pulumi.AliCloud.CS
         [Input("nodeCidrMask")]
         public Input<int>? NodeCidrMask { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
@@ -677,6 +811,10 @@ namespace Pulumi.AliCloud.CS
 
         [Input("rdsInstances")]
         private InputList<string>? _rdsInstances;
+
+        /// <summary>
+        /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        /// </summary>
         public InputList<string> RdsInstances
         {
             get => _rdsInstances ?? (_rdsInstances = new InputList<string>());
@@ -698,6 +836,12 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        /// </summary>
+        [Input("runtime")]
+        public Input<Inputs.EdgeKubernetesRuntimeGetArgs>? Runtime { get; set; }
+
+        /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
         [Input("securityGroupId")]
@@ -709,6 +853,9 @@ namespace Pulumi.AliCloud.CS
         [Input("serviceCidr")]
         public Input<string>? ServiceCidr { get; set; }
 
+        /// <summary>
+        /// The public ip of load balancer.
+        /// </summary>
         [Input("slbInternet")]
         public Input<string>? SlbInternet { get; set; }
 
@@ -790,6 +937,9 @@ namespace Pulumi.AliCloud.CS
         [Input("workerDiskSnapshotPolicyId")]
         public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
 
+        /// <summary>
+        /// Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+        /// </summary>
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
 
@@ -797,7 +947,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerInstanceTypes;
 
         /// <summary>
-        /// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+        /// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
         /// </summary>
         public InputList<string> WorkerInstanceTypes
         {
@@ -823,8 +973,18 @@ namespace Pulumi.AliCloud.CS
         [Input("workerNumber")]
         public Input<int>? WorkerNumber { get; set; }
 
+        /// <summary>
+        /// The RamRole Name attached to worker node.
+        /// </summary>
+        [Input("workerRamRoleName")]
+        public Input<string>? WorkerRamRoleName { get; set; }
+
         [Input("workerVswitchIds")]
         private InputList<string>? _workerVswitchIds;
+
+        /// <summary>
+        /// The vswitches used by workers.
+        /// </summary>
         public InputList<string> WorkerVswitchIds
         {
             get => _workerVswitchIds ?? (_workerVswitchIds = new InputList<string>());
@@ -834,5 +994,6 @@ namespace Pulumi.AliCloud.CS
         public EdgeKubernetesState()
         {
         }
+        public static new EdgeKubernetesState Empty => new EdgeKubernetesState();
     }
 }

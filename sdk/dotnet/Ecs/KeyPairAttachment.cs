@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     [AliCloudResourceType("alicloud:ecs/keyPairAttachment:KeyPairAttachment")]
-    public partial class KeyPairAttachment : Pulumi.CustomResource
+    public partial class KeyPairAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class KeyPairAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class KeyPairAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
@@ -109,9 +109,10 @@ namespace Pulumi.AliCloud.Ecs
         public KeyPairAttachmentArgs()
         {
         }
+        public static new KeyPairAttachmentArgs Empty => new KeyPairAttachmentArgs();
     }
 
-    public sealed class KeyPairAttachmentState : Pulumi.ResourceArgs
+    public sealed class KeyPairAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
@@ -143,5 +144,6 @@ namespace Pulumi.AliCloud.Ecs
         public KeyPairAttachmentState()
         {
         }
+        public static new KeyPairAttachmentState Empty => new KeyPairAttachmentState();
     }
 }

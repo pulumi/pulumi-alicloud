@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultStorageCapacityUnit = new alicloud.ecs.StorageCapacityUnit("default", {
+ * const _default = new alicloud.ecs.StorageCapacityUnit("default", {
  *     capacity: 20,
  *     description: "tftestdescription",
  *     storageCapacityUnitName: "tftestname",

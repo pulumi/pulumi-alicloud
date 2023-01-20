@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Inputs
 {
 
-    public sealed class ProviderAssumeRoleArgs : Pulumi.ResourceArgs
+    public sealed class ProviderAssumeRoleArgs : global::Pulumi.ResourceArgs
     {
         [Input("policy")]
         public Input<string>? Policy { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Inputs
         public ProviderAssumeRoleArgs()
         {
         }
+        public static new ProviderAssumeRoleArgs Empty => new ProviderAssumeRoleArgs();
     }
 }

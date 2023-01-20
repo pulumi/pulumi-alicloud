@@ -113,11 +113,7 @@ def get_host_ecs_level_infos(db_type: Optional[str] = None,
 
     :param str db_type: The database engine of the host. Valid values: `mysql`, `mssql`, `pgsql`, `redis`.
     :param str image_category: Host image. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
-    :param str storage_type: The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`. 
-           * `local_ssd`: specifies that the host uses local SSDs.
-           * `cloud_essd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-           * `cloud_essd2`: specifies that the host uses ESSDs of PL2.
-           * `cloud_essd3`: specifies that the host uses ESSDs of PL3.
+    :param str storage_type: The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
     :param str zone_id: The ID of the zone in the region.
     """
     __args__ = dict()
@@ -154,11 +150,7 @@ def get_host_ecs_level_infos_output(db_type: Optional[pulumi.Input[str]] = None,
 
     :param str db_type: The database engine of the host. Valid values: `mysql`, `mssql`, `pgsql`, `redis`.
     :param str image_category: Host image. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
-    :param str storage_type: The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`. 
-           * `local_ssd`: specifies that the host uses local SSDs.
-           * `cloud_essd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-           * `cloud_essd2`: specifies that the host uses ESSDs of PL2.
-           * `cloud_essd3`: specifies that the host uses ESSDs of PL3.
+    :param str storage_type: The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
     :param str zone_id: The ID of the zone in the region.
     """
     ...

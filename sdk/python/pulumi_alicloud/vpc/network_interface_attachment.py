@@ -148,57 +148,6 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
                  wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Bacis Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "networkInterfaceAttachment"
-        number = config.get("number")
-        if number is None:
-            number = "2"
-        vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/24")
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        vswitch = alicloud.vpc.Switch("vswitch",
-            vswitch_name=name,
-            cidr_block="192.168.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vpc_id=vpc.id)
-        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
-        instance_type = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            eni_amount=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        instance = []
-        for range in [{"value": i} for i in range(0, number)]:
-            instance.append(alicloud.ecs.Instance(f"instance-{range['value']}",
-                availability_zone=default_zones.zones[0].id,
-                security_groups=[group.id],
-                instance_type=instance_type.instance_types[0].id,
-                system_disk_category="cloud_efficiency",
-                image_id=default_images.images[0].id,
-                instance_name=name,
-                vswitch_id=vswitch.id,
-                internet_max_bandwidth_out=10))
-        interface = []
-        for range in [{"value": i} for i in range(0, number)]:
-            interface.append(alicloud.vpc.NetworkInterface(f"interface-{range['value']}",
-                vswitch_id=vswitch.id,
-                security_groups=[group.id]))
-        attachment = []
-        for range in [{"value": i} for i in range(0, number)]:
-            attachment.append(alicloud.vpc.NetworkInterfaceAttachment(f"attachment-{range['value']}",
-                instance_id=[__item.id for __item in instance][range["index"]],
-                network_interface_id=[__item.id for __item in interface][range["index"]]))
-        ```
-
         ## Import
 
         Network Interfaces Attachment resource can be imported using the id, e.g.
@@ -219,57 +168,6 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
                  args: NetworkInterfaceAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Bacis Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "networkInterfaceAttachment"
-        number = config.get("number")
-        if number is None:
-            number = "2"
-        vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/24")
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        vswitch = alicloud.vpc.Switch("vswitch",
-            vswitch_name=name,
-            cidr_block="192.168.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vpc_id=vpc.id)
-        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
-        instance_type = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            eni_amount=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        instance = []
-        for range in [{"value": i} for i in range(0, number)]:
-            instance.append(alicloud.ecs.Instance(f"instance-{range['value']}",
-                availability_zone=default_zones.zones[0].id,
-                security_groups=[group.id],
-                instance_type=instance_type.instance_types[0].id,
-                system_disk_category="cloud_efficiency",
-                image_id=default_images.images[0].id,
-                instance_name=name,
-                vswitch_id=vswitch.id,
-                internet_max_bandwidth_out=10))
-        interface = []
-        for range in [{"value": i} for i in range(0, number)]:
-            interface.append(alicloud.vpc.NetworkInterface(f"interface-{range['value']}",
-                vswitch_id=vswitch.id,
-                security_groups=[group.id]))
-        attachment = []
-        for range in [{"value": i} for i in range(0, number)]:
-            attachment.append(alicloud.vpc.NetworkInterfaceAttachment(f"attachment-{range['value']}",
-                instance_id=[__item.id for __item in instance][range["index"]],
-                network_interface_id=[__item.id for __item in interface][range["index"]]))
-        ```
-
         ## Import
 
         Network Interfaces Attachment resource can be imported using the id, e.g.

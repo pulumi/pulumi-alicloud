@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class SiteMonitorIspCityArgs : Pulumi.ResourceArgs
+    public sealed class SiteMonitorIspCityArgs : global::Pulumi.ResourceArgs
     {
         [Input("city", required: true)]
         public Input<string> City { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public SiteMonitorIspCityArgs()
         {
         }
+        public static new SiteMonitorIspCityArgs Empty => new SiteMonitorIspCityArgs();
     }
 }

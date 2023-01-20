@@ -23,22 +23,20 @@ namespace Pulumi.AliCloud.CloudConnect
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CloudConnect.Network("default", new()
     ///     {
-    ///         var @default = new AliCloud.CloudConnect.Network("default", new AliCloud.CloudConnect.NetworkArgs
-    ///         {
-    ///             CidrBlock = "192.168.0.0/24",
-    ///             Description = "tf-testAccCloudConnectNetworkDescription",
-    ///             IsDefault = true,
-    ///         });
-    ///     }
+    ///         CidrBlock = "192.168.0.0/24",
+    ///         Description = "tf-testAccCloudConnectNetworkDescription",
+    ///         IsDefault = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.CloudConnect
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudconnect/network:Network")]
-    public partial class Network : Pulumi.CustomResource
+    public partial class Network : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The CidrBlock of the CCN instance. Defaults to null.
@@ -120,7 +118,7 @@ namespace Pulumi.AliCloud.CloudConnect
         }
     }
 
-    public sealed class NetworkArgs : Pulumi.ResourceArgs
+    public sealed class NetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CidrBlock of the CCN instance. Defaults to null.
@@ -149,9 +147,10 @@ namespace Pulumi.AliCloud.CloudConnect
         public NetworkArgs()
         {
         }
+        public static new NetworkArgs Empty => new NetworkArgs();
     }
 
-    public sealed class NetworkState : Pulumi.ResourceArgs
+    public sealed class NetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CidrBlock of the CCN instance. Defaults to null.
@@ -180,5 +179,6 @@ namespace Pulumi.AliCloud.CloudConnect
         public NetworkState()
         {
         }
+        public static new NetworkState Empty => new NetworkState();
     }
 }

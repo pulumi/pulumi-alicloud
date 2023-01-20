@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSnatEntry = new alicloud.rocketmq.SnatEntry("default", {
+ * const _default = new alicloud.rocketmq.SnatEntry("default", {
  *     cidrBlock: "192.168.7.0/24",
  *     sagId: "sag-3rb1t3iagy3w0zgwy9",
  *     snatIp: "192.0.0.2",

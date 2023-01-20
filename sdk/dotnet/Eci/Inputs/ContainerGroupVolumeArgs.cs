@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class ContainerGroupVolumeArgs : Pulumi.ResourceArgs
+    public sealed class ContainerGroupVolumeArgs : global::Pulumi.ResourceArgs
     {
         [Input("configFileVolumeConfigFileToPaths")]
         private InputList<Inputs.ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs>? _configFileVolumeConfigFileToPaths;
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public Input<string>? FlexVolumeOptions { get; set; }
 
         /// <summary>
-        /// The name of the security context that the container group runs.
+        /// The name of the volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -87,5 +87,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public ContainerGroupVolumeArgs()
         {
         }
+        public static new ContainerGroupVolumeArgs Empty => new ContainerGroupVolumeArgs();
     }
 }

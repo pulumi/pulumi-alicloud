@@ -21,33 +21,32 @@ namespace Pulumi.AliCloud.Dms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dmsEnterpriseInstancesDs = AliCloud.Dms.GetEnterpriseInstances.Invoke(new()
         ///     {
-        ///         var dmsEnterpriseInstancesDs = Output.Create(AliCloud.Dms.GetEnterpriseInstances.InvokeAsync(new AliCloud.Dms.GetEnterpriseInstancesArgs
-        ///         {
-        ///             EnvType = "test",
-        ///             InstanceType = "mysql",
-        ///             NameRegex = "tf_testAcc",
-        ///             NetType = "CLASSIC",
-        ///             OutputFile = "dms_enterprise_instances.json",
-        ///         }));
-        ///         this.FirstDatabaseInstanceId = dmsEnterpriseInstancesDs.Apply(dmsEnterpriseInstancesDs =&gt; dmsEnterpriseInstancesDs.Instances?[0]?.InstanceId);
-        ///     }
+        ///         EnvType = "test",
+        ///         InstanceType = "mysql",
+        ///         NameRegex = "tf_testAcc",
+        ///         NetType = "CLASSIC",
+        ///         OutputFile = "dms_enterprise_instances.json",
+        ///     });
         /// 
-        ///     [Output("firstDatabaseInstanceId")]
-        ///     public Output&lt;string&gt; FirstDatabaseInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDatabaseInstanceId"] = dmsEnterpriseInstancesDs.Apply(getEnterpriseInstancesResult =&gt; getEnterpriseInstancesResult.Instances[0]?.InstanceId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEnterpriseInstancesResult> InvokeAsync(GetEnterpriseInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseInstancesResult>("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args ?? new GetEnterpriseInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseInstancesResult>("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args ?? new GetEnterpriseInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
@@ -59,37 +58,36 @@ namespace Pulumi.AliCloud.Dms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dmsEnterpriseInstancesDs = AliCloud.Dms.GetEnterpriseInstances.Invoke(new()
         ///     {
-        ///         var dmsEnterpriseInstancesDs = Output.Create(AliCloud.Dms.GetEnterpriseInstances.InvokeAsync(new AliCloud.Dms.GetEnterpriseInstancesArgs
-        ///         {
-        ///             EnvType = "test",
-        ///             InstanceType = "mysql",
-        ///             NameRegex = "tf_testAcc",
-        ///             NetType = "CLASSIC",
-        ///             OutputFile = "dms_enterprise_instances.json",
-        ///         }));
-        ///         this.FirstDatabaseInstanceId = dmsEnterpriseInstancesDs.Apply(dmsEnterpriseInstancesDs =&gt; dmsEnterpriseInstancesDs.Instances?[0]?.InstanceId);
-        ///     }
+        ///         EnvType = "test",
+        ///         InstanceType = "mysql",
+        ///         NameRegex = "tf_testAcc",
+        ///         NetType = "CLASSIC",
+        ///         OutputFile = "dms_enterprise_instances.json",
+        ///     });
         /// 
-        ///     [Output("firstDatabaseInstanceId")]
-        ///     public Output&lt;string&gt; FirstDatabaseInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDatabaseInstanceId"] = dmsEnterpriseInstancesDs.Apply(getEnterpriseInstancesResult =&gt; getEnterpriseInstancesResult.Instances[0]?.InstanceId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEnterpriseInstancesResult> Invoke(GetEnterpriseInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEnterpriseInstancesResult>("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args ?? new GetEnterpriseInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseInstancesResult>("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args ?? new GetEnterpriseInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEnterpriseInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetEnterpriseInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of the environment to which the database instance belongs.
@@ -151,9 +149,10 @@ namespace Pulumi.AliCloud.Dms
         public GetEnterpriseInstancesArgs()
         {
         }
+        public static new GetEnterpriseInstancesArgs Empty => new GetEnterpriseInstancesArgs();
     }
 
-    public sealed class GetEnterpriseInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEnterpriseInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of the environment to which the database instance belongs.
@@ -215,6 +214,7 @@ namespace Pulumi.AliCloud.Dms
         public GetEnterpriseInstancesInvokeArgs()
         {
         }
+        public static new GetEnterpriseInstancesInvokeArgs Empty => new GetEnterpriseInstancesInvokeArgs();
     }
 
 

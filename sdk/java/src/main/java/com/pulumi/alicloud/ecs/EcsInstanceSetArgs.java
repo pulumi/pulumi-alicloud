@@ -89,8 +89,6 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Indicate how to check instance ready to use.
-     * - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-     * - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
      * 
      */
     @Import(name="bootCheckOsWithAssistant")
@@ -98,8 +96,6 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Indicate how to check instance ready to use.
-     * - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-     * - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
      * 
      */
     public Optional<Output<Boolean>> bootCheckOsWithAssistant() {
@@ -487,8 +483,6 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The security enhancement strategy.
-     * - `Active`: Enable security enhancement strategy, it only works on system images.
-     * - `Deactive`: Disable security enhancement strategy, it works on all images.
      * 
      */
     @Import(name="securityEnhancementStrategy")
@@ -496,8 +490,6 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The security enhancement strategy.
-     * - `Active`: Enable security enhancement strategy, it only works on system images.
-     * - `Deactive`: Disable security enhancement strategy, it works on all images.
      * 
      */
     public Optional<Output<String>> securityEnhancementStrategy() {
@@ -536,9 +528,6 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
-     * - `NoSpot`: A regular Pay-As-You-Go instance.
-     * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
      * 
      */
     @Import(name="spotStrategy")
@@ -546,9 +535,6 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
-     * - `NoSpot`: A regular Pay-As-You-Go instance.
-     * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
      * 
      */
     public Optional<Output<String>> spotStrategy() {
@@ -862,8 +848,6 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param bootCheckOsWithAssistant Indicate how to check instance ready to use.
-         * - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-         * - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
          * 
          * @return builder
          * 
@@ -875,8 +859,6 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param bootCheckOsWithAssistant Indicate how to check instance ready to use.
-         * - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-         * - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
          * 
          * @return builder
          * 
@@ -1436,8 +1418,6 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param securityEnhancementStrategy The security enhancement strategy.
-         * - `Active`: Enable security enhancement strategy, it only works on system images.
-         * - `Deactive`: Disable security enhancement strategy, it works on all images.
          * 
          * @return builder
          * 
@@ -1449,8 +1429,6 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param securityEnhancementStrategy The security enhancement strategy.
-         * - `Active`: Enable security enhancement strategy, it only works on system images.
-         * - `Deactive`: Disable security enhancement strategy, it works on all images.
          * 
          * @return builder
          * 
@@ -1513,9 +1491,6 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
-         * - `NoSpot`: A regular Pay-As-You-Go instance.
-         * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-         * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
          * 
          * @return builder
          * 
@@ -1527,9 +1502,6 @@ public final class EcsInstanceSetArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
-         * - `NoSpot`: A regular Pay-As-You-Go instance.
-         * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-         * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
          * 
          * @return builder
          * 

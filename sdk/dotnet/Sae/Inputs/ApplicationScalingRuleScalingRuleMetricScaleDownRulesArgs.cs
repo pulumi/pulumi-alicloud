@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Sae.Inputs
 {
 
-    public sealed class ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether shrinkage is prohibited.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs()
         {
         }
+        public static new ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs Empty => new ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs();
     }
 }

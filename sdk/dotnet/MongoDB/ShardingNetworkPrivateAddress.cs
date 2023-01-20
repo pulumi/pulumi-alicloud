@@ -21,69 +21,66 @@ namespace Pulumi.AliCloud.MongoDB
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultZones = Output.Create(AliCloud.MongoDB.GetZones.InvokeAsync());
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Zones?[0]?.Id,
-    ///             }));
-    ///         });
-    ///         var defaultShardingInstance = new AliCloud.MongoDB.ShardingInstance("defaultShardingInstance", new AliCloud.MongoDB.ShardingInstanceArgs
-    ///         {
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             EngineVersion = "3.4",
-    ///             MongoLists = 
-    ///             {
-    ///                 new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
-    ///                 {
-    ///                     NodeClass = "dds.mongos.mid",
-    ///                 },
-    ///                 new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
-    ///                 {
-    ///                     NodeClass = "dds.mongos.mid",
-    ///                 },
-    ///             },
-    ///             ShardLists = 
-    ///             {
-    ///                 new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
-    ///                 {
-    ///                     NodeClass = "dds.shard.mid",
-    ///                     NodeStorage = 10,
-    ///                 },
-    ///                 new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
-    ///                 {
-    ///                     NodeClass = "dds.shard.mid",
-    ///                     NodeStorage = 10,
-    ///                 },
-    ///             },
-    ///         });
-    ///         var example = new AliCloud.MongoDB.ShardingNetworkPrivateAddress("example", new AliCloud.MongoDB.ShardingNetworkPrivateAddressArgs
-    ///         {
-    ///             DbInstanceId = defaultShardingInstance.Id,
-    ///             NodeId = defaultShardingInstance.ShardLists.Apply(shardLists =&gt; shardLists[0].NodeId),
-    ///             ZoneId = defaultShardingInstance.ZoneId,
-    ///             AccountName = "example_value",
-    ///             AccountPassword = "YourPassword+12345",
-    ///         });
-    ///     }
+    ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultShardingInstance = new AliCloud.MongoDB.ShardingInstance("defaultShardingInstance", new()
+    ///     {
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         EngineVersion = "3.4",
+    ///         MongoLists = new[]
+    ///         {
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
+    ///             {
+    ///                 NodeClass = "dds.mongos.mid",
+    ///             },
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
+    ///             {
+    ///                 NodeClass = "dds.mongos.mid",
+    ///             },
+    ///         },
+    ///         ShardLists = new[]
+    ///         {
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
+    ///             {
+    ///                 NodeClass = "dds.shard.mid",
+    ///                 NodeStorage = 10,
+    ///             },
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
+    ///             {
+    ///                 NodeClass = "dds.shard.mid",
+    ///                 NodeStorage = 10,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new AliCloud.MongoDB.ShardingNetworkPrivateAddress("example", new()
+    ///     {
+    ///         DbInstanceId = defaultShardingInstance.Id,
+    ///         NodeId = defaultShardingInstance.ShardLists.Apply(shardLists =&gt; shardLists[0].NodeId),
+    ///         ZoneId = defaultShardingInstance.ZoneId,
+    ///         AccountName = "example_value",
+    ///         AccountPassword = "YourPassword+12345",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -95,7 +92,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress")]
-    public partial class ShardingNetworkPrivateAddress : Pulumi.CustomResource
+    public partial class ShardingNetworkPrivateAddress : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the account. 
@@ -161,6 +158,10 @@ namespace Pulumi.AliCloud.MongoDB
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -182,7 +183,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
     }
 
-    public sealed class ShardingNetworkPrivateAddressArgs : Pulumi.ResourceArgs
+    public sealed class ShardingNetworkPrivateAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the account. 
@@ -193,13 +194,23 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// Account password. 
         /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
         /// - The password must be 8 to 32 characters in length.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The db instance id.
@@ -222,9 +233,10 @@ namespace Pulumi.AliCloud.MongoDB
         public ShardingNetworkPrivateAddressArgs()
         {
         }
+        public static new ShardingNetworkPrivateAddressArgs Empty => new ShardingNetworkPrivateAddressArgs();
     }
 
-    public sealed class ShardingNetworkPrivateAddressState : Pulumi.ResourceArgs
+    public sealed class ShardingNetworkPrivateAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the account. 
@@ -235,13 +247,23 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// Account password. 
         /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
         /// - The password must be 8 to 32 characters in length.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The db instance id.
@@ -276,5 +298,6 @@ namespace Pulumi.AliCloud.MongoDB
         public ShardingNetworkPrivateAddressState()
         {
         }
+        public static new ShardingNetworkPrivateAddressState Empty => new ShardingNetworkPrivateAddressState();
     }
 }

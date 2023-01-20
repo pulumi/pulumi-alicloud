@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HybridMonitorSlsTaskSlsProcessConfigStatistic {
     /**
-     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The alias of the aggregation result.
      * 
      */
     private @Nullable String alias;
@@ -34,14 +34,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatistic {
      */
     private @Nullable String parameterTwo;
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     private @Nullable String slsKeyName;
 
     private HybridMonitorSlsTaskSlsProcessConfigStatistic() {}
     /**
-     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The alias of the aggregation result.
      * 
      */
     public Optional<String> alias() {
@@ -71,7 +71,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatistic {
         return Optional.ofNullable(this.parameterTwo);
     }
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     public Optional<String> slsKeyName() {

@@ -4,7 +4,9 @@
 package com.pulumi.alicloud.eci.inputs;
 
 import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerEnvironmentVarArgs;
+import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerLivenessProbeArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerPortArgs;
+import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerReadinessProbeArgs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerVolumeMountArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -53,14 +55,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      * 
      */
     @Import(name="cpu")
     private @Nullable Output<Double> cpu;
 
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     public Optional<Output<Double>> cpu() {
@@ -128,14 +130,29 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The amount of memory resources allocated to the container.
+     * The health check of the container.
+     * 
+     */
+    @Import(name="livenessProbes")
+    private @Nullable Output<List<ContainerGroupContainerLivenessProbeArgs>> livenessProbes;
+
+    /**
+     * @return The health check of the container.
+     * 
+     */
+    public Optional<Output<List<ContainerGroupContainerLivenessProbeArgs>>> livenessProbes() {
+        return Optional.ofNullable(this.livenessProbes);
+    }
+
+    /**
+     * The amount of memory resources allocated to the container group.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<Double> memory;
 
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     public Optional<Output<Double>> memory() {
@@ -143,14 +160,14 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the security context that the container group runs.
+     * The name of the volume.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     public Output<String> name() {
@@ -170,6 +187,21 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<List<ContainerGroupContainerPortArgs>>> ports() {
         return Optional.ofNullable(this.ports);
+    }
+
+    /**
+     * The health check of the container.
+     * 
+     */
+    @Import(name="readinessProbes")
+    private @Nullable Output<List<ContainerGroupContainerReadinessProbeArgs>> readinessProbes;
+
+    /**
+     * @return The health check of the container.
+     * 
+     */
+    public Optional<Output<List<ContainerGroupContainerReadinessProbeArgs>>> readinessProbes() {
+        return Optional.ofNullable(this.readinessProbes);
     }
 
     @Import(name="ready")
@@ -226,9 +258,11 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         this.gpu = $.gpu;
         this.image = $.image;
         this.imagePullPolicy = $.imagePullPolicy;
+        this.livenessProbes = $.livenessProbes;
         this.memory = $.memory;
         this.name = $.name;
         this.ports = $.ports;
+        this.readinessProbes = $.readinessProbes;
         this.ready = $.ready;
         this.restartCount = $.restartCount;
         this.volumeMounts = $.volumeMounts;
@@ -316,7 +350,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container.
+         * @param cpu The amount of CPU resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -327,7 +361,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container.
+         * @param cpu The amount of CPU resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -431,7 +465,38 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container.
+         * @param livenessProbes The health check of the container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbes(@Nullable Output<List<ContainerGroupContainerLivenessProbeArgs>> livenessProbes) {
+            $.livenessProbes = livenessProbes;
+            return this;
+        }
+
+        /**
+         * @param livenessProbes The health check of the container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbes(List<ContainerGroupContainerLivenessProbeArgs> livenessProbes) {
+            return livenessProbes(Output.of(livenessProbes));
+        }
+
+        /**
+         * @param livenessProbes The health check of the container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbes(ContainerGroupContainerLivenessProbeArgs... livenessProbes) {
+            return livenessProbes(List.of(livenessProbes));
+        }
+
+        /**
+         * @param memory The amount of memory resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -442,7 +507,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container.
+         * @param memory The amount of memory resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -452,7 +517,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the security context that the container group runs.
+         * @param name The name of the volume.
          * 
          * @return builder
          * 
@@ -463,7 +528,7 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the security context that the container group runs.
+         * @param name The name of the volume.
          * 
          * @return builder
          * 
@@ -501,6 +566,37 @@ public final class ContainerGroupContainerArgs extends com.pulumi.resources.Reso
          */
         public Builder ports(ContainerGroupContainerPortArgs... ports) {
             return ports(List.of(ports));
+        }
+
+        /**
+         * @param readinessProbes The health check of the container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbes(@Nullable Output<List<ContainerGroupContainerReadinessProbeArgs>> readinessProbes) {
+            $.readinessProbes = readinessProbes;
+            return this;
+        }
+
+        /**
+         * @param readinessProbes The health check of the container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbes(List<ContainerGroupContainerReadinessProbeArgs> readinessProbes) {
+            return readinessProbes(Output.of(readinessProbes));
+        }
+
+        /**
+         * @param readinessProbes The health check of the container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbes(ContainerGroupContainerReadinessProbeArgs... readinessProbes) {
+            return readinessProbes(List.of(readinessProbes));
         }
 
         public Builder ready(@Nullable Output<Boolean> ready) {

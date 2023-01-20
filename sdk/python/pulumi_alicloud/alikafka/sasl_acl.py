@@ -271,7 +271,7 @@ class SaslAcl(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id)
         default_instance = alicloud.alikafka.Instance("defaultInstance",
-            topic_quota=50,
+            partition_num=50,
             disk_type=1,
             disk_size=500,
             deploy_type=5,
@@ -347,7 +347,7 @@ class SaslAcl(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id)
         default_instance = alicloud.alikafka.Instance("defaultInstance",
-            topic_quota=50,
+            partition_num=50,
             disk_type=1,
             disk_size=500,
             deploy_type=5,

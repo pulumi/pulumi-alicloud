@@ -19,12 +19,6 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string? AutoSnapshotPolicyId;
         /// <summary>
         /// The category of the disk:
-        /// - `cloud`: The general cloud disk.
-        /// - `cloud_efficiency`: The efficiency cloud disk.
-        /// - `cloud_ssd`: The SSD cloud disk.
-        /// - `cloud_essd`: The ESSD cloud disk.
-        /// - `ephemeral_ssd`: The local SSD disk.
-        /// Default to `cloud_efficiency`.
         /// </summary>
         public readonly string? Category;
         /// <summary>
@@ -36,7 +30,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+        /// The mount point of the data disk.
+        /// </summary>
+        public readonly string? Device;
+        /// <summary>
+        /// Encrypted the data in this disk. Default value: `false`.
         /// </summary>
         public readonly bool? Encrypted;
         /// <summary>
@@ -49,11 +47,6 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string? Name;
         /// <summary>
         /// The performance level of the ESSD used as data disk:
-        /// - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        /// - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        /// - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        /// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-        /// Default to `PL1`.
         /// </summary>
         public readonly string? PerformanceLevel;
         /// <summary>
@@ -80,6 +73,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string? description,
 
+            string? device,
+
             bool? encrypted,
 
             string? kmsKeyId,
@@ -96,6 +91,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Category = category;
             DeleteWithInstance = deleteWithInstance;
             Description = description;
+            Device = device;
             Encrypted = encrypted;
             KmsKeyId = kmsKeyId;
             Name = name;

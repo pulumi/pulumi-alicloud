@@ -713,6 +713,157 @@ func (o GetQueuesQueueArrayOutput) Index(i pulumi.IntInput) GetQueuesQueueOutput
 	}).(GetQueuesQueueOutput)
 }
 
+type GetStaticAccountsAccount struct {
+	// Access key.
+	AccessKey string `pulumi:"accessKey"`
+	// Create time stamp. Unix timestamp, to millisecond level.
+	CreateTime string `pulumi:"createTime"`
+	// The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
+	Id string `pulumi:"id"`
+	// InstanceId
+	InstanceId string `pulumi:"instanceId"`
+	// The ID of the user's primary account.
+	MasterUid string `pulumi:"masterUid"`
+	// Static password.
+	Password string `pulumi:"password"`
+	// Static username.
+	UserName string `pulumi:"userName"`
+}
+
+// GetStaticAccountsAccountInput is an input type that accepts GetStaticAccountsAccountArgs and GetStaticAccountsAccountOutput values.
+// You can construct a concrete instance of `GetStaticAccountsAccountInput` via:
+//
+//	GetStaticAccountsAccountArgs{...}
+type GetStaticAccountsAccountInput interface {
+	pulumi.Input
+
+	ToGetStaticAccountsAccountOutput() GetStaticAccountsAccountOutput
+	ToGetStaticAccountsAccountOutputWithContext(context.Context) GetStaticAccountsAccountOutput
+}
+
+type GetStaticAccountsAccountArgs struct {
+	// Access key.
+	AccessKey pulumi.StringInput `pulumi:"accessKey"`
+	// Create time stamp. Unix timestamp, to millisecond level.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// InstanceId
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The ID of the user's primary account.
+	MasterUid pulumi.StringInput `pulumi:"masterUid"`
+	// Static password.
+	Password pulumi.StringInput `pulumi:"password"`
+	// Static username.
+	UserName pulumi.StringInput `pulumi:"userName"`
+}
+
+func (GetStaticAccountsAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStaticAccountsAccount)(nil)).Elem()
+}
+
+func (i GetStaticAccountsAccountArgs) ToGetStaticAccountsAccountOutput() GetStaticAccountsAccountOutput {
+	return i.ToGetStaticAccountsAccountOutputWithContext(context.Background())
+}
+
+func (i GetStaticAccountsAccountArgs) ToGetStaticAccountsAccountOutputWithContext(ctx context.Context) GetStaticAccountsAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStaticAccountsAccountOutput)
+}
+
+// GetStaticAccountsAccountArrayInput is an input type that accepts GetStaticAccountsAccountArray and GetStaticAccountsAccountArrayOutput values.
+// You can construct a concrete instance of `GetStaticAccountsAccountArrayInput` via:
+//
+//	GetStaticAccountsAccountArray{ GetStaticAccountsAccountArgs{...} }
+type GetStaticAccountsAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetStaticAccountsAccountArrayOutput() GetStaticAccountsAccountArrayOutput
+	ToGetStaticAccountsAccountArrayOutputWithContext(context.Context) GetStaticAccountsAccountArrayOutput
+}
+
+type GetStaticAccountsAccountArray []GetStaticAccountsAccountInput
+
+func (GetStaticAccountsAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStaticAccountsAccount)(nil)).Elem()
+}
+
+func (i GetStaticAccountsAccountArray) ToGetStaticAccountsAccountArrayOutput() GetStaticAccountsAccountArrayOutput {
+	return i.ToGetStaticAccountsAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetStaticAccountsAccountArray) ToGetStaticAccountsAccountArrayOutputWithContext(ctx context.Context) GetStaticAccountsAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStaticAccountsAccountArrayOutput)
+}
+
+type GetStaticAccountsAccountOutput struct{ *pulumi.OutputState }
+
+func (GetStaticAccountsAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStaticAccountsAccount)(nil)).Elem()
+}
+
+func (o GetStaticAccountsAccountOutput) ToGetStaticAccountsAccountOutput() GetStaticAccountsAccountOutput {
+	return o
+}
+
+func (o GetStaticAccountsAccountOutput) ToGetStaticAccountsAccountOutputWithContext(ctx context.Context) GetStaticAccountsAccountOutput {
+	return o
+}
+
+// Access key.
+func (o GetStaticAccountsAccountOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStaticAccountsAccount) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// Create time stamp. Unix timestamp, to millisecond level.
+func (o GetStaticAccountsAccountOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStaticAccountsAccount) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
+func (o GetStaticAccountsAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStaticAccountsAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// InstanceId
+func (o GetStaticAccountsAccountOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStaticAccountsAccount) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the user's primary account.
+func (o GetStaticAccountsAccountOutput) MasterUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStaticAccountsAccount) string { return v.MasterUid }).(pulumi.StringOutput)
+}
+
+// Static password.
+func (o GetStaticAccountsAccountOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStaticAccountsAccount) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Static username.
+func (o GetStaticAccountsAccountOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStaticAccountsAccount) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type GetStaticAccountsAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStaticAccountsAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStaticAccountsAccount)(nil)).Elem()
+}
+
+func (o GetStaticAccountsAccountArrayOutput) ToGetStaticAccountsAccountArrayOutput() GetStaticAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetStaticAccountsAccountArrayOutput) ToGetStaticAccountsAccountArrayOutputWithContext(ctx context.Context) GetStaticAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetStaticAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetStaticAccountsAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStaticAccountsAccount {
+		return vs[0].([]GetStaticAccountsAccount)[vs[1].(int)]
+	}).(GetStaticAccountsAccountOutput)
+}
+
 type GetVirtualHostsHost struct {
 	// The ID of the Virtual Host.
 	Id string `pulumi:"id"`
@@ -837,6 +988,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesQueueInput)(nil)).Elem(), GetQueuesQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesQueueArrayInput)(nil)).Elem(), GetQueuesQueueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStaticAccountsAccountInput)(nil)).Elem(), GetStaticAccountsAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStaticAccountsAccountArrayInput)(nil)).Elem(), GetStaticAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualHostsHostInput)(nil)).Elem(), GetVirtualHostsHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualHostsHostArrayInput)(nil)).Elem(), GetVirtualHostsHostArray{})
 	pulumi.RegisterOutputType(GetBindingsBindingOutput{})
@@ -847,6 +1000,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetQueuesQueueOutput{})
 	pulumi.RegisterOutputType(GetQueuesQueueArrayOutput{})
+	pulumi.RegisterOutputType(GetStaticAccountsAccountOutput{})
+	pulumi.RegisterOutputType(GetStaticAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualHostsHostOutput{})
 	pulumi.RegisterOutputType(GetVirtualHostsHostArrayOutput{})
 }

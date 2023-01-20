@@ -139,14 +139,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The AZ for the switch.
+     * The AZ for the switch. **Note:** Required for a VPC switch.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The AZ for the switch.
+     * @return The AZ for the switch. **Note:** Required for a VPC switch.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -348,7 +348,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The AZ for the switch.
+         * @param zoneId The AZ for the switch. **Note:** Required for a VPC switch.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The AZ for the switch.
+         * @param zoneId The AZ for the switch. **Note:** Required for a VPC switch.
          * 
          * @return builder
          * 

@@ -17,48 +17,50 @@ namespace Pulumi.AliCloud.Rds
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "Rds";
+    ///     var name = config.Get("name") ?? "dbbackuppolicybasic";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "Rds";
-    ///         var name = config.Get("name") ?? "dbbackuppolicybasic";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
-    ///         {
-    ///             Engine = "MySQL",
-    ///             EngineVersion = "5.6",
-    ///             InstanceType = "rds.mysql.s1.small",
-    ///             InstanceStorage = 10,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             InstanceName = name,
-    ///         });
-    ///         var policy = new AliCloud.Rds.BackupPolicy("policy", new AliCloud.Rds.BackupPolicyArgs
-    ///         {
-    ///             InstanceId = instance.Id,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var instance = new AliCloud.Rds.Instance("instance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
+    ///         InstanceType = "rds.mysql.s1.small",
+    ///         InstanceStorage = 10,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var policy = new AliCloud.Rds.BackupPolicy("policy", new()
+    ///     {
+    ///         InstanceId = instance.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -70,7 +72,7 @@ namespace Pulumi.AliCloud.Rds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/backupPolicy:BackupPolicy")]
-    public partial class BackupPolicy : Pulumi.CustomResource
+    public partial class BackupPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
@@ -91,6 +93,20 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> ArchiveBackupRetentionPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// The frequency at which you want to perform a snapshot backup on the instance. Valid values:
+        /// - -1: No backup frequencies are specified.
+        /// - 30: A snapshot backup is performed once every 30 minutes.
+        /// - 60: A snapshot backup is performed once every 60 minutes.
+        /// - 120: A snapshot backup is performed once every 120 minutes.
+        /// - 240: A snapshot backup is performed once every 240 minutes.
+        /// - 360: A snapshot backup is performed once every 360 minutes.
+        /// - 480: A snapshot backup is performed once every 480 minutes.
+        /// - 720: A snapshot backup is performed once every 720 minutes.
+        /// </summary>
+        [Output("backupInterval")]
+        public Output<string> BackupInterval { get; private set; } = null!;
+
+        /// <summary>
         /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         /// </summary>
         [Output("backupPeriods")]
@@ -107,6 +123,13 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("backupTime")]
         public Output<string> BackupTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+        /// &gt; **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
+        /// </summary>
+        [Output("category")]
+        public Output<string> Category { get; private set; } = null!;
 
         /// <summary>
         /// The compress type of instance policy. Valid values are `1`, `4`, `8`.
@@ -169,7 +192,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> LogRetentionPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         /// </summary>
         [Output("preferredBackupPeriods")]
         public Output<ImmutableArray<string>> PreferredBackupPeriods { get; private set; } = null!;
@@ -239,7 +262,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
-    public sealed class BackupPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackupPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
@@ -258,6 +281,20 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("archiveBackupRetentionPeriod")]
         public Input<int>? ArchiveBackupRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// The frequency at which you want to perform a snapshot backup on the instance. Valid values:
+        /// - -1: No backup frequencies are specified.
+        /// - 30: A snapshot backup is performed once every 30 minutes.
+        /// - 60: A snapshot backup is performed once every 60 minutes.
+        /// - 120: A snapshot backup is performed once every 120 minutes.
+        /// - 240: A snapshot backup is performed once every 240 minutes.
+        /// - 360: A snapshot backup is performed once every 360 minutes.
+        /// - 480: A snapshot backup is performed once every 480 minutes.
+        /// - 720: A snapshot backup is performed once every 720 minutes.
+        /// </summary>
+        [Input("backupInterval")]
+        public Input<string>? BackupInterval { get; set; }
 
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
@@ -283,6 +320,13 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
+
+        /// <summary>
+        /// Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+        /// &gt; **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
 
         /// <summary>
         /// The compress type of instance policy. Valid values are `1`, `4`, `8`.
@@ -348,7 +392,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<string>? _preferredBackupPeriods;
 
         /// <summary>
-        /// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         /// </summary>
         public InputList<string> PreferredBackupPeriods
         {
@@ -380,9 +424,10 @@ namespace Pulumi.AliCloud.Rds
         public BackupPolicyArgs()
         {
         }
+        public static new BackupPolicyArgs Empty => new BackupPolicyArgs();
     }
 
-    public sealed class BackupPolicyState : Pulumi.ResourceArgs
+    public sealed class BackupPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
@@ -401,6 +446,20 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("archiveBackupRetentionPeriod")]
         public Input<int>? ArchiveBackupRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// The frequency at which you want to perform a snapshot backup on the instance. Valid values:
+        /// - -1: No backup frequencies are specified.
+        /// - 30: A snapshot backup is performed once every 30 minutes.
+        /// - 60: A snapshot backup is performed once every 60 minutes.
+        /// - 120: A snapshot backup is performed once every 120 minutes.
+        /// - 240: A snapshot backup is performed once every 240 minutes.
+        /// - 360: A snapshot backup is performed once every 360 minutes.
+        /// - 480: A snapshot backup is performed once every 480 minutes.
+        /// - 720: A snapshot backup is performed once every 720 minutes.
+        /// </summary>
+        [Input("backupInterval")]
+        public Input<string>? BackupInterval { get; set; }
 
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
@@ -426,6 +485,13 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
+
+        /// <summary>
+        /// Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+        /// &gt; **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
 
         /// <summary>
         /// The compress type of instance policy. Valid values are `1`, `4`, `8`.
@@ -491,7 +557,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<string>? _preferredBackupPeriods;
 
         /// <summary>
-        /// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         /// </summary>
         public InputList<string> PreferredBackupPeriods
         {
@@ -523,5 +589,6 @@ namespace Pulumi.AliCloud.Rds
         public BackupPolicyState()
         {
         }
+        public static new BackupPolicyState Empty => new BackupPolicyState();
     }
 }

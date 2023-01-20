@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const tablesDs = pulumi.output(alicloud.ots.getTables({
+ * const tablesDs = alicloud.ots.getTables({
  *     instanceName: "sample-instance",
  *     nameRegex: "sample-table",
  *     outputFile: "tables.txt",
- * }));
- *
- * export const firstTableId = tablesDs.tables[0].id;
+ * });
+ * export const firstTableId = tablesDs.then(tablesDs => tablesDs.tables?.[0]?.id);
  * ```
  */
 export function getTables(args: GetTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetTablesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ots/getTables:getTables", {
         "ids": args.ids,
         "instanceName": args.instanceName,
@@ -85,9 +82,27 @@ export interface GetTablesResult {
      */
     readonly tables: outputs.ots.GetTablesTable[];
 }
-
+/**
+ * This data source provides the ots tables of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.40.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const tablesDs = alicloud.ots.getTables({
+ *     instanceName: "sample-instance",
+ *     nameRegex: "sample-table",
+ *     outputFile: "tables.txt",
+ * });
+ * export const firstTableId = tablesDs.then(tablesDs => tablesDs.tables?.[0]?.id);
+ * ```
+ */
 export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTablesResult> {
-    return pulumi.output(args).apply(a => getTables(a, opts))
+    return pulumi.output(args).apply((a: any) => getTables(a, opts))
 }
 
 /**

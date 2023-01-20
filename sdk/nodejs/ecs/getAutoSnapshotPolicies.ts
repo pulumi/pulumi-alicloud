@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["sp-bp14e66xxxxxxxx"],
  *     nameRegex: "tf-testAcc",
  * });
- * export const firstEcsAutoSnapshotPolicyId = example.then(example => example.policies?[0]?.id);
+ * export const firstEcsAutoSnapshotPolicyId = example.then(example => example.policies?.[0]?.id);
  * ```
  */
 export function getAutoSnapshotPolicies(args?: GetAutoSnapshotPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoSnapshotPoliciesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -80,9 +78,28 @@ export interface GetAutoSnapshotPoliciesResult {
     readonly status?: string;
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.117.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getAutoSnapshotPolicies({
+ *     ids: ["sp-bp14e66xxxxxxxx"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstEcsAutoSnapshotPolicyId = example.then(example => example.policies?.[0]?.id);
+ * ```
+ */
 export function getAutoSnapshotPoliciesOutput(args?: GetAutoSnapshotPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoSnapshotPoliciesResult> {
-    return pulumi.output(args).apply(a => getAutoSnapshotPolicies(a, opts))
+    return pulumi.output(args).apply((a: any) => getAutoSnapshotPolicies(a, opts))
 }
 
 /**

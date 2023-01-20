@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketReplicationPrefixSetGetArgs : Pulumi.ResourceArgs
+    public sealed class BucketReplicationPrefixSetGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("prefixes", required: true)]
         private InputList<string>? _prefixes;
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketReplicationPrefixSetGetArgs()
         {
         }
+        public static new BucketReplicationPrefixSetGetArgs Empty => new BucketReplicationPrefixSetGetArgs();
     }
 }

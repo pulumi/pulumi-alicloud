@@ -15,30 +15,37 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// &gt; **NOTE:** Available in v1.83.0+.
     /// 
+    /// &gt; **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Add a Resource Manager Account.
+    ///     var f1 = new AliCloud.ResourceManager.Folder("f1", new()
     ///     {
-    ///         // Add a Resource Manager Account.
-    ///         var f1 = new AliCloud.ResourceManager.Folder("f1", new AliCloud.ResourceManager.FolderArgs
-    ///         {
-    ///             FolderName = "test1",
-    ///         });
-    ///         var example = new AliCloud.ResourceManager.Account("example", new AliCloud.ResourceManager.AccountArgs
-    ///         {
-    ///             DisplayName = "RDAccount",
-    ///             FolderId = f1.Id,
-    ///         });
-    ///     }
+    ///         FolderName = "test1",
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.ResourceManager.Account("example", new()
+    ///     {
+    ///         DisplayName = "RDAccount",
+    ///         FolderId = f1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
+    /// ### Deleting `alicloud.resourcemanager.Account` or removing it from your configuration
+    /// 
+    /// Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
+    /// but may not destroy the account. If there are some dependent resource in the account,
+    /// the deleting account will enter a silence period of 45 days. After the silence period ends,
+    /// the system automatically starts to delete the member. [See More Details](https://www.alibabacloud.com/help/en/resource-management/latest/delete-resource-account).
     /// 
     /// ## Import
     /// 
@@ -49,8 +56,16 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/account:Account")]
-    public partial class Account : Pulumi.CustomResource
+    public partial class Account : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The IDs of the check items that you can choose to ignore for the member deletion. 
+        /// If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+        /// to get check ids and set them.
+        /// </summary>
+        [Output("abandonAbleCheckIds")]
+        public Output<ImmutableArray<string>> AbandonAbleCheckIds { get; private set; } = null!;
+
         /// <summary>
         /// The name prefix of account.
         /// </summary>
@@ -161,8 +176,22 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class AccountArgs : Pulumi.ResourceArgs
+    public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
+        [Input("abandonAbleCheckIds")]
+        private InputList<string>? _abandonAbleCheckIds;
+
+        /// <summary>
+        /// The IDs of the check items that you can choose to ignore for the member deletion. 
+        /// If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+        /// to get check ids and set them.
+        /// </summary>
+        public InputList<string> AbandonAbleCheckIds
+        {
+            get => _abandonAbleCheckIds ?? (_abandonAbleCheckIds = new InputList<string>());
+            set => _abandonAbleCheckIds = value;
+        }
+
         /// <summary>
         /// The name prefix of account.
         /// </summary>
@@ -202,10 +231,25 @@ namespace Pulumi.AliCloud.ResourceManager
         public AccountArgs()
         {
         }
+        public static new AccountArgs Empty => new AccountArgs();
     }
 
-    public sealed class AccountState : Pulumi.ResourceArgs
+    public sealed class AccountState : global::Pulumi.ResourceArgs
     {
+        [Input("abandonAbleCheckIds")]
+        private InputList<string>? _abandonAbleCheckIds;
+
+        /// <summary>
+        /// The IDs of the check items that you can choose to ignore for the member deletion. 
+        /// If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+        /// to get check ids and set them.
+        /// </summary>
+        public InputList<string> AbandonAbleCheckIds
+        {
+            get => _abandonAbleCheckIds ?? (_abandonAbleCheckIds = new InputList<string>());
+            set => _abandonAbleCheckIds = value;
+        }
+
         /// <summary>
         /// The name prefix of account.
         /// </summary>
@@ -281,5 +325,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public AccountState()
         {
         }
+        public static new AccountState Empty => new AccountState();
     }
 }

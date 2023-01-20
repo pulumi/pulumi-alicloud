@@ -23,33 +23,31 @@ namespace Pulumi.AliCloud.Alb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Alb.GetLoadBalancers.InvokeAsync());
-        ///         this.AlbLoadBalancerId1 = ids.Apply(ids =&gt; ids.Balancers?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Alb.GetLoadBalancers.InvokeAsync(new AliCloud.Alb.GetLoadBalancersArgs
-        ///         {
-        ///             NameRegex = "^my-LoadBalancer",
-        ///         }));
-        ///         this.AlbLoadBalancerId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Balancers?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Alb.GetLoadBalancers.Invoke();
         /// 
-        ///     [Output("albLoadBalancerId1")]
-        ///     public Output&lt;string&gt; AlbLoadBalancerId1 { get; set; }
-        ///     [Output("albLoadBalancerId2")]
-        ///     public Output&lt;string&gt; AlbLoadBalancerId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Alb.GetLoadBalancers.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-LoadBalancer",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albLoadBalancerId1"] = ids.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
+        ///         ["albLoadBalancerId2"] = nameRegex.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:alb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:alb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
@@ -63,37 +61,35 @@ namespace Pulumi.AliCloud.Alb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Alb.GetLoadBalancers.InvokeAsync());
-        ///         this.AlbLoadBalancerId1 = ids.Apply(ids =&gt; ids.Balancers?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Alb.GetLoadBalancers.InvokeAsync(new AliCloud.Alb.GetLoadBalancersArgs
-        ///         {
-        ///             NameRegex = "^my-LoadBalancer",
-        ///         }));
-        ///         this.AlbLoadBalancerId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Balancers?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Alb.GetLoadBalancers.Invoke();
         /// 
-        ///     [Output("albLoadBalancerId1")]
-        ///     public Output&lt;string&gt; AlbLoadBalancerId1 { get; set; }
-        ///     [Output("albLoadBalancerId2")]
-        ///     public Output&lt;string&gt; AlbLoadBalancerId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Alb.GetLoadBalancers.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-LoadBalancer",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albLoadBalancerId1"] = ids.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
+        ///         ["albLoadBalancerId2"] = nameRegex.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Balancers[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("alicloud:alb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("alicloud:alb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetLoadBalancersArgs : Pulumi.InvokeArgs
+    public sealed class GetLoadBalancersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of IP address that the ALB instance uses to provide services.
@@ -209,9 +205,10 @@ namespace Pulumi.AliCloud.Alb
         public GetLoadBalancersArgs()
         {
         }
+        public static new GetLoadBalancersArgs Empty => new GetLoadBalancersArgs();
     }
 
-    public sealed class GetLoadBalancersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLoadBalancersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of IP address that the ALB instance uses to provide services.
@@ -327,6 +324,7 @@ namespace Pulumi.AliCloud.Alb
         public GetLoadBalancersInvokeArgs()
         {
         }
+        public static new GetLoadBalancersInvokeArgs Empty => new GetLoadBalancersInvokeArgs();
     }
 
 

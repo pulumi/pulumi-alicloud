@@ -29,6 +29,9 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// The ID of Compliance Package.
         /// </summary>
         public readonly string CompliancePackId;
+        /// <summary>
+        /// The Compliance information.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAggregateConfigRulesRuleComplianceResult> Compliances;
         /// <summary>
         /// The config rule arn.
@@ -52,8 +55,6 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         public readonly string EventSource;
         /// <summary>
         /// The id of the resources to be evaluated against the rule.
-        /// * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
-        /// * `source_owner`- The source owner of the Config Rule.
         /// </summary>
         public readonly string ExcludeResourceIdsScope;
         /// <summary>
@@ -85,7 +86,13 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
         /// </summary>
         public readonly int RiskLevel;
+        /// <summary>
+        /// The identifier of the managed rule or the arn of the custom function.
+        /// </summary>
         public readonly string SourceIdentifier;
+        /// <summary>
+        /// The source owner of the Config Rule.
+        /// </summary>
         public readonly string SourceOwner;
         /// <summary>
         /// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.

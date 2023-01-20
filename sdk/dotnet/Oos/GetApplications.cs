@@ -23,33 +23,31 @@ namespace Pulumi.AliCloud.Oos
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Oos.GetApplications.InvokeAsync());
-        ///         this.OosApplicationId1 = ids.Apply(ids =&gt; ids.Applications?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Oos.GetApplications.InvokeAsync(new AliCloud.Oos.GetApplicationsArgs
-        ///         {
-        ///             NameRegex = "^my-Application",
-        ///         }));
-        ///         this.OosApplicationId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Applications?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Oos.GetApplications.Invoke();
         /// 
-        ///     [Output("oosApplicationId1")]
-        ///     public Output&lt;string&gt; OosApplicationId1 { get; set; }
-        ///     [Output("oosApplicationId2")]
-        ///     public Output&lt;string&gt; OosApplicationId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Oos.GetApplications.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Application",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oosApplicationId1"] = ids.Apply(getApplicationsResult =&gt; getApplicationsResult.Applications[0]?.Id),
+        ///         ["oosApplicationId2"] = nameRegex.Apply(getApplicationsResult =&gt; getApplicationsResult.Applications[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationsResult> InvokeAsync(GetApplicationsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationsResult>("alicloud:oos/getApplications:getApplications", args ?? new GetApplicationsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationsResult>("alicloud:oos/getApplications:getApplications", args ?? new GetApplicationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Oos Applications of the current Alibaba Cloud user.
@@ -63,37 +61,35 @@ namespace Pulumi.AliCloud.Oos
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Oos.GetApplications.InvokeAsync());
-        ///         this.OosApplicationId1 = ids.Apply(ids =&gt; ids.Applications?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Oos.GetApplications.InvokeAsync(new AliCloud.Oos.GetApplicationsArgs
-        ///         {
-        ///             NameRegex = "^my-Application",
-        ///         }));
-        ///         this.OosApplicationId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Applications?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Oos.GetApplications.Invoke();
         /// 
-        ///     [Output("oosApplicationId1")]
-        ///     public Output&lt;string&gt; OosApplicationId1 { get; set; }
-        ///     [Output("oosApplicationId2")]
-        ///     public Output&lt;string&gt; OosApplicationId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Oos.GetApplications.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Application",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oosApplicationId1"] = ids.Apply(getApplicationsResult =&gt; getApplicationsResult.Applications[0]?.Id),
+        ///         ["oosApplicationId2"] = nameRegex.Apply(getApplicationsResult =&gt; getApplicationsResult.Applications[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetApplicationsResult> Invoke(GetApplicationsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:oos/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:oos/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetApplicationsArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -131,9 +127,10 @@ namespace Pulumi.AliCloud.Oos
         public GetApplicationsArgs()
         {
         }
+        public static new GetApplicationsArgs Empty => new GetApplicationsArgs();
     }
 
-    public sealed class GetApplicationsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -171,6 +168,7 @@ namespace Pulumi.AliCloud.Oos
         public GetApplicationsInvokeArgs()
         {
         }
+        public static new GetApplicationsInvokeArgs Empty => new GetApplicationsInvokeArgs();
     }
 
 

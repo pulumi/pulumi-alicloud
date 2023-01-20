@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,16 +20,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.apigateway.getBackends({});
- * export const apiGatewayBackendId1 = ids.then(ids => ids.backends?[0]?.id);
+ * export const apiGatewayBackendId1 = ids.then(ids => ids.backends?.[0]?.id);
  * ```
  */
 export function getBackends(args?: GetBackendsArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:apigateway/getBackends:getBackends", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -71,9 +69,25 @@ export interface GetBackendsResult {
     readonly pageNumber?: number;
     readonly pageSize?: number;
 }
-
+/**
+ * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.181.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.apigateway.getBackends({});
+ * export const apiGatewayBackendId1 = ids.then(ids => ids.backends?.[0]?.id);
+ * ```
+ */
 export function getBackendsOutput(args?: GetBackendsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendsResult> {
-    return pulumi.output(args).apply(a => getBackends(a, opts))
+    return pulumi.output(args).apply((a: any) => getBackends(a, opts))
 }
 
 /**

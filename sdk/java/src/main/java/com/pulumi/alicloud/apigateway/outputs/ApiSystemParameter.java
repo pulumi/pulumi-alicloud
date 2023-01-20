@@ -10,12 +10,12 @@ import java.util.Objects;
 @CustomType
 public final class ApiSystemParameter {
     /**
-     * @return System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
+     * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
      */
     private String in;
     /**
-     * @return System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * @return The name of the api gateway api. Defaults to null.
      * 
      */
     private String name;
@@ -27,14 +27,14 @@ public final class ApiSystemParameter {
 
     private ApiSystemParameter() {}
     /**
-     * @return System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
+     * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
      */
     public String in() {
         return this.in;
     }
     /**
-     * @return System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * @return The name of the api gateway api. Defaults to null.
      * 
      */
     public String name() {

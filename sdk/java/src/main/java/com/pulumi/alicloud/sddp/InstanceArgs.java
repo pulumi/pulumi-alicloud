@@ -77,6 +77,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The OSS storage capacity.
+     * 
+     */
+    @Import(name="ossSize")
+    private @Nullable Output<String> ossSize;
+
+    /**
+     * @return The OSS storage capacity.
+     * 
+     */
+    public Optional<Output<String>> ossSize() {
+        return Optional.ofNullable(this.ossSize);
+    }
+
+    /**
      * The payment type of the resource. Valid values: `Subscription`.
      * 
      */
@@ -218,6 +233,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.dataphinCount = $.dataphinCount;
         this.logistics = $.logistics;
         this.modifyType = $.modifyType;
+        this.ossSize = $.ossSize;
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.renewPeriod = $.renewPeriod;
@@ -329,6 +345,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder modifyType(String modifyType) {
             return modifyType(Output.of(modifyType));
+        }
+
+        /**
+         * @param ossSize The OSS storage capacity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ossSize(@Nullable Output<String> ossSize) {
+            $.ossSize = ossSize;
+            return this;
+        }
+
+        /**
+         * @param ossSize The OSS storage capacity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ossSize(String ossSize) {
+            return ossSize(Output.of(ossSize));
         }
 
         /**

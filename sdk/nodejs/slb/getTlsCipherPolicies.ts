@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -24,20 +25,17 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const slbTlsCipherPolicyId1 = ids.then(ids => ids.policies?[0]?.id);
+ * export const slbTlsCipherPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
  * const nameRegex = alicloud.slb.getTlsCipherPolicies({
  *     nameRegex: "^My-TlsCipherPolicy",
  * });
- * export const slbTlsCipherPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?[0]?.id);
+ * export const slbTlsCipherPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
  */
 export function getTlsCipherPolicies(args?: GetTlsCipherPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetTlsCipherPoliciesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", {
         "ids": args.ids,
         "includeListener": args.includeListener,
@@ -92,9 +90,34 @@ export interface GetTlsCipherPoliciesResult {
     readonly status?: string;
     readonly tlsCipherPolicyName?: string;
 }
-
+/**
+ * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.slb.getTlsCipherPolicies({
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const slbTlsCipherPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
+ * const nameRegex = alicloud.slb.getTlsCipherPolicies({
+ *     nameRegex: "^My-TlsCipherPolicy",
+ * });
+ * export const slbTlsCipherPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
+ * ```
+ */
 export function getTlsCipherPoliciesOutput(args?: GetTlsCipherPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTlsCipherPoliciesResult> {
-    return pulumi.output(args).apply(a => getTlsCipherPolicies(a, opts))
+    return pulumi.output(args).apply((a: any) => getTlsCipherPolicies(a, opts))
 }
 
 /**

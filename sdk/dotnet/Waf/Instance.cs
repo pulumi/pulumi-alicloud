@@ -19,31 +19,29 @@ namespace Pulumi.AliCloud.Waf
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Waf.Instance("default", new()
     ///     {
-    ///         var @default = new AliCloud.Waf.Instance("default", new AliCloud.Waf.InstanceArgs
-    ///         {
-    ///             BigScreen = "0",
-    ///             ExclusiveIpPackage = "1",
-    ///             ExtBandwidth = "50",
-    ///             ExtDomainPackage = "1",
-    ///             LogStorage = "3",
-    ///             LogTime = "180",
-    ///             PackageCode = "version_3",
-    ///             Period = 1,
-    ///             PrefessionalService = "false",
-    ///             ResourceGroupId = "rs-abc12345",
-    ///             SubscriptionType = "Subscription",
-    ///             WafLog = "false",
-    ///         });
-    ///     }
+    ///         BigScreen = "0",
+    ///         ExclusiveIpPackage = "1",
+    ///         ExtBandwidth = "50",
+    ///         ExtDomainPackage = "1",
+    ///         LogStorage = "3",
+    ///         LogTime = "180",
+    ///         PackageCode = "version_3",
+    ///         Period = 1,
+    ///         PrefessionalService = "false",
+    ///         ResourceGroupId = "rs-abc12345",
+    ///         SubscriptionType = "Subscription",
+    ///         WafLog = "false",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.AliCloud.Waf
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:waf/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
@@ -209,7 +207,7 @@ namespace Pulumi.AliCloud.Waf
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
@@ -316,9 +314,10 @@ namespace Pulumi.AliCloud.Waf
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
@@ -431,5 +430,6 @@ namespace Pulumi.AliCloud.Waf
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

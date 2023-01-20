@@ -13,24 +13,37 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
     [OutputType]
     public sealed class GetRolesRoleResult
     {
+        /// <summary>
+        /// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        /// </summary>
         public readonly string Arn;
+        /// <summary>
+        /// (Available in v1.114.0+) The assume role policy document.
+        /// </summary>
         public readonly string AssumeRolePolicyDocument;
+        /// <summary>
+        /// The description of the RAM role.
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The ID of the role.
-        /// * `role_id`- The ID of the role.
-        /// * `role_name`- The name of the role.
-        /// * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
-        /// * `create_date`- (Removed form v1.114.0) The time when the RAM role was created.
-        /// * `update_date`- The time when the RAM role was updated.
-        /// * `description`- The description of the RAM role.
-        /// * `max_session_duration`- The maximum session duration of the RAM role.
-        /// * `assume_role_policy_document`- (Available in v1.114.0+) The assume role policy document.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The maximum session duration of the RAM role.
+        /// </summary>
         public readonly int MaxSessionDuration;
+        /// <summary>
+        /// The ID of the role.
+        /// </summary>
         public readonly string RoleId;
+        /// <summary>
+        /// The name of the role.
+        /// </summary>
         public readonly string RoleName;
+        /// <summary>
+        /// The time when the RAM role was updated.
+        /// </summary>
         public readonly string UpdateDate;
 
         [OutputConstructor]

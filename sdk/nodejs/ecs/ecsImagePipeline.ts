@@ -27,8 +27,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.zones?[0]?.id,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
  * }));
  * const defaultImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
@@ -36,25 +36,25 @@ import * as utilities from "../utilities";
  *     owners: "system",
  * });
  * const defaultInstanceTypes = defaultImages.then(defaultImages => alicloud.ecs.getInstanceTypes({
- *     imageId: defaultImages.ids?[0],
+ *     imageId: defaultImages.ids?.[0],
  * }));
  * const defaultEcsImagePipeline = new alicloud.ecs.EcsImagePipeline("defaultEcsImagePipeline", {
  *     addAccounts: ["example_value"],
- *     baseImage: defaultImages.then(defaultImages => defaultImages.ids?[0]),
+ *     baseImage: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
  *     baseImageType: "IMAGE",
  *     buildContent: "RUN yum update -y",
  *     deleteInstanceOnFailure: false,
  *     imageName: "example_value",
  *     description: "example_value",
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.ids?[0]),
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.ids?.[0]),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     internetMaxBandwidthOut: 20,
  *     systemDiskSize: 40,
  *     toRegionIds: [
  *         "cn-qingdao",
  *         "cn-zhangjiakou",
  *     ],
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     tags: {
  *         Created: "TF",
  *         For: "Acceptance-test",

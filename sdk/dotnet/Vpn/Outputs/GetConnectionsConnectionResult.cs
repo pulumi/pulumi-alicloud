@@ -44,9 +44,14 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string RemoteSubnet;
         /// <summary>
-        /// The status of the VPN connection, valid value:ike_sa_not_established, ike_sa_established, ipsec_sa_not_established, ipsec_sa_established.
+        /// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
         /// </summary>
         public readonly string Status;
+        public readonly ImmutableArray<Outputs.GetConnectionsConnectionVcoHealthCheckResult> VcoHealthChecks;
+        /// <summary>
+        /// The configuration information for BGP.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionsConnectionVpnBgpConfigResult> VpnBgpConfigs;
         /// <summary>
         /// Use the VPN gateway ID as the search key.
         /// </summary>
@@ -74,6 +79,10 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             string status,
 
+            ImmutableArray<Outputs.GetConnectionsConnectionVcoHealthCheckResult> vcoHealthChecks,
+
+            ImmutableArray<Outputs.GetConnectionsConnectionVpnBgpConfigResult> vpnBgpConfigs,
+
             string vpnGatewayId)
         {
             CreateTime = createTime;
@@ -86,6 +95,8 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             Name = name;
             RemoteSubnet = remoteSubnet;
             Status = status;
+            VcoHealthChecks = vcoHealthChecks;
+            VpnBgpConfigs = vpnBgpConfigs;
             VpnGatewayId = vpnGatewayId;
         }
     }

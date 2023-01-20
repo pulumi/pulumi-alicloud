@@ -21,34 +21,32 @@ namespace Pulumi.AliCloud.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @this = new AliCloud.Ecs.ImageImport("this", new()
     ///     {
-    ///         var @this = new AliCloud.Ecs.ImageImport("this", new AliCloud.Ecs.ImageImportArgs
+    ///         Architecture = "x86_64",
+    ///         Description = "test import image",
+    ///         DiskDeviceMappings = new[]
     ///         {
-    ///             Architecture = "x86_64",
-    ///             Description = "test import image",
-    ///             DiskDeviceMappings = 
+    ///             new AliCloud.Ecs.Inputs.ImageImportDiskDeviceMappingArgs
     ///             {
-    ///                 new AliCloud.Ecs.Inputs.ImageImportDiskDeviceMappingArgs
-    ///                 {
-    ///                     DiskImageSize = 5,
-    ///                     OssBucket = "testimportimage",
-    ///                     OssObject = "root.img",
-    ///                 },
+    ///                 DiskImageSize = 5,
+    ///                 OssBucket = "testimportimage",
+    ///                 OssObject = "root.img",
     ///             },
-    ///             ImageName = "test-import-image",
-    ///             LicenseType = "Auto",
-    ///             OsType = "linux",
-    ///             Platform = "Ubuntu",
-    ///         });
-    ///     }
+    ///         },
+    ///         ImageName = "test-import-image",
+    ///         LicenseType = "Auto",
+    ///         OsType = "linux",
+    ///         Platform = "Ubuntu",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes Reference0
     /// 
@@ -65,7 +63,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/imageImport:ImageImport")]
-    public partial class ImageImport : Pulumi.CustomResource
+    public partial class ImageImport : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
@@ -153,7 +151,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class ImageImportArgs : Pulumi.ResourceArgs
+    public sealed class ImageImportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
@@ -206,9 +204,10 @@ namespace Pulumi.AliCloud.Ecs
         public ImageImportArgs()
         {
         }
+        public static new ImageImportArgs Empty => new ImageImportArgs();
     }
 
-    public sealed class ImageImportState : Pulumi.ResourceArgs
+    public sealed class ImageImportState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
@@ -261,5 +260,6 @@ namespace Pulumi.AliCloud.Ecs
         public ImageImportState()
         {
         }
+        public static new ImageImportState Empty => new ImageImportState();
     }
 }

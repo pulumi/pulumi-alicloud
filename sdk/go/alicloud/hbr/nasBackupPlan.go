@@ -55,15 +55,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultFileSystems := defaultFileSystem.Description.ApplyT(func(description *string) (nas.GetFileSystemsResult, error) {
+//				return nas.GetFileSystemsOutput(ctx, nas.GetFileSystemsOutputArgs{
+//					ProtocolType:     "NFS",
+//					DescriptionRegex: description,
+//				}, nil), nil
+//			}).(nas.GetFileSystemsResultOutput)
 //			_, err = hbr.NewNasBackupPlan(ctx, "defaultNasBackupPlan", &hbr.NasBackupPlanArgs{
 //				NasBackupPlanName: pulumi.String(name),
 //				FileSystemId:      defaultFileSystem.ID(),
 //				Schedule:          pulumi.String("I|1602673264|PT2H"),
 //				BackupType:        pulumi.String("COMPLETE"),
 //				VaultId:           defaultVault.ID(),
-//				CreateTime: defaultFileSystems.ApplyT(func(defaultFileSystems nas.GetFileSystemsResult) (string, error) {
-//					return defaultFileSystems.Systems[0].CreateTime, nil
-//				}).(pulumi.StringOutput),
+//				CreateTime: defaultFileSystems.ApplyT(func(defaultFileSystems nas.GetFileSystemsResult) (*string, error) {
+//					return &defaultFileSystems.Systems[0].CreateTime, nil
+//				}).(pulumi.StringPtrOutput),
 //				Retention: pulumi.String("2"),
 //				Paths: pulumi.StringArray{
 //					pulumi.String("/"),
@@ -98,13 +104,20 @@ type NasBackupPlan struct {
 	//
 	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName pulumi.StringPtrOutput `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType pulumi.StringOutput `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId pulumi.IntPtrOutput `pulumi:"crossAccountUserId"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// The File System ID of Nas.
 	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-	NasBackupPlanName pulumi.StringOutput    `pulumi:"nasBackupPlanName"`
-	Options           pulumi.StringPtrOutput `pulumi:"options"`
+	NasBackupPlanName pulumi.StringOutput `pulumi:"nasBackupPlanName"`
+	// This parameter specifies whether to use Windows VSS to define a backup path.
+	Options pulumi.StringPtrOutput `pulumi:"options"`
 	// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
 	Paths pulumi.StringArrayOutput `pulumi:"paths"`
 	// Backup retention days, the minimum is 1.
@@ -171,13 +184,20 @@ type nasBackupPlanState struct {
 	//
 	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
 	CreateTime *string `pulumi:"createTime"`
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType *string `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId *int `pulumi:"crossAccountUserId"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
 	// The File System ID of Nas.
 	FileSystemId *string `pulumi:"fileSystemId"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	NasBackupPlanName *string `pulumi:"nasBackupPlanName"`
-	Options           *string `pulumi:"options"`
+	// This parameter specifies whether to use Windows VSS to define a backup path.
+	Options *string `pulumi:"options"`
 	// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
 	Paths []string `pulumi:"paths"`
 	// Backup retention days, the minimum is 1.
@@ -195,13 +215,20 @@ type NasBackupPlanState struct {
 	//
 	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
 	CreateTime pulumi.StringPtrInput
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName pulumi.StringPtrInput
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType pulumi.StringPtrInput
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId pulumi.IntPtrInput
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
 	// The File System ID of Nas.
 	FileSystemId pulumi.StringPtrInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	NasBackupPlanName pulumi.StringPtrInput
-	Options           pulumi.StringPtrInput
+	// This parameter specifies whether to use Windows VSS to define a backup path.
+	Options pulumi.StringPtrInput
 	// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
 	Paths pulumi.StringArrayInput
 	// Backup retention days, the minimum is 1.
@@ -223,13 +250,20 @@ type nasBackupPlanArgs struct {
 	//
 	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
 	CreateTime *string `pulumi:"createTime"`
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType *string `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId *int `pulumi:"crossAccountUserId"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
 	// The File System ID of Nas.
 	FileSystemId string `pulumi:"fileSystemId"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-	NasBackupPlanName string  `pulumi:"nasBackupPlanName"`
-	Options           *string `pulumi:"options"`
+	NasBackupPlanName string `pulumi:"nasBackupPlanName"`
+	// This parameter specifies whether to use Windows VSS to define a backup path.
+	Options *string `pulumi:"options"`
 	// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
 	Paths []string `pulumi:"paths"`
 	// Backup retention days, the minimum is 1.
@@ -248,13 +282,20 @@ type NasBackupPlanArgs struct {
 	//
 	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
 	CreateTime pulumi.StringPtrInput
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName pulumi.StringPtrInput
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType pulumi.StringPtrInput
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId pulumi.IntPtrInput
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
 	// The File System ID of Nas.
 	FileSystemId pulumi.StringInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	NasBackupPlanName pulumi.StringInput
-	Options           pulumi.StringPtrInput
+	// This parameter specifies whether to use Windows VSS to define a backup path.
+	Options pulumi.StringPtrInput
 	// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
 	Paths pulumi.StringArrayInput
 	// Backup retention days, the minimum is 1.
@@ -364,6 +405,21 @@ func (o NasBackupPlanOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The role name created in the original account RAM backup by the cross account managed by the current account.
+func (o NasBackupPlanOutput) CrossAccountRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringPtrOutput { return v.CrossAccountRoleName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+func (o NasBackupPlanOutput) CrossAccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringOutput { return v.CrossAccountType }).(pulumi.StringOutput)
+}
+
+// The original account ID of the cross account backup managed by the current account.
+func (o NasBackupPlanOutput) CrossAccountUserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NasBackupPlan) pulumi.IntPtrOutput { return v.CrossAccountUserId }).(pulumi.IntPtrOutput)
+}
+
 // Whether to disable the backup task. Valid values: `true`, `false`.
 func (o NasBackupPlanOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *NasBackupPlan) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
@@ -379,6 +435,7 @@ func (o NasBackupPlanOutput) NasBackupPlanName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringOutput { return v.NasBackupPlanName }).(pulumi.StringOutput)
 }
 
+// This parameter specifies whether to use Windows VSS to define a backup path.
 func (o NasBackupPlanOutput) Options() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringPtrOutput { return v.Options }).(pulumi.StringPtrOutput)
 }

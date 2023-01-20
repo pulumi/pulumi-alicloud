@@ -6,10 +6,12 @@ package com.pulumi.alicloud.hbr;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.hbr.RestoreJobArgs;
 import com.pulumi.alicloud.hbr.inputs.RestoreJobState;
+import com.pulumi.alicloud.hbr.outputs.RestoreJobOtsDetail;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
  * import com.pulumi.alicloud.hbr.inputs.GetOssBackupPlansArgs;
  * import com.pulumi.alicloud.hbr.inputs.GetNasBackupPlansArgs;
- * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+ * import com.pulumi.alicloud.hbr.inputs.GetSnapshotsArgs;
  * import com.pulumi.alicloud.hbr.RestoreJob;
  * import com.pulumi.alicloud.hbr.RestoreJobArgs;
  * import java.util.List;
@@ -126,15 +128,57 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Hybrid Backup Recovery (HBR) Restore Job can be imported using the id, e.g.
+ * Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `&lt;restore_job_id&gt;:&lt;restore_type&gt;`, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:hbr/restoreJob:RestoreJob example &lt;restore_job_id&gt;:&lt;restore_type&gt;
+ *  $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
  * ```
  * 
  */
 @ResourceType(type="alicloud:hbr/restoreJob:RestoreJob")
 public class RestoreJob extends com.pulumi.resources.CustomResource {
+    /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    @Export(name="crossAccountRoleName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> crossAccountRoleName;
+
+    /**
+     * @return The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    public Output<Optional<String>> crossAccountRoleName() {
+        return Codegen.optional(this.crossAccountRoleName);
+    }
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    @Export(name="crossAccountType", type=String.class, parameters={})
+    private Output<String> crossAccountType;
+
+    /**
+     * @return The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    public Output<String> crossAccountType() {
+        return this.crossAccountType;
+    }
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    @Export(name="crossAccountUserId", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> crossAccountUserId;
+
+    /**
+     * @return The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    public Output<Optional<Integer>> crossAccountUserId() {
+        return Codegen.optional(this.crossAccountUserId);
+    }
     /**
      * The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
@@ -176,6 +220,20 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> options() {
         return Codegen.optional(this.options);
+    }
+    /**
+     * The details about the Tablestore instance. See the following `Block ots_detail`.
+     * 
+     */
+    @Export(name="otsDetail", type=RestoreJobOtsDetail.class, parameters={})
+    private Output<RestoreJobOtsDetail> otsDetail;
+
+    /**
+     * @return The details about the Tablestore instance. See the following `Block ots_detail`.
+     * 
+     */
+    public Output<RestoreJobOtsDetail> otsDetail() {
+        return this.otsDetail;
     }
     /**
      * Restore Job ID. It&#39;s the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.

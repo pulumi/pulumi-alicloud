@@ -20,64 +20,65 @@ namespace Pulumi.AliCloud.PolarDB
     /// ### Create a PolarDB MySQL cluster
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "polardbClusterconfig";
+    ///     var creation = config.Get("creation") ?? "PolarDB";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "polardbClusterconfig";
-    ///         var creation = config.Get("creation") ?? "PolarDB";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         AvailableResourceCreation = creation,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new()
+    ///     {
+    ///         DbType = "MySQL",
+    ///         DbVersion = "5.6",
+    ///         DbNodeClass = "polar.mysql.x4.medium",
+    ///         PayType = "PostPaid",
+    ///         Description = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         DbClusterIpArrays = new[]
     ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new AliCloud.PolarDB.ClusterArgs
-    ///         {
-    ///             DbType = "MySQL",
-    ///             DbVersion = "5.6",
-    ///             DbNodeClass = "polar.mysql.x4.medium",
-    ///             PayType = "PostPaid",
-    ///             Description = name,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             DbClusterIpArrays = 
+    ///             new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
     ///             {
-    ///                 new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
+    ///                 DbClusterIpArrayName = "default",
+    ///                 SecurityIps = new[]
     ///                 {
-    ///                     DbClusterIpArrayName = "default",
-    ///                     SecurityIps = 
-    ///                     {
-    ///                         "1.2.3.4",
-    ///                         "1.2.3.5",
-    ///                     },
-    ///                 },
-    ///                 new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
-    ///                 {
-    ///                     DbClusterIpArrayName = "test_ips1",
-    ///                     SecurityIps = 
-    ///                     {
-    ///                         "1.2.3.6",
-    ///                     },
+    ///                     "1.2.3.4",
+    ///                     "1.2.3.5",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///             new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
+    ///             {
+    ///                 DbClusterIpArrayName = "test_ips1",
+    ///                 SecurityIps = new[]
+    ///                 {
+    ///                     "1.2.3.6",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -89,7 +90,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/cluster:Cluster")]
-    public partial class Cluster : Pulumi.CustomResource
+    public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
@@ -117,14 +118,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> CollectorStatus { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
+        /// (Available in 1.81.0+) PolarDB cluster connection string.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
-        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
         /// </summary>
         [Output("creationCategory")]
         public Output<string> CreationCategory { get; private set; } = null!;
@@ -179,7 +180,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// The description of cluster.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
@@ -231,6 +232,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.196.0+) PolarDB cluster connection port.
+        /// </summary>
+        [Output("port")]
+        public Output<string> Port { get; private set; } = null!;
+
+        /// <summary>
         /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         /// </summary>
         [Output("renewalStatus")]
@@ -250,7 +257,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        /// This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+        /// Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         /// </summary>
         [Output("securityIps")]
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
@@ -283,11 +291,17 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> TdeStatus { get; private set; } = null!;
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
         /// &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
         [Output("vswitchId")]
-        public Output<string> VswitchId { get; private set; } = null!;
+        public Output<string?> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The Zone to launch the DB cluster. it supports multiple zone.
@@ -339,7 +353,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
     }
 
-    public sealed class ClusterArgs : Pulumi.ResourceArgs
+    public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
@@ -367,8 +381,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? CollectorStatus { get; set; }
 
         /// <summary>
-        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
         /// </summary>
         [Input("creationCategory")]
         public Input<string>? CreationCategory { get; set; }
@@ -515,7 +529,8 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<string>? _securityIps;
 
         /// <summary>
-        /// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        /// This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+        /// Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         /// </summary>
         public InputList<string> SecurityIps
         {
@@ -557,6 +572,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
         /// &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
@@ -572,9 +593,10 @@ namespace Pulumi.AliCloud.PolarDB
         public ClusterArgs()
         {
         }
+        public static new ClusterArgs Empty => new ClusterArgs();
     }
 
-    public sealed class ClusterState : Pulumi.ResourceArgs
+    public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
@@ -602,14 +624,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? CollectorStatus { get; set; }
 
         /// <summary>
-        /// (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
+        /// (Available in 1.81.0+) PolarDB cluster connection string.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
-        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
         /// </summary>
         [Input("creationCategory")]
         public Input<string>? CreationCategory { get; set; }
@@ -728,6 +750,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// (Available in 1.196.0+) PolarDB cluster connection port.
+        /// </summary>
+        [Input("port")]
+        public Input<string>? Port { get; set; }
+
+        /// <summary>
         /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         /// </summary>
         [Input("renewalStatus")]
@@ -756,7 +784,8 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<string>? _securityIps;
 
         /// <summary>
-        /// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        /// This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+        /// Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         /// </summary>
         public InputList<string> SecurityIps
         {
@@ -798,6 +827,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
         /// &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
@@ -813,5 +848,6 @@ namespace Pulumi.AliCloud.PolarDB
         public ClusterState()
         {
         }
+        public static new ClusterState Empty => new ClusterState();
     }
 }

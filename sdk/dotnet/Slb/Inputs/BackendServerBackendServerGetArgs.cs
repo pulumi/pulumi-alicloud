@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb.Inputs
 {
 
-    public sealed class BackendServerBackendServerGetArgs : Pulumi.ResourceArgs
+    public sealed class BackendServerBackendServerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("serverId", required: true)]
         public Input<string> ServerId { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Slb.Inputs
         public BackendServerBackendServerGetArgs()
         {
         }
+        public static new BackendServerBackendServerGetArgs Empty => new BackendServerBackendServerGetArgs();
     }
 }

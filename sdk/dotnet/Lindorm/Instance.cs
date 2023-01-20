@@ -27,8 +27,26 @@ namespace Pulumi.AliCloud.Lindorm
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:lindorm/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Output("arbiterVswitchId")]
+        public Output<string?> ArbiterVswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Output("arbiterZoneId")]
+        public Output<string?> ArbiterZoneId { get; private set; } = null!;
+
+        /// <summary>
+        /// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+        /// </summary>
+        [Output("archVersion")]
+        public Output<string?> ArchVersion { get; private set; } = null!;
+
         /// <summary>
         /// The cold storage capacity of the instance. Unit: GB.
         /// </summary>
@@ -36,16 +54,25 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<int> ColdStorage { get; private set; } = null!;
 
         /// <summary>
-        /// The core num.
+        /// The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
         /// </summary>
         [Output("coreNum")]
         public Output<int?> CoreNum { get; private set; } = null!;
 
         /// <summary>
-        /// The core spec.
+        /// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        /// </summary>
+        [Output("coreSingleStorage")]
+        public Output<int?> CoreSingleStorage { get; private set; } = null!;
+
+        /// <summary>
+        /// The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+        /// - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+        /// - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+        /// `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         /// </summary>
         [Output("coreSpec")]
-        public Output<string?> CoreSpec { get; private set; } = null!;
+        public Output<string> CoreSpec { get; private set; } = null!;
 
         /// <summary>
         /// The deletion protection of instance.
@@ -54,7 +81,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<bool> DeletionProection { get; private set; } = null!;
 
         /// <summary>
-        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         /// </summary>
         [Output("diskCategory")]
         public Output<string> DiskCategory { get; private set; } = null!;
@@ -123,13 +150,37 @@ namespace Pulumi.AliCloud.Lindorm
         /// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
         /// </summary>
         [Output("instanceStorage")]
-        public Output<string?> InstanceStorage { get; private set; } = null!;
+        public Output<string> InstanceStorage { get; private set; } = null!;
 
         /// <summary>
         /// The ip white list of instance.
         /// </summary>
         [Output("ipWhiteLists")]
         public Output<ImmutableArray<string>> IpWhiteLists { get; private set; } = null!;
+
+        /// <summary>
+        /// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        /// </summary>
+        [Output("logDiskCategory")]
+        public Output<string?> LogDiskCategory { get; private set; } = null!;
+
+        /// <summary>
+        /// The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+        /// </summary>
+        [Output("logNum")]
+        public Output<int?> LogNum { get; private set; } = null!;
+
+        /// <summary>
+        /// The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        /// </summary>
+        [Output("logSingleStorage")]
+        public Output<int?> LogSingleStorage { get; private set; } = null!;
+
+        /// <summary>
+        /// The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+        /// </summary>
+        [Output("logSpec")]
+        public Output<string?> LogSpec { get; private set; } = null!;
 
         /// <summary>
         /// The count of lindorm tunnel service.
@@ -142,6 +193,12 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Output("ltsNodeSpecification")]
         public Output<string> LtsNodeSpecification { get; private set; } = null!;
+
+        /// <summary>
+        /// The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+        /// </summary>
+        [Output("multiZoneCombination")]
+        public Output<string?> MultiZoneCombination { get; private set; } = null!;
 
         /// <summary>
         /// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
@@ -168,6 +225,18 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string?> PricingCycle { get; private set; } = null!;
 
         /// <summary>
+        /// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Output("primaryVswitchId")]
+        public Output<string?> PrimaryVswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Output("primaryZoneId")]
+        public Output<string?> PrimaryZoneId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the resource group.
         /// </summary>
         [Output("resourceGroupId")]
@@ -186,6 +255,24 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string> SearchEngineSpecification { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+        /// </summary>
+        [Output("serviceType")]
+        public Output<string> ServiceType { get; private set; } = null!;
+
+        /// <summary>
+        /// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Output("standbyVswitchId")]
+        public Output<string?> StandbyVswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Output("standbyZoneId")]
+        public Output<string?> StandbyZoneId { get; private set; } = null!;
+
+        /// <summary>
         /// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
         /// </summary>
         [Output("status")]
@@ -198,7 +285,8 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<int> TableEngineNodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        /// The specification of  table engine. Valid values: 
+        /// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         /// </summary>
         [Output("tableEngineSpecification")]
         public Output<string> TableEngineSpecification { get; private set; } = null!;
@@ -216,7 +304,8 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<int> TimeSeriesEngineNodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        /// The specification of time series engine. 
+        /// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         /// </summary>
         [Output("timeSeriesEngineSpecification")]
         public Output<string> TimeSeriesEngineSpecification { get; private set; } = null!;
@@ -228,10 +317,17 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string> TimeSeriresEngineSpecification { get; private set; } = null!;
 
         /// <summary>
-        /// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        /// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+        /// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         /// </summary>
         [Output("upgradeType")]
         public Output<string?> UpgradeType { get; private set; } = null!;
+
+        /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The vswitch id.
@@ -289,8 +385,26 @@ namespace Pulumi.AliCloud.Lindorm
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Input("arbiterVswitchId")]
+        public Input<string>? ArbiterVswitchId { get; set; }
+
+        /// <summary>
+        /// The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Input("arbiterZoneId")]
+        public Input<string>? ArbiterZoneId { get; set; }
+
+        /// <summary>
+        /// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+        /// </summary>
+        [Input("archVersion")]
+        public Input<string>? ArchVersion { get; set; }
+
         /// <summary>
         /// The cold storage capacity of the instance. Unit: GB.
         /// </summary>
@@ -298,13 +412,22 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<int>? ColdStorage { get; set; }
 
         /// <summary>
-        /// The core num.
+        /// The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
         /// </summary>
         [Input("coreNum")]
         public Input<int>? CoreNum { get; set; }
 
         /// <summary>
-        /// The core spec.
+        /// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        /// </summary>
+        [Input("coreSingleStorage")]
+        public Input<int>? CoreSingleStorage { get; set; }
+
+        /// <summary>
+        /// The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+        /// - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+        /// - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+        /// `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         /// </summary>
         [Input("coreSpec")]
         public Input<string>? CoreSpec { get; set; }
@@ -316,7 +439,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<bool>? DeletionProection { get; set; }
 
         /// <summary>
-        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         /// </summary>
         [Input("diskCategory", required: true)]
         public Input<string> DiskCategory { get; set; } = null!;
@@ -370,6 +493,30 @@ namespace Pulumi.AliCloud.Lindorm
         }
 
         /// <summary>
+        /// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        /// </summary>
+        [Input("logDiskCategory")]
+        public Input<string>? LogDiskCategory { get; set; }
+
+        /// <summary>
+        /// The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+        /// </summary>
+        [Input("logNum")]
+        public Input<int>? LogNum { get; set; }
+
+        /// <summary>
+        /// The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        /// </summary>
+        [Input("logSingleStorage")]
+        public Input<int>? LogSingleStorage { get; set; }
+
+        /// <summary>
+        /// The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+        /// </summary>
+        [Input("logSpec")]
+        public Input<string>? LogSpec { get; set; }
+
+        /// <summary>
         /// The count of lindorm tunnel service.
         /// </summary>
         [Input("ltsNodeCount")]
@@ -380,6 +527,12 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Input("ltsNodeSpecification")]
         public Input<string>? LtsNodeSpecification { get; set; }
+
+        /// <summary>
+        /// The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+        /// </summary>
+        [Input("multiZoneCombination")]
+        public Input<string>? MultiZoneCombination { get; set; }
 
         /// <summary>
         /// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
@@ -406,6 +559,18 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
+        /// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Input("primaryVswitchId")]
+        public Input<string>? PrimaryVswitchId { get; set; }
+
+        /// <summary>
+        /// Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Input("primaryZoneId")]
+        public Input<string>? PrimaryZoneId { get; set; }
+
+        /// <summary>
         /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
@@ -424,13 +589,26 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? SearchEngineSpecification { get; set; }
 
         /// <summary>
+        /// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Input("standbyVswitchId")]
+        public Input<string>? StandbyVswitchId { get; set; }
+
+        /// <summary>
+        /// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Input("standbyZoneId")]
+        public Input<string>? StandbyZoneId { get; set; }
+
+        /// <summary>
         /// The count of table engine.
         /// </summary>
         [Input("tableEngineNodeCount")]
         public Input<int>? TableEngineNodeCount { get; set; }
 
         /// <summary>
-        /// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        /// The specification of  table engine. Valid values: 
+        /// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         /// </summary>
         [Input("tableEngineSpecification")]
         public Input<string>? TableEngineSpecification { get; set; }
@@ -454,7 +632,8 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<int>? TimeSeriesEngineNodeCount { get; set; }
 
         /// <summary>
-        /// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        /// The specification of time series engine. 
+        /// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         /// </summary>
         [Input("timeSeriesEngineSpecification")]
         public Input<string>? TimeSeriesEngineSpecification { get; set; }
@@ -466,10 +645,17 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? TimeSeriresEngineSpecification { get; set; }
 
         /// <summary>
-        /// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        /// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+        /// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         /// </summary>
         [Input("upgradeType")]
         public Input<string>? UpgradeType { get; set; }
+
+        /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The vswitch id.
@@ -486,10 +672,29 @@ namespace Pulumi.AliCloud.Lindorm
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Input("arbiterVswitchId")]
+        public Input<string>? ArbiterVswitchId { get; set; }
+
+        /// <summary>
+        /// The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Input("arbiterZoneId")]
+        public Input<string>? ArbiterZoneId { get; set; }
+
+        /// <summary>
+        /// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+        /// </summary>
+        [Input("archVersion")]
+        public Input<string>? ArchVersion { get; set; }
+
         /// <summary>
         /// The cold storage capacity of the instance. Unit: GB.
         /// </summary>
@@ -497,13 +702,22 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<int>? ColdStorage { get; set; }
 
         /// <summary>
-        /// The core num.
+        /// The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
         /// </summary>
         [Input("coreNum")]
         public Input<int>? CoreNum { get; set; }
 
         /// <summary>
-        /// The core spec.
+        /// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        /// </summary>
+        [Input("coreSingleStorage")]
+        public Input<int>? CoreSingleStorage { get; set; }
+
+        /// <summary>
+        /// The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+        /// - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+        /// - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+        /// `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         /// </summary>
         [Input("coreSpec")]
         public Input<string>? CoreSpec { get; set; }
@@ -515,7 +729,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<bool>? DeletionProection { get; set; }
 
         /// <summary>
-        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        /// The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         /// </summary>
         [Input("diskCategory")]
         public Input<string>? DiskCategory { get; set; }
@@ -599,6 +813,30 @@ namespace Pulumi.AliCloud.Lindorm
         }
 
         /// <summary>
+        /// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        /// </summary>
+        [Input("logDiskCategory")]
+        public Input<string>? LogDiskCategory { get; set; }
+
+        /// <summary>
+        /// The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+        /// </summary>
+        [Input("logNum")]
+        public Input<int>? LogNum { get; set; }
+
+        /// <summary>
+        /// The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        /// </summary>
+        [Input("logSingleStorage")]
+        public Input<int>? LogSingleStorage { get; set; }
+
+        /// <summary>
+        /// The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+        /// </summary>
+        [Input("logSpec")]
+        public Input<string>? LogSpec { get; set; }
+
+        /// <summary>
         /// The count of lindorm tunnel service.
         /// </summary>
         [Input("ltsNodeCount")]
@@ -609,6 +847,12 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Input("ltsNodeSpecification")]
         public Input<string>? LtsNodeSpecification { get; set; }
+
+        /// <summary>
+        /// The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+        /// </summary>
+        [Input("multiZoneCombination")]
+        public Input<string>? MultiZoneCombination { get; set; }
 
         /// <summary>
         /// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
@@ -635,6 +879,18 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
+        /// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Input("primaryVswitchId")]
+        public Input<string>? PrimaryVswitchId { get; set; }
+
+        /// <summary>
+        /// Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Input("primaryZoneId")]
+        public Input<string>? PrimaryZoneId { get; set; }
+
+        /// <summary>
         /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
@@ -653,6 +909,24 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? SearchEngineSpecification { get; set; }
 
         /// <summary>
+        /// (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+        /// </summary>
+        [Input("serviceType")]
+        public Input<string>? ServiceType { get; set; }
+
+        /// <summary>
+        /// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Input("standbyVswitchId")]
+        public Input<string>? StandbyVswitchId { get; set; }
+
+        /// <summary>
+        /// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+        /// </summary>
+        [Input("standbyZoneId")]
+        public Input<string>? StandbyZoneId { get; set; }
+
+        /// <summary>
         /// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
         /// </summary>
         [Input("status")]
@@ -665,7 +939,8 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<int>? TableEngineNodeCount { get; set; }
 
         /// <summary>
-        /// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        /// The specification of  table engine. Valid values: 
+        /// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         /// </summary>
         [Input("tableEngineSpecification")]
         public Input<string>? TableEngineSpecification { get; set; }
@@ -689,7 +964,8 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<int>? TimeSeriesEngineNodeCount { get; set; }
 
         /// <summary>
-        /// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        /// The specification of time series engine. 
+        /// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         /// </summary>
         [Input("timeSeriesEngineSpecification")]
         public Input<string>? TimeSeriesEngineSpecification { get; set; }
@@ -701,10 +977,17 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? TimeSeriresEngineSpecification { get; set; }
 
         /// <summary>
-        /// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        /// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+        /// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         /// </summary>
         [Input("upgradeType")]
         public Input<string>? UpgradeType { get; set; }
+
+        /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The vswitch id.
@@ -721,5 +1004,6 @@ namespace Pulumi.AliCloud.Lindorm
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

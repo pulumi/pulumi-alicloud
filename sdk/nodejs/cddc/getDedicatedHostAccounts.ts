@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,16 +20,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.cddc.getDedicatedHostAccounts({});
- * export const cddcDedicatedHostAccountId1 = ids.then(ids => ids.accounts?[0]?.id);
+ * export const cddcDedicatedHostAccountId1 = ids.then(ids => ids.accounts?.[0]?.id);
  * ```
  */
 export function getDedicatedHostAccounts(args?: GetDedicatedHostAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostAccountsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cddc/getDedicatedHostAccounts:getDedicatedHostAccounts", {
         "dedicatedHostId": args.dedicatedHostId,
         "ids": args.ids,
@@ -77,9 +75,25 @@ export interface GetDedicatedHostAccountsResult {
     readonly pageNumber?: number;
     readonly pageSize?: number;
 }
-
+/**
+ * This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.148.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cddc.getDedicatedHostAccounts({});
+ * export const cddcDedicatedHostAccountId1 = ids.then(ids => ids.accounts?.[0]?.id);
+ * ```
+ */
 export function getDedicatedHostAccountsOutput(args?: GetDedicatedHostAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostAccountsResult> {
-    return pulumi.output(args).apply(a => getDedicatedHostAccounts(a, opts))
+    return pulumi.output(args).apply((a: any) => getDedicatedHostAccounts(a, opts))
 }
 
 /**

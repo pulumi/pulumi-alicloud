@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/eipAssociation:EipAssociation")]
-    public partial class EipAssociation : Pulumi.CustomResource
+    public partial class EipAssociation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The allocation EIP ID.
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EipAssociationArgs : Pulumi.ResourceArgs
+    public sealed class EipAssociationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The allocation EIP ID.
@@ -130,9 +130,10 @@ namespace Pulumi.AliCloud.Ecs
         public EipAssociationArgs()
         {
         }
+        public static new EipAssociationArgs Empty => new EipAssociationArgs();
     }
 
-    public sealed class EipAssociationState : Pulumi.ResourceArgs
+    public sealed class EipAssociationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The allocation EIP ID.
@@ -167,5 +168,6 @@ namespace Pulumi.AliCloud.Ecs
         public EipAssociationState()
         {
         }
+        public static new EipAssociationState Empty => new EipAssociationState();
     }
 }

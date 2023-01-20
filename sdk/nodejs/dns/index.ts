@@ -5,60 +5,176 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./accessStrategy";
-export * from "./addressPool";
-export * from "./alidnsDomain";
-export * from "./alidnsDomainAttachment";
-export * from "./alidnsInstance";
-export * from "./alidnsRecord";
-export * from "./customLine";
-export * from "./ddosBgpInstance";
-export * from "./ddosCooInstance";
-export * from "./dnsDomain";
-export * from "./domain";
-export * from "./domainAttachment";
-export * from "./domainGroup";
-export * from "./getAccessStrategies";
-export * from "./getAddressPools";
-export * from "./getAlidnsDomainGroups";
-export * from "./getAlidnsDomains";
-export * from "./getAlidnsInstances";
-export * from "./getAlidnsRecords";
-export * from "./getCustomLines";
-export * from "./getDomainGroups";
-export * from "./getDomainRecords";
-export * from "./getDomainTxtGuid";
-export * from "./getDomains";
-export * from "./getGroups";
-export * from "./getGtmInstances";
-export * from "./getInstances";
-export * from "./getRecords";
-export * from "./getResolutionLines";
-export * from "./group";
-export * from "./gtmInstance";
-export * from "./instance";
-export * from "./monitorConfig";
-export * from "./record";
+export { AccessStrategyArgs, AccessStrategyState } from "./accessStrategy";
+export type AccessStrategy = import("./accessStrategy").AccessStrategy;
+export const AccessStrategy: typeof import("./accessStrategy").AccessStrategy = null as any;
+utilities.lazyLoad(exports, ["AccessStrategy"], () => require("./accessStrategy"));
 
-// Import resources to register:
-import { AccessStrategy } from "./accessStrategy";
-import { AddressPool } from "./addressPool";
-import { AlidnsDomain } from "./alidnsDomain";
-import { AlidnsDomainAttachment } from "./alidnsDomainAttachment";
-import { AlidnsInstance } from "./alidnsInstance";
-import { AlidnsRecord } from "./alidnsRecord";
-import { CustomLine } from "./customLine";
-import { DdosBgpInstance } from "./ddosBgpInstance";
-import { DdosCooInstance } from "./ddosCooInstance";
-import { DnsDomain } from "./dnsDomain";
-import { Domain } from "./domain";
-import { DomainAttachment } from "./domainAttachment";
-import { DomainGroup } from "./domainGroup";
-import { Group } from "./group";
-import { GtmInstance } from "./gtmInstance";
-import { Instance } from "./instance";
-import { MonitorConfig } from "./monitorConfig";
-import { Record } from "./record";
+export { AddressPoolArgs, AddressPoolState } from "./addressPool";
+export type AddressPool = import("./addressPool").AddressPool;
+export const AddressPool: typeof import("./addressPool").AddressPool = null as any;
+utilities.lazyLoad(exports, ["AddressPool"], () => require("./addressPool"));
+
+export { AlidnsDomainArgs, AlidnsDomainState } from "./alidnsDomain";
+export type AlidnsDomain = import("./alidnsDomain").AlidnsDomain;
+export const AlidnsDomain: typeof import("./alidnsDomain").AlidnsDomain = null as any;
+utilities.lazyLoad(exports, ["AlidnsDomain"], () => require("./alidnsDomain"));
+
+export { AlidnsDomainAttachmentArgs, AlidnsDomainAttachmentState } from "./alidnsDomainAttachment";
+export type AlidnsDomainAttachment = import("./alidnsDomainAttachment").AlidnsDomainAttachment;
+export const AlidnsDomainAttachment: typeof import("./alidnsDomainAttachment").AlidnsDomainAttachment = null as any;
+utilities.lazyLoad(exports, ["AlidnsDomainAttachment"], () => require("./alidnsDomainAttachment"));
+
+export { AlidnsInstanceArgs, AlidnsInstanceState } from "./alidnsInstance";
+export type AlidnsInstance = import("./alidnsInstance").AlidnsInstance;
+export const AlidnsInstance: typeof import("./alidnsInstance").AlidnsInstance = null as any;
+utilities.lazyLoad(exports, ["AlidnsInstance"], () => require("./alidnsInstance"));
+
+export { AlidnsRecordArgs, AlidnsRecordState } from "./alidnsRecord";
+export type AlidnsRecord = import("./alidnsRecord").AlidnsRecord;
+export const AlidnsRecord: typeof import("./alidnsRecord").AlidnsRecord = null as any;
+utilities.lazyLoad(exports, ["AlidnsRecord"], () => require("./alidnsRecord"));
+
+export { CustomLineArgs, CustomLineState } from "./customLine";
+export type CustomLine = import("./customLine").CustomLine;
+export const CustomLine: typeof import("./customLine").CustomLine = null as any;
+utilities.lazyLoad(exports, ["CustomLine"], () => require("./customLine"));
+
+export { DdosBgpInstanceArgs, DdosBgpInstanceState } from "./ddosBgpInstance";
+export type DdosBgpInstance = import("./ddosBgpInstance").DdosBgpInstance;
+export const DdosBgpInstance: typeof import("./ddosBgpInstance").DdosBgpInstance = null as any;
+utilities.lazyLoad(exports, ["DdosBgpInstance"], () => require("./ddosBgpInstance"));
+
+export { DdosCooInstanceArgs, DdosCooInstanceState } from "./ddosCooInstance";
+export type DdosCooInstance = import("./ddosCooInstance").DdosCooInstance;
+export const DdosCooInstance: typeof import("./ddosCooInstance").DdosCooInstance = null as any;
+utilities.lazyLoad(exports, ["DdosCooInstance"], () => require("./ddosCooInstance"));
+
+export { DnsDomainArgs, DnsDomainState } from "./dnsDomain";
+export type DnsDomain = import("./dnsDomain").DnsDomain;
+export const DnsDomain: typeof import("./dnsDomain").DnsDomain = null as any;
+utilities.lazyLoad(exports, ["DnsDomain"], () => require("./dnsDomain"));
+
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+
+export { DomainAttachmentArgs, DomainAttachmentState } from "./domainAttachment";
+export type DomainAttachment = import("./domainAttachment").DomainAttachment;
+export const DomainAttachment: typeof import("./domainAttachment").DomainAttachment = null as any;
+utilities.lazyLoad(exports, ["DomainAttachment"], () => require("./domainAttachment"));
+
+export { DomainGroupArgs, DomainGroupState } from "./domainGroup";
+export type DomainGroup = import("./domainGroup").DomainGroup;
+export const DomainGroup: typeof import("./domainGroup").DomainGroup = null as any;
+utilities.lazyLoad(exports, ["DomainGroup"], () => require("./domainGroup"));
+
+export { GetAccessStrategiesArgs, GetAccessStrategiesResult, GetAccessStrategiesOutputArgs } from "./getAccessStrategies";
+export const getAccessStrategies: typeof import("./getAccessStrategies").getAccessStrategies = null as any;
+export const getAccessStrategiesOutput: typeof import("./getAccessStrategies").getAccessStrategiesOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessStrategies","getAccessStrategiesOutput"], () => require("./getAccessStrategies"));
+
+export { GetAddressPoolsArgs, GetAddressPoolsResult, GetAddressPoolsOutputArgs } from "./getAddressPools";
+export const getAddressPools: typeof import("./getAddressPools").getAddressPools = null as any;
+export const getAddressPoolsOutput: typeof import("./getAddressPools").getAddressPoolsOutput = null as any;
+utilities.lazyLoad(exports, ["getAddressPools","getAddressPoolsOutput"], () => require("./getAddressPools"));
+
+export { GetAlidnsDomainGroupsArgs, GetAlidnsDomainGroupsResult, GetAlidnsDomainGroupsOutputArgs } from "./getAlidnsDomainGroups";
+export const getAlidnsDomainGroups: typeof import("./getAlidnsDomainGroups").getAlidnsDomainGroups = null as any;
+export const getAlidnsDomainGroupsOutput: typeof import("./getAlidnsDomainGroups").getAlidnsDomainGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getAlidnsDomainGroups","getAlidnsDomainGroupsOutput"], () => require("./getAlidnsDomainGroups"));
+
+export { GetAlidnsDomainsArgs, GetAlidnsDomainsResult, GetAlidnsDomainsOutputArgs } from "./getAlidnsDomains";
+export const getAlidnsDomains: typeof import("./getAlidnsDomains").getAlidnsDomains = null as any;
+export const getAlidnsDomainsOutput: typeof import("./getAlidnsDomains").getAlidnsDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getAlidnsDomains","getAlidnsDomainsOutput"], () => require("./getAlidnsDomains"));
+
+export { GetAlidnsInstancesArgs, GetAlidnsInstancesResult, GetAlidnsInstancesOutputArgs } from "./getAlidnsInstances";
+export const getAlidnsInstances: typeof import("./getAlidnsInstances").getAlidnsInstances = null as any;
+export const getAlidnsInstancesOutput: typeof import("./getAlidnsInstances").getAlidnsInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getAlidnsInstances","getAlidnsInstancesOutput"], () => require("./getAlidnsInstances"));
+
+export { GetAlidnsRecordsArgs, GetAlidnsRecordsResult, GetAlidnsRecordsOutputArgs } from "./getAlidnsRecords";
+export const getAlidnsRecords: typeof import("./getAlidnsRecords").getAlidnsRecords = null as any;
+export const getAlidnsRecordsOutput: typeof import("./getAlidnsRecords").getAlidnsRecordsOutput = null as any;
+utilities.lazyLoad(exports, ["getAlidnsRecords","getAlidnsRecordsOutput"], () => require("./getAlidnsRecords"));
+
+export { GetCustomLinesArgs, GetCustomLinesResult, GetCustomLinesOutputArgs } from "./getCustomLines";
+export const getCustomLines: typeof import("./getCustomLines").getCustomLines = null as any;
+export const getCustomLinesOutput: typeof import("./getCustomLines").getCustomLinesOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomLines","getCustomLinesOutput"], () => require("./getCustomLines"));
+
+export { GetDomainGroupsArgs, GetDomainGroupsResult, GetDomainGroupsOutputArgs } from "./getDomainGroups";
+export const getDomainGroups: typeof import("./getDomainGroups").getDomainGroups = null as any;
+export const getDomainGroupsOutput: typeof import("./getDomainGroups").getDomainGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomainGroups","getDomainGroupsOutput"], () => require("./getDomainGroups"));
+
+export { GetDomainRecordsArgs, GetDomainRecordsResult, GetDomainRecordsOutputArgs } from "./getDomainRecords";
+export const getDomainRecords: typeof import("./getDomainRecords").getDomainRecords = null as any;
+export const getDomainRecordsOutput: typeof import("./getDomainRecords").getDomainRecordsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomainRecords","getDomainRecordsOutput"], () => require("./getDomainRecords"));
+
+export { GetDomainTxtGuidArgs, GetDomainTxtGuidResult, GetDomainTxtGuidOutputArgs } from "./getDomainTxtGuid";
+export const getDomainTxtGuid: typeof import("./getDomainTxtGuid").getDomainTxtGuid = null as any;
+export const getDomainTxtGuidOutput: typeof import("./getDomainTxtGuid").getDomainTxtGuidOutput = null as any;
+utilities.lazyLoad(exports, ["getDomainTxtGuid","getDomainTxtGuidOutput"], () => require("./getDomainTxtGuid"));
+
+export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
+export const getDomains: typeof import("./getDomains").getDomains = null as any;
+export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
+
+export { GetGroupsArgs, GetGroupsResult, GetGroupsOutputArgs } from "./getGroups";
+export const getGroups: typeof import("./getGroups").getGroups = null as any;
+export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
+
+export { GetGtmInstancesArgs, GetGtmInstancesResult, GetGtmInstancesOutputArgs } from "./getGtmInstances";
+export const getGtmInstances: typeof import("./getGtmInstances").getGtmInstances = null as any;
+export const getGtmInstancesOutput: typeof import("./getGtmInstances").getGtmInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getGtmInstances","getGtmInstancesOutput"], () => require("./getGtmInstances"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetRecordsArgs, GetRecordsResult, GetRecordsOutputArgs } from "./getRecords";
+export const getRecords: typeof import("./getRecords").getRecords = null as any;
+export const getRecordsOutput: typeof import("./getRecords").getRecordsOutput = null as any;
+utilities.lazyLoad(exports, ["getRecords","getRecordsOutput"], () => require("./getRecords"));
+
+export { GetResolutionLinesArgs, GetResolutionLinesResult, GetResolutionLinesOutputArgs } from "./getResolutionLines";
+export const getResolutionLines: typeof import("./getResolutionLines").getResolutionLines = null as any;
+export const getResolutionLinesOutput: typeof import("./getResolutionLines").getResolutionLinesOutput = null as any;
+utilities.lazyLoad(exports, ["getResolutionLines","getResolutionLinesOutput"], () => require("./getResolutionLines"));
+
+export { GroupArgs, GroupState } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { GtmInstanceArgs, GtmInstanceState } from "./gtmInstance";
+export type GtmInstance = import("./gtmInstance").GtmInstance;
+export const GtmInstance: typeof import("./gtmInstance").GtmInstance = null as any;
+utilities.lazyLoad(exports, ["GtmInstance"], () => require("./gtmInstance"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { MonitorConfigArgs, MonitorConfigState } from "./monitorConfig";
+export type MonitorConfig = import("./monitorConfig").MonitorConfig;
+export const MonitorConfig: typeof import("./monitorConfig").MonitorConfig = null as any;
+utilities.lazyLoad(exports, ["MonitorConfig"], () => require("./monitorConfig"));
+
+export { RecordArgs, RecordState } from "./record";
+export type Record = import("./record").Record;
+export const Record: typeof import("./record").Record = null as any;
+utilities.lazyLoad(exports, ["Record"], () => require("./record"));
+
 
 const _module = {
     version: utilities.getVersion(),

@@ -21,32 +21,30 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ecs.AutoSnapshotPolicy("example", new()
     ///     {
-    ///         var example = new AliCloud.Ecs.AutoSnapshotPolicy("example", new AliCloud.Ecs.AutoSnapshotPolicyArgs
+    ///         RepeatWeekdays = new[]
     ///         {
-    ///             RepeatWeekdays = 
-    ///             {
-    ///                 "1",
-    ///                 "2",
-    ///                 "3",
-    ///             },
-    ///             RetentionDays = -1,
-    ///             TimePoints = 
-    ///             {
-    ///                 "1",
-    ///                 "22",
-    ///                 "23",
-    ///             },
-    ///         });
-    ///     }
+    ///             "1",
+    ///             "2",
+    ///             "3",
+    ///         },
+    ///         RetentionDays = -1,
+    ///         TimePoints = new[]
+    ///         {
+    ///             "1",
+    ///             "22",
+    ///             "23",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +56,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy")]
-    public partial class AutoSnapshotPolicy : Pulumi.CustomResource
+    public partial class AutoSnapshotPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The retention period of the snapshot copied across regions.
@@ -168,7 +166,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class AutoSnapshotPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AutoSnapshotPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The retention period of the snapshot copied across regions.
@@ -255,9 +253,10 @@ namespace Pulumi.AliCloud.Ecs
         public AutoSnapshotPolicyArgs()
         {
         }
+        public static new AutoSnapshotPolicyArgs Empty => new AutoSnapshotPolicyArgs();
     }
 
-    public sealed class AutoSnapshotPolicyState : Pulumi.ResourceArgs
+    public sealed class AutoSnapshotPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The retention period of the snapshot copied across regions.
@@ -350,5 +349,6 @@ namespace Pulumi.AliCloud.Ecs
         public AutoSnapshotPolicyState()
         {
         }
+        public static new AutoSnapshotPolicyState Empty => new AutoSnapshotPolicyState();
     }
 }

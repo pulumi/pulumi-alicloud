@@ -18,35 +18,33 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new AliCloud.Cms.Alarm("basic", new()
     ///     {
-    ///         var basic = new AliCloud.Cms.Alarm("basic", new AliCloud.Cms.AlarmArgs
+    ///         ContactGroups = new[]
     ///         {
-    ///             ContactGroups = 
-    ///             {
-    ///                 "test-group",
-    ///             },
-    ///             EffectiveInterval = "0:00-2:00",
-    ///             EscalationsCritical = new AliCloud.Cms.Inputs.AlarmEscalationsCriticalArgs
-    ///             {
-    ///                 ComparisonOperator = "&lt;=",
-    ///                 Statistics = "Average",
-    ///                 Threshold = "35",
-    ///                 Times = 2,
-    ///             },
-    ///             MetricDimensions = "[{\"instanceId\":\"i-bp1247jeep0y53nu3bnk\",\"device\":\"/dev/vda1\"},{\"instanceId\":\"i-bp11gdcik8z6dl5jm84p\",\"device\":\"/dev/vdb1\"}]",
-    ///             Period = 900,
-    ///             Project = "acs_ecs_dashboard",
-    ///             Webhook = $"https://{data.Alicloud_account.Current.Id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/",
-    ///         });
-    ///     }
+    ///             "test-group",
+    ///         },
+    ///         EffectiveInterval = "0:00-2:00",
+    ///         EscalationsCritical = new AliCloud.Cms.Inputs.AlarmEscalationsCriticalArgs
+    ///         {
+    ///             ComparisonOperator = "&lt;=",
+    ///             Statistics = "Average",
+    ///             Threshold = "35",
+    ///             Times = 2,
+    ///         },
+    ///         MetricDimensions = "[{\"instanceId\":\"i-bp1247jeep0y53nu3bnk\",\"device\":\"/dev/vda1\"},{\"instanceId\":\"i-bp11gdcik8z6dl5jm84p\",\"device\":\"/dev/vdb1\"}]",
+    ///         Period = 900,
+    ///         Project = "acs_ecs_dashboard",
+    ///         Webhook = $"https://{data.Alicloud_account.Current.Id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +56,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/alarm:Alarm")]
-    public partial class Alarm : Pulumi.CustomResource
+    public partial class Alarm : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List contact groups of the alarm rule, which must have been created on the console.
@@ -164,7 +162,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
         /// </summary>
         [Output("statistics")]
         public Output<string> Statistics { get; private set; } = null!;
@@ -182,7 +180,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Critical level alarm threshold value, which must be a numeric value currently.
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
         /// </summary>
         [Output("threshold")]
         public Output<string> Threshold { get; private set; } = null!;
@@ -243,7 +241,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class AlarmArgs : Pulumi.ResourceArgs
+    public sealed class AlarmArgs : global::Pulumi.ResourceArgs
     {
         [Input("contactGroups", required: true)]
         private InputList<string>? _contactGroups;
@@ -368,7 +366,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
         /// </summary>
         [Input("statistics")]
         public Input<string>? Statistics { get; set; }
@@ -386,7 +384,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// Critical level alarm threshold value, which must be a numeric value currently.
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
         /// </summary>
         [Input("threshold")]
         public Input<string>? Threshold { get; set; }
@@ -406,9 +404,10 @@ namespace Pulumi.AliCloud.Cms
         public AlarmArgs()
         {
         }
+        public static new AlarmArgs Empty => new AlarmArgs();
     }
 
-    public sealed class AlarmState : Pulumi.ResourceArgs
+    public sealed class AlarmState : global::Pulumi.ResourceArgs
     {
         [Input("contactGroups")]
         private InputList<string>? _contactGroups;
@@ -533,7 +532,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
         /// </summary>
         [Input("statistics")]
         public Input<string>? Statistics { get; set; }
@@ -557,7 +556,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// Critical level alarm threshold value, which must be a numeric value currently.
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
         /// </summary>
         [Input("threshold")]
         public Input<string>? Threshold { get; set; }
@@ -577,5 +576,6 @@ namespace Pulumi.AliCloud.Cms
         public AlarmState()
         {
         }
+        public static new AlarmState Empty => new AlarmState();
     }
 }

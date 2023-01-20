@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.Alb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Alb.GetListeners.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Alb.GetListeners.InvokeAsync(new AliCloud.Alb.GetListenersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.AlbListenerId1 = ids.Apply(ids =&gt; ids.Listeners?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("albListenerId1")]
-        ///     public Output&lt;string&gt; AlbListenerId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albListenerId1"] = ids.Apply(getListenersResult =&gt; getListenersResult.Listeners[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetListenersResult> InvokeAsync(GetListenersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:alb/getListeners:getListeners", args ?? new GetListenersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:alb/getListeners:getListeners", args ?? new GetListenersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.Alb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Alb.GetListeners.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Alb.GetListeners.InvokeAsync(new AliCloud.Alb.GetListenersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.AlbListenerId1 = ids.Apply(ids =&gt; ids.Listeners?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("albListenerId1")]
-        ///     public Output&lt;string&gt; AlbListenerId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albListenerId1"] = ids.Apply(getListenersResult =&gt; getListenersResult.Listeners[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetListenersResult> Invoke(GetListenersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetListenersResult>("alicloud:alb/getListeners:getListeners", args ?? new GetListenersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetListenersResult>("alicloud:alb/getListeners:getListeners", args ?? new GetListenersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetListenersArgs : Pulumi.InvokeArgs
+    public sealed class GetListenersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -153,9 +151,10 @@ namespace Pulumi.AliCloud.Alb
         public GetListenersArgs()
         {
         }
+        public static new GetListenersArgs Empty => new GetListenersArgs();
     }
 
-    public sealed class GetListenersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetListenersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -217,6 +216,7 @@ namespace Pulumi.AliCloud.Alb
         public GetListenersInvokeArgs()
         {
         }
+        public static new GetListenersInvokeArgs Empty => new GetListenersInvokeArgs();
     }
 
 

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,20 +20,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.eventbridge.getEventBuses({});
- * export const eventBridgeEventBusId1 = ids.then(ids => ids.buses?[0]?.id);
+ * export const eventBridgeEventBusId1 = ids.then(ids => ids.buses?.[0]?.id);
  * const nameRegex = alicloud.eventbridge.getEventBuses({
  *     nameRegex: "^my-EventBus",
  * });
- * export const eventBridgeEventBusId2 = nameRegex.then(nameRegex => nameRegex.buses?[0]?.id);
+ * export const eventBridgeEventBusId2 = nameRegex.then(nameRegex => nameRegex.buses?.[0]?.id);
  * ```
  */
 export function getEventBuses(args?: GetEventBusesArgs, opts?: pulumi.InvokeOptions): Promise<GetEventBusesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eventbridge/getEventBuses:getEventBuses", {
         "eventBusType": args.eventBusType,
         "ids": args.ids,
@@ -81,9 +79,29 @@ export interface GetEventBusesResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.129.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eventbridge.getEventBuses({});
+ * export const eventBridgeEventBusId1 = ids.then(ids => ids.buses?.[0]?.id);
+ * const nameRegex = alicloud.eventbridge.getEventBuses({
+ *     nameRegex: "^my-EventBus",
+ * });
+ * export const eventBridgeEventBusId2 = nameRegex.then(nameRegex => nameRegex.buses?.[0]?.id);
+ * ```
+ */
 export function getEventBusesOutput(args?: GetEventBusesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventBusesResult> {
-    return pulumi.output(args).apply(a => getEventBuses(a, opts))
+    return pulumi.output(args).apply((a: any) => getEventBuses(a, opts))
 }
 
 /**

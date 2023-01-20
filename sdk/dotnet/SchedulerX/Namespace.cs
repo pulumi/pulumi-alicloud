@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.SchedulerX
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.SchedulerX.Namespace("example", new()
     ///     {
-    ///         var example = new AliCloud.SchedulerX.Namespace("example", new AliCloud.SchedulerX.NamespaceArgs
-    ///         {
-    ///             NamespaceName = "example_value",
-    ///         });
-    ///     }
+    ///         NamespaceName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.SchedulerX
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:schedulerx/namespace:Namespace")]
-    public partial class Namespace : Pulumi.CustomResource
+    public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the resource.
@@ -104,7 +102,7 @@ namespace Pulumi.AliCloud.SchedulerX
         }
     }
 
-    public sealed class NamespaceArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the resource.
@@ -121,9 +119,10 @@ namespace Pulumi.AliCloud.SchedulerX
         public NamespaceArgs()
         {
         }
+        public static new NamespaceArgs Empty => new NamespaceArgs();
     }
 
-    public sealed class NamespaceState : Pulumi.ResourceArgs
+    public sealed class NamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the resource.
@@ -140,5 +139,6 @@ namespace Pulumi.AliCloud.SchedulerX
         public NamespaceState()
         {
         }
+        public static new NamespaceState Empty => new NamespaceState();
     }
 }

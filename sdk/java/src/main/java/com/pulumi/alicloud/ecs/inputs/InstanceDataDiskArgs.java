@@ -34,12 +34,6 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The category of the disk:
-     * - `cloud`: The general cloud disk.
-     * - `cloud_efficiency`: The efficiency cloud disk.
-     * - `cloud_ssd`: The SSD cloud disk.
-     * - `cloud_essd`: The ESSD cloud disk.
-     * - `ephemeral_ssd`: The local SSD disk.
-     *   Default to `cloud_efficiency`.
      * 
      */
     @Import(name="category")
@@ -47,12 +41,6 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The category of the disk:
-     * - `cloud`: The general cloud disk.
-     * - `cloud_efficiency`: The efficiency cloud disk.
-     * - `cloud_ssd`: The SSD cloud disk.
-     * - `cloud_essd`: The ESSD cloud disk.
-     * - `ephemeral_ssd`: The local SSD disk.
-     *   Default to `cloud_efficiency`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -90,14 +78,29 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+     * The mount point of the data disk.
+     * 
+     */
+    @Import(name="device")
+    private @Nullable Output<String> device;
+
+    /**
+     * @return The mount point of the data disk.
+     * 
+     */
+    public Optional<Output<String>> device() {
+        return Optional.ofNullable(this.device);
+    }
+
+    /**
+     * Encrypted the data in this disk. Default value: `false`.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
     /**
-     * @return -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+     * @return Encrypted the data in this disk. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> encrypted() {
@@ -136,11 +139,6 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The performance level of the ESSD used as data disk:
-     * - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-     * - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-     * - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-     * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-     *   Default to `PL1`.
      * 
      */
     @Import(name="performanceLevel")
@@ -148,11 +146,6 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The performance level of the ESSD used as data disk:
-     * - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-     * - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-     * - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-     * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-     *   Default to `PL1`.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -206,6 +199,7 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         this.category = $.category;
         this.deleteWithInstance = $.deleteWithInstance;
         this.description = $.description;
+        this.device = $.device;
         this.encrypted = $.encrypted;
         this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
@@ -255,12 +249,6 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param category The category of the disk:
-         * - `cloud`: The general cloud disk.
-         * - `cloud_efficiency`: The efficiency cloud disk.
-         * - `cloud_ssd`: The SSD cloud disk.
-         * - `cloud_essd`: The ESSD cloud disk.
-         * - `ephemeral_ssd`: The local SSD disk.
-         *   Default to `cloud_efficiency`.
          * 
          * @return builder
          * 
@@ -272,12 +260,6 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param category The category of the disk:
-         * - `cloud`: The general cloud disk.
-         * - `cloud_efficiency`: The efficiency cloud disk.
-         * - `cloud_ssd`: The SSD cloud disk.
-         * - `cloud_essd`: The ESSD cloud disk.
-         * - `ephemeral_ssd`: The local SSD disk.
-         *   Default to `cloud_efficiency`.
          * 
          * @return builder
          * 
@@ -329,7 +311,28 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param encrypted -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+         * @param device The mount point of the data disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder device(@Nullable Output<String> device) {
+            $.device = device;
+            return this;
+        }
+
+        /**
+         * @param device The mount point of the data disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder device(String device) {
+            return device(Output.of(device));
+        }
+
+        /**
+         * @param encrypted Encrypted the data in this disk. Default value: `false`.
          * 
          * @return builder
          * 
@@ -340,7 +343,7 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param encrypted -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+         * @param encrypted Encrypted the data in this disk. Default value: `false`.
          * 
          * @return builder
          * 
@@ -393,11 +396,6 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param performanceLevel The performance level of the ESSD used as data disk:
-         * - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-         * - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-         * - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-         * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-         *   Default to `PL1`.
          * 
          * @return builder
          * 
@@ -409,11 +407,6 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param performanceLevel The performance level of the ESSD used as data disk:
-         * - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-         * - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-         * - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-         * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-         *   Default to `PL1`.
          * 
          * @return builder
          * 

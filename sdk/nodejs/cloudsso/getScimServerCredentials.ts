@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -27,15 +28,12 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const cloudSsoScimServerCredentialId1 = ids.then(ids => ids.credentials?[0]?.id);
+ * export const cloudSsoScimServerCredentialId1 = ids.then(ids => ids.credentials?.[0]?.id);
  * ```
  */
 export function getScimServerCredentials(args: GetScimServerCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetScimServerCredentialsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", {
         "directoryId": args.directoryId,
         "ids": args.ids,
@@ -77,9 +75,33 @@ export interface GetScimServerCredentialsResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.138.0+.
+ *
+ * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudsso.getScimServerCredentials({
+ *     directoryId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const cloudSsoScimServerCredentialId1 = ids.then(ids => ids.credentials?.[0]?.id);
+ * ```
+ */
 export function getScimServerCredentialsOutput(args: GetScimServerCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScimServerCredentialsResult> {
-    return pulumi.output(args).apply(a => getScimServerCredentials(a, opts))
+    return pulumi.output(args).apply((a: any) => getScimServerCredentials(a, opts))
 }
 
 /**

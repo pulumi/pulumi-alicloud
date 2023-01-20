@@ -28,9 +28,6 @@ public final class GetFileSystemsSystem {
     /**
      * @return (Optional, Available in v1.121.2+) Whether the file system is encrypted.
      * * Valid values:
-     * * `0`: The file system is not encrypted.
-     * * `1`: The file system is encrypted with a managed secret key.
-     * * `2`: User management key.
      * 
      */
     private Integer encryptType;
@@ -107,9 +104,6 @@ public final class GetFileSystemsSystem {
     /**
      * @return (Optional, Available in v1.121.2+) Whether the file system is encrypted.
      * * Valid values:
-     * * `0`: The file system is not encrypted.
-     * * `1`: The file system is encrypted with a managed secret key.
-     * * `2`: User management key.
      * 
      */
     public Integer encryptType() {

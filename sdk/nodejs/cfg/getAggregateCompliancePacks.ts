@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -23,15 +24,12 @@ import * as utilities from "../utilities";
  *     ids: ["cp-152a626622af00bc****"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstConfigAggregateCompliancePackId = example.then(example => example.packs?[0]?.id);
+ * export const firstConfigAggregateCompliancePackId = example.then(example => example.packs?.[0]?.id);
  * ```
  */
 export function getAggregateCompliancePacks(args: GetAggregateCompliancePacksArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregateCompliancePacksResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", {
         "aggregatorId": args.aggregatorId,
         "enableDetails": args.enableDetails,
@@ -95,9 +93,29 @@ export interface GetAggregateCompliancePacksResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.124.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cfg.getAggregateCompliancePacks({
+ *     aggregatorId: "ca-3a9b626622af001d****",
+ *     ids: ["cp-152a626622af00bc****"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstConfigAggregateCompliancePackId = example.then(example => example.packs?.[0]?.id);
+ * ```
+ */
 export function getAggregateCompliancePacksOutput(args: GetAggregateCompliancePacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateCompliancePacksResult> {
-    return pulumi.output(args).apply(a => getAggregateCompliancePacks(a, opts))
+    return pulumi.output(args).apply((a: any) => getAggregateCompliancePacks(a, opts))
 }
 
 /**

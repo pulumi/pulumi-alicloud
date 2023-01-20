@@ -52,7 +52,7 @@ import (
 //				Host:                pulumi.String("1.1.1.1"),
 //				InstanceNumber:      pulumi.Int(1),
 //				Password:            pulumi.String("YouPassword123"),
-//				ResourceGroupId:     pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId:     *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				Sid:                 pulumi.String("HXE"),
 //				UseSsl:              pulumi.Bool(false),
 //				UserName:            pulumi.String("admin"),
@@ -68,7 +68,7 @@ import (
 //				ClusterId:       defaultHanaInstance.HanaInstanceId,
 //				DatabaseName:    pulumi.String("SYSTEMDB"),
 //				PlanName:        pulumi.Any(_var.Name),
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				Schedule:        pulumi.String("I|1602673264|P1D"),
 //				VaultId:         defaultHanaInstance.VaultId,
 //			})
@@ -96,9 +96,6 @@ type HanaBackupPlan struct {
 	// The backup prefix.
 	BackupPrefix pulumi.StringPtrOutput `pulumi:"backupPrefix"`
 	// The backup type. Valid values:
-	// - `COMPLETE`: full backup.
-	// - `INCREMENTAL`: incremental backup.
-	// - `DIFFERENTIAL`: differential backup.
 	BackupType pulumi.StringOutput `pulumi:"backupType"`
 	// The ID of the SAP HANA instance.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
@@ -168,9 +165,6 @@ type hanaBackupPlanState struct {
 	// The backup prefix.
 	BackupPrefix *string `pulumi:"backupPrefix"`
 	// The backup type. Valid values:
-	// - `COMPLETE`: full backup.
-	// - `INCREMENTAL`: incremental backup.
-	// - `DIFFERENTIAL`: differential backup.
 	BackupType *string `pulumi:"backupType"`
 	// The ID of the SAP HANA instance.
 	ClusterId *string `pulumi:"clusterId"`
@@ -194,9 +188,6 @@ type HanaBackupPlanState struct {
 	// The backup prefix.
 	BackupPrefix pulumi.StringPtrInput
 	// The backup type. Valid values:
-	// - `COMPLETE`: full backup.
-	// - `INCREMENTAL`: incremental backup.
-	// - `DIFFERENTIAL`: differential backup.
 	BackupType pulumi.StringPtrInput
 	// The ID of the SAP HANA instance.
 	ClusterId pulumi.StringPtrInput
@@ -224,9 +215,6 @@ type hanaBackupPlanArgs struct {
 	// The backup prefix.
 	BackupPrefix *string `pulumi:"backupPrefix"`
 	// The backup type. Valid values:
-	// - `COMPLETE`: full backup.
-	// - `INCREMENTAL`: incremental backup.
-	// - `DIFFERENTIAL`: differential backup.
 	BackupType string `pulumi:"backupType"`
 	// The ID of the SAP HANA instance.
 	ClusterId string `pulumi:"clusterId"`
@@ -249,9 +237,6 @@ type HanaBackupPlanArgs struct {
 	// The backup prefix.
 	BackupPrefix pulumi.StringPtrInput
 	// The backup type. Valid values:
-	// - `COMPLETE`: full backup.
-	// - `INCREMENTAL`: incremental backup.
-	// - `DIFFERENTIAL`: differential backup.
 	BackupType pulumi.StringInput
 	// The ID of the SAP HANA instance.
 	ClusterId pulumi.StringInput
@@ -362,9 +347,6 @@ func (o HanaBackupPlanOutput) BackupPrefix() pulumi.StringPtrOutput {
 }
 
 // The backup type. Valid values:
-// - `COMPLETE`: full backup.
-// - `INCREMENTAL`: incremental backup.
-// - `DIFFERENTIAL`: differential backup.
 func (o HanaBackupPlanOutput) BackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *HanaBackupPlan) pulumi.StringOutput { return v.BackupType }).(pulumi.StringOutput)
 }

@@ -30,10 +30,6 @@ type GetHostEcsLevelInfosArgs struct {
 	ImageCategory *string `pulumi:"imageCategory"`
 	OutputFile    *string `pulumi:"outputFile"`
 	// The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`.
-	// * `localSsd`: specifies that the host uses local SSDs.
-	// * `cloudEssd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-	// * `cloudEssd2`: specifies that the host uses ESSDs of PL2.
-	// * `cloudEssd3`: specifies that the host uses ESSDs of PL3.
 	StorageType string `pulumi:"storageType"`
 	// The ID of the zone in the region.
 	ZoneId string `pulumi:"zoneId"`
@@ -72,10 +68,6 @@ type GetHostEcsLevelInfosOutputArgs struct {
 	ImageCategory pulumi.StringPtrInput `pulumi:"imageCategory"`
 	OutputFile    pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`.
-	// * `localSsd`: specifies that the host uses local SSDs.
-	// * `cloudEssd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-	// * `cloudEssd2`: specifies that the host uses ESSDs of PL2.
-	// * `cloudEssd3`: specifies that the host uses ESSDs of PL3.
 	StorageType pulumi.StringInput `pulumi:"storageType"`
 	// The ID of the zone in the region.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`

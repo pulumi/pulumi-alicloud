@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ListenerDefaultActionArgs : Pulumi.ResourceArgs
+    public sealed class ListenerDefaultActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configurations of the actions. This parameter is required if Type is set to FowardGroup.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public ListenerDefaultActionArgs()
         {
         }
+        public static new ListenerDefaultActionArgs Empty => new ListenerDefaultActionArgs();
     }
 }

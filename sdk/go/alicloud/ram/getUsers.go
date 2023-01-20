@@ -55,7 +55,7 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 type GetUsersArgs struct {
 	// Filter results by a specific group name. Returned users are in the specified group.
 	GroupName *string `pulumi:"groupName"`
-	// - A list of ram user IDs.
+	// A list of ram user IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter resulting users by their names.
 	NameRegex  *string `pulumi:"nameRegex"`
@@ -100,7 +100,7 @@ func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi
 type GetUsersOutputArgs struct {
 	// Filter results by a specific group name. Returned users are in the specified group.
 	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
-	// - A list of ram user IDs.
+	// A list of ram user IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter resulting users by their names.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`

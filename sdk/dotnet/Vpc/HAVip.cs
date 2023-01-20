@@ -15,21 +15,19 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new AliCloud.Vpc.HAVip("foo", new()
     ///     {
-    ///         var foo = new AliCloud.Vpc.HAVip("foo", new AliCloud.Vpc.HAVipArgs
-    ///         {
-    ///             Description = "test_havip",
-    ///             VswitchId = "vsw-fakeid",
-    ///         });
-    ///     }
+    ///         Description = "test_havip",
+    ///         VswitchId = "vsw-fakeid",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/hAVip:HAVip")]
-    public partial class HAVip : Pulumi.CustomResource
+    public partial class HAVip : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the HaVip instance.
@@ -117,7 +115,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class HAVipArgs : Pulumi.ResourceArgs
+    public sealed class HAVipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the HaVip instance.
@@ -146,9 +144,10 @@ namespace Pulumi.AliCloud.Vpc
         public HAVipArgs()
         {
         }
+        public static new HAVipArgs Empty => new HAVipArgs();
     }
 
-    public sealed class HAVipState : Pulumi.ResourceArgs
+    public sealed class HAVipState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the HaVip instance.
@@ -183,5 +182,6 @@ namespace Pulumi.AliCloud.Vpc
         public HAVipState()
         {
         }
+        public static new HAVipState Empty => new HAVipState();
     }
 }

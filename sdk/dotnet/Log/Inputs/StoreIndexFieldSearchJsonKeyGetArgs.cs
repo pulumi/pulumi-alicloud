@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class StoreIndexFieldSearchJsonKeyGetArgs : Pulumi.ResourceArgs
+    public sealed class StoreIndexFieldSearchJsonKeyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The alias of one field.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public StoreIndexFieldSearchJsonKeyGetArgs()
         {
         }
+        public static new StoreIndexFieldSearchJsonKeyGetArgs Empty => new StoreIndexFieldSearchJsonKeyGetArgs();
     }
 }

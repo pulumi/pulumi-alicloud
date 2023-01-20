@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class DynamicTagGroupMatchExpressArgs : Pulumi.ResourceArgs
+    public sealed class DynamicTagGroupMatchExpressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public DynamicTagGroupMatchExpressArgs()
         {
         }
+        public static new DynamicTagGroupMatchExpressArgs Empty => new DynamicTagGroupMatchExpressArgs();
     }
 }

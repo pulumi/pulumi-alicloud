@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.PrivateLink
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:privatelink/vpcEndpoint:VpcEndpoint")]
-    public partial class VpcEndpoint : Pulumi.CustomResource
+    public partial class VpcEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Bandwidth.
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.PrivateLink
         }
     }
 
-    public sealed class VpcEndpointArgs : Pulumi.ResourceArgs
+    public sealed class VpcEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run. Default to: `false`.
@@ -196,9 +196,10 @@ namespace Pulumi.AliCloud.PrivateLink
         public VpcEndpointArgs()
         {
         }
+        public static new VpcEndpointArgs Empty => new VpcEndpointArgs();
     }
 
-    public sealed class VpcEndpointState : Pulumi.ResourceArgs
+    public sealed class VpcEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Bandwidth.
@@ -281,5 +282,6 @@ namespace Pulumi.AliCloud.PrivateLink
         public VpcEndpointState()
         {
         }
+        public static new VpcEndpointState Empty => new VpcEndpointState();
     }
 }

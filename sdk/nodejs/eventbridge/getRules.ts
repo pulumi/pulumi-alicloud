@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -23,15 +24,12 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstEventBridgeRuleId = example.then(example => example.rules?[0]?.id);
+ * export const firstEventBridgeRuleId = example.then(example => example.rules?.[0]?.id);
  * ```
  */
 export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eventbridge/getRules:getRules", {
         "eventBusName": args.eventBusName,
         "ids": args.ids,
@@ -86,9 +84,29 @@ export interface GetRulesResult {
     readonly rules: outputs.eventbridge.GetRulesRule[];
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.129.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.eventbridge.getRules({
+ *     eventBusName: "example_value",
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstEventBridgeRuleId = example.then(example => example.rules?.[0]?.id);
+ * ```
+ */
 export function getRulesOutput(args: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
-    return pulumi.output(args).apply(a => getRules(a, opts))
+    return pulumi.output(args).apply((a: any) => getRules(a, opts))
 }
 
 /**

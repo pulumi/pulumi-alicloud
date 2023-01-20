@@ -21,33 +21,33 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleInstances = AliCloud.Ecs.GetInstances.Invoke(new()
     ///     {
-    ///         var exampleInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
-    ///         {
-    ///             NameRegex = "ecs_with_ipv6_address",
-    ///             Status = "Running",
-    ///         }));
-    ///         var exampleIpv6Addresses = exampleInstances.Apply(exampleInstances =&gt; Output.Create(AliCloud.Vpc.GetIpv6Addresses.InvokeAsync(new AliCloud.Vpc.GetIpv6AddressesArgs
-    ///         {
-    ///             AssociatedInstanceId = exampleInstances.Instances?[0]?.Id,
-    ///             Status = "Available",
-    ///         })));
-    ///         var exampleIpv6InternetBandwidth = new AliCloud.Vpc.Ipv6InternetBandwidth("exampleIpv6InternetBandwidth", new AliCloud.Vpc.Ipv6InternetBandwidthArgs
-    ///         {
-    ///             Ipv6AddressId = exampleIpv6Addresses.Apply(exampleIpv6Addresses =&gt; exampleIpv6Addresses.Addresses?[0]?.Id),
-    ///             Ipv6GatewayId = exampleIpv6Addresses.Apply(exampleIpv6Addresses =&gt; exampleIpv6Addresses.Addresses?[0]?.Ipv6GatewayId),
-    ///             InternetChargeType = "PayByBandwidth",
-    ///             Bandwidth = 20,
-    ///         });
-    ///     }
+    ///         NameRegex = "ecs_with_ipv6_address",
+    ///         Status = "Running",
+    ///     });
     /// 
-    /// }
+    ///     var exampleIpv6Addresses = AliCloud.Vpc.GetIpv6Addresses.Invoke(new()
+    ///     {
+    ///         AssociatedInstanceId = exampleInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+    ///         Status = "Available",
+    ///     });
+    /// 
+    ///     var exampleIpv6InternetBandwidth = new AliCloud.Vpc.Ipv6InternetBandwidth("exampleIpv6InternetBandwidth", new()
+    ///     {
+    ///         Ipv6AddressId = exampleIpv6Addresses.Apply(getIpv6AddressesResult =&gt; getIpv6AddressesResult.Addresses[0]?.Id),
+    ///         Ipv6GatewayId = exampleIpv6Addresses.Apply(getIpv6AddressesResult =&gt; getIpv6AddressesResult.Addresses[0]?.Ipv6GatewayId),
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         Bandwidth = 20,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth")]
-    public partial class Ipv6InternetBandwidth : Pulumi.CustomResource
+    public partial class Ipv6InternetBandwidth : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class Ipv6InternetBandwidthArgs : Pulumi.ResourceArgs
+    public sealed class Ipv6InternetBandwidthArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
@@ -164,9 +164,10 @@ namespace Pulumi.AliCloud.Vpc
         public Ipv6InternetBandwidthArgs()
         {
         }
+        public static new Ipv6InternetBandwidthArgs Empty => new Ipv6InternetBandwidthArgs();
     }
 
-    public sealed class Ipv6InternetBandwidthState : Pulumi.ResourceArgs
+    public sealed class Ipv6InternetBandwidthState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
@@ -201,5 +202,6 @@ namespace Pulumi.AliCloud.Vpc
         public Ipv6InternetBandwidthState()
         {
         }
+        public static new Ipv6InternetBandwidthState Empty => new Ipv6InternetBandwidthState();
     }
 }

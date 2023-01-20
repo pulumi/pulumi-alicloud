@@ -5,27 +5,71 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./changeSet";
-export * from "./getChangeSets";
-export * from "./getRegions";
-export * from "./getStackGroups";
-export * from "./getStackInstances";
-export * from "./getStacks";
-export * from "./getTemplateScratches";
-export * from "./getTemplates";
-export * from "./stack";
-export * from "./stackGroup";
-export * from "./stackInstance";
-export * from "./template";
-export * from "./templateScratch";
+export { ChangeSetArgs, ChangeSetState } from "./changeSet";
+export type ChangeSet = import("./changeSet").ChangeSet;
+export const ChangeSet: typeof import("./changeSet").ChangeSet = null as any;
+utilities.lazyLoad(exports, ["ChangeSet"], () => require("./changeSet"));
 
-// Import resources to register:
-import { ChangeSet } from "./changeSet";
-import { Stack } from "./stack";
-import { StackGroup } from "./stackGroup";
-import { StackInstance } from "./stackInstance";
-import { Template } from "./template";
-import { TemplateScratch } from "./templateScratch";
+export { GetChangeSetsArgs, GetChangeSetsResult, GetChangeSetsOutputArgs } from "./getChangeSets";
+export const getChangeSets: typeof import("./getChangeSets").getChangeSets = null as any;
+export const getChangeSetsOutput: typeof import("./getChangeSets").getChangeSetsOutput = null as any;
+utilities.lazyLoad(exports, ["getChangeSets","getChangeSetsOutput"], () => require("./getChangeSets"));
+
+export { GetRegionsArgs, GetRegionsResult, GetRegionsOutputArgs } from "./getRegions";
+export const getRegions: typeof import("./getRegions").getRegions = null as any;
+export const getRegionsOutput: typeof import("./getRegions").getRegionsOutput = null as any;
+utilities.lazyLoad(exports, ["getRegions","getRegionsOutput"], () => require("./getRegions"));
+
+export { GetStackGroupsArgs, GetStackGroupsResult, GetStackGroupsOutputArgs } from "./getStackGroups";
+export const getStackGroups: typeof import("./getStackGroups").getStackGroups = null as any;
+export const getStackGroupsOutput: typeof import("./getStackGroups").getStackGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getStackGroups","getStackGroupsOutput"], () => require("./getStackGroups"));
+
+export { GetStackInstancesArgs, GetStackInstancesResult, GetStackInstancesOutputArgs } from "./getStackInstances";
+export const getStackInstances: typeof import("./getStackInstances").getStackInstances = null as any;
+export const getStackInstancesOutput: typeof import("./getStackInstances").getStackInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getStackInstances","getStackInstancesOutput"], () => require("./getStackInstances"));
+
+export { GetStacksArgs, GetStacksResult, GetStacksOutputArgs } from "./getStacks";
+export const getStacks: typeof import("./getStacks").getStacks = null as any;
+export const getStacksOutput: typeof import("./getStacks").getStacksOutput = null as any;
+utilities.lazyLoad(exports, ["getStacks","getStacksOutput"], () => require("./getStacks"));
+
+export { GetTemplateScratchesArgs, GetTemplateScratchesResult, GetTemplateScratchesOutputArgs } from "./getTemplateScratches";
+export const getTemplateScratches: typeof import("./getTemplateScratches").getTemplateScratches = null as any;
+export const getTemplateScratchesOutput: typeof import("./getTemplateScratches").getTemplateScratchesOutput = null as any;
+utilities.lazyLoad(exports, ["getTemplateScratches","getTemplateScratchesOutput"], () => require("./getTemplateScratches"));
+
+export { GetTemplatesArgs, GetTemplatesResult, GetTemplatesOutputArgs } from "./getTemplates";
+export const getTemplates: typeof import("./getTemplates").getTemplates = null as any;
+export const getTemplatesOutput: typeof import("./getTemplates").getTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getTemplates","getTemplatesOutput"], () => require("./getTemplates"));
+
+export { StackArgs, StackState } from "./stack";
+export type Stack = import("./stack").Stack;
+export const Stack: typeof import("./stack").Stack = null as any;
+utilities.lazyLoad(exports, ["Stack"], () => require("./stack"));
+
+export { StackGroupArgs, StackGroupState } from "./stackGroup";
+export type StackGroup = import("./stackGroup").StackGroup;
+export const StackGroup: typeof import("./stackGroup").StackGroup = null as any;
+utilities.lazyLoad(exports, ["StackGroup"], () => require("./stackGroup"));
+
+export { StackInstanceArgs, StackInstanceState } from "./stackInstance";
+export type StackInstance = import("./stackInstance").StackInstance;
+export const StackInstance: typeof import("./stackInstance").StackInstance = null as any;
+utilities.lazyLoad(exports, ["StackInstance"], () => require("./stackInstance"));
+
+export { TemplateArgs, TemplateState } from "./template";
+export type Template = import("./template").Template;
+export const Template: typeof import("./template").Template = null as any;
+utilities.lazyLoad(exports, ["Template"], () => require("./template"));
+
+export { TemplateScratchArgs, TemplateScratchState } from "./templateScratch";
+export type TemplateScratch = import("./templateScratch").TemplateScratch;
+export const TemplateScratch: typeof import("./templateScratch").TemplateScratch = null as any;
+utilities.lazyLoad(exports, ["TemplateScratch"], () => require("./templateScratch"));
+
 
 const _module = {
     version: utilities.getVersion(),

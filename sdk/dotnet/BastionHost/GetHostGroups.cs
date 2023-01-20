@@ -23,42 +23,40 @@ namespace Pulumi.AliCloud.BastionHost
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.BastionHost.GetHostGroups.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.BastionHost.GetHostGroups.InvokeAsync(new AliCloud.BastionHost.GetHostGroupsArgs
+        ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "bastionhost-cn-tl3xxxxxxx",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.BastionhostHostGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetHostGroups.InvokeAsync(new AliCloud.BastionHost.GetHostGroupsArgs
-        ///         {
-        ///             InstanceId = "bastionhost-cn-tl3xxxxxxx",
-        ///             NameRegex = "^my-HostGroup",
-        ///         }));
-        ///         this.BastionhostHostGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("bastionhostHostGroupId1")]
-        ///     public Output&lt;string&gt; BastionhostHostGroupId1 { get; set; }
-        ///     [Output("bastionhostHostGroupId2")]
-        ///     public Output&lt;string&gt; BastionhostHostGroupId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.BastionHost.GetHostGroups.Invoke(new()
+        ///     {
+        ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
+        ///         NameRegex = "^my-HostGroup",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostHostGroupId1"] = ids.Apply(getHostGroupsResult =&gt; getHostGroupsResult.Groups[0]?.Id),
+        ///         ["bastionhostHostGroupId2"] = nameRegex.Apply(getHostGroupsResult =&gt; getHostGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostGroupsResult> InvokeAsync(GetHostGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
@@ -72,46 +70,44 @@ namespace Pulumi.AliCloud.BastionHost
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.BastionHost.GetHostGroups.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.BastionHost.GetHostGroups.InvokeAsync(new AliCloud.BastionHost.GetHostGroupsArgs
+        ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "bastionhost-cn-tl3xxxxxxx",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.BastionhostHostGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetHostGroups.InvokeAsync(new AliCloud.BastionHost.GetHostGroupsArgs
-        ///         {
-        ///             InstanceId = "bastionhost-cn-tl3xxxxxxx",
-        ///             NameRegex = "^my-HostGroup",
-        ///         }));
-        ///         this.BastionhostHostGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("bastionhostHostGroupId1")]
-        ///     public Output&lt;string&gt; BastionhostHostGroupId1 { get; set; }
-        ///     [Output("bastionhostHostGroupId2")]
-        ///     public Output&lt;string&gt; BastionhostHostGroupId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.BastionHost.GetHostGroups.Invoke(new()
+        ///     {
+        ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
+        ///         NameRegex = "^my-HostGroup",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostHostGroupId1"] = ids.Apply(getHostGroupsResult =&gt; getHostGroupsResult.Groups[0]?.Id),
+        ///         ["bastionhostHostGroupId2"] = nameRegex.Apply(getHostGroupsResult =&gt; getHostGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostGroupsResult> Invoke(GetHostGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHostGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetHostGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specify the New Host Group Name, Supports up to 128 Characters.
@@ -149,9 +145,10 @@ namespace Pulumi.AliCloud.BastionHost
         public GetHostGroupsArgs()
         {
         }
+        public static new GetHostGroupsArgs Empty => new GetHostGroupsArgs();
     }
 
-    public sealed class GetHostGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHostGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specify the New Host Group Name, Supports up to 128 Characters.
@@ -189,6 +186,7 @@ namespace Pulumi.AliCloud.BastionHost
         public GetHostGroupsInvokeArgs()
         {
         }
+        public static new GetHostGroupsInvokeArgs Empty => new GetHostGroupsInvokeArgs();
     }
 
 

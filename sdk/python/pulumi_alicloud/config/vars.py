@@ -85,6 +85,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('logEndpoint')
 
     @property
+    def max_retry_timeout(self) -> Optional[int]:
+        """
+        The maximum retry timeout of the request.
+        """
+        return __config__.get_int('maxRetryTimeout')
+
+    @property
     def mns_endpoint(self) -> Optional[str]:
         return __config__.get('mnsEndpoint')
 

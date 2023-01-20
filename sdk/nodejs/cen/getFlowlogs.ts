@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,21 +19,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultFlowlogs = pulumi.output(alicloud.cen.getFlowlogs({
+ * const default = alicloud.cen.getFlowlogs({
  *     ids: ["flowlog-tig1xxxxx"],
  *     nameRegex: "^foo",
- * }));
- *
- * export const firstCenFlowlogId = alicloud_cen_instances_default.flowlogs.0.id;
+ * });
+ * export const firstCenFlowlogId = data.alicloud_cen_instances["default"].flowlogs[0].id;
  * ```
  */
 export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowlogsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getFlowlogs:getFlowlogs", {
         "cenId": args.cenId,
         "description": args.description,
@@ -120,9 +117,28 @@ export interface GetFlowlogsResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides CEN flow logs available to the user.
+ *
+ * > **NOTE:** Available in 1.78.0+
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cen.getFlowlogs({
+ *     ids: ["flowlog-tig1xxxxx"],
+ *     nameRegex: "^foo",
+ * });
+ * export const firstCenFlowlogId = data.alicloud_cen_instances["default"].flowlogs[0].id;
+ * ```
+ */
 export function getFlowlogsOutput(args?: GetFlowlogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowlogsResult> {
-    return pulumi.output(args).apply(a => getFlowlogs(a, opts))
+    return pulumi.output(args).apply((a: any) => getFlowlogs(a, opts))
 }
 
 /**

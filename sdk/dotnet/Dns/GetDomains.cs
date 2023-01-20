@@ -17,30 +17,29 @@ namespace Pulumi.AliCloud.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var domainsDs = AliCloud.Dns.GetDomains.Invoke(new()
         ///     {
-        ///         var domainsDs = Output.Create(AliCloud.Dns.GetDomains.InvokeAsync(new AliCloud.Dns.GetDomainsArgs
-        ///         {
-        ///             DomainNameRegex = "^hegu",
-        ///             OutputFile = "domains.txt",
-        ///         }));
-        ///         this.FirstDomainId = domainsDs.Apply(domainsDs =&gt; domainsDs.Domains?[0]?.DomainId);
-        ///     }
+        ///         DomainNameRegex = "^hegu",
+        ///         OutputFile = "domains.txt",
+        ///     });
         /// 
-        ///     [Output("firstDomainId")]
-        ///     public Output&lt;string&gt; FirstDomainId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDomainId"] = domainsDs.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.DomainId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -48,34 +47,33 @@ namespace Pulumi.AliCloud.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var domainsDs = AliCloud.Dns.GetDomains.Invoke(new()
         ///     {
-        ///         var domainsDs = Output.Create(AliCloud.Dns.GetDomains.InvokeAsync(new AliCloud.Dns.GetDomainsArgs
-        ///         {
-        ///             DomainNameRegex = "^hegu",
-        ///             OutputFile = "domains.txt",
-        ///         }));
-        ///         this.FirstDomainId = domainsDs.Apply(domainsDs =&gt; domainsDs.Domains?[0]?.DomainId);
-        ///     }
+        ///         DomainNameRegex = "^hegu",
+        ///         OutputFile = "domains.txt",
+        ///     });
         /// 
-        ///     [Output("firstDomainId")]
-        ///     public Output&lt;string&gt; FirstDomainId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDomainId"] = domainsDs.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.DomainId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDomainsArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specifies whether the domain is from Alibaba Cloud or not.
@@ -108,7 +106,7 @@ namespace Pulumi.AliCloud.Dns
         private List<string>? _ids;
 
         /// <summary>
-        /// - A list of domain IDs.
+        /// A list of domain IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -176,9 +174,10 @@ namespace Pulumi.AliCloud.Dns
         public GetDomainsArgs()
         {
         }
+        public static new GetDomainsArgs Empty => new GetDomainsArgs();
     }
 
-    public sealed class GetDomainsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specifies whether the domain is from Alibaba Cloud or not.
@@ -211,7 +210,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<string>? _ids;
 
         /// <summary>
-        /// - A list of domain IDs.
+        /// A list of domain IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -279,6 +278,7 @@ namespace Pulumi.AliCloud.Dns
         public GetDomainsInvokeArgs()
         {
         }
+        public static new GetDomainsInvokeArgs Empty => new GetDomainsInvokeArgs();
     }
 
 

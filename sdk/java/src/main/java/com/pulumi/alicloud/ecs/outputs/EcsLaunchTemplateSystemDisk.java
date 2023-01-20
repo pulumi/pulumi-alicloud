@@ -14,17 +14,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EcsLaunchTemplateSystemDisk {
     /**
-     * @return The category of the disk.
+     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
      * 
      */
     private @Nullable String category;
     /**
-     * @return Indicates whether the data disk is released with the instance.
+     * @return Specifies whether to release the system disk when the instance is released. Default to `true`.
      * 
      */
     private @Nullable Boolean deleteWithInstance;
     /**
-     * @return The description of the data disk.
+     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     private @Nullable String description;
@@ -34,38 +34,38 @@ public final class EcsLaunchTemplateSystemDisk {
      */
     private @Nullable String iops;
     /**
-     * @return The name of the data disk.
+     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The performance level of the ESSD used as the data disk.
+     * @return The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
      * 
      */
     private @Nullable String performanceLevel;
     /**
-     * @return The size of the data disk.
+     * @return Size of the system disk, measured in GB. Value range: [20, 500].
      * 
      */
     private @Nullable Integer size;
 
     private EcsLaunchTemplateSystemDisk() {}
     /**
-     * @return The category of the disk.
+     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
      * 
      */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return Indicates whether the data disk is released with the instance.
+     * @return Specifies whether to release the system disk when the instance is released. Default to `true`.
      * 
      */
     public Optional<Boolean> deleteWithInstance() {
         return Optional.ofNullable(this.deleteWithInstance);
     }
     /**
-     * @return The description of the data disk.
+     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     public Optional<String> description() {
@@ -79,21 +79,21 @@ public final class EcsLaunchTemplateSystemDisk {
         return Optional.ofNullable(this.iops);
     }
     /**
-     * @return The name of the data disk.
+     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The performance level of the ESSD used as the data disk.
+     * @return The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
      * 
      */
     public Optional<String> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
     /**
-     * @return The size of the data disk.
+     * @return Size of the system disk, measured in GB. Value range: [20, 500].
      * 
      */
     public Optional<Integer> size() {

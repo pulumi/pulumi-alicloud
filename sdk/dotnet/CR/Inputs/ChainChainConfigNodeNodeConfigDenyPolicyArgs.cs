@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CR.Inputs
 {
 
-    public sealed class ChainChainConfigNodeNodeConfigDenyPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ChainChainConfigNodeNodeConfigDenyPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.CR.Inputs
         public ChainChainConfigNodeNodeConfigDenyPolicyArgs()
         {
         }
+        public static new ChainChainConfigNodeNodeConfigDenyPolicyArgs Empty => new ChainChainConfigNodeNodeConfigDenyPolicyArgs();
     }
 }

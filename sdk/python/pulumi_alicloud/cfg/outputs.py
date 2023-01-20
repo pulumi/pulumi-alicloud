@@ -381,8 +381,8 @@ class GetAggregateCompliancePacksPackResult(dict):
                  status: str):
         """
         :param str account_id: The Aliyun User Id.
+        :param str aggregate_compliance_pack_name: The Aggregate Compliance Package Name.
         :param str aggregator_compliance_pack_id: The Aggregate Compliance Package Id.
-               * `aggregate_compliance_pack_name` -The Aggregate Compliance Package Name.
         :param str compliance_pack_template_id: The template ID of the Compliance Package.
         :param Sequence['GetAggregateCompliancePacksPackConfigRuleArgs'] config_rules: A list of The Aggregate Compliance Package Rules.
         :param str description: The description of aggregate compliance pack.
@@ -411,6 +411,9 @@ class GetAggregateCompliancePacksPackResult(dict):
     @property
     @pulumi.getter(name="aggregateCompliancePackName")
     def aggregate_compliance_pack_name(self) -> str:
+        """
+        The Aggregate Compliance Package Name.
+        """
         return pulumi.get(self, "aggregate_compliance_pack_name")
 
     @property
@@ -418,7 +421,6 @@ class GetAggregateCompliancePacksPackResult(dict):
     def aggregator_compliance_pack_id(self) -> str:
         """
         The Aggregate Compliance Package Id.
-        * `aggregate_compliance_pack_name` -The Aggregate Compliance Package Name.
         """
         return pulumi.get(self, "aggregator_compliance_pack_id")
 
@@ -583,14 +585,13 @@ class GetAggregateConfigRulesRuleResult(dict):
         :param str aggregate_config_rule_name: The config rule name.
         :param str aggregator_id: The ID of aggregator.
         :param str compliance_pack_id: The ID of Compliance Package.
+        :param Sequence['GetAggregateConfigRulesRuleComplianceArgs'] compliances: The Compliance information.
         :param str config_rule_arn: The config rule arn.
         :param str config_rule_id: The ID of the rule.
         :param str config_rule_trigger_types: The trigger types of config rules.
         :param str description: The description of the rule.
         :param str event_source: Event source of the Config Rule.
         :param str exclude_resource_ids_scope: The id of the resources to be evaluated against the rule.
-               * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
-               * `source_owner`- The source owner of the Config Rule.
         :param str id: The ID of the Aggregate Config Rule.
         :param Mapping[str, Any] input_parameters: The settings of the input parameters for the rule.
         :param str maximum_execution_frequency: The frequency of the compliance evaluations.
@@ -598,6 +599,8 @@ class GetAggregateConfigRulesRuleResult(dict):
         :param str region_ids_scope: The scope of resource region ids.
         :param str resource_group_ids_scope: The scope of resource group ids.
         :param int risk_level: Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+        :param str source_identifier: The identifier of the managed rule or the arn of the custom function.
+        :param str source_owner: The source owner of the Config Rule.
         :param str status: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
         :param str tag_key_scope: The scope of tay key.
         :param str tag_value_scope: The scope of tay value.
@@ -662,6 +665,9 @@ class GetAggregateConfigRulesRuleResult(dict):
     @property
     @pulumi.getter
     def compliances(self) -> Sequence['outputs.GetAggregateConfigRulesRuleComplianceResult']:
+        """
+        The Compliance information.
+        """
         return pulumi.get(self, "compliances")
 
     @property
@@ -709,8 +715,6 @@ class GetAggregateConfigRulesRuleResult(dict):
     def exclude_resource_ids_scope(self) -> str:
         """
         The id of the resources to be evaluated against the rule.
-        * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
-        * `source_owner`- The source owner of the Config Rule.
         """
         return pulumi.get(self, "exclude_resource_ids_scope")
 
@@ -778,11 +782,17 @@ class GetAggregateConfigRulesRuleResult(dict):
     @property
     @pulumi.getter(name="sourceIdentifier")
     def source_identifier(self) -> str:
+        """
+        The identifier of the managed rule or the arn of the custom function.
+        """
         return pulumi.get(self, "source_identifier")
 
     @property
     @pulumi.getter(name="sourceOwner")
     def source_owner(self) -> str:
+        """
+        The source owner of the Config Rule.
+        """
         return pulumi.get(self, "source_owner")
 
     @property
@@ -1342,8 +1352,8 @@ class GetConfigurationRecordersRecorderResult(dict):
                  resource_types: Sequence[str],
                  status: str):
         """
+        :param str account_id: The ID of the Alicloud account.
         :param str id: The ID of the Config Configuration Recorder. Value as the `account_id`.
-               * `account_id`- The ID of the Alicloud account.
         :param str organization_enable_status: Enterprise version configuration audit enabled status.
         :param int organization_master_id: The ID of the Enterprise management account.
         :param Sequence[str] resource_types: A list of resource types to be monitored.
@@ -1359,6 +1369,9 @@ class GetConfigurationRecordersRecorderResult(dict):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The ID of the Alicloud account.
+        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -1366,7 +1379,6 @@ class GetConfigurationRecordersRecorderResult(dict):
     def id(self) -> str:
         """
         The ID of the Config Configuration Recorder. Value as the `account_id`.
-        * `account_id`- The ID of the Alicloud account.
         """
         return pulumi.get(self, "id")
 
@@ -1701,22 +1713,19 @@ class GetRulesRuleResult(dict):
                  tag_key_scope: str,
                  tag_value_scope: str):
         """
+        :param str account_id: The ID of the Alicloud account.
         :param Sequence['GetRulesRuleComplianceArgs'] compliances: The information about the compliance evaluations based on the rule.
+        :param str config_rule_arn: The ARN of the Config Rule.
+        :param str config_rule_id: The ID of the Config Rule.
         :param str config_rule_state: Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
         :param str config_rule_trigger_types: (Available in 1.124.1+) A list of trigger types of config rule.
+        :param str description: The description of the Config Rule.
         :param str event_source: Event source of the Config Rule.
         :param str exclude_resource_ids_scope: (Available in 1.124.1+) The scope of exclude of resource ids.
         :param str id: The ID of the Config Rule.
-               * `account_id`- The ID of the Alicloud account.
-               * `config_rule_arn`- The ARN of the Config Rule.
-               * `config_rule_id`- The ID of the Config Rule.
-               * `config_rule_state`- The state of the Config Rule.
-               * `description`- The description of the Config Rule.
-               * `input_parameters`- The input parameters of the Config Rule.
-               * `modified_timestamp`- the timestamp of the Config Rule modified.
-               * `risk_level`- The risk level of the Config Rule.
-               * `rule_name`- The name of the Config Rule.
+        :param Mapping[str, Any] input_parameters: The input parameters of the Config Rule.
         :param str maximum_execution_frequency: (Available in 1.124.1+) The frequency of maximum execution.
+        :param str modified_timestamp: the timestamp of the Config Rule modified.
         :param str region_ids_scope: (Available in 1.124.1+) The scope of region ids.
         :param str resource_group_ids_scope: (Available in 1.124.1+) The scope of resource group ids.
         :param Sequence[str] resource_types_scopes: (Available in 1.124.1+) The scope of resource types.
@@ -1724,9 +1733,9 @@ class GetRulesRuleResult(dict):
         :param str rule_name: The name of config rule.
         :param Sequence[str] scope_compliance_resource_types: The types of the resources to be evaluated against the rule.
         :param str source_detail_message_type: Rule trigger mechanism.
-        :param str source_maximum_execution_frequency: Rule execution cycle. 
-               * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
-               * `source_owner`- The source owner of the Config Rule.
+        :param str source_identifier: The identifier of the managed rule or the arn of the custom function.
+        :param str source_maximum_execution_frequency: Rule execution cycle.
+        :param str source_owner: The source owner of the Config Rule.
         :param str status: The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
         :param str tag_key_scope: (Available in 1.124.1+) The scope of tag key.
         :param str tag_value_scope: (Available in 1.124.1+) The scope of tag value.
@@ -1762,6 +1771,9 @@ class GetRulesRuleResult(dict):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The ID of the Alicloud account.
+        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -1780,11 +1792,17 @@ class GetRulesRuleResult(dict):
     @property
     @pulumi.getter(name="configRuleArn")
     def config_rule_arn(self) -> str:
+        """
+        The ARN of the Config Rule.
+        """
         return pulumi.get(self, "config_rule_arn")
 
     @property
     @pulumi.getter(name="configRuleId")
     def config_rule_id(self) -> str:
+        """
+        The ID of the Config Rule.
+        """
         return pulumi.get(self, "config_rule_id")
 
     @property
@@ -1806,6 +1824,9 @@ class GetRulesRuleResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the Config Rule.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -1829,21 +1850,15 @@ class GetRulesRuleResult(dict):
     def id(self) -> str:
         """
         The ID of the Config Rule.
-        * `account_id`- The ID of the Alicloud account.
-        * `config_rule_arn`- The ARN of the Config Rule.
-        * `config_rule_id`- The ID of the Config Rule.
-        * `config_rule_state`- The state of the Config Rule.
-        * `description`- The description of the Config Rule.
-        * `input_parameters`- The input parameters of the Config Rule.
-        * `modified_timestamp`- the timestamp of the Config Rule modified.
-        * `risk_level`- The risk level of the Config Rule.
-        * `rule_name`- The name of the Config Rule.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="inputParameters")
     def input_parameters(self) -> Mapping[str, Any]:
+        """
+        The input parameters of the Config Rule.
+        """
         return pulumi.get(self, "input_parameters")
 
     @property
@@ -1857,6 +1872,9 @@ class GetRulesRuleResult(dict):
     @property
     @pulumi.getter(name="modifiedTimestamp")
     def modified_timestamp(self) -> str:
+        """
+        the timestamp of the Config Rule modified.
+        """
         return pulumi.get(self, "modified_timestamp")
 
     @property
@@ -1918,21 +1936,25 @@ class GetRulesRuleResult(dict):
     @property
     @pulumi.getter(name="sourceIdentifier")
     def source_identifier(self) -> str:
+        """
+        The identifier of the managed rule or the arn of the custom function.
+        """
         return pulumi.get(self, "source_identifier")
 
     @property
     @pulumi.getter(name="sourceMaximumExecutionFrequency")
     def source_maximum_execution_frequency(self) -> str:
         """
-        Rule execution cycle. 
-        * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
-        * `source_owner`- The source owner of the Config Rule.
+        Rule execution cycle.
         """
         return pulumi.get(self, "source_maximum_execution_frequency")
 
     @property
     @pulumi.getter(name="sourceOwner")
     def source_owner(self) -> str:
+        """
+        The source owner of the Config Rule.
+        """
         return pulumi.get(self, "source_owner")
 
     @property

@@ -52,7 +52,7 @@ func GetPolicyVersions(ctx *pulumi.Context, args *GetPolicyVersionsArgs, opts ..
 
 // A collection of arguments for invoking getPolicyVersions.
 type GetPolicyVersionsArgs struct {
-	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of policy version IDs.
 	Ids        []string `pulumi:"ids"`
@@ -92,7 +92,7 @@ func GetPolicyVersionsOutput(ctx *pulumi.Context, args GetPolicyVersionsOutputAr
 
 // A collection of arguments for invoking getPolicyVersions.
 type GetPolicyVersionsOutputArgs struct {
-	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of policy version IDs.
 	Ids        pulumi.StringArrayInput `pulumi:"ids"`

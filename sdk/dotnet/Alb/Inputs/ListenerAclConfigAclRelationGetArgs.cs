@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ListenerAclConfigAclRelationGetArgs : Pulumi.ResourceArgs
+    public sealed class ListenerAclConfigAclRelationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Snooping Binding of the Access Policy Group ID List.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public ListenerAclConfigAclRelationGetArgs()
         {
         }
+        public static new ListenerAclConfigAclRelationGetArgs Empty => new ListenerAclConfigAclRelationGetArgs();
     }
 }

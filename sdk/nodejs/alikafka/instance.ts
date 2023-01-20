@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides an ALIKAFKA instance resource.
  *
+ * For information about ALIKAFKA instance and how to use it, see [What is ALIKAFKA instance](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-startinstance).
+ *
  * > **NOTE:** Available in 1.59.0+
  *
  * > **NOTE:** Creation or modification may took about 10-40 minutes.
@@ -33,11 +35,11 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
- *     topicQuota: 50,
+ *     partitionNum: 50,
  *     diskType: 1,
  *     diskSize: 500,
  *     deployType: 4,
@@ -126,9 +128,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly paidType!: pulumi.Output<string | undefined>;
     /**
+     * The number of partitions.
+     */
+    public readonly partitionNum!: pulumi.Output<number | undefined>;
+    /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
     public readonly securityGroup!: pulumi.Output<string>;
+    /**
+     * The zones among which you want to deploy the instance.
+     */
+    public readonly selectedZones!: pulumi.Output<string[] | undefined>;
     /**
      * The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
      */
@@ -150,21 +160,24 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+     * The max num of topic can be creation of the instance. 
+     * It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+     *
+     * @deprecated Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
      */
     public readonly topicQuota!: pulumi.Output<number>;
     /**
-     * The ID of attaching VPC to instance.
+     * The VPC ID of the instance.
      */
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * The ID of attaching vswitch to instance.
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
-     * The Zone to launch the kafka instance.
+     * The zone ID of the instance.
      */
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -189,7 +202,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["paidType"] = state ? state.paidType : undefined;
+            resourceInputs["partitionNum"] = state ? state.partitionNum : undefined;
             resourceInputs["securityGroup"] = state ? state.securityGroup : undefined;
+            resourceInputs["selectedZones"] = state ? state.selectedZones : undefined;
             resourceInputs["serviceVersion"] = state ? state.serviceVersion : undefined;
             resourceInputs["specType"] = state ? state.specType : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -212,9 +227,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.ioMax === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ioMax'");
             }
-            if ((!args || args.topicQuota === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'topicQuota'");
-            }
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
@@ -227,16 +239,18 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["paidType"] = args ? args.paidType : undefined;
+            resourceInputs["partitionNum"] = args ? args.partitionNum : undefined;
             resourceInputs["securityGroup"] = args ? args.securityGroup : undefined;
+            resourceInputs["selectedZones"] = args ? args.selectedZones : undefined;
             resourceInputs["serviceVersion"] = args ? args.serviceVersion : undefined;
             resourceInputs["specType"] = args ? args.specType : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["topicQuota"] = args ? args.topicQuota : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["endPoint"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
-            resourceInputs["vpcId"] = undefined /*out*/;
-            resourceInputs["zoneId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -290,9 +304,17 @@ export interface InstanceState {
      */
     paidType?: pulumi.Input<string>;
     /**
+     * The number of partitions.
+     */
+    partitionNum?: pulumi.Input<number>;
+    /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
     securityGroup?: pulumi.Input<string>;
+    /**
+     * The zones among which you want to deploy the instance.
+     */
+    selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
      */
@@ -314,11 +336,14 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+     * The max num of topic can be creation of the instance. 
+     * It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+     *
+     * @deprecated Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
      */
     topicQuota?: pulumi.Input<number>;
     /**
-     * The ID of attaching VPC to instance.
+     * The VPC ID of the instance.
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -326,7 +351,7 @@ export interface InstanceState {
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * The Zone to launch the kafka instance.
+     * The zone ID of the instance.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -374,9 +399,17 @@ export interface InstanceArgs {
      */
     paidType?: pulumi.Input<string>;
     /**
+     * The number of partitions.
+     */
+    partitionNum?: pulumi.Input<number>;
+    /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
     securityGroup?: pulumi.Input<string>;
+    /**
+     * The zones among which you want to deploy the instance.
+     */
+    selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
      */
@@ -390,11 +423,22 @@ export interface InstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+     * The max num of topic can be creation of the instance. 
+     * It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+     *
+     * @deprecated Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
      */
-    topicQuota: pulumi.Input<number>;
+    topicQuota?: pulumi.Input<number>;
+    /**
+     * The VPC ID of the instance.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The ID of attaching vswitch to instance.
      */
     vswitchId: pulumi.Input<string>;
+    /**
+     * The zone ID of the instance.
+     */
+    zoneId?: pulumi.Input<string>;
 }

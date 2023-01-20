@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:servicemesh/userPermission:UserPermission")]
-    public partial class UserPermission : Pulumi.CustomResource
+    public partial class UserPermission : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See the following `Block permissions`.
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         }
     }
 
-    public sealed class UserPermissionArgs : Pulumi.ResourceArgs
+    public sealed class UserPermissionArgs : global::Pulumi.ResourceArgs
     {
         [Input("permissions")]
         private InputList<Inputs.UserPermissionPermissionArgs>? _permissions;
@@ -106,9 +106,10 @@ namespace Pulumi.AliCloud.ServiceMesh
         public UserPermissionArgs()
         {
         }
+        public static new UserPermissionArgs Empty => new UserPermissionArgs();
     }
 
-    public sealed class UserPermissionState : Pulumi.ResourceArgs
+    public sealed class UserPermissionState : global::Pulumi.ResourceArgs
     {
         [Input("permissions")]
         private InputList<Inputs.UserPermissionPermissionGetArgs>? _permissions;
@@ -131,5 +132,6 @@ namespace Pulumi.AliCloud.ServiceMesh
         public UserPermissionState()
         {
         }
+        public static new UserPermissionState Empty => new UserPermissionState();
     }
 }

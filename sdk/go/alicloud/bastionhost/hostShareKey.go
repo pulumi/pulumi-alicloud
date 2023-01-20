@@ -39,7 +39,7 @@ import (
 //			}
 //			_, err = bastionhost.NewHostShareKey(ctx, "defaultHostShareKey", &bastionhost.HostShareKeyArgs{
 //				HostShareKeyName: pulumi.String("example_name"),
-//				InstanceId:       pulumi.String(defaultInstances.Instances[0].Id),
+//				InstanceId:       *pulumi.String(defaultInstances.Instances[0].Id),
 //				PassPhrase:       pulumi.String("example_value"),
 //				PrivateKey:       pulumi.String("example_value"),
 //			})
@@ -94,6 +94,17 @@ func NewHostShareKey(ctx *pulumi.Context,
 	if args.PrivateKey == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateKey'")
 	}
+	if args.PassPhrase != nil {
+		args.PassPhrase = pulumi.ToSecret(args.PassPhrase).(pulumi.StringPtrInput)
+	}
+	if args.PrivateKey != nil {
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"passPhrase",
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	var resource HostShareKey
 	err := ctx.RegisterResource("alicloud:bastionhost/hostShareKey:HostShareKey", name, args, &resource, opts...)
 	if err != nil {

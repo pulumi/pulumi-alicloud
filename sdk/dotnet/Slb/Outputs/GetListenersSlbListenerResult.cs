@@ -110,6 +110,10 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string Protocol;
         /// <summary>
+        /// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        /// </summary>
+        public readonly bool ProxyProtocolV2Enabled;
+        /// <summary>
         /// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         /// </summary>
         public readonly int RequestTimeout;
@@ -217,6 +221,8 @@ namespace Pulumi.AliCloud.Slb.Outputs
 
             string protocol,
 
+            bool proxyProtocolV2Enabled,
+
             int requestTimeout,
 
             string scheduler,
@@ -271,6 +277,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
             MasterSlaveServerGroupId = masterSlaveServerGroupId;
             PersistenceTimeout = persistenceTimeout;
             Protocol = protocol;
+            ProxyProtocolV2Enabled = proxyProtocolV2Enabled;
             RequestTimeout = requestTimeout;
             Scheduler = scheduler;
             SecurityStatus = securityStatus;

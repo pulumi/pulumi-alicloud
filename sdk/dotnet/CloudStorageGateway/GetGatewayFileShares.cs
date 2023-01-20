@@ -23,42 +23,40 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CloudStorageGateway.GetGatewayFileShares.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CloudStorageGateway.GetGatewayFileShares.InvokeAsync(new AliCloud.CloudStorageGateway.GetGatewayFileSharesArgs
+        ///         GatewayId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             GatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CloudStorageGatewayGatewayFileShareId1 = ids.Apply(ids =&gt; ids.Shares?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.CloudStorageGateway.GetGatewayFileShares.InvokeAsync(new AliCloud.CloudStorageGateway.GetGatewayFileSharesArgs
-        ///         {
-        ///             GatewayId = "example_value",
-        ///             NameRegex = "^my-GatewayFileShare",
-        ///         }));
-        ///         this.CloudStorageGatewayGatewayFileShareId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Shares?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cloudStorageGatewayGatewayFileShareId1")]
-        ///     public Output&lt;string&gt; CloudStorageGatewayGatewayFileShareId1 { get; set; }
-        ///     [Output("cloudStorageGatewayGatewayFileShareId2")]
-        ///     public Output&lt;string&gt; CloudStorageGatewayGatewayFileShareId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CloudStorageGateway.GetGatewayFileShares.Invoke(new()
+        ///     {
+        ///         GatewayId = "example_value",
+        ///         NameRegex = "^my-GatewayFileShare",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayGatewayFileShareId1"] = ids.Apply(getGatewayFileSharesResult =&gt; getGatewayFileSharesResult.Shares[0]?.Id),
+        ///         ["cloudStorageGatewayGatewayFileShareId2"] = nameRegex.Apply(getGatewayFileSharesResult =&gt; getGatewayFileSharesResult.Shares[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewayFileSharesResult> InvokeAsync(GetGatewayFileSharesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGatewayFileSharesResult>("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", args ?? new GetGatewayFileSharesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayFileSharesResult>("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", args ?? new GetGatewayFileSharesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
@@ -72,46 +70,44 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CloudStorageGateway.GetGatewayFileShares.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CloudStorageGateway.GetGatewayFileShares.InvokeAsync(new AliCloud.CloudStorageGateway.GetGatewayFileSharesArgs
+        ///         GatewayId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             GatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CloudStorageGatewayGatewayFileShareId1 = ids.Apply(ids =&gt; ids.Shares?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.CloudStorageGateway.GetGatewayFileShares.InvokeAsync(new AliCloud.CloudStorageGateway.GetGatewayFileSharesArgs
-        ///         {
-        ///             GatewayId = "example_value",
-        ///             NameRegex = "^my-GatewayFileShare",
-        ///         }));
-        ///         this.CloudStorageGatewayGatewayFileShareId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Shares?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cloudStorageGatewayGatewayFileShareId1")]
-        ///     public Output&lt;string&gt; CloudStorageGatewayGatewayFileShareId1 { get; set; }
-        ///     [Output("cloudStorageGatewayGatewayFileShareId2")]
-        ///     public Output&lt;string&gt; CloudStorageGatewayGatewayFileShareId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CloudStorageGateway.GetGatewayFileShares.Invoke(new()
+        ///     {
+        ///         GatewayId = "example_value",
+        ///         NameRegex = "^my-GatewayFileShare",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayGatewayFileShareId1"] = ids.Apply(getGatewayFileSharesResult =&gt; getGatewayFileSharesResult.Shares[0]?.Id),
+        ///         ["cloudStorageGatewayGatewayFileShareId2"] = nameRegex.Apply(getGatewayFileSharesResult =&gt; getGatewayFileSharesResult.Shares[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewayFileSharesResult> Invoke(GetGatewayFileSharesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGatewayFileSharesResult>("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", args ?? new GetGatewayFileSharesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewayFileSharesResult>("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", args ?? new GetGatewayFileSharesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGatewayFileSharesArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewayFileSharesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the gateway.
@@ -143,9 +139,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GetGatewayFileSharesArgs()
         {
         }
+        public static new GetGatewayFileSharesArgs Empty => new GetGatewayFileSharesArgs();
     }
 
-    public sealed class GetGatewayFileSharesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewayFileSharesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the gateway.
@@ -177,6 +174,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GetGatewayFileSharesInvokeArgs()
         {
         }
+        public static new GetGatewayFileSharesInvokeArgs Empty => new GetGatewayFileSharesInvokeArgs();
     }
 
 

@@ -21,9 +21,7 @@ class AclAttachmentArgs:
         """
         The set of arguments for constructing a AclAttachment resource.
         :param pulumi.Input[str] acl_id: The ID of an ACL.
-        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `white`, `black`. 
-               - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
-               - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
+        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `white`, `black`.
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[bool] dry_run: The dry run.
         """
@@ -49,9 +47,7 @@ class AclAttachmentArgs:
     @pulumi.getter(name="aclType")
     def acl_type(self) -> pulumi.Input[str]:
         """
-        The type of the ACL. Valid values: `white`, `black`. 
-        - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
-        - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
+        The type of the ACL. Valid values: `white`, `black`.
         """
         return pulumi.get(self, "acl_type")
 
@@ -95,9 +91,7 @@ class _AclAttachmentState:
         """
         Input properties used for looking up and filtering AclAttachment resources.
         :param pulumi.Input[str] acl_id: The ID of an ACL.
-        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `white`, `black`. 
-               - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
-               - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
+        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `white`, `black`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[str] status: The status of the resource.
@@ -129,9 +123,7 @@ class _AclAttachmentState:
     @pulumi.getter(name="aclType")
     def acl_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the ACL. Valid values: `white`, `black`. 
-        - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
-        - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
+        The type of the ACL. Valid values: `white`, `black`.
         """
         return pulumi.get(self, "acl_type")
 
@@ -195,18 +187,16 @@ class AclAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
+        Global Accelerator (GA) Acl Attachment can be imported using the id. Format to `<listener_id>:<acl_id>`, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
+         $ pulumi import alicloud:ga/aclAttachment:AclAttachment example your_listener_id:your_acl_id
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_id: The ID of an ACL.
-        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `white`, `black`. 
-               - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
-               - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
+        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `white`, `black`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] listener_id: The ID of the listener.
         """
@@ -225,10 +215,10 @@ class AclAttachment(pulumi.CustomResource):
 
         ## Import
 
-        Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
+        Global Accelerator (GA) Acl Attachment can be imported using the id. Format to `<listener_id>:<acl_id>`, e.g.
 
         ```sh
-         $ pulumi import alicloud:ga/aclAttachment:AclAttachment example <listener_id>:<acl_id>
+         $ pulumi import alicloud:ga/aclAttachment:AclAttachment example your_listener_id:your_acl_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -293,9 +283,7 @@ class AclAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_id: The ID of an ACL.
-        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `white`, `black`. 
-               - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
-               - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
+        :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `white`, `black`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[str] status: The status of the resource.
@@ -323,9 +311,7 @@ class AclAttachment(pulumi.CustomResource):
     @pulumi.getter(name="aclType")
     def acl_type(self) -> pulumi.Output[str]:
         """
-        The type of the ACL. Valid values: `white`, `black`. 
-        - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
-        - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
+        The type of the ACL. Valid values: `white`, `black`.
         """
         return pulumi.get(self, "acl_type")
 

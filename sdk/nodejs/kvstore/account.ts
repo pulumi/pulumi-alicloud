@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultInstance = new alicloud.kvstore.Instance("defaultInstance", {
@@ -96,9 +96,7 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly accountPassword!: pulumi.Output<string | undefined>;
     /**
-     * The privilege of account access database. Default value: `RoleReadWrite` 
-     * - `RoleReadOnly`: This value is only for Redis and Memcache
-     * - `RoleReadWrite`: This value is only for Redis and Memcache
+     * The privilege of account access database. Default value: `RoleReadWrite`
      */
     public readonly accountPrivilege!: pulumi.Output<string | undefined>;
     /**
@@ -159,7 +157,7 @@ export class Account extends pulumi.CustomResource {
                 throw new Error("Missing required property 'instanceId'");
             }
             resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["accountPrivilege"] = args ? args.accountPrivilege : undefined;
             resourceInputs["accountType"] = args ? args.accountType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -169,6 +167,8 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -189,9 +189,7 @@ export interface AccountState {
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * The privilege of account access database. Default value: `RoleReadWrite` 
-     * - `RoleReadOnly`: This value is only for Redis and Memcache
-     * - `RoleReadWrite`: This value is only for Redis and Memcache
+     * The privilege of account access database. Default value: `RoleReadWrite`
      */
     accountPrivilege?: pulumi.Input<string>;
     /**
@@ -238,9 +236,7 @@ export interface AccountArgs {
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * The privilege of account access database. Default value: `RoleReadWrite` 
-     * - `RoleReadOnly`: This value is only for Redis and Memcache
-     * - `RoleReadWrite`: This value is only for Redis and Memcache
+     * The privilege of account access database. Default value: `RoleReadWrite`
      */
     accountPrivilege?: pulumi.Input<string>;
     /**

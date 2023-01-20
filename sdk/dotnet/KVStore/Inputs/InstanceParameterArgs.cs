@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.KVStore.Inputs
 {
 
-    public sealed class InstanceParameterArgs : Pulumi.ResourceArgs
+    public sealed class InstanceParameterArgs : global::Pulumi.ResourceArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.KVStore.Inputs
         public InstanceParameterArgs()
         {
         }
+        public static new InstanceParameterArgs Empty => new InstanceParameterArgs();
     }
 }

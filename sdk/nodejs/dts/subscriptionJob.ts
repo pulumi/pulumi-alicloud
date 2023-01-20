@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const instance = new alicloud.rds.Instance("instance", {
@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
  * });
- * const db: alicloud.rds.Database[];
+ * const db: alicloud.rds.Database[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     db.push(new alicloud.rds.Database(`db-${range.value}`, {
  *         instanceId: instance.id,
@@ -79,8 +79,8 @@ import * as utilities from "../utilities";
  *     sourceEndpointPassword: "Test12345",
  *     dbList: "        {\"dtstestdata\": {\"name\": \"tfaccountpri_0\", \"all\": true}}\n",
  *     subscriptionInstanceNetworkType: "vpc",
- *     subscriptionInstanceVpcId: default1Networks.then(default1Networks => default1Networks.ids?[0]),
- *     subscriptionInstanceVswitchId: default1Switches.then(default1Switches => default1Switches.ids?[0]),
+ *     subscriptionInstanceVpcId: default1Networks.then(default1Networks => default1Networks.ids?.[0]),
+ *     subscriptionInstanceVswitchId: default1Switches.then(default1Switches => default1Switches.ids?.[0]),
  *     status: "Normal",
  * });
  * ```

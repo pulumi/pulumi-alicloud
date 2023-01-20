@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         public readonly double? Cpu;
         /// <summary>
@@ -42,11 +42,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string? ImagePullPolicy;
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         public readonly double? Memory;
         /// <summary>
-        /// The name of the security context that the container group runs.
+        /// The name of the volume.
         /// </summary>
         public readonly string? Name;
         /// <summary>

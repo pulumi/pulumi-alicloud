@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,17 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultDomains = pulumi.output(alicloud.waf.getDomains({
+ * const default = alicloud.waf.getDomains({
  *     instanceId: "waf-cf-xxxxx",
- * }));
+ * });
  * ```
  */
 export function getDomains(args: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:waf/getDomains:getDomains", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -95,9 +93,26 @@ export interface GetDomainsResult {
      */
     readonly resourceGroupId?: string;
 }
-
+/**
+ * Provides a WAF datasource to retrieve domains.
+ *
+ * For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+ *
+ * > **NOTE:** Available in 1.86.0+ .
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.waf.getDomains({
+ *     instanceId: "waf-cf-xxxxx",
+ * });
+ * ```
+ */
 export function getDomainsOutput(args: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
-    return pulumi.output(args).apply(a => getDomains(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomains(a, opts))
 }
 
 /**

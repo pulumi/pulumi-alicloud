@@ -137,6 +137,13 @@ func NewUser(ctx *pulumi.Context,
 	if args.UserName == nil {
 		return nil, errors.New("invalid value for required argument 'UserName'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource User
 	err := ctx.RegisterResource("alicloud:bastionhost/user:User", name, args, &resource, opts...)
 	if err != nil {

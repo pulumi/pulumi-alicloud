@@ -21,26 +21,25 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.ResourceManager.GetResourceDirectories.InvokeAsync());
-        ///         this.ResourceDirectoryId = @default.Apply(@default =&gt; @default.Directories?[0]?.Id);
-        ///     }
+        ///     var @default = AliCloud.ResourceManager.GetResourceDirectories.Invoke();
         /// 
-        ///     [Output("resourceDirectoryId")]
-        ///     public Output&lt;string&gt; ResourceDirectoryId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["resourceDirectoryId"] = @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult).Apply(@default =&gt; @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult.Directories[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourceDirectoriesResult> InvokeAsync(GetResourceDirectoriesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourceDirectoriesResult>("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", args ?? new GetResourceDirectoriesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceDirectoriesResult>("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", args ?? new GetResourceDirectoriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Resource Manager Resource Directories of the current Alibaba Cloud user.
@@ -52,30 +51,29 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.ResourceManager.GetResourceDirectories.InvokeAsync());
-        ///         this.ResourceDirectoryId = @default.Apply(@default =&gt; @default.Directories?[0]?.Id);
-        ///     }
+        ///     var @default = AliCloud.ResourceManager.GetResourceDirectories.Invoke();
         /// 
-        ///     [Output("resourceDirectoryId")]
-        ///     public Output&lt;string&gt; ResourceDirectoryId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["resourceDirectoryId"] = @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult).Apply(@default =&gt; @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult.Directories[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResourceDirectoriesResult> Invoke(GetResourceDirectoriesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResourceDirectoriesResult>("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", args ?? new GetResourceDirectoriesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetResourceDirectoriesResult>("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", args ?? new GetResourceDirectoriesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetResourceDirectoriesArgs : Pulumi.InvokeArgs
+    public sealed class GetResourceDirectoriesArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -83,9 +81,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetResourceDirectoriesArgs()
         {
         }
+        public static new GetResourceDirectoriesArgs Empty => new GetResourceDirectoriesArgs();
     }
 
-    public sealed class GetResourceDirectoriesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetResourceDirectoriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -93,6 +92,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetResourceDirectoriesInvokeArgs()
         {
         }
+        public static new GetResourceDirectoriesInvokeArgs Empty => new GetResourceDirectoriesInvokeArgs();
     }
 
 

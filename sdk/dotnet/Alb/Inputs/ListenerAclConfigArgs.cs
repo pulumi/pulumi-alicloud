@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ListenerAclConfigArgs : Pulumi.ResourceArgs
+    public sealed class ListenerAclConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("aclRelations")]
         private InputList<Inputs.ListenerAclConfigAclRelationArgs>? _aclRelations;
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public ListenerAclConfigArgs()
         {
         }
+        public static new ListenerAclConfigArgs Empty => new ListenerAclConfigArgs();
     }
 }

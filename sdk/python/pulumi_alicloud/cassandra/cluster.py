@@ -903,7 +903,7 @@ class Cluster(pulumi.CustomResource):
             if node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'node_count'")
             __props__.__dict__["node_count"] = node_count
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             if pay_type is None and not opts.urn:
                 raise TypeError("Missing required property 'pay_type'")
             __props__.__dict__["pay_type"] = pay_type
@@ -917,6 +917,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["public_points"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Cluster, __self__).__init__(
             'alicloud:cassandra/cluster:Cluster',
             resource_name,

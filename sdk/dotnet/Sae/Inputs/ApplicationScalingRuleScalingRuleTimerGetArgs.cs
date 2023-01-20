@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Sae.Inputs
 {
 
-    public sealed class ApplicationScalingRuleScalingRuleTimerGetArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationScalingRuleScalingRuleTimerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public ApplicationScalingRuleScalingRuleTimerGetArgs()
         {
         }
+        public static new ApplicationScalingRuleScalingRuleTimerGetArgs Empty => new ApplicationScalingRuleScalingRuleTimerGetArgs();
     }
 }

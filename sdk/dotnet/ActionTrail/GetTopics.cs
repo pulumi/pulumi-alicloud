@@ -21,31 +21,30 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var topicsDs = AliCloud.ActionTrail.GetTopics.Invoke(new()
         ///     {
-        ///         var topicsDs = Output.Create(AliCloud.ActionTrail.GetTopics.InvokeAsync(new AliCloud.ActionTrail.GetTopicsArgs
-        ///         {
-        ///             InstanceId = "xxx",
-        ///             NameRegex = "alikafkaTopicName",
-        ///             OutputFile = "topics.txt",
-        ///         }));
-        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics?[0]?.Topic);
-        ///     }
+        ///         InstanceId = "xxx",
+        ///         NameRegex = "alikafkaTopicName",
+        ///         OutputFile = "topics.txt",
+        ///     });
         /// 
-        ///     [Output("firstTopicName")]
-        ///     public Output&lt;string&gt; FirstTopicName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTopicName"] = topicsDs.Apply(getTopicsResult =&gt; getTopicsResult.Topics[0]?.Topic),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:actiontrail/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:actiontrail/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
@@ -57,35 +56,34 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var topicsDs = AliCloud.ActionTrail.GetTopics.Invoke(new()
         ///     {
-        ///         var topicsDs = Output.Create(AliCloud.ActionTrail.GetTopics.InvokeAsync(new AliCloud.ActionTrail.GetTopicsArgs
-        ///         {
-        ///             InstanceId = "xxx",
-        ///             NameRegex = "alikafkaTopicName",
-        ///             OutputFile = "topics.txt",
-        ///         }));
-        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics?[0]?.Topic);
-        ///     }
+        ///         InstanceId = "xxx",
+        ///         NameRegex = "alikafkaTopicName",
+        ///         OutputFile = "topics.txt",
+        ///     });
         /// 
-        ///     [Output("firstTopicName")]
-        ///     public Output&lt;string&gt; FirstTopicName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTopicName"] = topicsDs.Apply(getTopicsResult =&gt; getTopicsResult.Topics[0]?.Topic),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTopicsResult> Invoke(GetTopicsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTopicsResult>("alicloud:actiontrail/getTopics:getTopics", args ?? new GetTopicsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTopicsResult>("alicloud:actiontrail/getTopics:getTopics", args ?? new GetTopicsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTopicsArgs : Pulumi.InvokeArgs
+    public sealed class GetTopicsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -129,9 +127,10 @@ namespace Pulumi.AliCloud.ActionTrail
         public GetTopicsArgs()
         {
         }
+        public static new GetTopicsArgs Empty => new GetTopicsArgs();
     }
 
-    public sealed class GetTopicsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTopicsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -175,6 +174,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public GetTopicsInvokeArgs()
         {
         }
+        public static new GetTopicsInvokeArgs Empty => new GetTopicsInvokeArgs();
     }
 
 

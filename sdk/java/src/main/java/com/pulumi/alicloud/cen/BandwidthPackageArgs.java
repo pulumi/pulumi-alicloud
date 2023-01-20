@@ -162,14 +162,14 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
+     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
+     * @return The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -423,7 +423,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentType The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
+         * @param paymentType The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentType The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
+         * @param paymentType The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
          * 
          * @return builder
          * 

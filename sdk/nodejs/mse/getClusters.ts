@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.mse.getClusters({
+ * const example = alicloud.mse.getClusters({
  *     ids: ["mse-cn-0d9xxxx"],
  *     status: "INIT_SUCCESS",
- * }));
- *
- * export const clusterId = example.clusters[0].id;
+ * });
+ * export const clusterId = example.then(example => example.clusters?.[0]?.id);
  * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mse/getClusters:getClusters", {
         "clusterAliasName": args.clusterAliasName,
         "enableDetails": args.enableDetails,
@@ -97,9 +94,26 @@ export interface GetClustersResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in v1.94.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.mse.getClusters({
+ *     ids: ["mse-cn-0d9xxxx"],
+ *     status: "INIT_SUCCESS",
+ * });
+ * export const clusterId = example.then(example => example.clusters?.[0]?.id);
+ * ```
+ */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
-    return pulumi.output(args).apply(a => getClusters(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusters(a, opts))
 }
 
 /**

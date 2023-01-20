@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -27,15 +28,12 @@ import * as utilities from "../utilities";
  *     ],
  *     nameRegex: "the_resource_name",
  * });
- * export const alidnsAccessStrategyId1 = ids.then(ids => ids.strategies?[0]?.id);
+ * export const alidnsAccessStrategyId1 = ids.then(ids => ids.strategies?.[0]?.id);
  * ```
  */
 export function getAccessStrategies(args: GetAccessStrategiesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessStrategiesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getAccessStrategies:getAccessStrategies", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -96,9 +94,33 @@ export interface GetAccessStrategiesResult {
     readonly strategies: outputs.dns.GetAccessStrategiesStrategy[];
     readonly strategyMode: string;
 }
-
+/**
+ * This data source provides the Alidns Access Strategies of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.152.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dns.getAccessStrategies({
+ *     instanceId: "example_value",
+ *     strategyMode: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const alidnsAccessStrategyId1 = ids.then(ids => ids.strategies?.[0]?.id);
+ * ```
+ */
 export function getAccessStrategiesOutput(args: GetAccessStrategiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessStrategiesResult> {
-    return pulumi.output(args).apply(a => getAccessStrategies(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccessStrategies(a, opts))
 }
 
 /**

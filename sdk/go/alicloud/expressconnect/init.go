@@ -21,10 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:expressconnect/grantRuleToCen:GrantRuleToCen":
+		r = &GrantRuleToCen{}
 	case "alicloud:expressconnect/physicalConnection:PhysicalConnection":
 		r = &PhysicalConnection{}
+	case "alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation":
+		r = &VbrPconnAssociation{}
 	case "alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter":
 		r = &VirtualBorderRouter{}
+	case "alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection":
+		r = &VirtualPhysicalConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -40,12 +46,27 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"expressconnect/grantRuleToCen",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"expressconnect/physicalConnection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"expressconnect/vbrPconnAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"expressconnect/virtualBorderRouter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"expressconnect/virtualPhysicalConnection",
 		&module{version},
 	)
 }

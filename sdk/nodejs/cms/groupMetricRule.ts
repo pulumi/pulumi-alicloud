@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -109,7 +110,7 @@ export class GroupMetricRule extends pulumi.CustomResource {
      */
     public readonly emailSubject!: pulumi.Output<string>;
     /**
-     * Alarm level. See the block for escalations.
+     * Alarm level. See the following `Block escalations`.
      */
     public readonly escalations!: pulumi.Output<outputs.cms.GroupMetricRuleEscalations>;
     /**
@@ -139,7 +140,7 @@ export class GroupMetricRule extends pulumi.CustomResource {
     /**
      * The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number>;
     /**
      * The ID of the alert rule.
      */
@@ -152,6 +153,10 @@ export class GroupMetricRule extends pulumi.CustomResource {
      * The status of Group Metric Rule.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The information about the resource for which alerts are triggered. See the following `Block targets`.
+     */
+    public readonly targets!: pulumi.Output<outputs.cms.GroupMetricRuleTarget[]>;
     /**
      * The callback URL.
      */
@@ -186,6 +191,7 @@ export class GroupMetricRule extends pulumi.CustomResource {
             resourceInputs["ruleId"] = state ? state.ruleId : undefined;
             resourceInputs["silenceTime"] = state ? state.silenceTime : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["targets"] = state ? state.targets : undefined;
             resourceInputs["webhook"] = state ? state.webhook : undefined;
         } else {
             const args = argsOrState as GroupMetricRuleArgs | undefined;
@@ -225,6 +231,7 @@ export class GroupMetricRule extends pulumi.CustomResource {
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["ruleId"] = args ? args.ruleId : undefined;
             resourceInputs["silenceTime"] = args ? args.silenceTime : undefined;
+            resourceInputs["targets"] = args ? args.targets : undefined;
             resourceInputs["webhook"] = args ? args.webhook : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -258,7 +265,7 @@ export interface GroupMetricRuleState {
      */
     emailSubject?: pulumi.Input<string>;
     /**
-     * Alarm level. See the block for escalations.
+     * Alarm level. See the following `Block escalations`.
      */
     escalations?: pulumi.Input<inputs.cms.GroupMetricRuleEscalations>;
     /**
@@ -302,6 +309,10 @@ export interface GroupMetricRuleState {
      */
     status?: pulumi.Input<string>;
     /**
+     * The information about the resource for which alerts are triggered. See the following `Block targets`.
+     */
+    targets?: pulumi.Input<pulumi.Input<inputs.cms.GroupMetricRuleTarget>[]>;
+    /**
      * The callback URL.
      */
     webhook?: pulumi.Input<string>;
@@ -332,7 +343,7 @@ export interface GroupMetricRuleArgs {
      */
     emailSubject?: pulumi.Input<string>;
     /**
-     * Alarm level. See the block for escalations.
+     * Alarm level. See the following `Block escalations`.
      */
     escalations: pulumi.Input<inputs.cms.GroupMetricRuleEscalations>;
     /**
@@ -371,6 +382,10 @@ export interface GroupMetricRuleArgs {
      * The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
      */
     silenceTime?: pulumi.Input<number>;
+    /**
+     * The information about the resource for which alerts are triggered. See the following `Block targets`.
+     */
+    targets?: pulumi.Input<pulumi.Input<inputs.cms.GroupMetricRuleTarget>[]>;
     /**
      * The callback URL.
      */

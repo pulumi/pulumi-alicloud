@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,20 +22,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.polardb.getGlobalDatabaseNetworks({
  *     ids: ["example_id"],
  * });
- * export const polardbGlobalDatabaseNetworkId1 = ids.then(ids => ids.networks?[0]?.id);
+ * export const polardbGlobalDatabaseNetworkId1 = ids.then(ids => ids.networks?.[0]?.id);
  * const description = alicloud.polardb.getGlobalDatabaseNetworks({
  *     description: "example_description",
  * });
- * export const polardbGlobalDatabaseNetworkId2 = description.then(description => description.networks?[0]?.id);
+ * export const polardbGlobalDatabaseNetworkId2 = description.then(description => description.networks?.[0]?.id);
  * ```
  */
 export function getGlobalDatabaseNetworks(args?: GetGlobalDatabaseNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalDatabaseNetworksResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", {
         "dbClusterId": args.dbClusterId,
         "description": args.description,
@@ -94,9 +92,31 @@ export interface GetGlobalDatabaseNetworksResult {
     readonly pageSize?: number;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.181.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.polardb.getGlobalDatabaseNetworks({
+ *     ids: ["example_id"],
+ * });
+ * export const polardbGlobalDatabaseNetworkId1 = ids.then(ids => ids.networks?.[0]?.id);
+ * const description = alicloud.polardb.getGlobalDatabaseNetworks({
+ *     description: "example_description",
+ * });
+ * export const polardbGlobalDatabaseNetworkId2 = description.then(description => description.networks?.[0]?.id);
+ * ```
+ */
 export function getGlobalDatabaseNetworksOutput(args?: GetGlobalDatabaseNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalDatabaseNetworksResult> {
-    return pulumi.output(args).apply(a => getGlobalDatabaseNetworks(a, opts))
+    return pulumi.output(args).apply((a: any) => getGlobalDatabaseNetworks(a, opts))
 }
 
 /**

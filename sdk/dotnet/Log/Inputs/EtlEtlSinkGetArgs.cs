@@ -10,19 +10,39 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class EtlEtlSinkGetArgs : Pulumi.ResourceArgs
+    public sealed class EtlEtlSinkGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessKeyId")]
+        private Input<string>? _accessKeyId;
+
         /// <summary>
         /// Delivery target logstore access key id.
         /// </summary>
-        [Input("accessKeyId")]
-        public Input<string>? AccessKeyId { get; set; }
+        public Input<string>? AccessKeyId
+        {
+            get => _accessKeyId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKeyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("accessKeySecret")]
+        private Input<string>? _accessKeySecret;
 
         /// <summary>
         /// Delivery target logstore access key secret.
         /// </summary>
-        [Input("accessKeySecret")]
-        public Input<string>? AccessKeySecret { get; set; }
+        public Input<string>? AccessKeySecret
+        {
+            get => _accessKeySecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKeySecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Delivery target logstore region.
@@ -75,5 +95,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public EtlEtlSinkGetArgs()
         {
         }
+        public static new EtlEtlSinkGetArgs Empty => new EtlEtlSinkGetArgs();
     }
 }

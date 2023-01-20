@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC.Inputs
 {
 
-    public sealed class CustomDomainRouteConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class CustomDomainRouteConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Function Compute function that requests are routed to.
@@ -48,5 +48,6 @@ namespace Pulumi.AliCloud.FC.Inputs
         public CustomDomainRouteConfigGetArgs()
         {
         }
+        public static new CustomDomainRouteConfigGetArgs Empty => new CustomDomainRouteConfigGetArgs();
     }
 }

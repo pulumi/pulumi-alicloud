@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ServiceMesh.Inputs
 {
 
-    public sealed class ServiceMeshMeshConfigKialiGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMeshMeshConfigKialiGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable Service grid audit.
+        /// Whether to enable of the access logging. Valid values: `true` and `false`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public ServiceMeshMeshConfigKialiGetArgs()
         {
         }
+        public static new ServiceMeshMeshConfigKialiGetArgs Empty => new ServiceMeshMeshConfigKialiGetArgs();
     }
 }

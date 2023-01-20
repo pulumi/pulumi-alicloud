@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -26,7 +27,7 @@ import * as utilities from "../utilities";
  * });
  * const example = new alicloud.hbr.ServerBackupPlan("example", {
  *     ecsServerBackupPlanName: "server_backup_plan",
- *     instanceId: _default.then(_default => _default.instances?[0]?.id),
+ *     instanceId: _default.then(_default => _default.instances?.[0]?.id),
  *     schedule: "I|1602673264|PT2H",
  *     retention: 1,
  *     details: [{

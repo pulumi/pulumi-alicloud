@@ -23,8 +23,8 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tf-testAccFileSystem";
  * const defaultZones = alicloud.dfs.getZones({});
  * const defaultFileSystem = new alicloud.dfs.FileSystem("defaultFileSystem", {
- *     storageType: defaultZones.then(defaultZones => defaultZones.zones?[0]?.options?[0]?.storageType),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.zoneId),
+ *     storageType: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.options?.[0]?.storageType),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
  *     protocolType: "HDFS",
  *     description: name,
  *     fileSystemName: name,
@@ -146,10 +146,12 @@ export class FileSystem extends pulumi.CustomResource {
             resourceInputs["provisionedThroughputInMiBps"] = args ? args.provisionedThroughputInMiBps : undefined;
             resourceInputs["spaceCapacity"] = args ? args.spaceCapacity : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
-            resourceInputs["throughputMode"] = args ? args.throughputMode : undefined;
+            resourceInputs["throughputMode"] = args?.throughputMode ? pulumi.secret(args.throughputMode) : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["throughputMode"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(FileSystem.__pulumiType, name, resourceInputs, opts);
     }
 }

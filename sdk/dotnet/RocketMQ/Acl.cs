@@ -23,19 +23,15 @@ namespace Pulumi.AliCloud.RocketMQ
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new AliCloud.RocketMQ.Acl("default", new AliCloud.RocketMQ.AclArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var @default = new AliCloud.RocketMQ.Acl("default");
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +43,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/acl:Acl")]
-    public partial class Acl : Pulumi.CustomResource
+    public partial class Acl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
@@ -99,7 +95,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
-    public sealed class AclArgs : Pulumi.ResourceArgs
+    public sealed class AclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
@@ -110,9 +106,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public AclArgs()
         {
         }
+        public static new AclArgs Empty => new AclArgs();
     }
 
-    public sealed class AclState : Pulumi.ResourceArgs
+    public sealed class AclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
@@ -123,5 +120,6 @@ namespace Pulumi.AliCloud.RocketMQ
         public AclState()
         {
         }
+        public static new AclState Empty => new AclState();
     }
 }

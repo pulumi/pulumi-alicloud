@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Cms.GetHybridMonitorDatas.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Cms.GetHybridMonitorDatas.InvokeAsync(new AliCloud.Cms.GetHybridMonitorDatasArgs
-        ///         {
-        ///             Namespace = "example_value",
-        ///             PromSql = "AliyunEcs_cpu_total",
-        ///             Start = "1657505665",
-        ///             End = "1657520065",
-        ///         }));
-        ///         this.CmsMetricRuleTemplateId1 = @default.Apply(@default =&gt; @default.Datas?[0]);
-        ///     }
+        ///         Namespace = "example_value",
+        ///         PromSql = "AliyunEcs_cpu_total",
+        ///         Start = "1657505665",
+        ///         End = "1657520065",
+        ///     });
         /// 
-        ///     [Output("cmsMetricRuleTemplateId1")]
-        ///     public Output&lt;string&gt; CmsMetricRuleTemplateId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cmsMetricRuleTemplateId1"] = @default.Apply(getHybridMonitorDatasResult =&gt; getHybridMonitorDatasResult).Apply(@default =&gt; @default.Apply(getHybridMonitorDatasResult =&gt; getHybridMonitorDatasResult.Datas[0])),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHybridMonitorDatasResult> InvokeAsync(GetHybridMonitorDatasArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHybridMonitorDatasResult>("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", args ?? new GetHybridMonitorDatasArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHybridMonitorDatasResult>("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", args ?? new GetHybridMonitorDatasArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Cms.GetHybridMonitorDatas.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Cms.GetHybridMonitorDatas.InvokeAsync(new AliCloud.Cms.GetHybridMonitorDatasArgs
-        ///         {
-        ///             Namespace = "example_value",
-        ///             PromSql = "AliyunEcs_cpu_total",
-        ///             Start = "1657505665",
-        ///             End = "1657520065",
-        ///         }));
-        ///         this.CmsMetricRuleTemplateId1 = @default.Apply(@default =&gt; @default.Datas?[0]);
-        ///     }
+        ///         Namespace = "example_value",
+        ///         PromSql = "AliyunEcs_cpu_total",
+        ///         Start = "1657505665",
+        ///         End = "1657520065",
+        ///     });
         /// 
-        ///     [Output("cmsMetricRuleTemplateId1")]
-        ///     public Output&lt;string&gt; CmsMetricRuleTemplateId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cmsMetricRuleTemplateId1"] = @default.Apply(getHybridMonitorDatasResult =&gt; getHybridMonitorDatasResult).Apply(@default =&gt; @default.Apply(getHybridMonitorDatasResult =&gt; getHybridMonitorDatasResult.Datas[0])),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHybridMonitorDatasResult> Invoke(GetHybridMonitorDatasInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHybridMonitorDatasResult>("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", args ?? new GetHybridMonitorDatasInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHybridMonitorDatasResult>("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", args ?? new GetHybridMonitorDatasInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHybridMonitorDatasArgs : Pulumi.InvokeArgs
+    public sealed class GetHybridMonitorDatasArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The timestamp that specifies the end of the time range to query.
@@ -129,9 +127,10 @@ namespace Pulumi.AliCloud.Cms
         public GetHybridMonitorDatasArgs()
         {
         }
+        public static new GetHybridMonitorDatasArgs Empty => new GetHybridMonitorDatasArgs();
     }
 
-    public sealed class GetHybridMonitorDatasInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHybridMonitorDatasInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The timestamp that specifies the end of the time range to query.
@@ -169,6 +168,7 @@ namespace Pulumi.AliCloud.Cms
         public GetHybridMonitorDatasInvokeArgs()
         {
         }
+        public static new GetHybridMonitorDatasInvokeArgs Empty => new GetHybridMonitorDatasInvokeArgs();
     }
 
 

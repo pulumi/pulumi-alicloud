@@ -51,7 +51,7 @@ func GetResourceGroups(ctx *pulumi.Context, args *GetResourceGroupsArgs, opts ..
 
 // A collection of arguments for invoking getResourceGroups.
 type GetResourceGroupsArgs struct {
-	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of resource group IDs.
 	Ids []string `pulumi:"ids"`
@@ -94,7 +94,7 @@ func GetResourceGroupsOutput(ctx *pulumi.Context, args GetResourceGroupsOutputAr
 
 // A collection of arguments for invoking getResourceGroups.
 type GetResourceGroupsOutputArgs struct {
-	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of resource group IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

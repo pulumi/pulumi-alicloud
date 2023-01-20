@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class EcsLaunchTemplateNetworkInterfacesGetArgs : Pulumi.ResourceArgs
+    public sealed class EcsLaunchTemplateNetworkInterfacesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the data disk.
+        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the data disk.
+        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -31,13 +31,13 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? PrimaryIp { get; set; }
 
         /// <summary>
-        /// The security group ID must be one in the same VPC.
+        /// The security group ID.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        /// When creating a VPC-Connected instance, you must specify its VSwitch ID.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public EcsLaunchTemplateNetworkInterfacesGetArgs()
         {
         }
+        public static new EcsLaunchTemplateNetworkInterfacesGetArgs Empty => new EcsLaunchTemplateNetworkInterfacesGetArgs();
     }
 }

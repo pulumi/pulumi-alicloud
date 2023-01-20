@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,15 +26,12 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const dfsMountPointId1 = ids.then(ids => ids.points?[0]?.id);
+ * export const dfsMountPointId1 = ids.then(ids => ids.points?.[0]?.id);
  * ```
  */
 export function getMountPoints(args: GetMountPointsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountPointsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dfs/getMountPoints:getMountPoints", {
         "fileSystemId": args.fileSystemId,
         "ids": args.ids,
@@ -75,9 +73,31 @@ export interface GetMountPointsResult {
     readonly points: outputs.dfs.GetMountPointsPoint[];
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.140.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dfs.getMountPoints({
+ *     fileSystemId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const dfsMountPointId1 = ids.then(ids => ids.points?.[0]?.id);
+ * ```
+ */
 export function getMountPointsOutput(args: GetMountPointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMountPointsResult> {
-    return pulumi.output(args).apply(a => getMountPoints(a, opts))
+    return pulumi.output(args).apply((a: any) => getMountPoints(a, opts))
 }
 
 /**

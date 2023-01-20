@@ -59,6 +59,7 @@ class _InstanceAttachmentState:
         Input properties used for looking up and filtering InstanceAttachment resources.
         :param pulumi.Input[str] ecs_id: The ID of the ECS instance.
         :param pulumi.Input[str] instance_id: The ID of the database file system.
+        :param pulumi.Input[str] status: The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
         """
         if ecs_id is not None:
             pulumi.set(__self__, "ecs_id", ecs_id)
@@ -94,6 +95,9 @@ class _InstanceAttachmentState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -279,6 +283,7 @@ class InstanceAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ecs_id: The ID of the ECS instance.
         :param pulumi.Input[str] instance_id: The ID of the database file system.
+        :param pulumi.Input[str] status: The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -308,5 +313,8 @@ class InstanceAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+        """
         return pulumi.get(self, "status")
 

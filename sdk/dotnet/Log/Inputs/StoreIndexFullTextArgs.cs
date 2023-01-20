@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class StoreIndexFullTextArgs : Pulumi.ResourceArgs
+    public sealed class StoreIndexFullTextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public StoreIndexFullTextArgs()
         {
         }
+        public static new StoreIndexFullTextArgs Empty => new StoreIndexFullTextArgs();
     }
 }

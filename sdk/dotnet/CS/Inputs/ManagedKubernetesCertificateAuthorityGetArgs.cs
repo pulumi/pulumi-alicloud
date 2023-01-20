@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class ManagedKubernetesCertificateAuthorityGetArgs : Pulumi.ResourceArgs
+    public sealed class ManagedKubernetesCertificateAuthorityGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public ManagedKubernetesCertificateAuthorityGetArgs()
         {
         }
+        public static new ManagedKubernetesCertificateAuthorityGetArgs Empty => new ManagedKubernetesCertificateAuthorityGetArgs();
     }
 }

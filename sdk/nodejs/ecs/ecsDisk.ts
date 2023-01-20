@@ -77,7 +77,7 @@ export class EcsDisk extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`. Default is `cloudEfficiency`.
      */
     public readonly category!: pulumi.Output<string | undefined>;
     public readonly dedicatedBlockStorageClusterId!: pulumi.Output<string | undefined>;
@@ -99,8 +99,6 @@ export class EcsDisk extends pulumi.CustomResource {
     public readonly diskName!: pulumi.Output<string>;
     /**
      * Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-     * * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-     * * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
@@ -133,10 +131,7 @@ export class EcsDisk extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
      */
     public readonly performanceLevel!: pulumi.Output<string>;
     /**
@@ -169,8 +164,6 @@ export class EcsDisk extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-     * * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-     * * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -263,7 +256,7 @@ export interface EcsDiskState {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`. Default is `cloudEfficiency`.
      */
     category?: pulumi.Input<string>;
     dedicatedBlockStorageClusterId?: pulumi.Input<string>;
@@ -285,8 +278,6 @@ export interface EcsDiskState {
     diskName?: pulumi.Input<string>;
     /**
      * Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-     * * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-     * * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -319,10 +310,7 @@ export interface EcsDiskState {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
      */
     performanceLevel?: pulumi.Input<string>;
     /**
@@ -355,8 +343,6 @@ export interface EcsDiskState {
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-     * * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-     * * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
      */
     type?: pulumi.Input<string>;
     /**
@@ -377,7 +363,7 @@ export interface EcsDiskArgs {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`. Default is `cloudEfficiency`.
      */
     category?: pulumi.Input<string>;
     dedicatedBlockStorageClusterId?: pulumi.Input<string>;
@@ -399,8 +385,6 @@ export interface EcsDiskArgs {
     diskName?: pulumi.Input<string>;
     /**
      * Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-     * * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-     * * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -433,10 +417,7 @@ export interface EcsDiskArgs {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
      */
     performanceLevel?: pulumi.Input<string>;
     /**
@@ -465,8 +446,6 @@ export interface EcsDiskArgs {
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-     * * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-     * * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
      */
     type?: pulumi.Input<string>;
     /**

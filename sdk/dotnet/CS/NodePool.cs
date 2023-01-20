@@ -19,399 +19,382 @@ namespace Pulumi.AliCloud.CS
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-test";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-test";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-    ///         {
-    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
-    ///             CpuCoreCount = 2,
-    ///             MemorySize = 4,
-    ///             KubernetesNodeRole = "Worker",
-    ///         })));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "10.1.0.0/21",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VswitchName = name,
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "10.1.1.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var defaultKeyPair = new AliCloud.Ecs.KeyPair("defaultKeyPair", new AliCloud.Ecs.KeyPairArgs
-    ///         {
-    ///             KeyPairName = name,
-    ///         });
-    ///         var defaultManagedKubernetes = new List&lt;AliCloud.CS.ManagedKubernetes&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; (1 == true); rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             defaultManagedKubernetes.Add(new AliCloud.CS.ManagedKubernetes($"defaultManagedKubernetes-{range.Value}", new AliCloud.CS.ManagedKubernetesArgs
-    ///             {
-    ///                 ClusterSpec = "ack.pro.small",
-    ///                 IsEnterpriseSecurityGroup = true,
-    ///                 PodCidr = "172.20.0.0/16",
-    ///                 ServiceCidr = "172.21.0.0/20",
-    ///                 WorkerVswitchIds = 
-    ///                 {
-    ///                     defaultSwitch.Id,
-    ///                 },
-    ///             }));
-    ///         }
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 2,
+    ///         MemorySize = 4,
+    ///         KubernetesNodeRole = "Worker",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.1.0.0/21",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "10.1.1.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultKeyPair = new AliCloud.Ecs.KeyPair("defaultKeyPair", new()
+    ///     {
+    ///         KeyPairName = name,
+    ///     });
+    /// 
+    ///     var defaultManagedKubernetes = new List&lt;AliCloud.CS.ManagedKubernetes&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; (1 == true); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultManagedKubernetes.Add(new AliCloud.CS.ManagedKubernetes($"defaultManagedKubernetes-{range.Value}", new()
+    ///         {
+    ///             ClusterSpec = "ack.pro.small",
+    ///             IsEnterpriseSecurityGroup = true,
+    ///             PodCidr = "172.20.0.0/16",
+    ///             ServiceCidr = "172.21.0.0/20",
+    ///             WorkerVswitchIds = new[]
+    ///             {
+    ///                 defaultSwitch.Id,
+    ///             },
+    ///         }));
+    ///     }
+    /// });
     /// ```
     /// 
     /// Create a node pool.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CS.NodePool("default", new()
     ///     {
-    ///         var @default = new AliCloud.CS.NodePool("default", new AliCloud.CS.NodePoolArgs
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         VswitchIds = new[]
     ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             VswitchIds = 
-    ///             {
-    ///                 alicloud_vswitch.Default.Id,
-    ///             },
-    ///             InstanceTypes = 
-    ///             {
-    ///                 data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///             },
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             SystemDiskSize = 40,
-    ///             KeyName = alicloud_key_pair.Default.Key_name,
-    ///             DesiredSize = 1,
-    ///         });
-    ///     }
+    ///             alicloud_vswitch.Default.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = alicloud_key_pair.Default.Key_name,
+    ///         DesiredSize = 1,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// The parameter `node_count` are deprecated from version 1.158.0，but it can still works. If you want to use the new parameter `desired_size` instead, you can update it as follows. for more information of `desired_size`, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3).
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CS.NodePool("default", new()
     ///     {
-    ///         var @default = new AliCloud.CS.NodePool("default", new AliCloud.CS.NodePoolArgs
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         VswitchIds = new[]
     ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             VswitchIds = 
-    ///             {
-    ///                 alicloud_vswitch.Default.Id,
-    ///             },
-    ///             InstanceTypes = 
-    ///             {
-    ///                 data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///             },
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             SystemDiskSize = 40,
-    ///             KeyName = alicloud_key_pair.Default.Key_name,
-    ///             DesiredSize = 1,
-    ///         });
-    ///     }
+    ///             alicloud_vswitch.Default.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = alicloud_key_pair.Default.Key_name,
+    ///         DesiredSize = 1,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud.cs.ManagedKubernetes`.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CS.NodePool("default", new()
     ///     {
-    ///         var @default = new AliCloud.CS.NodePool("default", new AliCloud.CS.NodePoolArgs
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         VswitchIds = new[]
     ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             VswitchIds = 
-    ///             {
-    ///                 alicloud_vswitch.Default.Id,
-    ///             },
-    ///             InstanceTypes = 
-    ///             {
-    ///                 data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///             },
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             SystemDiskSize = 40,
-    ///             KeyName = alicloud_key_pair.Default.Key_name,
-    ///             DesiredSize = 1,
-    ///             Management = new AliCloud.CS.Inputs.NodePoolManagementArgs
-    ///             {
-    ///                 AutoRepair = true,
-    ///                 AutoUpgrade = true,
-    ///                 Surge = 1,
-    ///                 MaxUnavailable = 1,
-    ///             },
-    ///         });
-    ///     }
+    ///             alicloud_vswitch.Default.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = alicloud_key_pair.Default.Key_name,
+    ///         DesiredSize = 1,
+    ///         Management = new AliCloud.CS.Inputs.NodePoolManagementArgs
+    ///         {
+    ///             AutoRepair = true,
+    ///             AutoUpgrade = true,
+    ///             Surge = 1,
+    ///             MaxUnavailable = 1,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Enable automatic scaling for the node pool. `scaling_config` is required.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CS.NodePool("default", new()
     ///     {
-    ///         var @default = new AliCloud.CS.NodePool("default", new AliCloud.CS.NodePoolArgs
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         VswitchIds = new[]
     ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             VswitchIds = 
-    ///             {
-    ///                 alicloud_vswitch.Default.Id,
-    ///             },
-    ///             InstanceTypes = 
-    ///             {
-    ///                 data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///             },
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             SystemDiskSize = 40,
-    ///             KeyName = alicloud_key_pair.Default.Key_name,
-    ///             ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
-    ///             {
-    ///                 MinSize = 1,
-    ///                 MaxSize = 10,
-    ///             },
-    ///         });
-    ///     }
+    ///             alicloud_vswitch.Default.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = alicloud_key_pair.Default.Key_name,
+    ///         ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
+    ///         {
+    ///             MinSize = 1,
+    ///             MaxSize = 10,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Enable automatic scaling for managed node pool.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CS.NodePool("default", new()
     ///     {
-    ///         var @default = new AliCloud.CS.NodePool("default", new AliCloud.CS.NodePoolArgs
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         VswitchIds = new[]
     ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             VswitchIds = 
-    ///             {
-    ///                 alicloud_vswitch.Default.Id,
-    ///             },
-    ///             InstanceTypes = 
-    ///             {
-    ///                 data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///             },
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             SystemDiskSize = 40,
-    ///             KeyName = alicloud_key_pair.Default.Key_name,
-    ///             Management = new AliCloud.CS.Inputs.NodePoolManagementArgs
-    ///             {
-    ///                 AutoRepair = true,
-    ///                 AutoUpgrade = true,
-    ///                 Surge = 1,
-    ///                 MaxUnavailable = 1,
-    ///             },
-    ///             ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
-    ///             {
-    ///                 MinSize = 1,
-    ///                 MaxSize = 10,
-    ///                 Type = "cpu",
-    ///             },
-    ///         }, new CustomResourceOptions
+    ///             alicloud_vswitch.Default.Id,
+    ///         },
+    ///         InstanceTypes = new[]
     ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 alicloud_cs_autoscaling_config.Default,
-    ///             },
-    ///         });
-    ///     }
+    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = alicloud_key_pair.Default.Key_name,
+    ///         Management = new AliCloud.CS.Inputs.NodePoolManagementArgs
+    ///         {
+    ///             AutoRepair = true,
+    ///             AutoUpgrade = true,
+    ///             Surge = 1,
+    ///             MaxUnavailable = 1,
+    ///         },
+    ///         ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
+    ///         {
+    ///             MinSize = 1,
+    ///             MaxSize = 10,
+    ///             Type = "cpu",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             alicloud_cs_autoscaling_config.Default,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Create a `PrePaid` node pool.
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CS.NodePool("default", new()
     ///     {
-    ///         var @default = new AliCloud.CS.NodePool("default", new AliCloud.CS.NodePoolArgs
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         VswitchIds = new[]
     ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             VswitchIds = 
-    ///             {
-    ///                 alicloud_vswitch.Default.Id,
-    ///             },
-    ///             InstanceTypes = 
-    ///             {
-    ///                 data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///             },
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             SystemDiskSize = 40,
-    ///             KeyName = alicloud_key_pair.Default.Key_name,
-    ///             InstanceChargeType = "PrePaid",
-    ///             Period = 1,
-    ///             PeriodUnit = "Month",
-    ///             AutoRenew = true,
-    ///             AutoRenewPeriod = 1,
-    ///             InstallCloudMonitor = true,
-    ///             ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
-    ///             {
-    ///                 MinSize = 1,
-    ///                 MaxSize = 10,
-    ///                 Type = "cpu",
-    ///             },
-    ///         });
-    ///     }
+    ///             alicloud_vswitch.Default.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = alicloud_key_pair.Default.Key_name,
+    ///         InstanceChargeType = "PrePaid",
+    ///         Period = 1,
+    ///         PeriodUnit = "Month",
+    ///         AutoRenew = true,
+    ///         AutoRenewPeriod = 1,
+    ///         InstallCloudMonitor = true,
+    ///         ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
+    ///         {
+    ///             MinSize = 1,
+    ///             MaxSize = 10,
+    ///             Type = "cpu",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Create a node pool with spot instance.
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CS.NodePool("default", new()
     ///     {
-    ///         var @default = new AliCloud.CS.NodePool("default", new AliCloud.CS.NodePoolArgs
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         VswitchIds = new[]
     ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             VswitchIds = 
+    ///             alicloud_vswitch.Default.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = alicloud_key_pair.Default.Key_name,
+    ///         DesiredSize = 1,
+    ///         SpotStrategy = "SpotWithPriceLimit",
+    ///         SpotPriceLimits = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.NodePoolSpotPriceLimitArgs
     ///             {
-    ///                 alicloud_vswitch.Default.Id,
+    ///                 InstanceType = data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///                 PriceLimit = "0.70",
     ///             },
-    ///             InstanceTypes = 
-    ///             {
-    ///                 data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///             },
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             SystemDiskSize = 40,
-    ///             KeyName = alicloud_key_pair.Default.Key_name,
-    ///             DesiredSize = 1,
-    ///             SpotStrategy = "SpotWithPriceLimit",
-    ///             SpotPriceLimits = 
-    ///             {
-    ///                 new AliCloud.CS.Inputs.NodePoolSpotPriceLimitArgs
-    ///                 {
-    ///                     InstanceType = data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///                     PriceLimit = "0.70",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Use Spot instances to create a node pool with auto-scaling enabled
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CS.NodePool("default", new()
     ///     {
-    ///         var @default = new AliCloud.CS.NodePool("default", new AliCloud.CS.NodePoolArgs
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         VswitchIds = new[]
     ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             VswitchIds = 
+    ///             alicloud_vswitch.Default.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = alicloud_key_pair.Default.Key_name,
+    ///         ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
+    ///         {
+    ///             MinSize = 1,
+    ///             MaxSize = 10,
+    ///             Type = "spot",
+    ///         },
+    ///         SpotStrategy = "SpotWithPriceLimit",
+    ///         SpotPriceLimits = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.NodePoolSpotPriceLimitArgs
     ///             {
-    ///                 alicloud_vswitch.Default.Id,
+    ///                 InstanceType = data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///                 PriceLimit = "0.70",
     ///             },
-    ///             InstanceTypes = 
-    ///             {
-    ///                 data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///             },
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             SystemDiskSize = 40,
-    ///             KeyName = alicloud_key_pair.Default.Key_name,
-    ///             ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
-    ///             {
-    ///                 MinSize = 1,
-    ///                 MaxSize = 10,
-    ///                 Type = "spot",
-    ///             },
-    ///             SpotStrategy = "SpotWithPriceLimit",
-    ///             SpotPriceLimits = 
-    ///             {
-    ///                 new AliCloud.CS.Inputs.NodePoolSpotPriceLimitArgs
-    ///                 {
-    ///                     InstanceType = data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///                     PriceLimit = "0.70",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Create a node pool with platform as Windows
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CS.NodePool("default", new()
     ///     {
-    ///         var @default = new AliCloud.CS.NodePool("default", new AliCloud.CS.NodePoolArgs
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         VswitchIds = new[]
     ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             VswitchIds = 
-    ///             {
-    ///                 alicloud_vswitch.Default.Id,
-    ///             },
-    ///             InstanceTypes = 
-    ///             {
-    ///                 data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///             },
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             SystemDiskSize = 40,
-    ///             InstanceChargeType = "PostPaid",
-    ///             DesiredSize = 1,
-    ///             Password = "Hello1234",
-    ///             Platform = "Windows",
-    ///             ImageId = window_image_id,
-    ///         });
-    ///     }
+    ///             alicloud_vswitch.Default.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         InstanceChargeType = "PostPaid",
+    ///         DesiredSize = 1,
+    ///         Password = "Hello1234",
+    ///         Platform = "Windows",
+    ///         ImageId = window_image_id,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Add an existing node to the node pool
@@ -419,101 +402,97 @@ namespace Pulumi.AliCloud.CS
     /// In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CS.NodePool("default", new()
     ///     {
-    ///         var @default = new AliCloud.CS.NodePool("default", new AliCloud.CS.NodePoolArgs
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         VswitchIds = new[]
     ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             VswitchIds = 
-    ///             {
-    ///                 alicloud_vswitch.Default.Id,
-    ///             },
-    ///             InstanceTypes = 
-    ///             {
-    ///                 data.Alicloud_instance_types.Default.Instance_types[0].Id,
-    ///             },
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             SystemDiskSize = 40,
-    ///             InstanceChargeType = "PostPaid",
-    ///             Instances = 
-    ///             {
-    ///                 "instance_id_01",
-    ///                 "instance_id_02",
-    ///                 "instance_id_03",
-    ///             },
-    ///             FormatDisk = false,
-    ///             KeepInstanceName = true,
-    ///         });
-    ///     }
+    ///             alicloud_vswitch.Default.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         InstanceChargeType = "PostPaid",
+    ///         Instances = new[]
+    ///         {
+    ///             "instance_id_01",
+    ///             "instance_id_02",
+    ///             "instance_id_03",
+    ///         },
+    ///         FormatDisk = false,
+    ///         KeepInstanceName = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Create a node pool with customized kubelet parameters
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.CS.NodePool("default", new()
     ///     {
-    ///         var @default = new AliCloud.CS.NodePool("default", new AliCloud.CS.NodePoolArgs
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         VswitchIds = new[]
     ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             VswitchIds = 
+    ///             alicloud_vswitch.Default.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         InstanceChargeType = "PostPaid",
+    ///         DesiredSize = 3,
+    ///         KubeletConfiguration = new AliCloud.CS.Inputs.NodePoolKubeletConfigurationArgs
+    ///         {
+    ///             RegistryPullQps = "10",
+    ///             RegistryBurst = "5",
+    ///             EventRecordQps = "10",
+    ///             EventBurst = "5",
+    ///             EvictionHard = 
     ///             {
-    ///                 alicloud_vswitch.Default.Id,
+    ///                 { "memory.available", "1024Mi" },
+    ///                 { "nodefs.available", "10%" },
+    ///                 { "nodefs.inodesFree", "1000" },
+    ///                 { "imagefs.available", "10%" },
+    ///                 { "imagefs.inodesFree", "1000" },
+    ///                 { "allocatableMemory.available", "2048" },
+    ///                 { "pid.available", "1000" },
     ///             },
-    ///             InstanceTypes = 
+    ///             SystemReserved = 
     ///             {
-    ///                 data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///                 { "cpu", "1" },
+    ///                 { "memory", "1Gi" },
+    ///                 { "ephemeral-storage", "10Gi" },
     ///             },
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             SystemDiskSize = 40,
-    ///             InstanceChargeType = "PostPaid",
-    ///             DesiredSize = 3,
-    ///             KubeletConfiguration = new AliCloud.CS.Inputs.NodePoolKubeletConfigurationArgs
+    ///             KubeReserved = 
     ///             {
-    ///                 RegistryPullQps = "0",
-    ///                 RegistryBurst = "0",
-    ///                 EventRecordQps = "0",
-    ///                 EventBurst = "0",
-    ///                 EvictionHard = 
-    ///                 {
-    ///                     { "memory.available", "1024Mi" },
-    ///                     { "nodefs.available", "10%" },
-    ///                     { "nodefs.inodesFree", "1000" },
-    ///                     { "imagefs.available", "10%" },
-    ///                     { "imagefs.inodesFree", "1000" },
-    ///                     { "allocatableMemory.available", "2048" },
-    ///                     { "pid.available", "1000" },
-    ///                 },
-    ///                 SystemReserved = 
-    ///                 {
-    ///                     { "cpu", "1" },
-    ///                     { "memory", "1Gi" },
-    ///                     { "ephemeral_storage", "10Gi" },
-    ///                 },
-    ///                 KubeReserved = 
-    ///                 {
-    ///                     { "cpu", "500m" },
-    ///                     { "memory", "1Gi" },
-    ///                 },
+    ///                 { "cpu", "500m" },
+    ///                 { "memory", "1Gi" },
     ///             },
-    ///             RolloutPolicy = new AliCloud.CS.Inputs.NodePoolRolloutPolicyArgs
-    ///             {
-    ///                 MaxUnavailable = 1,
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         RollingPolicy = new AliCloud.CS.Inputs.NodePoolRollingPolicyArgs
+    ///         {
+    ///             MaxParallelism = 1,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -521,11 +500,11 @@ namespace Pulumi.AliCloud.CS
     /// Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_kubernetes_node_pool.custom_nodepool cluster_id:nodepool_id
+    ///  $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/nodePool:NodePool")]
-    public partial class NodePool : Pulumi.CustomResource
+    public partial class NodePool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Enable Node payment auto-renew, default is `false`.
@@ -540,7 +519,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         /// </summary>
         [Output("cisEnabled")]
         public Output<bool?> CisEnabled { get; private set; } = null!;
@@ -714,6 +693,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string> Platform { get; private set; } = null!;
 
         /// <summary>
+        /// PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+        /// </summary>
+        [Output("polardbIds")]
+        public Output<ImmutableArray<string>> PolardbIds { get; private set; } = null!;
+
+        /// <summary>
         /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
         /// </summary>
         [Output("rdsInstances")]
@@ -726,7 +711,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// </summary>
+        [Output("rollingPolicy")]
+        public Output<Outputs.NodePoolRollingPolicy?> RollingPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         /// </summary>
         [Output("rolloutPolicy")]
         public Output<Outputs.NodePoolRolloutPolicy?> RolloutPolicy { get; private set; } = null!;
@@ -774,7 +765,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
         /// &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         /// </summary>
         [Output("socEnabled")]
@@ -787,10 +778,10 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<Outputs.NodePoolSpotPriceLimit>> SpotPriceLimits { get; private set; } = null!;
 
         /// <summary>
-        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
         /// </summary>
         [Output("spotStrategy")]
-        public Output<string?> SpotStrategy { get; private set; } = null!;
+        public Output<string> SpotStrategy { get; private set; } = null!;
 
         /// <summary>
         /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
@@ -893,6 +884,10 @@ namespace Pulumi.AliCloud.CS
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -914,7 +909,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class NodePoolArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable Node payment auto-renew, default is `false`.
@@ -929,7 +924,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         /// </summary>
         [Input("cisEnabled")]
         public Input<bool>? CisEnabled { get; set; }
@@ -1108,11 +1103,21 @@ namespace Pulumi.AliCloud.CS
         [Input("nodeNameMode")]
         public Input<string>? NodeNameMode { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
@@ -1131,6 +1136,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
+
+        [Input("polardbIds")]
+        private InputList<string>? _polardbIds;
+
+        /// <summary>
+        /// PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+        /// </summary>
+        public InputList<string> PolardbIds
+        {
+            get => _polardbIds ?? (_polardbIds = new InputList<string>());
+            set => _polardbIds = value;
+        }
 
         [Input("rdsInstances")]
         private InputList<string>? _rdsInstances;
@@ -1151,7 +1168,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// </summary>
+        [Input("rollingPolicy")]
+        public Input<Inputs.NodePoolRollingPolicyArgs>? RollingPolicy { get; set; }
+
+        /// <summary>
+        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         /// </summary>
         [Input("rolloutPolicy")]
         public Input<Inputs.NodePoolRolloutPolicyArgs>? RolloutPolicy { get; set; }
@@ -1199,7 +1222,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
         /// &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         /// </summary>
         [Input("socEnabled")]
@@ -1218,7 +1241,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
@@ -1316,9 +1339,10 @@ namespace Pulumi.AliCloud.CS
         public NodePoolArgs()
         {
         }
+        public static new NodePoolArgs Empty => new NodePoolArgs();
     }
 
-    public sealed class NodePoolState : Pulumi.ResourceArgs
+    public sealed class NodePoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable Node payment auto-renew, default is `false`.
@@ -1333,7 +1357,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         /// </summary>
         [Input("cisEnabled")]
         public Input<bool>? CisEnabled { get; set; }
@@ -1512,11 +1536,21 @@ namespace Pulumi.AliCloud.CS
         [Input("nodeNameMode")]
         public Input<string>? NodeNameMode { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
@@ -1535,6 +1569,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
+
+        [Input("polardbIds")]
+        private InputList<string>? _polardbIds;
+
+        /// <summary>
+        /// PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+        /// </summary>
+        public InputList<string> PolardbIds
+        {
+            get => _polardbIds ?? (_polardbIds = new InputList<string>());
+            set => _polardbIds = value;
+        }
 
         [Input("rdsInstances")]
         private InputList<string>? _rdsInstances;
@@ -1555,7 +1601,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+        /// </summary>
+        [Input("rollingPolicy")]
+        public Input<Inputs.NodePoolRollingPolicyGetArgs>? RollingPolicy { get; set; }
+
+        /// <summary>
+        /// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         /// </summary>
         [Input("rolloutPolicy")]
         public Input<Inputs.NodePoolRolloutPolicyGetArgs>? RolloutPolicy { get; set; }
@@ -1609,7 +1661,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
         /// &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         /// </summary>
         [Input("socEnabled")]
@@ -1628,7 +1680,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
@@ -1732,5 +1784,6 @@ namespace Pulumi.AliCloud.CS
         public NodePoolState()
         {
         }
+        public static new NodePoolState Empty => new NodePoolState();
     }
 }

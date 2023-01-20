@@ -194,9 +194,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.config);
     }
 
+    /**
+     * Intranet connection address of the KVStore instance.
+     * 
+     */
     @Import(name="connectionDomain")
     private @Nullable Output<String> connectionDomain;
 
+    /**
+     * @return Intranet connection address of the KVStore instance.
+     * 
+     */
     public Optional<Output<String>> connectionDomain() {
         return Optional.ofNullable(this.connectionDomain);
     }
@@ -900,7 +908,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The status of KVStore DBInstance.
-     * * `connection_domain`- Intranet connection address of the KVStore instance.
      * 
      */
     @Import(name="status")
@@ -908,7 +915,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The status of KVStore DBInstance.
-     * * `connection_domain`- Intranet connection address of the KVStore instance.
      * 
      */
     public Optional<Output<String>> status() {
@@ -1307,11 +1313,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return config(Output.of(config));
         }
 
+        /**
+         * @param connectionDomain Intranet connection address of the KVStore instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionDomain(@Nullable Output<String> connectionDomain) {
             $.connectionDomain = connectionDomain;
             return this;
         }
 
+        /**
+         * @param connectionDomain Intranet connection address of the KVStore instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionDomain(String connectionDomain) {
             return connectionDomain(Output.of(connectionDomain));
         }
@@ -2293,7 +2311,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The status of KVStore DBInstance.
-         * * `connection_domain`- Intranet connection address of the KVStore instance.
          * 
          * @return builder
          * 
@@ -2305,7 +2322,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The status of KVStore DBInstance.
-         * * `connection_domain`- Intranet connection address of the KVStore instance.
          * 
          * @return builder
          * 

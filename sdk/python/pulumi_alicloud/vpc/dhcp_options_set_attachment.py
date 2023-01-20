@@ -76,6 +76,7 @@ class _DhcpOptionsSetAttachmentState:
         Input properties used for looking up and filtering DhcpOptionsSetAttachment resources.
         :param pulumi.Input[str] dhcp_options_set_id: The ID of the DHCP options set.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request only. Default values: `false`. Valid values:
+        :param pulumi.Input[str] status: The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
         :param pulumi.Input[str] vpc_id: The ID of the VPC network that is to be associated with the DHCP options set..
         """
         if dhcp_options_set_id is not None:
@@ -114,6 +115,9 @@ class _DhcpOptionsSetAttachmentState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -284,6 +288,7 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dhcp_options_set_id: The ID of the DHCP options set.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request only. Default values: `false`. Valid values:
+        :param pulumi.Input[str] status: The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
         :param pulumi.Input[str] vpc_id: The ID of the VPC network that is to be associated with the DHCP options set..
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -315,6 +320,9 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+        """
         return pulumi.get(self, "status")
 
     @property

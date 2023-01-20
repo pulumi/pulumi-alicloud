@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cs.inputs.EdgeKubernetesAddonArgs;
 import com.pulumi.alicloud.cs.inputs.EdgeKubernetesCertificateAuthorityArgs;
 import com.pulumi.alicloud.cs.inputs.EdgeKubernetesConnectionsArgs;
 import com.pulumi.alicloud.cs.inputs.EdgeKubernetesLogConfigArgs;
+import com.pulumi.alicloud.cs.inputs.EdgeKubernetesRuntimeArgs;
 import com.pulumi.alicloud.cs.inputs.EdgeKubernetesWorkerDataDiskArgs;
 import com.pulumi.alicloud.cs.inputs.EdgeKubernetesWorkerNodeArgs;
 import com.pulumi.core.Output;
@@ -26,9 +27,17 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
 
     public static final EdgeKubernetesState Empty = new EdgeKubernetesState();
 
+    /**
+     * The addon you want to install in cluster.
+     * 
+     */
     @Import(name="addons")
     private @Nullable Output<List<EdgeKubernetesAddonArgs>> addons;
 
+    /**
+     * @return The addon you want to install in cluster.
+     * 
+     */
     public Optional<Output<List<EdgeKubernetesAddonArgs>>> addons() {
         return Optional.ofNullable(this.addons);
     }
@@ -108,9 +117,36 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.clusterCaCert);
     }
 
+    /**
+     * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+     * * ack.standard : Standard edge clusters.
+     * * ack.pro.small : Professional edge clusters.
+     * 
+     */
+    @Import(name="clusterSpec")
+    private @Nullable Output<String> clusterSpec;
+
+    /**
+     * @return The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+     * * ack.standard : Standard edge clusters.
+     * * ack.pro.small : Professional edge clusters.
+     * 
+     */
+    public Optional<Output<String>> clusterSpec() {
+        return Optional.ofNullable(this.clusterSpec);
+    }
+
+    /**
+     * Map of kubernetes cluster connection information.
+     * 
+     */
     @Import(name="connections")
     private @Nullable Output<EdgeKubernetesConnectionsArgs> connections;
 
+    /**
+     * @return Map of kubernetes cluster connection information.
+     * 
+     */
     public Optional<Output<EdgeKubernetesConnectionsArgs>> connections() {
         return Optional.ofNullable(this.connections);
     }
@@ -193,21 +229,60 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     /**
      * The path of kube config, like `~/.kube/config`.
      * 
+     * @deprecated
+     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+     * 
      */
+    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
     @Import(name="kubeConfig")
     private @Nullable Output<String> kubeConfig;
 
     /**
      * @return The path of kube config, like `~/.kube/config`.
      * 
+     * @deprecated
+     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+     * 
      */
+    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
     public Optional<Output<String>> kubeConfig() {
         return Optional.ofNullable(this.kubeConfig);
     }
 
+    /**
+     * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * 
+     */
+    @Import(name="loadBalancerSpec")
+    private @Nullable Output<String> loadBalancerSpec;
+
+    /**
+     * @return The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * 
+     */
+    public Optional<Output<String>> loadBalancerSpec() {
+        return Optional.ofNullable(this.loadBalancerSpec);
+    }
+
+    /**
+     * A list of one element containing information about the associated log store. It contains the following attributes:
+     * 
+     * @deprecated
+     * Field &#39;log_config&#39; has been removed from provider version 1.103.0. New field &#39;addons&#39; replaces it.
+     * 
+     */
+    @Deprecated /* Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it. */
     @Import(name="logConfig")
     private @Nullable Output<EdgeKubernetesLogConfigArgs> logConfig;
 
+    /**
+     * @return A list of one element containing information about the associated log store. It contains the following attributes:
+     * 
+     * @deprecated
+     * Field &#39;log_config&#39; has been removed from provider version 1.103.0. New field &#39;addons&#39; replaces it.
+     * 
+     */
+    @Deprecated /* Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it. */
     public Optional<Output<EdgeKubernetesLogConfigArgs>> logConfig() {
         return Optional.ofNullable(this.logConfig);
     }
@@ -324,9 +399,17 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.proxyMode);
     }
 
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     * 
+     */
     @Import(name="rdsInstances")
     private @Nullable Output<List<String>> rdsInstances;
 
+    /**
+     * @return RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     * 
+     */
     public Optional<Output<List<String>>> rdsInstances() {
         return Optional.ofNullable(this.rdsInstances);
     }
@@ -351,6 +434,21 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
 
     public Optional<Output<List<String>>> retainResources() {
         return Optional.ofNullable(this.retainResources);
+    }
+
+    /**
+     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * 
+     */
+    @Import(name="runtime")
+    private @Nullable Output<EdgeKubernetesRuntimeArgs> runtime;
+
+    /**
+     * @return The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * 
+     */
+    public Optional<Output<EdgeKubernetesRuntimeArgs>> runtime() {
+        return Optional.ofNullable(this.runtime);
     }
 
     /**
@@ -383,9 +481,17 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.serviceCidr);
     }
 
+    /**
+     * The public ip of load balancer.
+     * 
+     */
     @Import(name="slbInternet")
     private @Nullable Output<String> slbInternet;
 
+    /**
+     * @return The public ip of load balancer.
+     * 
+     */
     public Optional<Output<String>> slbInternet() {
         return Optional.ofNullable(this.slbInternet);
     }
@@ -555,22 +661,30 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.workerDiskSnapshotPolicyId);
     }
 
+    /**
+     * Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+     * 
+     */
     @Import(name="workerInstanceChargeType")
     private @Nullable Output<String> workerInstanceChargeType;
 
+    /**
+     * @return Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+     * 
+     */
     public Optional<Output<String>> workerInstanceChargeType() {
         return Optional.ofNullable(this.workerInstanceChargeType);
     }
 
     /**
-     * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+     * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
      * 
      */
     @Import(name="workerInstanceTypes")
     private @Nullable Output<List<String>> workerInstanceTypes;
 
     /**
-     * @return The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+     * @return The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
      * 
      */
     public Optional<Output<List<String>>> workerInstanceTypes() {
@@ -607,9 +721,32 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.workerNumber);
     }
 
+    /**
+     * The RamRole Name attached to worker node.
+     * 
+     */
+    @Import(name="workerRamRoleName")
+    private @Nullable Output<String> workerRamRoleName;
+
+    /**
+     * @return The RamRole Name attached to worker node.
+     * 
+     */
+    public Optional<Output<String>> workerRamRoleName() {
+        return Optional.ofNullable(this.workerRamRoleName);
+    }
+
+    /**
+     * The vswitches used by workers.
+     * 
+     */
     @Import(name="workerVswitchIds")
     private @Nullable Output<List<String>> workerVswitchIds;
 
+    /**
+     * @return The vswitches used by workers.
+     * 
+     */
     public Optional<Output<List<String>>> workerVswitchIds() {
         return Optional.ofNullable(this.workerVswitchIds);
     }
@@ -623,6 +760,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         this.clientCert = $.clientCert;
         this.clientKey = $.clientKey;
         this.clusterCaCert = $.clusterCaCert;
+        this.clusterSpec = $.clusterSpec;
         this.connections = $.connections;
         this.deletionProtection = $.deletionProtection;
         this.forceUpdate = $.forceUpdate;
@@ -630,6 +768,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         this.isEnterpriseSecurityGroup = $.isEnterpriseSecurityGroup;
         this.keyName = $.keyName;
         this.kubeConfig = $.kubeConfig;
+        this.loadBalancerSpec = $.loadBalancerSpec;
         this.logConfig = $.logConfig;
         this.name = $.name;
         this.namePrefix = $.namePrefix;
@@ -642,6 +781,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         this.rdsInstances = $.rdsInstances;
         this.resourceGroupId = $.resourceGroupId;
         this.retainResources = $.retainResources;
+        this.runtime = $.runtime;
         this.securityGroupId = $.securityGroupId;
         this.serviceCidr = $.serviceCidr;
         this.slbInternet = $.slbInternet;
@@ -660,6 +800,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         this.workerInstanceTypes = $.workerInstanceTypes;
         this.workerNodes = $.workerNodes;
         this.workerNumber = $.workerNumber;
+        this.workerRamRoleName = $.workerRamRoleName;
         this.workerVswitchIds = $.workerVswitchIds;
     }
 
@@ -681,15 +822,33 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
             $ = new EdgeKubernetesState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param addons The addon you want to install in cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addons(@Nullable Output<List<EdgeKubernetesAddonArgs>> addons) {
             $.addons = addons;
             return this;
         }
 
+        /**
+         * @param addons The addon you want to install in cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addons(List<EdgeKubernetesAddonArgs> addons) {
             return addons(Output.of(addons));
         }
 
+        /**
+         * @param addons The addon you want to install in cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addons(EdgeKubernetesAddonArgs... addons) {
             return addons(List.of(addons));
         }
@@ -799,11 +958,48 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
             return clusterCaCert(Output.of(clusterCaCert));
         }
 
+        /**
+         * @param clusterSpec The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+         * * ack.standard : Standard edge clusters.
+         * * ack.pro.small : Professional edge clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterSpec(@Nullable Output<String> clusterSpec) {
+            $.clusterSpec = clusterSpec;
+            return this;
+        }
+
+        /**
+         * @param clusterSpec The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+         * * ack.standard : Standard edge clusters.
+         * * ack.pro.small : Professional edge clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterSpec(String clusterSpec) {
+            return clusterSpec(Output.of(clusterSpec));
+        }
+
+        /**
+         * @param connections Map of kubernetes cluster connection information.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connections(@Nullable Output<EdgeKubernetesConnectionsArgs> connections) {
             $.connections = connections;
             return this;
         }
 
+        /**
+         * @param connections Map of kubernetes cluster connection information.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connections(EdgeKubernetesConnectionsArgs connections) {
             return connections(Output.of(connections));
         }
@@ -918,7 +1114,11 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+         * 
          */
+        @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
         public Builder kubeConfig(@Nullable Output<String> kubeConfig) {
             $.kubeConfig = kubeConfig;
             return this;
@@ -929,16 +1129,61 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+         * 
          */
+        @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
         public Builder kubeConfig(String kubeConfig) {
             return kubeConfig(Output.of(kubeConfig));
         }
 
+        /**
+         * @param loadBalancerSpec The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancerSpec(@Nullable Output<String> loadBalancerSpec) {
+            $.loadBalancerSpec = loadBalancerSpec;
+            return this;
+        }
+
+        /**
+         * @param loadBalancerSpec The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancerSpec(String loadBalancerSpec) {
+            return loadBalancerSpec(Output.of(loadBalancerSpec));
+        }
+
+        /**
+         * @param logConfig A list of one element containing information about the associated log store. It contains the following attributes:
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;log_config&#39; has been removed from provider version 1.103.0. New field &#39;addons&#39; replaces it.
+         * 
+         */
+        @Deprecated /* Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it. */
         public Builder logConfig(@Nullable Output<EdgeKubernetesLogConfigArgs> logConfig) {
             $.logConfig = logConfig;
             return this;
         }
 
+        /**
+         * @param logConfig A list of one element containing information about the associated log store. It contains the following attributes:
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;log_config&#39; has been removed from provider version 1.103.0. New field &#39;addons&#39; replaces it.
+         * 
+         */
+        @Deprecated /* Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it. */
         public Builder logConfig(EdgeKubernetesLogConfigArgs logConfig) {
             return logConfig(Output.of(logConfig));
         }
@@ -1099,15 +1344,33 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
             return proxyMode(Output.of(proxyMode));
         }
 
+        /**
+         * @param rdsInstances RDS instance list, You can choose which RDS instances whitelist to add instances to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rdsInstances(@Nullable Output<List<String>> rdsInstances) {
             $.rdsInstances = rdsInstances;
             return this;
         }
 
+        /**
+         * @param rdsInstances RDS instance list, You can choose which RDS instances whitelist to add instances to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rdsInstances(List<String> rdsInstances) {
             return rdsInstances(Output.of(rdsInstances));
         }
 
+        /**
+         * @param rdsInstances RDS instance list, You can choose which RDS instances whitelist to add instances to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rdsInstances(String... rdsInstances) {
             return rdsInstances(List.of(rdsInstances));
         }
@@ -1144,6 +1407,27 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
 
         public Builder retainResources(String... retainResources) {
             return retainResources(List.of(retainResources));
+        }
+
+        /**
+         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runtime(@Nullable Output<EdgeKubernetesRuntimeArgs> runtime) {
+            $.runtime = runtime;
+            return this;
+        }
+
+        /**
+         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runtime(EdgeKubernetesRuntimeArgs runtime) {
+            return runtime(Output.of(runtime));
         }
 
         /**
@@ -1188,11 +1472,23 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
             return serviceCidr(Output.of(serviceCidr));
         }
 
+        /**
+         * @param slbInternet The public ip of load balancer.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slbInternet(@Nullable Output<String> slbInternet) {
             $.slbInternet = slbInternet;
             return this;
         }
 
+        /**
+         * @param slbInternet The public ip of load balancer.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slbInternet(String slbInternet) {
             return slbInternet(Output.of(slbInternet));
         }
@@ -1438,17 +1734,29 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
             return workerDiskSnapshotPolicyId(Output.of(workerDiskSnapshotPolicyId));
         }
 
+        /**
+         * @param workerInstanceChargeType Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+         * 
+         * @return builder
+         * 
+         */
         public Builder workerInstanceChargeType(@Nullable Output<String> workerInstanceChargeType) {
             $.workerInstanceChargeType = workerInstanceChargeType;
             return this;
         }
 
+        /**
+         * @param workerInstanceChargeType Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+         * 
+         * @return builder
+         * 
+         */
         public Builder workerInstanceChargeType(String workerInstanceChargeType) {
             return workerInstanceChargeType(Output.of(workerInstanceChargeType));
         }
 
         /**
-         * @param workerInstanceTypes The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+         * @param workerInstanceTypes The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
          * 
          * @return builder
          * 
@@ -1459,7 +1767,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workerInstanceTypes The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+         * @param workerInstanceTypes The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
          * 
          * @return builder
          * 
@@ -1469,7 +1777,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workerInstanceTypes The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+         * @param workerInstanceTypes The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
          * 
          * @return builder
          * 
@@ -1530,15 +1838,54 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
             return workerNumber(Output.of(workerNumber));
         }
 
+        /**
+         * @param workerRamRoleName The RamRole Name attached to worker node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerRamRoleName(@Nullable Output<String> workerRamRoleName) {
+            $.workerRamRoleName = workerRamRoleName;
+            return this;
+        }
+
+        /**
+         * @param workerRamRoleName The RamRole Name attached to worker node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerRamRoleName(String workerRamRoleName) {
+            return workerRamRoleName(Output.of(workerRamRoleName));
+        }
+
+        /**
+         * @param workerVswitchIds The vswitches used by workers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workerVswitchIds(@Nullable Output<List<String>> workerVswitchIds) {
             $.workerVswitchIds = workerVswitchIds;
             return this;
         }
 
+        /**
+         * @param workerVswitchIds The vswitches used by workers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workerVswitchIds(List<String> workerVswitchIds) {
             return workerVswitchIds(Output.of(workerVswitchIds));
         }
 
+        /**
+         * @param workerVswitchIds The vswitches used by workers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workerVswitchIds(String... workerVswitchIds) {
             return workerVswitchIds(List.of(workerVswitchIds));
         }

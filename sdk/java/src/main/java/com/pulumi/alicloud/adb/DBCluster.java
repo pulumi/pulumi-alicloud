@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -139,14 +139,14 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.computeResource);
     }
     /**
-     * The endpoint of the cluster.
+     * The connection string of the cluster.
      * 
      */
     @Export(name="connectionString", type=String.class, parameters={})
     private Output<String> connectionString;
 
     /**
-     * @return The endpoint of the cluster.
+     * @return The connection string of the cluster.
      * 
      */
     public Output<String> connectionString() {
@@ -347,6 +347,20 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
+    }
+    /**
+     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     * 
+     */
+    @Export(name="port", type=String.class, parameters={})
+    private Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) The connection port of the ADB cluster.
+     * 
+     */
+    public Output<String> port() {
+        return this.port;
     }
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.

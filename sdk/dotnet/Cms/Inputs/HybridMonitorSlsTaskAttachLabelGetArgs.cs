@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class HybridMonitorSlsTaskAttachLabelGetArgs : Pulumi.ResourceArgs
+    public sealed class HybridMonitorSlsTaskAttachLabelGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The tag key of the metric.
@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The tag value of the metric.
+        /// The value of the key that is used to filter logs imported from Log Service.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public HybridMonitorSlsTaskAttachLabelGetArgs()
         {
         }
+        public static new HybridMonitorSlsTaskAttachLabelGetArgs Empty => new HybridMonitorSlsTaskAttachLabelGetArgs();
     }
 }

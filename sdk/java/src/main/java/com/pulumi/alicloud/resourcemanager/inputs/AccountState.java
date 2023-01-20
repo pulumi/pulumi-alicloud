@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,25 @@ import javax.annotation.Nullable;
 public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
     public static final AccountState Empty = new AccountState();
+
+    /**
+     * The IDs of the check items that you can choose to ignore for the member deletion.
+     * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+     * to get check ids and set them.
+     * 
+     */
+    @Import(name="abandonAbleCheckIds")
+    private @Nullable Output<List<String>> abandonAbleCheckIds;
+
+    /**
+     * @return The IDs of the check items that you can choose to ignore for the member deletion.
+     * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+     * to get check ids and set them.
+     * 
+     */
+    public Optional<Output<List<String>>> abandonAbleCheckIds() {
+        return Optional.ofNullable(this.abandonAbleCheckIds);
+    }
 
     /**
      * The name prefix of account.
@@ -185,6 +205,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     private AccountState() {}
 
     private AccountState(AccountState $) {
+        this.abandonAbleCheckIds = $.abandonAbleCheckIds;
         this.accountNamePrefix = $.accountNamePrefix;
         this.displayName = $.displayName;
         this.folderId = $.folderId;
@@ -214,6 +235,43 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AccountState defaults) {
             $ = new AccountState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param abandonAbleCheckIds The IDs of the check items that you can choose to ignore for the member deletion.
+         * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+         * to get check ids and set them.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder abandonAbleCheckIds(@Nullable Output<List<String>> abandonAbleCheckIds) {
+            $.abandonAbleCheckIds = abandonAbleCheckIds;
+            return this;
+        }
+
+        /**
+         * @param abandonAbleCheckIds The IDs of the check items that you can choose to ignore for the member deletion.
+         * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+         * to get check ids and set them.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder abandonAbleCheckIds(List<String> abandonAbleCheckIds) {
+            return abandonAbleCheckIds(Output.of(abandonAbleCheckIds));
+        }
+
+        /**
+         * @param abandonAbleCheckIds The IDs of the check items that you can choose to ignore for the member deletion.
+         * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
+         * to get check ids and set them.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder abandonAbleCheckIds(String... abandonAbleCheckIds) {
+            return abandonAbleCheckIds(List.of(abandonAbleCheckIds));
         }
 
         /**

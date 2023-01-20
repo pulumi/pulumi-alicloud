@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,20 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ossBucketsDs = pulumi.output(alicloud.oss.getBuckets({
+ * const ossBucketsDs = alicloud.oss.getBuckets({
  *     nameRegex: "sample_oss_bucket",
- * }));
- *
- * export const firstOssBucketName = ossBucketsDs.buckets[0].name;
+ * });
+ * export const firstOssBucketName = ossBucketsDs.then(ossBucketsDs => ossBucketsDs.buckets?.[0]?.name);
  * ```
  */
 export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oss/getBuckets:getBuckets", {
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -64,9 +61,23 @@ export interface GetBucketsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the OSS buckets of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ossBucketsDs = alicloud.oss.getBuckets({
+ *     nameRegex: "sample_oss_bucket",
+ * });
+ * export const firstOssBucketName = ossBucketsDs.then(ossBucketsDs => ossBucketsDs.buckets?.[0]?.name);
+ * ```
+ */
 export function getBucketsOutput(args?: GetBucketsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketsResult> {
-    return pulumi.output(args).apply(a => getBuckets(a, opts))
+    return pulumi.output(args).apply((a: any) => getBuckets(a, opts))
 }
 
 /**

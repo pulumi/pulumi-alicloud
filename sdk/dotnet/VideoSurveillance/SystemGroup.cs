@@ -21,24 +21,22 @@ namespace Pulumi.AliCloud.VideoSurveillance
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.VideoSurveillance.SystemGroup("default", new()
     ///     {
-    ///         var @default = new AliCloud.VideoSurveillance.SystemGroup("default", new AliCloud.VideoSurveillance.SystemGroupArgs
-    ///         {
-    ///             GroupName = "your_group_name",
-    ///             InProtocol = "rtmp",
-    ///             OutProtocol = "flv",
-    ///             PlayDomain = "your_plan_domain",
-    ///             PushDomain = "your_push_domain",
-    ///         });
-    ///     }
+    ///         GroupName = "your_group_name",
+    ///         InProtocol = "rtmp",
+    ///         OutProtocol = "flv",
+    ///         PlayDomain = "your_plan_domain",
+    ///         PushDomain = "your_push_domain",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:videosurveillance/systemGroup:SystemGroup")]
-    public partial class SystemGroup : Pulumi.CustomResource
+    public partial class SystemGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
@@ -186,7 +184,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         }
     }
 
-    public sealed class SystemGroupArgs : Pulumi.ResourceArgs
+    public sealed class SystemGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
@@ -239,9 +237,10 @@ namespace Pulumi.AliCloud.VideoSurveillance
         public SystemGroupArgs()
         {
         }
+        public static new SystemGroupArgs Empty => new SystemGroupArgs();
     }
 
-    public sealed class SystemGroupState : Pulumi.ResourceArgs
+    public sealed class SystemGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
@@ -336,5 +335,6 @@ namespace Pulumi.AliCloud.VideoSurveillance
         public SystemGroupState()
         {
         }
+        public static new SystemGroupState Empty => new SystemGroupState();
     }
 }

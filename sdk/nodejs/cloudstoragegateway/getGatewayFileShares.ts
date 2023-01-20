@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,20 +26,17 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const cloudStorageGatewayGatewayFileShareId1 = ids.then(ids => ids.shares?[0]?.id);
+ * export const cloudStorageGatewayGatewayFileShareId1 = ids.then(ids => ids.shares?.[0]?.id);
  * const nameRegex = alicloud.cloudstoragegateway.getGatewayFileShares({
  *     gatewayId: "example_value",
  *     nameRegex: "^my-GatewayFileShare",
  * });
- * export const cloudStorageGatewayGatewayFileShareId2 = nameRegex.then(nameRegex => nameRegex.shares?[0]?.id);
+ * export const cloudStorageGatewayGatewayFileShareId2 = nameRegex.then(nameRegex => nameRegex.shares?.[0]?.id);
  * ```
  */
 export function getGatewayFileShares(args: GetGatewayFileSharesArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayFileSharesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", {
         "gatewayId": args.gatewayId,
         "ids": args.ids,
@@ -81,9 +79,36 @@ export interface GetGatewayFileSharesResult {
     readonly outputFile?: string;
     readonly shares: outputs.cloudstoragegateway.GetGatewayFileSharesShare[];
 }
-
+/**
+ * This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.144.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudstoragegateway.getGatewayFileShares({
+ *     gatewayId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const cloudStorageGatewayGatewayFileShareId1 = ids.then(ids => ids.shares?.[0]?.id);
+ * const nameRegex = alicloud.cloudstoragegateway.getGatewayFileShares({
+ *     gatewayId: "example_value",
+ *     nameRegex: "^my-GatewayFileShare",
+ * });
+ * export const cloudStorageGatewayGatewayFileShareId2 = nameRegex.then(nameRegex => nameRegex.shares?.[0]?.id);
+ * ```
+ */
 export function getGatewayFileSharesOutput(args: GetGatewayFileSharesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayFileSharesResult> {
-    return pulumi.output(args).apply(a => getGatewayFileShares(a, opts))
+    return pulumi.output(args).apply((a: any) => getGatewayFileShares(a, opts))
 }
 
 /**

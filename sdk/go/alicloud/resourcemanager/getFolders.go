@@ -53,7 +53,7 @@ func GetFolders(ctx *pulumi.Context, args *GetFoldersArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getFolders.
 type GetFoldersArgs struct {
-	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of resource manager folders IDs.
 	Ids []string `pulumi:"ids"`
@@ -77,10 +77,11 @@ type GetFoldersResult struct {
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of folder names.
-	Names          []string `pulumi:"names"`
-	OutputFile     *string  `pulumi:"outputFile"`
-	ParentFolderId *string  `pulumi:"parentFolderId"`
-	QueryKeyword   *string  `pulumi:"queryKeyword"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// (Available in v1.114.0+)The ID of the parent folder.
+	ParentFolderId *string `pulumi:"parentFolderId"`
+	QueryKeyword   *string `pulumi:"queryKeyword"`
 }
 
 func GetFoldersOutput(ctx *pulumi.Context, args GetFoldersOutputArgs, opts ...pulumi.InvokeOption) GetFoldersResultOutput {
@@ -98,7 +99,7 @@ func GetFoldersOutput(ctx *pulumi.Context, args GetFoldersOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getFolders.
 type GetFoldersOutputArgs struct {
-	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of resource manager folders IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -162,6 +163,7 @@ func (o GetFoldersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFoldersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// (Available in v1.114.0+)The ID of the parent folder.
 func (o GetFoldersResultOutput) ParentFolderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFoldersResult) *string { return v.ParentFolderId }).(pulumi.StringPtrOutput)
 }

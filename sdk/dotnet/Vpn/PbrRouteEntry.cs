@@ -21,45 +21,46 @@ namespace Pulumi.AliCloud.Vpn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tfacc";
-    ///         var defaultGateways = Output.Create(AliCloud.Vpn.GetGateways.InvokeAsync());
-    ///         var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new AliCloud.Vpn.CustomerGatewayArgs
-    ///         {
-    ///             IpAddress = "192.168.1.1",
-    ///         });
-    ///         var defaultConnection = new AliCloud.Vpn.Connection("defaultConnection", new AliCloud.Vpn.ConnectionArgs
-    ///         {
-    ///             CustomerGatewayId = defaultCustomerGateway.Id,
-    ///             VpnGatewayId = defaultGateways.Apply(defaultGateways =&gt; defaultGateways.Ids?[0]),
-    ///             LocalSubnets = 
-    ///             {
-    ///                 "192.168.2.0/24",
-    ///             },
-    ///             RemoteSubnets = 
-    ///             {
-    ///                 "192.168.3.0/24",
-    ///             },
-    ///         });
-    ///         var defaultPbrRouteEntry = new AliCloud.Vpn.PbrRouteEntry("defaultPbrRouteEntry", new AliCloud.Vpn.PbrRouteEntryArgs
-    ///         {
-    ///             VpnGatewayId = defaultGateways.Apply(defaultGateways =&gt; defaultGateways.Ids?[0]),
-    ///             RouteSource = "192.168.1.0/24",
-    ///             RouteDest = "10.0.0.0/24",
-    ///             NextHop = defaultConnection.Id,
-    ///             Weight = 0,
-    ///             PublishVpc = false,
-    ///         });
-    ///     }
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfacc";
+    ///     var defaultGateways = AliCloud.Vpn.GetGateways.Invoke();
     /// 
-    /// }
+    ///     var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new()
+    ///     {
+    ///         IpAddress = "192.168.1.1",
+    ///     });
+    /// 
+    ///     var defaultConnection = new AliCloud.Vpn.Connection("defaultConnection", new()
+    ///     {
+    ///         CustomerGatewayId = defaultCustomerGateway.Id,
+    ///         VpnGatewayId = defaultGateways.Apply(getGatewaysResult =&gt; getGatewaysResult.Ids[0]),
+    ///         LocalSubnets = new[]
+    ///         {
+    ///             "192.168.2.0/24",
+    ///         },
+    ///         RemoteSubnets = new[]
+    ///         {
+    ///             "192.168.3.0/24",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultPbrRouteEntry = new AliCloud.Vpn.PbrRouteEntry("defaultPbrRouteEntry", new()
+    ///     {
+    ///         VpnGatewayId = defaultGateways.Apply(getGatewaysResult =&gt; getGatewaysResult.Ids[0]),
+    ///         RouteSource = "192.168.1.0/24",
+    ///         RouteDest = "10.0.0.0/24",
+    ///         NextHop = defaultConnection.Id,
+    ///         Weight = 0,
+    ///         PublishVpc = false,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +72,7 @@ namespace Pulumi.AliCloud.Vpn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/pbrRouteEntry:PbrRouteEntry")]
-    public partial class PbrRouteEntry : Pulumi.CustomResource
+    public partial class PbrRouteEntry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The next hop of the policy-based route.
@@ -159,7 +160,7 @@ namespace Pulumi.AliCloud.Vpn
         }
     }
 
-    public sealed class PbrRouteEntryArgs : Pulumi.ResourceArgs
+    public sealed class PbrRouteEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The next hop of the policy-based route.
@@ -200,9 +201,10 @@ namespace Pulumi.AliCloud.Vpn
         public PbrRouteEntryArgs()
         {
         }
+        public static new PbrRouteEntryArgs Empty => new PbrRouteEntryArgs();
     }
 
-    public sealed class PbrRouteEntryState : Pulumi.ResourceArgs
+    public sealed class PbrRouteEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The next hop of the policy-based route.
@@ -249,5 +251,6 @@ namespace Pulumi.AliCloud.Vpn
         public PbrRouteEntryState()
         {
         }
+        public static new PbrRouteEntryState Empty => new PbrRouteEntryState();
     }
 }

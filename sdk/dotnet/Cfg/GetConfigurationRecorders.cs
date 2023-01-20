@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetConfigurationRecorders.InvokeAsync());
-        ///         this.ListOfResourceTypes = data.Alicloud_config_configuration_recorders.This.Recorders[0].Resource_types;
-        ///     }
+        ///     var example = AliCloud.Cfg.GetConfigurationRecorders.Invoke();
         /// 
-        ///     [Output("listOfResourceTypes")]
-        ///     public Output&lt;string&gt; ListOfResourceTypes { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["listOfResourceTypes"] = data.Alicloud_config_configuration_recorders.This.Recorders[0].Resource_types,
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetConfigurationRecordersResult> InvokeAsync(GetConfigurationRecordersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigurationRecordersResult>("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args ?? new GetConfigurationRecordersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConfigurationRecordersResult>("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args ?? new GetConfigurationRecordersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetConfigurationRecorders.InvokeAsync());
-        ///         this.ListOfResourceTypes = data.Alicloud_config_configuration_recorders.This.Recorders[0].Resource_types;
-        ///     }
+        ///     var example = AliCloud.Cfg.GetConfigurationRecorders.Invoke();
         /// 
-        ///     [Output("listOfResourceTypes")]
-        ///     public Output&lt;string&gt; ListOfResourceTypes { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["listOfResourceTypes"] = data.Alicloud_config_configuration_recorders.This.Recorders[0].Resource_types,
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetConfigurationRecordersResult> Invoke(GetConfigurationRecordersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConfigurationRecordersResult>("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args ?? new GetConfigurationRecordersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetConfigurationRecordersResult>("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args ?? new GetConfigurationRecordersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetConfigurationRecordersArgs : Pulumi.InvokeArgs
+    public sealed class GetConfigurationRecordersArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -87,9 +85,10 @@ namespace Pulumi.AliCloud.Cfg
         public GetConfigurationRecordersArgs()
         {
         }
+        public static new GetConfigurationRecordersArgs Empty => new GetConfigurationRecordersArgs();
     }
 
-    public sealed class GetConfigurationRecordersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConfigurationRecordersInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -97,6 +96,7 @@ namespace Pulumi.AliCloud.Cfg
         public GetConfigurationRecordersInvokeArgs()
         {
         }
+        public static new GetConfigurationRecordersInvokeArgs Empty => new GetConfigurationRecordersInvokeArgs();
     }
 
 

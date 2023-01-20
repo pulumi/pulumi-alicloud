@@ -39,6 +39,32 @@ public final class AlicloudFunctions {
      * This data source provides information about the current account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AlicloudFunctions.getAccount();
+     * 
+     *         ctx.export(&#34;currentAccountId&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountResult> getAccount() {
@@ -48,6 +74,32 @@ public final class AlicloudFunctions {
      * This data source provides information about the current account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AlicloudFunctions.getAccount();
+     * 
+     *         ctx.export(&#34;currentAccountId&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain() {
@@ -57,6 +109,32 @@ public final class AlicloudFunctions {
      * This data source provides information about the current account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AlicloudFunctions.getAccount();
+     * 
+     *         ctx.export(&#34;currentAccountId&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountResult> getAccount(InvokeArgs args) {
@@ -66,6 +144,32 @@ public final class AlicloudFunctions {
      * This data source provides information about the current account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AlicloudFunctions.getAccount();
+     * 
+     *         ctx.export(&#34;currentAccountId&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args) {
@@ -75,6 +179,32 @@ public final class AlicloudFunctions {
      * This data source provides information about the current account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AlicloudFunctions.getAccount();
+     * 
+     *         ctx.export(&#34;currentAccountId&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountResult> getAccount(InvokeArgs args, InvokeOptions options) {
@@ -84,6 +214,32 @@ public final class AlicloudFunctions {
      * This data source provides information about the current account.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AlicloudFunctions.getAccount();
+     * 
+     *         ctx.export(&#34;currentAccountId&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args, InvokeOptions options) {
@@ -95,6 +251,32 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.65.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AlicloudFunctions.getCallerIdentity();
+     * 
+     *         ctx.export(&#34;currentUserArn&#34;, current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetCallerIdentityResult> getCallerIdentity() {
@@ -106,6 +288,32 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.65.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AlicloudFunctions.getCallerIdentity();
+     * 
+     *         ctx.export(&#34;currentUserArn&#34;, current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCallerIdentityResult> getCallerIdentityPlain() {
@@ -117,6 +325,32 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.65.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AlicloudFunctions.getCallerIdentity();
+     * 
+     *         ctx.export(&#34;currentUserArn&#34;, current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetCallerIdentityResult> getCallerIdentity(InvokeArgs args) {
@@ -128,6 +362,32 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.65.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AlicloudFunctions.getCallerIdentity();
+     * 
+     *         ctx.export(&#34;currentUserArn&#34;, current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCallerIdentityResult> getCallerIdentityPlain(InvokeArgs args) {
@@ -139,6 +399,32 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.65.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AlicloudFunctions.getCallerIdentity();
+     * 
+     *         ctx.export(&#34;currentUserArn&#34;, current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetCallerIdentityResult> getCallerIdentity(InvokeArgs args, InvokeOptions options) {
@@ -150,6 +436,32 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.65.0+.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AlicloudFunctions.getCallerIdentity();
+     * 
+     *         ctx.export(&#34;currentUserArn&#34;, current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetCallerIdentityResult> getCallerIdentityPlain(InvokeArgs args, InvokeOptions options) {
@@ -1314,7 +1626,7 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1352,7 +1664,7 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1390,7 +1702,7 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1428,7 +1740,7 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1466,7 +1778,7 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1504,7 +1816,7 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1544,7 +1856,7 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
@@ -1590,7 +1902,7 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
@@ -1636,7 +1948,7 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
@@ -1682,7 +1994,7 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
@@ -1728,7 +2040,7 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
@@ -1774,7 +2086,7 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;

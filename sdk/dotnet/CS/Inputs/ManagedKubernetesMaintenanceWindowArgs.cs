@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class ManagedKubernetesMaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class ManagedKubernetesMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public ManagedKubernetesMaintenanceWindowArgs()
         {
         }
+        public static new ManagedKubernetesMaintenanceWindowArgs Empty => new ManagedKubernetesMaintenanceWindowArgs();
     }
 }

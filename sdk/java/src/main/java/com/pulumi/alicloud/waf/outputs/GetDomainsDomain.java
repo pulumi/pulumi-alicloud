@@ -79,8 +79,6 @@ public final class GetDomainsDomain {
     private String loadBalancing;
     /**
      * @return The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-     * * `key`: The key of label.
-     * * `value`: The value of label.
      * 
      */
     private List<GetDomainsDomainLogHeader> logHeaders;
@@ -204,8 +202,6 @@ public final class GetDomainsDomain {
     }
     /**
      * @return The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-     * * `key`: The key of label.
-     * * `value`: The value of label.
      * 
      */
     public List<GetDomainsDomainLogHeader> logHeaders() {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen.Inputs
 {
 
-    public sealed class TransitRouterVpcAttachmentZoneMappingGetArgs : Pulumi.ResourceArgs
+    public sealed class TransitRouterVpcAttachmentZoneMappingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The VSwitch id of attachment.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Cen.Inputs
         public TransitRouterVpcAttachmentZoneMappingGetArgs()
         {
         }
+        public static new TransitRouterVpcAttachmentZoneMappingGetArgs Empty => new TransitRouterVpcAttachmentZoneMappingGetArgs();
     }
 }

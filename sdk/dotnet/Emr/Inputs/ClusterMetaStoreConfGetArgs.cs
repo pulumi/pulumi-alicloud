@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Emr.Inputs
 {
 
-    public sealed class ClusterMetaStoreConfGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterMetaStoreConfGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("dbPassword", required: true)]
+        private Input<string>? _dbPassword;
+
         /// <summary>
         /// Custom rds database password.
         /// </summary>
-        [Input("dbPassword", required: true)]
-        public Input<string> DbPassword { get; set; } = null!;
+        public Input<string>? DbPassword
+        {
+            get => _dbPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _dbPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Custom rds database connection url.
@@ -33,5 +43,6 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public ClusterMetaStoreConfGetArgs()
         {
         }
+        public static new ClusterMetaStoreConfGetArgs Empty => new ClusterMetaStoreConfGetArgs();
     }
 }

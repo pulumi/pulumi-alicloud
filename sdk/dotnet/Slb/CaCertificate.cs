@@ -21,46 +21,42 @@ namespace Pulumi.AliCloud.Slb
     /// * using CA certificate content
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // create a CA certificate
+    ///     var foo = new AliCloud.Slb.CaCertificate("foo", new()
     ///     {
-    ///         // create a CA certificate
-    ///         var foo = new AliCloud.Slb.CaCertificate("foo", new AliCloud.Slb.CaCertificateArgs
-    ///         {
-    ///             Certificate = @"-----BEGIN CERTIFICATE-----
+    ///         Certificate = @"-----BEGIN CERTIFICATE-----
     /// MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=
     /// -----END CERTIFICATE-----
     /// ",
-    ///             CaCertificateName = "tf-testAccSlbCACertificate",
-    ///         });
-    ///     }
+    ///         CaCertificateName = "tf-testAccSlbCACertificate",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// * using CA certificate file
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo_file = new AliCloud.Slb.CaCertificate("foo-file", new()
     ///     {
-    ///         var foo_file = new AliCloud.Slb.CaCertificate("foo-file", new AliCloud.Slb.CaCertificateArgs
-    ///         {
-    ///             CaCertificateName = "tf-testAccSlbCACertificate",
-    ///             Certificate = File.ReadAllText($"{path.Module}/ca_certificate.pem"),
-    ///         });
-    ///     }
+    ///         CaCertificateName = "tf-testAccSlbCACertificate",
+    ///         Certificate = File.ReadAllText($"{path.Module}/ca_certificate.pem"),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +68,7 @@ namespace Pulumi.AliCloud.Slb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/caCertificate:CaCertificate")]
-    public partial class CaCertificate : Pulumi.CustomResource
+    public partial class CaCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// the content of the CA certificate.
@@ -148,7 +144,7 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
-    public sealed class CaCertificateArgs : Pulumi.ResourceArgs
+    public sealed class CaCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// the content of the CA certificate.
@@ -189,9 +185,10 @@ namespace Pulumi.AliCloud.Slb
         public CaCertificateArgs()
         {
         }
+        public static new CaCertificateArgs Empty => new CaCertificateArgs();
     }
 
-    public sealed class CaCertificateState : Pulumi.ResourceArgs
+    public sealed class CaCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// the content of the CA certificate.
@@ -232,5 +229,6 @@ namespace Pulumi.AliCloud.Slb
         public CaCertificateState()
         {
         }
+        public static new CaCertificateState Empty => new CaCertificateState();
     }
 }

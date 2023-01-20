@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.GetMscSubSubscriptions.InvokeAsync());
-        ///         this.MscSubSubscriptionId1 = @default.Apply(@default =&gt; @default.Subscriptions?[0]?.Id);
-        ///     }
+        ///     var @default = AliCloud.GetMscSubSubscriptions.Invoke();
         /// 
-        ///     [Output("mscSubSubscriptionId1")]
-        ///     public Output&lt;string&gt; MscSubSubscriptionId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mscSubSubscriptionId1"] = @default.Apply(getMscSubSubscriptionsResult =&gt; getMscSubSubscriptionsResult).Apply(@default =&gt; @default.Apply(getMscSubSubscriptionsResult =&gt; getMscSubSubscriptionsResult.Subscriptions[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMscSubSubscriptionsResult> InvokeAsync(GetMscSubSubscriptionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMscSubSubscriptionsResult>("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", args ?? new GetMscSubSubscriptionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMscSubSubscriptionsResult>("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", args ?? new GetMscSubSubscriptionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.GetMscSubSubscriptions.InvokeAsync());
-        ///         this.MscSubSubscriptionId1 = @default.Apply(@default =&gt; @default.Subscriptions?[0]?.Id);
-        ///     }
+        ///     var @default = AliCloud.GetMscSubSubscriptions.Invoke();
         /// 
-        ///     [Output("mscSubSubscriptionId1")]
-        ///     public Output&lt;string&gt; MscSubSubscriptionId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mscSubSubscriptionId1"] = @default.Apply(getMscSubSubscriptionsResult =&gt; getMscSubSubscriptionsResult).Apply(@default =&gt; @default.Apply(getMscSubSubscriptionsResult =&gt; getMscSubSubscriptionsResult.Subscriptions[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMscSubSubscriptionsResult> Invoke(GetMscSubSubscriptionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMscSubSubscriptionsResult>("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", args ?? new GetMscSubSubscriptionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMscSubSubscriptionsResult>("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", args ?? new GetMscSubSubscriptionsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetMscSubSubscriptionsArgs : Pulumi.InvokeArgs
+    public sealed class GetMscSubSubscriptionsArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -87,9 +85,10 @@ namespace Pulumi.AliCloud
         public GetMscSubSubscriptionsArgs()
         {
         }
+        public static new GetMscSubSubscriptionsArgs Empty => new GetMscSubSubscriptionsArgs();
     }
 
-    public sealed class GetMscSubSubscriptionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMscSubSubscriptionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -97,6 +96,7 @@ namespace Pulumi.AliCloud
         public GetMscSubSubscriptionsInvokeArgs()
         {
         }
+        public static new GetMscSubSubscriptionsInvokeArgs Empty => new GetMscSubSubscriptionsInvokeArgs();
     }
 
 

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,21 +15,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const foo = pulumi.output(alicloud.vpc.getSslVpnClientCerts({
+ * const foo = alicloud.vpc.getSslVpnClientCerts({
  *     ids: ["fake-cert-id"],
  *     nameRegex: "^foo",
  *     outputFile: "/tmp/clientcert",
  *     sslVpnServerId: "fake-server-id",
- * }));
+ * });
  * ```
  */
 export function getSslVpnClientCerts(args?: GetSslVpnClientCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetSslVpnClientCertsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -86,9 +84,25 @@ export interface GetSslVpnClientCertsResult {
      */
     readonly sslVpnServerId?: string;
 }
-
+/**
+ * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.vpc.getSslVpnClientCerts({
+ *     ids: ["fake-cert-id"],
+ *     nameRegex: "^foo",
+ *     outputFile: "/tmp/clientcert",
+ *     sslVpnServerId: "fake-server-id",
+ * });
+ * ```
+ */
 export function getSslVpnClientCertsOutput(args?: GetSslVpnClientCertsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslVpnClientCertsResult> {
-    return pulumi.output(args).apply(a => getSslVpnClientCerts(a, opts))
+    return pulumi.output(args).apply((a: any) => getSslVpnClientCerts(a, opts))
 }
 
 /**

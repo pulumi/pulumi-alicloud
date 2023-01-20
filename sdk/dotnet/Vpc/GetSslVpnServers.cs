@@ -19,32 +19,30 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = AliCloud.Vpc.GetSslVpnServers.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(AliCloud.Vpc.GetSslVpnServers.InvokeAsync(new AliCloud.Vpc.GetSslVpnServersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "fake-server-id",
-        ///             },
-        ///             NameRegex = "^foo",
-        ///             OutputFile = "/tmp/sslserver",
-        ///             VpnGatewayId = "fake-vpn-id",
-        ///         }));
-        ///     }
+        ///             "fake-server-id",
+        ///         },
+        ///         NameRegex = "^foo",
+        ///         OutputFile = "/tmp/sslserver",
+        ///         VpnGatewayId = "fake-vpn-id",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSslVpnServersResult> InvokeAsync(GetSslVpnServersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? new GetSslVpnServersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? new GetSslVpnServersArgs(), options.WithDefaults());
 
         /// <summary>
         /// The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
@@ -54,36 +52,34 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = AliCloud.Vpc.GetSslVpnServers.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(AliCloud.Vpc.GetSslVpnServers.InvokeAsync(new AliCloud.Vpc.GetSslVpnServersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "fake-server-id",
-        ///             },
-        ///             NameRegex = "^foo",
-        ///             OutputFile = "/tmp/sslserver",
-        ///             VpnGatewayId = "fake-vpn-id",
-        ///         }));
-        ///     }
+        ///             "fake-server-id",
+        ///         },
+        ///         NameRegex = "^foo",
+        ///         OutputFile = "/tmp/sslserver",
+        ///         VpnGatewayId = "fake-vpn-id",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSslVpnServersResult> Invoke(GetSslVpnServersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? new GetSslVpnServersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? new GetSslVpnServersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSslVpnServersArgs : Pulumi.InvokeArgs
+    public sealed class GetSslVpnServersArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -118,9 +114,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetSslVpnServersArgs()
         {
         }
+        public static new GetSslVpnServersArgs Empty => new GetSslVpnServersArgs();
     }
 
-    public sealed class GetSslVpnServersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSslVpnServersInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -155,6 +152,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetSslVpnServersInvokeArgs()
         {
         }
+        public static new GetSslVpnServersInvokeArgs Empty => new GetSslVpnServersInvokeArgs();
     }
 
 

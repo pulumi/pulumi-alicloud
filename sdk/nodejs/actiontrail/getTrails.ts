@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,16 +20,13 @@ import * as utilities from "../utilities";
  * const default = alicloud.actiontrail.getTrails({
  *     nameRegex: "tf-testacc-actiontrail",
  * });
- * export const trailName = _default.then(_default => _default.trails?[0]?.id);
+ * export const trailName = _default.then(_default => _default.trails?.[0]?.id);
  * ```
  */
 export function getTrails(args?: GetTrailsArgs, opts?: pulumi.InvokeOptions): Promise<GetTrailsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:actiontrail/getTrails:getTrails", {
         "ids": args.ids,
         "includeOrganizationTrail": args.includeOrganizationTrail,
@@ -101,9 +99,25 @@ export interface GetTrailsResult {
      */
     readonly trails: outputs.actiontrail.GetTrailsTrail[];
 }
-
+/**
+ * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in 1.95.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.actiontrail.getTrails({
+ *     nameRegex: "tf-testacc-actiontrail",
+ * });
+ * export const trailName = _default.then(_default => _default.trails?.[0]?.id);
+ * ```
+ */
 export function getTrailsOutput(args?: GetTrailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrailsResult> {
-    return pulumi.output(args).apply(a => getTrails(a, opts))
+    return pulumi.output(args).apply((a: any) => getTrails(a, opts))
 }
 
 /**

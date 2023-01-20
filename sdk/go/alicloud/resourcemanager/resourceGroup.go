@@ -64,7 +64,8 @@ type ResourceGroup struct {
 	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
-	Name           pulumi.StringOutput                  `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The status of the resource group in all regions.
 	RegionStatuses ResourceGroupRegionStatusArrayOutput `pulumi:"regionStatuses"`
 	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
 	ResourceGroupName pulumi.StringOutput `pulumi:"resourceGroupName"`
@@ -111,7 +112,8 @@ type resourceGroupState struct {
 	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
-	Name           *string                     `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The status of the resource group in all regions.
 	RegionStatuses []ResourceGroupRegionStatus `pulumi:"regionStatuses"`
 	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
@@ -127,7 +129,8 @@ type ResourceGroupState struct {
 	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
-	Name           pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The status of the resource group in all regions.
 	RegionStatuses ResourceGroupRegionStatusArrayInput
 	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
 	ResourceGroupName pulumi.StringPtrInput
@@ -266,6 +269,7 @@ func (o ResourceGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The status of the resource group in all regions.
 func (o ResourceGroupOutput) RegionStatuses() ResourceGroupRegionStatusArrayOutput {
 	return o.ApplyT(func(v *ResourceGroup) ResourceGroupRegionStatusArrayOutput { return v.RegionStatuses }).(ResourceGroupRegionStatusArrayOutput)
 }

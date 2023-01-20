@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
  * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .topicQuota(50)
+ *             .partitionNum(50)
  *             .diskType(1)
  *             .diskSize(500)
  *             .deployType(5)
@@ -113,8 +113,6 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
     }
     /**
      * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-     * - `vpc`: IP address whitelist for VPC access.
-     * - `internet`: IP address whitelist for Internet access.
      * 
      */
     @Export(name="allowedType", type=String.class, parameters={})
@@ -122,8 +120,6 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
 
     /**
      * @return The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-     * - `vpc`: IP address whitelist for VPC access.
-     * - `internet`: IP address whitelist for Internet access.
      * 
      */
     public Output<String> allowedType() {

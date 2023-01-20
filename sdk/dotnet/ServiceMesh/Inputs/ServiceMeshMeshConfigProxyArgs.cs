@@ -10,28 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ServiceMesh.Inputs
 {
 
-    public sealed class ServiceMeshMeshConfigProxyArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMeshMeshConfigProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The CPU resource  of the limitsOPA proxy container.
+        /// The limit cpu of the Sidecar injector Pods.
         /// </summary>
         [Input("limitCpu")]
         public Input<string>? LimitCpu { get; set; }
 
         /// <summary>
-        /// The memory resource limit of the OPA proxy container.
+        /// Sidecar injector Pods on the throttle.
         /// </summary>
         [Input("limitMemory")]
         public Input<string>? LimitMemory { get; set; }
 
         /// <summary>
-        /// The CPU resource request of the OPA proxy container.
+        /// The requested cpu the Sidecar injector Pods.
         /// </summary>
         [Input("requestCpu")]
         public Input<string>? RequestCpu { get; set; }
 
         /// <summary>
-        /// The memory resource request of the OPA proxy container.
+        /// The requested memory the Sidecar injector Pods.
         /// </summary>
         [Input("requestMemory")]
         public Input<string>? RequestMemory { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public ServiceMeshMeshConfigProxyArgs()
         {
         }
+        public static new ServiceMeshMeshConfigProxyArgs Empty => new ServiceMeshMeshConfigProxyArgs();
     }
 }

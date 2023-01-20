@@ -19,22 +19,20 @@ namespace Pulumi.AliCloud.KVStore
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.KVStore.Connection("default", new()
     ///     {
-    ///         var @default = new AliCloud.KVStore.Connection("default", new AliCloud.KVStore.ConnectionArgs
-    ///         {
-    ///             ConnectionStringPrefix = "allocatetestupdate",
-    ///             InstanceId = "r-abc123456",
-    ///             Port = "6370",
-    ///         });
-    ///     }
+    ///         ConnectionStringPrefix = "allocatetestupdate",
+    ///         InstanceId = "r-abc123456",
+    ///         Port = "6370",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.KVStore
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kvstore/connection:Connection")]
-    public partial class Connection : Pulumi.CustomResource
+    public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The public connection string of KVStore DBInstance.
@@ -116,7 +114,7 @@ namespace Pulumi.AliCloud.KVStore
         }
     }
 
-    public sealed class ConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
@@ -139,9 +137,10 @@ namespace Pulumi.AliCloud.KVStore
         public ConnectionArgs()
         {
         }
+        public static new ConnectionArgs Empty => new ConnectionArgs();
     }
 
-    public sealed class ConnectionState : Pulumi.ResourceArgs
+    public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The public connection string of KVStore DBInstance.
@@ -170,5 +169,6 @@ namespace Pulumi.AliCloud.KVStore
         public ConnectionState()
         {
         }
+        public static new ConnectionState Empty => new ConnectionState();
     }
 }

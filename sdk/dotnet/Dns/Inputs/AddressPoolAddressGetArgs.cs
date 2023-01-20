@@ -10,18 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dns.Inputs
 {
 
-    public sealed class AddressPoolAddressGetArgs : Pulumi.ResourceArgs
+    public sealed class AddressPoolAddressGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address that you want to add to the address pool.
+        /// The address lists of the Address Pool. See the following `Block address`.
         /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
         /// <summary>
         /// The source region of the address. expressed as a JSON string. The structure is as follows:
-        /// * `LineCodes`: List of home lineCodes.
-        /// * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
         /// </summary>
         [Input("attributeInfo", required: true)]
         public Input<string> AttributeInfo { get; set; } = null!;
@@ -47,5 +45,6 @@ namespace Pulumi.AliCloud.Dns.Inputs
         public AddressPoolAddressGetArgs()
         {
         }
+        public static new AddressPoolAddressGetArgs Empty => new AddressPoolAddressGetArgs();
     }
 }

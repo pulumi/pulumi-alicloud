@@ -4,6 +4,8 @@
 package com.pulumi.alicloud.cloudsso;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.cloudsso.inputs.GetAccessAssignmentsArgs;
+import com.pulumi.alicloud.cloudsso.inputs.GetAccessAssignmentsPlainArgs;
 import com.pulumi.alicloud.cloudsso.inputs.GetAccessConfigurationsArgs;
 import com.pulumi.alicloud.cloudsso.inputs.GetAccessConfigurationsPlainArgs;
 import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
@@ -16,6 +18,7 @@ import com.pulumi.alicloud.cloudsso.inputs.GetServiceArgs;
 import com.pulumi.alicloud.cloudsso.inputs.GetServicePlainArgs;
 import com.pulumi.alicloud.cloudsso.inputs.GetUsersArgs;
 import com.pulumi.alicloud.cloudsso.inputs.GetUsersPlainArgs;
+import com.pulumi.alicloud.cloudsso.outputs.GetAccessAssignmentsResult;
 import com.pulumi.alicloud.cloudsso.outputs.GetAccessConfigurationsResult;
 import com.pulumi.alicloud.cloudsso.outputs.GetDirectoriesResult;
 import com.pulumi.alicloud.cloudsso.outputs.GetGroupsResult;
@@ -29,6 +32,194 @@ import com.pulumi.deployment.InvokeOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudssoFunctions {
+    /**
+     * This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.193.0+.
+     * 
+     * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetAccessAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getAccessAssignments(GetAccessAssignmentsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoAccessAssignmentId1&#34;, ids.applyValue(getAccessAssignmentsResult -&gt; getAccessAssignmentsResult.assignments()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccessAssignmentsResult> getAccessAssignments(GetAccessAssignmentsArgs args) {
+        return getAccessAssignments(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.193.0+.
+     * 
+     * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetAccessAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getAccessAssignments(GetAccessAssignmentsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoAccessAssignmentId1&#34;, ids.applyValue(getAccessAssignmentsResult -&gt; getAccessAssignmentsResult.assignments()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccessAssignmentsResult> getAccessAssignmentsPlain(GetAccessAssignmentsPlainArgs args) {
+        return getAccessAssignmentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.193.0+.
+     * 
+     * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetAccessAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getAccessAssignments(GetAccessAssignmentsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoAccessAssignmentId1&#34;, ids.applyValue(getAccessAssignmentsResult -&gt; getAccessAssignmentsResult.assignments()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccessAssignmentsResult> getAccessAssignments(GetAccessAssignmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", TypeShape.of(GetAccessAssignmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.193.0+.
+     * 
+     * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetAccessAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CloudssoFunctions.getAccessAssignments(GetAccessAssignmentsArgs.builder()
+     *             .directoryId(&#34;example_value&#34;)
+     *             .ids(            
+     *                 &#34;example_value-1&#34;,
+     *                 &#34;example_value-2&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudSsoAccessAssignmentId1&#34;, ids.applyValue(getAccessAssignmentsResult -&gt; getAccessAssignmentsResult.assignments()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccessAssignmentsResult> getAccessAssignmentsPlain(GetAccessAssignmentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", TypeShape.of(GetAccessAssignmentsResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
      * 
@@ -552,7 +743,7 @@ public final class CloudssoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -605,7 +796,7 @@ public final class CloudssoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -658,7 +849,7 @@ public final class CloudssoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -711,7 +902,7 @@ public final class CloudssoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -954,7 +1145,7 @@ public final class CloudssoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -999,7 +1190,7 @@ public final class CloudssoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1044,7 +1235,7 @@ public final class CloudssoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1089,7 +1280,7 @@ public final class CloudssoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1132,7 +1323,7 @@ public final class CloudssoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1199,7 +1390,7 @@ public final class CloudssoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1266,7 +1457,7 @@ public final class CloudssoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1333,7 +1524,7 @@ public final class CloudssoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

@@ -42,7 +42,7 @@ import (
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    pulumi.String(defaultPhysicalConnections.Connections[0].Id),
+//				PhysicalConnectionId:    *pulumi.String(defaultPhysicalConnections.Connections[0].Id),
 //				VirtualBorderRouterName: pulumi.String("example_value"),
 //				VlanId:                  pulumi.Int(120),
 //				MinRxInterval:           pulumi.Int(1000),

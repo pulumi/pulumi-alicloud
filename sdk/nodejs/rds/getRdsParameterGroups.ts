@@ -2,16 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getRdsParameterGroups(args?: GetRdsParameterGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetRdsParameterGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -45,9 +43,8 @@ export interface GetRdsParameterGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
 export function getRdsParameterGroupsOutput(args?: GetRdsParameterGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRdsParameterGroupsResult> {
-    return pulumi.output(args).apply(a => getRdsParameterGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getRdsParameterGroups(a, opts))
 }
 
 /**

@@ -21,40 +21,38 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Cms.MetricRuleTemplate("example", new()
     ///     {
-    ///         var example = new AliCloud.Cms.MetricRuleTemplate("example", new AliCloud.Cms.MetricRuleTemplateArgs
+    ///         AlertTemplates = new[]
     ///         {
-    ///             AlertTemplates = 
+    ///             new AliCloud.Cms.Inputs.MetricRuleTemplateAlertTemplateArgs
     ///             {
-    ///                 new AliCloud.Cms.Inputs.MetricRuleTemplateAlertTemplateArgs
+    ///                 Category = "ecs",
+    ///                 Escalations = new AliCloud.Cms.Inputs.MetricRuleTemplateAlertTemplateEscalationsArgs
     ///                 {
-    ///                     Category = "ecs",
-    ///                     Escalations = new AliCloud.Cms.Inputs.MetricRuleTemplateAlertTemplateEscalationsArgs
+    ///                     Critical = new AliCloud.Cms.Inputs.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs
     ///                     {
-    ///                         Critical = new AliCloud.Cms.Inputs.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs
-    ///                         {
-    ///                             ComparisonOperator = "GreaterThanThreshold",
-    ///                             Statistics = "Average",
-    ///                             Threshold = "90",
-    ///                             Times = "3",
-    ///                         },
+    ///                         ComparisonOperator = "GreaterThanThreshold",
+    ///                         Statistics = "Average",
+    ///                         Threshold = "90",
+    ///                         Times = "3",
     ///                     },
-    ///                     MetricName = "cpu_total",
-    ///                     Namespace = "acs_ecs_dashboard",
-    ///                     RuleName = "tf_testAcc_new",
     ///                 },
+    ///                 MetricName = "cpu_total",
+    ///                 Namespace = "acs_ecs_dashboard",
+    ///                 RuleName = "tf_testAcc_new",
     ///             },
-    ///             MetricRuleTemplateName = "example_value",
-    ///         });
-    ///     }
+    ///         },
+    ///         MetricRuleTemplateName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -66,7 +64,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/metricRuleTemplate:MetricRuleTemplate")]
-    public partial class MetricRuleTemplate : Pulumi.CustomResource
+    public partial class MetricRuleTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The details of alert rules that are generated based on the alert template. See the following `Block alert_templates`.
@@ -178,7 +176,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class MetricRuleTemplateArgs : Pulumi.ResourceArgs
+    public sealed class MetricRuleTemplateArgs : global::Pulumi.ResourceArgs
     {
         [Input("alertTemplates")]
         private InputList<Inputs.MetricRuleTemplateAlertTemplateArgs>? _alertTemplates;
@@ -255,9 +253,10 @@ namespace Pulumi.AliCloud.Cms
         public MetricRuleTemplateArgs()
         {
         }
+        public static new MetricRuleTemplateArgs Empty => new MetricRuleTemplateArgs();
     }
 
-    public sealed class MetricRuleTemplateState : Pulumi.ResourceArgs
+    public sealed class MetricRuleTemplateState : global::Pulumi.ResourceArgs
     {
         [Input("alertTemplates")]
         private InputList<Inputs.MetricRuleTemplateAlertTemplateGetArgs>? _alertTemplates;
@@ -334,5 +333,6 @@ namespace Pulumi.AliCloud.Cms
         public MetricRuleTemplateState()
         {
         }
+        public static new MetricRuleTemplateState Empty => new MetricRuleTemplateState();
     }
 }

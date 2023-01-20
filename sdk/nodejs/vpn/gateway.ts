@@ -43,10 +43,12 @@ export class Gateway extends pulumi.CustomResource {
 
     /**
      * Whether to pay automatically. Default value: `true`. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
      */
     public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    /**
+     * Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     */
+    public readonly autoPropagate!: pulumi.Output<boolean | undefined>;
     public readonly bandwidth!: pulumi.Output<number>;
     /**
      * The business status of the VPN gateway.
@@ -77,6 +79,12 @@ export class Gateway extends pulumi.CustomResource {
      * The name of the VPN. Defaults to null.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The network type of the VPN gateway. Value:
+     * - public (default): Public VPN gateway.
+     * - private: Private VPN gateway.
+     */
+    public readonly networkType!: pulumi.Output<string>;
     /**
      * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
      */
@@ -117,6 +125,7 @@ export class Gateway extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
             resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoPropagate"] = state ? state.autoPropagate : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["businessStatus"] = state ? state.businessStatus : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -125,6 +134,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             resourceInputs["internetIp"] = state ? state.internetIp : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkType"] = state ? state.networkType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["sslConnections"] = state ? state.sslConnections : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -140,12 +150,14 @@ export class Gateway extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vpcId'");
             }
             resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoPropagate"] = args ? args.autoPropagate : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableIpsec"] = args ? args.enableIpsec : undefined;
             resourceInputs["enableSsl"] = args ? args.enableSsl : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["sslConnections"] = args ? args.sslConnections : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -166,10 +178,12 @@ export class Gateway extends pulumi.CustomResource {
 export interface GatewayState {
     /**
      * Whether to pay automatically. Default value: `true`. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
      */
     autoPay?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     */
+    autoPropagate?: pulumi.Input<boolean>;
     bandwidth?: pulumi.Input<number>;
     /**
      * The business status of the VPN gateway.
@@ -200,6 +214,12 @@ export interface GatewayState {
      * The name of the VPN. Defaults to null.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The network type of the VPN gateway. Value:
+     * - public (default): Public VPN gateway.
+     * - private: Private VPN gateway.
+     */
+    networkType?: pulumi.Input<string>;
     /**
      * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
      */
@@ -233,10 +253,12 @@ export interface GatewayState {
 export interface GatewayArgs {
     /**
      * Whether to pay automatically. Default value: `true`. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
      */
     autoPay?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+     */
+    autoPropagate?: pulumi.Input<boolean>;
     bandwidth: pulumi.Input<number>;
     /**
      * The description of the VPN instance.
@@ -259,6 +281,12 @@ export interface GatewayArgs {
      * The name of the VPN. Defaults to null.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The network type of the VPN gateway. Value:
+     * - public (default): Public VPN gateway.
+     * - private: Private VPN gateway.
+     */
+    networkType?: pulumi.Input<string>;
     /**
      * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
      */

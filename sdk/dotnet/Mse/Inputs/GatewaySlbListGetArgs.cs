@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Mse.Inputs
 {
 
-    public sealed class GatewaySlbListGetArgs : Pulumi.ResourceArgs
+    public sealed class GatewaySlbListGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The associate id.
@@ -63,5 +63,6 @@ namespace Pulumi.AliCloud.Mse.Inputs
         public GatewaySlbListGetArgs()
         {
         }
+        public static new GatewaySlbListGetArgs Empty => new GatewaySlbListGetArgs();
     }
 }

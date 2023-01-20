@@ -26,30 +26,28 @@ namespace Pulumi.AliCloud.Sae
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var configMapName = config.Get("configMapName") ?? "examplename";
+    ///     var exampleNamespace = new AliCloud.Sae.Namespace("exampleNamespace", new()
     ///     {
-    ///         var config = new Config();
-    ///         var configMapName = config.Get("configMapName") ?? "examplename";
-    ///         var exampleNamespace = new AliCloud.Sae.Namespace("exampleNamespace", new AliCloud.Sae.NamespaceArgs
-    ///         {
-    ///             NamespaceId = "cn-hangzhou:yourname",
-    ///             NamespaceName = "example_value",
-    ///             NamespaceDescription = "your_description",
-    ///         });
-    ///         var exampleConfigMap = new AliCloud.Sae.ConfigMap("exampleConfigMap", new AliCloud.Sae.ConfigMapArgs
-    ///         {
-    ///             Data = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "env.home", "/root" },
-    ///                 { "env.shell", "/bin/sh" },
-    ///             }),
-    ///             NamespaceId = exampleNamespace.NamespaceId,
-    ///         });
-    ///     }
+    ///         NamespaceId = "cn-hangzhou:yourname",
+    ///         NamespaceName = "example_value",
+    ///         NamespaceDescription = "your_description",
+    ///     });
     /// 
-    /// }
+    ///     var exampleConfigMap = new AliCloud.Sae.ConfigMap("exampleConfigMap", new()
+    ///     {
+    ///         Data = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["env.home"] = "/root",
+    ///             ["env.shell"] = "/bin/sh",
+    ///         }),
+    ///         NamespaceId = exampleNamespace.NamespaceId,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +59,7 @@ namespace Pulumi.AliCloud.Sae
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sae/configMap:ConfigMap")]
-    public partial class ConfigMap : Pulumi.CustomResource
+    public partial class ConfigMap : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ConfigMap instance data.
@@ -131,7 +129,7 @@ namespace Pulumi.AliCloud.Sae
         }
     }
 
-    public sealed class ConfigMapArgs : Pulumi.ResourceArgs
+    public sealed class ConfigMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ConfigMap instance data.
@@ -160,9 +158,10 @@ namespace Pulumi.AliCloud.Sae
         public ConfigMapArgs()
         {
         }
+        public static new ConfigMapArgs Empty => new ConfigMapArgs();
     }
 
-    public sealed class ConfigMapState : Pulumi.ResourceArgs
+    public sealed class ConfigMapState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ConfigMap instance data.
@@ -191,5 +190,6 @@ namespace Pulumi.AliCloud.Sae
         public ConfigMapState()
         {
         }
+        public static new ConfigMapState Empty => new ConfigMapState();
     }
 }

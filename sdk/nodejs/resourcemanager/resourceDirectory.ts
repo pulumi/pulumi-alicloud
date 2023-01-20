@@ -25,10 +25,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.resourcemanager.ResourceDirectory("example", {
- *     // Enable the control policy
- *     status: "Enabled",
- * });
+ * const example = new alicloud.resourcemanager.ResourceDirectory("example", {status: "Enabled"});
  * ```
  *
  * ## Import

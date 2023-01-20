@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["ca-3ce2626622af0005****"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstConfigAggregatorId = example.then(example => example.aggregators?[0]?.id);
+ * export const firstConfigAggregatorId = example.then(example => example.aggregators?.[0]?.id);
  * ```
  */
 export function getAggregators(args?: GetAggregatorsArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregatorsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getAggregators:getAggregators", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -89,9 +87,28 @@ export interface GetAggregatorsResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Config Aggregators of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.124.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cfg.getAggregators({
+ *     ids: ["ca-3ce2626622af0005****"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstConfigAggregatorId = example.then(example => example.aggregators?.[0]?.id);
+ * ```
+ */
 export function getAggregatorsOutput(args?: GetAggregatorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregatorsResult> {
-    return pulumi.output(args).apply(a => getAggregators(a, opts))
+    return pulumi.output(args).apply((a: any) => getAggregators(a, opts))
 }
 
 /**

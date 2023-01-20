@@ -27,7 +27,8 @@ import * as utilities from "../utilities";
  * 			}],
  * 			"Version": "1"
  * 		}
- *     `,
+ *     
+ * `,
  *     policyName: "abc12345",
  * });
  * ```

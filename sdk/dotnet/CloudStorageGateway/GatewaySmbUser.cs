@@ -21,47 +21,49 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = defaultNetworks.Apply(defaultNetworks =&gt; Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///         {
-    ///             VpcId = defaultNetworks.Ids?[0],
-    ///         })));
-    ///         var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new AliCloud.CloudStorageGateway.StorageBundleArgs
-    ///         {
-    ///             StorageBundleName = "example_value",
-    ///         });
-    ///         var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new AliCloud.CloudStorageGateway.GatewayArgs
-    ///         {
-    ///             Description = "tf-acctestDesalone",
-    ///             GatewayClass = "Standard",
-    ///             Type = "File",
-    ///             PaymentType = "PayAsYouGo",
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             ReleaseAfterExpiration = false,
-    ///             PublicNetworkBandwidth = 40,
-    ///             StorageBundleId = example.Id,
-    ///             Location = "Cloud",
-    ///             GatewayName = "example_value",
-    ///         });
-    ///         var defaultGatewaySmbUser = new AliCloud.CloudStorageGateway.GatewaySmbUser("defaultGatewaySmbUser", new AliCloud.CloudStorageGateway.GatewaySmbUserArgs
-    ///         {
-    ///             Username = "your_username",
-    ///             Password = "password",
-    ///             GatewayId = defaultGateway.Id,
-    ///         });
-    ///     }
+    ///         NameRegex = "default-NODELETING",
+    ///     });
     /// 
-    /// }
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new()
+    ///     {
+    ///         StorageBundleName = "example_value",
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new()
+    ///     {
+    ///         Description = "tf-acctestDesalone",
+    ///         GatewayClass = "Standard",
+    ///         Type = "File",
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         ReleaseAfterExpiration = false,
+    ///         PublicNetworkBandwidth = 40,
+    ///         StorageBundleId = example.Id,
+    ///         Location = "Cloud",
+    ///         GatewayName = "example_value",
+    ///     });
+    /// 
+    ///     var defaultGatewaySmbUser = new AliCloud.CloudStorageGateway.GatewaySmbUser("defaultGatewaySmbUser", new()
+    ///     {
+    ///         Username = "your_username",
+    ///         Password = "password",
+    ///         GatewayId = defaultGateway.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -73,7 +75,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser")]
-    public partial class GatewaySmbUser : Pulumi.CustomResource
+    public partial class GatewaySmbUser : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Gateway ID of the Gateway SMB User.
@@ -116,6 +118,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -137,7 +143,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         }
     }
 
-    public sealed class GatewaySmbUserArgs : Pulumi.ResourceArgs
+    public sealed class GatewaySmbUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Gateway ID of the Gateway SMB User.
@@ -145,11 +151,21 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         [Input("gatewayId", required: true)]
         public Input<string> GatewayId { get; set; } = null!;
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the Gateway SMB User.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The username of the Gateway SMB User.
@@ -160,9 +176,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GatewaySmbUserArgs()
         {
         }
+        public static new GatewaySmbUserArgs Empty => new GatewaySmbUserArgs();
     }
 
-    public sealed class GatewaySmbUserState : Pulumi.ResourceArgs
+    public sealed class GatewaySmbUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Gateway ID of the Gateway SMB User.
@@ -170,11 +187,21 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         [Input("gatewayId")]
         public Input<string>? GatewayId { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the Gateway SMB User.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The username of the Gateway SMB User.
@@ -185,5 +212,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GatewaySmbUserState()
         {
         }
+        public static new GatewaySmbUserState Empty => new GatewaySmbUserState();
     }
 }

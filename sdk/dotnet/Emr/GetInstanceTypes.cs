@@ -22,38 +22,37 @@ namespace Pulumi.AliCloud.Emr
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Emr.GetInstanceTypes.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Emr.GetInstanceTypes.InvokeAsync(new AliCloud.Emr.GetInstanceTypesArgs
+        ///         ClusterType = "HADOOP",
+        ///         DestinationResource = "InstanceType",
+        ///         InstanceChargeType = "PostPaid",
+        ///         InstanceType = "ecs.g5.2xlarge",
+        ///         SupportLocalStorage = false,
+        ///         SupportNodeTypes = new[]
         ///         {
-        ///             ClusterType = "HADOOP",
-        ///             DestinationResource = "InstanceType",
-        ///             InstanceChargeType = "PostPaid",
-        ///             InstanceType = "ecs.g5.2xlarge",
-        ///             SupportLocalStorage = false,
-        ///             SupportNodeTypes = 
-        ///             {
-        ///                 "MASTER",
-        ///                 "CORE",
-        ///             },
-        ///         }));
-        ///         this.FirstInstanceType = @default.Apply(@default =&gt; @default.Types?[0]?.Id);
-        ///     }
+        ///             "MASTER",
+        ///             "CORE",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstInstanceType")]
-        ///     public Output&lt;string&gt; FirstInstanceType { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceType"] = @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult).Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.emr.getInstanceTypes` data source provides a collection of ecs
@@ -66,42 +65,41 @@ namespace Pulumi.AliCloud.Emr
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Emr.GetInstanceTypes.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Emr.GetInstanceTypes.InvokeAsync(new AliCloud.Emr.GetInstanceTypesArgs
+        ///         ClusterType = "HADOOP",
+        ///         DestinationResource = "InstanceType",
+        ///         InstanceChargeType = "PostPaid",
+        ///         InstanceType = "ecs.g5.2xlarge",
+        ///         SupportLocalStorage = false,
+        ///         SupportNodeTypes = new[]
         ///         {
-        ///             ClusterType = "HADOOP",
-        ///             DestinationResource = "InstanceType",
-        ///             InstanceChargeType = "PostPaid",
-        ///             InstanceType = "ecs.g5.2xlarge",
-        ///             SupportLocalStorage = false,
-        ///             SupportNodeTypes = 
-        ///             {
-        ///                 "MASTER",
-        ///                 "CORE",
-        ///             },
-        ///         }));
-        ///         this.FirstInstanceType = @default.Apply(@default =&gt; @default.Types?[0]?.Id);
-        ///     }
+        ///             "MASTER",
+        ///             "CORE",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstInstanceType")]
-        ///     public Output&lt;string&gt; FirstInstanceType { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceType"] = @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult).Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceTypesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
@@ -158,9 +156,10 @@ namespace Pulumi.AliCloud.Emr
         public GetInstanceTypesArgs()
         {
         }
+        public static new GetInstanceTypesArgs Empty => new GetInstanceTypesArgs();
     }
 
-    public sealed class GetInstanceTypesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
@@ -217,6 +216,7 @@ namespace Pulumi.AliCloud.Emr
         public GetInstanceTypesInvokeArgs()
         {
         }
+        public static new GetInstanceTypesInvokeArgs Empty => new GetInstanceTypesInvokeArgs();
     }
 
 

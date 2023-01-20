@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolRolloutPolicy {
     /**
-     * @return Max number of unavailable nodes. Default to `1`.
+     * @return Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
      * 
      */
     private @Nullable Integer maxUnavailable;
 
     private NodePoolRolloutPolicy() {}
     /**
-     * @return Max number of unavailable nodes. Default to `1`.
+     * @return Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
      * 
      */
     public Optional<Integer> maxUnavailable() {

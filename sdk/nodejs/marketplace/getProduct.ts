@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultProduct = pulumi.output(alicloud.marketplace.getProduct({
+ * const default = alicloud.marketplace.getProduct({
  *     productCode: "cmapi022206",
- * }));
- *
- * export const productName = defaultProduct.products[0].name;
- * export const firstProductSkuCode = defaultProduct.products[0].skuses[0].skuCode;
- * export const firstProductPackageVersion = defaultProduct.products[0].skuses[0].packageVersions[0].packageVersion;
+ * });
+ * export const productName = _default.then(_default => _default.products?.[0]?.name);
+ * export const firstProductSkuCode = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.skuCode);
+ * export const firstProductPackageVersion = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.packageVersions?.[0]?.packageVersion);
  * ```
  */
 export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): Promise<GetProductResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:marketplace/getProduct:getProduct", {
         "availableRegion": args.availableRegion,
         "productCode": args.productCode,
@@ -66,9 +63,27 @@ export interface GetProductResult {
      */
     readonly products: outputs.marketplace.GetProductProduct[];
 }
-
+/**
+ * This data source provides the Market product item details of Alibaba Cloud.
+ *
+ * > **NOTE:** Available in 1.69.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.marketplace.getProduct({
+ *     productCode: "cmapi022206",
+ * });
+ * export const productName = _default.then(_default => _default.products?.[0]?.name);
+ * export const firstProductSkuCode = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.skuCode);
+ * export const firstProductPackageVersion = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.packageVersions?.[0]?.packageVersion);
+ * ```
+ */
 export function getProductOutput(args: GetProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductResult> {
-    return pulumi.output(args).apply(a => getProduct(a, opts))
+    return pulumi.output(args).apply((a: any) => getProduct(a, opts))
 }
 
 /**

@@ -16,6 +16,8 @@ import (
 //
 // > **NOTE:** Available in v1.83.0+.
 //
+// > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
+//
 // ## Example Usage
 //
 // ```go
@@ -48,6 +50,12 @@ import (
 //	}
 //
 // ```
+// ### Deleting `resourcemanager.Account` or removing it from your configuration
+//
+// Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
+// but may not destroy the account. If there are some dependent resource in the account,
+// the deleting account will enter a silence period of 45 days. After the silence period ends,
+// the system automatically starts to delete the member. [See More Details](https://www.alibabacloud.com/help/en/resource-management/latest/delete-resource-account).
 //
 // ## Import
 //
@@ -61,6 +69,10 @@ import (
 type Account struct {
 	pulumi.CustomResourceState
 
+	// The IDs of the check items that you can choose to ignore for the member deletion.
+	// If you want to delete the account, please use datasource `resourcemanager.getAccountDeletionCheckTask`
+	// to get check ids and set them.
+	AbandonAbleCheckIds pulumi.StringArrayOutput `pulumi:"abandonAbleCheckIds"`
 	// The name prefix of account.
 	AccountNamePrefix pulumi.StringPtrOutput `pulumi:"accountNamePrefix"`
 	// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
@@ -117,6 +129,10 @@ func GetAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
+	// The IDs of the check items that you can choose to ignore for the member deletion.
+	// If you want to delete the account, please use datasource `resourcemanager.getAccountDeletionCheckTask`
+	// to get check ids and set them.
+	AbandonAbleCheckIds []string `pulumi:"abandonAbleCheckIds"`
 	// The name prefix of account.
 	AccountNamePrefix *string `pulumi:"accountNamePrefix"`
 	// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
@@ -142,6 +158,10 @@ type accountState struct {
 }
 
 type AccountState struct {
+	// The IDs of the check items that you can choose to ignore for the member deletion.
+	// If you want to delete the account, please use datasource `resourcemanager.getAccountDeletionCheckTask`
+	// to get check ids and set them.
+	AbandonAbleCheckIds pulumi.StringArrayInput
 	// The name prefix of account.
 	AccountNamePrefix pulumi.StringPtrInput
 	// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
@@ -171,6 +191,10 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
+	// The IDs of the check items that you can choose to ignore for the member deletion.
+	// If you want to delete the account, please use datasource `resourcemanager.getAccountDeletionCheckTask`
+	// to get check ids and set them.
+	AbandonAbleCheckIds []string `pulumi:"abandonAbleCheckIds"`
 	// The name prefix of account.
 	AccountNamePrefix *string `pulumi:"accountNamePrefix"`
 	// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
@@ -185,6 +209,10 @@ type accountArgs struct {
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
+	// The IDs of the check items that you can choose to ignore for the member deletion.
+	// If you want to delete the account, please use datasource `resourcemanager.getAccountDeletionCheckTask`
+	// to get check ids and set them.
+	AbandonAbleCheckIds pulumi.StringArrayInput
 	// The name prefix of account.
 	AccountNamePrefix pulumi.StringPtrInput
 	// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
@@ -282,6 +310,13 @@ func (o AccountOutput) ToAccountOutput() AccountOutput {
 
 func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
 	return o
+}
+
+// The IDs of the check items that you can choose to ignore for the member deletion.
+// If you want to delete the account, please use datasource `resourcemanager.getAccountDeletionCheckTask`
+// to get check ids and set them.
+func (o AccountOutput) AbandonAbleCheckIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringArrayOutput { return v.AbandonAbleCheckIds }).(pulumi.StringArrayOutput)
 }
 
 // The name prefix of account.

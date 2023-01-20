@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class ImageDiskDeviceMappingArgs : Pulumi.ResourceArgs
+    public sealed class ImageDiskDeviceMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public ImageDiskDeviceMappingArgs()
         {
         }
+        public static new ImageDiskDeviceMappingArgs Empty => new ImageDiskDeviceMappingArgs();
     }
 }

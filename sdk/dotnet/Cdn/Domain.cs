@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn
 {
     [AliCloudResourceType("alicloud:cdn/domain:Domain")]
-    public partial class Domain : Pulumi.CustomResource
+    public partial class Domain : global::Pulumi.CustomResource
     {
         [Output("authConfig")]
         public Output<Outputs.DomainAuthConfig?> AuthConfig { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Cdn
         }
     }
 
-    public sealed class DomainArgs : Pulumi.ResourceArgs
+    public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         [Input("authConfig")]
         public Input<Inputs.DomainAuthConfigArgs>? AuthConfig { get; set; }
@@ -193,9 +193,10 @@ namespace Pulumi.AliCloud.Cdn
         public DomainArgs()
         {
         }
+        public static new DomainArgs Empty => new DomainArgs();
     }
 
-    public sealed class DomainState : Pulumi.ResourceArgs
+    public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         [Input("authConfig")]
         public Input<Inputs.DomainAuthConfigGetArgs>? AuthConfig { get; set; }
@@ -278,5 +279,6 @@ namespace Pulumi.AliCloud.Cdn
         public DomainState()
         {
         }
+        public static new DomainState Empty => new DomainState();
     }
 }

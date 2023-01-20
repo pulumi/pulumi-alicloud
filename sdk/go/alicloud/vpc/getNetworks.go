@@ -57,7 +57,7 @@ type GetNetworksArgs struct {
 	DhcpOptionsSetId *string `pulumi:"dhcpOptionsSetId"`
 	// Indicates whether to check this request only. Valid values: `true` and `false`.
 	DryRun *bool `pulumi:"dryRun"`
-	// -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `routeTableId`.
+	// Default to `true`. Set it to true can output the `routeTableId`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of VPC IDs.
 	Ids []string `pulumi:"ids"`
@@ -136,7 +136,7 @@ type GetNetworksOutputArgs struct {
 	DhcpOptionsSetId pulumi.StringPtrInput `pulumi:"dhcpOptionsSetId"`
 	// Indicates whether to check this request only. Valid values: `true` and `false`.
 	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
-	// -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `routeTableId`.
+	// Default to `true`. Set it to true can output the `routeTableId`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of VPC IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

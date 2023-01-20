@@ -56,7 +56,7 @@ type GetRealTimeLogDeliveriesArgs struct {
 	// Real-Time Log Service Domain.
 	Domain     string  `pulumi:"domain"`
 	OutputFile *string `pulumi:"outputFile"`
-	// -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
 	Status *string `pulumi:"status"`
 }
 
@@ -88,7 +88,7 @@ type GetRealTimeLogDeliveriesOutputArgs struct {
 	// Real-Time Log Service Domain.
 	Domain     pulumi.StringInput    `pulumi:"domain"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

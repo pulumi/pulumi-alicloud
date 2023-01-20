@@ -23,42 +23,40 @@ namespace Pulumi.AliCloud.Dns
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dns.GetAddressPools.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dns.GetAddressPools.InvokeAsync(new AliCloud.Dns.GetAddressPoolsArgs
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.AlidnsAddressPoolId1 = ids.Apply(ids =&gt; ids.Pools?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Dns.GetAddressPools.InvokeAsync(new AliCloud.Dns.GetAddressPoolsArgs
-        ///         {
-        ///             InstanceId = "example_value",
-        ///             NameRegex = "^my-AddressPool",
-        ///         }));
-        ///         this.AlidnsAddressPoolId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Pools?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("alidnsAddressPoolId1")]
-        ///     public Output&lt;string&gt; AlidnsAddressPoolId1 { get; set; }
-        ///     [Output("alidnsAddressPoolId2")]
-        ///     public Output&lt;string&gt; AlidnsAddressPoolId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Dns.GetAddressPools.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///         NameRegex = "^my-AddressPool",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alidnsAddressPoolId1"] = ids.Apply(getAddressPoolsResult =&gt; getAddressPoolsResult.Pools[0]?.Id),
+        ///         ["alidnsAddressPoolId2"] = nameRegex.Apply(getAddressPoolsResult =&gt; getAddressPoolsResult.Pools[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAddressPoolsResult> InvokeAsync(GetAddressPoolsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressPoolsResult>("alicloud:dns/getAddressPools:getAddressPools", args ?? new GetAddressPoolsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAddressPoolsResult>("alicloud:dns/getAddressPools:getAddressPools", args ?? new GetAddressPoolsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Alidns Address Pools of the current Alibaba Cloud user.
@@ -72,46 +70,44 @@ namespace Pulumi.AliCloud.Dns
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dns.GetAddressPools.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dns.GetAddressPools.InvokeAsync(new AliCloud.Dns.GetAddressPoolsArgs
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.AlidnsAddressPoolId1 = ids.Apply(ids =&gt; ids.Pools?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Dns.GetAddressPools.InvokeAsync(new AliCloud.Dns.GetAddressPoolsArgs
-        ///         {
-        ///             InstanceId = "example_value",
-        ///             NameRegex = "^my-AddressPool",
-        ///         }));
-        ///         this.AlidnsAddressPoolId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Pools?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("alidnsAddressPoolId1")]
-        ///     public Output&lt;string&gt; AlidnsAddressPoolId1 { get; set; }
-        ///     [Output("alidnsAddressPoolId2")]
-        ///     public Output&lt;string&gt; AlidnsAddressPoolId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Dns.GetAddressPools.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///         NameRegex = "^my-AddressPool",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alidnsAddressPoolId1"] = ids.Apply(getAddressPoolsResult =&gt; getAddressPoolsResult.Pools[0]?.Id),
+        ///         ["alidnsAddressPoolId2"] = nameRegex.Apply(getAddressPoolsResult =&gt; getAddressPoolsResult.Pools[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAddressPoolsResult> Invoke(GetAddressPoolsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAddressPoolsResult>("alicloud:dns/getAddressPools:getAddressPools", args ?? new GetAddressPoolsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAddressPoolsResult>("alicloud:dns/getAddressPools:getAddressPools", args ?? new GetAddressPoolsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAddressPoolsArgs : Pulumi.InvokeArgs
+    public sealed class GetAddressPoolsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -149,9 +145,10 @@ namespace Pulumi.AliCloud.Dns
         public GetAddressPoolsArgs()
         {
         }
+        public static new GetAddressPoolsArgs Empty => new GetAddressPoolsArgs();
     }
 
-    public sealed class GetAddressPoolsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAddressPoolsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -189,6 +186,7 @@ namespace Pulumi.AliCloud.Dns
         public GetAddressPoolsInvokeArgs()
         {
         }
+        public static new GetAddressPoolsInvokeArgs Empty => new GetAddressPoolsInvokeArgs();
     }
 
 

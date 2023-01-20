@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// -(Optional, Bool) Encrypted the data in this disk.
+        /// Encrypted the data in this disk.
         /// </summary>
         public readonly bool? Encrypted;
         /// <summary>

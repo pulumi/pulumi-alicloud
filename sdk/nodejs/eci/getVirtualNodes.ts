@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -24,20 +25,17 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const eciVirtualNodeId1 = ids.then(ids => ids.nodes?[0]?.id);
+ * export const eciVirtualNodeId1 = ids.then(ids => ids.nodes?.[0]?.id);
  * const nameRegex = alicloud.eci.getVirtualNodes({
  *     nameRegex: "^my-VirtualNode",
  * });
- * export const eciVirtualNodeId2 = nameRegex.then(nameRegex => nameRegex.nodes?[0]?.id);
+ * export const eciVirtualNodeId2 = nameRegex.then(nameRegex => nameRegex.nodes?.[0]?.id);
  * ```
  */
 export function getVirtualNodes(args?: GetVirtualNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualNodesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eci/getVirtualNodes:getVirtualNodes", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -110,9 +108,34 @@ export interface GetVirtualNodesResult {
     readonly virtualNodeName?: string;
     readonly vswitchId?: string;
 }
-
+/**
+ * This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.145.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eci.getVirtualNodes({
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const eciVirtualNodeId1 = ids.then(ids => ids.nodes?.[0]?.id);
+ * const nameRegex = alicloud.eci.getVirtualNodes({
+ *     nameRegex: "^my-VirtualNode",
+ * });
+ * export const eciVirtualNodeId2 = nameRegex.then(nameRegex => nameRegex.nodes?.[0]?.id);
+ * ```
+ */
 export function getVirtualNodesOutput(args?: GetVirtualNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualNodesResult> {
-    return pulumi.output(args).apply(a => getVirtualNodes(a, opts))
+    return pulumi.output(args).apply((a: any) => getVirtualNodes(a, opts))
 }
 
 /**

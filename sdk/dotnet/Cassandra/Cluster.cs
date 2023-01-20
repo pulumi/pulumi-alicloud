@@ -25,32 +25,30 @@ namespace Pulumi.AliCloud.Cassandra
     /// ### Create a cassandra cluster
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Cassandra.Cluster("default", new()
     ///     {
-    ///         var @default = new AliCloud.Cassandra.Cluster("default", new AliCloud.Cassandra.ClusterArgs
-    ///         {
-    ///             AutoRenew = false,
-    ///             ClusterName = "cassandra-cluster-name-tf",
-    ///             DataCenterName = "dc-1",
-    ///             DiskSize = 160,
-    ///             DiskType = "cloud_ssd",
-    ///             InstanceType = "cassandra.c.large",
-    ///             IpWhite = "127.0.0.1",
-    ///             MaintainEndTime = "20:00Z",
-    ///             MaintainStartTime = "18:00Z",
-    ///             MajorVersion = "3.11",
-    ///             NodeCount = 2,
-    ///             PayType = "PayAsYouGo",
-    ///             VswitchId = "vsw-xxxx",
-    ///         });
-    ///     }
+    ///         AutoRenew = false,
+    ///         ClusterName = "cassandra-cluster-name-tf",
+    ///         DataCenterName = "dc-1",
+    ///         DiskSize = 160,
+    ///         DiskType = "cloud_ssd",
+    ///         InstanceType = "cassandra.c.large",
+    ///         IpWhite = "127.0.0.1",
+    ///         MaintainEndTime = "20:00Z",
+    ///         MaintainStartTime = "18:00Z",
+    ///         MajorVersion = "3.11",
+    ///         NodeCount = 2,
+    ///         PayType = "PayAsYouGo",
+    ///         VswitchId = "vsw-xxxx",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
@@ -64,7 +62,7 @@ namespace Pulumi.AliCloud.Cassandra
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cassandra/cluster:Cluster")]
-    public partial class Cluster : Pulumi.CustomResource
+    public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
@@ -211,6 +209,10 @@ namespace Pulumi.AliCloud.Cassandra
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -232,7 +234,7 @@ namespace Pulumi.AliCloud.Cassandra
         }
     }
 
-    public sealed class ClusterArgs : Pulumi.ResourceArgs
+    public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
@@ -312,7 +314,16 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<int> NodeCount { get; set; } = null!;
 
         [Input("password")]
-        public Input<string>? Password { get; set; }
+        private Input<string>? _password;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
@@ -365,9 +376,10 @@ namespace Pulumi.AliCloud.Cassandra
         public ClusterArgs()
         {
         }
+        public static new ClusterArgs Empty => new ClusterArgs();
     }
 
-    public sealed class ClusterState : Pulumi.ResourceArgs
+    public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
@@ -447,7 +459,16 @@ namespace Pulumi.AliCloud.Cassandra
         public Input<int>? NodeCount { get; set; }
 
         [Input("password")]
-        public Input<string>? Password { get; set; }
+        private Input<string>? _password;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
@@ -511,5 +532,6 @@ namespace Pulumi.AliCloud.Cassandra
         public ClusterState()
         {
         }
+        public static new ClusterState Empty => new ClusterState();
     }
 }

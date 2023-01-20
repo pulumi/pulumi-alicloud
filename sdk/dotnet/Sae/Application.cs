@@ -21,53 +21,55 @@ namespace Pulumi.AliCloud.Sae
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testacc";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testacc";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = "tf_testacc",
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var vsw = new AliCloud.Vpc.Switch("vsw", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = vpc.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new AliCloud.Sae.NamespaceArgs
-    ///         {
-    ///             NamespaceDescription = name,
-    ///             NamespaceId = "cn-hangzhou:tfacctest",
-    ///             NamespaceName = name,
-    ///         });
-    ///         var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new AliCloud.Sae.ApplicationArgs
-    ///         {
-    ///             AppDescription = "tf-testaccDescription",
-    ///             AppName = "tf-testaccAppName",
-    ///             NamespaceId = defaultNamespace.Id,
-    ///             ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
-    ///             PackageType = "Image",
-    ///             VswitchId = vsw.Id,
-    ///             Timezone = "Asia/Beijing",
-    ///             Replicas = 5,
-    ///             Cpu = 500,
-    ///             Memory = 2048,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         VpcName = "tf_testacc",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var vsw = new AliCloud.Vpc.Switch("vsw", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
+    ///     {
+    ///         NamespaceDescription = name,
+    ///         NamespaceId = "cn-hangzhou:tfacctest",
+    ///         NamespaceName = name,
+    ///     });
+    /// 
+    ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
+    ///     {
+    ///         AppDescription = "tf-testaccDescription",
+    ///         AppName = "tf-testaccAppName",
+    ///         NamespaceId = defaultNamespace.Id,
+    ///         ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+    ///         PackageType = "Image",
+    ///         VswitchId = vsw.Id,
+    ///         Timezone = "Asia/Beijing",
+    ///         Replicas = 5,
+    ///         Cpu = 500,
+    ///         Memory = 2048,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -79,8 +81,20 @@ namespace Pulumi.AliCloud.Sae
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sae/application:Application")]
-    public partial class Application : Pulumi.CustomResource
+    public partial class Application : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        /// </summary>
+        [Output("acrAssumeRoleArn")]
+        public Output<string?> AcrAssumeRoleArn { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+        /// </summary>
+        [Output("acrInstanceId")]
+        public Output<string?> AcrInstanceId { get; private set; } = null!;
+
         /// <summary>
         /// Application description information. No more than 1024 characters.
         /// </summary>
@@ -333,7 +347,7 @@ namespace Pulumi.AliCloud.Sae
         /// Security group ID.
         /// </summary>
         [Output("securityGroupId")]
-        public Output<string?> SecurityGroupId { get; private set; } = null!;
+        public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
         /// SLS  configuration.
@@ -430,6 +444,11 @@ namespace Pulumi.AliCloud.Sae
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "ossAkId",
+                    "ossAkSecret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -451,8 +470,20 @@ namespace Pulumi.AliCloud.Sae
         }
     }
 
-    public sealed class ApplicationArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        /// </summary>
+        [Input("acrAssumeRoleArn")]
+        public Input<string>? AcrAssumeRoleArn { get; set; }
+
+        /// <summary>
+        /// The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+        /// </summary>
+        [Input("acrInstanceId")]
+        public Input<string>? AcrInstanceId { get; set; }
+
         /// <summary>
         /// Application description information. No more than 1024 characters.
         /// </summary>
@@ -623,17 +654,37 @@ namespace Pulumi.AliCloud.Sae
         [Input("nasId")]
         public Input<string>? NasId { get; set; }
 
+        [Input("ossAkId")]
+        private Input<string>? _ossAkId;
+
         /// <summary>
         /// OSS AccessKey ID.
         /// </summary>
-        [Input("ossAkId")]
-        public Input<string>? OssAkId { get; set; }
+        public Input<string>? OssAkId
+        {
+            get => _ossAkId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _ossAkId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("ossAkSecret")]
+        private Input<string>? _ossAkSecret;
 
         /// <summary>
         /// OSS  AccessKey Secret.
         /// </summary>
-        [Input("ossAkSecret")]
-        public Input<string>? OssAkSecret { get; set; }
+        public Input<string>? OssAkSecret
+        {
+            get => _ossAkSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _ossAkSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// OSS mount description information.
@@ -788,10 +839,23 @@ namespace Pulumi.AliCloud.Sae
         public ApplicationArgs()
         {
         }
+        public static new ApplicationArgs Empty => new ApplicationArgs();
     }
 
-    public sealed class ApplicationState : Pulumi.ResourceArgs
+    public sealed class ApplicationState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        /// </summary>
+        [Input("acrAssumeRoleArn")]
+        public Input<string>? AcrAssumeRoleArn { get; set; }
+
+        /// <summary>
+        /// The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+        /// </summary>
+        [Input("acrInstanceId")]
+        public Input<string>? AcrInstanceId { get; set; }
+
         /// <summary>
         /// Application description information. No more than 1024 characters.
         /// </summary>
@@ -962,17 +1026,37 @@ namespace Pulumi.AliCloud.Sae
         [Input("nasId")]
         public Input<string>? NasId { get; set; }
 
+        [Input("ossAkId")]
+        private Input<string>? _ossAkId;
+
         /// <summary>
         /// OSS AccessKey ID.
         /// </summary>
-        [Input("ossAkId")]
-        public Input<string>? OssAkId { get; set; }
+        public Input<string>? OssAkId
+        {
+            get => _ossAkId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _ossAkId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("ossAkSecret")]
+        private Input<string>? _ossAkSecret;
 
         /// <summary>
         /// OSS  AccessKey Secret.
         /// </summary>
-        [Input("ossAkSecret")]
-        public Input<string>? OssAkSecret { get; set; }
+        public Input<string>? OssAkSecret
+        {
+            get => _ossAkSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _ossAkSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// OSS mount description information.
@@ -1127,5 +1211,6 @@ namespace Pulumi.AliCloud.Sae
         public ApplicationState()
         {
         }
+        public static new ApplicationState Empty => new ApplicationState();
     }
 }

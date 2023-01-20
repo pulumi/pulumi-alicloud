@@ -64,6 +64,10 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
     }
 
     /**
+     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     */
+    public readonly bandwidthPackageBandwidth!: pulumi.Output<string>;
+    /**
      * The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
      */
     public readonly bandwidthPackageId!: pulumi.Output<string>;
@@ -85,6 +89,7 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CommonBandwithPackageAttachmentState | undefined;
+            resourceInputs["bandwidthPackageBandwidth"] = state ? state.bandwidthPackageBandwidth : undefined;
             resourceInputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
@@ -95,6 +100,7 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
+            resourceInputs["bandwidthPackageBandwidth"] = args ? args.bandwidthPackageBandwidth : undefined;
             resourceInputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
         }
@@ -107,6 +113,10 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CommonBandwithPackageAttachment resources.
  */
 export interface CommonBandwithPackageAttachmentState {
+    /**
+     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     */
+    bandwidthPackageBandwidth?: pulumi.Input<string>;
     /**
      * The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
      */
@@ -121,6 +131,10 @@ export interface CommonBandwithPackageAttachmentState {
  * The set of arguments for constructing a CommonBandwithPackageAttachment resource.
  */
 export interface CommonBandwithPackageAttachmentArgs {
+    /**
+     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     */
+    bandwidthPackageBandwidth?: pulumi.Input<string>;
     /**
      * The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
      */

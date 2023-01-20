@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Eds.GetDesktopTypes.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Eds.GetDesktopTypes.InvokeAsync(new AliCloud.Eds.GetDesktopTypesArgs
-        ///         {
-        ///             InstanceTypeFamily = "eds.hf",
-        ///         }));
-        ///         this.EcdDesktopTypeId1 = ids.Apply(ids =&gt; ids.Types?[0]?.Id);
-        ///     }
+        ///         InstanceTypeFamily = "eds.hf",
+        ///     });
         /// 
-        ///     [Output("ecdDesktopTypeId1")]
-        ///     public Output&lt;string&gt; EcdDesktopTypeId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdDesktopTypeId1"] = ids.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Types[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDesktopTypesResult> InvokeAsync(GetDesktopTypesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDesktopTypesResult>("alicloud:eds/getDesktopTypes:getDesktopTypes", args ?? new GetDesktopTypesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDesktopTypesResult>("alicloud:eds/getDesktopTypes:getDesktopTypes", args ?? new GetDesktopTypesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Eds.GetDesktopTypes.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Eds.GetDesktopTypes.InvokeAsync(new AliCloud.Eds.GetDesktopTypesArgs
-        ///         {
-        ///             InstanceTypeFamily = "eds.hf",
-        ///         }));
-        ///         this.EcdDesktopTypeId1 = ids.Apply(ids =&gt; ids.Types?[0]?.Id);
-        ///     }
+        ///         InstanceTypeFamily = "eds.hf",
+        ///     });
         /// 
-        ///     [Output("ecdDesktopTypeId1")]
-        ///     public Output&lt;string&gt; EcdDesktopTypeId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdDesktopTypeId1"] = ids.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Types[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDesktopTypesResult> Invoke(GetDesktopTypesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDesktopTypesResult>("alicloud:eds/getDesktopTypes:getDesktopTypes", args ?? new GetDesktopTypesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDesktopTypesResult>("alicloud:eds/getDesktopTypes:getDesktopTypes", args ?? new GetDesktopTypesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDesktopTypesArgs : Pulumi.InvokeArgs
+    public sealed class GetDesktopTypesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The CPU cores.
@@ -135,9 +133,10 @@ namespace Pulumi.AliCloud.Eds
         public GetDesktopTypesArgs()
         {
         }
+        public static new GetDesktopTypesArgs Empty => new GetDesktopTypesArgs();
     }
 
-    public sealed class GetDesktopTypesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDesktopTypesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The CPU cores.
@@ -187,6 +186,7 @@ namespace Pulumi.AliCloud.Eds
         public GetDesktopTypesInvokeArgs()
         {
         }
+        public static new GetDesktopTypesInvokeArgs Empty => new GetDesktopTypesInvokeArgs();
     }
 
 

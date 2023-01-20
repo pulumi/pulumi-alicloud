@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,32 +22,29 @@ import * as utilities from "../utilities";
  * const ids = alicloud.simpleapplicationserver.getServerDisks({
  *     ids: ["example_id"],
  * });
- * export const simpleApplicationServerDiskId1 = ids.then(ids => ids.disks?[0]?.id);
+ * export const simpleApplicationServerDiskId1 = ids.then(ids => ids.disks?.[0]?.id);
  * const nameRegex = alicloud.simpleapplicationserver.getServerDisks({
  *     nameRegex: "^my-Disk",
  * });
- * export const simpleApplicationServerDiskId2 = nameRegex.then(nameRegex => nameRegex.disks?[0]?.id);
+ * export const simpleApplicationServerDiskId2 = nameRegex.then(nameRegex => nameRegex.disks?.[0]?.id);
  * const status = alicloud.simpleapplicationserver.getServerDisks({
  *     status: "In_use",
  * });
- * export const simpleApplicationServerDiskId3 = status.then(status => status.disks?[0]?.id);
+ * export const simpleApplicationServerDiskId3 = status.then(status => status.disks?.[0]?.id);
  * const instanceId = alicloud.simpleapplicationserver.getServerDisks({
  *     instanceId: "example_value",
  * });
- * export const simpleApplicationServerDiskId4 = instanceId.then(instanceId => instanceId.disks?[0]?.id);
+ * export const simpleApplicationServerDiskId4 = instanceId.then(instanceId => instanceId.disks?.[0]?.id);
  * const diskType = alicloud.simpleapplicationserver.getServerDisks({
  *     diskType: "System",
  * });
- * export const simpleApplicationServerDiskId5 = diskType.then(diskType => diskType.disks?[0]?.id);
+ * export const simpleApplicationServerDiskId5 = diskType.then(diskType => diskType.disks?.[0]?.id);
  * ```
  */
 export function getServerDisks(args?: GetServerDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetServerDisksResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", {
         "diskType": args.diskType,
         "ids": args.ids,
@@ -101,9 +99,43 @@ export interface GetServerDisksResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.143.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.simpleapplicationserver.getServerDisks({
+ *     ids: ["example_id"],
+ * });
+ * export const simpleApplicationServerDiskId1 = ids.then(ids => ids.disks?.[0]?.id);
+ * const nameRegex = alicloud.simpleapplicationserver.getServerDisks({
+ *     nameRegex: "^my-Disk",
+ * });
+ * export const simpleApplicationServerDiskId2 = nameRegex.then(nameRegex => nameRegex.disks?.[0]?.id);
+ * const status = alicloud.simpleapplicationserver.getServerDisks({
+ *     status: "In_use",
+ * });
+ * export const simpleApplicationServerDiskId3 = status.then(status => status.disks?.[0]?.id);
+ * const instanceId = alicloud.simpleapplicationserver.getServerDisks({
+ *     instanceId: "example_value",
+ * });
+ * export const simpleApplicationServerDiskId4 = instanceId.then(instanceId => instanceId.disks?.[0]?.id);
+ * const diskType = alicloud.simpleapplicationserver.getServerDisks({
+ *     diskType: "System",
+ * });
+ * export const simpleApplicationServerDiskId5 = diskType.then(diskType => diskType.disks?.[0]?.id);
+ * ```
+ */
 export function getServerDisksOutput(args?: GetServerDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerDisksResult> {
-    return pulumi.output(args).apply(a => getServerDisks(a, opts))
+    return pulumi.output(args).apply((a: any) => getServerDisks(a, opts))
 }
 
 /**

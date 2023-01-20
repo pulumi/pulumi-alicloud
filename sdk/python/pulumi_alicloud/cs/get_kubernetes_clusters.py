@@ -144,7 +144,7 @@ def get_kubernetes_clusters(enable_details: Optional[bool] = None,
 
 
     :param Sequence[str] ids: Cluster IDs to filter.
-    :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+    :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
     :param str name_regex: A regex string to filter results by cluster name.
     """
     __args__ = dict()
@@ -195,7 +195,7 @@ def get_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Optiona
 
 
     :param Sequence[str] ids: Cluster IDs to filter.
-    :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+    :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
     :param str name_regex: A regex string to filter results by cluster name.
     """
     ...

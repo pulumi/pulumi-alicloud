@@ -36,6 +36,7 @@ class ServerlessKubernetesArgs:
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rrsa_metadata: Optional[pulumi.Input['ServerlessKubernetesRrsaMetadataArgs']] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -59,16 +60,17 @@ class ServerlessKubernetesArgs:
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
-        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
         :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
-        :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         :param pulumi.Input[bool] private_zone: (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input['ServerlessKubernetesRrsaMetadataArgs'] rrsa_metadata: (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
@@ -102,6 +104,9 @@ class ServerlessKubernetesArgs:
         if force_update is not None:
             pulumi.set(__self__, "force_update", force_update)
         if kube_config is not None:
+            warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
+            pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+        if kube_config is not None:
             pulumi.set(__self__, "kube_config", kube_config)
         if load_balancer_spec is not None:
             pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
@@ -122,6 +127,8 @@ class ServerlessKubernetesArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retain_resources is not None:
             pulumi.set(__self__, "retain_resources", retain_resources)
+        if rrsa_metadata is not None:
+            pulumi.set(__self__, "rrsa_metadata", rrsa_metadata)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if service_cidr is not None:
@@ -247,7 +254,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         """
         return pulumi.get(self, "enable_rrsa")
 
@@ -319,7 +326,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        The kubernetes cluster's name. It is the only in one Alicloud account.
         """
         return pulumi.get(self, "name")
 
@@ -380,6 +387,18 @@ class ServerlessKubernetesArgs:
     @retain_resources.setter
     def retain_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "retain_resources", value)
+
+    @property
+    @pulumi.getter(name="rrsaMetadata")
+    def rrsa_metadata(self) -> Optional[pulumi.Input['ServerlessKubernetesRrsaMetadataArgs']]:
+        """
+        (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        """
+        return pulumi.get(self, "rrsa_metadata")
+
+    @rrsa_metadata.setter
+    def rrsa_metadata(self, value: Optional[pulumi.Input['ServerlessKubernetesRrsaMetadataArgs']]):
+        pulumi.set(self, "rrsa_metadata", value)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -524,6 +543,7 @@ class _ServerlessKubernetesState:
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rrsa_metadata: Optional[pulumi.Input['ServerlessKubernetesRrsaMetadataArgs']] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -547,16 +567,17 @@ class _ServerlessKubernetesState:
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
-        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
         :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
-        :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         :param pulumi.Input[bool] private_zone: (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input['ServerlessKubernetesRrsaMetadataArgs'] rrsa_metadata: (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
@@ -590,6 +611,9 @@ class _ServerlessKubernetesState:
         if force_update is not None:
             pulumi.set(__self__, "force_update", force_update)
         if kube_config is not None:
+            warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
+            pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+        if kube_config is not None:
             pulumi.set(__self__, "kube_config", kube_config)
         if load_balancer_spec is not None:
             pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
@@ -610,6 +634,8 @@ class _ServerlessKubernetesState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retain_resources is not None:
             pulumi.set(__self__, "retain_resources", retain_resources)
+        if rrsa_metadata is not None:
+            pulumi.set(__self__, "rrsa_metadata", rrsa_metadata)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if service_cidr is not None:
@@ -725,7 +751,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         """
         return pulumi.get(self, "enable_rrsa")
 
@@ -797,7 +823,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        The kubernetes cluster's name. It is the only in one Alicloud account.
         """
         return pulumi.get(self, "name")
 
@@ -858,6 +884,18 @@ class _ServerlessKubernetesState:
     @retain_resources.setter
     def retain_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "retain_resources", value)
+
+    @property
+    @pulumi.getter(name="rrsaMetadata")
+    def rrsa_metadata(self) -> Optional[pulumi.Input['ServerlessKubernetesRrsaMetadataArgs']]:
+        """
+        (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        """
+        return pulumi.get(self, "rrsa_metadata")
+
+    @rrsa_metadata.setter
+    def rrsa_metadata(self, value: Optional[pulumi.Input['ServerlessKubernetesRrsaMetadataArgs']]):
+        pulumi.set(self, "rrsa_metadata", value)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -1016,6 +1054,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rrsa_metadata: Optional[pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1081,7 +1120,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
         ## Import
 
-        Serverless Kubernetes cluster can be imported using the id, e.g.
+        Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
 
         ```sh
          $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
@@ -1099,16 +1138,17 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
-        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
         :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
-        :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         :param pulumi.Input[bool] private_zone: (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']] rrsa_metadata: (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
@@ -1180,7 +1220,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
         ## Import
 
-        Serverless Kubernetes cluster can be imported using the id, e.g.
+        Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
 
         ```sh
          $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
@@ -1220,6 +1260,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rrsa_metadata: Optional[pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1250,6 +1291,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__.__dict__["enable_rrsa"] = enable_rrsa
             __props__.__dict__["endpoint_public_access_enabled"] = endpoint_public_access_enabled
             __props__.__dict__["force_update"] = force_update
+            if kube_config is not None and not opts.urn:
+                warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
+                pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
             __props__.__dict__["kube_config"] = kube_config
             __props__.__dict__["load_balancer_spec"] = load_balancer_spec
             __props__.__dict__["logging_type"] = logging_type
@@ -1262,6 +1306,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__.__dict__["private_zone"] = private_zone
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["retain_resources"] = retain_resources
+            __props__.__dict__["rrsa_metadata"] = rrsa_metadata
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["service_cidr"] = service_cidr
             __props__.__dict__["service_discovery_types"] = service_discovery_types
@@ -1307,6 +1352,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             private_zone: Optional[pulumi.Input[bool]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            rrsa_metadata: Optional[pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             service_cidr: Optional[pulumi.Input[str]] = None,
             service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1335,16 +1381,17 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
-        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
         :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
-        :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         :param pulumi.Input[bool] private_zone: (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']] rrsa_metadata: (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
@@ -1380,6 +1427,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         __props__.__dict__["private_zone"] = private_zone
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retain_resources"] = retain_resources
+        __props__.__dict__["rrsa_metadata"] = rrsa_metadata
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["service_cidr"] = service_cidr
         __props__.__dict__["service_discovery_types"] = service_discovery_types
@@ -1454,7 +1502,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         """
         return pulumi.get(self, "enable_rrsa")
 
@@ -1502,7 +1550,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        The kubernetes cluster's name. It is the only in one Alicloud account.
         """
         return pulumi.get(self, "name")
 
@@ -1539,6 +1587,14 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="retainResources")
     def retain_resources(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "retain_resources")
+
+    @property
+    @pulumi.getter(name="rrsaMetadata")
+    def rrsa_metadata(self) -> pulumi.Output['outputs.ServerlessKubernetesRrsaMetadata']:
+        """
+        (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        """
+        return pulumi.get(self, "rrsa_metadata")
 
     @property
     @pulumi.getter(name="securityGroupId")

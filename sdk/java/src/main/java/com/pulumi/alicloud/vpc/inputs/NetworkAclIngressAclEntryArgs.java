@@ -16,14 +16,14 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
     public static final NetworkAclIngressAclEntryArgs Empty = new NetworkAclIngressAclEntryArgs();
 
     /**
-     * The description of egress entries.
+     * The description of the network acl instance.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of egress entries.
+     * @return The description of the network acl instance.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +31,14 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The entry name of egress entries.
+     * The entry name of ingress entries.
      * 
      */
     @Import(name="networkAclEntryName")
     private @Nullable Output<String> networkAclEntryName;
 
     /**
-     * @return The entry name of egress entries.
+     * @return The entry name of ingress entries.
      * 
      */
     public Optional<Output<String>> networkAclEntryName() {
@@ -46,14 +46,14 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The policy of egress entries. Valid values `accept` and `drop`.
+     * The policy of ingress entries. Valid values `accept` and `drop`.
      * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
-     * @return The policy of egress entries. Valid values `accept` and `drop`.
+     * @return The policy of ingress entries. Valid values `accept` and `drop`.
      * 
      */
     public Optional<Output<String>> policy() {
@@ -61,14 +61,14 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The port of egress entries.
+     * The port of ingress entries.
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return The port of egress entries.
+     * @return The port of ingress entries.
      * 
      */
     public Optional<Output<String>> port() {
@@ -76,14 +76,14 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+     * The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+     * @return The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -135,7 +135,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param description The description of egress entries.
+         * @param description The description of the network acl instance.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param description The description of egress entries.
+         * @param description The description of the network acl instance.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networkAclEntryName The entry name of egress entries.
+         * @param networkAclEntryName The entry name of ingress entries.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networkAclEntryName The entry name of egress entries.
+         * @param networkAclEntryName The entry name of ingress entries.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param policy The policy of egress entries. Valid values `accept` and `drop`.
+         * @param policy The policy of ingress entries. Valid values `accept` and `drop`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param policy The policy of egress entries. Valid values `accept` and `drop`.
+         * @param policy The policy of ingress entries. Valid values `accept` and `drop`.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param port The port of egress entries.
+         * @param port The port of ingress entries.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param port The port of egress entries.
+         * @param port The port of ingress entries.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param protocol The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+         * @param protocol The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class NetworkAclIngressAclEntryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param protocol The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+         * @param protocol The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
          * 
          * @return builder
          * 

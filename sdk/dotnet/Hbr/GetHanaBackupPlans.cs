@@ -23,34 +23,33 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Hbr.GetHanaBackupPlans.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Hbr.GetHanaBackupPlans.InvokeAsync(new AliCloud.Hbr.GetHanaBackupPlansArgs
+        ///         ClusterId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             ClusterId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.HbrHanaBackupPlanId1 = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("hbrHanaBackupPlanId1")]
-        ///     public Output&lt;string&gt; HbrHanaBackupPlanId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrHanaBackupPlanId1"] = ids.Apply(getHanaBackupPlansResult =&gt; getHanaBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHanaBackupPlansResult> InvokeAsync(GetHanaBackupPlansArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHanaBackupPlansResult>("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", args ?? new GetHanaBackupPlansArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHanaBackupPlansResult>("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", args ?? new GetHanaBackupPlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
@@ -64,38 +63,37 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Hbr.GetHanaBackupPlans.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Hbr.GetHanaBackupPlans.InvokeAsync(new AliCloud.Hbr.GetHanaBackupPlansArgs
+        ///         ClusterId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             ClusterId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.HbrHanaBackupPlanId1 = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("hbrHanaBackupPlanId1")]
-        ///     public Output&lt;string&gt; HbrHanaBackupPlanId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrHanaBackupPlanId1"] = ids.Apply(getHanaBackupPlansResult =&gt; getHanaBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHanaBackupPlansResult> Invoke(GetHanaBackupPlansInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHanaBackupPlansResult>("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", args ?? new GetHanaBackupPlansInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHanaBackupPlansResult>("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", args ?? new GetHanaBackupPlansInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHanaBackupPlansArgs : Pulumi.InvokeArgs
+    public sealed class GetHanaBackupPlansArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the SAP HANA instance.
@@ -145,9 +143,10 @@ namespace Pulumi.AliCloud.Hbr
         public GetHanaBackupPlansArgs()
         {
         }
+        public static new GetHanaBackupPlansArgs Empty => new GetHanaBackupPlansArgs();
     }
 
-    public sealed class GetHanaBackupPlansInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHanaBackupPlansInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the SAP HANA instance.
@@ -197,6 +196,7 @@ namespace Pulumi.AliCloud.Hbr
         public GetHanaBackupPlansInvokeArgs()
         {
         }
+        public static new GetHanaBackupPlansInvokeArgs Empty => new GetHanaBackupPlansInvokeArgs();
     }
 
 

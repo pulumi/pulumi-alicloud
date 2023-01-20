@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class ContainerGroupVolumeConfigFileVolumeConfigFileToPathGetArgs : Pulumi.ResourceArgs
+    public sealed class ContainerGroupVolumeConfigFileVolumeConfigFileToPathGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The content of the configuration file. Maximum size: 32 KB.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public ContainerGroupVolumeConfigFileVolumeConfigFileToPathGetArgs()
         {
         }
+        public static new ContainerGroupVolumeConfigFileVolumeConfigFileToPathGetArgs Empty => new ContainerGroupVolumeConfigFileVolumeConfigFileToPathGetArgs();
     }
 }

@@ -260,39 +260,39 @@ func (o GetKeyVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetKeyVersion
 
 type GetKeysKey struct {
 	// The Alibaba Cloud Resource Name (ARN) of the key.
-	Arn               string `pulumi:"arn"`
+	Arn string `pulumi:"arn"`
+	// (Available in 1.123.1+) Specifies whether to enable automatic key rotation.
 	AutomaticRotation string `pulumi:"automaticRotation"`
 	// Creation date of key.
 	CreationDate string `pulumi:"creationDate"`
 	// The owner of the key.
-	// * `automaticRotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
-	// * `keyId` -(Available in 1.123.1+)  ID of the key.
-	// * `keySpec` -(Available in 1.123.1+)  The type of the CMK.
-	// * `keyUsage` -(Available in 1.123.1+)  The usage of CMK.
-	// * `lastRotationDate` -(Available in 1.123.1+)  The date and time the last rotation was performed.
-	// * `materialExpireTime` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
-	// * `nextRotationDate` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
-	// * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
-	// * `protectionLevel` -(Available in 1.123.1+)  The protection level of the CMK.
-	// * `rotationInterval` -(Available in 1.123.1+)  The period of automatic key rotation.
-	// * `primaryKeyVersion` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
 	Creator string `pulumi:"creator"`
 	// Deletion date of key.
 	DeleteDate string `pulumi:"deleteDate"`
 	// Description of the key.
 	Description string `pulumi:"description"`
 	// ID of the key.
-	Id                 string `pulumi:"id"`
-	KeyId              string `pulumi:"keyId"`
-	KeySpec            string `pulumi:"keySpec"`
-	KeyUsage           string `pulumi:"keyUsage"`
-	LastRotationDate   string `pulumi:"lastRotationDate"`
+	Id string `pulumi:"id"`
+	// (Available in 1.123.1+)  ID of the key.
+	KeyId string `pulumi:"keyId"`
+	// (Available in 1.123.1+)  The type of the CMK.
+	KeySpec string `pulumi:"keySpec"`
+	// (Available in 1.123.1+)  The usage of CMK.
+	KeyUsage string `pulumi:"keyUsage"`
+	// (Available in 1.123.1+)  The date and time the last rotation was performed.
+	LastRotationDate string `pulumi:"lastRotationDate"`
+	// (Available in 1.123.1+)  The time and date the key material for the CMK expires.
 	MaterialExpireTime string `pulumi:"materialExpireTime"`
-	NextRotationDate   string `pulumi:"nextRotationDate"`
-	Origin             string `pulumi:"origin"`
-	PrimaryKeyVersion  string `pulumi:"primaryKeyVersion"`
-	ProtectionLevel    string `pulumi:"protectionLevel"`
-	RotationInterval   string `pulumi:"rotationInterval"`
+	// (Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+	NextRotationDate string `pulumi:"nextRotationDate"`
+	// (Available in 1.123.1+)  The source of the key material for the CMK.
+	Origin string `pulumi:"origin"`
+	// (Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
+	PrimaryKeyVersion string `pulumi:"primaryKeyVersion"`
+	// (Available in 1.123.1+)  The protection level of the CMK.
+	ProtectionLevel string `pulumi:"protectionLevel"`
+	// (Available in 1.123.1+)  The period of automatic key rotation.
+	RotationInterval string `pulumi:"rotationInterval"`
 	// Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status string `pulumi:"status"`
 }
@@ -310,39 +310,39 @@ type GetKeysKeyInput interface {
 
 type GetKeysKeyArgs struct {
 	// The Alibaba Cloud Resource Name (ARN) of the key.
-	Arn               pulumi.StringInput `pulumi:"arn"`
+	Arn pulumi.StringInput `pulumi:"arn"`
+	// (Available in 1.123.1+) Specifies whether to enable automatic key rotation.
 	AutomaticRotation pulumi.StringInput `pulumi:"automaticRotation"`
 	// Creation date of key.
 	CreationDate pulumi.StringInput `pulumi:"creationDate"`
 	// The owner of the key.
-	// * `automaticRotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
-	// * `keyId` -(Available in 1.123.1+)  ID of the key.
-	// * `keySpec` -(Available in 1.123.1+)  The type of the CMK.
-	// * `keyUsage` -(Available in 1.123.1+)  The usage of CMK.
-	// * `lastRotationDate` -(Available in 1.123.1+)  The date and time the last rotation was performed.
-	// * `materialExpireTime` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
-	// * `nextRotationDate` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
-	// * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
-	// * `protectionLevel` -(Available in 1.123.1+)  The protection level of the CMK.
-	// * `rotationInterval` -(Available in 1.123.1+)  The period of automatic key rotation.
-	// * `primaryKeyVersion` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
 	Creator pulumi.StringInput `pulumi:"creator"`
 	// Deletion date of key.
 	DeleteDate pulumi.StringInput `pulumi:"deleteDate"`
 	// Description of the key.
 	Description pulumi.StringInput `pulumi:"description"`
 	// ID of the key.
-	Id                 pulumi.StringInput `pulumi:"id"`
-	KeyId              pulumi.StringInput `pulumi:"keyId"`
-	KeySpec            pulumi.StringInput `pulumi:"keySpec"`
-	KeyUsage           pulumi.StringInput `pulumi:"keyUsage"`
-	LastRotationDate   pulumi.StringInput `pulumi:"lastRotationDate"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// (Available in 1.123.1+)  ID of the key.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// (Available in 1.123.1+)  The type of the CMK.
+	KeySpec pulumi.StringInput `pulumi:"keySpec"`
+	// (Available in 1.123.1+)  The usage of CMK.
+	KeyUsage pulumi.StringInput `pulumi:"keyUsage"`
+	// (Available in 1.123.1+)  The date and time the last rotation was performed.
+	LastRotationDate pulumi.StringInput `pulumi:"lastRotationDate"`
+	// (Available in 1.123.1+)  The time and date the key material for the CMK expires.
 	MaterialExpireTime pulumi.StringInput `pulumi:"materialExpireTime"`
-	NextRotationDate   pulumi.StringInput `pulumi:"nextRotationDate"`
-	Origin             pulumi.StringInput `pulumi:"origin"`
-	PrimaryKeyVersion  pulumi.StringInput `pulumi:"primaryKeyVersion"`
-	ProtectionLevel    pulumi.StringInput `pulumi:"protectionLevel"`
-	RotationInterval   pulumi.StringInput `pulumi:"rotationInterval"`
+	// (Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+	NextRotationDate pulumi.StringInput `pulumi:"nextRotationDate"`
+	// (Available in 1.123.1+)  The source of the key material for the CMK.
+	Origin pulumi.StringInput `pulumi:"origin"`
+	// (Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
+	PrimaryKeyVersion pulumi.StringInput `pulumi:"primaryKeyVersion"`
+	// (Available in 1.123.1+)  The protection level of the CMK.
+	ProtectionLevel pulumi.StringInput `pulumi:"protectionLevel"`
+	// (Available in 1.123.1+)  The period of automatic key rotation.
+	RotationInterval pulumi.StringInput `pulumi:"rotationInterval"`
 	// Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
@@ -403,6 +403,7 @@ func (o GetKeysKeyOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.Arn }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+) Specifies whether to enable automatic key rotation.
 func (o GetKeysKeyOutput) AutomaticRotation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.AutomaticRotation }).(pulumi.StringOutput)
 }
@@ -413,17 +414,6 @@ func (o GetKeysKeyOutput) CreationDate() pulumi.StringOutput {
 }
 
 // The owner of the key.
-// * `automaticRotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
-// * `keyId` -(Available in 1.123.1+)  ID of the key.
-// * `keySpec` -(Available in 1.123.1+)  The type of the CMK.
-// * `keyUsage` -(Available in 1.123.1+)  The usage of CMK.
-// * `lastRotationDate` -(Available in 1.123.1+)  The date and time the last rotation was performed.
-// * `materialExpireTime` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
-// * `nextRotationDate` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
-// * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
-// * `protectionLevel` -(Available in 1.123.1+)  The protection level of the CMK.
-// * `rotationInterval` -(Available in 1.123.1+)  The period of automatic key rotation.
-// * `primaryKeyVersion` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
 func (o GetKeysKeyOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.Creator }).(pulumi.StringOutput)
 }
@@ -443,42 +433,52 @@ func (o GetKeysKeyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+)  ID of the key.
 func (o GetKeysKeyOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.KeyId }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+)  The type of the CMK.
 func (o GetKeysKeyOutput) KeySpec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.KeySpec }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+)  The usage of CMK.
 func (o GetKeysKeyOutput) KeyUsage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.KeyUsage }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+)  The date and time the last rotation was performed.
 func (o GetKeysKeyOutput) LastRotationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.LastRotationDate }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+)  The time and date the key material for the CMK expires.
 func (o GetKeysKeyOutput) MaterialExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.MaterialExpireTime }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+)  The time the next rotation is scheduled for execution.
 func (o GetKeysKeyOutput) NextRotationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.NextRotationDate }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+)  The source of the key material for the CMK.
 func (o GetKeysKeyOutput) Origin() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.Origin }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
 func (o GetKeysKeyOutput) PrimaryKeyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.PrimaryKeyVersion }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+)  The protection level of the CMK.
 func (o GetKeysKeyOutput) ProtectionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.ProtectionLevel }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+)  The period of automatic key rotation.
 func (o GetKeysKeyOutput) RotationInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.RotationInterval }).(pulumi.StringOutput)
 }

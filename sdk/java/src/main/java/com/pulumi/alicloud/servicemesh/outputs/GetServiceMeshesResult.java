@@ -21,10 +21,22 @@ public final class GetServiceMeshesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Service Mesh Service Meshes. Each element contains the following attributes:
+     * 
+     */
     private List<GetServiceMeshesMesh> meshes;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Service Mesh names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
 
     private GetServiceMeshesResult() {}
@@ -41,18 +53,30 @@ public final class GetServiceMeshesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Service Mesh Service Meshes. Each element contains the following attributes:
+     * 
+     */
     public List<GetServiceMeshesMesh> meshes() {
         return this.meshes;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Service Mesh names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

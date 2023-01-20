@@ -11,9 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The project is the basic unit of operation in maxcompute. It is similar to the concept of Database or Schema in traditional databases, and sets the boundary for maxcompute multi-user isolation and access control. [Refer to details](https://www.alibabacloud.com/help/doc-detail/27818.html).
+// Provides a Max Compute Project resource.
 //
-// ->**NOTE:** Available in 1.77.0+.
+// For information about Max Compute Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/473237.html).
+//
+// > **NOTE:** Available in v1.77.0+.
 //
 // ## Example Usage
 //
@@ -31,10 +33,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := maxcompute.NewProject(ctx, "example", &maxcompute.ProjectArgs{
-//				OrderType:         pulumi.String("PayAsYouGo"),
-//				ProjectName:       pulumi.String("tf_maxcompute_project"),
-//				SpecificationType: pulumi.String("OdpsStandard"),
+//			_, err := maxcompute.NewProject(ctx, "default", &maxcompute.ProjectArgs{
+//				Comment:      pulumi.String("test_for_terraform"),
+//				DefaultQuota: pulumi.String("默认后付费Quota"),
+//				ProductType:  pulumi.String("PAYASYOUGO"),
+//				ProjectName:  pulumi.String("test_create_spec_one"),
 //			})
 //			if err != nil {
 //				return err
@@ -44,27 +47,29 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// MaxCompute project can be imported using the *name* or ID, e.g.
-//
-// ```sh
-//
-//	$ pulumi import alicloud:maxcompute/project:Project example tf_maxcompute_project
-//
-// ```
 type Project struct {
 	pulumi.CustomResourceState
 
-	// It has been deprecated from provider version 1.110.0 and `projectName` instead.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The type of payment, only `PayAsYouGo` supported currently.
-	OrderType pulumi.StringOutput `pulumi:"orderType"`
-	// The name of the maxcompute project.
+	// Comments of project
+	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// Default Computing Resource Group
+	DefaultQuota pulumi.StringPtrOutput `pulumi:"defaultQuota"`
+	// IP whitelistSee the following `Block IpWhiteList`.
+	IpWhiteList ProjectIpWhiteListPtrOutput `pulumi:"ipWhiteList"`
+	// Project owner
+	Owner pulumi.StringOutput `pulumi:"owner"`
+	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+	ProductType pulumi.StringPtrOutput `pulumi:"productType"`
+	// The name of the project
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
-	// The type of resource Specification, only `OdpsStandard` supported currently.
-	SpecificationType pulumi.StringOutput `pulumi:"specificationType"`
+	// Project base attributesSee the following `Block Properties`.
+	Properties ProjectPropertiesOutput `pulumi:"properties"`
+	// Security-related attributesSee the following `Block SecurityProperties`.
+	SecurityProperties ProjectSecurityPropertiesOutput `pulumi:"securityProperties"`
+	// The status of the resource
+	Status pulumi.StringOutput `pulumi:"status"`
+	// Life cycle type.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -74,11 +79,8 @@ func NewProject(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.OrderType == nil {
-		return nil, errors.New("invalid value for required argument 'OrderType'")
-	}
-	if args.SpecificationType == nil {
-		return nil, errors.New("invalid value for required argument 'SpecificationType'")
+	if args.ProjectName == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectName'")
 	}
 	var resource Project
 	err := ctx.RegisterResource("alicloud:maxcompute/project:Project", name, args, &resource, opts...)
@@ -102,25 +104,49 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// It has been deprecated from provider version 1.110.0 and `projectName` instead.
-	Name *string `pulumi:"name"`
-	// The type of payment, only `PayAsYouGo` supported currently.
-	OrderType *string `pulumi:"orderType"`
-	// The name of the maxcompute project.
+	// Comments of project
+	Comment *string `pulumi:"comment"`
+	// Default Computing Resource Group
+	DefaultQuota *string `pulumi:"defaultQuota"`
+	// IP whitelistSee the following `Block IpWhiteList`.
+	IpWhiteList *ProjectIpWhiteList `pulumi:"ipWhiteList"`
+	// Project owner
+	Owner *string `pulumi:"owner"`
+	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+	ProductType *string `pulumi:"productType"`
+	// The name of the project
 	ProjectName *string `pulumi:"projectName"`
-	// The type of resource Specification, only `OdpsStandard` supported currently.
-	SpecificationType *string `pulumi:"specificationType"`
+	// Project base attributesSee the following `Block Properties`.
+	Properties *ProjectProperties `pulumi:"properties"`
+	// Security-related attributesSee the following `Block SecurityProperties`.
+	SecurityProperties *ProjectSecurityProperties `pulumi:"securityProperties"`
+	// The status of the resource
+	Status *string `pulumi:"status"`
+	// Life cycle type.
+	Type *string `pulumi:"type"`
 }
 
 type ProjectState struct {
-	// It has been deprecated from provider version 1.110.0 and `projectName` instead.
-	Name pulumi.StringPtrInput
-	// The type of payment, only `PayAsYouGo` supported currently.
-	OrderType pulumi.StringPtrInput
-	// The name of the maxcompute project.
+	// Comments of project
+	Comment pulumi.StringPtrInput
+	// Default Computing Resource Group
+	DefaultQuota pulumi.StringPtrInput
+	// IP whitelistSee the following `Block IpWhiteList`.
+	IpWhiteList ProjectIpWhiteListPtrInput
+	// Project owner
+	Owner pulumi.StringPtrInput
+	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+	ProductType pulumi.StringPtrInput
+	// The name of the project
 	ProjectName pulumi.StringPtrInput
-	// The type of resource Specification, only `OdpsStandard` supported currently.
-	SpecificationType pulumi.StringPtrInput
+	// Project base attributesSee the following `Block Properties`.
+	Properties ProjectPropertiesPtrInput
+	// Security-related attributesSee the following `Block SecurityProperties`.
+	SecurityProperties ProjectSecurityPropertiesPtrInput
+	// The status of the resource
+	Status pulumi.StringPtrInput
+	// Life cycle type.
+	Type pulumi.StringPtrInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -128,26 +154,38 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// It has been deprecated from provider version 1.110.0 and `projectName` instead.
-	Name *string `pulumi:"name"`
-	// The type of payment, only `PayAsYouGo` supported currently.
-	OrderType string `pulumi:"orderType"`
-	// The name of the maxcompute project.
-	ProjectName *string `pulumi:"projectName"`
-	// The type of resource Specification, only `OdpsStandard` supported currently.
-	SpecificationType string `pulumi:"specificationType"`
+	// Comments of project
+	Comment *string `pulumi:"comment"`
+	// Default Computing Resource Group
+	DefaultQuota *string `pulumi:"defaultQuota"`
+	// IP whitelistSee the following `Block IpWhiteList`.
+	IpWhiteList *ProjectIpWhiteList `pulumi:"ipWhiteList"`
+	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+	ProductType *string `pulumi:"productType"`
+	// The name of the project
+	ProjectName string `pulumi:"projectName"`
+	// Project base attributesSee the following `Block Properties`.
+	Properties *ProjectProperties `pulumi:"properties"`
+	// Security-related attributesSee the following `Block SecurityProperties`.
+	SecurityProperties *ProjectSecurityProperties `pulumi:"securityProperties"`
 }
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// It has been deprecated from provider version 1.110.0 and `projectName` instead.
-	Name pulumi.StringPtrInput
-	// The type of payment, only `PayAsYouGo` supported currently.
-	OrderType pulumi.StringInput
-	// The name of the maxcompute project.
-	ProjectName pulumi.StringPtrInput
-	// The type of resource Specification, only `OdpsStandard` supported currently.
-	SpecificationType pulumi.StringInput
+	// Comments of project
+	Comment pulumi.StringPtrInput
+	// Default Computing Resource Group
+	DefaultQuota pulumi.StringPtrInput
+	// IP whitelistSee the following `Block IpWhiteList`.
+	IpWhiteList ProjectIpWhiteListPtrInput
+	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+	ProductType pulumi.StringPtrInput
+	// The name of the project
+	ProjectName pulumi.StringInput
+	// Project base attributesSee the following `Block Properties`.
+	Properties ProjectPropertiesPtrInput
+	// Security-related attributesSee the following `Block SecurityProperties`.
+	SecurityProperties ProjectSecurityPropertiesPtrInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {
@@ -237,24 +275,54 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
-// It has been deprecated from provider version 1.110.0 and `projectName` instead.
-func (o ProjectOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+// Comments of project
+func (o ProjectOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// The type of payment, only `PayAsYouGo` supported currently.
-func (o ProjectOutput) OrderType() pulumi.StringOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.OrderType }).(pulumi.StringOutput)
+// Default Computing Resource Group
+func (o ProjectOutput) DefaultQuota() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.DefaultQuota }).(pulumi.StringPtrOutput)
 }
 
-// The name of the maxcompute project.
+// IP whitelistSee the following `Block IpWhiteList`.
+func (o ProjectOutput) IpWhiteList() ProjectIpWhiteListPtrOutput {
+	return o.ApplyT(func(v *Project) ProjectIpWhiteListPtrOutput { return v.IpWhiteList }).(ProjectIpWhiteListPtrOutput)
+}
+
+// Project owner
+func (o ProjectOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+func (o ProjectOutput) ProductType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.ProductType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the project
 func (o ProjectOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }
 
-// The type of resource Specification, only `OdpsStandard` supported currently.
-func (o ProjectOutput) SpecificationType() pulumi.StringOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.SpecificationType }).(pulumi.StringOutput)
+// Project base attributesSee the following `Block Properties`.
+func (o ProjectOutput) Properties() ProjectPropertiesOutput {
+	return o.ApplyT(func(v *Project) ProjectPropertiesOutput { return v.Properties }).(ProjectPropertiesOutput)
+}
+
+// Security-related attributesSee the following `Block SecurityProperties`.
+func (o ProjectOutput) SecurityProperties() ProjectSecurityPropertiesOutput {
+	return o.ApplyT(func(v *Project) ProjectSecurityPropertiesOutput { return v.SecurityProperties }).(ProjectSecurityPropertiesOutput)
+}
+
+// The status of the resource
+func (o ProjectOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Life cycle type.
+func (o ProjectOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type ProjectArrayOutput struct{ *pulumi.OutputState }

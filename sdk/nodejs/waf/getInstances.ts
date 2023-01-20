@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -24,16 +25,13 @@ import * as utilities from "../utilities";
  *     resourceGroupId: "rg-acfmwvv********",
  *     instanceSource: "waf-cloud",
  * });
- * export const theFirstWafInstanceId = _default.then(_default => _default.instances?[0]?.id);
+ * export const theFirstWafInstanceId = _default.then(_default => _default.instances?.[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:waf/getInstances:getInstances", {
         "ids": args.ids,
         "instanceSource": args.instanceSource,
@@ -90,9 +88,30 @@ export interface GetInstancesResult {
      */
     readonly status?: number;
 }
-
+/**
+ * Provides a WAF datasource to retrieve instances.
+ *
+ * For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+ *
+ * > **NOTE:** Available in 1.90.0+ .
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.waf.getInstances({
+ *     ids: ["waf-cn-09k********"],
+ *     status: 1,
+ *     resourceGroupId: "rg-acfmwvv********",
+ *     instanceSource: "waf-cloud",
+ * });
+ * export const theFirstWafInstanceId = _default.then(_default => _default.instances?.[0]?.id);
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**

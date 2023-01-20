@@ -23,42 +23,40 @@ namespace Pulumi.AliCloud.BastionHost
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.BastionHost.GetHosts.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.BastionHost.GetHosts.InvokeAsync(new AliCloud.BastionHost.GetHostsArgs
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "1",
-        ///                 "2",
-        ///             },
-        ///         }));
-        ///         this.BastionhostHostId1 = ids.Apply(ids =&gt; ids.Hosts?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetHosts.InvokeAsync(new AliCloud.BastionHost.GetHostsArgs
-        ///         {
-        ///             InstanceId = "example_value",
-        ///             NameRegex = "^my-Host",
-        ///         }));
-        ///         this.BastionhostHostId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Hosts?[0]?.Id);
-        ///     }
+        ///             "1",
+        ///             "2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("bastionhostHostId1")]
-        ///     public Output&lt;string&gt; BastionhostHostId1 { get; set; }
-        ///     [Output("bastionhostHostId2")]
-        ///     public Output&lt;string&gt; BastionhostHostId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.BastionHost.GetHosts.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///         NameRegex = "^my-Host",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostHostId1"] = ids.Apply(getHostsResult =&gt; getHostsResult.Hosts[0]?.Id),
+        ///         ["bastionhostHostId2"] = nameRegex.Apply(getHostsResult =&gt; getHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostsResult> InvokeAsync(GetHostsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostsResult>("alicloud:bastionhost/getHosts:getHosts", args ?? new GetHostsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostsResult>("alicloud:bastionhost/getHosts:getHosts", args ?? new GetHostsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
@@ -72,46 +70,44 @@ namespace Pulumi.AliCloud.BastionHost
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.BastionHost.GetHosts.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.BastionHost.GetHosts.InvokeAsync(new AliCloud.BastionHost.GetHostsArgs
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "1",
-        ///                 "2",
-        ///             },
-        ///         }));
-        ///         this.BastionhostHostId1 = ids.Apply(ids =&gt; ids.Hosts?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetHosts.InvokeAsync(new AliCloud.BastionHost.GetHostsArgs
-        ///         {
-        ///             InstanceId = "example_value",
-        ///             NameRegex = "^my-Host",
-        ///         }));
-        ///         this.BastionhostHostId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Hosts?[0]?.Id);
-        ///     }
+        ///             "1",
+        ///             "2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("bastionhostHostId1")]
-        ///     public Output&lt;string&gt; BastionhostHostId1 { get; set; }
-        ///     [Output("bastionhostHostId2")]
-        ///     public Output&lt;string&gt; BastionhostHostId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.BastionHost.GetHosts.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///         NameRegex = "^my-Host",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostHostId1"] = ids.Apply(getHostsResult =&gt; getHostsResult.Hosts[0]?.Id),
+        ///         ["bastionhostHostId2"] = nameRegex.Apply(getHostsResult =&gt; getHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostsResult> Invoke(GetHostsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostsResult>("alicloud:bastionhost/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostsResult>("alicloud:bastionhost/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHostsArgs : Pulumi.InvokeArgs
+    public sealed class GetHostsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -185,9 +181,10 @@ namespace Pulumi.AliCloud.BastionHost
         public GetHostsArgs()
         {
         }
+        public static new GetHostsArgs Empty => new GetHostsArgs();
     }
 
-    public sealed class GetHostsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHostsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -261,6 +258,7 @@ namespace Pulumi.AliCloud.BastionHost
         public GetHostsInvokeArgs()
         {
         }
+        public static new GetHostsInvokeArgs Empty => new GetHostsInvokeArgs();
     }
 
 

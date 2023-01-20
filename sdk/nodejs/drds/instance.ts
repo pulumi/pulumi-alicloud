@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstance = new alicloud.drds.Instance("default", {
+ * const _default = new alicloud.drds.Instance("default", {
  *     description: "drds instance",
  *     instanceChargeType: "PostPaid",
  *     instanceSeries: "drds.sn1.4c8g",
@@ -68,6 +68,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * (Available in 1.196.0+) The connection string of the DRDS instance.
+     */
+    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    /**
      * Description of the DRDS instance, This description can have a string of 2 to 256 characters.
      */
     public readonly description!: pulumi.Output<string>;
@@ -83,6 +87,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceSeries!: pulumi.Output<string>;
     /**
+     * (Available in 1.196.0+) The connection port of the DRDS instance.
+     */
+    public /*out*/ readonly port!: pulumi.Output<string>;
+    /**
      * User-defined DRDS instance specification. Value range:
      * - `drds.sn1.4c8g` for DRDS instance Starter version;
      * - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -94,6 +102,10 @@ export class Instance extends pulumi.CustomResource {
      * - value range : `drds.sn1.32c64g.128c256g`
      */
     public readonly specification!: pulumi.Output<string>;
+    /**
+     * The id of the VPC.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * The VSwitch ID to launch in.
      */
@@ -116,10 +128,13 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             resourceInputs["instanceSeries"] = state ? state.instanceSeries : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["specification"] = state ? state.specification : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -143,8 +158,11 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["instanceSeries"] = args ? args.instanceSeries : undefined;
             resourceInputs["specification"] = args ? args.specification : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["connectionString"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -155,6 +173,10 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * (Available in 1.196.0+) The connection string of the DRDS instance.
+     */
+    connectionString?: pulumi.Input<string>;
     /**
      * Description of the DRDS instance, This description can have a string of 2 to 256 characters.
      */
@@ -171,6 +193,10 @@ export interface InstanceState {
      */
     instanceSeries?: pulumi.Input<string>;
     /**
+     * (Available in 1.196.0+) The connection port of the DRDS instance.
+     */
+    port?: pulumi.Input<string>;
+    /**
      * User-defined DRDS instance specification. Value range:
      * - `drds.sn1.4c8g` for DRDS instance Starter version;
      * - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -182,6 +208,10 @@ export interface InstanceState {
      * - value range : `drds.sn1.32c64g.128c256g`
      */
     specification?: pulumi.Input<string>;
+    /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The VSwitch ID to launch in.
      */
@@ -223,6 +253,10 @@ export interface InstanceArgs {
      * - value range : `drds.sn1.32c64g.128c256g`
      */
     specification: pulumi.Input<string>;
+    /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The VSwitch ID to launch in.
      */

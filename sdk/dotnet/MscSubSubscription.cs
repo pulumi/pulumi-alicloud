@@ -19,25 +19,23 @@ namespace Pulumi.AliCloud
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.MscSubSubscription("example", new()
     ///     {
-    ///         var example = new AliCloud.MscSubSubscription("example", new AliCloud.MscSubSubscriptionArgs
-    ///         {
-    ///             EmailStatus = 1,
-    ///             ItemName = "Notifications of Product Expiration",
-    ///             PmsgStatus = 1,
-    ///             SmsStatus = 1,
-    ///             TtsStatus = 1,
-    ///             WebhookStatus = 0,
-    ///         });
-    ///     }
+    ///         EmailStatus = 1,
+    ///         ItemName = "Notifications of Product Expiration",
+    ///         PmsgStatus = 1,
+    ///         SmsStatus = 1,
+    ///         TtsStatus = 1,
+    ///         WebhookStatus = 0,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:index/mscSubSubscription:MscSubSubscription")]
-    public partial class MscSubSubscription : Pulumi.CustomResource
+    public partial class MscSubSubscription : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The channel the Subscription.
@@ -152,7 +150,7 @@ namespace Pulumi.AliCloud
         }
     }
 
-    public sealed class MscSubSubscriptionArgs : Pulumi.ResourceArgs
+    public sealed class MscSubSubscriptionArgs : global::Pulumi.ResourceArgs
     {
         [Input("contactIds")]
         private InputList<string>? _contactIds;
@@ -213,9 +211,10 @@ namespace Pulumi.AliCloud
         public MscSubSubscriptionArgs()
         {
         }
+        public static new MscSubSubscriptionArgs Empty => new MscSubSubscriptionArgs();
     }
 
-    public sealed class MscSubSubscriptionState : Pulumi.ResourceArgs
+    public sealed class MscSubSubscriptionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The channel the Subscription.
@@ -288,5 +287,6 @@ namespace Pulumi.AliCloud
         public MscSubSubscriptionState()
         {
         }
+        public static new MscSubSubscriptionState Empty => new MscSubSubscriptionState();
     }
 }

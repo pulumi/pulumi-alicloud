@@ -24,32 +24,29 @@ namespace Pulumi.AliCloud.RocketMQ
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultQos = new AliCloud.RocketMQ.Qos("defaultQos", new AliCloud.RocketMQ.QosArgs
-    ///         {
-    ///         });
-    ///         var defaultQosPolicy = new AliCloud.RocketMQ.QosPolicy("defaultQosPolicy", new AliCloud.RocketMQ.QosPolicyArgs
-    ///         {
-    ///             QosId = defaultQos.Id,
-    ///             Description = "tf-testSagQosPolicyDescription",
-    ///             Priority = 1,
-    ///             IpProtocol = "ALL",
-    ///             SourceCidr = "192.168.0.0/24",
-    ///             SourcePortRange = "-1/-1",
-    ///             DestCidr = "10.10.0.0/24",
-    ///             DestPortRange = "-1/-1",
-    ///             StartTime = "2019-10-25T16:41:33+0800",
-    ///             EndTime = "2019-10-26T16:41:33+0800",
-    ///         });
-    ///     }
+    ///     var defaultQos = new AliCloud.RocketMQ.Qos("defaultQos");
     /// 
-    /// }
+    ///     var defaultQosPolicy = new AliCloud.RocketMQ.QosPolicy("defaultQosPolicy", new()
+    ///     {
+    ///         QosId = defaultQos.Id,
+    ///         Description = "tf-testSagQosPolicyDescription",
+    ///         Priority = 1,
+    ///         IpProtocol = "ALL",
+    ///         SourceCidr = "192.168.0.0/24",
+    ///         SourcePortRange = "-1/-1",
+    ///         DestCidr = "10.10.0.0/24",
+    ///         DestPortRange = "-1/-1",
+    ///         StartTime = "2019-10-25T16:41:33+0800",
+    ///         EndTime = "2019-10-26T16:41:33+0800",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +58,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/qosPolicy:QosPolicy")]
-    public partial class QosPolicy : Pulumi.CustomResource
+    public partial class QosPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the QoS policy.
@@ -173,7 +170,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
-    public sealed class QosPolicyArgs : Pulumi.ResourceArgs
+    public sealed class QosPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the QoS policy.
@@ -244,9 +241,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public QosPolicyArgs()
         {
         }
+        public static new QosPolicyArgs Empty => new QosPolicyArgs();
     }
 
-    public sealed class QosPolicyState : Pulumi.ResourceArgs
+    public sealed class QosPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the QoS policy.
@@ -317,5 +315,6 @@ namespace Pulumi.AliCloud.RocketMQ
         public QosPolicyState()
         {
         }
+        public static new QosPolicyState Empty => new QosPolicyState();
     }
 }

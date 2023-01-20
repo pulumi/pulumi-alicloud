@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ClickHouse.Inputs
 {
 
-    public sealed class DbClusterDbClusterAccessWhiteListArgs : Pulumi.ResourceArgs
+    public sealed class DbClusterDbClusterAccessWhiteListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Field `db_cluster_ip_array_attribute` has been removed from provider.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.ClickHouse.Inputs
         public DbClusterDbClusterAccessWhiteListArgs()
         {
         }
+        public static new DbClusterDbClusterAccessWhiteListArgs Empty => new DbClusterDbClusterAccessWhiteListArgs();
     }
 }

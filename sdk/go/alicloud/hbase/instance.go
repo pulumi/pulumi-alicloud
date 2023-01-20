@@ -125,6 +125,8 @@ type Instance struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
 	UiProxyConnAddrs InstanceUiProxyConnAddrArrayOutput `pulumi:"uiProxyConnAddrs"`
+	// The id of the VPC.
+	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// (Available in 1.105.0+) The zookeeper addresses of the cluster.
@@ -149,6 +151,13 @@ func NewInstance(ctx *pulumi.Context,
 	if args.MasterInstanceType == nil {
 		return nil, errors.New("invalid value for required argument 'MasterInstanceType'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:hbase/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -222,6 +231,8 @@ type instanceState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
 	UiProxyConnAddrs []InstanceUiProxyConnAddr `pulumi:"uiProxyConnAddrs"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId *string `pulumi:"vswitchId"`
 	// (Available in 1.105.0+) The zookeeper addresses of the cluster.
@@ -282,6 +293,8 @@ type InstanceState struct {
 	Tags pulumi.MapInput
 	// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
 	UiProxyConnAddrs InstanceUiProxyConnAddrArrayInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId pulumi.StringPtrInput
 	// (Available in 1.105.0+) The zookeeper addresses of the cluster.
@@ -340,6 +353,8 @@ type instanceArgs struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
@@ -393,6 +408,8 @@ type InstanceArgs struct {
 	SecurityGroups pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
@@ -607,6 +624,11 @@ func (o InstanceOutput) Tags() pulumi.MapOutput {
 // (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
 func (o InstanceOutput) UiProxyConnAddrs() InstanceUiProxyConnAddrArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceUiProxyConnAddrArrayOutput { return v.UiProxyConnAddrs }).(InstanceUiProxyConnAddrArrayOutput)
+}
+
+// The id of the VPC.
+func (o InstanceOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 // If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.

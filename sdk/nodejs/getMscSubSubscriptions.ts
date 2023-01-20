@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -19,16 +20,13 @@ import * as utilities from "./utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.getMscSubSubscriptions({});
- * export const mscSubSubscriptionId1 = _default.then(_default => _default.subscriptions?[0]?.id);
+ * export const mscSubSubscriptionId1 = _default.then(_default => _default.subscriptions?.[0]?.id);
  * ```
  */
 export function getMscSubSubscriptions(args?: GetMscSubSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubSubscriptionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", {
         "outputFile": args.outputFile,
     }, opts);
@@ -52,9 +50,25 @@ export interface GetMscSubSubscriptionsResult {
     readonly outputFile?: string;
     readonly subscriptions: outputs.GetMscSubSubscriptionsSubscription[];
 }
-
+/**
+ * This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.getMscSubSubscriptions({});
+ * export const mscSubSubscriptionId1 = _default.then(_default => _default.subscriptions?.[0]?.id);
+ * ```
+ */
 export function getMscSubSubscriptionsOutput(args?: GetMscSubSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubSubscriptionsResult> {
-    return pulumi.output(args).apply(a => getMscSubSubscriptions(a, opts))
+    return pulumi.output(args).apply((a: any) => getMscSubSubscriptions(a, opts))
 }
 
 /**

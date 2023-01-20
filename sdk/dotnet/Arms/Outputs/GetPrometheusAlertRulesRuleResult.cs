@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string DispatchRuleId;
         /// <summary>
-        /// -The duration of the alert.
+        /// The duration of the alert.
         /// </summary>
         public readonly string Duration;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// -The labels of the resource.
+        /// The labels of the resource.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPrometheusAlertRulesRuleLabelResult> Labels;
         /// <summary>
@@ -59,8 +59,6 @@ namespace Pulumi.AliCloud.Arms.Outputs
         public readonly string PrometheusAlertRuleName;
         /// <summary>
         /// The status of the resource. Valid values: `0`, `1`.
-        /// * `1`: open.
-        /// * `0`: off.
         /// </summary>
         public readonly int Status;
         /// <summary>

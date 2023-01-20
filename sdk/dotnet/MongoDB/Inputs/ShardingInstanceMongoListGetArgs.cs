@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MongoDB.Inputs
 {
 
-    public sealed class ShardingInstanceMongoListGetArgs : Pulumi.ResourceArgs
+    public sealed class ShardingInstanceMongoListGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The connection address of the Config Server node.
@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? ConnectString { get; set; }
 
         /// <summary>
-        /// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        /// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         [Input("nodeClass", required: true)]
         public Input<string> NodeClass { get; set; } = null!;
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public ShardingInstanceMongoListGetArgs()
         {
         }
+        public static new ShardingInstanceMongoListGetArgs Empty => new ShardingInstanceMongoListGetArgs();
     }
 }

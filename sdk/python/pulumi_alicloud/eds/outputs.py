@@ -116,8 +116,8 @@ class EcdPolicyGroupAuthorizeAccessPolicyRule(dict):
                  cidr_ip: Optional[str] = None,
                  description: Optional[str] = None):
         """
-        :param str cidr_ip: The cidrip of authorize access rule.
-        :param str description: The description of authorize access rule.
+        :param str cidr_ip: The cidrip of security rules.
+        :param str description: The description of security rules.
         """
         if cidr_ip is not None:
             pulumi.set(__self__, "cidr_ip", cidr_ip)
@@ -128,7 +128,7 @@ class EcdPolicyGroupAuthorizeAccessPolicyRule(dict):
     @pulumi.getter(name="cidrIp")
     def cidr_ip(self) -> Optional[str]:
         """
-        The cidrip of authorize access rule.
+        The cidrip of security rules.
         """
         return pulumi.get(self, "cidr_ip")
 
@@ -136,7 +136,7 @@ class EcdPolicyGroupAuthorizeAccessPolicyRule(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of authorize access rule.
+        The description of security rules.
         """
         return pulumi.get(self, "description")
 
@@ -173,8 +173,8 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRule(dict):
                  priority: Optional[str] = None,
                  type: Optional[str] = None):
         """
-        :param str cidr_ip: The cidrip of authorize access rule.
-        :param str description: The description of authorize access rule.
+        :param str cidr_ip: The cidrip of security rules.
+        :param str description: The description of security rules.
         :param str ip_protocol: The ip protocol of security rules.
         :param str policy: The policy of security rules.
         :param str port_range: The port range of security rules.
@@ -200,7 +200,7 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRule(dict):
     @pulumi.getter(name="cidrIp")
     def cidr_ip(self) -> Optional[str]:
         """
-        The cidrip of authorize access rule.
+        The cidrip of security rules.
         """
         return pulumi.get(self, "cidr_ip")
 
@@ -208,7 +208,7 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRule(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of authorize access rule.
+        The description of security rules.
         """
         return pulumi.get(self, "description")
 
@@ -3348,7 +3348,7 @@ class GetSnapshotsSnapshotResult(dict):
         :param str progress: The progress of creating the snapshot.
         :param int remain_time: The remaining time that is required to create the snapshot. Unit: seconds.
         :param str snapshot_id: The ID of the snapshot.
-        :param str snapshot_name: -The name of the snapshot.
+        :param str snapshot_name: The name of the snapshot.
         :param str snapshot_type: The type of the snapshot.
         :param str source_disk_size: The capacity of the source disk. Unit: GiB.
         :param str source_disk_type: The type of the source disk.
@@ -3427,7 +3427,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> str:
         """
-        -The name of the snapshot.
+        The name of the snapshot.
         """
         return pulumi.get(self, "snapshot_name")
 

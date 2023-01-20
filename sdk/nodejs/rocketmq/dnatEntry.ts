@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultDnatEntry = new alicloud.rocketmq.DnatEntry("default", {
+ * const _default = new alicloud.rocketmq.DnatEntry("default", {
  *     externalIp: "1.0.0.2",
  *     externalPort: "1",
  *     internalIp: "10.0.0.2",

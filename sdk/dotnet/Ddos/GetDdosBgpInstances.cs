@@ -14,76 +14,74 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.57.0+ .
+        /// &gt; **NOTE:** Available in 1.183.0+ .
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instanceDdosBgpInstances = AliCloud.Ddos.GetDdosBgpInstances.Invoke(new()
         ///     {
-        ///         var instanceDdosBgpInstances = Output.Create(AliCloud.Ddos.GetDdosBgpInstances.InvokeAsync(new AliCloud.Ddos.GetDdosBgpInstancesArgs
-        ///         {
-        ///             NameRegex = "^ddosbgp",
-        ///         }));
-        ///         this.Instance = alicloud_ddosbgp_instances.Instance.Select(__item =&gt; __item.Id).ToList();
-        ///     }
+        ///         NameRegex = "^ddosbgp",
+        ///     });
         /// 
-        ///     [Output("instance")]
-        ///     public Output&lt;string&gt; Instance { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instance"] = alicloud_ddosbgp_instances.Instance.Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDdosBgpInstancesResult> InvokeAsync(GetDdosBgpInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? new GetDdosBgpInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? new GetDdosBgpInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.57.0+ .
+        /// &gt; **NOTE:** Available in 1.183.0+ .
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instanceDdosBgpInstances = AliCloud.Ddos.GetDdosBgpInstances.Invoke(new()
         ///     {
-        ///         var instanceDdosBgpInstances = Output.Create(AliCloud.Ddos.GetDdosBgpInstances.InvokeAsync(new AliCloud.Ddos.GetDdosBgpInstancesArgs
-        ///         {
-        ///             NameRegex = "^ddosbgp",
-        ///         }));
-        ///         this.Instance = alicloud_ddosbgp_instances.Instance.Select(__item =&gt; __item.Id).ToList();
-        ///     }
+        ///         NameRegex = "^ddosbgp",
+        ///     });
         /// 
-        ///     [Output("instance")]
-        ///     public Output&lt;string&gt; Instance { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instance"] = alicloud_ddosbgp_instances.Instance.Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDdosBgpInstancesResult> Invoke(GetDdosBgpInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? new GetDdosBgpInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? new GetDdosBgpInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDdosBgpInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetDdosBgpInstancesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -109,9 +107,10 @@ namespace Pulumi.AliCloud.Ddos
         public GetDdosBgpInstancesArgs()
         {
         }
+        public static new GetDdosBgpInstancesArgs Empty => new GetDdosBgpInstancesArgs();
     }
 
-    public sealed class GetDdosBgpInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDdosBgpInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -137,6 +136,7 @@ namespace Pulumi.AliCloud.Ddos
         public GetDdosBgpInstancesInvokeArgs()
         {
         }
+        public static new GetDdosBgpInstancesInvokeArgs Empty => new GetDdosBgpInstancesInvokeArgs();
     }
 
 

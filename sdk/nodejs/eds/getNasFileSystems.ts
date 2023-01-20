@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -30,20 +31,17 @@ import * as utilities from "../utilities";
  *     nasFileSystemName: "your_nas_file_system_name",
  * });
  * const ids = alicloud.eds.getNasFileSystems({});
- * export const ecdNasFileSystemId1 = ids.then(ids => ids.systems?[0]?.id);
+ * export const ecdNasFileSystemId1 = ids.then(ids => ids.systems?.[0]?.id);
  * const nameRegex = defaultNasFileSystem.nasFileSystemName.apply(nasFileSystemName => alicloud.eds.getNasFileSystemsOutput({
  *     nameRegex: nasFileSystemName,
  * }));
- * export const ecdNasFileSystemId2 = nameRegex.apply(nameRegex => nameRegex.systems?[0]?.id);
+ * export const ecdNasFileSystemId2 = nameRegex.apply(nameRegex => nameRegex.systems?.[0]?.id);
  * ```
  */
 export function getNasFileSystems(args?: GetNasFileSystemsArgs, opts?: pulumi.InvokeOptions): Promise<GetNasFileSystemsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getNasFileSystems:getNasFileSystems", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -92,9 +90,40 @@ export interface GetNasFileSystemsResult {
     readonly status?: string;
     readonly systems: outputs.eds.GetNasFileSystemsSystem[];
 }
-
+/**
+ * This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.141.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     desktopAccessType: "Internet",
+ *     officeSiteName: "your_office_site_name",
+ *     enableInternetAccess: false,
+ * });
+ * const defaultNasFileSystem = new alicloud.eds.NasFileSystem("defaultNasFileSystem", {
+ *     description: "your_description",
+ *     officeSiteId: defaultSimpleOfficeSite.id,
+ *     nasFileSystemName: "your_nas_file_system_name",
+ * });
+ * const ids = alicloud.eds.getNasFileSystems({});
+ * export const ecdNasFileSystemId1 = ids.then(ids => ids.systems?.[0]?.id);
+ * const nameRegex = defaultNasFileSystem.nasFileSystemName.apply(nasFileSystemName => alicloud.eds.getNasFileSystemsOutput({
+ *     nameRegex: nasFileSystemName,
+ * }));
+ * export const ecdNasFileSystemId2 = nameRegex.apply(nameRegex => nameRegex.systems?.[0]?.id);
+ * ```
+ */
 export function getNasFileSystemsOutput(args?: GetNasFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasFileSystemsResult> {
-    return pulumi.output(args).apply(a => getNasFileSystems(a, opts))
+    return pulumi.output(args).apply((a: any) => getNasFileSystems(a, opts))
 }
 
 /**

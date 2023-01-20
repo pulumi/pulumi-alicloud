@@ -17,119 +17,113 @@ namespace Pulumi.AliCloud.KVStore
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.KVStore.Instance("example", new()
     ///     {
-    ///         var example = new AliCloud.KVStore.Instance("example", new AliCloud.KVStore.InstanceArgs
+    ///         Config = 
     ///         {
-    ///             Config = 
-    ///             {
-    ///                 { "appendonly", "yes" },
-    ///                 { "lazyfree-lazy-eviction", "yes" },
-    ///             },
-    ///             DbInstanceName = "tf-test-basic",
-    ///             EngineVersion = "4.0",
-    ///             InstanceClass = "redis.master.large.default",
-    ///             InstanceType = "Redis",
-    ///             ResourceGroupId = "rg-123456",
-    ///             SecurityIps = 
-    ///             {
-    ///                 "10.23.12.24",
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "Test" },
-    ///             },
-    ///             VswitchId = "vsw-123456",
-    ///             ZoneId = "cn-beijing-h",
-    ///         });
-    ///     }
+    ///             { "appendonly", "yes" },
+    ///             { "lazyfree-lazy-eviction", "yes" },
+    ///         },
+    ///         DbInstanceName = "tf-test-basic",
+    ///         EngineVersion = "4.0",
+    ///         InstanceClass = "redis.master.large.default",
+    ///         InstanceType = "Redis",
+    ///         ResourceGroupId = "rg-123456",
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.23.12.24",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "Test" },
+    ///         },
+    ///         VswitchId = "vsw-123456",
+    ///         ZoneId = "cn-beijing-h",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Transform To PrePaid
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.KVStore.Instance("example", new()
     ///     {
-    ///         var example = new AliCloud.KVStore.Instance("example", new AliCloud.KVStore.InstanceArgs
+    ///         Config = 
     ///         {
-    ///             Config = 
-    ///             {
-    ///                 { "appendonly", "yes" },
-    ///                 { "lazyfree-lazy-eviction", "yes" },
-    ///             },
-    ///             DbInstanceName = "tf-test-basic",
-    ///             EngineVersion = "4.0",
-    ///             InstanceClass = "redis.master.large.default",
-    ///             InstanceType = "Redis",
-    ///             PaymentType = "PrePaid",
-    ///             Period = "12",
-    ///             ResourceGroupId = "rg-123456",
-    ///             SecurityIps = 
-    ///             {
-    ///                 "10.23.12.24",
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "Test" },
-    ///             },
-    ///             VswitchId = "vsw-123456",
-    ///             ZoneId = "cn-beijing-h",
-    ///         });
-    ///     }
+    ///             { "appendonly", "yes" },
+    ///             { "lazyfree-lazy-eviction", "yes" },
+    ///         },
+    ///         DbInstanceName = "tf-test-basic",
+    ///         EngineVersion = "4.0",
+    ///         InstanceClass = "redis.master.large.default",
+    ///         InstanceType = "Redis",
+    ///         PaymentType = "PrePaid",
+    ///         Period = "12",
+    ///         ResourceGroupId = "rg-123456",
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.23.12.24",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "Test" },
+    ///         },
+    ///         VswitchId = "vsw-123456",
+    ///         ZoneId = "cn-beijing-h",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Modify Private Connection String
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.KVStore.Instance("example", new()
     ///     {
-    ///         var example = new AliCloud.KVStore.Instance("example", new AliCloud.KVStore.InstanceArgs
+    ///         Config = 
     ///         {
-    ///             Config = 
-    ///             {
-    ///                 { "appendonly", "yes" },
-    ///                 { "lazyfree-lazy-eviction", "yes" },
-    ///             },
-    ///             DbInstanceName = "tf-test-basic",
-    ///             EngineVersion = "4.0",
-    ///             InstanceClass = "redis.master.large.default",
-    ///             InstanceType = "Redis",
-    ///             PrivateConnectionPrefix = "privateconnectionstringprefix",
-    ///             ResourceGroupId = "rg-123456",
-    ///             SecurityIps = 
-    ///             {
-    ///                 "10.23.12.24",
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "Test" },
-    ///             },
-    ///             VswitchId = "vsw-123456",
-    ///             ZoneId = "cn-beijing-h",
-    ///         });
-    ///     }
+    ///             { "appendonly", "yes" },
+    ///             { "lazyfree-lazy-eviction", "yes" },
+    ///         },
+    ///         DbInstanceName = "tf-test-basic",
+    ///         EngineVersion = "4.0",
+    ///         InstanceClass = "redis.master.large.default",
+    ///         InstanceType = "Redis",
+    ///         PrivateConnectionPrefix = "privateconnectionstringprefix",
+    ///         ResourceGroupId = "rg-123456",
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.23.12.24",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "Test" },
+    ///         },
+    ///         VswitchId = "vsw-123456",
+    ///         ZoneId = "cn-beijing-h",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -141,7 +135,7 @@ namespace Pulumi.AliCloud.KVStore
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kvstore/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
@@ -207,8 +201,11 @@ namespace Pulumi.AliCloud.KVStore
         /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
         /// </summary>
         [Output("config")]
-        public Output<ImmutableDictionary<string, object>?> Config { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> Config { get; private set; } = null!;
 
+        /// <summary>
+        /// Intranet connection address of the KVStore instance.
+        /// </summary>
         [Output("connectionDomain")]
         public Output<string> ConnectionDomain { get; private set; } = null!;
 
@@ -470,7 +467,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The status of KVStore DBInstance.
-        /// * `connection_domain`- Intranet connection address of the KVStore instance.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -522,6 +518,10 @@ namespace Pulumi.AliCloud.KVStore
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -543,7 +543,7 @@ namespace Pulumi.AliCloud.KVStore
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
@@ -774,11 +774,21 @@ namespace Pulumi.AliCloud.KVStore
             set => _parameters = value;
         }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ &amp; * ( ) _ + - =`
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
@@ -910,9 +920,10 @@ namespace Pulumi.AliCloud.KVStore
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
@@ -992,6 +1003,9 @@ namespace Pulumi.AliCloud.KVStore
             set => _config = value;
         }
 
+        /// <summary>
+        /// Intranet connection address of the KVStore instance.
+        /// </summary>
         [Input("connectionDomain")]
         public Input<string>? ConnectionDomain { get; set; }
 
@@ -1161,11 +1175,21 @@ namespace Pulumi.AliCloud.KVStore
             set => _parameters = value;
         }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ &amp; * ( ) _ + - =`
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
@@ -1272,7 +1296,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The status of KVStore DBInstance.
-        /// * `connection_domain`- Intranet connection address of the KVStore instance.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -1310,5 +1333,6 @@ namespace Pulumi.AliCloud.KVStore
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -23,15 +24,12 @@ import * as utilities from "../utilities";
  *     storageBundleId: example.id,
  *     nameRegex: "^my-Gateway",
  * });
- * export const cloudStorageGatewayGatewayId = nameRegex.apply(nameRegex => nameRegex.gateways?[0]?.id);
+ * export const cloudStorageGatewayGatewayId = nameRegex.apply(nameRegex => nameRegex.gateways?.[0]?.id);
  * ```
  */
 export function getGateways(args: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getGateways:getGateways", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -87,9 +85,29 @@ export interface GetGatewaysResult {
     readonly storageBundleId: string;
     readonly totalCount: number;
 }
-
+/**
+ * This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.132.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
+ * const nameRegex = alicloud.cloudstoragegateway.getGatewaysOutput({
+ *     storageBundleId: example.id,
+ *     nameRegex: "^my-Gateway",
+ * });
+ * export const cloudStorageGatewayGatewayId = nameRegex.apply(nameRegex => nameRegex.gateways?.[0]?.id);
+ * ```
+ */
 export function getGatewaysOutput(args: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
-    return pulumi.output(args).apply(a => getGateways(a, opts))
+    return pulumi.output(args).apply((a: any) => getGateways(a, opts))
 }
 
 /**

@@ -98,7 +98,11 @@ type AccessKey struct {
 	KeyFingerprint pulumi.StringOutput `pulumi:"keyFingerprint"`
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
 	PgpKey pulumi.StringPtrOutput `pulumi:"pgpKey"`
-	Secret pulumi.StringOutput    `pulumi:"secret"`
+	// (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+	// If you use this, please protect your backend state file judiciously.
+	// Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
+	// at the cost of preventing the use of the secret key in automation.
+	Secret pulumi.StringOutput `pulumi:"secret"`
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile pulumi.StringPtrOutput `pulumi:"secretFile"`
 	// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
@@ -114,6 +118,10 @@ func NewAccessKey(ctx *pulumi.Context,
 		args = &AccessKeyArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	var resource AccessKey
 	err := ctx.RegisterResource("alicloud:ram/accessKey:AccessKey", name, args, &resource, opts...)
 	if err != nil {
@@ -141,6 +149,10 @@ type accessKeyState struct {
 	KeyFingerprint *string `pulumi:"keyFingerprint"`
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
 	PgpKey *string `pulumi:"pgpKey"`
+	// (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+	// If you use this, please protect your backend state file judiciously.
+	// Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
+	// at the cost of preventing the use of the secret key in automation.
 	Secret *string `pulumi:"secret"`
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile *string `pulumi:"secretFile"`
@@ -156,6 +168,10 @@ type AccessKeyState struct {
 	KeyFingerprint pulumi.StringPtrInput
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
 	PgpKey pulumi.StringPtrInput
+	// (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+	// If you use this, please protect your backend state file judiciously.
+	// Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
+	// at the cost of preventing the use of the secret key in automation.
 	Secret pulumi.StringPtrInput
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile pulumi.StringPtrInput
@@ -293,6 +309,10 @@ func (o AccessKeyOutput) PgpKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.PgpKey }).(pulumi.StringPtrOutput)
 }
 
+// (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+// If you use this, please protect your backend state file judiciously.
+// Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
+// at the cost of preventing the use of the secret key in automation.
 func (o AccessKeyOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }

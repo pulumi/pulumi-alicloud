@@ -61,6 +61,10 @@ export class RouteTable extends pulumi.CustomResource {
     }
 
     /**
+     * The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     */
+    public readonly associateType!: pulumi.Output<string>;
+    /**
      * The description of the route table instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -100,6 +104,7 @@ export class RouteTable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteTableState | undefined;
+            resourceInputs["associateType"] = state ? state.associateType : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["routeTableName"] = state ? state.routeTableName : undefined;
@@ -111,6 +116,7 @@ export class RouteTable extends pulumi.CustomResource {
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
+            resourceInputs["associateType"] = args ? args.associateType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["routeTableName"] = args ? args.routeTableName : undefined;
@@ -127,6 +133,10 @@ export class RouteTable extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouteTable resources.
  */
 export interface RouteTableState {
+    /**
+     * The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     */
+    associateType?: pulumi.Input<string>;
     /**
      * The description of the route table instance.
      */
@@ -159,6 +169,10 @@ export interface RouteTableState {
  * The set of arguments for constructing a RouteTable resource.
  */
 export interface RouteTableArgs {
+    /**
+     * The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     */
+    associateType?: pulumi.Input<string>;
     /**
      * The description of the route table instance.
      */

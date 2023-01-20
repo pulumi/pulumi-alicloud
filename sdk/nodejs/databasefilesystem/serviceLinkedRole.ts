@@ -17,9 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const serviceLinkedRole = new alicloud.databasefilesystem.ServiceLinkedRole("service_linked_role", {
- *     productName: "AliyunServiceRoleForDbfs",
- * });
+ * const serviceLinkedRole = new alicloud.databasefilesystem.ServiceLinkedRole("serviceLinkedRole", {productName: "AliyunServiceRoleForDbfs"});
  * ```
  *
  * ## Import

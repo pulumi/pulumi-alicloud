@@ -32,7 +32,7 @@ class GetProjectsProjectResult(dict):
         :param str endpoint: The service address of project.
         :param str id: The ID of project.
         :param str modify_time: The modification time of project.
-        :param str project: -The name of project.
+        :param str project: The name of project.
         :param str service_role: The service role authorized to the Intelligent Media Management service to access other cloud resources.
         :param str type: The type of project.
         """
@@ -98,7 +98,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        -The name of project.
+        The name of project.
         """
         return pulumi.get(self, "project")
 

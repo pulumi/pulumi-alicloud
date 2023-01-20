@@ -23,56 +23,56 @@ namespace Pulumi.AliCloud.Vod
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultDomain = new AliCloud.Vod.Domain("defaultDomain", new()
         ///     {
-        ///         var defaultDomain = new AliCloud.Vod.Domain("defaultDomain", new AliCloud.Vod.DomainArgs
+        ///         DomainName = "your_domain_name",
+        ///         Scope = "domestic",
+        ///         Sources = new[]
         ///         {
-        ///             DomainName = "your_domain_name",
-        ///             Scope = "domestic",
-        ///             Sources = 
+        ///             new AliCloud.Vod.Inputs.DomainSourceArgs
         ///             {
-        ///                 new AliCloud.Vod.Inputs.DomainSourceArgs
-        ///                 {
-        ///                     SourceType = "domain",
-        ///                     SourceContent = "your_source_content",
-        ///                     SourcePort = "80",
-        ///                 },
+        ///                 SourceType = "domain",
+        ///                 SourceContent = "your_source_content",
+        ///                 SourcePort = "80",
         ///             },
-        ///             Tags = 
-        ///             {
-        ///                 { "key1", "value1" },
-        ///                 { "key2", "value2" },
-        ///             },
-        ///         });
-        ///         var defaultDomains = AliCloud.Vod.GetDomains.Invoke(new AliCloud.Vod.GetDomainsInvokeArgs
+        ///         },
+        ///         Tags = 
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultDomain.Id,
-        ///             },
-        ///             Tags = 
-        ///             {
-        ///                 { "key1", "value1" },
-        ///                 { "key2", "value2" },
-        ///             },
-        ///         });
-        ///         this.VodDomain = defaultDomains.Apply(defaultDomains =&gt; defaultDomains.Domains?[0]);
-        ///     }
+        ///             { "key1", "value1" },
+        ///             { "key2", "value2" },
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vodDomain")]
-        ///     public Output&lt;string&gt; VodDomain { get; set; }
-        /// }
+        ///     var defaultDomains = AliCloud.Vod.GetDomains.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDomain.Id,
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "key1", "value1" },
+        ///             { "key2", "value2" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vodDomain"] = defaultDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:vod/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:vod/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vod Domains of the current Alibaba Cloud user.
@@ -86,67 +86,63 @@ namespace Pulumi.AliCloud.Vod
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultDomain = new AliCloud.Vod.Domain("defaultDomain", new()
         ///     {
-        ///         var defaultDomain = new AliCloud.Vod.Domain("defaultDomain", new AliCloud.Vod.DomainArgs
+        ///         DomainName = "your_domain_name",
+        ///         Scope = "domestic",
+        ///         Sources = new[]
         ///         {
-        ///             DomainName = "your_domain_name",
-        ///             Scope = "domestic",
-        ///             Sources = 
+        ///             new AliCloud.Vod.Inputs.DomainSourceArgs
         ///             {
-        ///                 new AliCloud.Vod.Inputs.DomainSourceArgs
-        ///                 {
-        ///                     SourceType = "domain",
-        ///                     SourceContent = "your_source_content",
-        ///                     SourcePort = "80",
-        ///                 },
+        ///                 SourceType = "domain",
+        ///                 SourceContent = "your_source_content",
+        ///                 SourcePort = "80",
         ///             },
-        ///             Tags = 
-        ///             {
-        ///                 { "key1", "value1" },
-        ///                 { "key2", "value2" },
-        ///             },
-        ///         });
-        ///         var defaultDomains = AliCloud.Vod.GetDomains.Invoke(new AliCloud.Vod.GetDomainsInvokeArgs
+        ///         },
+        ///         Tags = 
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultDomain.Id,
-        ///             },
-        ///             Tags = 
-        ///             {
-        ///                 { "key1", "value1" },
-        ///                 { "key2", "value2" },
-        ///             },
-        ///         });
-        ///         this.VodDomain = defaultDomains.Apply(defaultDomains =&gt; defaultDomains.Domains?[0]);
-        ///     }
+        ///             { "key1", "value1" },
+        ///             { "key2", "value2" },
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vodDomain")]
-        ///     public Output&lt;string&gt; VodDomain { get; set; }
-        /// }
+        ///     var defaultDomains = AliCloud.Vod.GetDomains.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDomain.Id,
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "key1", "value1" },
+        ///             { "key2", "value2" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vodDomain"] = defaultDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:vod/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:vod/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDomainsArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The search method. Valid values:
-        /// * `fuzzy_match`: fuzzy match. This is the default value.
-        /// * `pre_match`: prefix match.
-        /// * `suf_match`: suffix match.
-        /// * `full_match`: exact match
         /// </summary>
         [Input("domainSearchType")]
         public string? DomainSearchType { get; set; }
@@ -183,8 +179,6 @@ namespace Pulumi.AliCloud.Vod
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        /// * `Value`: It can be up to 128 characters in length. It can be a null string.
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -195,16 +189,13 @@ namespace Pulumi.AliCloud.Vod
         public GetDomainsArgs()
         {
         }
+        public static new GetDomainsArgs Empty => new GetDomainsArgs();
     }
 
-    public sealed class GetDomainsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The search method. Valid values:
-        /// * `fuzzy_match`: fuzzy match. This is the default value.
-        /// * `pre_match`: prefix match.
-        /// * `suf_match`: suffix match.
-        /// * `full_match`: exact match
         /// </summary>
         [Input("domainSearchType")]
         public Input<string>? DomainSearchType { get; set; }
@@ -241,8 +232,6 @@ namespace Pulumi.AliCloud.Vod
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        /// * `Value`: It can be up to 128 characters in length. It can be a null string.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -253,6 +242,7 @@ namespace Pulumi.AliCloud.Vod
         public GetDomainsInvokeArgs()
         {
         }
+        public static new GetDomainsInvokeArgs Empty => new GetDomainsInvokeArgs();
     }
 
 

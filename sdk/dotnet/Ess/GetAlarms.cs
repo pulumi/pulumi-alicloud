@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Ess
         /// &gt; **NOTE** Available in 1.72.0+
         /// </summary>
         public static Task<GetAlarmsResult> InvokeAsync(GetAlarmsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? new GetAlarmsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? new GetAlarmsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides available alarm resources. 
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Ess
         /// &gt; **NOTE** Available in 1.72.0+
         /// </summary>
         public static Output<GetAlarmsResult> Invoke(GetAlarmsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? new GetAlarmsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? new GetAlarmsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAlarmsArgs : Pulumi.InvokeArgs
+    public sealed class GetAlarmsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -67,9 +67,10 @@ namespace Pulumi.AliCloud.Ess
         public GetAlarmsArgs()
         {
         }
+        public static new GetAlarmsArgs Empty => new GetAlarmsArgs();
     }
 
-    public sealed class GetAlarmsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAlarmsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -107,6 +108,7 @@ namespace Pulumi.AliCloud.Ess
         public GetAlarmsInvokeArgs()
         {
         }
+        public static new GetAlarmsInvokeArgs Empty => new GetAlarmsInvokeArgs();
     }
 
 

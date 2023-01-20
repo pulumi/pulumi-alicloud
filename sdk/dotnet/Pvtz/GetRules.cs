@@ -23,33 +23,31 @@ namespace Pulumi.AliCloud.Pvtz
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Pvtz.GetRules.InvokeAsync());
-        ///         this.PvtzRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Pvtz.GetRules.InvokeAsync(new AliCloud.Pvtz.GetRulesArgs
-        ///         {
-        ///             NameRegex = "^my-Rule",
-        ///         }));
-        ///         this.PvtzRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Pvtz.GetRules.Invoke();
         /// 
-        ///     [Output("pvtzRuleId1")]
-        ///     public Output&lt;string&gt; PvtzRuleId1 { get; set; }
-        ///     [Output("pvtzRuleId2")]
-        ///     public Output&lt;string&gt; PvtzRuleId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Pvtz.GetRules.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Rule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["pvtzRuleId1"] = ids.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///         ["pvtzRuleId2"] = nameRegex.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:pvtz/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:pvtz/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
@@ -63,37 +61,35 @@ namespace Pulumi.AliCloud.Pvtz
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Pvtz.GetRules.InvokeAsync());
-        ///         this.PvtzRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Pvtz.GetRules.InvokeAsync(new AliCloud.Pvtz.GetRulesArgs
-        ///         {
-        ///             NameRegex = "^my-Rule",
-        ///         }));
-        ///         this.PvtzRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Pvtz.GetRules.Invoke();
         /// 
-        ///     [Output("pvtzRuleId1")]
-        ///     public Output&lt;string&gt; PvtzRuleId1 { get; set; }
-        ///     [Output("pvtzRuleId2")]
-        ///     public Output&lt;string&gt; PvtzRuleId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Pvtz.GetRules.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Rule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["pvtzRuleId1"] = ids.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///         ["pvtzRuleId2"] = nameRegex.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:pvtz/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:pvtz/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetRulesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Endpoint.
@@ -125,9 +121,10 @@ namespace Pulumi.AliCloud.Pvtz
         public GetRulesArgs()
         {
         }
+        public static new GetRulesArgs Empty => new GetRulesArgs();
     }
 
-    public sealed class GetRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Endpoint.
@@ -159,6 +156,7 @@ namespace Pulumi.AliCloud.Pvtz
         public GetRulesInvokeArgs()
         {
         }
+        public static new GetRulesInvokeArgs Empty => new GetRulesInvokeArgs();
     }
 
 

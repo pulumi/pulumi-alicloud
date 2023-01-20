@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Hbase.Inputs
 {
 
-    public sealed class InstanceZkConnAddrArgs : Pulumi.ResourceArgs
+    public sealed class InstanceZkConnAddrArgs : global::Pulumi.ResourceArgs
     {
         [Input("connAddr")]
         public Input<string>? ConnAddr { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.AliCloud.Hbase.Inputs
         public InstanceZkConnAddrArgs()
         {
         }
+        public static new InstanceZkConnAddrArgs Empty => new InstanceZkConnAddrArgs();
     }
 }

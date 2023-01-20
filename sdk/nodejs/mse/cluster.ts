@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *     clusterType: "Nacos-Ans",
  *     clusterVersion: "NACOS_ANS_1_2_1",
  *     instanceCount: 1,
+ *     mseVersion: "mse_dev",
  *     netType: "privatenet",
  *     pubNetworkFlow: "1",
  *     vswitchId: "vsw-123456",
@@ -77,11 +78,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly clusterId!: pulumi.Output<string>;
     /**
-     * The engine specification of MSE Cluster. Valid values:
-     * `MSE_SC_1_2_200_c`：1C2G
-     * `MSE_SC_2_4_200_c`：2C4G
-     * `MSE_SC_4_8_200_c`：4C8G
-     * `MSE_SC_8_16_200_c`：8C16G
+     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
      */
     public readonly clusterSpecification!: pulumi.Output<string>;
     /**
@@ -89,19 +86,23 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterType!: pulumi.Output<string>;
     /**
-     * The version of MSE Cluster.
+     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
      */
     public readonly clusterVersion!: pulumi.Output<string>;
+    /**
+     * The connection type. Valid values: `slb`.
+     */
+    public readonly connectionType!: pulumi.Output<string>;
     /**
      * The type of Disk.
      */
     public readonly diskType!: pulumi.Output<string | undefined>;
     /**
-     * The count of instance.
+     * The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
      */
     public readonly instanceCount!: pulumi.Output<number>;
     /**
-     * The version of MSE. Valid values: `mseBasic` or `msePro`.
+     * The version of MSE. Valid values: `mseDev` or `msePro`.
      */
     public readonly mseVersion!: pulumi.Output<string>;
     /**
@@ -121,9 +122,17 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly pubSlbSpecification!: pulumi.Output<string | undefined>;
     /**
+     * The extended request parameters in the JSON format.
+     */
+    public readonly requestPars!: pulumi.Output<string | undefined>;
+    /**
      * The status of MSE Cluster.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The id of the VPC.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * The id of VSwitch.
      */
@@ -148,6 +157,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterSpecification"] = state ? state.clusterSpecification : undefined;
             resourceInputs["clusterType"] = state ? state.clusterType : undefined;
             resourceInputs["clusterVersion"] = state ? state.clusterVersion : undefined;
+            resourceInputs["connectionType"] = state ? state.connectionType : undefined;
             resourceInputs["diskType"] = state ? state.diskType : undefined;
             resourceInputs["instanceCount"] = state ? state.instanceCount : undefined;
             resourceInputs["mseVersion"] = state ? state.mseVersion : undefined;
@@ -155,7 +165,9 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["privateSlbSpecification"] = state ? state.privateSlbSpecification : undefined;
             resourceInputs["pubNetworkFlow"] = state ? state.pubNetworkFlow : undefined;
             resourceInputs["pubSlbSpecification"] = state ? state.pubSlbSpecification : undefined;
+            resourceInputs["requestPars"] = state ? state.requestPars : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
@@ -182,6 +194,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterSpecification"] = args ? args.clusterSpecification : undefined;
             resourceInputs["clusterType"] = args ? args.clusterType : undefined;
             resourceInputs["clusterVersion"] = args ? args.clusterVersion : undefined;
+            resourceInputs["connectionType"] = args ? args.connectionType : undefined;
             resourceInputs["diskType"] = args ? args.diskType : undefined;
             resourceInputs["instanceCount"] = args ? args.instanceCount : undefined;
             resourceInputs["mseVersion"] = args ? args.mseVersion : undefined;
@@ -189,6 +202,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["privateSlbSpecification"] = args ? args.privateSlbSpecification : undefined;
             resourceInputs["pubNetworkFlow"] = args ? args.pubNetworkFlow : undefined;
             resourceInputs["pubSlbSpecification"] = args ? args.pubSlbSpecification : undefined;
+            resourceInputs["requestPars"] = args ? args.requestPars : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -215,11 +230,7 @@ export interface ClusterState {
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * The engine specification of MSE Cluster. Valid values:
-     * `MSE_SC_1_2_200_c`：1C2G
-     * `MSE_SC_2_4_200_c`：2C4G
-     * `MSE_SC_4_8_200_c`：4C8G
-     * `MSE_SC_8_16_200_c`：8C16G
+     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
      */
     clusterSpecification?: pulumi.Input<string>;
     /**
@@ -227,19 +238,23 @@ export interface ClusterState {
      */
     clusterType?: pulumi.Input<string>;
     /**
-     * The version of MSE Cluster.
+     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
      */
     clusterVersion?: pulumi.Input<string>;
+    /**
+     * The connection type. Valid values: `slb`.
+     */
+    connectionType?: pulumi.Input<string>;
     /**
      * The type of Disk.
      */
     diskType?: pulumi.Input<string>;
     /**
-     * The count of instance.
+     * The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
      */
     instanceCount?: pulumi.Input<number>;
     /**
-     * The version of MSE. Valid values: `mseBasic` or `msePro`.
+     * The version of MSE. Valid values: `mseDev` or `msePro`.
      */
     mseVersion?: pulumi.Input<string>;
     /**
@@ -259,9 +274,17 @@ export interface ClusterState {
      */
     pubSlbSpecification?: pulumi.Input<string>;
     /**
+     * The extended request parameters in the JSON format.
+     */
+    requestPars?: pulumi.Input<string>;
+    /**
      * The status of MSE Cluster.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The id of VSwitch.
      */
@@ -281,11 +304,7 @@ export interface ClusterArgs {
      */
     clusterAliasName?: pulumi.Input<string>;
     /**
-     * The engine specification of MSE Cluster. Valid values:
-     * `MSE_SC_1_2_200_c`：1C2G
-     * `MSE_SC_2_4_200_c`：2C4G
-     * `MSE_SC_4_8_200_c`：4C8G
-     * `MSE_SC_8_16_200_c`：8C16G
+     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
      */
     clusterSpecification: pulumi.Input<string>;
     /**
@@ -293,19 +312,23 @@ export interface ClusterArgs {
      */
     clusterType: pulumi.Input<string>;
     /**
-     * The version of MSE Cluster.
+     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
      */
     clusterVersion: pulumi.Input<string>;
+    /**
+     * The connection type. Valid values: `slb`.
+     */
+    connectionType?: pulumi.Input<string>;
     /**
      * The type of Disk.
      */
     diskType?: pulumi.Input<string>;
     /**
-     * The count of instance.
+     * The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
      */
     instanceCount: pulumi.Input<number>;
     /**
-     * The version of MSE. Valid values: `mseBasic` or `msePro`.
+     * The version of MSE. Valid values: `mseDev` or `msePro`.
      */
     mseVersion?: pulumi.Input<string>;
     /**
@@ -324,6 +347,14 @@ export interface ClusterArgs {
      * The specification of public network SLB.
      */
     pubSlbSpecification?: pulumi.Input<string>;
+    /**
+     * The extended request parameters in the JSON format.
+     */
+    requestPars?: pulumi.Input<string>;
+    /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The id of VSwitch.
      */

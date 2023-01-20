@@ -17,18 +17,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.vpc.getTrafficMirrorService({
+ * const open = alicloud.vpc.getTrafficMirrorService({
  *     enable: "On",
- * }));
+ * });
  * ```
  */
 export function getTrafficMirrorService(args?: GetTrafficMirrorServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorServiceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", {
         "enable": args.enable,
     }, opts);
@@ -58,9 +55,26 @@ export interface GetTrafficMirrorServiceResult {
      */
     readonly status: string;
 }
-
+/**
+ * Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.
+ *
+ * For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/doc-detail/207513.htm).
+ *
+ * > **NOTE:** Available in v1.141.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.vpc.getTrafficMirrorService({
+ *     enable: "On",
+ * });
+ * ```
+ */
 export function getTrafficMirrorServiceOutput(args?: GetTrafficMirrorServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorServiceResult> {
-    return pulumi.output(args).apply(a => getTrafficMirrorService(a, opts))
+    return pulumi.output(args).apply((a: any) => getTrafficMirrorService(a, opts))
 }
 
 /**

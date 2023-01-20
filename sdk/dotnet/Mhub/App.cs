@@ -23,25 +23,23 @@ namespace Pulumi.AliCloud.Mhub
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "example_value";
+    ///     var @default = new AliCloud.Mhub.App("default", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "example_value";
-    ///         var @default = new AliCloud.Mhub.App("default", new AliCloud.Mhub.AppArgs
-    ///         {
-    ///             AppName = name,
-    ///             ProductId = alicloud_mhub_product.Default.Id,
-    ///             PackageName = "com.test.android",
-    ///             Type = "Android",
-    ///         });
-    ///     }
+    ///         AppName = name,
+    ///         ProductId = alicloud_mhub_product.Default.Id,
+    ///         PackageName = "com.test.android",
+    ///         Type = "Android",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +51,7 @@ namespace Pulumi.AliCloud.Mhub
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mhub/app:App")]
-    public partial class App : Pulumi.CustomResource
+    public partial class App : global::Pulumi.CustomResource
     {
         /// <summary>
         /// AppName.
@@ -141,7 +139,7 @@ namespace Pulumi.AliCloud.Mhub
         }
     }
 
-    public sealed class AppArgs : Pulumi.ResourceArgs
+    public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AppName.
@@ -188,9 +186,10 @@ namespace Pulumi.AliCloud.Mhub
         public AppArgs()
         {
         }
+        public static new AppArgs Empty => new AppArgs();
     }
 
-    public sealed class AppState : Pulumi.ResourceArgs
+    public sealed class AppState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AppName.
@@ -237,5 +236,6 @@ namespace Pulumi.AliCloud.Mhub
         public AppState()
         {
         }
+        public static new AppState Empty => new AppState();
     }
 }

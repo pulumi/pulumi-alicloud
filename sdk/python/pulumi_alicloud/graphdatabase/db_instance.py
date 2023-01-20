@@ -209,6 +209,7 @@ class DbInstanceArgs:
 @pulumi.input_type
 class _DbInstanceState:
     def __init__(__self__, *,
+                 connection_string: Optional[pulumi.Input[str]] = None,
                  db_instance_category: Optional[pulumi.Input[str]] = None,
                  db_instance_description: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]] = None,
@@ -218,12 +219,14 @@ class _DbInstanceState:
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DbInstance resources.
+        :param pulumi.Input[str] connection_string: (Available in 1.196.0+)  The connection string of the instance.
         :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[str] db_instance_description: According to the practical example or notes.
         :param pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
@@ -233,11 +236,14 @@ class _DbInstanceState:
         :param pulumi.Input[int] db_node_storage: Instance storage space, which is measured in GB.
         :param pulumi.Input[str] db_version: Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the instance.
         :param pulumi.Input[str] status: Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
         :param pulumi.Input[str] vpc_id: ID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
         if db_instance_category is not None:
             pulumi.set(__self__, "db_instance_category", db_instance_category)
         if db_instance_description is not None:
@@ -256,6 +262,8 @@ class _DbInstanceState:
             pulumi.set(__self__, "db_version", db_version)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if vpc_id is not None:
@@ -264,6 +272,18 @@ class _DbInstanceState:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.196.0+)  The connection string of the instance.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @connection_string.setter
+    def connection_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string", value)
 
     @property
     @pulumi.getter(name="dbInstanceCategory")
@@ -372,6 +392,18 @@ class _DbInstanceState:
     @payment_type.setter
     def payment_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.196.0+) The connection port of the instance.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter
@@ -591,6 +623,8 @@ class DbInstance(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["connection_string"] = None
+            __props__.__dict__["port"] = None
             __props__.__dict__["status"] = None
         super(DbInstance, __self__).__init__(
             'alicloud:graphdatabase/dbInstance:DbInstance',
@@ -602,6 +636,7 @@ class DbInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            connection_string: Optional[pulumi.Input[str]] = None,
             db_instance_category: Optional[pulumi.Input[str]] = None,
             db_instance_description: Optional[pulumi.Input[str]] = None,
             db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]]] = None,
@@ -611,6 +646,7 @@ class DbInstance(pulumi.CustomResource):
             db_node_storage: Optional[pulumi.Input[int]] = None,
             db_version: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
+            port: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -622,6 +658,7 @@ class DbInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] connection_string: (Available in 1.196.0+)  The connection string of the instance.
         :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[str] db_instance_description: According to the practical example or notes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
@@ -631,6 +668,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[int] db_node_storage: Instance storage space, which is measured in GB.
         :param pulumi.Input[str] db_version: Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the instance.
         :param pulumi.Input[str] status: Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
         :param pulumi.Input[str] vpc_id: ID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
@@ -640,6 +678,7 @@ class DbInstance(pulumi.CustomResource):
 
         __props__ = _DbInstanceState.__new__(_DbInstanceState)
 
+        __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["db_instance_category"] = db_instance_category
         __props__.__dict__["db_instance_description"] = db_instance_description
         __props__.__dict__["db_instance_ip_arrays"] = db_instance_ip_arrays
@@ -649,11 +688,20 @@ class DbInstance(pulumi.CustomResource):
         __props__.__dict__["db_node_storage"] = db_node_storage
         __props__.__dict__["db_version"] = db_version
         __props__.__dict__["payment_type"] = payment_type
+        __props__.__dict__["port"] = port
         __props__.__dict__["status"] = status
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return DbInstance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.196.0+)  The connection string of the instance.
+        """
+        return pulumi.get(self, "connection_string")
 
     @property
     @pulumi.getter(name="dbInstanceCategory")
@@ -726,6 +774,14 @@ class DbInstance(pulumi.CustomResource):
         The paymen type of the resource. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.196.0+) The connection port of the instance.
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter

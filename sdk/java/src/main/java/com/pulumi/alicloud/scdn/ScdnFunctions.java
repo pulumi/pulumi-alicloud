@@ -29,7 +29,7 @@ public final class ScdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.scdn.ScdnFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.scdn.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -71,7 +71,7 @@ public final class ScdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.scdn.ScdnFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.scdn.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -113,7 +113,7 @@ public final class ScdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.scdn.ScdnFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.scdn.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -155,7 +155,7 @@ public final class ScdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.scdn.ScdnFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.scdn.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -197,7 +197,7 @@ public final class ScdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.scdn.ScdnFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.scdn.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -239,7 +239,7 @@ public final class ScdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.scdn.ScdnFunctions;
-     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import com.pulumi.alicloud.scdn.inputs.GetDomainsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

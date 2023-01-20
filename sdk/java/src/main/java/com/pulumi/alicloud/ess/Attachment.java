@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Attaches several ECS instances to a specified scaling group or remove them from it.
  * 
- * &gt; **NOTE:** ECS instances can be attached or remove only when the scaling group is active and it has no scaling activity in progress.
+ * &gt; **NOTE:** ECS instances can be attached or remove only when the scaling group is active, and it has no scaling activity in progress.
  * 
  * &gt; **NOTE:** There are two types ECS instances in a scaling group: &#34;AutoCreated&#34; and &#34;Attached&#34;. The total number of them can not larger than the scaling group &#34;MaxSize&#34;.
  * 
@@ -31,9 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;

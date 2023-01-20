@@ -23,7 +23,8 @@ import * as utilities from "../utilities";
  * const foo = new alicloud.slb.CaCertificate("foo", {
  *     caCertificate: `-----BEGIN CERTIFICATE-----
  * MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=
- * -----END CERTIFICATE-----`,
+ * -----END CERTIFICATE-----
+ * `,
  *     caCertificateName: "tf-testAccSlbCACertificate",
  * });
  * ```

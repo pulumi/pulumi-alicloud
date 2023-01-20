@@ -5,43 +5,111 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getHostAccounts";
-export * from "./getHostGroups";
-export * from "./getHostShareKeys";
-export * from "./getHosts";
-export * from "./getInstances";
-export * from "./getUserGroups";
-export * from "./getUsers";
-export * from "./host";
-export * from "./hostAccount";
-export * from "./hostAccountShareKeyAttachment";
-export * from "./hostAccountUserAttachment";
-export * from "./hostAccountUserGroupAttachment";
-export * from "./hostAttachment";
-export * from "./hostGroup";
-export * from "./hostGroupAccountUserAttachment";
-export * from "./hostGroupAccountUserGroupAttachment";
-export * from "./hostShareKey";
-export * from "./instance";
-export * from "./user";
-export * from "./userAttachment";
-export * from "./userGroup";
+export { GetHostAccountsArgs, GetHostAccountsResult, GetHostAccountsOutputArgs } from "./getHostAccounts";
+export const getHostAccounts: typeof import("./getHostAccounts").getHostAccounts = null as any;
+export const getHostAccountsOutput: typeof import("./getHostAccounts").getHostAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getHostAccounts","getHostAccountsOutput"], () => require("./getHostAccounts"));
 
-// Import resources to register:
-import { Host } from "./host";
-import { HostAccount } from "./hostAccount";
-import { HostAccountShareKeyAttachment } from "./hostAccountShareKeyAttachment";
-import { HostAccountUserAttachment } from "./hostAccountUserAttachment";
-import { HostAccountUserGroupAttachment } from "./hostAccountUserGroupAttachment";
-import { HostAttachment } from "./hostAttachment";
-import { HostGroup } from "./hostGroup";
-import { HostGroupAccountUserAttachment } from "./hostGroupAccountUserAttachment";
-import { HostGroupAccountUserGroupAttachment } from "./hostGroupAccountUserGroupAttachment";
-import { HostShareKey } from "./hostShareKey";
-import { Instance } from "./instance";
-import { User } from "./user";
-import { UserAttachment } from "./userAttachment";
-import { UserGroup } from "./userGroup";
+export { GetHostGroupsArgs, GetHostGroupsResult, GetHostGroupsOutputArgs } from "./getHostGroups";
+export const getHostGroups: typeof import("./getHostGroups").getHostGroups = null as any;
+export const getHostGroupsOutput: typeof import("./getHostGroups").getHostGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getHostGroups","getHostGroupsOutput"], () => require("./getHostGroups"));
+
+export { GetHostShareKeysArgs, GetHostShareKeysResult, GetHostShareKeysOutputArgs } from "./getHostShareKeys";
+export const getHostShareKeys: typeof import("./getHostShareKeys").getHostShareKeys = null as any;
+export const getHostShareKeysOutput: typeof import("./getHostShareKeys").getHostShareKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getHostShareKeys","getHostShareKeysOutput"], () => require("./getHostShareKeys"));
+
+export { GetHostsArgs, GetHostsResult, GetHostsOutputArgs } from "./getHosts";
+export const getHosts: typeof import("./getHosts").getHosts = null as any;
+export const getHostsOutput: typeof import("./getHosts").getHostsOutput = null as any;
+utilities.lazyLoad(exports, ["getHosts","getHostsOutput"], () => require("./getHosts"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetUserGroupsArgs, GetUserGroupsResult, GetUserGroupsOutputArgs } from "./getUserGroups";
+export const getUserGroups: typeof import("./getUserGroups").getUserGroups = null as any;
+export const getUserGroupsOutput: typeof import("./getUserGroups").getUserGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getUserGroups","getUserGroupsOutput"], () => require("./getUserGroups"));
+
+export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
+
+export { HostArgs, HostState } from "./host";
+export type Host = import("./host").Host;
+export const Host: typeof import("./host").Host = null as any;
+utilities.lazyLoad(exports, ["Host"], () => require("./host"));
+
+export { HostAccountArgs, HostAccountState } from "./hostAccount";
+export type HostAccount = import("./hostAccount").HostAccount;
+export const HostAccount: typeof import("./hostAccount").HostAccount = null as any;
+utilities.lazyLoad(exports, ["HostAccount"], () => require("./hostAccount"));
+
+export { HostAccountShareKeyAttachmentArgs, HostAccountShareKeyAttachmentState } from "./hostAccountShareKeyAttachment";
+export type HostAccountShareKeyAttachment = import("./hostAccountShareKeyAttachment").HostAccountShareKeyAttachment;
+export const HostAccountShareKeyAttachment: typeof import("./hostAccountShareKeyAttachment").HostAccountShareKeyAttachment = null as any;
+utilities.lazyLoad(exports, ["HostAccountShareKeyAttachment"], () => require("./hostAccountShareKeyAttachment"));
+
+export { HostAccountUserAttachmentArgs, HostAccountUserAttachmentState } from "./hostAccountUserAttachment";
+export type HostAccountUserAttachment = import("./hostAccountUserAttachment").HostAccountUserAttachment;
+export const HostAccountUserAttachment: typeof import("./hostAccountUserAttachment").HostAccountUserAttachment = null as any;
+utilities.lazyLoad(exports, ["HostAccountUserAttachment"], () => require("./hostAccountUserAttachment"));
+
+export { HostAccountUserGroupAttachmentArgs, HostAccountUserGroupAttachmentState } from "./hostAccountUserGroupAttachment";
+export type HostAccountUserGroupAttachment = import("./hostAccountUserGroupAttachment").HostAccountUserGroupAttachment;
+export const HostAccountUserGroupAttachment: typeof import("./hostAccountUserGroupAttachment").HostAccountUserGroupAttachment = null as any;
+utilities.lazyLoad(exports, ["HostAccountUserGroupAttachment"], () => require("./hostAccountUserGroupAttachment"));
+
+export { HostAttachmentArgs, HostAttachmentState } from "./hostAttachment";
+export type HostAttachment = import("./hostAttachment").HostAttachment;
+export const HostAttachment: typeof import("./hostAttachment").HostAttachment = null as any;
+utilities.lazyLoad(exports, ["HostAttachment"], () => require("./hostAttachment"));
+
+export { HostGroupArgs, HostGroupState } from "./hostGroup";
+export type HostGroup = import("./hostGroup").HostGroup;
+export const HostGroup: typeof import("./hostGroup").HostGroup = null as any;
+utilities.lazyLoad(exports, ["HostGroup"], () => require("./hostGroup"));
+
+export { HostGroupAccountUserAttachmentArgs, HostGroupAccountUserAttachmentState } from "./hostGroupAccountUserAttachment";
+export type HostGroupAccountUserAttachment = import("./hostGroupAccountUserAttachment").HostGroupAccountUserAttachment;
+export const HostGroupAccountUserAttachment: typeof import("./hostGroupAccountUserAttachment").HostGroupAccountUserAttachment = null as any;
+utilities.lazyLoad(exports, ["HostGroupAccountUserAttachment"], () => require("./hostGroupAccountUserAttachment"));
+
+export { HostGroupAccountUserGroupAttachmentArgs, HostGroupAccountUserGroupAttachmentState } from "./hostGroupAccountUserGroupAttachment";
+export type HostGroupAccountUserGroupAttachment = import("./hostGroupAccountUserGroupAttachment").HostGroupAccountUserGroupAttachment;
+export const HostGroupAccountUserGroupAttachment: typeof import("./hostGroupAccountUserGroupAttachment").HostGroupAccountUserGroupAttachment = null as any;
+utilities.lazyLoad(exports, ["HostGroupAccountUserGroupAttachment"], () => require("./hostGroupAccountUserGroupAttachment"));
+
+export { HostShareKeyArgs, HostShareKeyState } from "./hostShareKey";
+export type HostShareKey = import("./hostShareKey").HostShareKey;
+export const HostShareKey: typeof import("./hostShareKey").HostShareKey = null as any;
+utilities.lazyLoad(exports, ["HostShareKey"], () => require("./hostShareKey"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
+export { UserAttachmentArgs, UserAttachmentState } from "./userAttachment";
+export type UserAttachment = import("./userAttachment").UserAttachment;
+export const UserAttachment: typeof import("./userAttachment").UserAttachment = null as any;
+utilities.lazyLoad(exports, ["UserAttachment"], () => require("./userAttachment"));
+
+export { UserGroupArgs, UserGroupState } from "./userGroup";
+export type UserGroup = import("./userGroup").UserGroup;
+export const UserGroup: typeof import("./userGroup").UserGroup = null as any;
+utilities.lazyLoad(exports, ["UserGroup"], () => require("./userGroup"));
+
 
 const _module = {
     version: utilities.getVersion(),

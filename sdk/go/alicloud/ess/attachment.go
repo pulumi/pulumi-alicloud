@@ -13,7 +13,7 @@ import (
 
 // Attaches several ECS instances to a specified scaling group or remove them from it.
 //
-// > **NOTE:** ECS instances can be attached or remove only when the scaling group is active and it has no scaling activity in progress.
+// > **NOTE:** ECS instances can be attached or remove only when the scaling group is active, and it has no scaling activity in progress.
 //
 // > **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
 //
@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
@@ -73,7 +73,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:     defaultNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -114,8 +114,8 @@ import (
 //			}
 //			_, err = ess.NewScalingConfiguration(ctx, "defaultScalingConfiguration", &ess.ScalingConfigurationArgs{
 //				ScalingGroupId:  defaultScalingGroup.ID(),
-//				ImageId:         pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:    pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:         *pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:    *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroupId: defaultSecurityGroup.ID(),
 //				ForceDelete:     pulumi.Bool(true),
 //				Active:          pulumi.Bool(true),
@@ -125,10 +125,12 @@ import (
 //				return err
 //			}
 //			var defaultInstance []*ecs.Instance
-//			for key0, _ := range 2 {
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				_ := index
 //				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("defaultInstance-%v", key0), &ecs.InstanceArgs{
-//					ImageId:      pulumi.String(defaultImages.Images[0].Id),
-//					InstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//					ImageId:      *pulumi.String(defaultImages.Images[0].Id),
+//					InstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //					SecurityGroups: pulumi.StringArray{
 //						defaultSecurityGroup.ID(),
 //					},

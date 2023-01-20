@@ -12,6 +12,8 @@ from . import outputs
 
 __all__ = [
     'ResourceGroupRegionStatus',
+    'GetAccountDeletionCheckTaskAbandonAbleCheckResult',
+    'GetAccountDeletionCheckTaskNotAllowReasonResult',
     'GetAccountsAccountResult',
     'GetControlPoliciesPolicyResult',
     'GetControlPolicyAttachmentsAttachmentResult',
@@ -79,6 +81,86 @@ class ResourceGroupRegionStatus(dict):
 
 
 @pulumi.output_type
+class GetAccountDeletionCheckTaskAbandonAbleCheckResult(dict):
+    def __init__(__self__, *,
+                 check_id: str,
+                 check_name: str,
+                 description: str):
+        """
+        :param str check_id: The ID of the check item.
+        :param str check_name: The name of the cloud service to which the check item belongs.
+        :param str description: The description of the check item.
+        """
+        pulumi.set(__self__, "check_id", check_id)
+        pulumi.set(__self__, "check_name", check_name)
+        pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="checkId")
+    def check_id(self) -> str:
+        """
+        The ID of the check item.
+        """
+        return pulumi.get(self, "check_id")
+
+    @property
+    @pulumi.getter(name="checkName")
+    def check_name(self) -> str:
+        """
+        The name of the cloud service to which the check item belongs.
+        """
+        return pulumi.get(self, "check_name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the check item.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetAccountDeletionCheckTaskNotAllowReasonResult(dict):
+    def __init__(__self__, *,
+                 check_id: str,
+                 check_name: str,
+                 description: str):
+        """
+        :param str check_id: The ID of the check item.
+        :param str check_name: The name of the cloud service to which the check item belongs.
+        :param str description: The description of the check item.
+        """
+        pulumi.set(__self__, "check_id", check_id)
+        pulumi.set(__self__, "check_name", check_name)
+        pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="checkId")
+    def check_id(self) -> str:
+        """
+        The ID of the check item.
+        """
+        return pulumi.get(self, "check_id")
+
+    @property
+    @pulumi.getter(name="checkName")
+    def check_name(self) -> str:
+        """
+        The name of the cloud service to which the check item belongs.
+        """
+        return pulumi.get(self, "check_name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the check item.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
 class GetAccountsAccountResult(dict):
     def __init__(__self__, *,
                  account_id: str,
@@ -94,11 +176,11 @@ class GetAccountsAccountResult(dict):
                  status: str,
                  type: str):
         """
+        :param str account_id: The ID of the account.
         :param str account_name: (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
+        :param str display_name: The name of the member account.
         :param str folder_id: The ID of the folder.
         :param str id: The ID of the resource.
-               * `account_id`- The ID of the account.
-               * `display_name`- The name of the member account.
         :param str join_method: The way in which the member account joined the resource directory.
         :param str join_time: The time when the member account joined the resource directory.
         :param str modify_time: The time when the member account was modified.
@@ -123,6 +205,9 @@ class GetAccountsAccountResult(dict):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The ID of the account.
+        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -136,6 +221,9 @@ class GetAccountsAccountResult(dict):
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        The name of the member account.
+        """
         return pulumi.get(self, "display_name")
 
     @property
@@ -151,8 +239,6 @@ class GetAccountsAccountResult(dict):
     def id(self) -> str:
         """
         The ID of the resource.
-        * `account_id`- The ID of the account.
-        * `display_name`- The name of the member account.
         """
         return pulumi.get(self, "id")
 
@@ -440,10 +526,9 @@ class GetFoldersFolderResult(dict):
                  id: str,
                  parent_folder_id: str):
         """
+        :param str folder_id: The ID of the folder.
+        :param str folder_name: The name of the folder.
         :param str id: The ID of the folder.
-               * `folder_id`- The ID of the folder.
-               * `folder_name`- The name of the folder.
-               * `parent_folder_id`- (Available in v1.114.0+)The ID of the parent folder.
         :param str parent_folder_id: The ID of the parent folder.
         """
         pulumi.set(__self__, "folder_id", folder_id)
@@ -454,11 +539,17 @@ class GetFoldersFolderResult(dict):
     @property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> str:
+        """
+        The ID of the folder.
+        """
         return pulumi.get(self, "folder_id")
 
     @property
     @pulumi.getter(name="folderName")
     def folder_name(self) -> str:
+        """
+        The name of the folder.
+        """
         return pulumi.get(self, "folder_name")
 
     @property
@@ -466,9 +557,6 @@ class GetFoldersFolderResult(dict):
     def id(self) -> str:
         """
         The ID of the folder.
-        * `folder_id`- The ID of the folder.
-        * `folder_name`- The name of the folder.
-        * `parent_folder_id`- (Available in v1.114.0+)The ID of the parent folder.
         """
         return pulumi.get(self, "id")
 
@@ -499,8 +587,8 @@ class GetHandshakesHandshakeResult(dict):
                  target_type: str):
         """
         :param str expire_time: The time when the invitation expires.
+        :param str handshake_id: The ID of the invitation.
         :param str id: The ID of the resource.
-               * `handshake_id`- The ID of the invitation.
         :param str invited_account_real_name: (Available in v1.114.0+) The real name of the invited account.
         :param str master_account_id: The ID of the master account of the resource directory.
         :param str master_account_name: The name of the master account of the resource directory.
@@ -537,6 +625,9 @@ class GetHandshakesHandshakeResult(dict):
     @property
     @pulumi.getter(name="handshakeId")
     def handshake_id(self) -> str:
+        """
+        The ID of the invitation.
+        """
         return pulumi.get(self, "handshake_id")
 
     @property
@@ -544,7 +635,6 @@ class GetHandshakesHandshakeResult(dict):
     def id(self) -> str:
         """
         The ID of the resource.
-        * `handshake_id`- The ID of the invitation.
         """
         return pulumi.get(self, "id")
 
@@ -644,8 +734,7 @@ class GetPoliciesPolicyResult(dict):
         :param str default_version: The default version of the policy.
         :param str description: The description of the policy.
         :param str id: The ID of the policy.
-               * `policy_name`- The name of the policy.
-               * `policy_type`- The type of the policy.
+        :param str policy_name: The name of the policy.
         :param str policy_type: The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
         :param str update_date: The time when the policy was updated.
         """
@@ -686,14 +775,15 @@ class GetPoliciesPolicyResult(dict):
     def id(self) -> str:
         """
         The ID of the policy.
-        * `policy_name`- The name of the policy.
-        * `policy_type`- The type of the policy.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> str:
+        """
+        The name of the policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @property
@@ -728,10 +818,6 @@ class GetPolicyAttachmentsAttachmentResult(dict):
         :param str attach_date: The time when the policy was attached.
         :param str description: The description of the policy.
         :param str id: The ID of the Resource Manager Policy Attachment.
-               * `policy_name`- The name of the policy.
-               * `policy_type`- The type of the policy.
-               * `principal_name`- The name of the object to which the policy is attached.
-               * `principal_type`- The type of the object to which the policy is attached.
         :param str policy_name: The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         :param str policy_type: The type of the policy. Valid values: `Custom` and `System`.
         :param str principal_name: The name of the object to which the policy is attached.
@@ -768,10 +854,6 @@ class GetPolicyAttachmentsAttachmentResult(dict):
     def id(self) -> str:
         """
         The ID of the Resource Manager Policy Attachment.
-        * `policy_name`- The name of the policy.
-        * `policy_type`- The type of the policy.
-        * `principal_name`- The name of the object to which the policy is attached.
-        * `principal_type`- The type of the object to which the policy is attached.
         """
         return pulumi.get(self, "id")
 
@@ -825,10 +907,9 @@ class GetPolicyVersionsVersionResult(dict):
                  version_id: str):
         """
         :param str id: The ID of the resource, the value is `<policy_name>`:`<version_id>`.
-               * `version_id`- The ID of the policy version.
-               * `create_date`- (Removed form v1.114.0)The time when the policy version was created.
-               * `is_default_version`- Indicates whether the policy version is the default version.
-               * `policy_document`- (Available in v1.114.0+) The policy document of the policy version.
+        :param bool is_default_version: Indicates whether the policy version is the default version.
+        :param str policy_document: (Available in v1.114.0+) The policy document of the policy version.
+        :param str version_id: The ID of the policy version.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "is_default_version", is_default_version)
@@ -840,26 +921,31 @@ class GetPolicyVersionsVersionResult(dict):
     def id(self) -> str:
         """
         The ID of the resource, the value is `<policy_name>`:`<version_id>`.
-        * `version_id`- The ID of the policy version.
-        * `create_date`- (Removed form v1.114.0)The time when the policy version was created.
-        * `is_default_version`- Indicates whether the policy version is the default version.
-        * `policy_document`- (Available in v1.114.0+) The policy document of the policy version.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="isDefaultVersion")
     def is_default_version(self) -> bool:
+        """
+        Indicates whether the policy version is the default version.
+        """
         return pulumi.get(self, "is_default_version")
 
     @property
     @pulumi.getter(name="policyDocument")
     def policy_document(self) -> str:
+        """
+        (Available in v1.114.0+) The policy document of the policy version.
+        """
         return pulumi.get(self, "policy_document")
 
     @property
     @pulumi.getter(name="versionId")
     def version_id(self) -> str:
+        """
+        The ID of the policy version.
+        """
         return pulumi.get(self, "version_id")
 
 
@@ -874,8 +960,8 @@ class GetResourceDirectoriesDirectoryResult(dict):
                  status: str):
         """
         :param str id: The ID of resource directory.
-               * `master_account_id`- The ID of the master account.
-               * `master_account_name`- The name of the master account.
+        :param str master_account_id: The ID of the master account.
+        :param str master_account_name: The name of the master account.
         :param str resource_directory_id: The ID of the resource directory.
         :param str root_folder_id: The ID of the root folder.
         :param str status: (Available in 1.120.0+.) The status of the control policy.
@@ -892,19 +978,23 @@ class GetResourceDirectoriesDirectoryResult(dict):
     def id(self) -> str:
         """
         The ID of resource directory.
-        * `master_account_id`- The ID of the master account.
-        * `master_account_name`- The name of the master account.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="masterAccountId")
     def master_account_id(self) -> str:
+        """
+        The ID of the master account.
+        """
         return pulumi.get(self, "master_account_id")
 
     @property
     @pulumi.getter(name="masterAccountName")
     def master_account_name(self) -> str:
+        """
+        The name of the master account.
+        """
         return pulumi.get(self, "master_account_name")
 
     @property
@@ -947,6 +1037,7 @@ class GetResourceGroupsGroupResult(dict):
         :param str display_name: The display name of the resource group.
         :param str id: The ID of the resource group.
         :param str name: The unique identifier of the resource group.
+        :param Sequence['GetResourceGroupsGroupRegionStatusArgs'] region_statuses: (Available in v1.114.0+) The status of the resource group in all regions.
         :param str resource_group_name: (Available in v1.114.0+) The unique identifier of the resource group.
         :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
         """
@@ -993,6 +1084,9 @@ class GetResourceGroupsGroupResult(dict):
     @property
     @pulumi.getter(name="regionStatuses")
     def region_statuses(self) -> Sequence['outputs.GetResourceGroupsGroupRegionStatusResult']:
+        """
+        (Available in v1.114.0+) The status of the resource group in all regions.
+        """
         return pulumi.get(self, "region_statuses")
 
     @property
@@ -1115,15 +1209,14 @@ class GetRolesRoleResult(dict):
                  role_name: str,
                  update_date: str):
         """
+        :param str arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        :param str assume_role_policy_document: (Available in v1.114.0+) The assume role policy document.
+        :param str description: The description of the RAM role.
         :param str id: The ID of the role.
-               * `role_id`- The ID of the role.
-               * `role_name`- The name of the role.
-               * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
-               * `create_date`- (Removed form v1.114.0) The time when the RAM role was created.
-               * `update_date`- The time when the RAM role was updated.
-               * `description`- The description of the RAM role.
-               * `max_session_duration`- The maximum session duration of the RAM role.
-               * `assume_role_policy_document`- (Available in v1.114.0+) The assume role policy document.
+        :param int max_session_duration: The maximum session duration of the RAM role.
+        :param str role_id: The ID of the role.
+        :param str role_name: The name of the role.
+        :param str update_date: The time when the RAM role was updated.
         """
         pulumi.set(__self__, "arn", arn)
         pulumi.set(__self__, "assume_role_policy_document", assume_role_policy_document)
@@ -1137,16 +1230,25 @@ class GetRolesRoleResult(dict):
     @property
     @pulumi.getter
     def arn(self) -> str:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="assumeRolePolicyDocument")
     def assume_role_policy_document(self) -> str:
+        """
+        (Available in v1.114.0+) The assume role policy document.
+        """
         return pulumi.get(self, "assume_role_policy_document")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the RAM role.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -1154,35 +1256,39 @@ class GetRolesRoleResult(dict):
     def id(self) -> str:
         """
         The ID of the role.
-        * `role_id`- The ID of the role.
-        * `role_name`- The name of the role.
-        * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
-        * `create_date`- (Removed form v1.114.0) The time when the RAM role was created.
-        * `update_date`- The time when the RAM role was updated.
-        * `description`- The description of the RAM role.
-        * `max_session_duration`- The maximum session duration of the RAM role.
-        * `assume_role_policy_document`- (Available in v1.114.0+) The assume role policy document.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="maxSessionDuration")
     def max_session_duration(self) -> int:
+        """
+        The maximum session duration of the RAM role.
+        """
         return pulumi.get(self, "max_session_duration")
 
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> str:
+        """
+        The ID of the role.
+        """
         return pulumi.get(self, "role_id")
 
     @property
     @pulumi.getter(name="roleName")
     def role_name(self) -> str:
+        """
+        The name of the role.
+        """
         return pulumi.get(self, "role_name")
 
     @property
     @pulumi.getter(name="updateDate")
     def update_date(self) -> str:
+        """
+        The time when the RAM role was updated.
+        """
         return pulumi.get(self, "update_date")
 
 

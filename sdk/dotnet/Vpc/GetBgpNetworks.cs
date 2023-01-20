@@ -23,46 +23,43 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetBgpNetworks.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetBgpNetworks.InvokeAsync(new AliCloud.Vpc.GetBgpNetworksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.VpcBgpNetworkId1 = ids.Apply(ids =&gt; ids.Networks?[0]?.Id);
-        ///         var routerId = Output.Create(AliCloud.Vpc.GetBgpNetworks.InvokeAsync(new AliCloud.Vpc.GetBgpNetworksArgs
-        ///         {
-        ///             RouterId = "example_value",
-        ///         }));
-        ///         this.VpcBgpNetworkId2 = routerId.Apply(routerId =&gt; routerId.Networks?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetBgpNetworks.InvokeAsync(new AliCloud.Vpc.GetBgpNetworksArgs
-        ///         {
-        ///             Status = "Available",
-        ///         }));
-        ///         this.VpcBgpNetworkId3 = status.Apply(status =&gt; status.Networks?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcBgpNetworkId1")]
-        ///     public Output&lt;string&gt; VpcBgpNetworkId1 { get; set; }
-        ///     [Output("vpcBgpNetworkId2")]
-        ///     public Output&lt;string&gt; VpcBgpNetworkId2 { get; set; }
-        ///     [Output("vpcBgpNetworkId3")]
-        ///     public Output&lt;string&gt; VpcBgpNetworkId3 { get; set; }
-        /// }
+        ///     var routerId = AliCloud.Vpc.GetBgpNetworks.Invoke(new()
+        ///     {
+        ///         RouterId = "example_value",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetBgpNetworks.Invoke(new()
+        ///     {
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcBgpNetworkId1"] = ids.Apply(getBgpNetworksResult =&gt; getBgpNetworksResult.Networks[0]?.Id),
+        ///         ["vpcBgpNetworkId2"] = routerId.Apply(getBgpNetworksResult =&gt; getBgpNetworksResult.Networks[0]?.Id),
+        ///         ["vpcBgpNetworkId3"] = status.Apply(getBgpNetworksResult =&gt; getBgpNetworksResult.Networks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBgpNetworksResult> InvokeAsync(GetBgpNetworksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBgpNetworksResult>("alicloud:vpc/getBgpNetworks:getBgpNetworks", args ?? new GetBgpNetworksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBgpNetworksResult>("alicloud:vpc/getBgpNetworks:getBgpNetworks", args ?? new GetBgpNetworksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
@@ -76,50 +73,47 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetBgpNetworks.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetBgpNetworks.InvokeAsync(new AliCloud.Vpc.GetBgpNetworksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.VpcBgpNetworkId1 = ids.Apply(ids =&gt; ids.Networks?[0]?.Id);
-        ///         var routerId = Output.Create(AliCloud.Vpc.GetBgpNetworks.InvokeAsync(new AliCloud.Vpc.GetBgpNetworksArgs
-        ///         {
-        ///             RouterId = "example_value",
-        ///         }));
-        ///         this.VpcBgpNetworkId2 = routerId.Apply(routerId =&gt; routerId.Networks?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetBgpNetworks.InvokeAsync(new AliCloud.Vpc.GetBgpNetworksArgs
-        ///         {
-        ///             Status = "Available",
-        ///         }));
-        ///         this.VpcBgpNetworkId3 = status.Apply(status =&gt; status.Networks?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcBgpNetworkId1")]
-        ///     public Output&lt;string&gt; VpcBgpNetworkId1 { get; set; }
-        ///     [Output("vpcBgpNetworkId2")]
-        ///     public Output&lt;string&gt; VpcBgpNetworkId2 { get; set; }
-        ///     [Output("vpcBgpNetworkId3")]
-        ///     public Output&lt;string&gt; VpcBgpNetworkId3 { get; set; }
-        /// }
+        ///     var routerId = AliCloud.Vpc.GetBgpNetworks.Invoke(new()
+        ///     {
+        ///         RouterId = "example_value",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetBgpNetworks.Invoke(new()
+        ///     {
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcBgpNetworkId1"] = ids.Apply(getBgpNetworksResult =&gt; getBgpNetworksResult.Networks[0]?.Id),
+        ///         ["vpcBgpNetworkId2"] = routerId.Apply(getBgpNetworksResult =&gt; getBgpNetworksResult.Networks[0]?.Id),
+        ///         ["vpcBgpNetworkId3"] = status.Apply(getBgpNetworksResult =&gt; getBgpNetworksResult.Networks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBgpNetworksResult> Invoke(GetBgpNetworksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBgpNetworksResult>("alicloud:vpc/getBgpNetworks:getBgpNetworks", args ?? new GetBgpNetworksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBgpNetworksResult>("alicloud:vpc/getBgpNetworks:getBgpNetworks", args ?? new GetBgpNetworksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBgpNetworksArgs : Pulumi.InvokeArgs
+    public sealed class GetBgpNetworksArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -151,9 +145,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetBgpNetworksArgs()
         {
         }
+        public static new GetBgpNetworksArgs Empty => new GetBgpNetworksArgs();
     }
 
-    public sealed class GetBgpNetworksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBgpNetworksInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -185,6 +180,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetBgpNetworksInvokeArgs()
         {
         }
+        public static new GetBgpNetworksInvokeArgs Empty => new GetBgpNetworksInvokeArgs();
     }
 
 

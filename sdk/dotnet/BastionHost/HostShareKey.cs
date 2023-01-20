@@ -21,24 +21,23 @@ namespace Pulumi.AliCloud.BastionHost
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultInstances = Output.Create(AliCloud.BastionHost.GetInstances.InvokeAsync());
-    ///         var defaultHostShareKey = new AliCloud.BastionHost.HostShareKey("defaultHostShareKey", new AliCloud.BastionHost.HostShareKeyArgs
-    ///         {
-    ///             HostShareKeyName = "example_name",
-    ///             InstanceId = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances?[0]?.Id),
-    ///             PassPhrase = "example_value",
-    ///             PrivateKey = "example_value",
-    ///         });
-    ///     }
+    ///     var defaultInstances = AliCloud.BastionHost.GetInstances.Invoke();
     /// 
-    /// }
+    ///     var defaultHostShareKey = new AliCloud.BastionHost.HostShareKey("defaultHostShareKey", new()
+    ///     {
+    ///         HostShareKeyName = "example_name",
+    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+    ///         PassPhrase = "example_value",
+    ///         PrivateKey = "example_value",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/hostShareKey:HostShareKey")]
-    public partial class HostShareKey : Pulumi.CustomResource
+    public partial class HostShareKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The first ID of the resource.
@@ -111,6 +110,11 @@ namespace Pulumi.AliCloud.BastionHost
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "passPhrase",
+                    "privateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -132,7 +136,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
     }
 
-    public sealed class HostShareKeyArgs : Pulumi.ResourceArgs
+    public sealed class HostShareKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
@@ -146,24 +150,45 @@ namespace Pulumi.AliCloud.BastionHost
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        [Input("passPhrase")]
+        private Input<string>? _passPhrase;
+
         /// <summary>
         /// The password of the private key. The value is a Base64-encoded string.
         /// </summary>
-        [Input("passPhrase")]
-        public Input<string>? PassPhrase { get; set; }
+        public Input<string>? PassPhrase
+        {
+            get => _passPhrase;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passPhrase = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("privateKey", required: true)]
+        private Input<string>? _privateKey;
 
         /// <summary>
         /// The private key. The value is a Base64-encoded string.
         /// </summary>
-        [Input("privateKey", required: true)]
-        public Input<string> PrivateKey { get; set; } = null!;
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public HostShareKeyArgs()
         {
         }
+        public static new HostShareKeyArgs Empty => new HostShareKeyArgs();
     }
 
-    public sealed class HostShareKeyState : Pulumi.ResourceArgs
+    public sealed class HostShareKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The first ID of the resource.
@@ -183,17 +208,37 @@ namespace Pulumi.AliCloud.BastionHost
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
+        [Input("passPhrase")]
+        private Input<string>? _passPhrase;
+
         /// <summary>
         /// The password of the private key. The value is a Base64-encoded string.
         /// </summary>
-        [Input("passPhrase")]
-        public Input<string>? PassPhrase { get; set; }
+        public Input<string>? PassPhrase
+        {
+            get => _passPhrase;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passPhrase = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
 
         /// <summary>
         /// The private key. The value is a Base64-encoded string.
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The fingerprint of the private key.
@@ -204,5 +249,6 @@ namespace Pulumi.AliCloud.BastionHost
         public HostShareKeyState()
         {
         }
+        public static new HostShareKeyState Empty => new HostShareKeyState();
     }
 }

@@ -21,52 +21,49 @@ namespace Pulumi.AliCloud.Mse
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultZones = Output.Create(AliCloud.MongoDB.GetZones.InvokeAsync());
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Zones?[0]?.Id,
-    ///             }));
-    ///         });
-    ///         var defaultCluster = new AliCloud.Mse.Cluster("defaultCluster", new AliCloud.Mse.ClusterArgs
-    ///         {
-    ///             ClusterSpecification = "MSE_SC_1_2_200_c",
-    ///             ClusterType = "ZooKeeper",
-    ///             ClusterVersion = "ZooKeeper_3_5_5",
-    ///             InstanceCount = 1,
-    ///             NetType = "privatenet",
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             PubNetworkFlow = "1",
-    ///             AclEntryLists = 
-    ///             {
-    ///                 "127.0.0.1/32",
-    ///             },
-    ///             ClusterAliasName = "example_value",
-    ///         });
-    ///         var defaultZnode = new AliCloud.Mse.Znode("defaultZnode", new AliCloud.Mse.ZnodeArgs
-    ///         {
-    ///             ClusterId = defaultCluster.ClusterId,
-    ///             Data = "example_value",
-    ///             Path = "example_value",
-    ///         });
-    ///     }
+    ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.Mse.Cluster("defaultCluster", new()
+    ///     {
+    ///         ClusterSpecification = "MSE_SC_1_2_200_c",
+    ///         ClusterType = "ZooKeeper",
+    ///         ClusterVersion = "ZooKeeper_3_5_5",
+    ///         InstanceCount = 1,
+    ///         NetType = "privatenet",
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         PubNetworkFlow = "1",
+    ///         AclEntryLists = new[]
+    ///         {
+    ///             "127.0.0.1/32",
+    ///         },
+    ///         ClusterAliasName = "example_value",
+    ///     });
+    /// 
+    ///     var defaultZnode = new AliCloud.Mse.Znode("defaultZnode", new()
+    ///     {
+    ///         ClusterId = defaultCluster.ClusterId,
+    ///         Data = "example_value",
+    ///         Path = "example_value",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -78,7 +75,7 @@ namespace Pulumi.AliCloud.Mse
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mse/znode:Znode")]
-    public partial class Znode : Pulumi.CustomResource
+    public partial class Znode : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The language type of the returned information. Valid values: `zh` or `en`.
@@ -148,7 +145,7 @@ namespace Pulumi.AliCloud.Mse
         }
     }
 
-    public sealed class ZnodeArgs : Pulumi.ResourceArgs
+    public sealed class ZnodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The language type of the returned information. Valid values: `zh` or `en`.
@@ -177,9 +174,10 @@ namespace Pulumi.AliCloud.Mse
         public ZnodeArgs()
         {
         }
+        public static new ZnodeArgs Empty => new ZnodeArgs();
     }
 
-    public sealed class ZnodeState : Pulumi.ResourceArgs
+    public sealed class ZnodeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The language type of the returned information. Valid values: `zh` or `en`.
@@ -208,5 +206,6 @@ namespace Pulumi.AliCloud.Mse
         public ZnodeState()
         {
         }
+        public static new ZnodeState Empty => new ZnodeState();
     }
 }

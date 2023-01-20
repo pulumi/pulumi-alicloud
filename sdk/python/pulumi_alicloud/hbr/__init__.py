@@ -19,6 +19,7 @@ from .get_ots_snapshots import *
 from .get_replication_vault_regions import *
 from .get_restore_jobs import *
 from .get_server_backup_plans import *
+from .get_service import *
 from .get_snapshots import *
 from .get_vaults import *
 from .hana_backup_plan import *

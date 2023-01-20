@@ -17,16 +17,15 @@ namespace Pulumi.AliCloud.Oos
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Oos.Template("example", new()
     ///     {
-    ///         var example = new AliCloud.Oos.Template("example", new AliCloud.Oos.TemplateArgs
-    ///         {
-    ///             Content = @"  {
+    ///         Content = @"  {
     ///     ""FormatVersion"": ""OOS-2019-06-01"",
     ///     ""Description"": ""Update Describe instances of given status"",
     ///     ""Parameters"":{
@@ -50,17 +49,16 @@ namespace Pulumi.AliCloud.Oos
     ///   }
     ///   
     /// ",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "acceptance Test" },
-    ///             },
-    ///             TemplateName = "test-name",
-    ///             VersionName = "test",
-    ///         });
-    ///     }
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "acceptance Test" },
+    ///         },
+    ///         TemplateName = "test-name",
+    ///         VersionName = "test",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +70,7 @@ namespace Pulumi.AliCloud.Oos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/template:Template")]
-    public partial class Template : Pulumi.CustomResource
+    public partial class Template : global::Pulumi.CustomResource
     {
         /// <summary>
         /// When deleting a template, whether to delete its related executions. Default to `false`.
@@ -220,7 +218,7 @@ namespace Pulumi.AliCloud.Oos
         }
     }
 
-    public sealed class TemplateArgs : Pulumi.ResourceArgs
+    public sealed class TemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When deleting a template, whether to delete its related executions. Default to `false`.
@@ -267,9 +265,10 @@ namespace Pulumi.AliCloud.Oos
         public TemplateArgs()
         {
         }
+        public static new TemplateArgs Empty => new TemplateArgs();
     }
 
-    public sealed class TemplateState : Pulumi.ResourceArgs
+    public sealed class TemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When deleting a template, whether to delete its related executions. Default to `false`.
@@ -382,5 +381,6 @@ namespace Pulumi.AliCloud.Oos
         public TemplateState()
         {
         }
+        public static new TemplateState Empty => new TemplateState();
     }
 }

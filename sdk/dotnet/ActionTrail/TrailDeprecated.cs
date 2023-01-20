@@ -13,24 +13,22 @@ namespace Pulumi.AliCloud.ActionTrail
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new action trail.
+    ///     var foo = new AliCloud.ActionTrail.TrailDeprecated("foo", new()
     ///     {
-    ///         // Create a new action trail.
-    ///         var foo = new AliCloud.ActionTrail.TrailDeprecated("foo", new AliCloud.ActionTrail.TrailDeprecatedArgs
-    ///         {
-    ///             EventRw = "Write-test",
-    ///             OssBucketName = alicloud_oss_bucket.Bucket.Id,
-    ///             RoleName = alicloud_ram_role_policy_attachment.Attach.Role_name,
-    ///             OssKeyPrefix = "at-product-account-audit-B",
-    ///         });
-    ///     }
+    ///         EventRw = "Write-test",
+    ///         OssBucketName = alicloud_oss_bucket.Bucket.Id,
+    ///         RoleName = alicloud_ram_role_policy_attachment.Attach.Role_name,
+    ///         OssKeyPrefix = "at-product-account-audit-B",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.AliCloud.ActionTrail
     /// </summary>
     [Obsolete(@"Resource renamed to `Trail`")]
     [AliCloudResourceType("alicloud:actiontrail/trailDeprecated:TrailDeprecated")]
-    public partial class TrailDeprecated : Pulumi.CustomResource
+    public partial class TrailDeprecated : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
@@ -149,7 +147,7 @@ namespace Pulumi.AliCloud.ActionTrail
         }
     }
 
-    public sealed class TrailDeprecatedArgs : Pulumi.ResourceArgs
+    public sealed class TrailDeprecatedArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
@@ -214,9 +212,10 @@ namespace Pulumi.AliCloud.ActionTrail
         public TrailDeprecatedArgs()
         {
         }
+        public static new TrailDeprecatedArgs Empty => new TrailDeprecatedArgs();
     }
 
-    public sealed class TrailDeprecatedState : Pulumi.ResourceArgs
+    public sealed class TrailDeprecatedState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
@@ -281,5 +280,6 @@ namespace Pulumi.AliCloud.ActionTrail
         public TrailDeprecatedState()
         {
         }
+        public static new TrailDeprecatedState Empty => new TrailDeprecatedState();
     }
 }

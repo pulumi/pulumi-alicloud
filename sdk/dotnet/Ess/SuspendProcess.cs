@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Ess
     /// ### Timeouts The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration-0-11/resources.html#timeouts) for certain actions* `create` - (Defaults to 1 mins) Used when create the process. * `delete` - (Defaults to 1 mins) Used when delete the process.
     /// </summary>
     [AliCloudResourceType("alicloud:ess/suspendProcess:SuspendProcess")]
-    public partial class SuspendProcess : Pulumi.CustomResource
+    public partial class SuspendProcess : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
-    public sealed class SuspendProcessArgs : Pulumi.ResourceArgs
+    public sealed class SuspendProcessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
@@ -96,9 +96,10 @@ namespace Pulumi.AliCloud.Ess
         public SuspendProcessArgs()
         {
         }
+        public static new SuspendProcessArgs Empty => new SuspendProcessArgs();
     }
 
-    public sealed class SuspendProcessState : Pulumi.ResourceArgs
+    public sealed class SuspendProcessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
@@ -115,5 +116,6 @@ namespace Pulumi.AliCloud.Ess
         public SuspendProcessState()
         {
         }
+        public static new SuspendProcessState Empty => new SuspendProcessState();
     }
 }

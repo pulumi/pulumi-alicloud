@@ -64,6 +64,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// (Available in 1.196.0+) The connection string of the DRDS instance.
+	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// Description of the DRDS instance, This description can have a string of 2 to 256 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
@@ -73,6 +75,8 @@ type Instance struct {
 	// - `drds.sn2.8c32g` Standard Edition.
 	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries pulumi.StringOutput `pulumi:"instanceSeries"`
+	// (Available in 1.196.0+) The connection port of the DRDS instance.
+	Port pulumi.StringOutput `pulumi:"port"`
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;
 	// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -83,6 +87,8 @@ type Instance struct {
 	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification pulumi.StringOutput `pulumi:"specification"`
+	// The id of the VPC.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The VSwitch ID to launch in.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DRDS instance.
@@ -133,6 +139,8 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// (Available in 1.196.0+) The connection string of the DRDS instance.
+	ConnectionString *string `pulumi:"connectionString"`
 	// Description of the DRDS instance, This description can have a string of 2 to 256 characters.
 	Description *string `pulumi:"description"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
@@ -142,6 +150,8 @@ type instanceState struct {
 	// - `drds.sn2.8c32g` Standard Edition.
 	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries *string `pulumi:"instanceSeries"`
+	// (Available in 1.196.0+) The connection port of the DRDS instance.
+	Port *string `pulumi:"port"`
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;
 	// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -152,6 +162,8 @@ type instanceState struct {
 	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification *string `pulumi:"specification"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The VSwitch ID to launch in.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DRDS instance.
@@ -159,6 +171,8 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// (Available in 1.196.0+) The connection string of the DRDS instance.
+	ConnectionString pulumi.StringPtrInput
 	// Description of the DRDS instance, This description can have a string of 2 to 256 characters.
 	Description pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
@@ -168,6 +182,8 @@ type InstanceState struct {
 	// - `drds.sn2.8c32g` Standard Edition.
 	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries pulumi.StringPtrInput
+	// (Available in 1.196.0+) The connection port of the DRDS instance.
+	Port pulumi.StringPtrInput
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;
 	// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -178,6 +194,8 @@ type InstanceState struct {
 	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification pulumi.StringPtrInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// The VSwitch ID to launch in.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DRDS instance.
@@ -208,6 +226,8 @@ type instanceArgs struct {
 	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification string `pulumi:"specification"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The VSwitch ID to launch in.
 	VswitchId string `pulumi:"vswitchId"`
 	// The Zone to launch the DRDS instance.
@@ -235,6 +255,8 @@ type InstanceArgs struct {
 	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification pulumi.StringInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// The VSwitch ID to launch in.
 	VswitchId pulumi.StringInput
 	// The Zone to launch the DRDS instance.
@@ -328,6 +350,11 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// (Available in 1.196.0+) The connection string of the DRDS instance.
+func (o InstanceOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
 // Description of the DRDS instance, This description can have a string of 2 to 256 characters.
 func (o InstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -346,6 +373,11 @@ func (o InstanceOutput) InstanceSeries() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceSeries }).(pulumi.StringOutput)
 }
 
+// (Available in 1.196.0+) The connection port of the DRDS instance.
+func (o InstanceOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
 // User-defined DRDS instance specification. Value range:
 // - `drds.sn1.4c8g` for DRDS instance Starter version;
 // - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -357,6 +389,11 @@ func (o InstanceOutput) InstanceSeries() pulumi.StringOutput {
 // - value range : `drds.sn1.32c64g.128c256g`
 func (o InstanceOutput) Specification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Specification }).(pulumi.StringOutput)
+}
+
+// The id of the VPC.
+func (o InstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The VSwitch ID to launch in.

@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.DirectMail
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.DirectMail.Tag("example", new()
     ///     {
-    ///         var example = new AliCloud.DirectMail.Tag("example", new AliCloud.DirectMail.TagArgs
-    ///         {
-    ///             TagName = "example_value",
-    ///         });
-    ///     }
+    ///         TagName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.DirectMail
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:directmail/tag:Tag")]
-    public partial class Tag : Pulumi.CustomResource
+    public partial class Tag : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
@@ -98,7 +96,7 @@ namespace Pulumi.AliCloud.DirectMail
         }
     }
 
-    public sealed class TagArgs : Pulumi.ResourceArgs
+    public sealed class TagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
@@ -109,9 +107,10 @@ namespace Pulumi.AliCloud.DirectMail
         public TagArgs()
         {
         }
+        public static new TagArgs Empty => new TagArgs();
     }
 
-    public sealed class TagState : Pulumi.ResourceArgs
+    public sealed class TagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
@@ -122,5 +121,6 @@ namespace Pulumi.AliCloud.DirectMail
         public TagState()
         {
         }
+        public static new TagState Empty => new TagState();
     }
 }

@@ -21,30 +21,28 @@ namespace Pulumi.AliCloud.OpenSearch
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "name";
+    ///     var @default = new AliCloud.OpenSearch.AppGroup("default", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "name";
-    ///         var @default = new AliCloud.OpenSearch.AppGroup("default", new AliCloud.OpenSearch.AppGroupArgs
+    ///         AppGroupName = name,
+    ///         PaymentType = "PayAsYouGo",
+    ///         Type = "standard",
+    ///         Quota = new AliCloud.OpenSearch.Inputs.AppGroupQuotaArgs
     ///         {
-    ///             AppGroupName = name,
-    ///             PaymentType = "PayAsYouGo",
-    ///             Type = "standard",
-    ///             Quota = new AliCloud.OpenSearch.Inputs.AppGroupQuotaArgs
-    ///             {
-    ///                 DocSize = 1,
-    ///                 ComputeResource = 20,
-    ///                 Spec = "opensearch.share.common",
-    ///             },
-    ///         });
-    ///     }
+    ///             DocSize = 1,
+    ///             ComputeResource = 20,
+    ///             Spec = "opensearch.share.common",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.AliCloud.OpenSearch
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:opensearch/appGroup:AppGroup")]
-    public partial class AppGroup : Pulumi.CustomResource
+    public partial class AppGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Application Group Name.
@@ -168,7 +166,7 @@ namespace Pulumi.AliCloud.OpenSearch
         }
     }
 
-    public sealed class AppGroupArgs : Pulumi.ResourceArgs
+    public sealed class AppGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Application Group Name.
@@ -233,9 +231,10 @@ namespace Pulumi.AliCloud.OpenSearch
         public AppGroupArgs()
         {
         }
+        public static new AppGroupArgs Empty => new AppGroupArgs();
     }
 
-    public sealed class AppGroupState : Pulumi.ResourceArgs
+    public sealed class AppGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Application Group Name.
@@ -312,5 +311,6 @@ namespace Pulumi.AliCloud.OpenSearch
         public AppGroupState()
         {
         }
+        public static new AppGroupState Empty => new AppGroupState();
     }
 }

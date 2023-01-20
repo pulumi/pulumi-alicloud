@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Hbr.GetOssBackupPlans.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Hbr.GetOssBackupPlans.InvokeAsync(new AliCloud.Hbr.GetOssBackupPlansArgs
-        ///         {
-        ///             NameRegex = "^my-OssBackupPlan",
-        ///         }));
-        ///         this.HbrOssBackupPlanId = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
-        ///     }
+        ///         NameRegex = "^my-OssBackupPlan",
+        ///     });
         /// 
-        ///     [Output("hbrOssBackupPlanId")]
-        ///     public Output&lt;string&gt; HbrOssBackupPlanId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrOssBackupPlanId"] = ids.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetOssBackupPlansResult> InvokeAsync(GetOssBackupPlansArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOssBackupPlansResult>("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", args ?? new GetOssBackupPlansArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOssBackupPlansResult>("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", args ?? new GetOssBackupPlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr OssBackupPlans of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Hbr.GetOssBackupPlans.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Hbr.GetOssBackupPlans.InvokeAsync(new AliCloud.Hbr.GetOssBackupPlansArgs
-        ///         {
-        ///             NameRegex = "^my-OssBackupPlan",
-        ///         }));
-        ///         this.HbrOssBackupPlanId = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
-        ///     }
+        ///         NameRegex = "^my-OssBackupPlan",
+        ///     });
         /// 
-        ///     [Output("hbrOssBackupPlanId")]
-        ///     public Output&lt;string&gt; HbrOssBackupPlanId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrOssBackupPlanId"] = ids.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetOssBackupPlansResult> Invoke(GetOssBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOssBackupPlansResult>("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", args ?? new GetOssBackupPlansInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOssBackupPlansResult>("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", args ?? new GetOssBackupPlansInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetOssBackupPlansArgs : Pulumi.InvokeArgs
+    public sealed class GetOssBackupPlansArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of OSS bucket.
@@ -123,9 +121,10 @@ namespace Pulumi.AliCloud.Hbr
         public GetOssBackupPlansArgs()
         {
         }
+        public static new GetOssBackupPlansArgs Empty => new GetOssBackupPlansArgs();
     }
 
-    public sealed class GetOssBackupPlansInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOssBackupPlansInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of OSS bucket.
@@ -163,6 +162,7 @@ namespace Pulumi.AliCloud.Hbr
         public GetOssBackupPlansInvokeArgs()
         {
         }
+        public static new GetOssBackupPlansInvokeArgs Empty => new GetOssBackupPlansInvokeArgs();
     }
 
 

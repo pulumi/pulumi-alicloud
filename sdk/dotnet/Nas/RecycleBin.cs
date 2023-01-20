@@ -21,28 +21,27 @@ namespace Pulumi.AliCloud.Nas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
     ///     {
-    ///         var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new AliCloud.Nas.FileSystemArgs
-    ///         {
-    ///             ProtocolType = "NFS",
-    ///             StorageType = "Performance",
-    ///             Description = @var.Name,
-    ///             EncryptType = 1,
-    ///         });
-    ///         var exampleRecycleBin = new AliCloud.Nas.RecycleBin("exampleRecycleBin", new AliCloud.Nas.RecycleBinArgs
-    ///         {
-    ///             FileSystemId = exampleFileSystem.Id,
-    ///             ReservedDays = 3,
-    ///         });
-    ///     }
+    ///         ProtocolType = "NFS",
+    ///         StorageType = "Performance",
+    ///         Description = @var.Name,
+    ///         EncryptType = 1,
+    ///     });
     /// 
-    /// }
+    ///     var exampleRecycleBin = new AliCloud.Nas.RecycleBin("exampleRecycleBin", new()
+    ///     {
+    ///         FileSystemId = exampleFileSystem.Id,
+    ///         ReservedDays = 3,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +53,7 @@ namespace Pulumi.AliCloud.Nas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/recycleBin:RecycleBin")]
-    public partial class RecycleBin : Pulumi.CustomResource
+    public partial class RecycleBin : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the file system for which you want to enable the recycle bin feature.
@@ -118,7 +117,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
-    public sealed class RecycleBinArgs : Pulumi.ResourceArgs
+    public sealed class RecycleBinArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the file system for which you want to enable the recycle bin feature.
@@ -135,9 +134,10 @@ namespace Pulumi.AliCloud.Nas
         public RecycleBinArgs()
         {
         }
+        public static new RecycleBinArgs Empty => new RecycleBinArgs();
     }
 
-    public sealed class RecycleBinState : Pulumi.ResourceArgs
+    public sealed class RecycleBinState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the file system for which you want to enable the recycle bin feature.
@@ -160,5 +160,6 @@ namespace Pulumi.AliCloud.Nas
         public RecycleBinState()
         {
         }
+        public static new RecycleBinState Empty => new RecycleBinState();
     }
 }

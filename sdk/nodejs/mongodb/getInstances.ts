@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -15,21 +16,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const mongo = pulumi.output(alicloud.mongodb.getInstances({
+ * const mongo = alicloud.mongodb.getInstances({
  *     availabilityZone: "eu-central-1a",
  *     instanceClass: "dds.mongo.mid",
  *     instanceType: "replicate",
  *     nameRegex: "dds-.+\\d+",
- * }));
+ * });
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mongodb/getInstances:getInstances", {
         "availabilityZone": args.availabilityZone,
         "ids": args.ids,
@@ -108,9 +106,26 @@ export interface GetInstancesResult {
     readonly outputFile?: string;
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
+ * Filters support regular expression for the instance name, engine or instance type.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const mongo = alicloud.mongodb.getInstances({
+ *     availabilityZone: "eu-central-1a",
+ *     instanceClass: "dds.mongo.mid",
+ *     instanceType: "replicate",
+ *     nameRegex: "dds-.+\\d+",
+ * });
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**

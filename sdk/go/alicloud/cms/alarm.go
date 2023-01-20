@@ -112,7 +112,7 @@ type Alarm struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringOutput `pulumi:"statistics"`
@@ -120,7 +120,7 @@ type Alarm struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// Critical level alarm threshold value, which must be a numeric value currently.
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
 	//
 	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
 	Threshold pulumi.StringOutput `pulumi:"threshold"`
@@ -213,7 +213,7 @@ type alarmState struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime *int `pulumi:"startTime"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics *string `pulumi:"statistics"`
@@ -221,7 +221,7 @@ type alarmState struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// Critical level alarm threshold value, which must be a numeric value currently.
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
 	//
 	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
 	Threshold *string `pulumi:"threshold"`
@@ -277,7 +277,7 @@ type AlarmState struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrInput
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringPtrInput
@@ -285,7 +285,7 @@ type AlarmState struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// Critical level alarm threshold value, which must be a numeric value currently.
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
 	//
 	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
 	Threshold pulumi.StringPtrInput
@@ -345,13 +345,13 @@ type alarmArgs struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime *int `pulumi:"startTime"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics *string `pulumi:"statistics"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// Critical level alarm threshold value, which must be a numeric value currently.
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
 	//
 	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
 	Threshold *string `pulumi:"threshold"`
@@ -408,13 +408,13 @@ type AlarmArgs struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrInput
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// Critical level alarm threshold value, which must be a numeric value currently.
+	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
 	//
 	// Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
 	Threshold pulumi.StringPtrInput
@@ -607,7 +607,7 @@ func (o AlarmOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
 }
 
-// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
 //
 // Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 func (o AlarmOutput) Statistics() pulumi.StringOutput {
@@ -624,7 +624,7 @@ func (o AlarmOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// Critical level alarm threshold value, which must be a numeric value currently.
+// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
 //
 // Deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
 func (o AlarmOutput) Threshold() pulumi.StringOutput {

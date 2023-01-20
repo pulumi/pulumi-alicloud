@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.MongoDB
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.MongoDB.GetAuditPolicies.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.MongoDB.GetAuditPolicies.InvokeAsync(new AliCloud.MongoDB.GetAuditPoliciesArgs
-        ///         {
-        ///             DbInstanceId = "example_value",
-        ///         }));
-        ///         this.MongodbAuditPolicyId1 = example.Apply(example =&gt; example.Policies?[0]?.Id);
-        ///     }
+        ///         DbInstanceId = "example_value",
+        ///     });
         /// 
-        ///     [Output("mongodbAuditPolicyId1")]
-        ///     public Output&lt;string&gt; MongodbAuditPolicyId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbAuditPolicyId1"] = example.Apply(getAuditPoliciesResult =&gt; getAuditPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAuditPoliciesResult> InvokeAsync(GetAuditPoliciesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAuditPoliciesResult>("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args ?? new GetAuditPoliciesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAuditPoliciesResult>("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args ?? new GetAuditPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.MongoDB
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.MongoDB.GetAuditPolicies.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.MongoDB.GetAuditPolicies.InvokeAsync(new AliCloud.MongoDB.GetAuditPoliciesArgs
-        ///         {
-        ///             DbInstanceId = "example_value",
-        ///         }));
-        ///         this.MongodbAuditPolicyId1 = example.Apply(example =&gt; example.Policies?[0]?.Id);
-        ///     }
+        ///         DbInstanceId = "example_value",
+        ///     });
         /// 
-        ///     [Output("mongodbAuditPolicyId1")]
-        ///     public Output&lt;string&gt; MongodbAuditPolicyId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbAuditPolicyId1"] = example.Apply(getAuditPoliciesResult =&gt; getAuditPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAuditPoliciesResult> Invoke(GetAuditPoliciesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAuditPoliciesResult>("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args ?? new GetAuditPoliciesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAuditPoliciesResult>("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args ?? new GetAuditPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAuditPoliciesArgs : Pulumi.InvokeArgs
+    public sealed class GetAuditPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the instance.
@@ -99,9 +97,10 @@ namespace Pulumi.AliCloud.MongoDB
         public GetAuditPoliciesArgs()
         {
         }
+        public static new GetAuditPoliciesArgs Empty => new GetAuditPoliciesArgs();
     }
 
-    public sealed class GetAuditPoliciesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAuditPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the instance.
@@ -115,6 +114,7 @@ namespace Pulumi.AliCloud.MongoDB
         public GetAuditPoliciesInvokeArgs()
         {
         }
+        public static new GetAuditPoliciesInvokeArgs Empty => new GetAuditPoliciesInvokeArgs();
     }
 
 

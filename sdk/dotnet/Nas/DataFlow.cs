@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Nas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/dataFlow:DataFlow")]
-    public partial class DataFlow : Pulumi.CustomResource
+    public partial class DataFlow : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Data flow.
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
-    public sealed class DataFlowArgs : Pulumi.ResourceArgs
+    public sealed class DataFlowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Description of the data flow. Restrictions:
@@ -184,9 +184,10 @@ namespace Pulumi.AliCloud.Nas
         public DataFlowArgs()
         {
         }
+        public static new DataFlowArgs Empty => new DataFlowArgs();
     }
 
-    public sealed class DataFlowState : Pulumi.ResourceArgs
+    public sealed class DataFlowState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Data flow.
@@ -248,5 +249,6 @@ namespace Pulumi.AliCloud.Nas
         public DataFlowState()
         {
         }
+        public static new DataFlowState Empty => new DataFlowState();
     }
 }

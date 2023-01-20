@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -26,16 +27,13 @@ import * as utilities from "../utilities";
  *     ids: [alicloud_hbr_ecs_backup_client["default"].id],
  *     instanceIds: [alicloud_hbr_ecs_backup_client["default"].instance_id],
  * });
- * export const hbrEcsBackupClientId1 = ids.then(ids => ids.clients?[0]?.id);
+ * export const hbrEcsBackupClientId1 = ids.then(ids => ids.clients?.[0]?.id);
  * ```
  */
 export function getEcsBackupClients(args?: GetEcsBackupClientsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsBackupClientsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", {
         "ids": args.ids,
         "instanceIds": args.instanceIds,
@@ -77,9 +75,32 @@ export interface GetEcsBackupClientsResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.132.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ecs.getInstances({
+ *     nameRegex: "ecs_instance_name",
+ *     status: "Running",
+ * });
+ * const ids = alicloud.hbr.getEcsBackupClients({
+ *     ids: [alicloud_hbr_ecs_backup_client["default"].id],
+ *     instanceIds: [alicloud_hbr_ecs_backup_client["default"].instance_id],
+ * });
+ * export const hbrEcsBackupClientId1 = ids.then(ids => ids.clients?.[0]?.id);
+ * ```
+ */
 export function getEcsBackupClientsOutput(args?: GetEcsBackupClientsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsBackupClientsResult> {
-    return pulumi.output(args).apply(a => getEcsBackupClients(a, opts))
+    return pulumi.output(args).apply((a: any) => getEcsBackupClients(a, opts))
 }
 
 /**

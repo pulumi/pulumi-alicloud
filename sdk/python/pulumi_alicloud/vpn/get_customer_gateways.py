@@ -61,6 +61,9 @@ class GetCustomerGatewaysResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        IDs of VPN customer gateway.
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -71,6 +74,9 @@ class GetCustomerGatewaysResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        names of VPN customer gateway.
+        """
         return pulumi.get(self, "names")
 
     @property

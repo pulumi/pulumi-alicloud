@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Cfg
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/delivery:Delivery")]
-    public partial class Delivery : Pulumi.CustomResource
+    public partial class Delivery : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Open or close delivery configuration change history. true: open, false: close.
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Cfg
         }
     }
 
-    public sealed class DeliveryArgs : Pulumi.ResourceArgs
+    public sealed class DeliveryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Open or close delivery configuration change history. true: open, false: close.
@@ -206,9 +206,10 @@ namespace Pulumi.AliCloud.Cfg
         public DeliveryArgs()
         {
         }
+        public static new DeliveryArgs Empty => new DeliveryArgs();
     }
 
-    public sealed class DeliveryState : Pulumi.ResourceArgs
+    public sealed class DeliveryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Open or close delivery configuration change history. true: open, false: close.
@@ -278,5 +279,6 @@ namespace Pulumi.AliCloud.Cfg
         public DeliveryState()
         {
         }
+        public static new DeliveryState Empty => new DeliveryState();
     }
 }

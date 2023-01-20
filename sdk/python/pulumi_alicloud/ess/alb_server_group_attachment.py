@@ -22,7 +22,7 @@ class AlbServerGroupAttachmentArgs:
         """
         The set of arguments for constructing a AlbServerGroupAttachment resource.
         :param pulumi.Input[str] alb_server_group_id: ID of Alb Server Group.
-        :param pulumi.Input[int] port: - The port will be used for Alb Server Group backend server.
+        :param pulumi.Input[int] port: The port will be used for Alb Server Group backend server.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[int] weight: The weight of an ECS instance attached to the Alb Server Group.
         :param pulumi.Input[bool] force_attach: If instances of scaling group are attached/removed from slb backend server when attach/detach alb
@@ -51,7 +51,7 @@ class AlbServerGroupAttachmentArgs:
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
         """
-        - The port will be used for Alb Server Group backend server.
+        The port will be used for Alb Server Group backend server.
         """
         return pulumi.get(self, "port")
 
@@ -110,7 +110,7 @@ class _AlbServerGroupAttachmentState:
         :param pulumi.Input[str] alb_server_group_id: ID of Alb Server Group.
         :param pulumi.Input[bool] force_attach: If instances of scaling group are attached/removed from slb backend server when attach/detach alb
                server group from scaling group. Default to false.
-        :param pulumi.Input[int] port: - The port will be used for Alb Server Group backend server.
+        :param pulumi.Input[int] port: The port will be used for Alb Server Group backend server.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[int] weight: The weight of an ECS instance attached to the Alb Server Group.
         """
@@ -154,7 +154,7 @@ class _AlbServerGroupAttachmentState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        - The port will be used for Alb Server Group backend server.
+        The port will be used for Alb Server Group backend server.
         """
         return pulumi.get(self, "port")
 
@@ -224,7 +224,7 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] alb_server_group_id: ID of Alb Server Group.
         :param pulumi.Input[bool] force_attach: If instances of scaling group are attached/removed from slb backend server when attach/detach alb
                server group from scaling group. Default to false.
-        :param pulumi.Input[int] port: - The port will be used for Alb Server Group backend server.
+        :param pulumi.Input[int] port: The port will be used for Alb Server Group backend server.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[int] weight: The weight of an ECS instance attached to the Alb Server Group.
         """
@@ -322,7 +322,7 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] alb_server_group_id: ID of Alb Server Group.
         :param pulumi.Input[bool] force_attach: If instances of scaling group are attached/removed from slb backend server when attach/detach alb
                server group from scaling group. Default to false.
-        :param pulumi.Input[int] port: - The port will be used for Alb Server Group backend server.
+        :param pulumi.Input[int] port: The port will be used for Alb Server Group backend server.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[int] weight: The weight of an ECS instance attached to the Alb Server Group.
         """
@@ -358,7 +358,7 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[int]:
         """
-        - The port will be used for Alb Server Group backend server.
+        The port will be used for Alb Server Group backend server.
         """
         return pulumi.get(self, "port")
 

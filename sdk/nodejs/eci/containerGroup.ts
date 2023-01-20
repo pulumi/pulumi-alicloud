@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -53,6 +54,26 @@ import * as utilities from "../utilities";
  *             environmentVars: [{
  *                 key: "test",
  *                 value: "nginx",
+ *             }],
+ *             livenessProbes: [{
+ *                 periodSeconds: 5,
+ *                 initialDelaySeconds: 5,
+ *                 successThreshold: 1,
+ *                 failureThreshold: 3,
+ *                 timeoutSeconds: 1,
+ *                 execs: [{
+ *                     commands: ["cat /tmp/healthy"],
+ *                 }],
+ *             }],
+ *             readinessProbes: [{
+ *                 periodSeconds: 5,
+ *                 initialDelaySeconds: 5,
+ *                 successThreshold: 1,
+ *                 failureThreshold: 3,
+ *                 timeoutSeconds: 1,
+ *                 execs: [{
+ *                     commands: ["cat /tmp/healthy"],
+ *                 }],
  *             }],
  *         },
  *         {
@@ -122,6 +143,10 @@ export class ContainerGroup extends pulumi.CustomResource {
     }
 
     /**
+     * The ACR enterprise edition example properties.
+     */
+    public readonly acrRegistryInfos!: pulumi.Output<outputs.eci.ContainerGroupAcrRegistryInfo[] | undefined>;
+    /**
      * Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
      */
     public readonly autoCreateEip!: pulumi.Output<boolean | undefined>;
@@ -138,7 +163,7 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly containers!: pulumi.Output<outputs.eci.ContainerGroupContainer[]>;
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      */
     public readonly cpu!: pulumi.Output<number>;
     /**
@@ -186,7 +211,7 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly intranetIp!: pulumi.Output<string>;
     /**
-     * The amount of memory resources allocated to the container.
+     * The amount of memory resources allocated to the container group.
      */
     public readonly memory!: pulumi.Output<number>;
     /**
@@ -245,6 +270,7 @@ export class ContainerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerGroupState | undefined;
+            resourceInputs["acrRegistryInfos"] = state ? state.acrRegistryInfos : undefined;
             resourceInputs["autoCreateEip"] = state ? state.autoCreateEip : undefined;
             resourceInputs["autoMatchImageCache"] = state ? state.autoMatchImageCache : undefined;
             resourceInputs["containerGroupName"] = state ? state.containerGroupName : undefined;
@@ -286,6 +312,7 @@ export class ContainerGroup extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            resourceInputs["acrRegistryInfos"] = args ? args.acrRegistryInfos : undefined;
             resourceInputs["autoCreateEip"] = args ? args.autoCreateEip : undefined;
             resourceInputs["autoMatchImageCache"] = args ? args.autoMatchImageCache : undefined;
             resourceInputs["containerGroupName"] = args ? args.containerGroupName : undefined;
@@ -324,6 +351,10 @@ export class ContainerGroup extends pulumi.CustomResource {
  */
 export interface ContainerGroupState {
     /**
+     * The ACR enterprise edition example properties.
+     */
+    acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupAcrRegistryInfo>[]>;
+    /**
      * Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
      */
     autoCreateEip?: pulumi.Input<boolean>;
@@ -340,7 +371,7 @@ export interface ContainerGroupState {
      */
     containers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainer>[]>;
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      */
     cpu?: pulumi.Input<number>;
     /**
@@ -388,7 +419,7 @@ export interface ContainerGroupState {
      */
     intranetIp?: pulumi.Input<string>;
     /**
-     * The amount of memory resources allocated to the container.
+     * The amount of memory resources allocated to the container group.
      */
     memory?: pulumi.Input<number>;
     /**
@@ -440,6 +471,10 @@ export interface ContainerGroupState {
  */
 export interface ContainerGroupArgs {
     /**
+     * The ACR enterprise edition example properties.
+     */
+    acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupAcrRegistryInfo>[]>;
+    /**
      * Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
      */
     autoCreateEip?: pulumi.Input<boolean>;
@@ -456,7 +491,7 @@ export interface ContainerGroupArgs {
      */
     containers: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainer>[]>;
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      */
     cpu?: pulumi.Input<number>;
     /**
@@ -496,7 +531,7 @@ export interface ContainerGroupArgs {
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * The amount of memory resources allocated to the container.
+     * The amount of memory resources allocated to the container group.
      */
     memory?: pulumi.Input<number>;
     /**

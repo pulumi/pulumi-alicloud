@@ -21,68 +21,69 @@ namespace Pulumi.AliCloud.Hbr
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "testAcc";
+    ///     var @default = new AliCloud.Hbr.Vault("default", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "testAcc";
-    ///         var @default = new AliCloud.Hbr.Vault("default", new AliCloud.Hbr.VaultArgs
-    ///         {
-    ///             VaultName = name,
-    ///             VaultType = "OTS_BACKUP",
-    ///         });
-    ///         var foo = new AliCloud.Ots.Instance("foo", new AliCloud.Ots.InstanceArgs
-    ///         {
-    ///             Description = name,
-    ///             AccessedBy = "Any",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "acceptance test" },
-    ///             },
-    ///         });
-    ///         var basic = new AliCloud.Ots.Table("basic", new AliCloud.Ots.TableArgs
-    ///         {
-    ///             InstanceName = foo.Name,
-    ///             TableName = name,
-    ///             PrimaryKeys = 
-    ///             {
-    ///                 new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
-    ///                 {
-    ///                     Name = "pk1",
-    ///                     Type = "Integer",
-    ///                 },
-    ///             },
-    ///             TimeToLive = -1,
-    ///             MaxVersion = 1,
-    ///             DeviationCellVersionInSec = "1",
-    ///         });
-    ///         var example = new AliCloud.Hbr.OtsBackupPlan("example", new AliCloud.Hbr.OtsBackupPlanArgs
-    ///         {
-    ///             OtsBackupPlanName = name,
-    ///             VaultId = @default.Id,
-    ///             BackupType = "COMPLETE",
-    ///             Schedule = "I|1602673264|PT2H",
-    ///             Retention = "2",
-    ///             InstanceName = foo.Name,
-    ///             OtsDetails = 
-    ///             {
-    ///                 new AliCloud.Hbr.Inputs.OtsBackupPlanOtsDetailArgs
-    ///                 {
-    ///                     TableNames = 
-    ///                     {
-    ///                         basic.TableName,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         VaultName = name,
+    ///         VaultType = "OTS_BACKUP",
+    ///     });
     /// 
-    /// }
+    ///     var foo = new AliCloud.Ots.Instance("foo", new()
+    ///     {
+    ///         Description = name,
+    ///         AccessedBy = "Any",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "acceptance test" },
+    ///         },
+    ///     });
+    /// 
+    ///     var basic = new AliCloud.Ots.Table("basic", new()
+    ///     {
+    ///         InstanceName = foo.Name,
+    ///         TableName = name,
+    ///         PrimaryKeys = new[]
+    ///         {
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk1",
+    ///                 Type = "Integer",
+    ///             },
+    ///         },
+    ///         TimeToLive = -1,
+    ///         MaxVersion = 1,
+    ///         DeviationCellVersionInSec = "1",
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Hbr.OtsBackupPlan("example", new()
+    ///     {
+    ///         OtsBackupPlanName = name,
+    ///         VaultId = @default.Id,
+    ///         BackupType = "COMPLETE",
+    ///         Schedule = "I|1602673264|PT2H",
+    ///         Retention = "2",
+    ///         InstanceName = foo.Name,
+    ///         OtsDetails = new[]
+    ///         {
+    ///             new AliCloud.Hbr.Inputs.OtsBackupPlanOtsDetailArgs
+    ///             {
+    ///                 TableNames = new[]
+    ///                 {
+    ///                     basic.TableName,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -94,16 +95,34 @@ namespace Pulumi.AliCloud.Hbr
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/otsBackupPlan:OtsBackupPlan")]
-    public partial class OtsBackupPlan : Pulumi.CustomResource
+    public partial class OtsBackupPlan : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         [Output("backupType")]
         public Output<string> BackupType { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: true, false.
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Output("crossAccountRoleName")]
+        public Output<string?> CrossAccountRoleName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Output("crossAccountType")]
+        public Output<string> CrossAccountType { get; private set; } = null!;
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Output("crossAccountUserId")]
+        public Output<int?> CrossAccountUserId { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         /// </summary>
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
@@ -127,7 +146,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<ImmutableArray<Outputs.OtsBackupPlanOtsDetail>> OtsDetails { get; private set; } = null!;
 
         /// <summary>
-        /// Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         [Output("retention")]
         public Output<string> Retention { get; private set; } = null!;
@@ -139,7 +158,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<ImmutableArray<Outputs.OtsBackupPlanRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
@@ -194,16 +213,34 @@ namespace Pulumi.AliCloud.Hbr
         }
     }
 
-    public sealed class OtsBackupPlanArgs : Pulumi.ResourceArgs
+    public sealed class OtsBackupPlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         [Input("backupType", required: true)]
         public Input<string> BackupType { get; set; } = null!;
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: true, false.
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
+
+        /// <summary>
+        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -233,7 +270,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         [Input("retention", required: true)]
         public Input<string> Retention { get; set; } = null!;
@@ -251,7 +288,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
@@ -265,18 +302,37 @@ namespace Pulumi.AliCloud.Hbr
         public OtsBackupPlanArgs()
         {
         }
+        public static new OtsBackupPlanArgs Empty => new OtsBackupPlanArgs();
     }
 
-    public sealed class OtsBackupPlanState : Pulumi.ResourceArgs
+    public sealed class OtsBackupPlanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: true, false.
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
+
+        /// <summary>
+        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -306,7 +362,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }
@@ -324,7 +380,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
@@ -338,5 +394,6 @@ namespace Pulumi.AliCloud.Hbr
         public OtsBackupPlanState()
         {
         }
+        public static new OtsBackupPlanState Empty => new OtsBackupPlanState();
     }
 }

@@ -15,13 +15,19 @@ type BastionHostInstance struct {
 	pulumi.CustomResourceState
 
 	AdAuthServers      BastionHostInstanceAdAuthServerArrayOutput   `pulumi:"adAuthServers"`
+	Bandwidth          pulumi.StringOutput                          `pulumi:"bandwidth"`
 	Description        pulumi.StringOutput                          `pulumi:"description"`
 	EnablePublicAccess pulumi.BoolOutput                            `pulumi:"enablePublicAccess"`
 	LdapAuthServers    BastionHostInstanceLdapAuthServerArrayOutput `pulumi:"ldapAuthServers"`
 	LicenseCode        pulumi.StringOutput                          `pulumi:"licenseCode"`
 	Period             pulumi.IntPtrOutput                          `pulumi:"period"`
-	ResourceGroupId    pulumi.StringPtrOutput                       `pulumi:"resourceGroupId"`
+	PlanCode           pulumi.StringOutput                          `pulumi:"planCode"`
+	RenewPeriod        pulumi.IntPtrOutput                          `pulumi:"renewPeriod"`
+	RenewalPeriodUnit  pulumi.StringOutput                          `pulumi:"renewalPeriodUnit"`
+	RenewalStatus      pulumi.StringOutput                          `pulumi:"renewalStatus"`
+	ResourceGroupId    pulumi.StringOutput                          `pulumi:"resourceGroupId"`
 	SecurityGroupIds   pulumi.StringArrayOutput                     `pulumi:"securityGroupIds"`
+	Storage            pulumi.StringOutput                          `pulumi:"storage"`
 	Tags               pulumi.MapOutput                             `pulumi:"tags"`
 	VswitchId          pulumi.StringOutput                          `pulumi:"vswitchId"`
 }
@@ -33,14 +39,23 @@ func NewBastionHostInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Bandwidth == nil {
+		return nil, errors.New("invalid value for required argument 'Bandwidth'")
+	}
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
 	}
 	if args.LicenseCode == nil {
 		return nil, errors.New("invalid value for required argument 'LicenseCode'")
 	}
+	if args.PlanCode == nil {
+		return nil, errors.New("invalid value for required argument 'PlanCode'")
+	}
 	if args.SecurityGroupIds == nil {
 		return nil, errors.New("invalid value for required argument 'SecurityGroupIds'")
+	}
+	if args.Storage == nil {
+		return nil, errors.New("invalid value for required argument 'Storage'")
 	}
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
@@ -68,26 +83,38 @@ func GetBastionHostInstance(ctx *pulumi.Context,
 // Input properties used for looking up and filtering BastionHostInstance resources.
 type bastionHostInstanceState struct {
 	AdAuthServers      []BastionHostInstanceAdAuthServer   `pulumi:"adAuthServers"`
+	Bandwidth          *string                             `pulumi:"bandwidth"`
 	Description        *string                             `pulumi:"description"`
 	EnablePublicAccess *bool                               `pulumi:"enablePublicAccess"`
 	LdapAuthServers    []BastionHostInstanceLdapAuthServer `pulumi:"ldapAuthServers"`
 	LicenseCode        *string                             `pulumi:"licenseCode"`
 	Period             *int                                `pulumi:"period"`
+	PlanCode           *string                             `pulumi:"planCode"`
+	RenewPeriod        *int                                `pulumi:"renewPeriod"`
+	RenewalPeriodUnit  *string                             `pulumi:"renewalPeriodUnit"`
+	RenewalStatus      *string                             `pulumi:"renewalStatus"`
 	ResourceGroupId    *string                             `pulumi:"resourceGroupId"`
 	SecurityGroupIds   []string                            `pulumi:"securityGroupIds"`
+	Storage            *string                             `pulumi:"storage"`
 	Tags               map[string]interface{}              `pulumi:"tags"`
 	VswitchId          *string                             `pulumi:"vswitchId"`
 }
 
 type BastionHostInstanceState struct {
 	AdAuthServers      BastionHostInstanceAdAuthServerArrayInput
+	Bandwidth          pulumi.StringPtrInput
 	Description        pulumi.StringPtrInput
 	EnablePublicAccess pulumi.BoolPtrInput
 	LdapAuthServers    BastionHostInstanceLdapAuthServerArrayInput
 	LicenseCode        pulumi.StringPtrInput
 	Period             pulumi.IntPtrInput
+	PlanCode           pulumi.StringPtrInput
+	RenewPeriod        pulumi.IntPtrInput
+	RenewalPeriodUnit  pulumi.StringPtrInput
+	RenewalStatus      pulumi.StringPtrInput
 	ResourceGroupId    pulumi.StringPtrInput
 	SecurityGroupIds   pulumi.StringArrayInput
+	Storage            pulumi.StringPtrInput
 	Tags               pulumi.MapInput
 	VswitchId          pulumi.StringPtrInput
 }
@@ -98,13 +125,19 @@ func (BastionHostInstanceState) ElementType() reflect.Type {
 
 type bastionHostInstanceArgs struct {
 	AdAuthServers      []BastionHostInstanceAdAuthServer   `pulumi:"adAuthServers"`
+	Bandwidth          string                              `pulumi:"bandwidth"`
 	Description        string                              `pulumi:"description"`
 	EnablePublicAccess *bool                               `pulumi:"enablePublicAccess"`
 	LdapAuthServers    []BastionHostInstanceLdapAuthServer `pulumi:"ldapAuthServers"`
 	LicenseCode        string                              `pulumi:"licenseCode"`
 	Period             *int                                `pulumi:"period"`
+	PlanCode           string                              `pulumi:"planCode"`
+	RenewPeriod        *int                                `pulumi:"renewPeriod"`
+	RenewalPeriodUnit  *string                             `pulumi:"renewalPeriodUnit"`
+	RenewalStatus      *string                             `pulumi:"renewalStatus"`
 	ResourceGroupId    *string                             `pulumi:"resourceGroupId"`
 	SecurityGroupIds   []string                            `pulumi:"securityGroupIds"`
+	Storage            string                              `pulumi:"storage"`
 	Tags               map[string]interface{}              `pulumi:"tags"`
 	VswitchId          string                              `pulumi:"vswitchId"`
 }
@@ -112,13 +145,19 @@ type bastionHostInstanceArgs struct {
 // The set of arguments for constructing a BastionHostInstance resource.
 type BastionHostInstanceArgs struct {
 	AdAuthServers      BastionHostInstanceAdAuthServerArrayInput
+	Bandwidth          pulumi.StringInput
 	Description        pulumi.StringInput
 	EnablePublicAccess pulumi.BoolPtrInput
 	LdapAuthServers    BastionHostInstanceLdapAuthServerArrayInput
 	LicenseCode        pulumi.StringInput
 	Period             pulumi.IntPtrInput
+	PlanCode           pulumi.StringInput
+	RenewPeriod        pulumi.IntPtrInput
+	RenewalPeriodUnit  pulumi.StringPtrInput
+	RenewalStatus      pulumi.StringPtrInput
 	ResourceGroupId    pulumi.StringPtrInput
 	SecurityGroupIds   pulumi.StringArrayInput
+	Storage            pulumi.StringInput
 	Tags               pulumi.MapInput
 	VswitchId          pulumi.StringInput
 }
@@ -214,6 +253,10 @@ func (o BastionHostInstanceOutput) AdAuthServers() BastionHostInstanceAdAuthServ
 	return o.ApplyT(func(v *BastionHostInstance) BastionHostInstanceAdAuthServerArrayOutput { return v.AdAuthServers }).(BastionHostInstanceAdAuthServerArrayOutput)
 }
 
+func (o BastionHostInstanceOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
 func (o BastionHostInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -234,12 +277,32 @@ func (o BastionHostInstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BastionHostInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-func (o BastionHostInstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+func (o BastionHostInstanceOutput) PlanCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.PlanCode }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.IntPtrOutput { return v.RenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+func (o BastionHostInstanceOutput) RenewalPeriodUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.RenewalPeriodUnit }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 func (o BastionHostInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o BastionHostInstanceOutput) Storage() pulumi.StringOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.Storage }).(pulumi.StringOutput)
 }
 
 func (o BastionHostInstanceOutput) Tags() pulumi.MapOutput {

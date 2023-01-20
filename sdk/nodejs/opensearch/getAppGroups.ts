@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -38,11 +39,8 @@ import * as utilities from "../utilities";
  */
 export function getAppGroups(args?: GetAppGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:opensearch/getAppGroups:getAppGroups", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -106,9 +104,39 @@ export interface GetAppGroupsResult {
     readonly resourceGroupId?: string;
     readonly type?: string;
 }
-
+/**
+ * This data source provides the Open Search App Groups of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_testacc";
+ * const defaultAppGroup = new alicloud.opensearch.AppGroup("defaultAppGroup", {
+ *     appGroupName: name,
+ *     paymentType: "PayAsYouGo",
+ *     type: "standard",
+ *     quota: {
+ *         docSize: 1,
+ *         computeResource: 20,
+ *         spec: "opensearch.share.common",
+ *     },
+ * });
+ * const defaultAppGroups = alicloud.opensearch.getAppGroupsOutput({
+ *     ids: [defaultAppGroup.id],
+ * });
+ * export const appGroups = defaultAppGroups.apply(defaultAppGroups => defaultAppGroups.groups);
+ * ```
+ */
 export function getAppGroupsOutput(args?: GetAppGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppGroupsResult> {
-    return pulumi.output(args).apply(a => getAppGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getAppGroups(a, opts))
 }
 
 /**

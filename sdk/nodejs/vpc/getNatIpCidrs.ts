@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,36 +26,33 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const vpcNatIpCidrId1 = ids.then(ids => ids.cidrs?[0]?.id);
+ * export const vpcNatIpCidrId1 = ids.then(ids => ids.cidrs?.[0]?.id);
  * const nameRegex = alicloud.vpc.getNatIpCidrs({
  *     natGatewayId: "example_value",
  *     nameRegex: "^my-NatIpCidr",
  * });
- * export const vpcNatIpCidrId2 = nameRegex.then(nameRegex => nameRegex.cidrs?[0]?.id);
+ * export const vpcNatIpCidrId2 = nameRegex.then(nameRegex => nameRegex.cidrs?.[0]?.id);
  * const status = alicloud.vpc.getNatIpCidrs({
  *     natGatewayId: "example_value",
  *     ids: ["example_value-1"],
  *     status: "Available",
  * });
- * export const vpcNatIpCidrId3 = status.then(status => status.cidrs?[0]?.id);
+ * export const vpcNatIpCidrId3 = status.then(status => status.cidrs?.[0]?.id);
  * const natIpCidr = alicloud.vpc.getNatIpCidrs({
  *     natGatewayId: "example_value",
  *     natIpCidrs: ["example_value-1"],
  * });
- * export const vpcNatIpCidrId4 = natIpCidr.then(natIpCidr => natIpCidr.cidrs?[0]?.id);
+ * export const vpcNatIpCidrId4 = natIpCidr.then(natIpCidr => natIpCidr.cidrs?.[0]?.id);
  * const atIpCidrName = alicloud.vpc.getNatIpCidrs({
  *     natGatewayId: "example_value",
  *     natIpCidrNames: ["example_value-1"],
  * });
- * export const vpcNatIpCidrId5 = atIpCidrName.then(atIpCidrName => atIpCidrName.cidrs?[0]?.id);
+ * export const vpcNatIpCidrId5 = atIpCidrName.then(atIpCidrName => atIpCidrName.cidrs?.[0]?.id);
  * ```
  */
 export function getNatIpCidrs(args: GetNatIpCidrsArgs, opts?: pulumi.InvokeOptions): Promise<GetNatIpCidrsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -115,9 +113,52 @@ export interface GetNatIpCidrsResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const vpcNatIpCidrId1 = ids.then(ids => ids.cidrs?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     nameRegex: "^my-NatIpCidr",
+ * });
+ * export const vpcNatIpCidrId2 = nameRegex.then(nameRegex => nameRegex.cidrs?.[0]?.id);
+ * const status = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     ids: ["example_value-1"],
+ *     status: "Available",
+ * });
+ * export const vpcNatIpCidrId3 = status.then(status => status.cidrs?.[0]?.id);
+ * const natIpCidr = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     natIpCidrs: ["example_value-1"],
+ * });
+ * export const vpcNatIpCidrId4 = natIpCidr.then(natIpCidr => natIpCidr.cidrs?.[0]?.id);
+ * const atIpCidrName = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     natIpCidrNames: ["example_value-1"],
+ * });
+ * export const vpcNatIpCidrId5 = atIpCidrName.then(atIpCidrName => atIpCidrName.cidrs?.[0]?.id);
+ * ```
+ */
 export function getNatIpCidrsOutput(args: GetNatIpCidrsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatIpCidrsResult> {
-    return pulumi.output(args).apply(a => getNatIpCidrs(a, opts))
+    return pulumi.output(args).apply((a: any) => getNatIpCidrs(a, opts))
 }
 
 /**

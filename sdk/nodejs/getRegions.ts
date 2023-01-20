@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,20 +15,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const currentRegionDs = pulumi.output(alicloud.getRegions({
+ * const currentRegionDs = alicloud.getRegions({
  *     current: true,
- * }));
- *
- * export const currentRegionId = currentRegionDs.regions[0].id;
+ * });
+ * export const currentRegionId = currentRegionDs.then(currentRegionDs => currentRegionDs.regions?.[0]?.id);
  * ```
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getRegions:getRegions", {
         "current": args.current,
         "name": args.name,
@@ -70,9 +67,23 @@ export interface GetRegionsResult {
      */
     readonly regions: outputs.GetRegionsRegion[];
 }
-
+/**
+ * This data source provides Alibaba Cloud regions.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const currentRegionDs = alicloud.getRegions({
+ *     current: true,
+ * });
+ * export const currentRegionId = currentRegionDs.then(currentRegionDs => currentRegionDs.regions?.[0]?.id);
+ * ```
+ */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
-    return pulumi.output(args).apply(a => getRegions(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegions(a, opts))
 }
 
 /**

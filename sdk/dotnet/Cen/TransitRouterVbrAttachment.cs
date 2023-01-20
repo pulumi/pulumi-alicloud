@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment")]
-    public partial class TransitRouterVbrAttachment : Pulumi.CustomResource
+    public partial class TransitRouterVbrAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Auto publish route enabled.Default value is `false`.
@@ -66,6 +66,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The description of the transit router vbr attachment.
@@ -147,7 +153,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class TransitRouterVbrAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class TransitRouterVbrAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto publish route enabled.Default value is `false`.
@@ -185,6 +191,18 @@ namespace Pulumi.AliCloud.Cen
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The description of the transit router vbr attachment.
         /// </summary>
@@ -218,9 +236,10 @@ namespace Pulumi.AliCloud.Cen
         public TransitRouterVbrAttachmentArgs()
         {
         }
+        public static new TransitRouterVbrAttachmentArgs Empty => new TransitRouterVbrAttachmentArgs();
     }
 
-    public sealed class TransitRouterVbrAttachmentState : Pulumi.ResourceArgs
+    public sealed class TransitRouterVbrAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto publish route enabled.Default value is `false`.
@@ -264,6 +283,18 @@ namespace Pulumi.AliCloud.Cen
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The description of the transit router vbr attachment.
         /// </summary>
@@ -303,5 +334,6 @@ namespace Pulumi.AliCloud.Cen
         public TransitRouterVbrAttachmentState()
         {
         }
+        public static new TransitRouterVbrAttachmentState Empty => new TransitRouterVbrAttachmentState();
     }
 }

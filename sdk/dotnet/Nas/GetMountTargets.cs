@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.Nas
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Nas.GetMountTargets.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Nas.GetMountTargets.InvokeAsync(new AliCloud.Nas.GetMountTargetsArgs
-        ///         {
-        ///             FileSystemId = "1a2sc4d",
-        ///             AccessGroupName = "tf-testAccNasConfig",
-        ///         }));
-        ///         this.TheFirstMountTargetDomain = example.Apply(example =&gt; example.Targets?[0]?.Id);
-        ///     }
+        ///         FileSystemId = "1a2sc4d",
+        ///         AccessGroupName = "tf-testAccNasConfig",
+        ///     });
         /// 
-        ///     [Output("theFirstMountTargetDomain")]
-        ///     public Output&lt;string&gt; TheFirstMountTargetDomain { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["theFirstMountTargetDomain"] = example.Apply(getMountTargetsResult =&gt; getMountTargetsResult.Targets[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMountTargetsResult> InvokeAsync(GetMountTargetsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? new GetMountTargetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? new GetMountTargetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides MountTargets available to the user.
@@ -56,34 +55,33 @@ namespace Pulumi.AliCloud.Nas
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Nas.GetMountTargets.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Nas.GetMountTargets.InvokeAsync(new AliCloud.Nas.GetMountTargetsArgs
-        ///         {
-        ///             FileSystemId = "1a2sc4d",
-        ///             AccessGroupName = "tf-testAccNasConfig",
-        ///         }));
-        ///         this.TheFirstMountTargetDomain = example.Apply(example =&gt; example.Targets?[0]?.Id);
-        ///     }
+        ///         FileSystemId = "1a2sc4d",
+        ///         AccessGroupName = "tf-testAccNasConfig",
+        ///     });
         /// 
-        ///     [Output("theFirstMountTargetDomain")]
-        ///     public Output&lt;string&gt; TheFirstMountTargetDomain { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["theFirstMountTargetDomain"] = example.Apply(getMountTargetsResult =&gt; getMountTargetsResult.Targets[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMountTargetsResult> Invoke(GetMountTargetsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? new GetMountTargetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? new GetMountTargetsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetMountTargetsArgs : Pulumi.InvokeArgs
+    public sealed class GetMountTargetsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter results by a specific AccessGroupName.
@@ -151,9 +149,10 @@ namespace Pulumi.AliCloud.Nas
         public GetMountTargetsArgs()
         {
         }
+        public static new GetMountTargetsArgs Empty => new GetMountTargetsArgs();
     }
 
-    public sealed class GetMountTargetsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMountTargetsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter results by a specific AccessGroupName.
@@ -221,6 +220,7 @@ namespace Pulumi.AliCloud.Nas
         public GetMountTargetsInvokeArgs()
         {
         }
+        public static new GetMountTargetsInvokeArgs Empty => new GetMountTargetsInvokeArgs();
     }
 
 
@@ -242,18 +242,24 @@ namespace Pulumi.AliCloud.Nas
         public readonly ImmutableArray<string> Ids;
         /// <summary>
         /// MountTargetDomain of the MountTarget.
-        /// * `type`- Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
-        /// * `network_type`- (Available 1.95.0+) NetworkType of The MountTarget.
-        /// * `status`- (Available 1.95.0+) The status of the mount target.
         /// </summary>
         public readonly string? MountTargetDomain;
+        /// <summary>
+        /// (Available 1.95.0+) NetworkType of The MountTarget.
+        /// </summary>
         public readonly string? NetworkType;
         public readonly string? OutputFile;
+        /// <summary>
+        /// (Available 1.95.0+) The status of the mount target.
+        /// </summary>
         public readonly string? Status;
         /// <summary>
         /// A list of MountTargetDomains. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMountTargetsTargetResult> Targets;
+        /// <summary>
+        /// Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+        /// </summary>
         public readonly string? Type;
         /// <summary>
         /// VpcId of The MountTarget.

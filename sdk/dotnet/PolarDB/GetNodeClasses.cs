@@ -21,36 +21,31 @@ namespace Pulumi.AliCloud.PolarDB
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var resources = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
         ///     {
-        ///         var resourcesZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-        ///         {
-        ///             AvailableResourceCreation = "PolarDB",
-        ///         }));
-        ///         var resourcesNodeClasses = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.PolarDB.GetNodeClasses.InvokeAsync(new AliCloud.PolarDB.GetNodeClassesArgs
-        ///         {
-        ///             ZoneId = resourcesZones.Zones?[0]?.Id,
-        ///             PayType = "PostPaid",
-        ///             DbType = "MySQL",
-        ///             DbVersion = "5.6",
-        ///         })));
-        ///         this.PolardbNodeClasses = resourcesNodeClasses.Apply(resourcesNodeClasses =&gt; resourcesNodeClasses.Classes);
-        ///     }
+        ///         PayType = "PostPaid",
+        ///         DbType = "MySQL",
+        ///         DbVersion = "5.6",
+        ///     });
         /// 
-        ///     [Output("polardbNodeClasses")]
-        ///     public Output&lt;string&gt; PolardbNodeClasses { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["polardbNodeClasses"] = resources.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes),
+        ///         ["polardbAvailableZoneId"] = resources.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodeClassesResult> InvokeAsync(GetNodeClassesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeClassesResult>("alicloud:polardb/getNodeClasses:getNodeClasses", args ?? new GetNodeClassesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeClassesResult>("alicloud:polardb/getNodeClasses:getNodeClasses", args ?? new GetNodeClassesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
@@ -62,40 +57,35 @@ namespace Pulumi.AliCloud.PolarDB
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var resources = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
         ///     {
-        ///         var resourcesZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-        ///         {
-        ///             AvailableResourceCreation = "PolarDB",
-        ///         }));
-        ///         var resourcesNodeClasses = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.PolarDB.GetNodeClasses.InvokeAsync(new AliCloud.PolarDB.GetNodeClassesArgs
-        ///         {
-        ///             ZoneId = resourcesZones.Zones?[0]?.Id,
-        ///             PayType = "PostPaid",
-        ///             DbType = "MySQL",
-        ///             DbVersion = "5.6",
-        ///         })));
-        ///         this.PolardbNodeClasses = resourcesNodeClasses.Apply(resourcesNodeClasses =&gt; resourcesNodeClasses.Classes);
-        ///     }
+        ///         PayType = "PostPaid",
+        ///         DbType = "MySQL",
+        ///         DbVersion = "5.6",
+        ///     });
         /// 
-        ///     [Output("polardbNodeClasses")]
-        ///     public Output&lt;string&gt; PolardbNodeClasses { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["polardbNodeClasses"] = resources.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes),
+        ///         ["polardbAvailableZoneId"] = resources.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNodeClassesResult> Invoke(GetNodeClassesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeClassesResult>("alicloud:polardb/getNodeClasses:getNodeClasses", args ?? new GetNodeClassesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeClassesResult>("alicloud:polardb/getNodeClasses:getNodeClasses", args ?? new GetNodeClassesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNodeClassesArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeClassesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The PolarDB node class type by the user.
@@ -139,9 +129,10 @@ namespace Pulumi.AliCloud.PolarDB
         public GetNodeClassesArgs()
         {
         }
+        public static new GetNodeClassesArgs Empty => new GetNodeClassesArgs();
     }
 
-    public sealed class GetNodeClassesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeClassesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The PolarDB node class type by the user.
@@ -185,6 +176,7 @@ namespace Pulumi.AliCloud.PolarDB
         public GetNodeClassesInvokeArgs()
         {
         }
+        public static new GetNodeClassesInvokeArgs Empty => new GetNodeClassesInvokeArgs();
     }
 
 

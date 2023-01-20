@@ -23,42 +23,40 @@ namespace Pulumi.AliCloud.Gpdb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Gpdb.GetAccounts.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Gpdb.GetAccounts.InvokeAsync(new AliCloud.Gpdb.GetAccountsArgs
+        ///         DbInstanceId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             DbInstanceId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "my-Account-1",
-        ///                 "my-Account-2",
-        ///             },
-        ///         }));
-        ///         this.GpdbAccountId1 = ids.Apply(ids =&gt; ids.Accounts?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Gpdb.GetAccounts.InvokeAsync(new AliCloud.Gpdb.GetAccountsArgs
-        ///         {
-        ///             DbInstanceId = "example_value",
-        ///             NameRegex = "^my-Account",
-        ///         }));
-        ///         this.GpdbAccountId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Accounts?[0]?.Id);
-        ///     }
+        ///             "my-Account-1",
+        ///             "my-Account-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("gpdbAccountId1")]
-        ///     public Output&lt;string&gt; GpdbAccountId1 { get; set; }
-        ///     [Output("gpdbAccountId2")]
-        ///     public Output&lt;string&gt; GpdbAccountId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Gpdb.GetAccounts.Invoke(new()
+        ///     {
+        ///         DbInstanceId = "example_value",
+        ///         NameRegex = "^my-Account",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gpdbAccountId1"] = ids.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id),
+        ///         ["gpdbAccountId2"] = nameRegex.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:gpdb/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:gpdb/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
@@ -72,46 +70,44 @@ namespace Pulumi.AliCloud.Gpdb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Gpdb.GetAccounts.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Gpdb.GetAccounts.InvokeAsync(new AliCloud.Gpdb.GetAccountsArgs
+        ///         DbInstanceId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             DbInstanceId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "my-Account-1",
-        ///                 "my-Account-2",
-        ///             },
-        ///         }));
-        ///         this.GpdbAccountId1 = ids.Apply(ids =&gt; ids.Accounts?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Gpdb.GetAccounts.InvokeAsync(new AliCloud.Gpdb.GetAccountsArgs
-        ///         {
-        ///             DbInstanceId = "example_value",
-        ///             NameRegex = "^my-Account",
-        ///         }));
-        ///         this.GpdbAccountId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Accounts?[0]?.Id);
-        ///     }
+        ///             "my-Account-1",
+        ///             "my-Account-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("gpdbAccountId1")]
-        ///     public Output&lt;string&gt; GpdbAccountId1 { get; set; }
-        ///     [Output("gpdbAccountId2")]
-        ///     public Output&lt;string&gt; GpdbAccountId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Gpdb.GetAccounts.Invoke(new()
+        ///     {
+        ///         DbInstanceId = "example_value",
+        ///         NameRegex = "^my-Account",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gpdbAccountId1"] = ids.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id),
+        ///         ["gpdbAccountId2"] = nameRegex.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:gpdb/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:gpdb/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAccountsArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the instance.
@@ -149,9 +145,10 @@ namespace Pulumi.AliCloud.Gpdb
         public GetAccountsArgs()
         {
         }
+        public static new GetAccountsArgs Empty => new GetAccountsArgs();
     }
 
-    public sealed class GetAccountsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the instance.
@@ -189,6 +186,7 @@ namespace Pulumi.AliCloud.Gpdb
         public GetAccountsInvokeArgs()
         {
         }
+        public static new GetAccountsInvokeArgs Empty => new GetAccountsInvokeArgs();
     }
 
 

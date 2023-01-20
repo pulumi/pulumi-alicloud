@@ -21,73 +21,72 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
-    ///         {
-    ///             NameRegex = "default",
-    ///         }));
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync());
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Zones?[0]?.Id,
-    ///             }));
-    ///         });
-    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
-    ///             MostRecent = true,
-    ///             Owners = "system",
-    ///         }));
-    ///         var defaultInstanceTypes = defaultImages.Apply(defaultImages =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-    ///         {
-    ///             ImageId = defaultImages.Ids?[0],
-    ///         })));
-    ///         var defaultEcsImagePipeline = new AliCloud.Ecs.EcsImagePipeline("defaultEcsImagePipeline", new AliCloud.Ecs.EcsImagePipelineArgs
-    ///         {
-    ///             AddAccounts = 
-    ///             {
-    ///                 "example_value",
-    ///             },
-    ///             BaseImage = defaultImages.Apply(defaultImages =&gt; defaultImages.Ids?[0]),
-    ///             BaseImageType = "IMAGE",
-    ///             BuildContent = "RUN yum update -y",
-    ///             DeleteInstanceOnFailure = false,
-    ///             ImageName = "example_value",
-    ///             Description = "example_value",
-    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.Ids?[0]),
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///             InternetMaxBandwidthOut = 20,
-    ///             SystemDiskSize = 40,
-    ///             ToRegionIds = 
-    ///             {
-    ///                 "cn-qingdao",
-    ///                 "cn-zhangjiakou",
-    ///             },
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "Acceptance-test" },
-    ///             },
-    ///         });
-    ///     }
+    ///         NameRegex = "default",
+    ///     });
     /// 
-    /// }
+    ///     var defaultZones = AliCloud.GetZones.Invoke();
+    /// 
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultEcsImagePipeline = new AliCloud.Ecs.EcsImagePipeline("defaultEcsImagePipeline", new()
+    ///     {
+    ///         AddAccounts = new[]
+    ///         {
+    ///             "example_value",
+    ///         },
+    ///         BaseImage = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
+    ///         BaseImageType = "IMAGE",
+    ///         BuildContent = "RUN yum update -y",
+    ///         DeleteInstanceOnFailure = false,
+    ///         ImageName = "example_value",
+    ///         Description = "example_value",
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         InternetMaxBandwidthOut = 20,
+    ///         SystemDiskSize = 40,
+    ///         ToRegionIds = new[]
+    ///         {
+    ///             "cn-qingdao",
+    ///             "cn-zhangjiakou",
+    ///         },
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "Acceptance-test" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -99,7 +98,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsImagePipeline:EcsImagePipeline")]
-    public partial class EcsImagePipeline : Pulumi.CustomResource
+    public partial class EcsImagePipeline : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of Alibaba Cloud account to which to share the created image.
@@ -237,7 +236,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsImagePipelineArgs : Pulumi.ResourceArgs
+    public sealed class EcsImagePipelineArgs : global::Pulumi.ResourceArgs
     {
         [Input("addAccounts")]
         private InputList<string>? _addAccounts;
@@ -352,9 +351,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsImagePipelineArgs()
         {
         }
+        public static new EcsImagePipelineArgs Empty => new EcsImagePipelineArgs();
     }
 
-    public sealed class EcsImagePipelineState : Pulumi.ResourceArgs
+    public sealed class EcsImagePipelineState : global::Pulumi.ResourceArgs
     {
         [Input("addAccounts")]
         private InputList<string>? _addAccounts;
@@ -469,5 +469,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsImagePipelineState()
         {
         }
+        public static new EcsImagePipelineState Empty => new EcsImagePipelineState();
     }
 }

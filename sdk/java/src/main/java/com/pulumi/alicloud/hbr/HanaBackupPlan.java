@@ -115,9 +115,6 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
     }
     /**
      * The backup type. Valid values:
-     * - `COMPLETE`: full backup.
-     * - `INCREMENTAL`: incremental backup.
-     * - `DIFFERENTIAL`: differential backup.
      * 
      */
     @Export(name="backupType", type=String.class, parameters={})
@@ -125,9 +122,6 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The backup type. Valid values:
-     * - `COMPLETE`: full backup.
-     * - `INCREMENTAL`: incremental backup.
-     * - `DIFFERENTIAL`: differential backup.
      * 
      */
     public Output<String> backupType() {

@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.Dts
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dts.GetMigrationJobs.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dts.GetMigrationJobs.InvokeAsync(new AliCloud.Dts.GetMigrationJobsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "dts_job_id",
-        ///             },
-        ///         }));
-        ///         this.DtsMigrationJobId1 = ids.Apply(ids =&gt; ids.Jobs?[0]?.Id);
-        ///     }
+        ///             "dts_job_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("dtsMigrationJobId1")]
-        ///     public Output&lt;string&gt; DtsMigrationJobId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dtsMigrationJobId1"] = ids.Apply(getMigrationJobsResult =&gt; getMigrationJobsResult.Jobs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMigrationJobsResult> InvokeAsync(GetMigrationJobsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMigrationJobsResult>("alicloud:dts/getMigrationJobs:getMigrationJobs", args ?? new GetMigrationJobsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMigrationJobsResult>("alicloud:dts/getMigrationJobs:getMigrationJobs", args ?? new GetMigrationJobsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.Dts
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dts.GetMigrationJobs.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dts.GetMigrationJobs.InvokeAsync(new AliCloud.Dts.GetMigrationJobsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "dts_job_id",
-        ///             },
-        ///         }));
-        ///         this.DtsMigrationJobId1 = ids.Apply(ids =&gt; ids.Jobs?[0]?.Id);
-        ///     }
+        ///             "dts_job_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("dtsMigrationJobId1")]
-        ///     public Output&lt;string&gt; DtsMigrationJobId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dtsMigrationJobId1"] = ids.Apply(getMigrationJobsResult =&gt; getMigrationJobsResult.Jobs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMigrationJobsResult> Invoke(GetMigrationJobsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMigrationJobsResult>("alicloud:dts/getMigrationJobs:getMigrationJobs", args ?? new GetMigrationJobsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMigrationJobsResult>("alicloud:dts/getMigrationJobs:getMigrationJobs", args ?? new GetMigrationJobsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetMigrationJobsArgs : Pulumi.InvokeArgs
+    public sealed class GetMigrationJobsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -123,9 +121,10 @@ namespace Pulumi.AliCloud.Dts
         public GetMigrationJobsArgs()
         {
         }
+        public static new GetMigrationJobsArgs Empty => new GetMigrationJobsArgs();
     }
 
-    public sealed class GetMigrationJobsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMigrationJobsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -157,6 +156,7 @@ namespace Pulumi.AliCloud.Dts
         public GetMigrationJobsInvokeArgs()
         {
         }
+        public static new GetMigrationJobsInvokeArgs Empty => new GetMigrationJobsInvokeArgs();
     }
 
 

@@ -23,46 +23,43 @@ namespace Pulumi.AliCloud.Mse
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Mse.GetGateways.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Mse.GetGateways.InvokeAsync(new AliCloud.Mse.GetGatewaysArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.MseGatewayId1 = ids.Apply(ids =&gt; ids.Gateways?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Mse.GetGateways.InvokeAsync(new AliCloud.Mse.GetGatewaysArgs
-        ///         {
-        ///             NameRegex = "^my-Gateway",
-        ///         }));
-        ///         this.MseGatewayId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Mse.GetGateways.InvokeAsync(new AliCloud.Mse.GetGatewaysArgs
-        ///         {
-        ///             Status = "2",
-        ///         }));
-        ///         this.MseGatewayId3 = status.Apply(status =&gt; status.Gateways?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("mseGatewayId1")]
-        ///     public Output&lt;string&gt; MseGatewayId1 { get; set; }
-        ///     [Output("mseGatewayId2")]
-        ///     public Output&lt;string&gt; MseGatewayId2 { get; set; }
-        ///     [Output("mseGatewayId3")]
-        ///     public Output&lt;string&gt; MseGatewayId3 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Mse.GetGateways.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Gateway",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Mse.GetGateways.Invoke(new()
+        ///     {
+        ///         Status = "2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mseGatewayId1"] = ids.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///         ["mseGatewayId2"] = nameRegex.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///         ["mseGatewayId3"] = status.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(GetGatewaysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:mse/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:mse/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mse Gateways of the current Alibaba Cloud user.
@@ -76,50 +73,47 @@ namespace Pulumi.AliCloud.Mse
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Mse.GetGateways.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Mse.GetGateways.InvokeAsync(new AliCloud.Mse.GetGatewaysArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.MseGatewayId1 = ids.Apply(ids =&gt; ids.Gateways?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Mse.GetGateways.InvokeAsync(new AliCloud.Mse.GetGatewaysArgs
-        ///         {
-        ///             NameRegex = "^my-Gateway",
-        ///         }));
-        ///         this.MseGatewayId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Mse.GetGateways.InvokeAsync(new AliCloud.Mse.GetGatewaysArgs
-        ///         {
-        ///             Status = "2",
-        ///         }));
-        ///         this.MseGatewayId3 = status.Apply(status =&gt; status.Gateways?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("mseGatewayId1")]
-        ///     public Output&lt;string&gt; MseGatewayId1 { get; set; }
-        ///     [Output("mseGatewayId2")]
-        ///     public Output&lt;string&gt; MseGatewayId2 { get; set; }
-        ///     [Output("mseGatewayId3")]
-        ///     public Output&lt;string&gt; MseGatewayId3 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Mse.GetGateways.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Gateway",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Mse.GetGateways.Invoke(new()
+        ///     {
+        ///         Status = "2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mseGatewayId1"] = ids.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///         ["mseGatewayId2"] = nameRegex.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///         ["mseGatewayId3"] = status.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:mse/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:mse/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGatewaysArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewaysArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -169,9 +163,10 @@ namespace Pulumi.AliCloud.Mse
         public GetGatewaysArgs()
         {
         }
+        public static new GetGatewaysArgs Empty => new GetGatewaysArgs();
     }
 
-    public sealed class GetGatewaysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewaysInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -221,6 +216,7 @@ namespace Pulumi.AliCloud.Mse
         public GetGatewaysInvokeArgs()
         {
         }
+        public static new GetGatewaysInvokeArgs Empty => new GetGatewaysInvokeArgs();
     }
 
 

@@ -648,7 +648,7 @@ class RdsAccount(pulumi.CustomResource):
 
             __props__.__dict__["account_description"] = account_description
             __props__.__dict__["account_name"] = account_name
-            __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             __props__.__dict__["account_type"] = account_type
             __props__.__dict__["db_instance_id"] = db_instance_id
             if description is not None and not opts.urn:
@@ -668,12 +668,14 @@ class RdsAccount(pulumi.CustomResource):
             if password is not None and not opts.urn:
                 warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
                 pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             if type is not None and not opts.urn:
                 warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
                 pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
             __props__.__dict__["type"] = type
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(RdsAccount, __self__).__init__(
             'alicloud:rds/rdsAccount:RdsAccount',
             resource_name,

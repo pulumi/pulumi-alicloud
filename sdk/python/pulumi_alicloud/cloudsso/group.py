@@ -153,8 +153,6 @@ class Group(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.138.0+.
 
-        > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-
         ## Import
 
         Cloud SSO Group can be imported using the id, e.g.
@@ -181,8 +179,6 @@ class Group(pulumi.CustomResource):
         For information about Cloud SSO Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/doc-detail/264683.html).
 
         > **NOTE:** Available in v1.138.0+.
-
-        > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
         ## Import
 

@@ -25,16 +25,16 @@ import * as utilities from "../utilities";
  * const defaultZones = alicloud.cddc.getZones({});
  * const defaultHostEcsLevelInfos = defaultZones.then(defaultZones => alicloud.cddc.getHostEcsLevelInfos({
  *     dbType: "mysql",
- *     zoneId: defaultZones.ids?[0],
+ *     zoneId: defaultZones.ids?.[0],
  *     storageType: "cloud_essd",
  * }));
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.ids?[0],
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.ids?.[0],
  * }));
  * const defaultDedicatedHostGroup = new alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup", {
  *     engine: "MySQL",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
  *     cpuAllocationRatio: 101,
  *     memAllocationRatio: 50,
  *     diskAllocationRatio: 200,
@@ -45,9 +45,9 @@ import * as utilities from "../utilities";
  * const defaultDedicatedHost = new alicloud.cddc.DedicatedHost("defaultDedicatedHost", {
  *     hostName: "example_value",
  *     dedicatedHostGroupId: defaultDedicatedHostGroup.id,
- *     hostClass: defaultHostEcsLevelInfos.then(defaultHostEcsLevelInfos => defaultHostEcsLevelInfos.infos?[0]?.resClassCode),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?[0]),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     hostClass: defaultHostEcsLevelInfos.then(defaultHostEcsLevelInfos => defaultHostEcsLevelInfos.infos?.[0]?.resClassCode),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     paymentType: "Subscription",
  *     tags: {
  *         Created: "TF",
@@ -207,7 +207,7 @@ export class DedicatedHost extends pulumi.CustomResource {
             resourceInputs["hostClass"] = args ? args.hostClass : undefined;
             resourceInputs["hostName"] = args ? args.hostName : undefined;
             resourceInputs["imageCategory"] = args ? args.imageCategory : undefined;
-            resourceInputs["osPassword"] = args ? args.osPassword : undefined;
+            resourceInputs["osPassword"] = args?.osPassword ? pulumi.secret(args.osPassword) : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -218,6 +218,8 @@ export class DedicatedHost extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["osPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(DedicatedHost.__pulumiType, name, resourceInputs, opts);
     }
 }

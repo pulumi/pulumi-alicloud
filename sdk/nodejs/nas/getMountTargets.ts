@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -20,15 +21,12 @@ import * as utilities from "../utilities";
  *     fileSystemId: "1a2sc4d",
  *     accessGroupName: "tf-testAccNasConfig",
  * });
- * export const theFirstMountTargetDomain = example.then(example => example.targets?[0]?.id);
+ * export const theFirstMountTargetDomain = example.then(example => example.targets?.[0]?.id);
  * ```
  */
 export function getMountTargets(args: GetMountTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountTargetsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getMountTargets:getMountTargets", {
         "accessGroupName": args.accessGroupName,
         "fileSystemId": args.fileSystemId,
@@ -109,21 +107,26 @@ export interface GetMountTargetsResult {
     readonly ids: string[];
     /**
      * MountTargetDomain of the MountTarget.
-     * * `type`- Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
-     * * `networkType`- (Available 1.95.0+) NetworkType of The MountTarget.
-     * * `status`- (Available 1.95.0+) The status of the mount target.
      *
      * @deprecated Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
      */
     readonly mountTargetDomain?: string;
+    /**
+     * (Available 1.95.0+) NetworkType of The MountTarget.
+     */
     readonly networkType?: string;
     readonly outputFile?: string;
+    /**
+     * (Available 1.95.0+) The status of the mount target.
+     */
     readonly status?: string;
     /**
      * A list of MountTargetDomains. Each element contains the following attributes:
      */
     readonly targets: outputs.nas.GetMountTargetsTarget[];
     /**
+     * Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
+     *
      * @deprecated Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.
      */
     readonly type?: string;
@@ -136,9 +139,26 @@ export interface GetMountTargetsResult {
      */
     readonly vswitchId?: string;
 }
-
+/**
+ * This data source provides MountTargets available to the user.
+ *
+ * > **NOTE**: Available in 1.35.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.nas.getMountTargets({
+ *     fileSystemId: "1a2sc4d",
+ *     accessGroupName: "tf-testAccNasConfig",
+ * });
+ * export const theFirstMountTargetDomain = example.then(example => example.targets?.[0]?.id);
+ * ```
+ */
 export function getMountTargetsOutput(args: GetMountTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMountTargetsResult> {
-    return pulumi.output(args).apply(a => getMountTargets(a, opts))
+    return pulumi.output(args).apply((a: any) => getMountTargets(a, opts))
 }
 
 /**

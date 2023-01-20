@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,23 +15,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const recordsDs = pulumi.output(alicloud.dns.getRecords({
+ * const recordsDs = alicloud.dns.getRecords({
  *     domainName: "xiaozhu.top",
  *     hostRecordRegex: "^@",
  *     isLocked: false,
  *     outputFile: "records.txt",
  *     type: "A",
- * }));
- *
- * export const firstRecordId = recordsDs.records[0].recordId;
+ * });
+ * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
  * ```
  */
 export function getRecords(args: GetRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getRecords:getRecords", {
         "domainName": args.domainName,
         "hostRecordRegex": args.hostRecordRegex,
@@ -124,9 +121,27 @@ export interface GetRecordsResult {
     readonly urls: string[];
     readonly valueRegex?: string;
 }
-
+/**
+ * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const recordsDs = alicloud.dns.getRecords({
+ *     domainName: "xiaozhu.top",
+ *     hostRecordRegex: "^@",
+ *     isLocked: false,
+ *     outputFile: "records.txt",
+ *     type: "A",
+ * });
+ * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
+ * ```
+ */
 export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordsResult> {
-    return pulumi.output(args).apply(a => getRecords(a, opts))
+    return pulumi.output(args).apply((a: any) => getRecords(a, opts))
 }
 
 /**

@@ -23,23 +23,21 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var snapshots = Output.Create(AliCloud.Hbr.GetOtsSnapshots.InvokeAsync());
-        ///     }
+        ///     var snapshots = AliCloud.Hbr.GetOtsSnapshots.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetOtsSnapshotsResult> InvokeAsync(GetOtsSnapshotsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOtsSnapshotsResult>("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", args ?? new GetOtsSnapshotsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOtsSnapshotsResult>("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", args ?? new GetOtsSnapshotsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
@@ -53,27 +51,25 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var snapshots = Output.Create(AliCloud.Hbr.GetOtsSnapshots.InvokeAsync());
-        ///     }
+        ///     var snapshots = AliCloud.Hbr.GetOtsSnapshots.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetOtsSnapshotsResult> Invoke(GetOtsSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOtsSnapshotsResult>("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", args ?? new GetOtsSnapshotsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOtsSnapshotsResult>("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", args ?? new GetOtsSnapshotsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetOtsSnapshotsArgs : Pulumi.InvokeArgs
+    public sealed class GetOtsSnapshotsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
@@ -101,9 +97,10 @@ namespace Pulumi.AliCloud.Hbr
         public GetOtsSnapshotsArgs()
         {
         }
+        public static new GetOtsSnapshotsArgs Empty => new GetOtsSnapshotsArgs();
     }
 
-    public sealed class GetOtsSnapshotsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOtsSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
@@ -131,6 +128,7 @@ namespace Pulumi.AliCloud.Hbr
         public GetOtsSnapshotsInvokeArgs()
         {
         }
+        public static new GetOtsSnapshotsInvokeArgs Empty => new GetOtsSnapshotsInvokeArgs();
     }
 
 

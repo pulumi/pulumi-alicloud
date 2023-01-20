@@ -14,6 +14,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -283,6 +284,20 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+     * 
+     */
+    @Export(name="publicIpAddressPoolId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> publicIpAddressPoolId;
+
+    /**
+     * @return The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+     * 
+     */
+    public Output<Optional<String>> publicIpAddressPoolId() {
+        return Codegen.optional(this.publicIpAddressPoolId);
+    }
+    /**
      * The ID of the resource group.
      * 
      */
@@ -295,6 +310,20 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
+    }
+    /**
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     * 
+     */
+    @Export(name="securityProtectionTypes", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> securityProtectionTypes;
+
+    /**
+     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     * 
+     */
+    public Output<Optional<List<String>>> securityProtectionTypes() {
+        return Codegen.optional(this.securityProtectionTypes);
     }
     /**
      * The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.

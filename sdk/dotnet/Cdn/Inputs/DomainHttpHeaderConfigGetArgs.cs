@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn.Inputs
 {
 
-    public sealed class DomainHttpHeaderConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class DomainHttpHeaderConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("headerId")]
         public Input<string>? HeaderId { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         public DomainHttpHeaderConfigGetArgs()
         {
         }
+        public static new DomainHttpHeaderConfigGetArgs Empty => new DomainHttpHeaderConfigGetArgs();
     }
 }

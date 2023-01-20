@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
  * import com.pulumi.alicloud.resourcemanager.DelegatedAdministrator;
  * import com.pulumi.alicloud.resourcemanager.DelegatedAdministratorArgs;
  * import java.util.List;

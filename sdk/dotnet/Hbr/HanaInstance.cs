@@ -23,38 +23,38 @@ namespace Pulumi.AliCloud.Hbr
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleVault = new AliCloud.Hbr.Vault("exampleVault", new()
     ///     {
-    ///         var exampleVault = new AliCloud.Hbr.Vault("exampleVault", new AliCloud.Hbr.VaultArgs
-    ///         {
-    ///             VaultName = @var.Name,
-    ///         });
-    ///         var exampleResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
-    ///         {
-    ///             Status = "OK",
-    ///         }));
-    ///         var exampleHanaInstance = new AliCloud.Hbr.HanaInstance("exampleHanaInstance", new AliCloud.Hbr.HanaInstanceArgs
-    ///         {
-    ///             AlertSetting = "INHERITED",
-    ///             HanaName = @var.Name,
-    ///             Host = "1.1.1.1",
-    ///             InstanceNumber = 1,
-    ///             Password = "YouPassword123",
-    ///             ResourceGroupId = exampleResourceGroups.Apply(exampleResourceGroups =&gt; exampleResourceGroups.Groups?[0]?.Id),
-    ///             Sid = "HXE",
-    ///             UseSsl = false,
-    ///             UserName = "admin",
-    ///             ValidateCertificate = false,
-    ///             VaultId = exampleVault.Id,
-    ///         });
-    ///     }
+    ///         VaultName = @var.Name,
+    ///     });
     /// 
-    /// }
+    ///     var exampleResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var exampleHanaInstance = new AliCloud.Hbr.HanaInstance("exampleHanaInstance", new()
+    ///     {
+    ///         AlertSetting = "INHERITED",
+    ///         HanaName = @var.Name,
+    ///         Host = "1.1.1.1",
+    ///         InstanceNumber = 1,
+    ///         Password = "YouPassword123",
+    ///         ResourceGroupId = exampleResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         Sid = "HXE",
+    ///         UseSsl = false,
+    ///         UserName = "admin",
+    ///         ValidateCertificate = false,
+    ///         VaultId = exampleVault.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Hbr
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/hanaInstance:HanaInstance")]
-    public partial class HanaInstance : Pulumi.CustomResource
+    public partial class HanaInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
@@ -175,6 +175,10 @@ namespace Pulumi.AliCloud.Hbr
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -196,7 +200,7 @@ namespace Pulumi.AliCloud.Hbr
         }
     }
 
-    public sealed class HanaInstanceArgs : Pulumi.ResourceArgs
+    public sealed class HanaInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
@@ -234,11 +238,21 @@ namespace Pulumi.AliCloud.Hbr
         [Input("instanceNumber")]
         public Input<int>? InstanceNumber { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password that is used to connect with the SAP HANA database.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The ID of the resource group.
@@ -279,9 +293,10 @@ namespace Pulumi.AliCloud.Hbr
         public HanaInstanceArgs()
         {
         }
+        public static new HanaInstanceArgs Empty => new HanaInstanceArgs();
     }
 
-    public sealed class HanaInstanceState : Pulumi.ResourceArgs
+    public sealed class HanaInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
@@ -325,11 +340,21 @@ namespace Pulumi.AliCloud.Hbr
         [Input("instanceNumber")]
         public Input<int>? InstanceNumber { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password that is used to connect with the SAP HANA database.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The ID of the resource group.
@@ -376,5 +401,6 @@ namespace Pulumi.AliCloud.Hbr
         public HanaInstanceState()
         {
         }
+        public static new HanaInstanceState Empty => new HanaInstanceState();
     }
 }

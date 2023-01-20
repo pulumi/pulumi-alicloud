@@ -93,13 +93,7 @@ class ClusterArgs:
         :param pulumi.Input[bool] compute_enable_ht: Specifies whether the compute nodes support hyper-threading. Default value: `true`.
         :param pulumi.Input[str] compute_spot_price_limit: The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
         :param pulumi.Input[str] compute_spot_strategy: The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-               - `NoSpot`: The compute nodes are pay-as-you-go instances.
-               - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-               - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
         :param pulumi.Input[str] deploy_mode: The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-               - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-               - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-               - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
         :param pulumi.Input[str] description: The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[str] domain: The domain name of the on-premises cluster. This parameter takes effect only when the AccoutType parameter is set to Idap.
         :param pulumi.Input[str] ecs_charge_type: The billing method of the nodes.
@@ -109,7 +103,7 @@ class ClusterArgs:
         :param pulumi.Input[str] image_owner_alias: The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
         :param pulumi.Input[str] input_file_url: The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
         :param pulumi.Input[bool] is_compute_ess: Specifies whether to enable auto scaling. Default value: `false`.
-        :param pulumi.Input[str] job_queue: The queue of the nodes to which the additional file system is attached.
+        :param pulumi.Input[str] job_queue: The queue to which the compute nodes are added.
         :param pulumi.Input[str] key_pair_name: The name of the AccessKey pair.
         :param pulumi.Input[int] manager_count: The number of the management nodes. Valid values: 1 and 2.
         :param pulumi.Input[str] password: The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
@@ -128,7 +122,7 @@ class ClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ram_node_types: The node of the RAM role.
         :param pulumi.Input[str] ram_role_name: The name of the Resource Access Management (RAM) role.
         :param pulumi.Input[bool] release_instance: The release instance. Valid values: `true`.
-        :param pulumi.Input[str] remote_directory: The remote directory to which the additional file system is mounted.
+        :param pulumi.Input[str] remote_directory: The remote directory to which the file system is mounted.
         :param pulumi.Input[bool] remote_vis_enable: Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scc_cluster_id: The ID of the Super Computing Cluster (SCC) instance. If you specify the parameter, the SCC instance is moved to a new SCC cluster.
@@ -136,17 +130,15 @@ class ClusterArgs:
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the cluster belongs.
         :param pulumi.Input[str] security_group_name: If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
         :param pulumi.Input[str] system_disk_level: The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-               * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-               * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-               * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-               * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[int] system_disk_size: The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
         :param pulumi.Input[str] system_disk_type: The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
-        :param pulumi.Input[str] volume_id: The ID of the additional file system.
+        :param pulumi.Input[str] volume_id: The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         :param pulumi.Input[str] volume_mount_option: The mount options of the file system.
-        :param pulumi.Input[str] volume_mountpoint: The mount target of the additional file system.
-        :param pulumi.Input[str] volume_protocol: The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
-        :param pulumi.Input[str] volume_type: The type of the additional shared storage. Only NAS file systems are supported.
+        :param pulumi.Input[str] volume_mountpoint: The mount target of the file system. Take note of the following information:
+               - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+               - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
+        :param pulumi.Input[str] volume_protocol: The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
+        :param pulumi.Input[str] volume_type: The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) to which the cluster belongs.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch. E-HPC supports only VPC networks.
         :param pulumi.Input[bool] without_agent: Specifies whether not to install the agent. Default value: `false`.
@@ -460,9 +452,6 @@ class ClusterArgs:
     def compute_spot_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-        - `NoSpot`: The compute nodes are pay-as-you-go instances.
-        - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-        - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
         """
         return pulumi.get(self, "compute_spot_strategy")
 
@@ -475,9 +464,6 @@ class ClusterArgs:
     def deploy_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-        - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-        - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-        - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
         """
         return pulumi.get(self, "deploy_mode")
 
@@ -597,7 +583,7 @@ class ClusterArgs:
     @pulumi.getter(name="jobQueue")
     def job_queue(self) -> Optional[pulumi.Input[str]]:
         """
-        The queue of the nodes to which the additional file system is attached.
+        The queue to which the compute nodes are added.
         """
         return pulumi.get(self, "job_queue")
 
@@ -737,7 +723,7 @@ class ClusterArgs:
     @pulumi.getter(name="remoteDirectory")
     def remote_directory(self) -> Optional[pulumi.Input[str]]:
         """
-        The remote directory to which the additional file system is mounted.
+        The remote directory to which the file system is mounted.
         """
         return pulumi.get(self, "remote_directory")
 
@@ -822,10 +808,6 @@ class ClusterArgs:
     def system_disk_level(self) -> Optional[pulumi.Input[str]]:
         """
         The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-        * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "system_disk_level")
 
@@ -861,7 +843,7 @@ class ClusterArgs:
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the additional file system.
+        The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         """
         return pulumi.get(self, "volume_id")
 
@@ -885,7 +867,9 @@ class ClusterArgs:
     @pulumi.getter(name="volumeMountpoint")
     def volume_mountpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        The mount target of the additional file system.
+        The mount target of the file system. Take note of the following information:
+        - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+        - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
         """
         return pulumi.get(self, "volume_mountpoint")
 
@@ -897,7 +881,7 @@ class ClusterArgs:
     @pulumi.getter(name="volumeProtocol")
     def volume_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+        The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
         """
         return pulumi.get(self, "volume_protocol")
 
@@ -909,7 +893,7 @@ class ClusterArgs:
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the additional shared storage. Only NAS file systems are supported.
+        The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         """
         return pulumi.get(self, "volume_type")
 
@@ -1055,13 +1039,7 @@ class _ClusterState:
         :param pulumi.Input[str] compute_instance_type: The instance type of the compute nodes.
         :param pulumi.Input[str] compute_spot_price_limit: The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
         :param pulumi.Input[str] compute_spot_strategy: The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-               - `NoSpot`: The compute nodes are pay-as-you-go instances.
-               - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-               - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
         :param pulumi.Input[str] deploy_mode: The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-               - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-               - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-               - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
         :param pulumi.Input[str] description: The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[str] domain: The domain name of the on-premises cluster. This parameter takes effect only when the AccoutType parameter is set to Idap.
         :param pulumi.Input[str] ecs_charge_type: The billing method of the nodes.
@@ -1071,7 +1049,7 @@ class _ClusterState:
         :param pulumi.Input[str] image_owner_alias: The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
         :param pulumi.Input[str] input_file_url: The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
         :param pulumi.Input[bool] is_compute_ess: Specifies whether to enable auto scaling. Default value: `false`.
-        :param pulumi.Input[str] job_queue: The queue of the nodes to which the additional file system is attached.
+        :param pulumi.Input[str] job_queue: The queue to which the compute nodes are added.
         :param pulumi.Input[str] key_pair_name: The name of the AccessKey pair.
         :param pulumi.Input[int] login_count: The number of the logon nodes. Valid values: `1`.
         :param pulumi.Input[str] login_instance_type: The instance type of the logon nodes.
@@ -1094,7 +1072,7 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ram_node_types: The node of the RAM role.
         :param pulumi.Input[str] ram_role_name: The name of the Resource Access Management (RAM) role.
         :param pulumi.Input[bool] release_instance: The release instance. Valid values: `true`.
-        :param pulumi.Input[str] remote_directory: The remote directory to which the additional file system is mounted.
+        :param pulumi.Input[str] remote_directory: The remote directory to which the file system is mounted.
         :param pulumi.Input[bool] remote_vis_enable: Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scc_cluster_id: The ID of the Super Computing Cluster (SCC) instance. If you specify the parameter, the SCC instance is moved to a new SCC cluster.
@@ -1103,17 +1081,15 @@ class _ClusterState:
         :param pulumi.Input[str] security_group_name: If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] system_disk_level: The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-               * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-               * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-               * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-               * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[int] system_disk_size: The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
         :param pulumi.Input[str] system_disk_type: The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
-        :param pulumi.Input[str] volume_id: The ID of the additional file system.
+        :param pulumi.Input[str] volume_id: The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         :param pulumi.Input[str] volume_mount_option: The mount options of the file system.
-        :param pulumi.Input[str] volume_mountpoint: The mount target of the additional file system.
-        :param pulumi.Input[str] volume_protocol: The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
-        :param pulumi.Input[str] volume_type: The type of the additional shared storage. Only NAS file systems are supported.
+        :param pulumi.Input[str] volume_mountpoint: The mount target of the file system. Take note of the following information:
+               - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+               - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
+        :param pulumi.Input[str] volume_protocol: The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
+        :param pulumi.Input[str] volume_type: The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) to which the cluster belongs.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch. E-HPC supports only VPC networks.
         :param pulumi.Input[bool] without_agent: Specifies whether not to install the agent. Default value: `false`.
@@ -1388,9 +1364,6 @@ class _ClusterState:
     def compute_spot_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-        - `NoSpot`: The compute nodes are pay-as-you-go instances.
-        - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-        - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
         """
         return pulumi.get(self, "compute_spot_strategy")
 
@@ -1403,9 +1376,6 @@ class _ClusterState:
     def deploy_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-        - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-        - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-        - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
         """
         return pulumi.get(self, "deploy_mode")
 
@@ -1525,7 +1495,7 @@ class _ClusterState:
     @pulumi.getter(name="jobQueue")
     def job_queue(self) -> Optional[pulumi.Input[str]]:
         """
-        The queue of the nodes to which the additional file system is attached.
+        The queue to which the compute nodes are added.
         """
         return pulumi.get(self, "job_queue")
 
@@ -1713,7 +1683,7 @@ class _ClusterState:
     @pulumi.getter(name="remoteDirectory")
     def remote_directory(self) -> Optional[pulumi.Input[str]]:
         """
-        The remote directory to which the additional file system is mounted.
+        The remote directory to which the file system is mounted.
         """
         return pulumi.get(self, "remote_directory")
 
@@ -1810,10 +1780,6 @@ class _ClusterState:
     def system_disk_level(self) -> Optional[pulumi.Input[str]]:
         """
         The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-        * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "system_disk_level")
 
@@ -1849,7 +1815,7 @@ class _ClusterState:
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the additional file system.
+        The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         """
         return pulumi.get(self, "volume_id")
 
@@ -1873,7 +1839,9 @@ class _ClusterState:
     @pulumi.getter(name="volumeMountpoint")
     def volume_mountpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        The mount target of the additional file system.
+        The mount target of the file system. Take note of the following information:
+        - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+        - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
         """
         return pulumi.get(self, "volume_mountpoint")
 
@@ -1885,7 +1853,7 @@ class _ClusterState:
     @pulumi.getter(name="volumeProtocol")
     def volume_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+        The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
         """
         return pulumi.get(self, "volume_protocol")
 
@@ -1897,7 +1865,7 @@ class _ClusterState:
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the additional shared storage. Only NAS file systems are supported.
+        The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         """
         return pulumi.get(self, "volume_type")
 
@@ -2110,13 +2078,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] compute_instance_type: The instance type of the compute nodes.
         :param pulumi.Input[str] compute_spot_price_limit: The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
         :param pulumi.Input[str] compute_spot_strategy: The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-               - `NoSpot`: The compute nodes are pay-as-you-go instances.
-               - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-               - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
         :param pulumi.Input[str] deploy_mode: The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-               - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-               - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-               - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
         :param pulumi.Input[str] description: The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[str] domain: The domain name of the on-premises cluster. This parameter takes effect only when the AccoutType parameter is set to Idap.
         :param pulumi.Input[str] ecs_charge_type: The billing method of the nodes.
@@ -2126,7 +2088,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] image_owner_alias: The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
         :param pulumi.Input[str] input_file_url: The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
         :param pulumi.Input[bool] is_compute_ess: Specifies whether to enable auto scaling. Default value: `false`.
-        :param pulumi.Input[str] job_queue: The queue of the nodes to which the additional file system is attached.
+        :param pulumi.Input[str] job_queue: The queue to which the compute nodes are added.
         :param pulumi.Input[str] key_pair_name: The name of the AccessKey pair.
         :param pulumi.Input[int] login_count: The number of the logon nodes. Valid values: `1`.
         :param pulumi.Input[str] login_instance_type: The instance type of the logon nodes.
@@ -2149,7 +2111,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ram_node_types: The node of the RAM role.
         :param pulumi.Input[str] ram_role_name: The name of the Resource Access Management (RAM) role.
         :param pulumi.Input[bool] release_instance: The release instance. Valid values: `true`.
-        :param pulumi.Input[str] remote_directory: The remote directory to which the additional file system is mounted.
+        :param pulumi.Input[str] remote_directory: The remote directory to which the file system is mounted.
         :param pulumi.Input[bool] remote_vis_enable: Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scc_cluster_id: The ID of the Super Computing Cluster (SCC) instance. If you specify the parameter, the SCC instance is moved to a new SCC cluster.
@@ -2157,17 +2119,15 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the cluster belongs.
         :param pulumi.Input[str] security_group_name: If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
         :param pulumi.Input[str] system_disk_level: The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-               * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-               * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-               * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-               * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[int] system_disk_size: The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
         :param pulumi.Input[str] system_disk_type: The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
-        :param pulumi.Input[str] volume_id: The ID of the additional file system.
+        :param pulumi.Input[str] volume_id: The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         :param pulumi.Input[str] volume_mount_option: The mount options of the file system.
-        :param pulumi.Input[str] volume_mountpoint: The mount target of the additional file system.
-        :param pulumi.Input[str] volume_protocol: The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
-        :param pulumi.Input[str] volume_type: The type of the additional shared storage. Only NAS file systems are supported.
+        :param pulumi.Input[str] volume_mountpoint: The mount target of the file system. Take note of the following information:
+               - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+               - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
+        :param pulumi.Input[str] volume_protocol: The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
+        :param pulumi.Input[str] volume_type: The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) to which the cluster belongs.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch. E-HPC supports only VPC networks.
         :param pulumi.Input[bool] without_agent: Specifies whether not to install the agent. Default value: `false`.
@@ -2371,7 +2331,7 @@ class Cluster(pulumi.CustomResource):
             if os_tag is None and not opts.urn:
                 raise TypeError("Missing required property 'os_tag'")
             __props__.__dict__["os_tag"] = os_tag
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
             __props__.__dict__["plugin"] = plugin
@@ -2400,6 +2360,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["without_elastic_ip"] = without_elastic_ip
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Cluster, __self__).__init__(
             'alicloud:ehpc/cluster:Cluster',
             resource_name,
@@ -2489,13 +2451,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] compute_instance_type: The instance type of the compute nodes.
         :param pulumi.Input[str] compute_spot_price_limit: The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
         :param pulumi.Input[str] compute_spot_strategy: The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-               - `NoSpot`: The compute nodes are pay-as-you-go instances.
-               - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-               - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
         :param pulumi.Input[str] deploy_mode: The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-               - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-               - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-               - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
         :param pulumi.Input[str] description: The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[str] domain: The domain name of the on-premises cluster. This parameter takes effect only when the AccoutType parameter is set to Idap.
         :param pulumi.Input[str] ecs_charge_type: The billing method of the nodes.
@@ -2505,7 +2461,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] image_owner_alias: The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
         :param pulumi.Input[str] input_file_url: The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
         :param pulumi.Input[bool] is_compute_ess: Specifies whether to enable auto scaling. Default value: `false`.
-        :param pulumi.Input[str] job_queue: The queue of the nodes to which the additional file system is attached.
+        :param pulumi.Input[str] job_queue: The queue to which the compute nodes are added.
         :param pulumi.Input[str] key_pair_name: The name of the AccessKey pair.
         :param pulumi.Input[int] login_count: The number of the logon nodes. Valid values: `1`.
         :param pulumi.Input[str] login_instance_type: The instance type of the logon nodes.
@@ -2528,7 +2484,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ram_node_types: The node of the RAM role.
         :param pulumi.Input[str] ram_role_name: The name of the Resource Access Management (RAM) role.
         :param pulumi.Input[bool] release_instance: The release instance. Valid values: `true`.
-        :param pulumi.Input[str] remote_directory: The remote directory to which the additional file system is mounted.
+        :param pulumi.Input[str] remote_directory: The remote directory to which the file system is mounted.
         :param pulumi.Input[bool] remote_vis_enable: Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scc_cluster_id: The ID of the Super Computing Cluster (SCC) instance. If you specify the parameter, the SCC instance is moved to a new SCC cluster.
@@ -2537,17 +2493,15 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_name: If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] system_disk_level: The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-               * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-               * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-               * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-               * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[int] system_disk_size: The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
         :param pulumi.Input[str] system_disk_type: The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
-        :param pulumi.Input[str] volume_id: The ID of the additional file system.
+        :param pulumi.Input[str] volume_id: The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         :param pulumi.Input[str] volume_mount_option: The mount options of the file system.
-        :param pulumi.Input[str] volume_mountpoint: The mount target of the additional file system.
-        :param pulumi.Input[str] volume_protocol: The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
-        :param pulumi.Input[str] volume_type: The type of the additional shared storage. Only NAS file systems are supported.
+        :param pulumi.Input[str] volume_mountpoint: The mount target of the file system. Take note of the following information:
+               - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+               - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
+        :param pulumi.Input[str] volume_protocol: The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
+        :param pulumi.Input[str] volume_type: The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) to which the cluster belongs.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch. E-HPC supports only VPC networks.
         :param pulumi.Input[bool] without_agent: Specifies whether not to install the agent. Default value: `false`.
@@ -2720,9 +2674,6 @@ class Cluster(pulumi.CustomResource):
     def compute_spot_strategy(self) -> pulumi.Output[Optional[str]]:
         """
         The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-        - `NoSpot`: The compute nodes are pay-as-you-go instances.
-        - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-        - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
         """
         return pulumi.get(self, "compute_spot_strategy")
 
@@ -2731,9 +2682,6 @@ class Cluster(pulumi.CustomResource):
     def deploy_mode(self) -> pulumi.Output[str]:
         """
         The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-        - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-        - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-        - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
         """
         return pulumi.get(self, "deploy_mode")
 
@@ -2813,7 +2761,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="jobQueue")
     def job_queue(self) -> pulumi.Output[Optional[str]]:
         """
-        The queue of the nodes to which the additional file system is attached.
+        The queue to which the compute nodes are added.
         """
         return pulumi.get(self, "job_queue")
 
@@ -2941,7 +2889,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="remoteDirectory")
     def remote_directory(self) -> pulumi.Output[str]:
         """
-        The remote directory to which the additional file system is mounted.
+        The remote directory to which the file system is mounted.
         """
         return pulumi.get(self, "remote_directory")
 
@@ -3006,10 +2954,6 @@ class Cluster(pulumi.CustomResource):
     def system_disk_level(self) -> pulumi.Output[Optional[str]]:
         """
         The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-        * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "system_disk_level")
 
@@ -3033,7 +2977,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> pulumi.Output[str]:
         """
-        The ID of the additional file system.
+        The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         """
         return pulumi.get(self, "volume_id")
 
@@ -3049,7 +2993,9 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="volumeMountpoint")
     def volume_mountpoint(self) -> pulumi.Output[str]:
         """
-        The mount target of the additional file system.
+        The mount target of the file system. Take note of the following information:
+        - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+        - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
         """
         return pulumi.get(self, "volume_mountpoint")
 
@@ -3057,7 +3003,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="volumeProtocol")
     def volume_protocol(self) -> pulumi.Output[str]:
         """
-        The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+        The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
         """
         return pulumi.get(self, "volume_protocol")
 
@@ -3065,7 +3011,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Output[str]:
         """
-        The type of the additional shared storage. Only NAS file systems are supported.
+        The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         """
         return pulumi.get(self, "volume_type")
 

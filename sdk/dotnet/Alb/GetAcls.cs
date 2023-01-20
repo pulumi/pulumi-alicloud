@@ -23,33 +23,31 @@ namespace Pulumi.AliCloud.Alb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Alb.GetAcls.InvokeAsync());
-        ///         this.AlbAclId1 = ids.Apply(ids =&gt; ids.Acls?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Alb.GetAcls.InvokeAsync(new AliCloud.Alb.GetAclsArgs
-        ///         {
-        ///             NameRegex = "^my-Acl",
-        ///         }));
-        ///         this.AlbAclId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Acls?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Alb.GetAcls.Invoke();
         /// 
-        ///     [Output("albAclId1")]
-        ///     public Output&lt;string&gt; AlbAclId1 { get; set; }
-        ///     [Output("albAclId2")]
-        ///     public Output&lt;string&gt; AlbAclId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Alb.GetAcls.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Acl",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albAclId1"] = ids.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
+        ///         ["albAclId2"] = nameRegex.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:alb/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:alb/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
@@ -63,37 +61,35 @@ namespace Pulumi.AliCloud.Alb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Alb.GetAcls.InvokeAsync());
-        ///         this.AlbAclId1 = ids.Apply(ids =&gt; ids.Acls?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Alb.GetAcls.InvokeAsync(new AliCloud.Alb.GetAclsArgs
-        ///         {
-        ///             NameRegex = "^my-Acl",
-        ///         }));
-        ///         this.AlbAclId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Acls?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Alb.GetAcls.Invoke();
         /// 
-        ///     [Output("albAclId1")]
-        ///     public Output&lt;string&gt; AlbAclId1 { get; set; }
-        ///     [Output("albAclId2")]
-        ///     public Output&lt;string&gt; AlbAclId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Alb.GetAcls.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Acl",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albAclId1"] = ids.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
+        ///         ["albAclId2"] = nameRegex.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:alb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:alb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAclsArgs : Pulumi.InvokeArgs
+    public sealed class GetAclsArgs : global::Pulumi.InvokeArgs
     {
         [Input("aclIds")]
         private List<string>? _aclIds;
@@ -155,9 +151,10 @@ namespace Pulumi.AliCloud.Alb
         public GetAclsArgs()
         {
         }
+        public static new GetAclsArgs Empty => new GetAclsArgs();
     }
 
-    public sealed class GetAclsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAclsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("aclIds")]
         private InputList<string>? _aclIds;
@@ -219,6 +216,7 @@ namespace Pulumi.AliCloud.Alb
         public GetAclsInvokeArgs()
         {
         }
+        public static new GetAclsInvokeArgs Empty => new GetAclsInvokeArgs();
     }
 
 

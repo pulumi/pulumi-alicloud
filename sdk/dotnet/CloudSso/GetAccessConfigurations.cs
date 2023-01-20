@@ -25,42 +25,40 @@ namespace Pulumi.AliCloud.CloudSso
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CloudSso.GetAccessConfigurations.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CloudSso.GetAccessConfigurations.InvokeAsync(new AliCloud.CloudSso.GetAccessConfigurationsArgs
+        ///         DirectoryId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             DirectoryId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CloudSsoAccessConfigurationId1 = ids.Apply(ids =&gt; ids.Configurations?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.CloudSso.GetAccessConfigurations.InvokeAsync(new AliCloud.CloudSso.GetAccessConfigurationsArgs
-        ///         {
-        ///             DirectoryId = "example_value",
-        ///             NameRegex = "^my-AccessConfiguration",
-        ///         }));
-        ///         this.CloudSsoAccessConfigurationId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Configurations?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cloudSsoAccessConfigurationId1")]
-        ///     public Output&lt;string&gt; CloudSsoAccessConfigurationId1 { get; set; }
-        ///     [Output("cloudSsoAccessConfigurationId2")]
-        ///     public Output&lt;string&gt; CloudSsoAccessConfigurationId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CloudSso.GetAccessConfigurations.Invoke(new()
+        ///     {
+        ///         DirectoryId = "example_value",
+        ///         NameRegex = "^my-AccessConfiguration",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudSsoAccessConfigurationId1"] = ids.Apply(getAccessConfigurationsResult =&gt; getAccessConfigurationsResult.Configurations[0]?.Id),
+        ///         ["cloudSsoAccessConfigurationId2"] = nameRegex.Apply(getAccessConfigurationsResult =&gt; getAccessConfigurationsResult.Configurations[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessConfigurationsResult> InvokeAsync(GetAccessConfigurationsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessConfigurationsResult>("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args ?? new GetAccessConfigurationsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessConfigurationsResult>("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args ?? new GetAccessConfigurationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
@@ -76,46 +74,44 @@ namespace Pulumi.AliCloud.CloudSso
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CloudSso.GetAccessConfigurations.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CloudSso.GetAccessConfigurations.InvokeAsync(new AliCloud.CloudSso.GetAccessConfigurationsArgs
+        ///         DirectoryId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             DirectoryId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CloudSsoAccessConfigurationId1 = ids.Apply(ids =&gt; ids.Configurations?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.CloudSso.GetAccessConfigurations.InvokeAsync(new AliCloud.CloudSso.GetAccessConfigurationsArgs
-        ///         {
-        ///             DirectoryId = "example_value",
-        ///             NameRegex = "^my-AccessConfiguration",
-        ///         }));
-        ///         this.CloudSsoAccessConfigurationId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Configurations?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cloudSsoAccessConfigurationId1")]
-        ///     public Output&lt;string&gt; CloudSsoAccessConfigurationId1 { get; set; }
-        ///     [Output("cloudSsoAccessConfigurationId2")]
-        ///     public Output&lt;string&gt; CloudSsoAccessConfigurationId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CloudSso.GetAccessConfigurations.Invoke(new()
+        ///     {
+        ///         DirectoryId = "example_value",
+        ///         NameRegex = "^my-AccessConfiguration",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudSsoAccessConfigurationId1"] = ids.Apply(getAccessConfigurationsResult =&gt; getAccessConfigurationsResult.Configurations[0]?.Id),
+        ///         ["cloudSsoAccessConfigurationId2"] = nameRegex.Apply(getAccessConfigurationsResult =&gt; getAccessConfigurationsResult.Configurations[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessConfigurationsResult> Invoke(GetAccessConfigurationsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccessConfigurationsResult>("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args ?? new GetAccessConfigurationsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessConfigurationsResult>("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args ?? new GetAccessConfigurationsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAccessConfigurationsArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessConfigurationsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Directory.
@@ -153,9 +149,10 @@ namespace Pulumi.AliCloud.CloudSso
         public GetAccessConfigurationsArgs()
         {
         }
+        public static new GetAccessConfigurationsArgs Empty => new GetAccessConfigurationsArgs();
     }
 
-    public sealed class GetAccessConfigurationsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessConfigurationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Directory.
@@ -193,6 +190,7 @@ namespace Pulumi.AliCloud.CloudSso
         public GetAccessConfigurationsInvokeArgs()
         {
         }
+        public static new GetAccessConfigurationsInvokeArgs Empty => new GetAccessConfigurationsInvokeArgs();
     }
 
 

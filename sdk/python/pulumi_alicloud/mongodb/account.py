@@ -275,11 +275,13 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["account_name"] = account_name
             if account_password is None and not opts.urn:
                 raise TypeError("Missing required property 'account_password'")
-            __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Account, __self__).__init__(
             'alicloud:mongodb/account:Account',
             resource_name,

@@ -19,29 +19,28 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sampleDs = AliCloud.Slb.GetAttachments.Invoke(new()
         ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetAttachments.InvokeAsync(new AliCloud.Slb.GetAttachmentsArgs
-        ///         {
-        ///             LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
-        ///         }));
-        ///         this.FirstSlbAttachmentInstanceId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbAttachments?[0]?.InstanceId);
-        ///     }
+        ///         LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
+        ///     });
         /// 
-        ///     [Output("firstSlbAttachmentInstanceId")]
-        ///     public Output&lt;string&gt; FirstSlbAttachmentInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbAttachmentInstanceId"] = sampleDs.Apply(getAttachmentsResult =&gt; getAttachmentsResult.SlbAttachments[0]?.InstanceId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAttachmentsResult> InvokeAsync(GetAttachmentsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAttachmentsResult>("alicloud:slb/getAttachments:getAttachments", args ?? new GetAttachmentsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAttachmentsResult>("alicloud:slb/getAttachments:getAttachments", args ?? new GetAttachmentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the server load balancer attachments of the current Alibaba Cloud user.
@@ -51,33 +50,32 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sampleDs = AliCloud.Slb.GetAttachments.Invoke(new()
         ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetAttachments.InvokeAsync(new AliCloud.Slb.GetAttachmentsArgs
-        ///         {
-        ///             LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
-        ///         }));
-        ///         this.FirstSlbAttachmentInstanceId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbAttachments?[0]?.InstanceId);
-        ///     }
+        ///         LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
+        ///     });
         /// 
-        ///     [Output("firstSlbAttachmentInstanceId")]
-        ///     public Output&lt;string&gt; FirstSlbAttachmentInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbAttachmentInstanceId"] = sampleDs.Apply(getAttachmentsResult =&gt; getAttachmentsResult.SlbAttachments[0]?.InstanceId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAttachmentsResult> Invoke(GetAttachmentsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAttachmentsResult>("alicloud:slb/getAttachments:getAttachments", args ?? new GetAttachmentsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAttachmentsResult>("alicloud:slb/getAttachments:getAttachments", args ?? new GetAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAttachmentsArgs : Pulumi.InvokeArgs
+    public sealed class GetAttachmentsArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceIds")]
         private List<string>? _instanceIds;
@@ -103,9 +101,10 @@ namespace Pulumi.AliCloud.Slb
         public GetAttachmentsArgs()
         {
         }
+        public static new GetAttachmentsArgs Empty => new GetAttachmentsArgs();
     }
 
-    public sealed class GetAttachmentsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAttachmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceIds")]
         private InputList<string>? _instanceIds;
@@ -131,6 +130,7 @@ namespace Pulumi.AliCloud.Slb
         public GetAttachmentsInvokeArgs()
         {
         }
+        public static new GetAttachmentsInvokeArgs Empty => new GetAttachmentsInvokeArgs();
     }
 
 

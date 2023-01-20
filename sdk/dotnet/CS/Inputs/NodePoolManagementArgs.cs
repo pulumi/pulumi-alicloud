@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class NodePoolManagementArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether automatic repair, Default to `false`.
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public NodePoolManagementArgs()
         {
         }
+        public static new NodePoolManagementArgs Empty => new NodePoolManagementArgs();
     }
 }

@@ -62,35 +62,22 @@ type Rule struct {
 	pulumi.CustomResourceState
 
 	// Sensitive Data Identification Rules for the Type of. Valid values:
-	// * `0`: Keyword.
-	// * `2`: Regular expression.
 	Category pulumi.IntOutput `pulumi:"category"`
 	// Sensitive Data Identification Rules the Content.
 	Content pulumi.StringOutput `pulumi:"content"`
 	// The Content Classification.
 	ContentCategory pulumi.StringOutput `pulumi:"contentCategory"`
 	// Sensitive Data Identification Rules of Type. Valid values:
-	// * `0`: the Built-in.
-	// * `1`: The User-Defined.
 	CustomType pulumi.IntOutput `pulumi:"customType"`
 	// Sensitive Data Identification a Description of the Rule Information.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Request and Receive the Language of the Message Type. Valid values:
-	// * `zh`: Chinese.
-	// * `en`: English.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
 	// Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
 	ProductCode pulumi.StringPtrOutput `pulumi:"productCode"`
 	// Product ID. Valid values:
-	// * `1`:MaxCompute
-	// * `2`:OSS
-	// * `5`:RDS.
 	ProductId pulumi.StringPtrOutput `pulumi:"productId"`
 	// Sensitive Data Identification Rules of Risk Level ID. Valid values:
-	// * `2`:S1, Weak Risk Level.
-	// * `3`:S2, Medium Risk Level.
-	// * `4`:S3 High Risk Level.
-	// * `5`:S4, the Highest Risk Level.
 	RiskLevelId pulumi.StringPtrOutput `pulumi:"riskLevelId"`
 	// Sensitive Data Identification Name of the Rule.
 	RuleName pulumi.StringOutput `pulumi:"ruleName"`
@@ -103,9 +90,6 @@ type Rule struct {
 	// The Target of rule.
 	Target pulumi.StringPtrOutput `pulumi:"target"`
 	// The Level of Risk. Valid values:
-	// * `1`: Weak warn Level.
-	// * `2`: Medium Risk Level.
-	// * `3`: High Risk Level.
 	WarnLevel pulumi.IntPtrOutput `pulumi:"warnLevel"`
 }
 
@@ -148,35 +132,22 @@ func GetRule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Rule resources.
 type ruleState struct {
 	// Sensitive Data Identification Rules for the Type of. Valid values:
-	// * `0`: Keyword.
-	// * `2`: Regular expression.
 	Category *int `pulumi:"category"`
 	// Sensitive Data Identification Rules the Content.
 	Content *string `pulumi:"content"`
 	// The Content Classification.
 	ContentCategory *string `pulumi:"contentCategory"`
 	// Sensitive Data Identification Rules of Type. Valid values:
-	// * `0`: the Built-in.
-	// * `1`: The User-Defined.
 	CustomType *int `pulumi:"customType"`
 	// Sensitive Data Identification a Description of the Rule Information.
 	Description *string `pulumi:"description"`
 	// The Request and Receive the Language of the Message Type. Valid values:
-	// * `zh`: Chinese.
-	// * `en`: English.
 	Lang *string `pulumi:"lang"`
 	// Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
 	ProductCode *string `pulumi:"productCode"`
 	// Product ID. Valid values:
-	// * `1`:MaxCompute
-	// * `2`:OSS
-	// * `5`:RDS.
 	ProductId *string `pulumi:"productId"`
 	// Sensitive Data Identification Rules of Risk Level ID. Valid values:
-	// * `2`:S1, Weak Risk Level.
-	// * `3`:S2, Medium Risk Level.
-	// * `4`:S3 High Risk Level.
-	// * `5`:S4, the Highest Risk Level.
 	RiskLevelId *string `pulumi:"riskLevelId"`
 	// Sensitive Data Identification Name of the Rule.
 	RuleName *string `pulumi:"ruleName"`
@@ -189,43 +160,27 @@ type ruleState struct {
 	// The Target of rule.
 	Target *string `pulumi:"target"`
 	// The Level of Risk. Valid values:
-	// * `1`: Weak warn Level.
-	// * `2`: Medium Risk Level.
-	// * `3`: High Risk Level.
 	WarnLevel *int `pulumi:"warnLevel"`
 }
 
 type RuleState struct {
 	// Sensitive Data Identification Rules for the Type of. Valid values:
-	// * `0`: Keyword.
-	// * `2`: Regular expression.
 	Category pulumi.IntPtrInput
 	// Sensitive Data Identification Rules the Content.
 	Content pulumi.StringPtrInput
 	// The Content Classification.
 	ContentCategory pulumi.StringPtrInput
 	// Sensitive Data Identification Rules of Type. Valid values:
-	// * `0`: the Built-in.
-	// * `1`: The User-Defined.
 	CustomType pulumi.IntPtrInput
 	// Sensitive Data Identification a Description of the Rule Information.
 	Description pulumi.StringPtrInput
 	// The Request and Receive the Language of the Message Type. Valid values:
-	// * `zh`: Chinese.
-	// * `en`: English.
 	Lang pulumi.StringPtrInput
 	// Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
 	ProductCode pulumi.StringPtrInput
 	// Product ID. Valid values:
-	// * `1`:MaxCompute
-	// * `2`:OSS
-	// * `5`:RDS.
 	ProductId pulumi.StringPtrInput
 	// Sensitive Data Identification Rules of Risk Level ID. Valid values:
-	// * `2`:S1, Weak Risk Level.
-	// * `3`:S2, Medium Risk Level.
-	// * `4`:S3 High Risk Level.
-	// * `5`:S4, the Highest Risk Level.
 	RiskLevelId pulumi.StringPtrInput
 	// Sensitive Data Identification Name of the Rule.
 	RuleName pulumi.StringPtrInput
@@ -238,9 +193,6 @@ type RuleState struct {
 	// The Target of rule.
 	Target pulumi.StringPtrInput
 	// The Level of Risk. Valid values:
-	// * `1`: Weak warn Level.
-	// * `2`: Medium Risk Level.
-	// * `3`: High Risk Level.
 	WarnLevel pulumi.IntPtrInput
 }
 
@@ -250,35 +202,22 @@ func (RuleState) ElementType() reflect.Type {
 
 type ruleArgs struct {
 	// Sensitive Data Identification Rules for the Type of. Valid values:
-	// * `0`: Keyword.
-	// * `2`: Regular expression.
 	Category int `pulumi:"category"`
 	// Sensitive Data Identification Rules the Content.
 	Content string `pulumi:"content"`
 	// The Content Classification.
 	ContentCategory *string `pulumi:"contentCategory"`
 	// Sensitive Data Identification Rules of Type. Valid values:
-	// * `0`: the Built-in.
-	// * `1`: The User-Defined.
 	CustomType *int `pulumi:"customType"`
 	// Sensitive Data Identification a Description of the Rule Information.
 	Description *string `pulumi:"description"`
 	// The Request and Receive the Language of the Message Type. Valid values:
-	// * `zh`: Chinese.
-	// * `en`: English.
 	Lang *string `pulumi:"lang"`
 	// Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
 	ProductCode *string `pulumi:"productCode"`
 	// Product ID. Valid values:
-	// * `1`:MaxCompute
-	// * `2`:OSS
-	// * `5`:RDS.
 	ProductId *string `pulumi:"productId"`
 	// Sensitive Data Identification Rules of Risk Level ID. Valid values:
-	// * `2`:S1, Weak Risk Level.
-	// * `3`:S2, Medium Risk Level.
-	// * `4`:S3 High Risk Level.
-	// * `5`:S4, the Highest Risk Level.
 	RiskLevelId *string `pulumi:"riskLevelId"`
 	// Sensitive Data Identification Name of the Rule.
 	RuleName string `pulumi:"ruleName"`
@@ -291,44 +230,28 @@ type ruleArgs struct {
 	// The Target of rule.
 	Target *string `pulumi:"target"`
 	// The Level of Risk. Valid values:
-	// * `1`: Weak warn Level.
-	// * `2`: Medium Risk Level.
-	// * `3`: High Risk Level.
 	WarnLevel *int `pulumi:"warnLevel"`
 }
 
 // The set of arguments for constructing a Rule resource.
 type RuleArgs struct {
 	// Sensitive Data Identification Rules for the Type of. Valid values:
-	// * `0`: Keyword.
-	// * `2`: Regular expression.
 	Category pulumi.IntInput
 	// Sensitive Data Identification Rules the Content.
 	Content pulumi.StringInput
 	// The Content Classification.
 	ContentCategory pulumi.StringPtrInput
 	// Sensitive Data Identification Rules of Type. Valid values:
-	// * `0`: the Built-in.
-	// * `1`: The User-Defined.
 	CustomType pulumi.IntPtrInput
 	// Sensitive Data Identification a Description of the Rule Information.
 	Description pulumi.StringPtrInput
 	// The Request and Receive the Language of the Message Type. Valid values:
-	// * `zh`: Chinese.
-	// * `en`: English.
 	Lang pulumi.StringPtrInput
 	// Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
 	ProductCode pulumi.StringPtrInput
 	// Product ID. Valid values:
-	// * `1`:MaxCompute
-	// * `2`:OSS
-	// * `5`:RDS.
 	ProductId pulumi.StringPtrInput
 	// Sensitive Data Identification Rules of Risk Level ID. Valid values:
-	// * `2`:S1, Weak Risk Level.
-	// * `3`:S2, Medium Risk Level.
-	// * `4`:S3 High Risk Level.
-	// * `5`:S4, the Highest Risk Level.
 	RiskLevelId pulumi.StringPtrInput
 	// Sensitive Data Identification Name of the Rule.
 	RuleName pulumi.StringInput
@@ -341,9 +264,6 @@ type RuleArgs struct {
 	// The Target of rule.
 	Target pulumi.StringPtrInput
 	// The Level of Risk. Valid values:
-	// * `1`: Weak warn Level.
-	// * `2`: Medium Risk Level.
-	// * `3`: High Risk Level.
 	WarnLevel pulumi.IntPtrInput
 }
 
@@ -435,8 +355,6 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 }
 
 // Sensitive Data Identification Rules for the Type of. Valid values:
-// * `0`: Keyword.
-// * `2`: Regular expression.
 func (o RuleOutput) Category() pulumi.IntOutput {
 	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.Category }).(pulumi.IntOutput)
 }
@@ -452,8 +370,6 @@ func (o RuleOutput) ContentCategory() pulumi.StringOutput {
 }
 
 // Sensitive Data Identification Rules of Type. Valid values:
-// * `0`: the Built-in.
-// * `1`: The User-Defined.
 func (o RuleOutput) CustomType() pulumi.IntOutput {
 	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.CustomType }).(pulumi.IntOutput)
 }
@@ -464,8 +380,6 @@ func (o RuleOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The Request and Receive the Language of the Message Type. Valid values:
-// * `zh`: Chinese.
-// * `en`: English.
 func (o RuleOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }
@@ -476,18 +390,11 @@ func (o RuleOutput) ProductCode() pulumi.StringPtrOutput {
 }
 
 // Product ID. Valid values:
-// * `1`:MaxCompute
-// * `2`:OSS
-// * `5`:RDS.
 func (o RuleOutput) ProductId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.ProductId }).(pulumi.StringPtrOutput)
 }
 
 // Sensitive Data Identification Rules of Risk Level ID. Valid values:
-// * `2`:S1, Weak Risk Level.
-// * `3`:S2, Medium Risk Level.
-// * `4`:S3 High Risk Level.
-// * `5`:S4, the Highest Risk Level.
 func (o RuleOutput) RiskLevelId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.RiskLevelId }).(pulumi.StringPtrOutput)
 }
@@ -518,9 +425,6 @@ func (o RuleOutput) Target() pulumi.StringPtrOutput {
 }
 
 // The Level of Risk. Valid values:
-// * `1`: Weak warn Level.
-// * `2`: Medium Risk Level.
-// * `3`: High Risk Level.
 func (o RuleOutput) WarnLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Rule) pulumi.IntPtrOutput { return v.WarnLevel }).(pulumi.IntPtrOutput)
 }

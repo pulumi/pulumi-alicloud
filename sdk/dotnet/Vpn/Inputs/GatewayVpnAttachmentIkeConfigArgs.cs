@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn.Inputs
 {
 
-    public sealed class GatewayVpnAttachmentIkeConfigArgs : Pulumi.ResourceArgs
+    public sealed class GatewayVpnAttachmentIkeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IKE authentication algorithm supports sha1 and MD5.
@@ -69,5 +69,6 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public GatewayVpnAttachmentIkeConfigArgs()
         {
         }
+        public static new GatewayVpnAttachmentIkeConfigArgs Empty => new GatewayVpnAttachmentIkeConfigArgs();
     }
 }

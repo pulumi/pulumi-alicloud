@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Quotas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Quotas.GetQuotaApplications.InvokeAsync(new AliCloud.Quotas.GetQuotaApplicationsArgs
+        ///         ProductCode = "ess",
+        ///         Ids = new[]
         ///         {
-        ///             ProductCode = "ess",
-        ///             Ids = 
-        ///             {
-        ///                 "4621F886-81E9-xxxx-xxxx",
-        ///             },
-        ///         }));
-        ///         this.FirstQuotasQuotaApplicationId = example.Apply(example =&gt; example.Applications?[0]?.Id);
-        ///     }
+        ///             "4621F886-81E9-xxxx-xxxx",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstQuotasQuotaApplicationId")]
-        ///     public Output&lt;string&gt; FirstQuotasQuotaApplicationId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstQuotasQuotaApplicationId"] = example.Apply(getQuotaApplicationsResult =&gt; getQuotaApplicationsResult.Applications[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQuotaApplicationsResult> InvokeAsync(GetQuotaApplicationsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQuotaApplicationsResult>("alicloud:quotas/getQuotaApplications:getQuotaApplications", args ?? new GetQuotaApplicationsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotaApplicationsResult>("alicloud:quotas/getQuotaApplications:getQuotaApplications", args ?? new GetQuotaApplicationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Quotas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Quotas.GetQuotaApplications.InvokeAsync(new AliCloud.Quotas.GetQuotaApplicationsArgs
+        ///         ProductCode = "ess",
+        ///         Ids = new[]
         ///         {
-        ///             ProductCode = "ess",
-        ///             Ids = 
-        ///             {
-        ///                 "4621F886-81E9-xxxx-xxxx",
-        ///             },
-        ///         }));
-        ///         this.FirstQuotasQuotaApplicationId = example.Apply(example =&gt; example.Applications?[0]?.Id);
-        ///     }
+        ///             "4621F886-81E9-xxxx-xxxx",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstQuotasQuotaApplicationId")]
-        ///     public Output&lt;string&gt; FirstQuotasQuotaApplicationId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstQuotasQuotaApplicationId"] = example.Apply(getQuotaApplicationsResult =&gt; getQuotaApplicationsResult.Applications[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQuotaApplicationsResult> Invoke(GetQuotaApplicationsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQuotaApplicationsResult>("alicloud:quotas/getQuotaApplications:getQuotaApplications", args ?? new GetQuotaApplicationsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetQuotaApplicationsResult>("alicloud:quotas/getQuotaApplications:getQuotaApplications", args ?? new GetQuotaApplicationsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetQuotaApplicationsArgs : Pulumi.InvokeArgs
+    public sealed class GetQuotaApplicationsArgs : global::Pulumi.InvokeArgs
     {
         [Input("dimensions")]
         private List<Inputs.GetQuotaApplicationsDimensionArgs>? _dimensions;
@@ -158,9 +156,10 @@ namespace Pulumi.AliCloud.Quotas
         public GetQuotaApplicationsArgs()
         {
         }
+        public static new GetQuotaApplicationsArgs Empty => new GetQuotaApplicationsArgs();
     }
 
-    public sealed class GetQuotaApplicationsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetQuotaApplicationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("dimensions")]
         private InputList<Inputs.GetQuotaApplicationsDimensionInputArgs>? _dimensions;
@@ -225,6 +224,7 @@ namespace Pulumi.AliCloud.Quotas
         public GetQuotaApplicationsInvokeArgs()
         {
         }
+        public static new GetQuotaApplicationsInvokeArgs Empty => new GetQuotaApplicationsInvokeArgs();
     }
 
 

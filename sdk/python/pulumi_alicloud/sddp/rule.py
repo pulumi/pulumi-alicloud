@@ -32,36 +32,20 @@ class RuleArgs:
         """
         The set of arguments for constructing a Rule resource.
         :param pulumi.Input[int] category: Sensitive Data Identification Rules for the Type of. Valid values:
-               * `0`: Keyword.
-               * `2`: Regular expression.
         :param pulumi.Input[str] content: Sensitive Data Identification Rules the Content.
         :param pulumi.Input[str] rule_name: Sensitive Data Identification Name of the Rule.
         :param pulumi.Input[str] content_category: The Content Classification.
-        :param pulumi.Input[int] custom_type: Sensitive Data Identification Rules of Type. Valid values: 
-               * `0`: the Built-in.
-               * `1`: The User-Defined.
+        :param pulumi.Input[int] custom_type: Sensitive Data Identification Rules of Type. Valid values:
         :param pulumi.Input[str] description: Sensitive Data Identification a Description of the Rule Information.
         :param pulumi.Input[str] lang: The Request and Receive the Language of the Message Type. Valid values:
-               * `zh`: Chinese.
-               * `en`: English.
         :param pulumi.Input[str] product_code: Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
-        :param pulumi.Input[str] product_id: Product ID. Valid values: 
-               * `1`:MaxCompute
-               * `2`:OSS
-               * `5`:RDS.
-        :param pulumi.Input[str] risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values: 
-               * `2`:S1, Weak Risk Level.
-               * `3`:S2, Medium Risk Level.
-               * `4`:S3 High Risk Level.
-               * `5`:S4, the Highest Risk Level.
+        :param pulumi.Input[str] product_id: Product ID. Valid values:
+        :param pulumi.Input[str] risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:
         :param pulumi.Input[int] rule_type: Rule Type.
         :param pulumi.Input[str] stat_express: Triggered the Alarm Conditions.
         :param pulumi.Input[int] status: Sensitive Data Identification Rules Detection State of.
         :param pulumi.Input[str] target: The Target of rule.
-        :param pulumi.Input[int] warn_level: The Level of Risk. Valid values: 
-               * `1`: Weak warn Level.
-               * `2`: Medium Risk Level.
-               * `3`: High Risk Level.
+        :param pulumi.Input[int] warn_level: The Level of Risk. Valid values:
         """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "content", content)
@@ -96,8 +80,6 @@ class RuleArgs:
     def category(self) -> pulumi.Input[int]:
         """
         Sensitive Data Identification Rules for the Type of. Valid values:
-        * `0`: Keyword.
-        * `2`: Regular expression.
         """
         return pulumi.get(self, "category")
 
@@ -145,9 +127,7 @@ class RuleArgs:
     @pulumi.getter(name="customType")
     def custom_type(self) -> Optional[pulumi.Input[int]]:
         """
-        Sensitive Data Identification Rules of Type. Valid values: 
-        * `0`: the Built-in.
-        * `1`: The User-Defined.
+        Sensitive Data Identification Rules of Type. Valid values:
         """
         return pulumi.get(self, "custom_type")
 
@@ -172,8 +152,6 @@ class RuleArgs:
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
         The Request and Receive the Language of the Message Type. Valid values:
-        * `zh`: Chinese.
-        * `en`: English.
         """
         return pulumi.get(self, "lang")
 
@@ -197,10 +175,7 @@ class RuleArgs:
     @pulumi.getter(name="productId")
     def product_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Product ID. Valid values: 
-        * `1`:MaxCompute
-        * `2`:OSS
-        * `5`:RDS.
+        Product ID. Valid values:
         """
         return pulumi.get(self, "product_id")
 
@@ -212,11 +187,7 @@ class RuleArgs:
     @pulumi.getter(name="riskLevelId")
     def risk_level_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Sensitive Data Identification Rules of Risk Level ID. Valid values: 
-        * `2`:S1, Weak Risk Level.
-        * `3`:S2, Medium Risk Level.
-        * `4`:S3 High Risk Level.
-        * `5`:S4, the Highest Risk Level.
+        Sensitive Data Identification Rules of Risk Level ID. Valid values:
         """
         return pulumi.get(self, "risk_level_id")
 
@@ -276,10 +247,7 @@ class RuleArgs:
     @pulumi.getter(name="warnLevel")
     def warn_level(self) -> Optional[pulumi.Input[int]]:
         """
-        The Level of Risk. Valid values: 
-        * `1`: Weak warn Level.
-        * `2`: Medium Risk Level.
-        * `3`: High Risk Level.
+        The Level of Risk. Valid values:
         """
         return pulumi.get(self, "warn_level")
 
@@ -309,36 +277,20 @@ class _RuleState:
         """
         Input properties used for looking up and filtering Rule resources.
         :param pulumi.Input[int] category: Sensitive Data Identification Rules for the Type of. Valid values:
-               * `0`: Keyword.
-               * `2`: Regular expression.
         :param pulumi.Input[str] content: Sensitive Data Identification Rules the Content.
         :param pulumi.Input[str] content_category: The Content Classification.
-        :param pulumi.Input[int] custom_type: Sensitive Data Identification Rules of Type. Valid values: 
-               * `0`: the Built-in.
-               * `1`: The User-Defined.
+        :param pulumi.Input[int] custom_type: Sensitive Data Identification Rules of Type. Valid values:
         :param pulumi.Input[str] description: Sensitive Data Identification a Description of the Rule Information.
         :param pulumi.Input[str] lang: The Request and Receive the Language of the Message Type. Valid values:
-               * `zh`: Chinese.
-               * `en`: English.
         :param pulumi.Input[str] product_code: Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
-        :param pulumi.Input[str] product_id: Product ID. Valid values: 
-               * `1`:MaxCompute
-               * `2`:OSS
-               * `5`:RDS.
-        :param pulumi.Input[str] risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values: 
-               * `2`:S1, Weak Risk Level.
-               * `3`:S2, Medium Risk Level.
-               * `4`:S3 High Risk Level.
-               * `5`:S4, the Highest Risk Level.
+        :param pulumi.Input[str] product_id: Product ID. Valid values:
+        :param pulumi.Input[str] risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:
         :param pulumi.Input[str] rule_name: Sensitive Data Identification Name of the Rule.
         :param pulumi.Input[int] rule_type: Rule Type.
         :param pulumi.Input[str] stat_express: Triggered the Alarm Conditions.
         :param pulumi.Input[int] status: Sensitive Data Identification Rules Detection State of.
         :param pulumi.Input[str] target: The Target of rule.
-        :param pulumi.Input[int] warn_level: The Level of Risk. Valid values: 
-               * `1`: Weak warn Level.
-               * `2`: Medium Risk Level.
-               * `3`: High Risk Level.
+        :param pulumi.Input[int] warn_level: The Level of Risk. Valid values:
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -376,8 +328,6 @@ class _RuleState:
     def category(self) -> Optional[pulumi.Input[int]]:
         """
         Sensitive Data Identification Rules for the Type of. Valid values:
-        * `0`: Keyword.
-        * `2`: Regular expression.
         """
         return pulumi.get(self, "category")
 
@@ -413,9 +363,7 @@ class _RuleState:
     @pulumi.getter(name="customType")
     def custom_type(self) -> Optional[pulumi.Input[int]]:
         """
-        Sensitive Data Identification Rules of Type. Valid values: 
-        * `0`: the Built-in.
-        * `1`: The User-Defined.
+        Sensitive Data Identification Rules of Type. Valid values:
         """
         return pulumi.get(self, "custom_type")
 
@@ -440,8 +388,6 @@ class _RuleState:
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
         The Request and Receive the Language of the Message Type. Valid values:
-        * `zh`: Chinese.
-        * `en`: English.
         """
         return pulumi.get(self, "lang")
 
@@ -465,10 +411,7 @@ class _RuleState:
     @pulumi.getter(name="productId")
     def product_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Product ID. Valid values: 
-        * `1`:MaxCompute
-        * `2`:OSS
-        * `5`:RDS.
+        Product ID. Valid values:
         """
         return pulumi.get(self, "product_id")
 
@@ -480,11 +423,7 @@ class _RuleState:
     @pulumi.getter(name="riskLevelId")
     def risk_level_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Sensitive Data Identification Rules of Risk Level ID. Valid values: 
-        * `2`:S1, Weak Risk Level.
-        * `3`:S2, Medium Risk Level.
-        * `4`:S3 High Risk Level.
-        * `5`:S4, the Highest Risk Level.
+        Sensitive Data Identification Rules of Risk Level ID. Valid values:
         """
         return pulumi.get(self, "risk_level_id")
 
@@ -556,10 +495,7 @@ class _RuleState:
     @pulumi.getter(name="warnLevel")
     def warn_level(self) -> Optional[pulumi.Input[int]]:
         """
-        The Level of Risk. Valid values: 
-        * `1`: Weak warn Level.
-        * `2`: Medium Risk Level.
-        * `3`: High Risk Level.
+        The Level of Risk. Valid values:
         """
         return pulumi.get(self, "warn_level")
 
@@ -623,36 +559,20 @@ class Rule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] category: Sensitive Data Identification Rules for the Type of. Valid values:
-               * `0`: Keyword.
-               * `2`: Regular expression.
         :param pulumi.Input[str] content: Sensitive Data Identification Rules the Content.
         :param pulumi.Input[str] content_category: The Content Classification.
-        :param pulumi.Input[int] custom_type: Sensitive Data Identification Rules of Type. Valid values: 
-               * `0`: the Built-in.
-               * `1`: The User-Defined.
+        :param pulumi.Input[int] custom_type: Sensitive Data Identification Rules of Type. Valid values:
         :param pulumi.Input[str] description: Sensitive Data Identification a Description of the Rule Information.
         :param pulumi.Input[str] lang: The Request and Receive the Language of the Message Type. Valid values:
-               * `zh`: Chinese.
-               * `en`: English.
         :param pulumi.Input[str] product_code: Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
-        :param pulumi.Input[str] product_id: Product ID. Valid values: 
-               * `1`:MaxCompute
-               * `2`:OSS
-               * `5`:RDS.
-        :param pulumi.Input[str] risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values: 
-               * `2`:S1, Weak Risk Level.
-               * `3`:S2, Medium Risk Level.
-               * `4`:S3 High Risk Level.
-               * `5`:S4, the Highest Risk Level.
+        :param pulumi.Input[str] product_id: Product ID. Valid values:
+        :param pulumi.Input[str] risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:
         :param pulumi.Input[str] rule_name: Sensitive Data Identification Name of the Rule.
         :param pulumi.Input[int] rule_type: Rule Type.
         :param pulumi.Input[str] stat_express: Triggered the Alarm Conditions.
         :param pulumi.Input[int] status: Sensitive Data Identification Rules Detection State of.
         :param pulumi.Input[str] target: The Target of rule.
-        :param pulumi.Input[int] warn_level: The Level of Risk. Valid values: 
-               * `1`: Weak warn Level.
-               * `2`: Medium Risk Level.
-               * `3`: High Risk Level.
+        :param pulumi.Input[int] warn_level: The Level of Risk. Valid values:
         """
         ...
     @overload
@@ -784,36 +704,20 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] category: Sensitive Data Identification Rules for the Type of. Valid values:
-               * `0`: Keyword.
-               * `2`: Regular expression.
         :param pulumi.Input[str] content: Sensitive Data Identification Rules the Content.
         :param pulumi.Input[str] content_category: The Content Classification.
-        :param pulumi.Input[int] custom_type: Sensitive Data Identification Rules of Type. Valid values: 
-               * `0`: the Built-in.
-               * `1`: The User-Defined.
+        :param pulumi.Input[int] custom_type: Sensitive Data Identification Rules of Type. Valid values:
         :param pulumi.Input[str] description: Sensitive Data Identification a Description of the Rule Information.
         :param pulumi.Input[str] lang: The Request and Receive the Language of the Message Type. Valid values:
-               * `zh`: Chinese.
-               * `en`: English.
         :param pulumi.Input[str] product_code: Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
-        :param pulumi.Input[str] product_id: Product ID. Valid values: 
-               * `1`:MaxCompute
-               * `2`:OSS
-               * `5`:RDS.
-        :param pulumi.Input[str] risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values: 
-               * `2`:S1, Weak Risk Level.
-               * `3`:S2, Medium Risk Level.
-               * `4`:S3 High Risk Level.
-               * `5`:S4, the Highest Risk Level.
+        :param pulumi.Input[str] product_id: Product ID. Valid values:
+        :param pulumi.Input[str] risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:
         :param pulumi.Input[str] rule_name: Sensitive Data Identification Name of the Rule.
         :param pulumi.Input[int] rule_type: Rule Type.
         :param pulumi.Input[str] stat_express: Triggered the Alarm Conditions.
         :param pulumi.Input[int] status: Sensitive Data Identification Rules Detection State of.
         :param pulumi.Input[str] target: The Target of rule.
-        :param pulumi.Input[int] warn_level: The Level of Risk. Valid values: 
-               * `1`: Weak warn Level.
-               * `2`: Medium Risk Level.
-               * `3`: High Risk Level.
+        :param pulumi.Input[int] warn_level: The Level of Risk. Valid values:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -841,8 +745,6 @@ class Rule(pulumi.CustomResource):
     def category(self) -> pulumi.Output[int]:
         """
         Sensitive Data Identification Rules for the Type of. Valid values:
-        * `0`: Keyword.
-        * `2`: Regular expression.
         """
         return pulumi.get(self, "category")
 
@@ -866,9 +768,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="customType")
     def custom_type(self) -> pulumi.Output[int]:
         """
-        Sensitive Data Identification Rules of Type. Valid values: 
-        * `0`: the Built-in.
-        * `1`: The User-Defined.
+        Sensitive Data Identification Rules of Type. Valid values:
         """
         return pulumi.get(self, "custom_type")
 
@@ -885,8 +785,6 @@ class Rule(pulumi.CustomResource):
     def lang(self) -> pulumi.Output[Optional[str]]:
         """
         The Request and Receive the Language of the Message Type. Valid values:
-        * `zh`: Chinese.
-        * `en`: English.
         """
         return pulumi.get(self, "lang")
 
@@ -902,10 +800,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="productId")
     def product_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Product ID. Valid values: 
-        * `1`:MaxCompute
-        * `2`:OSS
-        * `5`:RDS.
+        Product ID. Valid values:
         """
         return pulumi.get(self, "product_id")
 
@@ -913,11 +808,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="riskLevelId")
     def risk_level_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Sensitive Data Identification Rules of Risk Level ID. Valid values: 
-        * `2`:S1, Weak Risk Level.
-        * `3`:S2, Medium Risk Level.
-        * `4`:S3 High Risk Level.
-        * `5`:S4, the Highest Risk Level.
+        Sensitive Data Identification Rules of Risk Level ID. Valid values:
         """
         return pulumi.get(self, "risk_level_id")
 
@@ -965,10 +856,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="warnLevel")
     def warn_level(self) -> pulumi.Output[Optional[int]]:
         """
-        The Level of Risk. Valid values: 
-        * `1`: Weak warn Level.
-        * `2`: Medium Risk Level.
-        * `3`: High Risk Level.
+        The Level of Risk. Valid values:
         """
         return pulumi.get(self, "warn_level")
 

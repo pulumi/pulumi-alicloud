@@ -28,8 +28,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultRegions]).then(([defaultNetworks, defaultRegions]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultRegions.regions?[0]?.zoneIds?[0]?.zoneId,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultRegions.regions?.[0]?.zoneIds?.[0]?.zoneId,
  * }));
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
  *     dbClusterVersion: "20.3.10.75",
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     paymentType: "PayAsYouGo",
  *     dbNodeStorage: "500",
  *     storageType: "cloud_essd",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.vswitches?[0]?.id),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.vswitches?.[0]?.id),
  * });
  * const example = new alicloud.clickhouse.BackupPolicy("example", {
  *     dbClusterId: defaultDbCluster.id,

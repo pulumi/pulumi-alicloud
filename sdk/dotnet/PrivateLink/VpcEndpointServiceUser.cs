@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.PrivateLink
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.PrivateLink.VpcEndpointServiceUser("example", new()
     ///     {
-    ///         var example = new AliCloud.PrivateLink.VpcEndpointServiceUser("example", new AliCloud.PrivateLink.VpcEndpointServiceUserArgs
-    ///         {
-    ///             ServiceId = "epsrv-gw81c6xxxxxx",
-    ///             UserId = "YourRamUserId",
-    ///         });
-    ///     }
+    ///         ServiceId = "epsrv-gw81c6xxxxxx",
+    ///         UserId = "YourRamUserId",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.PrivateLink
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser")]
-    public partial class VpcEndpointServiceUser : Pulumi.CustomResource
+    public partial class VpcEndpointServiceUser : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The dry run.
@@ -111,7 +109,7 @@ namespace Pulumi.AliCloud.PrivateLink
         }
     }
 
-    public sealed class VpcEndpointServiceUserArgs : Pulumi.ResourceArgs
+    public sealed class VpcEndpointServiceUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
@@ -134,9 +132,10 @@ namespace Pulumi.AliCloud.PrivateLink
         public VpcEndpointServiceUserArgs()
         {
         }
+        public static new VpcEndpointServiceUserArgs Empty => new VpcEndpointServiceUserArgs();
     }
 
-    public sealed class VpcEndpointServiceUserState : Pulumi.ResourceArgs
+    public sealed class VpcEndpointServiceUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
@@ -159,5 +158,6 @@ namespace Pulumi.AliCloud.PrivateLink
         public VpcEndpointServiceUserState()
         {
         }
+        public static new VpcEndpointServiceUserState Empty => new VpcEndpointServiceUserState();
     }
 }

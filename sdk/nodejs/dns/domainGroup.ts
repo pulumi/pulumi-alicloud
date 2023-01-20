@@ -16,9 +16,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Add a new Alinds Domain Group.
- * const example = new alicloud.dns.DomainGroup("example", {
- *     domainGroupName: "tf-testDG",
- * });
+ * const example = new alicloud.dns.DomainGroup("example", {domainGroupName: "tf-testDG"});
  * ```
  *
  * ## Import

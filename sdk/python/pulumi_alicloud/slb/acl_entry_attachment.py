@@ -143,16 +143,9 @@ class AclEntryAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraformslbaclconfig"
-        ip_version = config.get("ipVersion")
-        if ip_version is None:
-            ip_version = "ipv4"
-        default_acl = alicloud.slb.Acl("defaultAcl", ip_version=ip_version)
-        default_acl_entry_attachment = alicloud.slb.AclEntryAttachment("defaultAclEntryAttachment",
-            acl_id=default_acl.id,
+        attachment_acl = alicloud.slb.Acl("attachmentAcl", ip_version="ipv4")
+        attachment_acl_entry_attachment = alicloud.slb.AclEntryAttachment("attachmentAclEntryAttachment",
+            acl_id=attachment_acl.id,
             entry="168.10.10.0/24",
             comment="second")
         ```
@@ -190,16 +183,9 @@ class AclEntryAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraformslbaclconfig"
-        ip_version = config.get("ipVersion")
-        if ip_version is None:
-            ip_version = "ipv4"
-        default_acl = alicloud.slb.Acl("defaultAcl", ip_version=ip_version)
-        default_acl_entry_attachment = alicloud.slb.AclEntryAttachment("defaultAclEntryAttachment",
-            acl_id=default_acl.id,
+        attachment_acl = alicloud.slb.Acl("attachmentAcl", ip_version="ipv4")
+        attachment_acl_entry_attachment = alicloud.slb.AclEntryAttachment("attachmentAclEntryAttachment",
+            acl_id=attachment_acl.id,
             entry="168.10.10.0/24",
             comment="second")
         ```

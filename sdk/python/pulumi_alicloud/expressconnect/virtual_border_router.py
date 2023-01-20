@@ -25,6 +25,7 @@ class VirtualBorderRouterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  detect_multiplier: Optional[pulumi.Input[int]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
+                 include_cross_account_vbr: Optional[pulumi.Input[bool]] = None,
                  local_ipv6_gateway_ip: Optional[pulumi.Input[str]] = None,
                  min_rx_interval: Optional[pulumi.Input[int]] = None,
                  min_tx_interval: Optional[pulumi.Input[int]] = None,
@@ -46,6 +47,7 @@ class VirtualBorderRouterArgs:
         :param pulumi.Input[str] description: The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
         :param pulumi.Input[int] detect_multiplier: Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
         :param pulumi.Input[bool] enable_ipv6: Whether to Enable IPv6. Valid values: `false`, `true`.
+        :param pulumi.Input[bool] include_cross_account_vbr: Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
         :param pulumi.Input[str] local_ipv6_gateway_ip: Alibaba Cloud-Connected IPv6 Address.
         :param pulumi.Input[int] min_rx_interval: Configure BFD packet reception interval of values include: 200~1000, unit: ms.
         :param pulumi.Input[int] min_tx_interval: Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
@@ -72,6 +74,8 @@ class VirtualBorderRouterArgs:
             pulumi.set(__self__, "detect_multiplier", detect_multiplier)
         if enable_ipv6 is not None:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+        if include_cross_account_vbr is not None:
+            pulumi.set(__self__, "include_cross_account_vbr", include_cross_account_vbr)
         if local_ipv6_gateway_ip is not None:
             pulumi.set(__self__, "local_ipv6_gateway_ip", local_ipv6_gateway_ip)
         if min_rx_interval is not None:
@@ -222,6 +226,18 @@ class VirtualBorderRouterArgs:
         pulumi.set(self, "enable_ipv6", value)
 
     @property
+    @pulumi.getter(name="includeCrossAccountVbr")
+    def include_cross_account_vbr(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+        """
+        return pulumi.get(self, "include_cross_account_vbr")
+
+    @include_cross_account_vbr.setter
+    def include_cross_account_vbr(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_cross_account_vbr", value)
+
+    @property
     @pulumi.getter(name="localIpv6GatewayIp")
     def local_ipv6_gateway_ip(self) -> Optional[pulumi.Input[str]]:
         """
@@ -327,6 +343,7 @@ class _VirtualBorderRouterState:
                  description: Optional[pulumi.Input[str]] = None,
                  detect_multiplier: Optional[pulumi.Input[int]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
+                 include_cross_account_vbr: Optional[pulumi.Input[bool]] = None,
                  local_gateway_ip: Optional[pulumi.Input[str]] = None,
                  local_ipv6_gateway_ip: Optional[pulumi.Input[str]] = None,
                  min_rx_interval: Optional[pulumi.Input[int]] = None,
@@ -349,6 +366,7 @@ class _VirtualBorderRouterState:
         :param pulumi.Input[str] description: The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
         :param pulumi.Input[int] detect_multiplier: Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
         :param pulumi.Input[bool] enable_ipv6: Whether to Enable IPv6. Valid values: `false`, `true`.
+        :param pulumi.Input[bool] include_cross_account_vbr: Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
         :param pulumi.Input[str] local_gateway_ip: Alibaba Cloud-Connected IPv4 address.
         :param pulumi.Input[str] local_ipv6_gateway_ip: Alibaba Cloud-Connected IPv6 Address.
         :param pulumi.Input[int] min_rx_interval: Configure BFD packet reception interval of values include: 200~1000, unit: ms.
@@ -376,6 +394,8 @@ class _VirtualBorderRouterState:
             pulumi.set(__self__, "detect_multiplier", detect_multiplier)
         if enable_ipv6 is not None:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+        if include_cross_account_vbr is not None:
+            pulumi.set(__self__, "include_cross_account_vbr", include_cross_account_vbr)
         if local_gateway_ip is not None:
             pulumi.set(__self__, "local_gateway_ip", local_gateway_ip)
         if local_ipv6_gateway_ip is not None:
@@ -476,6 +496,18 @@ class _VirtualBorderRouterState:
     @enable_ipv6.setter
     def enable_ipv6(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_ipv6", value)
+
+    @property
+    @pulumi.getter(name="includeCrossAccountVbr")
+    def include_cross_account_vbr(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+        """
+        return pulumi.get(self, "include_cross_account_vbr")
+
+    @include_cross_account_vbr.setter
+    def include_cross_account_vbr(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_cross_account_vbr", value)
 
     @property
     @pulumi.getter(name="localGatewayIp")
@@ -657,6 +689,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  detect_multiplier: Optional[pulumi.Input[int]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
+                 include_cross_account_vbr: Optional[pulumi.Input[bool]] = None,
                  local_gateway_ip: Optional[pulumi.Input[str]] = None,
                  local_ipv6_gateway_ip: Optional[pulumi.Input[str]] = None,
                  min_rx_interval: Optional[pulumi.Input[int]] = None,
@@ -715,6 +748,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
         :param pulumi.Input[int] detect_multiplier: Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
         :param pulumi.Input[bool] enable_ipv6: Whether to Enable IPv6. Valid values: `false`, `true`.
+        :param pulumi.Input[bool] include_cross_account_vbr: Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
         :param pulumi.Input[str] local_gateway_ip: Alibaba Cloud-Connected IPv4 address.
         :param pulumi.Input[str] local_ipv6_gateway_ip: Alibaba Cloud-Connected IPv6 Address.
         :param pulumi.Input[int] min_rx_interval: Configure BFD packet reception interval of values include: 200~1000, unit: ms.
@@ -792,6 +826,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  detect_multiplier: Optional[pulumi.Input[int]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
+                 include_cross_account_vbr: Optional[pulumi.Input[bool]] = None,
                  local_gateway_ip: Optional[pulumi.Input[str]] = None,
                  local_ipv6_gateway_ip: Optional[pulumi.Input[str]] = None,
                  min_rx_interval: Optional[pulumi.Input[int]] = None,
@@ -820,6 +855,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["detect_multiplier"] = detect_multiplier
             __props__.__dict__["enable_ipv6"] = enable_ipv6
+            __props__.__dict__["include_cross_account_vbr"] = include_cross_account_vbr
             if local_gateway_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'local_gateway_ip'")
             __props__.__dict__["local_gateway_ip"] = local_gateway_ip
@@ -860,6 +896,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             detect_multiplier: Optional[pulumi.Input[int]] = None,
             enable_ipv6: Optional[pulumi.Input[bool]] = None,
+            include_cross_account_vbr: Optional[pulumi.Input[bool]] = None,
             local_gateway_ip: Optional[pulumi.Input[str]] = None,
             local_ipv6_gateway_ip: Optional[pulumi.Input[str]] = None,
             min_rx_interval: Optional[pulumi.Input[int]] = None,
@@ -887,6 +924,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
         :param pulumi.Input[int] detect_multiplier: Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
         :param pulumi.Input[bool] enable_ipv6: Whether to Enable IPv6. Valid values: `false`, `true`.
+        :param pulumi.Input[bool] include_cross_account_vbr: Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
         :param pulumi.Input[str] local_gateway_ip: Alibaba Cloud-Connected IPv4 address.
         :param pulumi.Input[str] local_ipv6_gateway_ip: Alibaba Cloud-Connected IPv6 Address.
         :param pulumi.Input[int] min_rx_interval: Configure BFD packet reception interval of values include: 200~1000, unit: ms.
@@ -912,6 +950,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["detect_multiplier"] = detect_multiplier
         __props__.__dict__["enable_ipv6"] = enable_ipv6
+        __props__.__dict__["include_cross_account_vbr"] = include_cross_account_vbr
         __props__.__dict__["local_gateway_ip"] = local_gateway_ip
         __props__.__dict__["local_ipv6_gateway_ip"] = local_ipv6_gateway_ip
         __props__.__dict__["min_rx_interval"] = min_rx_interval
@@ -938,7 +977,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> pulumi.Output[Optional[int]]:
+    def bandwidth(self) -> pulumi.Output[int]:
         """
         The bandwidth.
         """
@@ -975,6 +1014,14 @@ class VirtualBorderRouter(pulumi.CustomResource):
         Whether to Enable IPv6. Valid values: `false`, `true`.
         """
         return pulumi.get(self, "enable_ipv6")
+
+    @property
+    @pulumi.getter(name="includeCrossAccountVbr")
+    def include_cross_account_vbr(self) -> pulumi.Output[bool]:
+        """
+        Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+        """
+        return pulumi.get(self, "include_cross_account_vbr")
 
     @property
     @pulumi.getter(name="localGatewayIp")

@@ -6,6 +6,8 @@ package com.pulumi.alicloud.alb;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.alb.inputs.GetAclsArgs;
 import com.pulumi.alicloud.alb.inputs.GetAclsPlainArgs;
+import com.pulumi.alicloud.alb.inputs.GetAscriptsArgs;
+import com.pulumi.alicloud.alb.inputs.GetAscriptsPlainArgs;
 import com.pulumi.alicloud.alb.inputs.GetHealthCheckTemplatesArgs;
 import com.pulumi.alicloud.alb.inputs.GetHealthCheckTemplatesPlainArgs;
 import com.pulumi.alicloud.alb.inputs.GetListenersArgs;
@@ -18,15 +20,19 @@ import com.pulumi.alicloud.alb.inputs.GetSecurityPoliciesArgs;
 import com.pulumi.alicloud.alb.inputs.GetSecurityPoliciesPlainArgs;
 import com.pulumi.alicloud.alb.inputs.GetServerGroupsArgs;
 import com.pulumi.alicloud.alb.inputs.GetServerGroupsPlainArgs;
+import com.pulumi.alicloud.alb.inputs.GetSystemSecurityPoliciesArgs;
+import com.pulumi.alicloud.alb.inputs.GetSystemSecurityPoliciesPlainArgs;
 import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
 import com.pulumi.alicloud.alb.inputs.GetZonesPlainArgs;
 import com.pulumi.alicloud.alb.outputs.GetAclsResult;
+import com.pulumi.alicloud.alb.outputs.GetAscriptsResult;
 import com.pulumi.alicloud.alb.outputs.GetHealthCheckTemplatesResult;
 import com.pulumi.alicloud.alb.outputs.GetListenersResult;
 import com.pulumi.alicloud.alb.outputs.GetLoadBalancersResult;
 import com.pulumi.alicloud.alb.outputs.GetRulesResult;
 import com.pulumi.alicloud.alb.outputs.GetSecurityPoliciesResult;
 import com.pulumi.alicloud.alb.outputs.GetServerGroupsResult;
+import com.pulumi.alicloud.alb.outputs.GetSystemSecurityPoliciesResult;
 import com.pulumi.alicloud.alb.outputs.GetZonesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -304,6 +310,264 @@ public final class AlbFunctions {
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:alb/getAcls:getAcls", TypeShape.of(GetAclsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Alb Ascript available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAscriptsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
+     *             .ids(alicloud_alb_ascript.default().id())
+     *             .nameRegex(alicloud_alb_ascript.default().name())
+     *             .ascriptName(&#34;test&#34;)
+     *             .listenerId(var_.listenerId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAscriptsResult> getAscripts() {
+        return getAscripts(GetAscriptsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Alb Ascript available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAscriptsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
+     *             .ids(alicloud_alb_ascript.default().id())
+     *             .nameRegex(alicloud_alb_ascript.default().name())
+     *             .ascriptName(&#34;test&#34;)
+     *             .listenerId(var_.listenerId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAscriptsResult> getAscriptsPlain() {
+        return getAscriptsPlain(GetAscriptsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Alb Ascript available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAscriptsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
+     *             .ids(alicloud_alb_ascript.default().id())
+     *             .nameRegex(alicloud_alb_ascript.default().name())
+     *             .ascriptName(&#34;test&#34;)
+     *             .listenerId(var_.listenerId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAscriptsResult> getAscripts(GetAscriptsArgs args) {
+        return getAscripts(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Alb Ascript available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAscriptsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
+     *             .ids(alicloud_alb_ascript.default().id())
+     *             .nameRegex(alicloud_alb_ascript.default().name())
+     *             .ascriptName(&#34;test&#34;)
+     *             .listenerId(var_.listenerId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAscriptsResult> getAscriptsPlain(GetAscriptsPlainArgs args) {
+        return getAscriptsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Alb Ascript available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAscriptsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
+     *             .ids(alicloud_alb_ascript.default().id())
+     *             .nameRegex(alicloud_alb_ascript.default().name())
+     *             .ascriptName(&#34;test&#34;)
+     *             .listenerId(var_.listenerId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAscriptsResult> getAscripts(GetAscriptsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:alb/getAscripts:getAscripts", TypeShape.of(GetAscriptsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Alb Ascript available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetAscriptsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
+     *             .ids(alicloud_alb_ascript.default().id())
+     *             .nameRegex(alicloud_alb_ascript.default().name())
+     *             .ascriptName(&#34;test&#34;)
+     *             .listenerId(var_.listenerId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAscriptsResult> getAscriptsPlain(GetAscriptsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:alb/getAscripts:getAscripts", TypeShape.of(GetAscriptsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
@@ -1932,6 +2196,258 @@ public final class AlbFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:alb/getServerGroups:getServerGroups", TypeShape.of(GetServerGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetSystemSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaults = AlbFunctions.getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.builder()
+     *             .ids(&#34;tls_cipher_policy_1_0&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albSystemSecurityPolicyId1&#34;, defaults.applyValue(getSystemSecurityPoliciesResult -&gt; getSystemSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSystemSecurityPoliciesResult> getSystemSecurityPolicies() {
+        return getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetSystemSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaults = AlbFunctions.getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.builder()
+     *             .ids(&#34;tls_cipher_policy_1_0&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albSystemSecurityPolicyId1&#34;, defaults.applyValue(getSystemSecurityPoliciesResult -&gt; getSystemSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSystemSecurityPoliciesResult> getSystemSecurityPoliciesPlain() {
+        return getSystemSecurityPoliciesPlain(GetSystemSecurityPoliciesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetSystemSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaults = AlbFunctions.getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.builder()
+     *             .ids(&#34;tls_cipher_policy_1_0&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albSystemSecurityPolicyId1&#34;, defaults.applyValue(getSystemSecurityPoliciesResult -&gt; getSystemSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSystemSecurityPoliciesResult> getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs args) {
+        return getSystemSecurityPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetSystemSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaults = AlbFunctions.getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.builder()
+     *             .ids(&#34;tls_cipher_policy_1_0&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albSystemSecurityPolicyId1&#34;, defaults.applyValue(getSystemSecurityPoliciesResult -&gt; getSystemSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSystemSecurityPoliciesResult> getSystemSecurityPoliciesPlain(GetSystemSecurityPoliciesPlainArgs args) {
+        return getSystemSecurityPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetSystemSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaults = AlbFunctions.getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.builder()
+     *             .ids(&#34;tls_cipher_policy_1_0&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albSystemSecurityPolicyId1&#34;, defaults.applyValue(getSystemSecurityPoliciesResult -&gt; getSystemSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSystemSecurityPoliciesResult> getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies", TypeShape.of(GetSystemSecurityPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.alb.AlbFunctions;
+     * import com.pulumi.alicloud.alb.inputs.GetSystemSecurityPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaults = AlbFunctions.getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.builder()
+     *             .ids(&#34;tls_cipher_policy_1_0&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;albSystemSecurityPolicyId1&#34;, defaults.applyValue(getSystemSecurityPoliciesResult -&gt; getSystemSecurityPoliciesResult.policies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSystemSecurityPoliciesResult> getSystemSecurityPoliciesPlain(GetSystemSecurityPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies", TypeShape.of(GetSystemSecurityPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.132.0+.
@@ -1946,7 +2462,7 @@ public final class AlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.alb.AlbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1986,7 +2502,7 @@ public final class AlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.alb.AlbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2026,7 +2542,7 @@ public final class AlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.alb.AlbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2066,7 +2582,7 @@ public final class AlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.alb.AlbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2106,7 +2622,7 @@ public final class AlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.alb.AlbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2146,7 +2662,7 @@ public final class AlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.alb.AlbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

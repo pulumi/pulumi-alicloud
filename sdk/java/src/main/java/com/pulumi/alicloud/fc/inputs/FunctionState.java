@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -215,6 +216,21 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The configuration for layers.
+     * 
+     */
+    @Import(name="layers")
+    private @Nullable Output<List<String>> layers;
+
+    /**
+     * @return The configuration for layers.
+     * 
+     */
+    public Optional<Output<List<String>>> layers() {
+        return Optional.ofNullable(this.layers);
+    }
+
+    /**
      * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
      * 
      */
@@ -290,14 +306,14 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+     * See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
      * 
      */
     @Import(name="runtime")
     private @Nullable Output<String> runtime;
 
     /**
-     * @return See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+     * @return See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
      * 
      */
     public Optional<Output<String>> runtime() {
@@ -350,6 +366,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         this.instanceConcurrency = $.instanceConcurrency;
         this.instanceType = $.instanceType;
         this.lastModified = $.lastModified;
+        this.layers = $.layers;
         this.memorySize = $.memorySize;
         this.name = $.name;
         this.namePrefix = $.namePrefix;
@@ -652,6 +669,37 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param layers The configuration for layers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder layers(@Nullable Output<List<String>> layers) {
+            $.layers = layers;
+            return this;
+        }
+
+        /**
+         * @param layers The configuration for layers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder layers(List<String> layers) {
+            return layers(Output.of(layers));
+        }
+
+        /**
+         * @param layers The configuration for layers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder layers(String... layers) {
+            return layers(List.of(layers));
+        }
+
+        /**
          * @param memorySize Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
          * 
          * @return builder
@@ -757,7 +805,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+         * @param runtime See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
          * 
          * @return builder
          * 
@@ -768,7 +816,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+         * @param runtime See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
          * 
          * @return builder
          * 

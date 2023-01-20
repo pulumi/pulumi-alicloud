@@ -205,8 +205,6 @@ class GetAppGroupsGroupResult(dict):
         :param str expire_on: Expiration Time.
         :param int first_rank_algo_deployment_id: Coarse deployment ID.
         :param int has_pending_quota_review_task: Whether the quota status is under approval. Valid status:
-               * `0`: normal
-               * `1`: Approving.
         :param str instance_id: The Instance ID.
         :param str lock_mode: Locked state. Valid status: `Unlock`,`LockByExpiration`,`ManualLock`.
         :param int locked_by_expiration: Instance is automatically locked after expiration.
@@ -214,8 +212,6 @@ class GetAppGroupsGroupResult(dict):
         :param int pending_second_rank_algo_deployment_id: Refine deployment ID in deployment.
         :param str processing_order_id: Unfinished order number.
         :param int produced: Whether the production is completed. Valid values:
-               * `0`: producing.
-               * `1`: completed.
         :param str project_id: The Project ID.
         :param Sequence['GetAppGroupsGroupQuotaArgs'] quotas: Quota information.
         :param str resource_group_id: The Resource Group ID.
@@ -336,8 +332,6 @@ class GetAppGroupsGroupResult(dict):
     def has_pending_quota_review_task(self) -> int:
         """
         Whether the quota status is under approval. Valid status:
-        * `0`: normal
-        * `1`: Approving.
         """
         return pulumi.get(self, "has_pending_quota_review_task")
 
@@ -399,8 +393,6 @@ class GetAppGroupsGroupResult(dict):
     def produced(self) -> int:
         """
         Whether the production is completed. Valid values:
-        * `0`: producing.
-        * `1`: completed.
         """
         return pulumi.get(self, "produced")
 

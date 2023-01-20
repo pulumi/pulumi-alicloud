@@ -128,7 +128,7 @@ def get_functions(ids: Optional[Sequence[str]] = None,
     ```
 
 
-    :param Sequence[str] ids: - A list of functions ids.
+    :param Sequence[str] ids: A list of functions ids.
     :param str name_regex: A regex string to filter results by function name.
     :param str service_name: Name of the service that contains the functions to find.
     """
@@ -171,7 +171,7 @@ def get_functions_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     ```
 
 
-    :param Sequence[str] ids: - A list of functions ids.
+    :param Sequence[str] ids: A list of functions ids.
     :param str name_regex: A regex string to filter results by function name.
     :param str service_name: Name of the service that contains the functions to find.
     """

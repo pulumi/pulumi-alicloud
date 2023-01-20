@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Dashboard(&#34;example&#34;, DashboardArgs.builder()        
+ *             .attribute(&#34;{\&#34;type\&#34;:\&#34;grid\&#34;}&#34;)
  *             .charList(&#34;&#34;&#34;
  *   [
  *     {
@@ -108,6 +109,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:log/dashboard:Dashboard")
 public class Dashboard extends com.pulumi.resources.CustomResource {
+    /**
+     * Dashboard attribute.
+     * 
+     */
+    @Export(name="attribute", type=String.class, parameters={})
+    private Output<String> attribute;
+
+    /**
+     * @return Dashboard attribute.
+     * 
+     */
+    public Output<String> attribute() {
+        return this.attribute;
+    }
     /**
      * Configuration of charts in the dashboard.
      * 

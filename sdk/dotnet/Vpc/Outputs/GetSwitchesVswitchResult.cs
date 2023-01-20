@@ -34,6 +34,10 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The IPv6 CIDR block of the switch.
+        /// </summary>
+        public readonly string Ipv6CidrBlock;
+        /// <summary>
         /// Indicate whether the VSwitch is created by the system.
         /// </summary>
         public readonly bool IsDefault;
@@ -86,6 +90,8 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
             string id,
 
+            string ipv6CidrBlock,
+
             bool isDefault,
 
             string name,
@@ -111,6 +117,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
             CreationTime = creationTime;
             Description = description;
             Id = id;
+            Ipv6CidrBlock = ipv6CidrBlock;
             IsDefault = isDefault;
             Name = name;
             ResourceGroupId = resourceGroupId;

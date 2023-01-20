@@ -13,8 +13,14 @@ from .get_apis import *
 from .get_apps import *
 from .get_backends import *
 from .get_groups import *
+from .get_log_configs import *
+from .get_models import *
+from .get_plugins import *
 from .get_service import *
 from .group import *
+from .log_config import *
+from .model import *
+from .plugin import *
 from .vpc_access import *
 from ._inputs import *
 from . import outputs

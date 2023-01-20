@@ -230,7 +230,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -240,7 +240,7 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.Application;
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -319,7 +319,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -329,7 +329,7 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.Application;
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -408,7 +408,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -418,7 +418,7 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.Application;
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -497,7 +497,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -507,7 +507,7 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.Application;
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -586,7 +586,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -596,7 +596,7 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.Application;
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -675,7 +675,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -685,7 +685,7 @@ public final class SaeFunctions {
      * import com.pulumi.alicloud.sae.Application;
      * import com.pulumi.alicloud.sae.ApplicationArgs;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetApplicationsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1472,7 +1472,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1514,7 +1514,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1556,7 +1556,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1598,7 +1598,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1640,7 +1640,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1682,7 +1682,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1726,7 +1726,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1769,7 +1769,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1812,7 +1812,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1855,7 +1855,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1898,7 +1898,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1941,7 +1941,7 @@ public final class SaeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sae.SaeFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.sae.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

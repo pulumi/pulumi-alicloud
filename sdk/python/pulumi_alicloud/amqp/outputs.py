@@ -14,6 +14,7 @@ __all__ = [
     'GetExchangesExchangeResult',
     'GetInstancesInstanceResult',
     'GetQueuesQueueResult',
+    'GetStaticAccountsAccountResult',
     'GetVirtualHostsHostResult',
 ]
 
@@ -472,6 +473,90 @@ class GetQueuesQueueResult(dict):
         The name of the virtual host.
         """
         return pulumi.get(self, "virtual_host_name")
+
+
+@pulumi.output_type
+class GetStaticAccountsAccountResult(dict):
+    def __init__(__self__, *,
+                 access_key: str,
+                 create_time: str,
+                 id: str,
+                 instance_id: str,
+                 master_uid: str,
+                 password: str,
+                 user_name: str):
+        """
+        :param str access_key: Access key.
+        :param str create_time: Create time stamp. Unix timestamp, to millisecond level.
+        :param str id: The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
+        :param str instance_id: InstanceId
+        :param str master_uid: The ID of the user's primary account.
+        :param str password: Static password.
+        :param str user_name: Static username.
+        """
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "master_uid", master_uid)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        """
+        Access key.
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Create time stamp. Unix timestamp, to millisecond level.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        InstanceId
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="masterUid")
+    def master_uid(self) -> str:
+        """
+        The ID of the user's primary account.
+        """
+        return pulumi.get(self, "master_uid")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Static password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        """
+        Static username.
+        """
+        return pulumi.get(self, "user_name")
 
 
 @pulumi.output_type

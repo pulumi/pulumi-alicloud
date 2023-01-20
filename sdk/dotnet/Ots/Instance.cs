@@ -16,27 +16,25 @@ namespace Pulumi.AliCloud.Ots
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create an OTS instance
+    ///     var foo = new AliCloud.Ots.Instance("foo", new()
     ///     {
-    ///         // Create an OTS instance
-    ///         var foo = new AliCloud.Ots.Instance("foo", new AliCloud.Ots.InstanceArgs
+    ///         AccessedBy = "Vpc",
+    ///         Description = "for table",
+    ///         Tags = 
     ///         {
-    ///             AccessedBy = "Vpc",
-    ///             Description = "for table",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "Building table" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "Created", "TF" },
+    ///             { "For", "Building table" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.Ots
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ots/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The network limitation of accessing instance. Valid values:
@@ -124,7 +122,7 @@ namespace Pulumi.AliCloud.Ots
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The network limitation of accessing instance. Valid values:
@@ -165,9 +163,10 @@ namespace Pulumi.AliCloud.Ots
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The network limitation of accessing instance. Valid values:
@@ -208,5 +207,6 @@ namespace Pulumi.AliCloud.Ots
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

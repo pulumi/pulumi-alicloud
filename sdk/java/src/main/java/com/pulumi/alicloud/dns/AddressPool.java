@@ -48,14 +48,14 @@ public class AddressPool extends com.pulumi.resources.CustomResource {
         return this.addressPoolName;
     }
     /**
-     * The address that you want to add to the address pool.
+     * The address lists of the Address Pool. See the following `Block address`.
      * 
      */
     @Export(name="addresses", type=List.class, parameters={AddressPoolAddress.class})
     private Output<List<AddressPoolAddress>> addresses;
 
     /**
-     * @return The address that you want to add to the address pool.
+     * @return The address lists of the Address Pool. See the following `Block address`.
      * 
      */
     public Output<List<AddressPoolAddress>> addresses() {

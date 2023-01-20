@@ -233,9 +233,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
-     * - `AutoRenewal`: Auto renewal.
-     * - `ManualRenewal`: Manual renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     @Export(name="renewalStatus", type=String.class, parameters={})
@@ -243,9 +240,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
-     * - `AutoRenewal`: Auto renewal.
-     * - `ManualRenewal`: Manual renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     public Output<String> renewalStatus() {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Hbr.Inputs
 {
 
-    public sealed class ServerBackupPlanDetailArgs : Pulumi.ResourceArgs
+    public sealed class ServerBackupPlanDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
@@ -81,5 +81,6 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         public ServerBackupPlanDetailArgs()
         {
         }
+        public static new ServerBackupPlanDetailArgs Empty => new ServerBackupPlanDetailArgs();
     }
 }

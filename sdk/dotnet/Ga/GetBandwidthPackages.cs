@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ga
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ga.GetBandwidthPackages.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ga.GetBandwidthPackages.InvokeAsync(new AliCloud.Ga.GetBandwidthPackagesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstGaBandwidthPackageId = example.Apply(example =&gt; example.Packages?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstGaBandwidthPackageId")]
-        ///     public Output&lt;string&gt; FirstGaBandwidthPackageId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGaBandwidthPackageId"] = example.Apply(getBandwidthPackagesResult =&gt; getBandwidthPackagesResult.Packages[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBandwidthPackagesResult> InvokeAsync(GetBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthPackagesResult>("alicloud:ga/getBandwidthPackages:getBandwidthPackages", args ?? new GetBandwidthPackagesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthPackagesResult>("alicloud:ga/getBandwidthPackages:getBandwidthPackages", args ?? new GetBandwidthPackagesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ga
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ga.GetBandwidthPackages.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ga.GetBandwidthPackages.InvokeAsync(new AliCloud.Ga.GetBandwidthPackagesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstGaBandwidthPackageId = example.Apply(example =&gt; example.Packages?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstGaBandwidthPackageId")]
-        ///     public Output&lt;string&gt; FirstGaBandwidthPackageId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGaBandwidthPackageId"] = example.Apply(getBandwidthPackagesResult =&gt; getBandwidthPackagesResult.Packages[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBandwidthPackagesResult> Invoke(GetBandwidthPackagesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBandwidthPackagesResult>("alicloud:ga/getBandwidthPackages:getBandwidthPackages", args ?? new GetBandwidthPackagesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBandwidthPackagesResult>("alicloud:ga/getBandwidthPackages:getBandwidthPackages", args ?? new GetBandwidthPackagesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBandwidthPackagesArgs : Pulumi.InvokeArgs
+    public sealed class GetBandwidthPackagesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -137,9 +135,10 @@ namespace Pulumi.AliCloud.Ga
         public GetBandwidthPackagesArgs()
         {
         }
+        public static new GetBandwidthPackagesArgs Empty => new GetBandwidthPackagesArgs();
     }
 
-    public sealed class GetBandwidthPackagesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBandwidthPackagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -183,6 +182,7 @@ namespace Pulumi.AliCloud.Ga
         public GetBandwidthPackagesInvokeArgs()
         {
         }
+        public static new GetBandwidthPackagesInvokeArgs Empty => new GetBandwidthPackagesInvokeArgs();
     }
 
 

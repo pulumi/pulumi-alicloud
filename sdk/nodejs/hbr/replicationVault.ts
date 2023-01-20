@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     provider: alicloud.source,
  * });
  * const defaultReplicationVaultRegions = alicloud.hbr.getReplicationVaultRegions({});
- * const regionReplication = defaultReplicationVaultRegions.then(defaultReplicationVaultRegions => defaultReplicationVaultRegions.regions?[0]?.replicationRegionId);
+ * const regionReplication = defaultReplicationVaultRegions.then(defaultReplicationVaultRegions => defaultReplicationVaultRegions.regions?.[0]?.replicationRegionId);
  * const replication = new alicloud.Provider("replication", {region: regionReplication});
  * const defaultReplicationVault = new alicloud.hbr.ReplicationVault("defaultReplicationVault", {
  *     replicationSourceRegionId: regionReplication,

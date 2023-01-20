@@ -139,6 +139,8 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
      * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
      * * 10GBase-T: Gigabit Electrical Port
      * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+     * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+     * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
      * 
      */
     @Import(name="portType")
@@ -151,6 +153,8 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
      * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
      * * 10GBase-T: Gigabit Electrical Port
      * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+     * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+     * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
      * 
      */
     public Optional<Output<String>> portType() {
@@ -402,6 +406,8 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
          * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
          * * 10GBase-T: Gigabit Electrical Port
          * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+         * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+         * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
          * 
          * @return builder
          * 
@@ -418,6 +424,8 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
          * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
          * * 10GBase-T: Gigabit Electrical Port
          * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
+         * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
+         * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
          * 
          * @return builder
          * 

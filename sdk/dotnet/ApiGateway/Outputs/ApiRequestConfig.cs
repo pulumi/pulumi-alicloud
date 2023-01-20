@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string? BodyFormat;
         /// <summary>
-        /// The http method of backend service.
+        /// The method of the api, including 'GET','POST','PUT' etc.
         /// </summary>
         public readonly string Method;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string Mode;
         /// <summary>
-        /// The path of backend service.
+        /// The request path of the api.
         /// </summary>
         public readonly string Path;
         /// <summary>

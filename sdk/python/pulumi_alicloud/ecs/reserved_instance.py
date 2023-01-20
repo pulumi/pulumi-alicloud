@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ReservedInstanceArgs', 'ReservedInstance']
 
@@ -15,6 +17,7 @@ __all__ = ['ReservedInstanceArgs', 'ReservedInstance']
 class ReservedInstanceArgs:
     def __init__(__self__, *,
                  instance_type: pulumi.Input[str],
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_amount: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -22,27 +25,45 @@ class ReservedInstanceArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
+                 reserved_instance_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ReservedInstance resource.
         :param pulumi.Input[str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
-        :param pulumi.Input[str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+        :param pulumi.Input[int] auto_renew_period: The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        :param pulumi.Input[str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
         :param pulumi.Input[int] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
-        :param pulumi.Input[str] name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
-        :param pulumi.Input[str] offering_type: Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
-        :param pulumi.Input[str] period_unit: Term unit. Optional value: Year.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+        :param pulumi.Input[str] offering_type: Payment type of the RI. Default value: `All Upfront`. Valid values:
+               - `No Upfront`: No upfront payment.
+               - `Partial Upfront`: A portion of upfront payment.
+               - `All Upfront`: Full upfront payment.
+        :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+               - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+               - When `period_unit` is `Month`, Valid values: `1`.
+        :param pulumi.Input[str] period_unit: The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         :param pulumi.Input[str] platform: The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+        :param pulumi.Input[str] reserved_instance_name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
         """
         pulumi.set(__self__, "instance_type", instance_type)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_amount is not None:
             pulumi.set(__self__, "instance_amount", instance_amount)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if offering_type is not None:
@@ -53,10 +74,16 @@ class ReservedInstanceArgs:
             pulumi.set(__self__, "period_unit", period_unit)
         if platform is not None:
             pulumi.set(__self__, "platform", platform)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
+        if reserved_instance_name is not None:
+            pulumi.set(__self__, "reserved_instance_name", reserved_instance_name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -73,10 +100,22 @@ class ReservedInstanceArgs:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+        Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -100,7 +139,7 @@ class ReservedInstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+        Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -112,7 +151,10 @@ class ReservedInstanceArgs:
     @pulumi.getter(name="offeringType")
     def offering_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+        Payment type of the RI. Default value: `All Upfront`. Valid values:
+        - `No Upfront`: No upfront payment.
+        - `Partial Upfront`: A portion of upfront payment.
+        - `All Upfront`: Full upfront payment.
         """
         return pulumi.get(self, "offering_type")
 
@@ -123,6 +165,11 @@ class ReservedInstanceArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+        - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+        - When `period_unit` is `Month`, Valid values: `1`.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -133,7 +180,7 @@ class ReservedInstanceArgs:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        Term unit. Optional value: Year.
+        The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -152,6 +199,30 @@ class ReservedInstanceArgs:
     @platform.setter
     def platform(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "platform", value)
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
+    @pulumi.getter(name="reservedInstanceName")
+    def reserved_instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "reserved_instance_name")
+
+    @reserved_instance_name.setter
+    def reserved_instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_instance_name", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -178,6 +249,18 @@ class ReservedInstanceArgs:
         pulumi.set(self, "scope", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -193,64 +276,161 @@ class ReservedInstanceArgs:
 @pulumi.input_type
 class _ReservedInstanceState:
     def __init__(__self__, *,
+                 allocation_status: Optional[pulumi.Input[str]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expired_time: Optional[pulumi.Input[str]] = None,
                  instance_amount: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offering_type: Optional[pulumi.Input[str]] = None,
+                 operation_locks: Optional[pulumi.Input[Sequence[pulumi.Input['ReservedInstanceOperationLockArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
+                 reserved_instance_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ReservedInstance resources.
-        :param pulumi.Input[str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+        :param pulumi.Input[str] allocation_status: Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
+        :param pulumi.Input[int] auto_renew_period: The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        :param pulumi.Input[str] create_time: The time when the reserved instance was created.
+        :param pulumi.Input[str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] expired_time: The time when the reserved instance expires.
         :param pulumi.Input[int] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
         :param pulumi.Input[str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
-        :param pulumi.Input[str] name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
-        :param pulumi.Input[str] offering_type: Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
-        :param pulumi.Input[str] period_unit: Term unit. Optional value: Year.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+        :param pulumi.Input[str] offering_type: Payment type of the RI. Default value: `All Upfront`. Valid values:
+               - `No Upfront`: No upfront payment.
+               - `Partial Upfront`: A portion of upfront payment.
+               - `All Upfront`: Full upfront payment.
+        :param pulumi.Input[Sequence[pulumi.Input['ReservedInstanceOperationLockArgs']]] operation_locks: Details about the lock status of the reserved instance.
+        :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+               - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+               - When `period_unit` is `Month`, Valid values: `1`.
+        :param pulumi.Input[str] period_unit: The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         :param pulumi.Input[str] platform: The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+        :param pulumi.Input[str] reserved_instance_name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
+        :param pulumi.Input[str] start_time: The time when the reserved instance took effect.
+        :param pulumi.Input[str] status: The status of the reserved instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
         """
+        if allocation_status is not None:
+            pulumi.set(__self__, "allocation_status", allocation_status)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if expired_time is not None:
+            pulumi.set(__self__, "expired_time", expired_time)
         if instance_amount is not None:
             pulumi.set(__self__, "instance_amount", instance_amount)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
         if offering_type is not None:
             pulumi.set(__self__, "offering_type", offering_type)
+        if operation_locks is not None:
+            pulumi.set(__self__, "operation_locks", operation_locks)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
         if platform is not None:
             pulumi.set(__self__, "platform", platform)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
+        if reserved_instance_name is not None:
+            pulumi.set(__self__, "reserved_instance_name", reserved_instance_name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="allocationStatus")
+    def allocation_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
+        """
+        return pulumi.get(self, "allocation_status")
+
+    @allocation_status.setter
+    def allocation_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allocation_status", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the reserved instance was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+        Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the reserved instance expires.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @expired_time.setter
+    def expired_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expired_time", value)
 
     @property
     @pulumi.getter(name="instanceAmount")
@@ -280,7 +460,7 @@ class _ReservedInstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+        Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -292,7 +472,10 @@ class _ReservedInstanceState:
     @pulumi.getter(name="offeringType")
     def offering_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+        Payment type of the RI. Default value: `All Upfront`. Valid values:
+        - `No Upfront`: No upfront payment.
+        - `Partial Upfront`: A portion of upfront payment.
+        - `All Upfront`: Full upfront payment.
         """
         return pulumi.get(self, "offering_type")
 
@@ -301,8 +484,25 @@ class _ReservedInstanceState:
         pulumi.set(self, "offering_type", value)
 
     @property
+    @pulumi.getter(name="operationLocks")
+    def operation_locks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservedInstanceOperationLockArgs']]]]:
+        """
+        Details about the lock status of the reserved instance.
+        """
+        return pulumi.get(self, "operation_locks")
+
+    @operation_locks.setter
+    def operation_locks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservedInstanceOperationLockArgs']]]]):
+        pulumi.set(self, "operation_locks", value)
+
+    @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+        - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+        - When `period_unit` is `Month`, Valid values: `1`.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -313,7 +513,7 @@ class _ReservedInstanceState:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        Term unit. Optional value: Year.
+        The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -332,6 +532,30 @@ class _ReservedInstanceState:
     @platform.setter
     def platform(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "platform", value)
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
+    @pulumi.getter(name="reservedInstanceName")
+    def reserved_instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "reserved_instance_name")
+
+    @reserved_instance_name.setter
+    def reserved_instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_instance_name", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -358,6 +582,42 @@ class _ReservedInstanceState:
         pulumi.set(self, "scope", value)
 
     @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the reserved instance took effect.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the reserved instance.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -375,6 +635,7 @@ class ReservedInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_amount: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -383,8 +644,11 @@ class ReservedInstance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
+                 reserved_instance_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -419,15 +683,25 @@ class ReservedInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+        :param pulumi.Input[int] auto_renew_period: The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        :param pulumi.Input[str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
         :param pulumi.Input[int] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
         :param pulumi.Input[str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
-        :param pulumi.Input[str] name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
-        :param pulumi.Input[str] offering_type: Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
-        :param pulumi.Input[str] period_unit: Term unit. Optional value: Year.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+        :param pulumi.Input[str] offering_type: Payment type of the RI. Default value: `All Upfront`. Valid values:
+               - `No Upfront`: No upfront payment.
+               - `Partial Upfront`: A portion of upfront payment.
+               - `All Upfront`: Full upfront payment.
+        :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+               - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+               - When `period_unit` is `Month`, Valid values: `1`.
+        :param pulumi.Input[str] period_unit: The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         :param pulumi.Input[str] platform: The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+        :param pulumi.Input[str] reserved_instance_name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
         """
         ...
@@ -481,6 +755,7 @@ class ReservedInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_amount: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -489,8 +764,11 @@ class ReservedInstance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
+                 reserved_instance_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -501,19 +779,32 @@ class ReservedInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ReservedInstanceArgs.__new__(ReservedInstanceArgs)
 
+            __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["description"] = description
             __props__.__dict__["instance_amount"] = instance_amount
             if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
             __props__.__dict__["name"] = name
             __props__.__dict__["offering_type"] = offering_type
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
             __props__.__dict__["platform"] = platform
+            __props__.__dict__["renewal_status"] = renewal_status
+            __props__.__dict__["reserved_instance_name"] = reserved_instance_name
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["scope"] = scope
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["allocation_status"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["expired_time"] = None
+            __props__.__dict__["operation_locks"] = None
+            __props__.__dict__["start_time"] = None
+            __props__.__dict__["status"] = None
         super(ReservedInstance, __self__).__init__(
             'alicloud:ecs/reservedInstance:ReservedInstance',
             resource_name,
@@ -524,16 +815,26 @@ class ReservedInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allocation_status: Optional[pulumi.Input[str]] = None,
+            auto_renew_period: Optional[pulumi.Input[int]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            expired_time: Optional[pulumi.Input[str]] = None,
             instance_amount: Optional[pulumi.Input[int]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             offering_type: Optional[pulumi.Input[str]] = None,
+            operation_locks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservedInstanceOperationLockArgs']]]]] = None,
             period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
             platform: Optional[pulumi.Input[str]] = None,
+            renewal_status: Optional[pulumi.Input[str]] = None,
+            reserved_instance_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             scope: Optional[pulumi.Input[str]] = None,
+            start_time: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ReservedInstance':
         """
         Get an existing ReservedInstance resource's state with the given name, id, and optional extra
@@ -542,41 +843,99 @@ class ReservedInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+        :param pulumi.Input[str] allocation_status: Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
+        :param pulumi.Input[int] auto_renew_period: The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        :param pulumi.Input[str] create_time: The time when the reserved instance was created.
+        :param pulumi.Input[str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] expired_time: The time when the reserved instance expires.
         :param pulumi.Input[int] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
         :param pulumi.Input[str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
-        :param pulumi.Input[str] name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
-        :param pulumi.Input[str] offering_type: Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
-        :param pulumi.Input[str] period_unit: Term unit. Optional value: Year.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+        :param pulumi.Input[str] offering_type: Payment type of the RI. Default value: `All Upfront`. Valid values:
+               - `No Upfront`: No upfront payment.
+               - `Partial Upfront`: A portion of upfront payment.
+               - `All Upfront`: Full upfront payment.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservedInstanceOperationLockArgs']]]] operation_locks: Details about the lock status of the reserved instance.
+        :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+               - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+               - When `period_unit` is `Month`, Valid values: `1`.
+        :param pulumi.Input[str] period_unit: The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         :param pulumi.Input[str] platform: The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+        :param pulumi.Input[str] reserved_instance_name: Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
+        :param pulumi.Input[str] start_time: The time when the reserved instance took effect.
+        :param pulumi.Input[str] status: The status of the reserved instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ReservedInstanceState.__new__(_ReservedInstanceState)
 
+        __props__.__dict__["allocation_status"] = allocation_status
+        __props__.__dict__["auto_renew_period"] = auto_renew_period
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["expired_time"] = expired_time
         __props__.__dict__["instance_amount"] = instance_amount
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["name"] = name
         __props__.__dict__["offering_type"] = offering_type
+        __props__.__dict__["operation_locks"] = operation_locks
         __props__.__dict__["period"] = period
         __props__.__dict__["period_unit"] = period_unit
         __props__.__dict__["platform"] = platform
+        __props__.__dict__["renewal_status"] = renewal_status
+        __props__.__dict__["reserved_instance_name"] = reserved_instance_name
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["scope"] = scope
+        __props__.__dict__["start_time"] = start_time
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["zone_id"] = zone_id
         return ReservedInstance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allocationStatus")
+    def allocation_status(self) -> pulumi.Output[str]:
+        """
+        Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
+        """
+        return pulumi.get(self, "allocation_status")
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> pulumi.Output[int]:
+        """
+        The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the reserved instance was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+        Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> pulumi.Output[str]:
+        """
+        The time when the reserved instance expires.
+        """
+        return pulumi.get(self, "expired_time")
 
     @property
     @pulumi.getter(name="instanceAmount")
@@ -598,28 +957,44 @@ class ReservedInstance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+        Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="offeringType")
-    def offering_type(self) -> pulumi.Output[Optional[str]]:
+    def offering_type(self) -> pulumi.Output[str]:
         """
-        Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+        Payment type of the RI. Default value: `All Upfront`. Valid values:
+        - `No Upfront`: No upfront payment.
+        - `Partial Upfront`: A portion of upfront payment.
+        - `All Upfront`: Full upfront payment.
         """
         return pulumi.get(self, "offering_type")
 
     @property
+    @pulumi.getter(name="operationLocks")
+    def operation_locks(self) -> pulumi.Output[Sequence['outputs.ReservedInstanceOperationLock']]:
+        """
+        Details about the lock status of the reserved instance.
+        """
+        return pulumi.get(self, "operation_locks")
+
+    @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+        - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+        - When `period_unit` is `Month`, Valid values: `1`.
+        """
         return pulumi.get(self, "period")
 
     @property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[str]]:
         """
-        Term unit. Optional value: Year.
+        The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -632,6 +1007,22 @@ class ReservedInstance(pulumi.CustomResource):
         return pulumi.get(self, "platform")
 
     @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> pulumi.Output[str]:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @property
+    @pulumi.getter(name="reservedInstanceName")
+    def reserved_instance_name(self) -> pulumi.Output[str]:
+        """
+        Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "reserved_instance_name")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
@@ -641,11 +1032,35 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scope(self) -> pulumi.Output[Optional[str]]:
+    def scope(self) -> pulumi.Output[str]:
         """
         Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
         """
         return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[str]:
+        """
+        The time when the reserved instance took effect.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        The status of the reserved instance.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="zoneId")

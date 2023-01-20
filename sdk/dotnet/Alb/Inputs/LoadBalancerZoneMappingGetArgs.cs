@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class LoadBalancerZoneMappingGetArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerZoneMappingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public LoadBalancerZoneMappingGetArgs()
         {
         }
+        public static new LoadBalancerZoneMappingGetArgs Empty => new LoadBalancerZoneMappingGetArgs();
     }
 }

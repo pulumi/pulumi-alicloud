@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
@@ -71,8 +71,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNetworkInterface = new NetworkInterface(&#34;defaultNetworkInterface&#34;, NetworkInterfaceArgs.builder()        
+ *             .networkInterfaceName(name)
  *             .vswitchId(vswitch.id())
- *             .securityGroups(group.id())
+ *             .securityGroupIds(group.id())
  *             .privateIp(&#34;192.168.0.2&#34;)
  *             .privateIpsCount(3)
  *             .build());
@@ -105,6 +106,18 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    @Export(name="ipv6AddressCount", type=Integer.class, parameters={})
+    private Output<Integer> ipv6AddressCount;
+
+    public Output<Integer> ipv6AddressCount() {
+        return this.ipv6AddressCount;
+    }
+    @Export(name="ipv6Addresses", type=List.class, parameters={String.class})
+    private Output<List<String>> ipv6Addresses;
+
+    public Output<List<String>> ipv6Addresses() {
+        return this.ipv6Addresses;
     }
     /**
      * (Available in 1.54.0+) The MAC address of an ENI.

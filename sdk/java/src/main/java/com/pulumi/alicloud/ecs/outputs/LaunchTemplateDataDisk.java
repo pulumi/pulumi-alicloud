@@ -34,7 +34,7 @@ public final class LaunchTemplateDataDisk {
      */
     private @Nullable String description;
     /**
-     * @return -(Optional, Bool) Encrypted the data in this disk.
+     * @return Encrypted the data in this disk.
      * 
      */
     private @Nullable Boolean encrypted;
@@ -88,7 +88,7 @@ public final class LaunchTemplateDataDisk {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return -(Optional, Bool) Encrypted the data in this disk.
+     * @return Encrypted the data in this disk.
      * 
      */
     public Optional<Boolean> encrypted() {

@@ -10,9 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Elastic Desktop Service(EDS) Policy Group resource.
+// Provides a Elastic Desktop Service (ECD) Policy Group resource.
 //
-// For information about Elastic Desktop Service(EDS) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
+// For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
 //
 // > **NOTE:** Available in v1.130.0+.
 //
@@ -67,7 +67,7 @@ import (
 //
 // ## Import
 //
-// Elastic Desktop Service(EDS) Policy Group can be imported using the id, e.g.
+// Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
 //
 // ```sh
 //
@@ -99,6 +99,8 @@ type EcdPolicyGroup struct {
 	Recording pulumi.StringOutput `pulumi:"recording"`
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime pulumi.StringPtrOutput `pulumi:"recordingEndTime"`
+	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+	RecordingExpires pulumi.IntOutput `pulumi:"recordingExpires"`
 	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps pulumi.IntOutput `pulumi:"recordingFps"`
 	// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
@@ -168,6 +170,8 @@ type ecdPolicyGroupState struct {
 	Recording *string `pulumi:"recording"`
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime *string `pulumi:"recordingEndTime"`
+	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+	RecordingExpires *int `pulumi:"recordingExpires"`
 	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps *int `pulumi:"recordingFps"`
 	// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
@@ -209,6 +213,8 @@ type EcdPolicyGroupState struct {
 	Recording pulumi.StringPtrInput
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime pulumi.StringPtrInput
+	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+	RecordingExpires pulumi.IntPtrInput
 	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps pulumi.IntPtrInput
 	// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
@@ -254,6 +260,8 @@ type ecdPolicyGroupArgs struct {
 	Recording *string `pulumi:"recording"`
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime *string `pulumi:"recordingEndTime"`
+	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+	RecordingExpires *int `pulumi:"recordingExpires"`
 	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps *int `pulumi:"recordingFps"`
 	// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
@@ -294,6 +302,8 @@ type EcdPolicyGroupArgs struct {
 	Recording pulumi.StringPtrInput
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime pulumi.StringPtrInput
+	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+	RecordingExpires pulumi.IntPtrInput
 	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps pulumi.IntPtrInput
 	// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
@@ -454,6 +464,11 @@ func (o EcdPolicyGroupOutput) Recording() pulumi.StringOutput {
 // The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 func (o EcdPolicyGroupOutput) RecordingEndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringPtrOutput { return v.RecordingEndTime }).(pulumi.StringPtrOutput)
+}
+
+// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+func (o EcdPolicyGroupOutput) RecordingExpires() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.IntOutput { return v.RecordingExpires }).(pulumi.IntOutput)
 }
 
 // The fps of recording. Valid values: `2`, `5`, `10`, `15`.

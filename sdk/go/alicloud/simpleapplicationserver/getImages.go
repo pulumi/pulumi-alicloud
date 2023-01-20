@@ -23,9 +23,6 @@ func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOp
 type GetImagesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The type of the image. Valid values: `app`, `custom`, `system`.
-	// * `system`: operating system (OS) image.
-	// * `app`: application image.
-	// * `custom`: custom image.
 	ImageType  *string `pulumi:"imageType"`
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
@@ -63,9 +60,6 @@ func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulu
 type GetImagesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The type of the image. Valid values: `app`, `custom`, `system`.
-	// * `system`: operating system (OS) image.
-	// * `app`: application image.
-	// * `custom`: custom image.
 	ImageType  pulumi.StringPtrInput `pulumi:"imageType"`
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

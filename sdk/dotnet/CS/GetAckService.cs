@@ -23,27 +23,25 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var open = AliCloud.CS.GetAckService.Invoke(new()
         ///     {
-        ///         var open = Output.Create(AliCloud.CS.GetAckService.InvokeAsync(new AliCloud.CS.GetAckServiceArgs
-        ///         {
-        ///             Enable = "On",
-        ///             Type = "propayasgo",
-        ///         }));
-        ///     }
+        ///         Enable = "On",
+        ///         Type = "propayasgo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAckServiceResult> InvokeAsync(GetAckServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Using this data source can open Container Service (CS) service automatically. If the service has been opened, it will return opened.
@@ -57,31 +55,29 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var open = AliCloud.CS.GetAckService.Invoke(new()
         ///     {
-        ///         var open = Output.Create(AliCloud.CS.GetAckService.InvokeAsync(new AliCloud.CS.GetAckServiceArgs
-        ///         {
-        ///             Enable = "On",
-        ///             Type = "propayasgo",
-        ///         }));
-        ///     }
+        ///         Enable = "On",
+        ///         Type = "propayasgo",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAckServiceResult> Invoke(GetAckServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAckServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetAckServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
@@ -98,9 +94,10 @@ namespace Pulumi.AliCloud.CS
         public GetAckServiceArgs()
         {
         }
+        public static new GetAckServiceArgs Empty => new GetAckServiceArgs();
     }
 
-    public sealed class GetAckServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAckServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
@@ -117,6 +114,7 @@ namespace Pulumi.AliCloud.CS
         public GetAckServiceInvokeArgs()
         {
         }
+        public static new GetAckServiceInvokeArgs Empty => new GetAckServiceInvokeArgs();
     }
 
 

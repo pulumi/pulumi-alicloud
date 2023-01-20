@@ -22,118 +22,124 @@ namespace Pulumi.AliCloud.Alb
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "example_value";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "example_value";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableDiskCategory = "cloud_efficiency",
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-    ///         {
-    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
-    ///             CpuCoreCount = 1,
-    ///             MemorySize = 2,
-    ///         })));
-    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             NameRegex = "^ubuntu_18.*64",
-    ///             MostRecent = true,
-    ///             Owners = "system",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///         });
-    ///         var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new AliCloud.Ecs.InstanceArgs
-    ///         {
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
-    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
-    ///             InstanceName = name,
-    ///             SecurityGroups = 
-    ///             {
-    ///                 defaultSecurityGroup,
-    ///             }.Select(__item =&gt; __item.Id).ToList(),
-    ///             InternetChargeType = "PayByTraffic",
-    ///             InternetMaxBandwidthOut = 10,
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             InstanceChargeType = "PostPaid",
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             VswitchId = defaultSwitch.Id,
-    ///         });
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
-    ///         var defaultServerGroup = new AliCloud.Alb.ServerGroup("defaultServerGroup", new AliCloud.Alb.ServerGroupArgs
-    ///         {
-    ///             Protocol = "HTTP",
-    ///             VpcId = defaultNetwork.Id,
-    ///             ServerGroupName = name,
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///             HealthCheckConfig = new AliCloud.Alb.Inputs.ServerGroupHealthCheckConfigArgs
-    ///             {
-    ///                 HealthCheckConnectPort = 46325,
-    ///                 HealthCheckEnabled = true,
-    ///                 HealthCheckHost = "tf-testAcc.com",
-    ///                 HealthCheckCodes = 
-    ///                 {
-    ///                     "http_2xx",
-    ///                     "http_3xx",
-    ///                     "http_4xx",
-    ///                 },
-    ///                 HealthCheckHttpVersion = "HTTP1.1",
-    ///                 HealthCheckInterval = 2,
-    ///                 HealthCheckMethod = "HEAD",
-    ///                 HealthCheckPath = "/tf-testAcc",
-    ///                 HealthCheckProtocol = "HTTP",
-    ///                 HealthCheckTimeout = 5,
-    ///                 HealthyThreshold = 3,
-    ///                 UnhealthyThreshold = 3,
-    ///             },
-    ///             StickySessionConfig = new AliCloud.Alb.Inputs.ServerGroupStickySessionConfigArgs
-    ///             {
-    ///                 StickySessionEnabled = true,
-    ///                 Cookie = "tf-testAcc",
-    ///                 StickySessionType = "Server",
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///             },
-    ///             Servers = 
-    ///             {
-    ///                 new AliCloud.Alb.Inputs.ServerGroupServerArgs
-    ///                 {
-    ///                     Description = name,
-    ///                     Port = 80,
-    ///                     ServerId = defaultInstance.Id,
-    ///                     ServerIp = defaultInstance.PrivateIp,
-    ///                     ServerType = "Ecs",
-    ///                     Weight = 10,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     {
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         InstanceName = name,
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             defaultSecurityGroup,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 10,
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceChargeType = "PostPaid",
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultServerGroup = new AliCloud.Alb.ServerGroup("defaultServerGroup", new()
+    ///     {
+    ///         Protocol = "HTTP",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ServerGroupName = name,
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         HealthCheckConfig = new AliCloud.Alb.Inputs.ServerGroupHealthCheckConfigArgs
+    ///         {
+    ///             HealthCheckConnectPort = 46325,
+    ///             HealthCheckEnabled = true,
+    ///             HealthCheckHost = "tf-testAcc.com",
+    ///             HealthCheckCodes = new[]
+    ///             {
+    ///                 "http_2xx",
+    ///                 "http_3xx",
+    ///                 "http_4xx",
+    ///             },
+    ///             HealthCheckHttpVersion = "HTTP1.1",
+    ///             HealthCheckInterval = 2,
+    ///             HealthCheckMethod = "HEAD",
+    ///             HealthCheckPath = "/tf-testAcc",
+    ///             HealthCheckProtocol = "HTTP",
+    ///             HealthCheckTimeout = 5,
+    ///             HealthyThreshold = 3,
+    ///             UnhealthyThreshold = 3,
+    ///         },
+    ///         StickySessionConfig = new AliCloud.Alb.Inputs.ServerGroupStickySessionConfigArgs
+    ///         {
+    ///             StickySessionEnabled = true,
+    ///             Cookie = "tf-testAcc",
+    ///             StickySessionType = "Server",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///         },
+    ///         Servers = new[]
+    ///         {
+    ///             new AliCloud.Alb.Inputs.ServerGroupServerArgs
+    ///             {
+    ///                 Description = name,
+    ///                 Port = 80,
+    ///                 ServerId = defaultInstance.Id,
+    ///                 ServerIp = defaultInstance.PrivateIp,
+    ///                 ServerType = "Ecs",
+    ///                 Weight = 10,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -145,7 +151,7 @@ namespace Pulumi.AliCloud.Alb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/serverGroup:ServerGroup")]
-    public partial class ServerGroup : Pulumi.CustomResource
+    public partial class ServerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The dry run.
@@ -184,6 +190,12 @@ namespace Pulumi.AliCloud.Alb
         public Output<string?> ServerGroupName { get; private set; } = null!;
 
         /// <summary>
+        /// The type of the server group. Valid values:
+        /// </summary>
+        [Output("serverGroupType")]
+        public Output<string> ServerGroupType { get; private set; } = null!;
+
+        /// <summary>
         /// The backend server.
         /// </summary>
         [Output("servers")]
@@ -201,6 +213,9 @@ namespace Pulumi.AliCloud.Alb
         [Output("stickySessionConfig")]
         public Output<Outputs.ServerGroupStickySessionConfig?> StickySessionConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
@@ -254,7 +269,7 @@ namespace Pulumi.AliCloud.Alb
         }
     }
 
-    public sealed class ServerGroupArgs : Pulumi.ResourceArgs
+    public sealed class ServerGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
@@ -292,6 +307,12 @@ namespace Pulumi.AliCloud.Alb
         [Input("serverGroupName")]
         public Input<string>? ServerGroupName { get; set; }
 
+        /// <summary>
+        /// The type of the server group. Valid values:
+        /// </summary>
+        [Input("serverGroupType")]
+        public Input<string>? ServerGroupType { get; set; }
+
         [Input("servers")]
         private InputList<Inputs.ServerGroupServerArgs>? _servers;
 
@@ -312,6 +333,10 @@ namespace Pulumi.AliCloud.Alb
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -327,9 +352,10 @@ namespace Pulumi.AliCloud.Alb
         public ServerGroupArgs()
         {
         }
+        public static new ServerGroupArgs Empty => new ServerGroupArgs();
     }
 
-    public sealed class ServerGroupState : Pulumi.ResourceArgs
+    public sealed class ServerGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
@@ -367,6 +393,12 @@ namespace Pulumi.AliCloud.Alb
         [Input("serverGroupName")]
         public Input<string>? ServerGroupName { get; set; }
 
+        /// <summary>
+        /// The type of the server group. Valid values:
+        /// </summary>
+        [Input("serverGroupType")]
+        public Input<string>? ServerGroupType { get; set; }
+
         [Input("servers")]
         private InputList<Inputs.ServerGroupServerGetArgs>? _servers;
 
@@ -393,6 +425,10 @@ namespace Pulumi.AliCloud.Alb
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -408,5 +444,6 @@ namespace Pulumi.AliCloud.Alb
         public ServerGroupState()
         {
         }
+        public static new ServerGroupState Empty => new ServerGroupState();
     }
 }

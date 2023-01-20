@@ -853,7 +853,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
-     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -947,7 +947,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
-     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1041,7 +1041,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
-     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1135,7 +1135,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
-     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1229,7 +1229,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
-     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1323,7 +1323,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
-     * import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2533,7 +2533,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
-     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2633,7 +2633,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
-     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2733,7 +2733,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
-     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2833,7 +2833,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
-     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2933,7 +2933,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
-     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3033,7 +3033,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
-     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4778,7 +4778,7 @@ public final class EdsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4818,7 +4818,7 @@ public final class EdsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4858,7 +4858,7 @@ public final class EdsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4898,7 +4898,7 @@ public final class EdsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4938,7 +4938,7 @@ public final class EdsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4978,7 +4978,7 @@ public final class EdsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5004,7 +5004,7 @@ public final class EdsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:eds/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Elastic Desktop Service(EDS) Users of the current Alibaba Cloud user.
+     * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
@@ -5020,7 +5020,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.User;
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5053,7 +5053,7 @@ public final class EdsFunctions {
         return getUsers(GetUsersArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Elastic Desktop Service(EDS) Users of the current Alibaba Cloud user.
+     * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
@@ -5069,7 +5069,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.User;
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5102,7 +5102,7 @@ public final class EdsFunctions {
         return getUsersPlain(GetUsersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Elastic Desktop Service(EDS) Users of the current Alibaba Cloud user.
+     * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
@@ -5118,7 +5118,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.User;
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5151,7 +5151,7 @@ public final class EdsFunctions {
         return getUsers(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Elastic Desktop Service(EDS) Users of the current Alibaba Cloud user.
+     * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
@@ -5167,7 +5167,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.User;
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5200,7 +5200,7 @@ public final class EdsFunctions {
         return getUsersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Elastic Desktop Service(EDS) Users of the current Alibaba Cloud user.
+     * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
@@ -5216,7 +5216,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.User;
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5249,7 +5249,7 @@ public final class EdsFunctions {
         return Deployment.getInstance().invoke("alicloud:eds/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Elastic Desktop Service(EDS) Users of the current Alibaba Cloud user.
+     * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.142.0+.
      * 
@@ -5265,7 +5265,7 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.User;
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5298,7 +5298,7 @@ public final class EdsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:eds/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the available zones with the Elastic Desktop Service(EDS) of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
@@ -5312,7 +5312,7 @@ public final class EdsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5338,7 +5338,7 @@ public final class EdsFunctions {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the available zones with the Elastic Desktop Service(EDS) of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
@@ -5352,7 +5352,7 @@ public final class EdsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5378,7 +5378,7 @@ public final class EdsFunctions {
         return getZonesPlain(GetZonesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the available zones with the Elastic Desktop Service(EDS) of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
@@ -5392,7 +5392,7 @@ public final class EdsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5418,7 +5418,7 @@ public final class EdsFunctions {
         return getZones(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the available zones with the Elastic Desktop Service(EDS) of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
@@ -5432,7 +5432,7 @@ public final class EdsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5458,7 +5458,7 @@ public final class EdsFunctions {
         return getZonesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the available zones with the Elastic Desktop Service(EDS) of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
@@ -5472,7 +5472,7 @@ public final class EdsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5498,7 +5498,7 @@ public final class EdsFunctions {
         return Deployment.getInstance().invoke("alicloud:eds/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the available zones with the Elastic Desktop Service(EDS) of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.174.0+.
      * 
@@ -5512,7 +5512,7 @@ public final class EdsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

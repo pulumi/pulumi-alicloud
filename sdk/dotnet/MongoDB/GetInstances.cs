@@ -20,29 +20,27 @@ namespace Pulumi.AliCloud.MongoDB
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mongo = AliCloud.MongoDB.GetInstances.Invoke(new()
         ///     {
-        ///         var mongo = Output.Create(AliCloud.MongoDB.GetInstances.InvokeAsync(new AliCloud.MongoDB.GetInstancesArgs
-        ///         {
-        ///             AvailabilityZone = "eu-central-1a",
-        ///             InstanceClass = "dds.mongo.mid",
-        ///             InstanceType = "replicate",
-        ///             NameRegex = "dds-.+\\d+",
-        ///         }));
-        ///     }
+        ///         AvailabilityZone = "eu-central-1a",
+        ///         InstanceClass = "dds.mongo.mid",
+        ///         InstanceType = "replicate",
+        ///         NameRegex = "dds-.+\\d+",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
@@ -53,33 +51,31 @@ namespace Pulumi.AliCloud.MongoDB
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mongo = AliCloud.MongoDB.GetInstances.Invoke(new()
         ///     {
-        ///         var mongo = Output.Create(AliCloud.MongoDB.GetInstances.InvokeAsync(new AliCloud.MongoDB.GetInstancesArgs
-        ///         {
-        ///             AvailabilityZone = "eu-central-1a",
-        ///             InstanceClass = "dds.mongo.mid",
-        ///             InstanceType = "replicate",
-        ///             NameRegex = "dds-.+\\d+",
-        ///         }));
-        ///     }
+        ///         AvailabilityZone = "eu-central-1a",
+        ///         InstanceClass = "dds.mongo.mid",
+        ///         InstanceType = "replicate",
+        ///         NameRegex = "dds-.+\\d+",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Instance availability zone.
@@ -135,9 +131,10 @@ namespace Pulumi.AliCloud.MongoDB
         public GetInstancesArgs()
         {
         }
+        public static new GetInstancesArgs Empty => new GetInstancesArgs();
     }
 
-    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Instance availability zone.
@@ -193,6 +190,7 @@ namespace Pulumi.AliCloud.MongoDB
         public GetInstancesInvokeArgs()
         {
         }
+        public static new GetInstancesInvokeArgs Empty => new GetInstancesInvokeArgs();
     }
 
 

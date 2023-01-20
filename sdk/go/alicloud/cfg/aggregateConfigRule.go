@@ -76,7 +76,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example <aggregator_id>:<config_rule_id>
+//	$ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example "<aggregator_id>:<config_rule_id>"
 //
 // ```
 type AggregateConfigRule struct {

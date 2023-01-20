@@ -21,28 +21,27 @@ namespace Pulumi.AliCloud.Nas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
     ///     {
-    ///         var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new AliCloud.Nas.FileSystemArgs
-    ///         {
-    ///             ProtocolType = "NFS",
-    ///             StorageType = "Capacity",
-    ///         });
-    ///         var exampleLifecyclePolicy = new AliCloud.Nas.LifecyclePolicy("exampleLifecyclePolicy", new AliCloud.Nas.LifecyclePolicyArgs
-    ///         {
-    ///             FileSystemId = exampleFileSystem.Id,
-    ///             LifecyclePolicyName = "my-LifecyclePolicy",
-    ///             LifecycleRuleName = "DEFAULT_ATIME_14",
-    ///             StorageType = "InfrequentAccess",
-    ///         });
-    ///     }
+    ///         ProtocolType = "NFS",
+    ///         StorageType = "Capacity",
+    ///     });
     /// 
-    /// }
+    ///     var exampleLifecyclePolicy = new AliCloud.Nas.LifecyclePolicy("exampleLifecyclePolicy", new()
+    ///     {
+    ///         FileSystemId = exampleFileSystem.Id,
+    ///         LifecyclePolicyName = "my-LifecyclePolicy",
+    ///         LifecycleRuleName = "DEFAULT_ATIME_14",
+    ///         StorageType = "InfrequentAccess",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +53,7 @@ namespace Pulumi.AliCloud.Nas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/lifecyclePolicy:LifecyclePolicy")]
-    public partial class LifecyclePolicy : Pulumi.CustomResource
+    public partial class LifecyclePolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the file system.
@@ -130,7 +129,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
-    public sealed class LifecyclePolicyArgs : Pulumi.ResourceArgs
+    public sealed class LifecyclePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the file system.
@@ -171,9 +170,10 @@ namespace Pulumi.AliCloud.Nas
         public LifecyclePolicyArgs()
         {
         }
+        public static new LifecyclePolicyArgs Empty => new LifecyclePolicyArgs();
     }
 
-    public sealed class LifecyclePolicyState : Pulumi.ResourceArgs
+    public sealed class LifecyclePolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the file system.
@@ -214,5 +214,6 @@ namespace Pulumi.AliCloud.Nas
         public LifecyclePolicyState()
         {
         }
+        public static new LifecyclePolicyState Empty => new LifecyclePolicyState();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,11 +13,8 @@ import * as utilities from "../utilities";
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dcdn/getDomains:getDomains", {
         "changeEndTime": args.changeEndTime,
         "changeStartTime": args.changeStartTime,
@@ -113,9 +111,13 @@ export interface GetDomainsResult {
      */
     readonly status?: string;
 }
-
+/**
+ * Provides a collection of DCDN Domains to the specified filters.
+ *
+ * > **NOTE:** Available in 1.94.0+.
+ */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
-    return pulumi.output(args).apply(a => getDomains(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomains(a, opts))
 }
 
 /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class KubernetesRuntimeArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesRuntimeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public KubernetesRuntimeArgs()
         {
         }
+        public static new KubernetesRuntimeArgs Empty => new KubernetesRuntimeArgs();
     }
 }

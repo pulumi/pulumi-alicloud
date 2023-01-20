@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class ContainerGroupInitContainerArgs : Pulumi.ResourceArgs
+    public sealed class ContainerGroupInitContainerArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         }
 
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
@@ -73,13 +73,13 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public Input<string>? ImagePullPolicy { get; set; }
 
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
 
         /// <summary>
-        /// The name of the security context that the container group runs.
+        /// The name of the volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -123,5 +123,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public ContainerGroupInitContainerArgs()
         {
         }
+        public static new ContainerGroupInitContainerArgs Empty => new ContainerGroupInitContainerArgs();
     }
 }

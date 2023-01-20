@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Dts
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Dts.JobMonitorRule("example", new()
     ///     {
-    ///         var example = new AliCloud.Dts.JobMonitorRule("example", new AliCloud.Dts.JobMonitorRuleArgs
-    ///         {
-    ///             DtsJobId = "example_value",
-    ///             Type = "delay",
-    ///         });
-    ///     }
+    ///         DtsJobId = "example_value",
+    ///         Type = "delay",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Dts
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dts/jobMonitorRule:JobMonitorRule")]
-    public partial class JobMonitorRule : Pulumi.CustomResource
+    public partial class JobMonitorRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Trigger delay alarm threshold, which is measured in seconds.
@@ -123,7 +121,7 @@ namespace Pulumi.AliCloud.Dts
         }
     }
 
-    public sealed class JobMonitorRuleArgs : Pulumi.ResourceArgs
+    public sealed class JobMonitorRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Trigger delay alarm threshold, which is measured in seconds.
@@ -158,9 +156,10 @@ namespace Pulumi.AliCloud.Dts
         public JobMonitorRuleArgs()
         {
         }
+        public static new JobMonitorRuleArgs Empty => new JobMonitorRuleArgs();
     }
 
-    public sealed class JobMonitorRuleState : Pulumi.ResourceArgs
+    public sealed class JobMonitorRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Trigger delay alarm threshold, which is measured in seconds.
@@ -195,5 +194,6 @@ namespace Pulumi.AliCloud.Dts
         public JobMonitorRuleState()
         {
         }
+        public static new JobMonitorRuleState Empty => new JobMonitorRuleState();
     }
 }

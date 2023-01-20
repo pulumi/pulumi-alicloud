@@ -5,29 +5,76 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./account";
-export * from "./auditPolicy";
-export * from "./getAccounts";
-export * from "./getAuditPolicies";
-export * from "./getInstances";
-export * from "./getServerlessInstances";
-export * from "./getShardingNetworkPrivateAddresses";
-export * from "./getShardingNetworkPublicAddresses";
-export * from "./getZones";
-export * from "./instance";
-export * from "./serverlessInstance";
-export * from "./shardingInstance";
-export * from "./shardingNetworkPrivateAddress";
-export * from "./shardingNetworkPublicAddress";
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
 
-// Import resources to register:
-import { Account } from "./account";
-import { AuditPolicy } from "./auditPolicy";
-import { Instance } from "./instance";
-import { ServerlessInstance } from "./serverlessInstance";
-import { ShardingInstance } from "./shardingInstance";
-import { ShardingNetworkPrivateAddress } from "./shardingNetworkPrivateAddress";
-import { ShardingNetworkPublicAddress } from "./shardingNetworkPublicAddress";
+export { AuditPolicyArgs, AuditPolicyState } from "./auditPolicy";
+export type AuditPolicy = import("./auditPolicy").AuditPolicy;
+export const AuditPolicy: typeof import("./auditPolicy").AuditPolicy = null as any;
+utilities.lazyLoad(exports, ["AuditPolicy"], () => require("./auditPolicy"));
+
+export { GetAccountsArgs, GetAccountsResult, GetAccountsOutputArgs } from "./getAccounts";
+export const getAccounts: typeof import("./getAccounts").getAccounts = null as any;
+export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getAccounts","getAccountsOutput"], () => require("./getAccounts"));
+
+export { GetAuditPoliciesArgs, GetAuditPoliciesResult, GetAuditPoliciesOutputArgs } from "./getAuditPolicies";
+export const getAuditPolicies: typeof import("./getAuditPolicies").getAuditPolicies = null as any;
+export const getAuditPoliciesOutput: typeof import("./getAuditPolicies").getAuditPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getAuditPolicies","getAuditPoliciesOutput"], () => require("./getAuditPolicies"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetServerlessInstancesArgs, GetServerlessInstancesResult, GetServerlessInstancesOutputArgs } from "./getServerlessInstances";
+export const getServerlessInstances: typeof import("./getServerlessInstances").getServerlessInstances = null as any;
+export const getServerlessInstancesOutput: typeof import("./getServerlessInstances").getServerlessInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getServerlessInstances","getServerlessInstancesOutput"], () => require("./getServerlessInstances"));
+
+export { GetShardingNetworkPrivateAddressesArgs, GetShardingNetworkPrivateAddressesResult, GetShardingNetworkPrivateAddressesOutputArgs } from "./getShardingNetworkPrivateAddresses";
+export const getShardingNetworkPrivateAddresses: typeof import("./getShardingNetworkPrivateAddresses").getShardingNetworkPrivateAddresses = null as any;
+export const getShardingNetworkPrivateAddressesOutput: typeof import("./getShardingNetworkPrivateAddresses").getShardingNetworkPrivateAddressesOutput = null as any;
+utilities.lazyLoad(exports, ["getShardingNetworkPrivateAddresses","getShardingNetworkPrivateAddressesOutput"], () => require("./getShardingNetworkPrivateAddresses"));
+
+export { GetShardingNetworkPublicAddressesArgs, GetShardingNetworkPublicAddressesResult, GetShardingNetworkPublicAddressesOutputArgs } from "./getShardingNetworkPublicAddresses";
+export const getShardingNetworkPublicAddresses: typeof import("./getShardingNetworkPublicAddresses").getShardingNetworkPublicAddresses = null as any;
+export const getShardingNetworkPublicAddressesOutput: typeof import("./getShardingNetworkPublicAddresses").getShardingNetworkPublicAddressesOutput = null as any;
+utilities.lazyLoad(exports, ["getShardingNetworkPublicAddresses","getShardingNetworkPublicAddressesOutput"], () => require("./getShardingNetworkPublicAddresses"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { ServerlessInstanceArgs, ServerlessInstanceState } from "./serverlessInstance";
+export type ServerlessInstance = import("./serverlessInstance").ServerlessInstance;
+export const ServerlessInstance: typeof import("./serverlessInstance").ServerlessInstance = null as any;
+utilities.lazyLoad(exports, ["ServerlessInstance"], () => require("./serverlessInstance"));
+
+export { ShardingInstanceArgs, ShardingInstanceState } from "./shardingInstance";
+export type ShardingInstance = import("./shardingInstance").ShardingInstance;
+export const ShardingInstance: typeof import("./shardingInstance").ShardingInstance = null as any;
+utilities.lazyLoad(exports, ["ShardingInstance"], () => require("./shardingInstance"));
+
+export { ShardingNetworkPrivateAddressArgs, ShardingNetworkPrivateAddressState } from "./shardingNetworkPrivateAddress";
+export type ShardingNetworkPrivateAddress = import("./shardingNetworkPrivateAddress").ShardingNetworkPrivateAddress;
+export const ShardingNetworkPrivateAddress: typeof import("./shardingNetworkPrivateAddress").ShardingNetworkPrivateAddress = null as any;
+utilities.lazyLoad(exports, ["ShardingNetworkPrivateAddress"], () => require("./shardingNetworkPrivateAddress"));
+
+export { ShardingNetworkPublicAddressArgs, ShardingNetworkPublicAddressState } from "./shardingNetworkPublicAddress";
+export type ShardingNetworkPublicAddress = import("./shardingNetworkPublicAddress").ShardingNetworkPublicAddress;
+export const ShardingNetworkPublicAddress: typeof import("./shardingNetworkPublicAddress").ShardingNetworkPublicAddress = null as any;
+utilities.lazyLoad(exports, ["ShardingNetworkPublicAddress"], () => require("./shardingNetworkPublicAddress"));
+
 
 const _module = {
     version: utilities.getVersion(),

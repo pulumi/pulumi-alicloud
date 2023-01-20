@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
- * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.ecs.LaunchTemplate;
  * import com.pulumi.alicloud.ecs.LaunchTemplateArgs;
  * import com.pulumi.alicloud.ecs.inputs.LaunchTemplateNetworkInterfacesArgs;
@@ -464,14 +464,14 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.spotDuration);
     }
     /**
-     * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+     * Sets the maximum hourly instance price. Supports up to three decimal places.
      * 
      */
     @Export(name="spotPriceLimit", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> spotPriceLimit;
 
     /**
-     * @return -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+     * @return Sets the maximum hourly instance price. Supports up to three decimal places.
      * 
      */
     public Output<Optional<Double>> spotPriceLimit() {

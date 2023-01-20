@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.FC
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var fcDomains = AliCloud.FC.GetCustomDomains.Invoke(new()
         ///     {
-        ///         var fcDomains = Output.Create(AliCloud.FC.GetCustomDomains.InvokeAsync(new AliCloud.FC.GetCustomDomainsArgs
-        ///         {
-        ///             NameRegex = "sample_fc_custom_domain",
-        ///         }));
-        ///         this.FirstFcCustomDomainName = data.Alicloud_fc_custom_domains.Fc_domains_ds.Domains[0].Domain_name;
-        ///     }
+        ///         NameRegex = "sample_fc_custom_domain",
+        ///     });
         /// 
-        ///     [Output("firstFcCustomDomainName")]
-        ///     public Output&lt;string&gt; FirstFcCustomDomainName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFcCustomDomainName"] = data.Alicloud_fc_custom_domains.Fc_domains_ds.Domains[0].Domain_name,
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCustomDomainsResult> InvokeAsync(GetCustomDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomDomainsResult>("alicloud:fc/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomDomainsResult>("alicloud:fc/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
@@ -55,33 +54,32 @@ namespace Pulumi.AliCloud.FC
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var fcDomains = AliCloud.FC.GetCustomDomains.Invoke(new()
         ///     {
-        ///         var fcDomains = Output.Create(AliCloud.FC.GetCustomDomains.InvokeAsync(new AliCloud.FC.GetCustomDomainsArgs
-        ///         {
-        ///             NameRegex = "sample_fc_custom_domain",
-        ///         }));
-        ///         this.FirstFcCustomDomainName = data.Alicloud_fc_custom_domains.Fc_domains_ds.Domains[0].Domain_name;
-        ///     }
+        ///         NameRegex = "sample_fc_custom_domain",
+        ///     });
         /// 
-        ///     [Output("firstFcCustomDomainName")]
-        ///     public Output&lt;string&gt; FirstFcCustomDomainName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFcCustomDomainName"] = data.Alicloud_fc_custom_domains.Fc_domains_ds.Domains[0].Domain_name,
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCustomDomainsResult> Invoke(GetCustomDomainsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCustomDomainsResult>("alicloud:fc/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomDomainsResult>("alicloud:fc/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCustomDomainsArgs : Pulumi.InvokeArgs
+    public sealed class GetCustomDomainsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -107,9 +105,10 @@ namespace Pulumi.AliCloud.FC
         public GetCustomDomainsArgs()
         {
         }
+        public static new GetCustomDomainsArgs Empty => new GetCustomDomainsArgs();
     }
 
-    public sealed class GetCustomDomainsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCustomDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -135,6 +134,7 @@ namespace Pulumi.AliCloud.FC
         public GetCustomDomainsInvokeArgs()
         {
         }
+        public static new GetCustomDomainsInvokeArgs Empty => new GetCustomDomainsInvokeArgs();
     }
 
 

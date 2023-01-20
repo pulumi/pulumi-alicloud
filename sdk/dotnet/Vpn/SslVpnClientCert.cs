@@ -15,20 +15,18 @@ namespace Pulumi.AliCloud.Vpn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new AliCloud.Vpn.SslVpnClientCert("foo", new()
     ///     {
-    ///         var foo = new AliCloud.Vpn.SslVpnClientCert("foo", new AliCloud.Vpn.SslVpnClientCertArgs
-    ///         {
-    ///             SslVpnServerId = "ssl_vpn_server_fake_id",
-    ///         });
-    ///     }
+    ///         SslVpnServerId = "ssl_vpn_server_fake_id",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.AliCloud.Vpn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/sslVpnClientCert:SslVpnClientCert")]
-    public partial class SslVpnClientCert : Pulumi.CustomResource
+    public partial class SslVpnClientCert : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The client ca cert.
@@ -107,6 +105,13 @@ namespace Pulumi.AliCloud.Vpn
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "caCert",
+                    "clientCert",
+                    "clientConfig",
+                    "clientKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -128,7 +133,7 @@ namespace Pulumi.AliCloud.Vpn
         }
     }
 
-    public sealed class SslVpnClientCertArgs : Pulumi.ResourceArgs
+    public sealed class SslVpnClientCertArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the client certificate.
@@ -145,33 +150,74 @@ namespace Pulumi.AliCloud.Vpn
         public SslVpnClientCertArgs()
         {
         }
+        public static new SslVpnClientCertArgs Empty => new SslVpnClientCertArgs();
     }
 
-    public sealed class SslVpnClientCertState : Pulumi.ResourceArgs
+    public sealed class SslVpnClientCertState : global::Pulumi.ResourceArgs
     {
+        [Input("caCert")]
+        private Input<string>? _caCert;
+
         /// <summary>
         /// The client ca cert.
         /// </summary>
-        [Input("caCert")]
-        public Input<string>? CaCert { get; set; }
+        public Input<string>? CaCert
+        {
+            get => _caCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _caCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientCert")]
+        private Input<string>? _clientCert;
 
         /// <summary>
         /// The client cert.
         /// </summary>
-        [Input("clientCert")]
-        public Input<string>? ClientCert { get; set; }
+        public Input<string>? ClientCert
+        {
+            get => _clientCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientConfig")]
+        private Input<string>? _clientConfig;
 
         /// <summary>
         /// The vpn client config.
         /// </summary>
-        [Input("clientConfig")]
-        public Input<string>? ClientConfig { get; set; }
+        public Input<string>? ClientConfig
+        {
+            get => _clientConfig;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientConfig = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientKey")]
+        private Input<string>? _clientKey;
 
         /// <summary>
         /// The client key.
         /// </summary>
-        [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The name of the client certificate.
@@ -194,5 +240,6 @@ namespace Pulumi.AliCloud.Vpn
         public SslVpnClientCertState()
         {
         }
+        public static new SslVpnClientCertState Empty => new SslVpnClientCertState();
     }
 }

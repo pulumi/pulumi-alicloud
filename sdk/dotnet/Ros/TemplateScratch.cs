@@ -21,38 +21,37 @@ namespace Pulumi.AliCloud.Ros
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
-    ///         var example = new AliCloud.Ros.TemplateScratch("example", new AliCloud.Ros.TemplateScratchArgs
-    ///         {
-    ///             Description = "tf_testacc",
-    ///             TemplateScratchType = "ResourceImport",
-    ///             PreferenceParameters = 
-    ///             {
-    ///                 new AliCloud.Ros.Inputs.TemplateScratchPreferenceParameterArgs
-    ///                 {
-    ///                     ParameterKey = "DeletionPolicy",
-    ///                     ParameterValue = "Retain",
-    ///                 },
-    ///             },
-    ///             SourceResourceGroup = new AliCloud.Ros.Inputs.TemplateScratchSourceResourceGroupArgs
-    ///             {
-    ///                 ResourceGroupId = @default.Apply(@default =&gt; @default.Ids?[0]),
-    ///                 ResourceTypeFilters = 
-    ///                 {
-    ///                     "ALIYUN::ECS::VPC",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    /// }
+    ///     var example = new AliCloud.Ros.TemplateScratch("example", new()
+    ///     {
+    ///         Description = "tf_testacc",
+    ///         TemplateScratchType = "ResourceImport",
+    ///         PreferenceParameters = new[]
+    ///         {
+    ///             new AliCloud.Ros.Inputs.TemplateScratchPreferenceParameterArgs
+    ///             {
+    ///                 ParameterKey = "DeletionPolicy",
+    ///                 ParameterValue = "Retain",
+    ///             },
+    ///         },
+    ///         SourceResourceGroup = new AliCloud.Ros.Inputs.TemplateScratchSourceResourceGroupArgs
+    ///         {
+    ///             ResourceGroupId = @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult).Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///             ResourceTypeFilters = new[]
+    ///             {
+    ///                 "ALIYUN::ECS::VPC",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +63,7 @@ namespace Pulumi.AliCloud.Ros
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ros/templateScratch:TemplateScratch")]
-    public partial class TemplateScratch : Pulumi.CustomResource
+    public partial class TemplateScratch : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Description of the Template Scratch.
@@ -164,7 +163,7 @@ namespace Pulumi.AliCloud.Ros
         }
     }
 
-    public sealed class TemplateScratchArgs : Pulumi.ResourceArgs
+    public sealed class TemplateScratchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Description of the Template Scratch.
@@ -229,9 +228,10 @@ namespace Pulumi.AliCloud.Ros
         public TemplateScratchArgs()
         {
         }
+        public static new TemplateScratchArgs Empty => new TemplateScratchArgs();
     }
 
-    public sealed class TemplateScratchState : Pulumi.ResourceArgs
+    public sealed class TemplateScratchState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Description of the Template Scratch.
@@ -302,5 +302,6 @@ namespace Pulumi.AliCloud.Ros
         public TemplateScratchState()
         {
         }
+        public static new TemplateScratchState Empty => new TemplateScratchState();
     }
 }

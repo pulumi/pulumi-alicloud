@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry")]
-    public partial class TransitRouterRouteEntry : Pulumi.CustomResource
+    public partial class TransitRouterRouteEntry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The dry run.
@@ -49,6 +49,9 @@ namespace Pulumi.AliCloud.Cen
         [Output("transitRouterRouteEntryDestinationCidrBlock")]
         public Output<string> TransitRouterRouteEntryDestinationCidrBlock { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the route entry.
+        /// </summary>
         [Output("transitRouterRouteEntryId")]
         public Output<string> TransitRouterRouteEntryId { get; private set; } = null!;
 
@@ -120,7 +123,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class TransitRouterRouteEntryArgs : Pulumi.ResourceArgs
+    public sealed class TransitRouterRouteEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
@@ -167,9 +170,10 @@ namespace Pulumi.AliCloud.Cen
         public TransitRouterRouteEntryArgs()
         {
         }
+        public static new TransitRouterRouteEntryArgs Empty => new TransitRouterRouteEntryArgs();
     }
 
-    public sealed class TransitRouterRouteEntryState : Pulumi.ResourceArgs
+    public sealed class TransitRouterRouteEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
@@ -195,6 +199,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("transitRouterRouteEntryDestinationCidrBlock")]
         public Input<string>? TransitRouterRouteEntryDestinationCidrBlock { get; set; }
 
+        /// <summary>
+        /// The ID of the route entry.
+        /// </summary>
         [Input("transitRouterRouteEntryId")]
         public Input<string>? TransitRouterRouteEntryId { get; set; }
 
@@ -225,5 +232,6 @@ namespace Pulumi.AliCloud.Cen
         public TransitRouterRouteEntryState()
         {
         }
+        public static new TransitRouterRouteEntryState Empty => new TransitRouterRouteEntryState();
     }
 }

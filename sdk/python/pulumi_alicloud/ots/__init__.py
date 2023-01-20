@@ -7,11 +7,15 @@ import typing
 # Export this package's modules as members:
 from .get_instance_attachments import *
 from .get_instances import *
+from .get_search_indexes import *
+from .get_secondary_indexes import *
 from .get_service import *
 from .get_tables import *
 from .get_tunnels import *
 from .instance import *
 from .instance_attachment import *
+from .search_index import *
+from .secondary_index import *
 from .table import *
 from .tunnel import *
 from ._inputs import *

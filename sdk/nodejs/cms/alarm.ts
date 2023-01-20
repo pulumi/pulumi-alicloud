@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -29,7 +30,7 @@ import * as utilities from "../utilities";
  *     metricDimensions: "[{\"instanceId\":\"i-bp1247jeep0y53nu3bnk\",\"device\":\"/dev/vda1\"},{\"instanceId\":\"i-bp11gdcik8z6dl5jm84p\",\"device\":\"/dev/vdb1\"}]",
  *     period: 900,
  *     project: "acs_ecs_dashboard",
- *     webhook: pulumi.interpolate`https://${alicloud_account_current.id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/`,
+ *     webhook: `https://${data.alicloud_account.current.id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/`,
  * });
  * ```
  *
@@ -147,7 +148,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
-     * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
      *
      * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
      */
@@ -161,7 +162,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * Critical level alarm threshold value, which must be a numeric value currently.
+     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
      *
      * @deprecated Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
      */
@@ -335,7 +336,7 @@ export interface AlarmState {
      */
     startTime?: pulumi.Input<number>;
     /**
-     * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
      *
      * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
      */
@@ -349,7 +350,7 @@ export interface AlarmState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Critical level alarm threshold value, which must be a numeric value currently.
+     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
      *
      * @deprecated Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
      */
@@ -448,7 +449,7 @@ export interface AlarmArgs {
      */
     startTime?: pulumi.Input<number>;
     /**
-     * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
      *
      * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
      */
@@ -458,7 +459,7 @@ export interface AlarmArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Critical level alarm threshold value, which must be a numeric value currently.
+     * It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
      *
      * @deprecated Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
      */

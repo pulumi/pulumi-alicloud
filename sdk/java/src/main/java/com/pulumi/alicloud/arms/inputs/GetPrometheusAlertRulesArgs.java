@@ -78,8 +78,6 @@ public final class GetPrometheusAlertRulesArgs extends com.pulumi.resources.Invo
 
     /**
      * The status of the resource. Valid values: `0`, `1`.
-     * * `1`: open.
-     * * `0`: off.
      * 
      */
     @Import(name="status")
@@ -87,8 +85,6 @@ public final class GetPrometheusAlertRulesArgs extends com.pulumi.resources.Invo
 
     /**
      * @return The status of the resource. Valid values: `0`, `1`.
-     * * `1`: open.
-     * * `0`: off.
      * 
      */
     public Optional<Output<Integer>> status() {
@@ -233,8 +229,6 @@ public final class GetPrometheusAlertRulesArgs extends com.pulumi.resources.Invo
 
         /**
          * @param status The status of the resource. Valid values: `0`, `1`.
-         * * `1`: open.
-         * * `0`: off.
          * 
          * @return builder
          * 
@@ -246,8 +240,6 @@ public final class GetPrometheusAlertRulesArgs extends com.pulumi.resources.Invo
 
         /**
          * @param status The status of the resource. Valid values: `0`, `1`.
-         * * `1`: open.
-         * * `0`: off.
          * 
          * @return builder
          * 

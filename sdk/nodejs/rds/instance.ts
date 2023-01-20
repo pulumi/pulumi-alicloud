@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -79,6 +80,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly caType!: pulumi.Output<string>;
     /**
+     * The RDS edition of the instance. Valid values:
+     * * **Basic**: Basic Edition.
+     * * **HighAvailability**: High-availability Edition.
+     * * **AlwaysOn**: Cluster Edition.
+     * * **Finance**: Enterprise Edition.
+     */
+    public readonly category!: pulumi.Output<string>;
+    /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      */
     public readonly clientCaCert!: pulumi.Output<string | undefined>;
@@ -140,6 +149,12 @@ export class Instance extends pulumi.CustomResource {
      * - false: no delete protect.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
+     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * - Immediate: The change immediately takes effect.
+     * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+     */
+    public readonly effectiveTime!: pulumi.Output<string | undefined>;
     /**
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
@@ -351,6 +366,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly upgradeTime!: pulumi.Output<string | undefined>;
     /**
+     * The VPC ID of the instance.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
+    /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
@@ -396,6 +415,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["babelfishConfigs"] = state ? state.babelfishConfigs : undefined;
             resourceInputs["babelfishPort"] = state ? state.babelfishPort : undefined;
             resourceInputs["caType"] = state ? state.caType : undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
             resourceInputs["clientCaCert"] = state ? state.clientCaCert : undefined;
             resourceInputs["clientCaEnabled"] = state ? state.clientCaEnabled : undefined;
             resourceInputs["clientCertRevocationList"] = state ? state.clientCertRevocationList : undefined;
@@ -408,6 +428,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbIsIgnoreCase"] = state ? state.dbIsIgnoreCase : undefined;
             resourceInputs["dbTimeZone"] = state ? state.dbTimeZone : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
@@ -451,6 +472,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             resourceInputs["upgradeDbInstanceKernelVersion"] = state ? state.upgradeDbInstanceKernelVersion : undefined;
             resourceInputs["upgradeTime"] = state ? state.upgradeTime : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["whitelistNetworkType"] = state ? state.whitelistNetworkType : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -477,6 +499,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["babelfishConfigs"] = args ? args.babelfishConfigs : undefined;
             resourceInputs["babelfishPort"] = args ? args.babelfishPort : undefined;
             resourceInputs["caType"] = args ? args.caType : undefined;
+            resourceInputs["category"] = args ? args.category : undefined;
             resourceInputs["clientCaCert"] = args ? args.clientCaCert : undefined;
             resourceInputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
             resourceInputs["clientCertRevocationList"] = args ? args.clientCertRevocationList : undefined;
@@ -488,6 +511,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbIsIgnoreCase"] = args ? args.dbIsIgnoreCase : undefined;
             resourceInputs["dbTimeZone"] = args ? args.dbTimeZone : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
@@ -530,6 +554,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             resourceInputs["upgradeDbInstanceKernelVersion"] = args ? args.upgradeDbInstanceKernelVersion : undefined;
             resourceInputs["upgradeTime"] = args ? args.upgradeTime : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["whitelistNetworkType"] = args ? args.whitelistNetworkType : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
@@ -583,6 +608,14 @@ export interface InstanceState {
      * - custom: a custom certificate
      */
     caType?: pulumi.Input<string>;
+    /**
+     * The RDS edition of the instance. Valid values:
+     * * **Basic**: Basic Edition.
+     * * **HighAvailability**: High-availability Edition.
+     * * **AlwaysOn**: Cluster Edition.
+     * * **Finance**: Enterprise Edition.
+     */
+    category?: pulumi.Input<string>;
     /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      */
@@ -645,6 +678,12 @@ export interface InstanceState {
      * - false: no delete protect.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * - Immediate: The change immediately takes effect.
+     * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+     */
+    effectiveTime?: pulumi.Input<string>;
     /**
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
@@ -856,6 +895,10 @@ export interface InstanceState {
      */
     upgradeTime?: pulumi.Input<string>;
     /**
+     * The VPC ID of the instance.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     vswitchId?: pulumi.Input<string>;
@@ -923,6 +966,14 @@ export interface InstanceArgs {
      */
     caType?: pulumi.Input<string>;
     /**
+     * The RDS edition of the instance. Valid values:
+     * * **Basic**: Basic Edition.
+     * * **HighAvailability**: High-availability Edition.
+     * * **AlwaysOn**: Cluster Edition.
+     * * **Finance**: Enterprise Edition.
+     */
+    category?: pulumi.Input<string>;
+    /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      */
     clientCaCert?: pulumi.Input<string>;
@@ -980,6 +1031,12 @@ export interface InstanceArgs {
      * - false: no delete protect.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * - Immediate: The change immediately takes effect.
+     * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+     */
+    effectiveTime?: pulumi.Input<string>;
     /**
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
@@ -1186,6 +1243,10 @@ export interface InstanceArgs {
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
      */
     upgradeTime?: pulumi.Input<string>;
+    /**
+     * The VPC ID of the instance.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */

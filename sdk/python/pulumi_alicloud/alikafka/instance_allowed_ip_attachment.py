@@ -22,8 +22,6 @@ class InstanceAllowedIpAttachmentArgs:
         The set of arguments for constructing a InstanceAllowedIpAttachment resource.
         :param pulumi.Input[str] allowed_ip: The allowed ip. It can be a CIDR block.
         :param pulumi.Input[str] allowed_type: The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-               - `vpc`: IP address whitelist for VPC access.
-               - `internet`: IP address whitelist for Internet access.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] port_range: The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
                - `9092/9092`: port range for a VPC whitelist.
@@ -51,8 +49,6 @@ class InstanceAllowedIpAttachmentArgs:
     def allowed_type(self) -> pulumi.Input[str]:
         """
         The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-        - `vpc`: IP address whitelist for VPC access.
-        - `internet`: IP address whitelist for Internet access.
         """
         return pulumi.get(self, "allowed_type")
 
@@ -98,8 +94,6 @@ class _InstanceAllowedIpAttachmentState:
         Input properties used for looking up and filtering InstanceAllowedIpAttachment resources.
         :param pulumi.Input[str] allowed_ip: The allowed ip. It can be a CIDR block.
         :param pulumi.Input[str] allowed_type: The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-               - `vpc`: IP address whitelist for VPC access.
-               - `internet`: IP address whitelist for Internet access.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] port_range: The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
                - `9092/9092`: port range for a VPC whitelist.
@@ -131,8 +125,6 @@ class _InstanceAllowedIpAttachmentState:
     def allowed_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-        - `vpc`: IP address whitelist for VPC access.
-        - `internet`: IP address whitelist for Internet access.
         """
         return pulumi.get(self, "allowed_type")
 
@@ -200,7 +192,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
         default_instance = alicloud.alikafka.Instance("defaultInstance",
-            topic_quota=50,
+            partition_num=50,
             disk_type=1,
             disk_size=500,
             deploy_type=5,
@@ -226,8 +218,6 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] allowed_ip: The allowed ip. It can be a CIDR block.
         :param pulumi.Input[str] allowed_type: The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-               - `vpc`: IP address whitelist for VPC access.
-               - `internet`: IP address whitelist for Internet access.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] port_range: The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
                - `9092/9092`: port range for a VPC whitelist.
@@ -262,7 +252,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
         default_instance = alicloud.alikafka.Instance("defaultInstance",
-            topic_quota=50,
+            partition_num=50,
             disk_type=1,
             disk_size=500,
             deploy_type=5,
@@ -347,8 +337,6 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] allowed_ip: The allowed ip. It can be a CIDR block.
         :param pulumi.Input[str] allowed_type: The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-               - `vpc`: IP address whitelist for VPC access.
-               - `internet`: IP address whitelist for Internet access.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] port_range: The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
                - `9092/9092`: port range for a VPC whitelist.
@@ -377,8 +365,6 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
     def allowed_type(self) -> pulumi.Output[str]:
         """
         The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-        - `vpc`: IP address whitelist for VPC access.
-        - `internet`: IP address whitelist for Internet access.
         """
         return pulumi.get(self, "allowed_type")
 

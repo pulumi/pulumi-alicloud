@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class ImageImportDiskDeviceMappingGetArgs : Pulumi.ResourceArgs
+    public sealed class ImageImportDiskDeviceMappingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of disk N in the custom image.
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public ImageImportDiskDeviceMappingGetArgs()
         {
         }
+        public static new ImageImportDiskDeviceMappingGetArgs Empty => new ImageImportDiskDeviceMappingGetArgs();
     }
 }
